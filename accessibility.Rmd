@@ -1,0 +1,7 @@
+# Accessible HTML
+
+<!-- standards go here as well -->
+
+<!-- semantic tags (roles, but also stuff like `cite`) -->
+
+<!-- note about head vs. header vs. h1 ("heading") -->

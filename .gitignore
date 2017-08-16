@@ -1,0 +1,16 @@
+# node dependencies
+node_modules
+
+# R build files
+.Rhistory
+# Book build output
+#_book
+# eBook build output
+#*.epub
+#*.mobi
+#*.pdf
+# System files
+.DS_Store
+.Rproj.user
+packrat/lib*/
+packrat/src/

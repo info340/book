@@ -1,0 +1,179 @@
+# Getting Setup {#machine-setup}
+
+This course will cover a wide variety of tools and techniques used in modern web development, including different software programs that are used to write, manage, and execute the code for your web application. This chapter explains how to install and use some of the software you will need to utilize.
+
+<p class="alert alert-info">Note that iSchool lab machines should have all appropriate software already installed and ready to use.</p>
+
+## Web Browser
+The first thing you'll need is a web browser for viewing the web pages you make! We recommend you install and utilize [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class.
+
+- You can access the Chrome Developer tools by selecting **View > Developer > Developer Tools** from Chrome's main menu (`Cmd+Option+I` on a Mac, `Ctrl+Shift+I` on Windows). You will almost always want to have these tools open when doing web development, particularly when including interactivity via JavaScript.
+
+Other modern browsers such as [**Firefox**](https://www.mozilla.org/en-US/firefox/new/) or [**Microsoft Edge**](https://www.microsoft.com/en-us/windows/microsoft-edge) will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways which will be discussed extensively throughout the course.
+
+
+## Code Editors
+In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend **Visual Studio Code** as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)
+
+### Visual Studio Code {-}
+[Visual Studio Code](https://code.visualstudio.com/) (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft&mdash;yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of [community-built extensions](https://code.visualstudio.com/docs/editor/extension-gallery) for adding even more features. Although fairly new, it is updated regularly and has has become my main editors for programming. VS Code is actually a stand-alone web application, so it's written in the same HTML, CSS, and JavaScript you'll learn in this course!
+
+To install VS Code, follow the above link and Click the "Download" button to download the installer (e.g, `.exe`) file, then double-click on that to install the application.
+
+Once you've installed VS Code, the trick to using it effectively is to get comfortable with the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette). If you hit `Cmd+Shift+P`, VS Code will open a small window where you can search for whatever you want the editor to do. For example, if you type in `markdown` you can get list of commands related to Markdown files (including the ability to open up a preview). The `Format Code` option is particularly useful.
+
+For more information about using VS Code, see [the documentation](https://code.visualstudio.com/docs), which includes [videos](https://code.visualstudio.com/docs/getstarted/introvideos) if you find them useful. The documentation for programming in [HTML](https://code.visualstudio.com/docs/languages/html), [CSS](https://code.visualstudio.com/docs/languages/css), and especially [JavaScript](https://code.visualstudio.com/docs/languages/javascript) also contain lots of tips and tricks.
+
+### Atom {-}
+[Atom](https://atom.io/) is a text editor built by the folks at GitHub and has been gaining in popularity. It is very similar to VS Code in terms of features, but has a somewhat different interface and community. It has a similar _command-palette_ to VS Code, and is arguably even nicer about editing Markdown specifically. The document you are reading was authored in Atom.
+
+### Brackets {-}
+[Brackets](http://brackets.io/) is a coding editor authored by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list.
+
+### Sublime Text {-}
+[Sublime Text](https://www.sublimetext.com/3) is a very popular text editor with excellent defaults and a variety of available extensions (though you'll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is my application of choice for when I just write to write a plain text file.
+
+
+## Bash (Command Line)
+Many of the software tools used in professional web development are used on the **command-line**: a text-based interface for controlling your computer. While the command-line is harder to learn and figure out, it is particularly effective for doing web development. Command-line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command-line in order to utilize the software for this course.
+
+While there are multiple different **command shells** (command line interfaces), this course is based on the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.
+
+On a Mac you'll want to use the built-in app called **Terminal**. You can open it by searching via Spotlight (hit Cmd (`⌘`) and Spacebar together, type in "terminal", then select the app to open it), or by finding it in the Applications/Utilities folder.
+
+On Windows, we recommend using [**Git Bash**](https://git-scm.com/downloads), which you should install along with `git` (see below). Open this program to open the command-shell.
+
+- Note that Windows does come with its own command-prompt, called the _DOS Prompt_, but it has a different set of commands and features. _Powershell_ is a more powerful version of the DOS prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we'll be doing, and so we will be focusing on that set of commands.
+
+- Alternatively, the 64-bit Windows 10 Anniversary update (August 2016) _does_ include a beta version of an integrated Bash shell. You can access this by [enabling the subsystem for Linux](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then running `bash` in the command prompt. This is currently (May 2017) "beta" technology, but will suffice for our purposes if you can get it running.
+
+<p class="alert alert-danger">This course expects you to already be familiar with basic command-line usage. For review, see [The Command Line](https://info201.github.io/command-line.html) in the _INFO 201_ course reader.</p>
+
+
+## Git and GitHub
+Professional web development involves many different people working on many different files. **`git`** is a collaborative version control system that provides a set of commands that allow you to manage changes to written code, particularly when collaborating with other programmers.
+
+You will need to [download](https://git-scm.com/downloads) and install the software. If you are on a Mac, `git` should already be installed. If you are using a Windows machine, then installing `git` will also install Git Bash, a command shell (described avove).
+
+Note that `git` is a command-line application: you can test that it is installed by running the command:
+
+```bash
+git --version
+```
+
+While `git` is the software used to manage versions of code, [**GitHub**](https://github.com/) is a website that is used to store copies of computer code that are being managed with `git` (think "Imgur for code").
+
+In order to use GitHub, you'll need to [create a free GitHub account](https://github.com/join), if you don't already have one. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to figure out who 'LeetDesigner2099' is. This can be the start of a professional account you may use for the rest of your career!
+
+- Note that you can have `git` save your GitHub password on your local machine so you don't have to type it repeatedly. See [Authenticating with GitHub from Git](https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git).
+
+<p class="alert alert-danger">This course expects you to already be familiar with utilizing Git and GitHub. For review, see [Git and GitHub](https://info201.github.io/git-basics.html) and [Git Branches and Collaboration](https://info201.github.io/git-branches.html) in the _INFO 201_ course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.</p>
+
+
+## Node and npm
+[**Node.js**](https://nodejs.org/en/) (commonly just "Node") is a a command-line runtime environment for the JavaScript programming language&mdash;that is, a program that is used to _interpret_ and _execute_ programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see [Chapter: JavaScript](#JavaScript)), Node provides a platform for installing and running a wide variety of "helper" programs that are frequently used in web development.
+
+To install Node, visit the [download page](https://nodejs.org/en/download/) and select the installer for your operating system (you probably want the `.msi` for Windows and the `.pkg` for Mac). For this course you will want to install the **latest version** of Node (6.10+), so you should update it if you haven't in a while. Node is a command-line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:
+
+```bash
+node --version
+```
+
+Installing Node also installs an additional command-line program called [**_npm_**](https://www.npmjs.com/). _npm_ is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command-line "app store" for developer tools and libraries. _npm_ is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the _npm_ "registry" lists around 500,000 different packages.
+
+### Managing packages with npm {-}
+You can use the `npm` program to download and install command-line programs by name:
+
+```bash
+npm install -g PACKAGE-NAME
+```
+
+For example, you can install the [_live-server_](https://github.com/tapio/live-server) utility (a simple program that runs a local web server and will automatically "refresh" the browser when your code changes) using
+
+```bash
+npm install -g live-server
+```
+
+- Once the program is done installing, you can run it from the command-line by using the command `live-server`. This program will serve all of the content from the current directory. See [Chapter 2](#web-servers) for details.
+
+Importantly, note the included **`-g`** option. This tells _npm_ that the package should be installed **globally**, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command-line utility like _live-server_ from any folder (e.g., for any project), command-line utilities are always installed globally with the `-g` option.
+
+It is also possible to omit that option and install a package _locally_. For example:
+
+```bash
+npm install lodash
+```
+
+Will download the [`lodash`](https://lodash.com/) code library (a set of useful JavaScript functions). This package will be placed into a new folder _in the current project directory_ called `node_modules/`, and can be imported and used in the current directory's code. (It's called a local install because the package is only available to the "local" project). You will of course need to install local packages once per project.
+
+<p class="alert alert-warning">Because node packages can be very large, and projects can have lots of them, you want to be sure to **not** commit the `node_modules/` folder to version control. Make sure that the folder is listed in your `.gitignore` file!</p>
+
+### `package.json`
+As projects become large, it is common for them to build up many _dependencies_: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project's `node_modules/` folder. _npm_ is able to keep track of these dependencies by recording them in a specialized file called `package.json` that can be placed inside the project directory. A `package.json` file is a text file containing a [JSON](https://en.wikipedia.org/wiki/JSON) list of information about your project. For example:
+
+```json
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "A project with an example package.json",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Joel Ross",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
+	},
+  "devDependencies": {
+    "html-validator": "^2.2.2"
+  }
+}
+```
+
+(You can create one of these files by using the command `npm init` in the current project directory, and then following the instructions to fill in the fields).
+
+Notice that there are two packages listed under `"dependencies"`: `lodash` and `moment` (the `^4.17.4` indicates which version of `lodash`). You can use `npm` to automatically install all of packages listed under `"dependencies"` (as well as `"devDependencies"`) using the command:
+
+```bash
+npm install
+```
+
+Thus using `npm install` without any arguments means "install all of the requirements that have been listed for this project". This is a good first step _any time_ you download a project or checkout a repository from GitHub.
+
+When installing specific packages, you can have _npm_ add them to the dependencies list by using the `--save` option:
+
+```
+npm install --save lodash
+```
+
+will install `lodash` locally, and list it in the `package.json` file as a dependency.
+
+Similarly, the `--save-dev` option will instead save the package in the `"devDependencies"` list, which are dependencies needed only for development (writing the program's code) and not for execution (running the program).
+
+You can uninstall packages using `npm uninstall`, or can remove packages from the dependencies lists simply by editing the `package.json` file (e.g., with VS Code).
+
+To sum up, you will use three commands with `npm` to install packages:
+
+1. `npm install -g PACKAGE-NAME` to _globally_ install command-line programs
+2. `npm install` to _locally_ install all of the dependencies for a project you check out
+3. `npm install --save PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
+
+
+<p class="alert alert-info">While _npm_ is the most popular package maanger (and the one utilized in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with _npm_ and is quickly growing in popularity.</p>
+
+
+
+## Resources {-}
+Links to the recommended software are collected here for easy access:
+
+<div class="list-condensed">
+- [Chrome](https://www.google.com/chrome/browser/desktop/index.html)
+- [git (and Git Bash)](https://git-scm.com/downloads)
+		- [GitHub](https://github.com/join) (sign up)
+    - optional: [Bash on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Node.js (and npm)](https://nodejs.org/)
+    - [npm documentation](https://docs.npmjs.com/getting-started/what-is-npm)
+</div>

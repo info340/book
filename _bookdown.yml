@@ -1,0 +1,39 @@
+book_filename: "client-side-web-development"
+output_dir: build
+language:
+  ui:
+    chapter_name: ["Chapter "]
+edit: https://github.com/info343b-a17/book/edit/master/%s
+rmd_files:
+  - index.Rmd
+
+  ## environment setup
+  - setup.Rmd
+
+  ## HTML & CSS
+  - client-side.Rmd
+  - html.Rmd
+  - accessibility.Rmd
+  #- css-foundations.Rmd
+  #- css-advanced.Rmd
+  #- responsive-css.Rmd
+  #- css-frameworks.Rmd
+
+  ## JavaScript
+  #- javascript-intro.Rmd
+  #- functional-programming.Rmd
+  #- dom.Rmd
+  #- ajax.Rmd
+
+  ## React (what chapter divisions?)
+  #- react-intro.Rmd
+  #- react-components.Rmd
+  #- react-lifecycle.Rmd
+  #- react-interactivity.Rmd
+  #- react-router.Rmd
+
+  ## Additional Topics
+  # webpack
+  # firebase
+  # jest
+  # redux

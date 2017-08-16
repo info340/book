@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info343b-a17.github.io/" />
+  <meta property="og:image" content="https://info343b-a17.github.io/img/cover-img.png" />
+  <meta property="og:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="github-repo" content="info343b-a17/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info343b-a17.github.io/img/cover-img.png" />
+
+<meta name="author" content="Joel Ross and David Stearns">
+
+
+<meta name="date" content="2017-08-16">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+<link rel="prev" href="index.html">
+<link rel="next" href="client-side-development.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="chapter" data-level="1" data-path="machine-setup.html"><a href="machine-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="machine-setup.html"><a href="machine-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="machine-setup.html"><a href="machine-setup.html#code-editors"><i class="fa fa-check"></i><b>1.2</b> Code Editors</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#atom"><i class="fa fa-check"></i>Atom</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#brackets"><i class="fa fa-check"></i>Brackets</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#sublime-text"><i class="fa fa-check"></i>Sublime Text</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="machine-setup.html"><a href="machine-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
+<li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
+<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code>package.json</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a><ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i><b>2.1</b> Client-Side File Types</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#http-requests-and-servers"><i class="fa fa-check"></i><b>2.2</b> HTTP Requests and Servers</a><ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-tags"><i class="fa fa-check"></i>Some Example Tags</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="accessible-html.html"><a href="accessible-html.html"><i class="fa fa-check"></i><b>4</b> Accessible HTML</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="machine-setup" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Getting Setup</h1>
+<p>This course will cover a wide variety of tools and techniques used in modern web development, including different software programs that are used to write, manage, and execute the code for your web application. This chapter explains how to install and use some of the software you will need to utilize.</p>
+<p class="alert alert-info">
+Note that iSchool lab machines should have all appropriate software already installed and ready to use.
+</p>
+<div id="web-browser" class="section level2">
+<h2><span class="header-section-number">1.1</span> Web Browser</h2>
+<p>The first thing you’ll need is a web browser for viewing the web pages you make! We recommend you install and utilize <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class.</p>
+<ul>
+<li>You can access the Chrome Developer tools by selecting <strong>View &gt; Developer &gt; Developer Tools</strong> from Chrome’s main menu (<code>Cmd+Option+I</code> on a Mac, <code>Ctrl+Shift+I</code> on Windows). You will almost always want to have these tools open when doing web development, particularly when including interactivity via JavaScript.</li>
+</ul>
+<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways which will be discussed extensively throughout the course.</p>
+</div>
+<div id="code-editors" class="section level2">
+<h2><span class="header-section-number">1.2</span> Code Editors</h2>
+<p>In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend <strong>Visual Studio Code</strong> as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)</p>
+<div id="visual-studio-code" class="section level3 unnumbered">
+<h3>Visual Studio Code</h3>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. Although fairly new, it is updated regularly and has has become my main editors for programming. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
+<p>To install VS Code, follow the above link and Click the “Download” button to download the installer (e.g, <code>.exe</code>) file, then double-click on that to install the application.</p>
+<p>Once you’ve installed VS Code, the trick to using it effectively is to get comfortable with the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">Command Palette</a>. If you hit <code>Cmd+Shift+P</code>, VS Code will open a small window where you can search for whatever you want the editor to do. For example, if you type in <code>markdown</code> you can get list of commands related to Markdown files (including the ability to open up a preview). The <code>Format Code</code> option is particularly useful.</p>
+<p>For more information about using VS Code, see <a href="https://code.visualstudio.com/docs">the documentation</a>, which includes <a href="https://code.visualstudio.com/docs/getstarted/introvideos">videos</a> if you find them useful. The documentation for programming in <a href="https://code.visualstudio.com/docs/languages/html">HTML</a>, <a href="https://code.visualstudio.com/docs/languages/css">CSS</a>, and especially <a href="https://code.visualstudio.com/docs/languages/javascript">JavaScript</a> also contain lots of tips and tricks.</p>
+</div>
+<div id="atom" class="section level3 unnumbered">
+<h3>Atom</h3>
+<p><a href="https://atom.io/">Atom</a> is a text editor built by the folks at GitHub and has been gaining in popularity. It is very similar to VS Code in terms of features, but has a somewhat different interface and community. It has a similar <em>command-palette</em> to VS Code, and is arguably even nicer about editing Markdown specifically. The document you are reading was authored in Atom.</p>
+</div>
+<div id="brackets" class="section level3 unnumbered">
+<h3>Brackets</h3>
+<p><a href="http://brackets.io/">Brackets</a> is a coding editor authored by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list.</p>
+</div>
+<div id="sublime-text" class="section level3 unnumbered">
+<h3>Sublime Text</h3>
+<p><a href="https://www.sublimetext.com/3">Sublime Text</a> is a very popular text editor with excellent defaults and a variety of available extensions (though you’ll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is my application of choice for when I just write to write a plain text file.</p>
+</div>
+</div>
+<div id="bash-command-line" class="section level2">
+<h2><span class="header-section-number">1.3</span> Bash (Command Line)</h2>
+<p>Many of the software tools used in professional web development are used on the <strong>command-line</strong>: a text-based interface for controlling your computer. While the command-line is harder to learn and figure out, it is particularly effective for doing web development. Command-line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command-line in order to utilize the software for this course.</p>
+<p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course is based on the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.</p>
+<p>On a Mac you’ll want to use the built-in app called <strong>Terminal</strong>. You can open it by searching via Spotlight (hit Cmd (<code>⌘</code>) and Spacebar together, type in “terminal”, then select the app to open it), or by finding it in the Applications/Utilities folder.</p>
+<p>On Windows, we recommend using <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a>, which you should install along with <code>git</code> (see below). Open this program to open the command-shell.</p>
+<ul>
+<li><p>Note that Windows does come with its own command-prompt, called the <em>DOS Prompt</em>, but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the DOS prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</p></li>
+<li><p>Alternatively, the 64-bit Windows 10 Anniversary update (August 2016) <em>does</em> include a beta version of an integrated Bash shell. You can access this by <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">enabling the subsystem for Linux</a> and then running <code>bash</code> in the command prompt. This is currently (May 2017) “beta” technology, but will suffice for our purposes if you can get it running.</p></li>
+</ul>
+<p class="alert alert-danger">
+This course expects you to already be familiar with basic command-line usage. For review, see <a href="https://info201.github.io/command-line.html">The Command Line</a> in the <em>INFO 201</em> course reader.
+</p>
+</div>
+<div id="git-and-github" class="section level2">
+<h2><span class="header-section-number">1.4</span> Git and GitHub</h2>
+<p>Professional web development involves many different people working on many different files. <strong><code>git</code></strong> is a collaborative version control system that provides a set of commands that allow you to manage changes to written code, particularly when collaborating with other programmers.</p>
+<p>You will need to <a href="https://git-scm.com/downloads">download</a> and install the software. If you are on a Mac, <code>git</code> should already be installed. If you are using a Windows machine, then installing <code>git</code> will also install Git Bash, a command shell (described avove).</p>
+<p>Note that <code>git</code> is a command-line application: you can test that it is installed by running the command:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="fu">git</span> --version</code></pre></div>
+<p>While <code>git</code> is the software used to manage versions of code, <a href="https://github.com/"><strong>GitHub</strong></a> is a website that is used to store copies of computer code that are being managed with <code>git</code> (think “Imgur for code”).</p>
+<p>In order to use GitHub, you’ll need to <a href="https://github.com/join">create a free GitHub account</a>, if you don’t already have one. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to figure out who ‘LeetDesigner2099’ is. This can be the start of a professional account you may use for the rest of your career!</p>
+<ul>
+<li>Note that you can have <code>git</code> save your GitHub password on your local machine so you don’t have to type it repeatedly. See <a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git">Authenticating with GitHub from Git</a>.</li>
+</ul>
+<p class="alert alert-danger">
+This course expects you to already be familiar with utilizing Git and GitHub. For review, see <a href="https://info201.github.io/git-basics.html">Git and GitHub</a> and <a href="https://info201.github.io/git-branches.html">Git Branches and Collaboration</a> in the <em>INFO 201</em> course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.
+</p>
+</div>
+<div id="node-and-npm" class="section level2">
+<h2><span class="header-section-number">1.5</span> Node and npm</h2>
+<p><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> (commonly just “Node”) is a a command-line runtime environment for the JavaScript programming language—that is, a program that is used to <em>interpret</em> and <em>execute</em> programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see <a href="#JavaScript">Chapter: JavaScript</a>), Node provides a platform for installing and running a wide variety of “helper” programs that are frequently used in web development.</p>
+<p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will want to install the <strong>latest version</strong> of Node (6.10+), so you should update it if you haven’t in a while. Node is a command-line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">node</span> --version</code></pre></div>
+<p>Installing Node also installs an additional command-line program called <a href="https://www.npmjs.com/"><strong><em>npm</em></strong></a>. <em>npm</em> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command-line “app store” for developer tools and libraries. <em>npm</em> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <em>npm</em> “registry” lists around 500,000 different packages.</p>
+<div id="managing-packages-with-npm" class="section level3 unnumbered">
+<h3>Managing packages with npm</h3>
+<p>You can use the <code>npm</code> program to download and install command-line programs by name:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">npm</span> install -g PACKAGE-NAME</code></pre></div>
+<p>For example, you can install the <a href="https://github.com/tapio/live-server"><em>live-server</em></a> utility (a simple program that runs a local web server and will automatically “refresh” the browser when your code changes) using</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">npm</span> install -g live-server</code></pre></div>
+<ul>
+<li>Once the program is done installing, you can run it from the command-line by using the command <code>live-server</code>. This program will serve all of the content from the current directory. See <a href="#web-servers">Chapter 2</a> for details.</li>
+</ul>
+<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <em>npm</em> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command-line utility like <em>live-server</em> from any folder (e.g., for any project), command-line utilities are always installed globally with the <code>-g</code> option.</p>
+<p>It is also possible to omit that option and install a package <em>locally</em>. For example:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">npm</span> install lodash</code></pre></div>
+<p>Will download the <a href="https://lodash.com/"><code>lodash</code></a> code library (a set of useful JavaScript functions). This package will be placed into a new folder <em>in the current project directory</em> called <code>node_modules/</code>, and can be imported and used in the current directory’s code. (It’s called a local install because the package is only available to the “local” project). You will of course need to install local packages once per project.</p>
+<p class="alert alert-warning">
+Because node packages can be very large, and projects can have lots of them, you want to be sure to <strong>not</strong> commit the <code>node_modules/</code> folder to version control. Make sure that the folder is listed in your <code>.gitignore</code> file!
+</p>
+</div>
+<div id="package.json" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> <code>package.json</code></h3>
+<p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <em>npm</em> is able to keep track of these dependencies by recording them in a specialized file called <code>package.json</code> that can be placed inside the project directory. A <code>package.json</code> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;example&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;version&quot;</span><span class="fu">:</span> <span class="st">&quot;1.0.0&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;description&quot;</span><span class="fu">:</span> <span class="st">&quot;A project with an example package.json&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;main&quot;</span><span class="fu">:</span> <span class="st">&quot;index.js&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;scripts&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;test&quot;</span><span class="fu">:</span> <span class="st">&quot;jest&quot;</span>
+  <span class="fu">},</span>
+  <span class="dt">&quot;author&quot;</span><span class="fu">:</span> <span class="st">&quot;Joel Ross&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;license&quot;</span><span class="fu">:</span> <span class="st">&quot;ISC&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;dependencies&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;lodash&quot;</span><span class="fu">:</span> <span class="st">&quot;^4.17.4&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;moment&quot;</span><span class="fu">:</span> <span class="st">&quot;^2.18.1&quot;</span>
+    <span class="fu">},</span>
+  <span class="dt">&quot;devDependencies&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;html-validator&quot;</span><span class="fu">:</span> <span class="st">&quot;^2.2.2&quot;</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
+<p>(You can create one of these files by using the command <code>npm init</code> in the current project directory, and then following the instructions to fill in the fields).</p>
+<p>Notice that there are two packages listed under <code>&quot;dependencies&quot;</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>). You can use <code>npm</code> to automatically install all of packages listed under <code>&quot;dependencies&quot;</code> (as well as <code>&quot;devDependencies&quot;</code>) using the command:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="ex">npm</span> install</code></pre></div>
+<p>Thus using <code>npm install</code> without any arguments means “install all of the requirements that have been listed for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub.</p>
+<p>When installing specific packages, you can have <em>npm</em> add them to the dependencies list by using the <code>--save</code> option:</p>
+<pre><code>npm install --save lodash</code></pre>
+<p>will install <code>lodash</code> locally, and list it in the <code>package.json</code> file as a dependency.</p>
+<p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
+<p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
+<p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
+<ol style="list-style-type: decimal">
+<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command-line programs</li>
+<li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out</li>
+<li><code>npm install --save PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
+</ol>
+<p class="alert alert-info">
+While <em>npm</em> is the most popular package maanger (and the one utilized in this course), there are others as well. For example, <a href="https://yarnpkg.com/en/"><strong>Yarn</strong></a> is a package manager created by Facebook that is <a href="https://yarnpkg.com/en/docs/migrating-from-npm">compatible</a> with <em>npm</em> and is quickly growing in popularity.
+</p>
+</div>
+</div>
+<div id="resources" class="section level2 unnumbered">
+<h2>Resources</h2>
+<p>Links to the recommended software are collected here for easy access:</p>
+<div class="list-condensed">
+<ul>
+<li><a href="https://www.google.com/chrome/browser/desktop/index.html">Chrome</a></li>
+<li><a href="https://git-scm.com/downloads">git (and Git Bash)</a> - <a href="https://github.com/join">GitHub</a> (sign up)
+<ul>
+<li>optional: <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Windows</a></li>
+</ul></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a href="https://nodejs.org/">Node.js (and npm)</a>
+<ul>
+<li><a href="https://docs.npmjs.com/getting-started/what-is-npm">npm documentation</a></li>
+</ul></li>
+</ul>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info343b-a17/book/edit/master/setup.Rmd",
+"text": "Edit"
+},
+"download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>
