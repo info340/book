@@ -1,4 +1,4 @@
-# CSS Fundamentals II
+# Advanced CSS
 
 This guide continues the explanation of CSS began in the <a href="tutorials/css" ui-sref="tutorials.detail({tutorial: 'css'})">_CSS Fundamentals I_</a> tutorial. It provides further specifics about additional selectors, properties, and values.
 
@@ -6,34 +6,12 @@ This guide continues the explanation of CSS began in the <a href="tutorials/css"
 ## Additional Selectors
 In addition to the common **element selector** and **class selector**, there are [a number](http://www.w3schools.com/cssref/css_selectors.asp) of other ways to select elements in CSS rules.
 
-### Id Selector
-It is possible to select HTML elements by their `id` attribute. Every HTML element can have an `id` attribute, and this is most commonly used to create ["bookmark hyperlinks"](https://www.w3.org/TR/html4/struct/links.html#h-12.2.3), which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). 
-
-- Unlike the `class` attribute, the value of the `id` attribute must be unique within the page. That is, no two elements can have the same value for their `id` attributes.
-
-**Id selectors** start with a `#` sign, followed by the value of the `id`:
-
-```html
-<div id="sidebar">
-   This div contains the sidebar for the page
-</div>
-```
-```css
-/* the one element with id="sidebar" */
-#sidebar {
-    background-color: lightgray;
-}
-```
-
-The `id` attribute is more specific but less flexible than the `class` attribute, and makes it harder to "reuse" your styling. Thus you should _almost always use a class selector instead_, unless you are referring to a single, specific element.
-
-
 ### Group Selector
 The **group selector** allows you to have a single rule apply to lots of different selectors by separating them with a comma (`,`). For example, if you want to have a single style for all headings, you might use:
 
 ```css
 /* applies to h1, h2, AND h3 tags */
-h1, h2, h3 { 
+h1, h2, h3 {
     font-family: Helvetica;
     color: white;
 }
@@ -76,7 +54,7 @@ h1#title {
 .big.green {
   color: green;
   font-size: larger;
-} 
+}
 
 /* And can combine with group selector */
 /* applies to <p class="yellow"> and <li class="marked"> */
@@ -104,19 +82,19 @@ So far, all selectors mentioned will apply to matching elements regardless of wh
 ```
 
 ```css
-/* 
+/*
   Selects p elements that exist within header elements
-  Other p elements will not be affected 
+  Other p elements will not be affected
  */
 header p {
     /* ... */
 }
-``` 
+```
 
 You can have as many "levels" as you want, and each level can be made up of any kind of selector. However, it is best to not have more than 2 or 3 levels. If you need to be more specific than that, then perhaps defining a new `.class` is in order.
 
 ```css
-/* selects elements with class="logo" 
+/* selects elements with class="logo"
    contained within p elements
    contained within header elements */
 header p .logo {
@@ -136,7 +114,7 @@ Note that descendant selectors will select matching descendant elements _anywher
 ```
 
 ```css
-/* Selects page content (immediately within body), 
+/* Selects page content (immediately within body),
    not section content (immediately within section) */
 body > p {
   color: purple;
@@ -167,30 +145,20 @@ a:active { /*...*/ }
 
 Remember to always set both `hover` _and_ `focus`, to support accessibility for people who cannot use a mouse. Note that `a:hover` _must_ come after `a:link` and `a:visited`, and `a:active` must come after `a:hover` for these states to work correctly.
 
-You can use the can use the below Code Pen to experiment and practice with these pseudo-classes:
-
-- <p data-height="265" data-theme-id="0" data-slug-hash="yagKEg" data-default-tab="html,css,result" data-user="joelross" data-embed-version="2" data-preview="true" class="codepen">See the Pen <a href="http://codepen.io/joelross/pen/yagKEg/?editors=1100#0">CSS Pseudo-class Practice</a> by Joel Ross (<a href="http://codepen.io/joelross">@joelross</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
-
 Note that there are [many additional pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes), including ones that consider specific element attributes (e.g., if a checkbox is `:checked`) or where an element is located within its parent (e.g., if it is the `:last-child`, which can be useful for styling lists).
-
-
-### Selector Practice Game!
-Now take a few minutes to practice using selectors by playing [CSS Diner](https://flukeout.github.io/)!
 
 
 ## Property Values
 This section of the guide provides further details about the _values_ that are assigned to properties in CSS rules. These specifics are often relevant for multiple different properties.
 
-### Colors
+### CSS Colors
 Colors of CSS properties can be specified in a few different ways:
 
 - We can use one of a list of 140 [predefined color names](http://www.w3schools.com/cssref/css_colornames.asp):
 
     ```css
-    p { 
-       color: mediumpurple; 
+    p {
+       color: mediumpurple;
     }
     ```
 
@@ -199,71 +167,71 @@ Colors of CSS properties can be specified in a few different ways:
 - We can specify a color as a ["red-green-blue"](https://en.wikipedia.org/wiki/RGB_color_model) (RGB) value. This is a way of representing _additive color_, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.
 
     ```css
-    p { 
+    p {
        color: rgb(147, 112, 219); /* medium purple */
-    }    
+    }
     ```
-    
+
     As the name suggests, the parameters of this function represent the amount of red, green, and blue respectively. Each parameter ranges from `0` (none of that color) to `255` (that color at full). Thus `rgb(255,0,0)` is pure bright red, `rgb(255,0,255)` is full red and blue but no green (creating magenta), `rgb(0,0,0)` is black and `rgb(255,255,255)` is white.
-    
+
     Note that if you want to make the color somewhat transparent, you can also specify an [alpha] value using the `rgba()` function. This takes a 4th parameter, which is a decimal value from `0` (fully transparent) to `1.0` (fully opaque):
-    
+
     ```css
     p {
        background-color: rgba(0,0,0,0.5); /* semi-transparent black */
     }
     ```
 
-- Finally, and most commonly, you can specify the RGB value as a hexadecimal (base-16) number. 
+- Finally, and most commonly, you can specify the RGB value as a hexadecimal (base-16) number.
 
     ```css
-    p { 
+    p {
        color: #9370db; /* medium purple */
-    }    
+    }
     ```
 
     In this format, the color starts with a `#`, the first two characters represent the red (ranging from `00` to `FF`, which is hex for `255`), the second two characters represent the green, and the third two the blue:
-    
+
     ![Reading hex values, from Smashing Magazine](img/hex-reading.png)
 
     This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See [this article](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/) for more details about coding colors.
-    
-    ![Primary color combinations, from Smashing Magazine](img/hex-additive-and-subtractive.png)
-    
 
-### Units & Sizes
+    ![Primary color combinations, from Smashing Magazine](img/hex-additive-and-subtractive.png)
+
+
+### Units & Sizes {#css-units}
 Many CSS properties affect the **size** of things on the screen, whether this is the height of  the text (the `font-size`) or the width of a box (the `width`). In CSS, you can use a variety of different **units** to specify sizes.
 
 CSS uses the following **absolute units**, which are the same no matter where they are used on the page (though they are dependent on the OS and display).
 
 <table class="table">
-    <thead>
-        <tr>
-            <th>Unit</th>
-            <th>Meaning</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>`px`</td>
-            <td>pixels.This is defined as <sup>1</sup>&frasl;<sub>96</sub> of an inch, in deference to high-dpi (e.g., "retina") displays.</td>
-        </tr>
-        <tr>
-            <td>`in`</td>
-            <td>inches. This may be OS and display dependent, and usually maps to physical pixels in some way.</td>
-        </tr>
-        <tr>
-            <td>`cm`, `mm`</td>
-            <td>centimeters or millimeters, respectively</td>
-        </tr>
-        <tr>
-            <td>`pt`</td>
-            <td>points, which are defined as <sup>1</sup>&frasl;<sub>72</sub> of an inch</td>
-        </tr>
-    </tbody>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>`px`</td>
+<td>pixels.This is defined as <sup>1</sup>&frasl;<sub>96</sub> of an inch, in deference to high-dpi (e.g., "retina") displays.</td>
+</tr>
+<tr>
+<td>`in`</td>
+<td>inches. This may be OS and display dependent, and usually maps to physical pixels in some way.</td>
+</tr>
+<tr>
+<td>`cm`, `mm`</td>
+<td>centimeters or millimeters, respectively</td>
+</tr>
+<tr>
+<td>`pt`</td>
+<td>points, which are defined as <sup>1</sup>&frasl;<sub>72</sub> of an inch</td>
+</tr>
+</tbody>
 </table>
 
-CSS also uses the following **relative units**, which will produce sizes based on (relative to) the size of other elements. 
+CSS also uses the following **relative units**, which will produce sizes based on (relative to) the size of other elements.
 
 <table class="table">
     <thead>
@@ -294,11 +262,6 @@ CSS also uses the following **relative units**, which will produce sizes based o
 
 Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an `<h1>` compared to the base font).
 
-You can use the can use the below Code Pen to experiment and practice with these different units:
-
-- <p data-height="265" data-theme-id="0" data-slug-hash="QKdAaq" data-default-tab="html,css,result" data-user="joelross" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/joelross/pen/QKdAaq/?editors=1100#0">CSS Unit Playground</a> by Joel Ross (<a href="http://codepen.io/joelross">@joelross</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
-
 
 ## Layout
 
@@ -316,7 +279,7 @@ Without any CSS, elements follow a default **flow** on the page based on the ord
 
 ```html
 <span>Inline element</span>
-<span>Other inline element</span>    
+<span>Other inline element</span>
 ```
 
 ![Block diagram](img/block-element.png)
@@ -336,7 +299,7 @@ div.inline {
 The `display` property also allows you to remove elements from the page flow entirely:
 
 ```
-div.hidden { 
+div.hidden {
   /* do not show element at all */
   display: none;
 }
@@ -360,7 +323,7 @@ In order to adjust the spacing between boxes, you can manipulate one of 3 proper
 
 #### Padding
 
-The **padding** is the space between the content and the border (e.g., the edge of the box). 
+The **padding** is the space between the content and the border (e.g., the edge of the box).
 
 ![Padding diagram](img/box-padding.png)
 
@@ -400,7 +363,7 @@ The **border** (edge of the box) can be made visible and styled in terms of thei
 }
 
 .something { /* control border properties separately */
-   border-top-width: 4px; 
+   border-top-width: 4px;
    border-top-color: blue;
    border-top-style: dotted;
    border-radius: 4px; /* rounded corners! */
@@ -408,7 +371,7 @@ The **border** (edge of the box) can be made visible and styled in terms of thei
 ```
 
 #### Margin
-Finally, the **margin** specifies the space _between_ this box and other nearby boxes. `margin` is declared in an equivalent manner to `padding`. 
+Finally, the **margin** specifies the space _between_ this box and other nearby boxes. `margin` is declared in an equivalent manner to `padding`.
 
 ![Margin diagram](img/box-margin.png)
 
@@ -453,7 +416,7 @@ You can also remove an element from it's normal position in the flow by making i
 }
 ```
 
-Content will continue to sit along side a floated element until it "clears" it (gets past it to the next line). You can also force content to "clear" a float by using the `clear` property. This property specifies on which side of an element (like the code example above) elements are _not allowed_ to float: 
+Content will continue to sit along side a floated element until it "clears" it (gets past it to the next line). You can also force content to "clear" a float by using the `clear` property. This property specifies on which side of an element (like the code example above) elements are _not allowed_ to float:
 
 ```css
 .clear-float {
@@ -470,3 +433,6 @@ This tutorial only covers a few common properties of CSS. For more details, be s
 - [CSS Selectors Reference](http://www.w3schools.com/cssref/css_selectors.asp): a handy table of CSS selectors.
 - [CSS Properties Reference](http://www.w3schools.com/cssref/default.asp): a table of CSS properties, organized by category.
 
+
+### Selector Practice Game!
+Now take a few minutes to practice using selectors by playing [CSS Diner](https://flukeout.github.io/)!

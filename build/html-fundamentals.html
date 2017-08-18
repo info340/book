@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and David Stearns">
 
 
-<meta name="date" content="2017-08-16">
+<meta name="date" content="2017-08-18">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -153,6 +153,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="accessible-html.html"><a href="accessible-html.html"><i class="fa fa-check"></i><b>4</b> Accessible HTML</a></li>
+<li class="chapter" data-level="5" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>5</b> CSS Fundamentals</a><ul>
+<li class="chapter" data-level="5.1" data-path="css-fundamentals.html"><a href="css-fundamentals.html#why-two-different-languages"><i class="fa fa-check"></i><b>5.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="5.2" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-rules"><i class="fa fa-check"></i><b>5.2</b> CSS Rules</a><ul>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="css-fundamentals.html"><a href="css-fundamentals.html#the-cascade"><i class="fa fa-check"></i><b>5.3</b> The Cascade</a><ul>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -257,10 +268,14 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <p>There are also a number of <a href="http://www.w3schools.com/tags/ref_standardattributes.asp">global attributes</a> that can be used on any element. For example:</p>
 <ul>
 <li><p>Every HTML element can include an <strong><code>id</code></strong> attribute, which is used to give them a unique identifier so that we can refer to them later (e.g., from CSS or JavaScript). <code>id</code> attributes are named like variable names, and must be <strong>unique</strong> on the page.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>My Web Page<span class="kw">&lt;/h1&gt;</span></code></pre></div></li>
-<li><p>For example, the <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>My Web Page<span class="kw">&lt;/h1&gt;</span></code></pre></div>
+<p>The <code>id</code> attribute is most commonly used used to create <a href="https://www.w3.org/TR/html4/struct/links.html#h-12.2.3">“bookmark hyperlinks”</a>, which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the <code>id</code> as the <strong>fragment</strong> of the URI to link to (e.g., after the <code>#</code> in the URI).</p>
+<pre><code>&lt;a href=&quot;index.html#nav&quot;&gt;Link to element on `index.html` with `id=&quot;nav&quot;`&lt;/a&gt;
+&lt;a href=&quot;#footnote&quot;&gt;Link to element on current page with `id=&quot;footnote&quot;`&lt;/a&gt;</code></pre>
+<p>Note that the title attribute does NOT contain the <code>#</code> symbol, but the URI to link to does.</p></li>
+<li><p>The <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> lang=</span><span class="st">&quot;sp&quot;</span><span class="kw">&gt;</span>No me gusta<span class="kw">&lt;/p&gt;</span></code></pre></div>
-<p>We specify the <code>lang</code> attribute for the <code>&lt;html&gt;</code> element (see below) to define the default language of the page; that way we don’t need to mark the language of every element. <strong>Always include this attribute</strong>.</p>
+<p>Specify the <code>lang</code> attribute for the <code>&lt;html&gt;</code> element (see below) to define the default language of the page; that way you don’t need to mark the language of every element. <strong>Always include this attribute</strong>.</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></code></pre></div></li>
 </ul>
 </div>

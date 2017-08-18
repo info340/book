@@ -108,13 +108,22 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
     <h1 id="title">My Web Page</h1>
     ```
 
-- For example, the `lang` attribute is used to indicate the language in which the element's content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:
+    The `id` attribute is most commonly used used to create ["bookmark hyperlinks"](https://www.w3.org/TR/html4/struct/links.html#h-12.2.3), which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the `id` as the **fragment** of the URI to link to (e.g., after the `#` in the URI).
+
+    ```
+    <a href="index.html#nav">Link to element on `index.html` with `id="nav"`</a>
+    <a href="#footnote">Link to element on current page with `id="footnote"`</a>
+    ```
+
+    Note that the title attribute does NOT contain the `#` symbol, but the URI to link to does.
+
+- The `lang` attribute is used to indicate the language in which the element's content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:
 
     ```html
     <p lang="sp">No me gusta</p>
     ```
 
-    We specify the `lang` attribute for the `<html>` element (see below) to define the default language of the page; that way we don't need to mark the language of every element. **Always include this attribute**.
+    Specify the `lang` attribute for the `<html>` element (see below) to define the default language of the page; that way you don't need to mark the language of every element. **Always include this attribute**.
 
     ```html
     <html lang="en">
