@@ -1,4 +1,5 @@
 ---
+lang: en
 title: 'Client-Side Web Development'
 author: "[Joel Ross](http://faculty.washington.edu/joelross/) and [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo)"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
@@ -8,7 +9,7 @@ url: 'https\://info343b-a17.github.io/'
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 monofont: "Source Code Pro"
-cover-image: img/cover-img.png
+cover-image: img/busy-spider-icon.png
 favicon: img/favicon.png
 ---
 

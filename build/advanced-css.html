@@ -120,15 +120,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4" data-path="accessible-html.html"><a href="accessible-html.html"><i class="fa fa-check"></i><b>4</b> Accessible HTML</a></li>
 <li class="chapter" data-level="5" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>5</b> CSS Fundamentals</a></li>
 <li class="chapter" data-level="6" data-path="advanced-css.html"><a href="advanced-css.html"><i class="fa fa-check"></i><b>6</b> Advanced CSS</a><ul>
-<li class="chapter" data-level="6.1" data-path="advanced-css.html"><a href="advanced-css.html#additional-selectors"><i class="fa fa-check"></i><b>6.1</b> Additional Selectors</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="advanced-css.html"><a href="advanced-css.html#group-selector"><i class="fa fa-check"></i><b>6.1.1</b> Group Selector</a></li>
-<li class="chapter" data-level="6.1.2" data-path="advanced-css.html"><a href="advanced-css.html#combining-selectors"><i class="fa fa-check"></i><b>6.1.2</b> Combining Selectors</a></li>
-<li class="chapter" data-level="6.1.3" data-path="advanced-css.html"><a href="advanced-css.html#descendant-selector"><i class="fa fa-check"></i><b>6.1.3</b> Descendant Selector</a></li>
-<li class="chapter" data-level="6.1.4" data-path="advanced-css.html"><a href="advanced-css.html#pseudo-classes"><i class="fa fa-check"></i><b>6.1.4</b> Pseudo-classes</a></li>
+<li class="chapter" data-level="6.1" data-path="advanced-css.html"><a href="advanced-css.html#compound-selectors"><i class="fa fa-check"></i><b>6.1</b> Compound Selectors</a><ul>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#group-selector"><i class="fa fa-check"></i>Group Selector</a></li>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#combining-selectors"><i class="fa fa-check"></i>Combining Selectors</a></li>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="advanced-css.html"><a href="advanced-css.html#property-values"><i class="fa fa-check"></i><b>6.2</b> Property Values</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="advanced-css.html"><a href="advanced-css.html#css-colors"><i class="fa fa-check"></i><b>6.2.1</b> CSS Colors</a></li>
-<li class="chapter" data-level="6.2.2" data-path="advanced-css.html"><a href="advanced-css.html#css-units"><i class="fa fa-check"></i><b>6.2.2</b> Units &amp; Sizes</a></li>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#css-units"><i class="fa fa-check"></i>Units &amp; Sizes</a></li>
+<li class="chapter" data-level="" data-path="advanced-css.html"><a href="advanced-css.html#css-colors"><i class="fa fa-check"></i>CSS Colors</a></li>
+<li class="chapter" data-level="6.2.1" data-path="advanced-css.html"><a href="advanced-css.html#fonts-and-icons"><i class="fa fa-check"></i><b>6.2.1</b> Fonts and Icons</a></li>
+<li class="chapter" data-level="6.2.2" data-path="advanced-css.html"><a href="advanced-css.html#backgrounds"><i class="fa fa-check"></i><b>6.2.2</b> Backgrounds</a></li>
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="advanced-css.html"><a href="advanced-css.html#layout"><i class="fa fa-check"></i><b>6.3</b> Layout</a><ul>
 <li class="chapter" data-level="6.3.1" data-path="advanced-css.html"><a href="advanced-css.html#block-vs.inline"><i class="fa fa-check"></i><b>6.3.1</b> Block vs. Inline</a></li>
@@ -162,11 +164,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div id="advanced-css" class="section level1">
 <h1><span class="header-section-number">Chapter 6</span> Advanced CSS</h1>
 <p>This guide continues the explanation of CSS began in the <a href="tutorials/css" ui-sref="tutorials.detail({tutorial: 'css'})"><em>CSS Fundamentals I</em></a> tutorial. It provides further specifics about additional selectors, properties, and values.</p>
-<div id="additional-selectors" class="section level2">
-<h2><span class="header-section-number">6.1</span> Additional Selectors</h2>
+<div id="compound-selectors" class="section level2">
+<h2><span class="header-section-number">6.1</span> Compound Selectors</h2>
 <p>In addition to the common <strong>element selector</strong> and <strong>class selector</strong>, there are <a href="http://www.w3schools.com/cssref/css_selectors.asp">a number</a> of other ways to select elements in CSS rules.</p>
-<div id="group-selector" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Group Selector</h3>
+<div id="group-selector" class="section level3 unnumbered">
+<h3>Group Selector</h3>
 <p>The <strong>group selector</strong> allows you to have a single rule apply to lots of different selectors by separating them with a comma (<code>,</code>). For example, if you want to have a single style for all headings, you might use:</p>
 <div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* applies to h1, h2, AND h3 tags */</span>
 h1, h2, h3 <span class="kw">{</span>
@@ -184,8 +186,8 @@ h2, <span class="fl">.menu</span>, <span class="fl">#sidebar</span> <span class=
     <span class="kw">background-color:</span> <span class="dt">gray</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre></div>
 </div>
-<div id="combining-selectors" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Combining Selectors</h3>
+<div id="combining-selectors" class="section level3 unnumbered">
+<h3>Combining Selectors</h3>
 <p>It is also possible to combine element, class, and id selectors together to be more specific about where a rule applies. You do this by simply putting the class or id selector immediately after the previous selector, without a comma or space between them:</p>
 <div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Selects only p elements that have class=&quot;red&quot;</span>
 <span class="co">   Other p elements and &quot;red&quot; classes not affected */</span>
@@ -212,8 +214,8 @@ p<span class="fl">.yellow</span>, li<span class="fl">.marked</span> <span class=
 <p>This specificity can allow you to reuse class names (e.g., for readability purposes) but have them work differently for different elements. So a “red” paragraph might look different than a “red” header.</p>
 <p>Note that putting a space between the selectors instead makes it a <strong>descendant selector</strong>, which has a totally separate meaning. Every character matters!</p>
 </div>
-<div id="descendant-selector" class="section level3">
-<h3><span class="header-section-number">6.1.3</span> Descendant Selector</h3>
+<div id="descendant-selector" class="section level3 unnumbered">
+<h3>Descendant Selector</h3>
 <p>So far, all selectors mentioned will apply to matching elements regardless of where they are in the HTML element tree. But sometimes you want to be more specific and style only a set of elements that exist within a particular parent or ancestor element, and not all the other matching elements elsewhere in the page. You can do this kind of targeted selecting using a <strong>descendant selector</strong>. This is written by putting a blank space (` `) between selectors. Elements are only selected if they have parents that match the selectors that precede them:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;header&gt;</span>
    <span class="kw">&lt;h1&gt;</span>Welcome to the page<span class="kw">&lt;/h1&gt;</span>
@@ -249,8 +251,8 @@ body &gt; p <span class="kw">{</span>
   <span class="kw">color:</span> <span class="dt">purple</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre></div>
 </div>
-<div id="pseudo-classes" class="section level3">
-<h3><span class="header-section-number">6.1.4</span> Pseudo-classes</h3>
+<div id="pseudo-classes" class="section level3 unnumbered">
+<h3>Pseudo-classes</h3>
 <p>The last kind of selector you will commonly use in web development is the application of what are called <strong>pseudo-classes</strong>. These select elements based on what <strong>state</strong> the element is in: for example, whether a link has been visited, or whether the mouse is hovering over some content. You can almost think of these as pre-defined classes built into the browser, that are added and removed as you interact with the page.</p>
 <p>Pseudo-classes are written by placing a colon (<code>:</code>) and the name of the pseudo-class immediately after an <em>element selector</em>. You’ll see this most commonly with styling hyperlinks:</p>
 <div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* unvisited links */</span>
@@ -274,42 +276,8 @@ a<span class="dv">:active</span> <span class="kw">{</span> <span class="co">/*..
 <div id="property-values" class="section level2">
 <h2><span class="header-section-number">6.2</span> Property Values</h2>
 <p>This section of the guide provides further details about the <em>values</em> that are assigned to properties in CSS rules. These specifics are often relevant for multiple different properties.</p>
-<div id="css-colors" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> CSS Colors</h3>
-<p>Colors of CSS properties can be specified in a few different ways:</p>
-<ul>
-<li><p>We can use one of a list of 140 <a href="http://www.w3schools.com/cssref/css_colornames.asp">predefined color names</a>:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> mediumpurple<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
-<p>While this does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a <a href="http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/">fascinating history</a>.</p></li>
-<li><p>We can specify a color as a <a href="https://en.wikipedia.org/wiki/RGB_color_model">“red-green-blue”</a> (RGB) value. This is a way of representing <em>additive color</em>, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> <span class="dt">rgb(147</span>, <span class="dt">112</span>, <span class="dt">219)</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
-<span class="kw">}</span></code></pre></div>
-<p>As the name suggests, the parameters of this function represent the amount of red, green, and blue respectively. Each parameter ranges from <code>0</code> (none of that color) to <code>255</code> (that color at full). Thus <code>rgb(255,0,0)</code> is pure bright red, <code>rgb(255,0,255)</code> is full red and blue but no green (creating magenta), <code>rgb(0,0,0)</code> is black and <code>rgb(255,255,255)</code> is white.</p>
-<p>Note that if you want to make the color somewhat transparent, you can also specify an [alpha] value using the <code>rgba()</code> function. This takes a 4th parameter, which is a decimal value from <code>0</code> (fully transparent) to <code>1.0</code> (fully opaque):</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">background-color:</span> <span class="dt">rgba(0</span>,<span class="dt">0</span>,<span class="dt">0</span>,<span class="dt">0.5)</span><span class="kw">;</span> <span class="co">/* semi-transparent black */</span>
-<span class="kw">}</span></code></pre></div></li>
-<li><p>Finally, and most commonly, you can specify the RGB value as a hexadecimal (base-16) number.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> <span class="dt">#9370db</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
-<span class="kw">}</span></code></pre></div>
-<p>In this format, the color starts with a <code>#</code>, the first two characters represent the red (ranging from <code>00</code> to <code>FF</code>, which is hex for <code>255</code>), the second two characters represent the green, and the third two the blue:</p>
-<div class="figure">
-<img src="img/hex-reading.png" alt="Reading hex values, from Smashing Magazine" />
-<p class="caption">Reading hex values, from Smashing Magazine</p>
-</div>
-<p>This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See <a href="https://www.smashingmagazine.com/2012/10/the-code-side-of-color/">this article</a> for more details about coding colors.</p>
-<div class="figure">
-<img src="img/hex-additive-and-subtractive.png" alt="Primary color combinations, from Smashing Magazine" />
-<p class="caption">Primary color combinations, from Smashing Magazine</p>
-</div></li>
-</ul>
-</div>
-<div id="css-units" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Units &amp; Sizes</h3>
+<div id="css-units" class="section level3 unnumbered">
+<h3>Units &amp; Sizes</h3>
 <p>Many CSS properties affect the <strong>size</strong> of things on the screen, whether this is the height of the text (the <code>font-size</code>) or the width of a box (the <code>width</code>). In CSS, you can use a variety of different <strong>units</strong> to specify sizes.</p>
 <p>CSS uses the following <strong>absolute units</strong>, which are the same no matter where they are used on the page (though they are dependent on the OS and display).</p>
 <table class="table">
@@ -386,6 +354,50 @@ points, which are defined as <sup>1</sup>⁄<sub>72</sub> of an inch
 &lt;/tbody&gt;</code></pre>
 </table>
 <p>Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an <code>&lt;h1&gt;</code> compared to the base font).</p>
+</div>
+<div id="css-colors" class="section level3 unnumbered">
+<h3>CSS Colors</h3>
+<p>Colors of CSS properties can be specified in a few different ways:</p>
+<ul>
+<li><p>We can use one of a list of 140 <a href="http://www.w3schools.com/cssref/css_colornames.asp">predefined color names</a>:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
+   <span class="kw">color:</span> mediumpurple<span class="kw">;</span>
+<span class="kw">}</span></code></pre></div>
+<p>While this does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a <a href="http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/">fascinating history</a>.</p></li>
+<li><p>We can specify a color as a <a href="https://en.wikipedia.org/wiki/RGB_color_model">“red-green-blue”</a> (RGB) value. This is a way of representing <em>additive color</em>, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
+   <span class="kw">color:</span> <span class="dt">rgb(147</span>, <span class="dt">112</span>, <span class="dt">219)</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
+<span class="kw">}</span></code></pre></div>
+<p>As the name suggests, the parameters of this function represent the amount of red, green, and blue respectively. Each parameter ranges from <code>0</code> (none of that color) to <code>255</code> (that color at full). Thus <code>rgb(255,0,0)</code> is pure bright red, <code>rgb(255,0,255)</code> is full red and blue but no green (creating magenta), <code>rgb(0,0,0)</code> is black and <code>rgb(255,255,255)</code> is white.</p>
+<p>Note that if you want to make the color somewhat transparent, you can also specify an [alpha] value using the <code>rgba()</code> function. This takes a 4th parameter, which is a decimal value from <code>0</code> (fully transparent) to <code>1.0</code> (fully opaque):</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
+   <span class="kw">background-color:</span> <span class="dt">rgba(0</span>,<span class="dt">0</span>,<span class="dt">0</span>,<span class="dt">0.5)</span><span class="kw">;</span> <span class="co">/* semi-transparent black */</span>
+<span class="kw">}</span></code></pre></div></li>
+<li><p>Finally, and most commonly, you can specify the RGB value as a hexadecimal (base-16) number.</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
+   <span class="kw">color:</span> <span class="dt">#9370db</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
+<span class="kw">}</span></code></pre></div>
+<p>In this format, the color starts with a <code>#</code>, the first two characters represent the red (ranging from <code>00</code> to <code>FF</code>, which is hex for <code>255</code>), the second two characters represent the green, and the third two the blue:</p>
+<div class="figure">
+<img src="img/hex-reading.png" alt="Reading hex values, from Smashing Magazine" />
+<p class="caption">Reading hex values, from Smashing Magazine</p>
+</div>
+<p>This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See <a href="https://www.smashingmagazine.com/2012/10/the-code-side-of-color/">this article</a> for more details about coding colors.</p>
+<div class="figure">
+<img src="img/hex-additive-and-subtractive.png" alt="Primary color combinations, from Smashing Magazine" />
+<p class="caption">Primary color combinations, from Smashing Magazine</p>
+</div></li>
+</ul>
+</div>
+<div id="fonts-and-icons" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Fonts and Icons</h3>
+<!-- serif vs sans-serif -->
+<!-- font-awesome -->
+</div>
+<div id="backgrounds" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Backgrounds</h3>
+<!-- using `url()`, etc for images -->
+<!-- Is this its own chapter maybe?? Includes flexbox? -->
 </div>
 </div>
 <div id="layout" class="section level2">

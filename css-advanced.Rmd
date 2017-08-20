@@ -1,75 +1,86 @@
-# Advanced CSS
+# More CSS
 
-This guide continues the explanation of CSS began in the <a href="tutorials/css" ui-sref="tutorials.detail({tutorial: 'css'})">_CSS Fundamentals I_</a> tutorial. It provides further specifics about additional selectors, properties, and values.
+The previous chapter explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
 
+## Compound Selectors
 
-## Additional Selectors
-In addition to the common **element selector** and **class selector**, there are [a number](http://www.w3schools.com/cssref/css_selectors.asp) of other ways to select elements in CSS rules.
+As described in the previous chapter, the core selectors used in CSS are the **element selector**, **class selector**, and **id selector**. However, CSS does offer ways to combine these selectors in order to specify rules only for particular elements or groups of elements.
 
-### Group Selector
-The **group selector** allows you to have a single rule apply to lots of different selectors by separating them with a comma (`,`). For example, if you want to have a single style for all headings, you might use:
+### Group Selector {-}
+The **group selector** allows you to have a single rule apply to elements matched by lots of different selectors. To do this, separate each selector with a comma (**`,`**); the properties defined in the rule will then apply to any element that is matched by _any_ of the selectors. For example, if you want to have a single style for all headings, you might use:
 
 ```css
 /* applies to h1, h2, AND h3 tags */
 h1, h2, h3 {
     font-family: Helvetica;
-    color: white;
+    color: #4b2e83; /* UW purple */
 }
 ```
 
-And since later rules combine with (and override) earlier ones, you can also add in specific variation, such as by putting the following rule below:
-
-```css
-/* more specific formatting can go after, to be sure it applies */
-h2 {
-    font-style: italic;
-}
-```
-
-The comma-separated selectors can by any kind of selector, including class or id selectors:
+The comma-separated selectors can by **any** kind of selector, including `.class` or `#id` selectors (or any of the combound selectors described below):
 
 ```css
 /* can also include class or id selectors */
+/* this rule applies to h2 elements, "menu" classed elements, and the
+   #sidebar element */
 h2, .menu, #sidebar {
     background-color: gray;
 }
 ```
 
-### Combining Selectors
-It is also possible to combine element, class, and id selectors together to be more specific about where a rule applies. You do this by simply putting the class or id selector immediately after the previous selector, without a comma or space between them:
+Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies "general" styling to a large class of elements, whith further rules then customizing particular elements.
 
 ```css
-/* Selects only p elements that have class="red"
-   Other p elements and "red" classes not affected */
-p.red {
+/* all headings are Helvetica, bold, and purple */
+h1, h2, h3 {
+    font-family: Helvetica;
+    font-weight: bold;
+    color: #4b2e83; /* UW purple */
+}
+
+/* h2 elements are not bolded, but italic */
+h2 {
+    font-weight: normal; /* not bold, overrides previous rule */
+    font-style: italic;
+}
+```
+
+
+### Combined Selectors {-}
+It is also possible to combine element, class, and id selectors together to be more specific about where a rule applies. You do this by simply putting the class or id selector _immediately after_ the previous selector, without a comma or space or anything between them:
+
+```css
+/* Selects only p elements that have class="alert"
+   Other p elements and "alert" classed elements not affected */
+p.alert {
   color: red;
 }
 
 /* Selects only h1 elements that have id="title" */
+/* Note that this is redundant, since only one element can have the id! */
 h1#title {
   color: purple;
 }
 
-/* Selects elements that have class big AND green */
-.big.green {
+/* Selects elements that have class "alert" AND class "success" */
+.alert.success {
   color: green;
   font-size: larger;
 }
 
 /* And can combine with group selector */
-/* applies to <p class="yellow"> and <li class="marked"> */
-p.yellow, li.marked {
+/* applies to <p class="highlighted"> and <li class="selected"> */
+p.highlighted, li.marked {
   background-color: yellow;
 }
 ```
 
-This specificity can allow you to reuse class names (e.g., for readability purposes) but have them work differently for different elements. So a "red" paragraph might look different than a "red" header.
+This specificity can allow you to reuse class names (e.g., for shared semantics and readability purposes) but have them work differently for different elements. So a "highlighted" paragraph `p.highlighted` might look different than a "highlighted" heading `h1.highlighted`.
 
-Note that putting a space between the selectors instead makes it a **descendant selector**, which has a totally separate meaning. Every character matters!
+Note that putting a space between the selectors parts instead specifies a **descendant selector**, which has a totally separate meaning. Every character matters!
 
-
-### Descendant Selector
-So far, all selectors mentioned will apply to matching elements regardless of where they are in the HTML element tree. But sometimes you want to be more specific and style only a set of elements that exist within a particular parent or ancestor element, and not all the other matching elements elsewhere in the page. You can do this kind of targeted selecting using a **descendant selector**. This is written by putting a blank space (` `) between selectors. Elements are only selected if they have parents that match the selectors that precede them:
+### Descendant Selector {-}
+So far, all selectors mentioned will apply to matching elements regardless of where they are in the HTML element tree. But sometimes you want to be more specific and style only a set of elements that exist within a particular parent or ancestor element, and not all the other matching elements elsewhere in the page. You can do this form of targeted selecting using a **descendant selector**. This is written by putting a blank space (**<code>&nbsp;</code>**) between selectors. Elements are only selected if they have _parents that match the selectors that precede them_:
 
 ```html
 <header>
@@ -91,18 +102,18 @@ header p {
 }
 ```
 
-You can have as many "levels" as you want, and each level can be made up of any kind of selector. However, it is best to not have more than 2 or 3 levels. If you need to be more specific than that, then perhaps defining a new `.class` is in order.
+You can have as many "levels" of a descendant selector as you want, and each level can be made up of any kind of selector. However, it is best to not have more than 2 or 3 levels. If you need to be more specific than that, then perhaps defining a new `.class` is in order.
 
 ```css
 /* selects elements with class="logo"
-   contained within p elements
-   contained within header elements */
+   contained within <p> elements
+   contained within <header> elements */
 header p .logo {
     /* ... */
 }
 ```
 
-Note that descendant selectors will select matching descendant elements _anywhere_ lower in the tree branch, not just direct children, so the `.logo` elements here could be nested several layers below the `<p>` element (perhaps inside a `<span>`). This is usually a good idea because you may introduce new nesting layers to your page as you go along. But if you really want to select only direct children, you can use a variant known as a **child selector**, which uses a `>` symbol to indicate direct descendants only:
+Note that descendant selectors will select matching descendant elements _anywhere_ lower in the tree branch, not just direct children, so the `.logo` elements here could be nested several layers below the `<p>` element (perhaps inside a `<span>`). This is usually a good idea because you may introduce new nesting layers to your page as you go along, and don't want to modify the CSS. But if you really want to select only _direct_ children, you can use a variant known as a **child selector**, which uses a **`>`** symbol to indicate direct descendants only:
 
 ```html
 <body>
@@ -117,322 +128,145 @@ Note that descendant selectors will select matching descendant elements _anywher
 /* Selects page content (immediately within body),
    not section content (immediately within section) */
 body > p {
-  color: purple;
+  color: blue;
 }
 ```
 
-### Pseudo-classes
+### Pseudo-classes {-}
 The last kind of selector you will commonly use in web development is the application of what are called **pseudo-classes**. These select elements based on what **state** the element is in: for example, whether a link has been visited, or whether the mouse is hovering over some content. You can almost think of these as pre-defined classes built into the browser, that are added and removed as you interact with the page.
 
-Pseudo-classes are written by placing a colon (`:`) and the name of the pseudo-class immediately after an _element selector_. You'll see this most commonly with styling hyperlinks:
+Pseudo-classes are written by placing a colon (**`:`**) and the name of the pseudo-class immediately after a basic selector like an element selector. You'll see this most commonly with styling hyperlinks:
 
 ```css
-/* unvisited links */
+/* style for unvisited links */
 a:link { /*...*/ }
 
-/* visited links */
+/* style for visited links */
 a:visited { /*...*/ }
 
-/* links the user is hovering over with the mouse */
+/* style for links the user is hovering over with the mouse */
 a:hover { /*...*/ }
 
-/* links that have keyboard focus */
+/* style for links that have keyboard focus */
 a:focus { /*...*/ }
 
-/* links that are being 'activated' (clicked) */
+/* style for links as they are being 'activated' (clicked) */
 a:active { /*...*/ }
 ```
 
-Remember to always set both `hover` _and_ `focus`, to support accessibility for people who cannot use a mouse. Note that `a:hover` _must_ come after `a:link` and `a:visited`, and `a:active` must come after `a:hover` for these states to work correctly.
+<p class="alert alert-warning">Remember to always set both `hover` _and_ `focus`, to support accessibility for people who cannot use a mouse. Additionally, `a:hover` _must_ come after `a:link` and `a:visited`, and `a:active` must come after `a:hover` for these states to work correctly.</p>
 
-Note that there are [many additional pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes), including ones that consider specific element attributes (e.g., if a checkbox is `:checked`) or where an element is located within its parent (e.g., if it is the `:last-child`, which can be useful for styling lists).
+Note that there are [many additional pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes), including ones that consider specific element attributes (e.g., if a checkbox is `:checked`) or where an element is located within its parent (e.g., if it is the `:first` or `:last-child`, which can be useful for styling lists).
 
+### Attribute Selectors {-}
+Finally, it is also possible to select element that have a particular attribute by using an [**attribute selector**](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). Attribute selectors are written by placing brackets **`[]`** after a basic selector; inside the brackets you list the attribute and value you want to select for using `attribute=value` syntax:
+
+```css
+/* select all p elements whose "lang=sp" */
+p[lang="sp"] {
+    color: red;
+    background-color: orange;
+}
+```
+
+It is also possible to select attributes that only "partially" match a particular value; see the documentation for details.
+
+Note that it is most common to use this selector when styling form inputs; for example, to make checked boxes appear different than unchecked boxes:
+
+```css
+/* select <input type="checked"> that have the "checked" state */
+input[type=checkbox]:checked {
+    color: green;
+}
+```
 
 ## Property Values
-This section of the guide provides further details about the _values_ that are assigned to properties in CSS rules. These specifics are often relevant for multiple different properties.
+This section of the guide provides further details about the possible _values_ that may be assigned to properties in CSS rules. These specifics are often relevant for multiple different properties.
 
-### CSS Colors
-Colors of CSS properties can be specified in a few different ways:
-
-- We can use one of a list of 140 [predefined color names](http://www.w3schools.com/cssref/css_colornames.asp):
-
-    ```css
-    p {
-       color: mediumpurple;
-    }
-    ```
-
-    While this does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a [fascinating history](http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/).
-
-- We can specify a color as a ["red-green-blue"](https://en.wikipedia.org/wiki/RGB_color_model) (RGB) value. This is a way of representing _additive color_, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.
-
-    ```css
-    p {
-       color: rgb(147, 112, 219); /* medium purple */
-    }
-    ```
-
-    As the name suggests, the parameters of this function represent the amount of red, green, and blue respectively. Each parameter ranges from `0` (none of that color) to `255` (that color at full). Thus `rgb(255,0,0)` is pure bright red, `rgb(255,0,255)` is full red and blue but no green (creating magenta), `rgb(0,0,0)` is black and `rgb(255,255,255)` is white.
-
-    Note that if you want to make the color somewhat transparent, you can also specify an [alpha] value using the `rgba()` function. This takes a 4th parameter, which is a decimal value from `0` (fully transparent) to `1.0` (fully opaque):
-
-    ```css
-    p {
-       background-color: rgba(0,0,0,0.5); /* semi-transparent black */
-    }
-    ```
-
-- Finally, and most commonly, you can specify the RGB value as a hexadecimal (base-16) number.
-
-    ```css
-    p {
-       color: #9370db; /* medium purple */
-    }
-    ```
-
-    In this format, the color starts with a `#`, the first two characters represent the red (ranging from `00` to `FF`, which is hex for `255`), the second two characters represent the green, and the third two the blue:
-
-    ![Reading hex values, from Smashing Magazine](img/hex-reading.png)
-
-    This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See [this article](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/) for more details about coding colors.
-
-    ![Primary color combinations, from Smashing Magazine](img/hex-additive-and-subtractive.png)
-
-
-### Units & Sizes {#css-units}
-Many CSS properties affect the **size** of things on the screen, whether this is the height of  the text (the `font-size`) or the width of a box (the `width`). In CSS, you can use a variety of different **units** to specify sizes.
+### Units & Sizes {#css-units .unnumbered}
+Many CSS properties affect the **size** of things on the screen, whether this is the height of the text (the `font-size`) or the width of a box (the `width`; see the next chapter). In CSS, you can use a variety of different **units** to specify sizes.
 
 CSS uses the following **absolute units**, which are the same no matter where they are used on the page (though they are dependent on the OS and display).
 
-<table class="table">
-<thead>
-<tr>
-<th>Unit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>`px`</td>
-<td>pixels.This is defined as <sup>1</sup>&frasl;<sub>96</sub> of an inch, in deference to high-dpi (e.g., "retina") displays.</td>
-</tr>
-<tr>
-<td>`in`</td>
-<td>inches. This may be OS and display dependent, and usually maps to physical pixels in some way.</td>
-</tr>
-<tr>
-<td>`cm`, `mm`</td>
-<td>centimeters or millimeters, respectively</td>
-</tr>
-<tr>
-<td>`pt`</td>
-<td>points, which are defined as <sup>1</sup>&frasl;<sub>72</sub> of an inch</td>
-</tr>
-</tbody>
-</table>
+| Unit | Meaning |
+| :---------- | :---------------------------------------------------------- |
+| `px` | **pixels** ($\frac{1}{96}$ of an inch, even on high-dpi "retina" displays) |
+| `in` | **inches** (OS and display dependent, but maps to physical pixels in some way) |
+| `cm`, `mm` | centimeters or millimeters, respectively |
+| `pt` | points (defined as $\frac{1}{72}$ of an inch) |
 
-CSS also uses the following **relative units**, which will produce sizes based on (relative to) the size of other elements.
+Although technically based on `in` as a standard, it is considered best practice to always use `px` for values with absolute units.
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Unit</th>
-            <th>Meaning</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>`em`</td>
-            <td>Relative to the height of the current element's font. Originally a [typographic measurement](http://en.wikipedia.org/wiki/Em_(typography)), this is no longer changes based on `font-family`, but _will_ change with `font-size`. Defaults to `16px`.</td>
-        </tr>
-        <tr>
-            <td>`%`</td>
-            <td>A percentage of the _parent_ element dimensions or _parent_ element's font. For font sizes, use `em` instead (e.g., `1.5em` is 150% the parent font size).</td>
-        </tr>
-        <tr>
-            <td>`rem`</td>
-            <td>Relative to the height of the _root element_'s font (i.e., the `font-size` of the root `html` or `body` element). This will often be more consistent than `em`</td>
-        </tr>
-        <tr>
-            <td>`vw`,`vh`</td>
-            <td>Relative to the size of the _viewport_ (e.g., the browser window) size. Represents 1% of the viewport width and height, respectively. Note that is not supported fully [by all browsers](http://caniuse.com/#search=vw).</td>
-        </tr>
-    </tbody>
-</table>
+CSS also uses the following **relative units**, which will produce sizes based on (relative to) the size of other elements:
 
-Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an `<h1>` compared to the base font).
+| Unit | Meaning |
+| :---------- | :---------------------------------------------------------- |
+| `em` | Relative to the **current** element's font-size. Although originally a <a href="http://en.wikipedia.org/wiki/Em_(typography)">typographic measurement</a>, this unit will **not** change based on `font-family`. |
+| `%` | Relative to the **parent** element's font-size _or_ dimension. For font-size, use `em` instead (e.g., `1.5em` is `150%` the parent font-size). |
+| `rem` | Relative to the **root** element's font-size (i.e., the `font-size` of the root `html` or `body` element). This will often be more consistent than `em`. |
+| `vw`, `vh` | Relative to the **viewport** (e.g., the browser window). Represents 1% of the viewport width and height, respectively. This unit is not supported [by older browsers](http://caniuse.com/#search=vw). |
 
+Note that most browsers have a default font size of `16px`, so `1em` and `1rem` will both be initially equivalent to `16px`.
 
-## Layout
+In general, you should specify font sizes using _relative units_ (e.g., `em`)&mdash;this will support accessibility, as vision-impaired users will be able to increase the default font-size of the browser and all your text will adjust appropriately. Absolute units are best for things that do not scale across devices (e.g., image sizes, or the maximum width of content). However, using relative sizes will allow those components to scale with the rest of the page.
 
-Without any CSS, elements follow a default **flow** on the page based on the order they appear in the HTML. Layout is based on whether the element is a _block element_ or an _inline element_.
+- Font-sizes should always be relative; layout dimensions may be absolute (but relative units are best).
 
-### Block vs. Inline
-**Inline** elements (e.g., `<em>`, `<a>`, `<span>`) are put next to each other on a single line (left to right, unless you specify a [right-to-left language](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)). **Block** elements (`<p>`, `<ul>`, `<div>`) are placed on subsequent "lines", from top to bottom.
+### Colors {-}
+Colors of CSS properties can be specified in a few different ways.
 
-```html
-<div>Block element</div>
-<div>Block element</div>
-```
-
-![Inline diagram](img/inline-element.png)
-
-```html
-<span>Inline element</span>
-<span>Other inline element</span>
-```
-
-![Block diagram](img/block-element.png)
-
-_However_, you can force an element to be either `block` or `inline` by setting the `display` css property:
+You can use one of a list of 140 [predefined color names](http://www.w3schools.com/cssref/css_colornames.asp):
 
 ```css
-div.inline {
-  display: inline;
-}
-```
-```html
-<div class="inline">Inline element</div>
-<div class="inline">Other inline element</div>
-```
-
-The `display` property also allows you to remove elements from the page flow entirely:
-
-```
-div.hidden {
-  /* do not show element at all */
-  display: none;
+p {
+   color: mediumpurple;
 }
 ```
 
-There are several other more specific settings, the most useful of which is `inline-block`. This lets you treat an element as `inline` (no line break after), but also gives you the ability to specify its `width`, `height`, and other properties only adjustable on `block` elements. This is particularly useful for making things like lists (`<ul>`) appear "inline".
+While this does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a [fascinating history](http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/).
 
-![`inline-block` example](img/inline-block-example.png)
-
-
-### Box Model
-The [**CSS Box Model**](https://www.w3.org/TR/CSS2/box.html) is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually laid out on the page.
-
-All HTML element (_including text!_) include an imaginary **box** around their content. Elements are laid out with their boxes next to each other (side by side for `inline`, stacked on top for `block`). These boxes are normally just large enough to contact the content inside the element, but we can use CSS to alter the size of and spacing between these boxes in order to influence the layout.
-
-First off, you can set the `width` and `height` of elements explicitly, though be careful when you do this. If your `width` and `height` are too small, the element's content will be clipped by default (this behavior is controlled by the `overflow` property). It's generally best to set only the width _or_ the height, but not both. You can also specify a `min-width` or `min-height` to ensure that the width or height is at least a particular size. Conversely, you can use `max-width` and `max-height` to constrain the size of the element.
-
-In order to adjust the spacing between boxes, you can manipulate one of 3 properties:
-
-![Box model](img/box-model.png)
-
-#### Padding
-
-The **padding** is the space between the content and the border (e.g., the edge of the box).
-
-![Padding diagram](img/box-padding.png)
-
-It is possible to specify the padding of each side of the box individually, or a uniform padding for the entire element:
+Alternatively, you can specify a color as a ["red-green-blue"](https://en.wikipedia.org/wiki/RGB_color_model) (RGB) value. This is a way of representing _additive color_, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.
 
 ```css
-/* specify each side individually */
-div {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 2em;
-  padding-right: 0; /* no units needed on 0 */
-}
-
-/* specify one value for all sides */
-div {
-  padding: 1.5em;
-}
-
-/* specify one value for top/bottom (first)
-   and one for left/right (second) */
-div {
-  padding: 1em 2em;
+p {
+   color: rgb(147, 112, 219); /* medium purple */
 }
 ```
 
-#### Border
-The **border** (edge of the box) can be made visible and styled in terms of their width, color, and "style".
+This value option is actually a _function_ that takes a couple of parameters representing the amount of red, green, and blue respectively. Each parameter ranges from `0` (none of that color) to `255` (that color at full). Thus `rgb(255,0,0)` is pure bright red, `rgb(255,0,255)` is full red and blue but no green (creating magenta), `rgb(0,0,0)` is black and `rgb(255,255,255)` is white.
+
+Note that if you want to make the color somewhat transparent, you can also specify an [alpha](https://en.wikipedia.org/wiki/Alpha_compositing) value using the `rgba()` function. This function takes a 4th parameter, which is a decimal value from `0` (fully transparent) to `1.0` (fully opaque):
 
 ```css
-.boxed {
-   border: 2px dashed black; /* border on all sides */
-}
-
-.underlined {
-   border-bottom: 1px solid red; /* border one side */
-}
-
-.something { /* control border properties separately */
-   border-top-width: 4px;
-   border-top-color: blue;
-   border-top-style: dotted;
-   border-radius: 4px; /* rounded corners! */
+p {
+   background-color: rgba(0,0,0,0.5); /* semi-transparent black */
 }
 ```
 
-#### Margin
-Finally, the **margin** specifies the space _between_ this box and other nearby boxes. `margin` is declared in an equivalent manner to `padding`.
+CSS also [supports](https://developer.mozilla.org/en-US/docs/Web/CSS/color) `hsl()` and `hsla()` functions for specifying color in terms of a [hue, saturation, lightness](https://en.wikipedia.org/wiki/HSL_and_HSV) color model.
 
-![Margin diagram](img/box-margin.png)
-
-Note that browsers typically overlap the margins of similar elements. For example, if you have two paragraphs on top of one another, and you set `margin-bottom` on the first and `margin-top` on the second, most browsers will overlap those margins and just use the larger of the two. But if the elements are different, it will typically add the margins together, creating a rather large gap.
-
-### Positioning
-Specifying the `display` style and **box** properties will adjust the layout of the elements, but they are still following the browser's default _flow_. The layout rules will still apply, but are influenced by the amount of content and the size of the browser (e.g., for when inline elements "wrap").
-
-It is possible to position elements outside of the normal flow by specifying the `position` property.
-
-For example, setting `position:fixed` will specify a "fixed" position of the element _relative to the browser window_. It will no move no matter where it appears in the HTML or where the browser scrolls. See [this Code Pen](http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0) for an example.
-
-- In order to specify the location for a `fixed` element, use the `top`, `left`, `bottom`, and/or `right` properties to specify distance from the appropriate edge of the browser window:
-
-    ```css
-    /* make the <nav> element fixed at the top of the browser window */
-    nav {
-        position: fixed;
-        top: 0;  /* 0px from the top */
-        left: 0; /* 0px from the left */
-        width: 100%; /* useful for spanning the page */
-    }
-    ```
-
-You can also specify an element's position to be `relative`, meaning _relative to its normal position_. Note that this leaves the element within normal flow (e.g., for how its padding effects other elements around it). See [this Code Pen](http://codepen.io/joelross/pen/XjpYwK?editors=1100#0) to explore this option.
-
-Finally, you can specify an element's position to be `absolute`, meaning _relative to it (positioned) parent element_. If the parent has not been explicitly positioned, the element is positioned relative to the root element. Try it out in [this Code Pen](http://codepen.io/joelross/pen/NRdzZo?editors=1100#0). This mostly remove an element from normal flow, though its parent may still be part of the flow and thus may influence the absolutely positioned element's location.
-
-
-#### Float
-
-<img src="img/bunny.jpg" alt="cute bunny" style="float:right;margin:1em;">
-
-You can also remove an element from it's normal position in the flow by making it **float**. This is commonly done with pictures, but can be done with any element. A floated element is shoved over to one side of the screen, with the rest of the content to wrapping around it:
-
-<p style="clear:both;">
+Finally, and most commonly, you can specify the RGB value as a [hexadecimal](https://en.wikipedia.org/wiki/Hexadecimal) (base-16) number.
 
 ```css
-.float-right {
-  float: right;
-  margin: 1em; /* for spacing */
+p {
+   color: #9370db; /* medium purple */
 }
 ```
 
-Content will continue to sit along side a floated element until it "clears" it (gets past it to the next line). You can also force content to "clear" a float by using the `clear` property. This property specifies on which side of an element (like the code example above) elements are _not allowed_ to float:
+In this format, the color starts with a `#`, the first two characters represent the red (ranging from `00` to `FF`, which is hex for `255`), the second two characters represent the green, and the third two the blue:
 
-```css
-.clear-float {
-    clear: both; /* do not allow floating elements on either side */
-}
-```
+![How to reading a hex value, from [Smashing Magazine](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/).](img/css/hex-reading.png)
 
-The `float` property is good for when you simply want some content to sit off to the side. But you should **not** try to use this property for more complex layouts (e.g., multi-column structures); there are better solutions for that which we'll talk about later.
+This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See [this article](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/) for more details about encoding colors.
 
-## Conclusion
-This tutorial only covers a few common properties of CSS. For more details, be sure and consult the following references, as well as look online for additional examples of CSS being used to achieve specific effects!
+### Fonts and Icons
+<!-- serif vs sans-serif -->
+<!-- font-awesome -->
 
-- [CSS Reference (MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference): a complete reference for all CSS concepts.
-- [CSS Selectors Reference](http://www.w3schools.com/cssref/css_selectors.asp): a handy table of CSS selectors.
-- [CSS Properties Reference](http://www.w3schools.com/cssref/default.asp): a table of CSS properties, organized by category.
+### Backgrounds
+<!-- using `url()`, etc for images. path issues. reading documentation for options. -->
 
 
-### Selector Practice Game!
-Now take a few minutes to practice using selectors by playing [CSS Diner](https://flukeout.github.io/)!
+## Resources {-}
+- [CSS Diner](https://flukeout.github.io/) a fun game for practicing with different CSS selectors
+- [CSS Units and Values (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units)

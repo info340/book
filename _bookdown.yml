@@ -15,7 +15,8 @@ rmd_files:
   - html.Rmd
   - accessibility.Rmd
   - css-fundamentals.Rmd
-  #- css-advanced.Rmd
+  - css-advanced.Rmd
+  - css-layout.Rmd
   #- responsive-css.Rmd
   #- css-frameworks.Rmd
 
