@@ -197,36 +197,71 @@ The `position` and `float` properties allow you to have individual elements brea
 
 <p class="alert alert-info">Despite it's capabilities, Flexbox still is designed primarily for one-directional flows (e.g., having one row of columns). To handle true grid-like layouts, browsers are adopting _another_ emerging standard called [**Grid**](https://css-tricks.com/snippets/css/complete-guide-grid/). The Grid framework shares some conceptual similarities to Flexbox (configuring child elements inside of a parent container), but utilizes a different set of properties. Learning one should make it easy to pick up the other. Note that the grid framework is [less well supported](http://caniuse.com/#search=CSS%20grid) than even Flexbox (it is not supported by IE, Edge, or common older Android devices), so should be used with caution.</p>
 
-<!-- parent/container and item/child -->
+To use a Flexbox layout, you need to style _two_ differnet classes of is that you need to style _two_ different classes of elements: a **container** (or **parent**) element that acts as a holder for the **item** (or **child**) elements&mdash;the child elements are _nested_ inside of the parent:
 
-<!-- container has `display:flex`
-item has additional properties to control its positioning.
+```html
+<div class="flex-container"> <!-- Parent -->
+  <div class="flex-item">Child 1</div>
+  <div class="flex-item">Child 2</div>
+  <div class="flex-item">Child 3</div>
+</div>
+```
 
-Container to specify layout
-`flex-direction`
-`justify-content`
-`align-items`
+![An example of a simple Flexbox layout.](img/css/flex-nesting.png)
 
-Child to define sizing
-`flex-grow` (extra space used)
-`flex-shrink` (same, but other end--0 to not shrink)
-`flex-basis` for "default size" (e.g., 25%)
--- can assign all these as once (grow, shrink, basis)
+Note that the "outer" parent element has one class (e.g., `flex-container`, but you can call it whatever you want), and the "inner" child elements share another (e.g., `flex-item`). Creating an effective Flexbox layout requires you to specify properties for _both_ of these classes. You most often use `<div>` elements for the parent and child elements (and the child of course can have further content, including more divs, nested within it).
 
-`order` (to shuffle!)
+In order to use a Flexbox layout, give the _parent_ element the **`display:flex`** property. This will cause the contents of that parent element to be layed out according to a "flex flow":
 
-Container
-`flex-wrap`
-`align-content`
+```css
+.flex-container { /* my flexbox container class */
+    display: flex;
+}
+```
 
+A flex flow will lay out items _horizontally_ (even if they are block elements!), though you can adjust this by specifying the _parent's_ [`flex-direction`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-3) property.
 
-(code pen example (basic three-column)) -->
+By default, a flex container will fill its parent element (the whole page if the container is in the `<body>`), and the child items will be sized based on their content like normal. While it is possible to then use dimensional properties such as `width` and `height` to size the children within the horizontal layout, Flexbox provides further options that make it more _flexible_.
 
+Any _immediate child_ of the flexbox container can use additional properties to define how that particular item should be layed out within the container. There are three main properties used by flex **items**:
 
+```css
+.flex-item {
+    flex-grow: 1; /* get 1 share of extra space */
+    flex-shrink: 0; /* do not shrink if overflows */
+    flex-basis: 33%; /* take up 33% of parent initially */
+}
+```
+
+- [**`flex-grow`**](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-10) specifies what "share" or ratio of any extra space in the container the item should take up. That is, if the container is `500px` wide, but the items' only takes up `400px` of space, this property determines how much of the remaining `100px` is given to the item.
+
+    The value is a unitless number (e.g., `1` or `2`, defaulting to `0`), and the amount of remaining space is divided up _proportionally_ among the items with a `flex-grow`. So an item with `flex-grow:2` will get twice as much of the remaining space as an item with `flex-grow:1`. If there are 4 items and `100px` of space remaining, giving each item `flex-grow:1` will cause each item to get `25px` (100/4) of the extra space. If one of the items has `flex-grow:2`, then it will get `40px` ($\frac{2}{1+1+1+2}=\frac{2}{5}=40\%$) of the extra space, while the other three will only get `20px`.
+
+    In practice, you can give each item a property `flex-grow:1` to have them take up an equal amount of space in the container.
+
+- [**`flex-shrink`**](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-11) works similar to `flex-grow`, but in reverse. It takes as a value a number (default to `1`), which determine what "share" or ratio it should shrink by in order to accomodate any overflow space. If the specified dimensions of the items exceeds the dimensions of the container (e.g., 4 `100px` items in a `300px` container would have `100px` of "overflow"), the `flex-shrink` factor indicates how much size needs to be "taken off" the item. A higher number indicates a greater amount of shrinkage.
+
+    In practice, you will often leave this property at default (by not specifying it), _except_ when you want to make sure that an item does NOT shrink by giving it `flex-shrink:0`.
+
+- [**`flex-basis`**](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-12) allows you to specify the "intial" dimensions of a particular item. This is similar in concept to the `width` property, except that `flex-basis` is more [flexible](https://stackoverflow.com/questions/34352140/what-are-the-differences-between-flex-basis-and-width) (e.g., if you change the `flex-direction` you don't also have to change from `width` to `height`). Note that this value can be an dimensional measurement (absolute units like `100px`, or a relative unit like `25%`).
+
+    In practice, using percentages for the `flex-basis` will let you easily size the columns of your layout.
+
+![Top: visual example of `flex-grow`. Bottom: visual example of `flex-shrink`. Notice how much extra "space" each item has after the text content.](img/css/flex-grow-shrink-vert.png)
+
+There is also a _shortcut property_ `flex` that allows you to specify all three values at once: give the `flex-grow`, `flex-shrink`, and `flex-basis` values separated by spaces (the second two being optional if you want to use the default values).
+
+The Flexbox framework also provides a number of additional properties that you can specify on the **container** to customize how items of different sizes are organized on the screen:
+
+- [`justify-content`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-6) specifies how the items should be spread out across the container. Note that items that have `flex-grow:1` will use up the extra space, making this less relevant.
+- [`align-items`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-7) is used to specify "cross-axis" alignment (e.g., the vertical alignment of items for a horizontal row).
+- [`flex-wrap`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-4) is used to have items "wrap around" to the next line when they overflow the container _instead of_ shrinking to fit. You can then use the [`align-content`](https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-8) property to specify how these "rows" should be aligned within the container.
+
+While it may seem like a lot of options, Flexbox layouts will allow you to easily create layouts (such as multi-column pages) that are otherwise very difficult with the regular box model. Moreover, these layouts will be flexible, and can easily be made **responsive** for different devices and screen sizes.
 
 
 ## Resources {-}
 - [The Box Model (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model)
 - [The CSS Box Model (CSS-Tricks)](https://css-tricks.com/the-css-box-model/)
 - [A Complete Guide to Flexbox](https://css-tricks.com/the-css-box-model/) The best explanation of Flexbox properties you'll find.
-- [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) A similar explanation, but for the Grid framework (not discussed here).

@@ -259,11 +259,11 @@ In this format, the color starts with a `#`, the first two characters represent 
 
 This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See [this article](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/) for more details about encoding colors.
 
-### Fonts and Icons
+### Fonts and Icons {-}
 <!-- serif vs sans-serif -->
 <!-- font-awesome -->
 
-### Backgrounds
+### Backgrounds {-}
 <!-- using `url()`, etc for images. path issues. reading documentation for options. -->
 
 
