@@ -1,6 +1,6 @@
 # INFO 343: Client-Side Web Development
 
-This repository contains the source code for the **INFO 343: Client-Side Web Development** course book. The published book can be viewed at **https://info343b-a17.github.io/**.
+This repository contains the source code for the **INFO 343: Client-Side Web Development** course book. The published book can be viewed at **https://info343.github.io/**.
 
 Note that **all** edited source files (including images and other assets) should be edited within the **root** folder; files in the `build` directory may be overwritten.
 

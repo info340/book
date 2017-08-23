@@ -16,4 +16,4 @@ serve:
 	Rscript -e "bookdown::serve_book(dir='.', output_dir='build', preview=TRUE, in_session=TRUE)";
 
 deploy: #all
-	git subtree push --prefix build https://github.com/info343b-a17/info343b-a17.github.io master
+	git subtree push --prefix build https://github.com/info343/info343.github.io master

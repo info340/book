@@ -1,16 +1,16 @@
 ---
 lang: en
 title: 'Client-Side Web Development'
-author: "[Joel Ross](http://faculty.washington.edu/joelross/) and [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo)"
+author: "[Joel Ross](http://faculty.washington.edu/joelross/)"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 description: 'The course reader for INFO 343: Client-Side Web Development.'
-github-repo: info343b-a17/book
-url: 'https\://info343b-a17.github.io/'
+github-repo: info343/book
+url: 'https\://info343.github.io/'
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 monofont: "Source Code Pro"
 cover-image: img/busy-spider-icon.png
-favicon: img/favicon.png
+favicon: img/busy-spider-icon.png
 ---
 
 # About this Book {-}
@@ -27,8 +27,9 @@ This book covers the the skills and techniques necessary for creating sophistica
 <!-- TODO: Include previous course offerings? -->
 
 <!-- TODO: Include author contact info? -->
+Some content has been adapted from [tutorials](https://drstearns.github.io/tutorials/) by [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).
 
-<p class="alert alert-warning">This book is currently in **alpha** status. Visit us on [GitHub](https://github.com/info343b-a17/book) to contribute improvements.</p>
+<p class="alert alert-warning">This book is currently in **alpha** status. Visit us on [GitHub](https://github.com/info343/book) to contribute improvements.</p>
 
 ![Creative Commons License](img/index/by-nc-sa.png)
 This book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

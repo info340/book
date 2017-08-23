@@ -3,7 +3,7 @@ output_dir: build
 language:
   ui:
     chapter_name: ["Chapter "]
-edit: https://github.com/info343b-a17/book/edit/master/%s
+edit: https://github.com/info343/book/edit/master/%s
 rmd_files:
   - index.Rmd
 
@@ -17,7 +17,7 @@ rmd_files:
   - css-fundamentals.Rmd
   - css-advanced.Rmd
   - css-layout.Rmd
-  #- responsive-css.Rmd
+  - responsive-css.Rmd
   #- css-frameworks.Rmd
 
   ## JavaScript
