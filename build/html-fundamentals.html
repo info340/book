@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross">
 
 
-<meta name="date" content="2017-08-22">
+<meta name="date" content="2017-08-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="client-side-development.html">
-<link rel="next" href="css-fundamentals.html">
+<link rel="next" href="css.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -63,38 +63,38 @@
 div.sourceCode { overflow-x: auto; }
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
   margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
 td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
 td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
 code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
 code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 </style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
@@ -148,21 +148,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
+<li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a><ul>
-<li class="chapter" data-level="4.1" data-path="css-fundamentals.html"><a href="css-fundamentals.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
-<li class="chapter" data-level="4.2" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-rules"><i class="fa fa-check"></i><b>4.2</b> CSS Rules</a><ul>
-<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
-<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
-<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+<li class="chapter" data-level="4" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a><ul>
+<li class="chapter" data-level="4.1" data-path="css.html"><a href="css.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>4.2</b> CSS Rules</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="css-fundamentals.html"><a href="css-fundamentals.html#the-cascade"><i class="fa fa-check"></i><b>4.3</b> The Cascade</a><ul>
-<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
+<li class="chapter" data-level="4.3" data-path="css.html"><a href="css.html#the-cascade"><i class="fa fa-check"></i><b>4.3</b> The Cascade</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="accessible-html.html"><a href="accessible-html.html"><i class="fa fa-check"></i><b>5</b> Accessible HTML</a></li>
 <li class="chapter" data-level="6" data-path="more-css.html"><a href="more-css.html"><i class="fa fa-check"></i><b>6</b> More CSS</a><ul>
@@ -195,7 +196,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a><ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i><b>8.2.1</b> Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -302,8 +313,8 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <li><p>Every HTML element can include an <strong><code>id</code></strong> attribute, which is used to give them a unique identifier so that we can refer to them later (e.g., from CSS or JavaScript). <code>id</code> attributes are named like variable names, and must be <strong>unique</strong> on the page.</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>My Web Page<span class="kw">&lt;/h1&gt;</span></code></pre></div>
 <p>The <code>id</code> attribute is most commonly used used to create <a href="https://www.w3.org/TR/html4/struct/links.html#h-12.2.3">“bookmark hyperlinks”</a>, which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the <code>id</code> as the <strong>fragment</strong> of the URI to link to (e.g., after the <code>#</code> in the URI).</p>
-<pre><code>&lt;a href=&quot;index.html#nav&quot;&gt;Link to element on `index.html` with `id=&quot;nav&quot;`&lt;/a&gt;
-&lt;a href=&quot;#footnote&quot;&gt;Link to element on current page with `id=&quot;footnote&quot;`&lt;/a&gt;</code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html#nav&quot;</span><span class="kw">&gt;</span>Link to element on `index.html` with `id=&quot;nav&quot;`<span class="kw">&lt;/a&gt;</span>
+<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#footnote&quot;</span><span class="kw">&gt;</span>Link to element on current page with `id=&quot;footnote&quot;`<span class="kw">&lt;/a&gt;</span></code></pre></div>
 <p>Note that the title attribute does NOT contain the <code>#</code> symbol, but the URI to link to does.</p></li>
 <li><p>The <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> lang=</span><span class="st">&quot;sp&quot;</span><span class="kw">&gt;</span>No me gusta<span class="kw">&lt;/p&gt;</span></code></pre></div>
@@ -380,9 +391,10 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
     ...
 <span class="kw">&lt;/html&gt;</span></code></pre></div>
 <p><code>&lt;!DOCTYPE&gt;</code> isn’t technically an HTML tag (it’s actally XML). While modern browsers will perform a “best guess” as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!</p>
-### The
-<head>
-<p>Section {-} In addition to the <code>&lt;body&gt;</code> element that defines the displayed content, you should also include a <code>&lt;head&gt;</code> element that acts as the document “header” (the <code>&lt;head&gt;</code> is nested inside the <code>&lt;html&gt;</code> at the same level as the <code>&lt;body&gt;</code>). The content of the <code>&lt;head&gt;</code> element is <em>not</em> shown on the web page—instead it provides extra (meta) information <em>about</em> the document being rendered.</p>
+</div>
+<div id="the-head-section" class="section level3 unnumbered">
+<h3>The <code>&lt;head&gt;</code> Section</h3>
+<p>In addition to the <code>&lt;body&gt;</code> element that defines the displayed content, you should also include a <code>&lt;head&gt;</code> element that acts as the document “header” (the <code>&lt;head&gt;</code> is nested inside the <code>&lt;html&gt;</code> at the same level as the <code>&lt;body&gt;</code>). The content of the <code>&lt;head&gt;</code> element is <em>not</em> shown on the web page—instead it provides extra (meta) information <em>about</em> the document being rendered.</p>
 <p>There are a couple of common elements you should include in the <code>&lt;head&gt;</code>:</p>
 <ul>
 <li><p>A <strong><code>&lt;title&gt;</code></strong>, which specifies the “title” of the webpage:</p>
@@ -444,7 +456,7 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
         </div>
       </div>
 <a href="client-side-development.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="css-fundamentals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="css.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -455,7 +467,7 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,

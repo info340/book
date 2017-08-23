@@ -378,6 +378,8 @@ body {
 }
 ```
 
+Additionally, all of the `background` properties support [multiple backgrounds](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Using_CSS_multiple_backgrounds) by using a _comma-separated_ list of values. This can enable you to easily overlay partially-transparent images on top of each other, similar to using layers in Photoshop.
+
 There are many, many other properties you can use as well to style your page. Be sure and look through all the documentation and examples, and explore the source code of existing pages to see how they achieved particular effects!
 
 

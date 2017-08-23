@@ -110,7 +110,7 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
 
     The `id` attribute is most commonly used used to create ["bookmark hyperlinks"](https://www.w3.org/TR/html4/struct/links.html#h-12.2.3), which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the `id` as the **fragment** of the URI to link to (e.g., after the `#` in the URI).
 
-    ```
+    ```html
     <a href="index.html#nav">Link to element on `index.html` with `id="nav"`</a>
     <a href="#footnote">Link to element on current page with `id="footnote"`</a>
     ```
@@ -212,7 +212,7 @@ All HTML files start with a [document type declaration](https://en.wikipedia.org
 
 `<!DOCTYPE>` isn't technically an HTML tag (it's actally XML). While modern browsers will perform a "best guess" as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!
 
-### The <head> Section {-}
+### The `<head>` Section {-}
 In addition to the `<body>` element that defines the displayed content, you should also include a `<head>` element that acts as the document "header" (the `<head>` is nested inside the `<html>` at the same level as the `<body>`). The content of the `<head>` element is _not_ shown on the web page&mdash;instead it provides extra (meta) information _about_ the document being rendered.
 
 There are a couple of common elements you should include in the `<head>`:

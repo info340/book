@@ -1,6 +1,7 @@
 # config for gitbook output
 bookdown::gitbook:
   css: css/style.css
+  highlight: tango
   config:
     toc:
       collapse: section
@@ -27,7 +28,7 @@ bookdown::pdf_book:
   latex_engine: xelatex
   citation_package: natbib
   template: null
-  pandoc_args: --chapter
+  pandoc_args: --chapters
   toc_depth: 3
   toc_unnumbered: no
   toc_appendix: yes

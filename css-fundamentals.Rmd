@@ -1,4 +1,4 @@
-# CSS Fundamentals
+# CSS Fundamentals {#css}
 
 **CSS** (**C**ascading **S**tyle **S**heets) is a declarative language used to alter the appearance or _styling_ of a web page. CSS is used to define a set of formatting **rules**, which the browser applies when it renders your page. Thus CSS can tell the browser to use a particular _font_ for the page text, a certain _color_ for the first paragraph in an article, or a picture for the page's _background_.
 

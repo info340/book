@@ -230,7 +230,7 @@ Any _immediate child_ of the flexbox container can use additional properties to 
 
 .flex-item {
     flex-grow: 1; /* get 1 share of extra space */
-    flex-shrink: 0; /* do not shrink if overflows */
+    flex-shrink: 0; /* do not shrink if items overflow container */
     flex-basis: 33%; /* take up 33% of parent initially */
 }
 ```

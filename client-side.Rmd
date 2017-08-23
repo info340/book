@@ -48,6 +48,8 @@ The parts of this URI format include:
 
 	In the example browser window above, the protocol is `file`, meaning that the computer is accessing the resource from the file system. When sending requests to web servers, you would use `https` (**s**ecure HTTP). _Don't use insecure `http`!_
 
+	Web page _hyperlinks_ often include URIs with the [`mailto`](https://css-tricks.com/snippets/html/mailto-links/) protocol (for email links) or the [`tel`](https://developers.google.com/web/fundamentals/device-access/click-to-call/click-to-call) for phone numbers.
+
 - **`domain`**: the address of the web server to request information from. You can think of this as the recipient of the request letter.
 
 	In the browser window example, there is no domain because the `file` protocol doesn't require it.

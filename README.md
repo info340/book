@@ -29,4 +29,4 @@ You can use the included [`Makefile`](https://en.wikipedia.org/wiki/Makefile) to
 
 - **`make serve`** to serve a local copy of the book for development (with auto-refreshing browser).
 
-- **`make deploy`** to publish the built book to `https://info343b-a17.github.io`.
+- **`make deploy`** to publish the built book to `https://info343.github.io`.
