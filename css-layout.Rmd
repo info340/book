@@ -146,9 +146,9 @@ Specifying the `display` style and **box** properties will adjust the layout of 
 
 However, it is possible to position elements outside of the normal flow by specifying the `position` property.
 
-For example, giving an element a `position:fixed` property will specify a "fixed" position of the element _relative to the browser window_. It will no move no matter where it appears in the HTML or where the browser scrolls. See [this Code Pen](http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0) for an example.
+For example, giving an element a **`position:fixed`** property will specify a "fixed" position of the element _relative to the browser window_. It will no move no matter where it appears in the HTML or where the browser scrolls. See [this Code Pen](http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0) for an example.
 
-- In order to specify the location for a `fixed` element, use the `top`, `left`, `bottom`, and/or `right` properties to specify distance from the appropriate edge of the browser window:
+- In order to specify the location for a **`fixed`** element, use the `top`, `left`, `bottom`, and/or `right` properties to specify distance from the appropriate edge of the browser window:
 
     ```css
     /* make the <nav> element fixed at the top of the browser window */
@@ -160,9 +160,9 @@ For example, giving an element a `position:fixed` property will specify a "fixed
     }
     ```
 
-You can also specify an element's position to be `relative`, meaning _relative to its normal position_. Note that this leaves the element within normal flow (e.g., for how its padding effects other elements around it). See [this Code Pen](http://codepen.io/joelross/pen/XjpYwK?editors=1100#0) to explore this option.
+You can also specify an element's `position` to be **`relative`**, meaning _relative to its normal position_. Note that this leaves the element within normal flow (e.g., for how its padding effects other elements around it). See [this Code Pen](http://codepen.io/joelross/pen/XjpYwK?editors=1100#0) to explore this option.
 
-Finally, you can specify an element's position to be `absolute`, meaning _relative to it (positioned) parent element_. If the parent has not been explicitly positioned (has a declared `position` property), the element is positioned relative to the root element. Try it out in [this Code Pen](http://codepen.io/joelross/pen/NRdzZo?editors=1100#0). This mostly remove an element from normal flow, though its parent may still be part of the flow and thus may influence the absolutely positioned element's location.
+Finally, you can specify an element's `position` to be **`absolute`**, meaning _relative to it (positioned) parent element_. If the parent has not been explicitly positioned (has a declared `position` property), the element is positioned relative to the root element. Try it out in [this Code Pen](http://codepen.io/joelross/pen/NRdzZo?editors=1100#0). This mostly remove an element from normal flow, though its parent may still be part of the flow and thus may influence the absolutely positioned element's location.
 
 
 ### Floating {-}
@@ -174,7 +174,7 @@ You can also remove an element from it's normal position in the _flow_ by making
 <p style="clear:both;">
 
 ```css
-.float-right {
+.floating-image {
   float: right;
   margin: 1em; /* for spacing */
 }
@@ -226,6 +226,8 @@ By default, a flex container will fill its parent element (the whole page if the
 Any _immediate child_ of the flexbox container can use additional properties to define how that particular item should be layed out within the container. There are three main properties used by flex **items**:
 
 ```css
+* { box-sizing: border-box; } /* recommended for item sizing */
+
 .flex-item {
     flex-grow: 1; /* get 1 share of extra space */
     flex-shrink: 0; /* do not shrink if overflows */
@@ -261,7 +263,9 @@ While it may seem like a lot of options, Flexbox layouts will allow you to easil
 
 
 ## Resources {-}
+<div class="list-condensed">
 - [The Box Model (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model)
 - [The CSS Box Model (CSS-Tricks)](https://css-tricks.com/the-css-box-model/)
 - [A Complete Guide to Flexbox](https://css-tricks.com/the-css-box-model/) The best explanation of Flexbox properties you'll find.
 - [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/) A similar explanation, but for the Grid framework (not discussed here).
+</div>

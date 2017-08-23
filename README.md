@@ -8,6 +8,7 @@ Note that **all** edited source files (including images and other assets) should
 You should be able to install all required R dependencies using [packrat](https://rstudio.github.io/packrat/): simply restart R (e.g., through an interactive session in the terminal) in order to automatically install the required libraries.
 
 - If that doesn't work, you should be able to use the `packrat::restore()` function. You may need to do this through RStudio.
+- For issues creating symlinks, [delete the `packrat/lib-R/` folder and reinitialize](https://stackoverflow.com/questions/37584783/r-packrat-fails-to-load-private-library)
 
 Additionally, you may need to install the following libraries separately:
 

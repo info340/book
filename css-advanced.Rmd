@@ -260,13 +260,131 @@ In this format, the color starts with a `#`, the first two characters represent 
 This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See [this article](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/) for more details about encoding colors.
 
 ### Fonts and Icons {-}
-<!-- serif vs sans-serif -->
-<!-- font-awesome -->
+As mentioned in the previous chapter, you specify the typographical "font" for text using the **`font-family`** property. This property takes a _comma-separated list_ of fonts to use; the browser will render the text using the first font in the list that is available (you can think of the rest as "back-ups").
 
-### Backgrounds {-}
-<!-- using `url()`, etc for images. path issues. reading documentation for options. -->
+```css
+p {
+    font-family: 'Helvetica Nue', 'Helvetica', 'Arial', sans-serif;
+}
+```
+
+The last font in the list should always be a [generic family name](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family). These are a list of "categories" that the browser can draw upon even if the computer doesn't have any common fonts available. In pracice, the most common generic families used are `serif` (fonts with [serifs](https://en.wikipedia.org/wiki/Serif), e.g., "Times"), `sans-serif` (fonts _without_ serifs, e.g., "Arial"), and `monospace` (fonts with [equal width characters](https://en.wikipedia.org/wiki/Monospaced_font), e.g., "Courier").
+
+![Serif vs. Sans-Serif fonts. From [99designs.ca](https://99designs.ca/blog/tips/crash-course-in-typography-know-your-terms/).](img/css/serifs.jpg)
+
+It is also possible to include specific fonts in your web page, which will be delivered to the browser by the web server in case the client doesn't have the previously available. You do this manually by using the [`@font-face`](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face) rule, and specifying the url for the font file (usually in [`.woff2`](https://en.wikipedia.org/wiki/Web_Open_Font_Format) format).
+
+However, it is usually easier to instead include a stylesheet that _already has this rule in place_. For example, the [Google Fonts](https://fonts.google.com/) collection provides more than 800 different freely available fonts that you can include directly in your web page:
+
+```html
+<head>
+    <!-- ... -->
+
+    <!-- load stylesheet with font first so it is available -->
+    <link href="https://fonts.googleapis.com/css?family=Encode+Sans" rel="stylesheet">
+
+    <!-- load stylesheet next -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+```
+
+```css
+body {
+    font-family: 'Encode Sans', sans-serif; /* can now use Encode Sans */
+}
+```
+
+<p class="alert alert-info">Notice that the `<link>` reference can be to an external file on a different domain! This is common practice when utilizing fonts and CSS frameworks.</p>
+
+**Important** Note that when using Google Fonts, you'll need to specify if you also want variations such as **bold** or _italic_ typesets. For example, the [Encode Sans](https://fonts.google.com/specimen/Encode+Sans) font is available in font weights (what you would set with `font-weight`) from `100` to `900`, but you need to specify these in the linked resource:
+
+```html
+<!-- includes normal (400) and bold (700) weights -->
+<link href="https://fonts.googleapis.com/css?family=Encode+Sans:400,700" rel="stylesheet">
+```
+
+If you don't include the different set of glyphs for the bolded font, then setting the text in that font to bold won't have any effect (because the browser doesn't now how to show text in "Bold Encode Sans")!
+
+You can also use external font styles to easily add **icons** (symbols) to your web page by using an _dingbat (icon) font_. These are similar in concept to the infamous [Wingdings](https://en.wikipedia.org/wiki/Wingdings) font: they are fonts where instead of the letter "A" looking like two bent lines with a bar between, it instead looks like a heart or a face or some other symbol. By including such a font, you get access to a large number of symbols that can easily be styled (read: colored and sized) to suit your needs.
+
+<p class="alert alert-info">[Emoji](https://en.wikipedia.org/wiki/Emoji) are defined using a different set of [Unicode](https://en.wikipedia.org/wiki/Unicode) values, and are browser and operating-system instead of being available through a font.</p>
+
+The most popular icon set is called [Font Awesome](http://fontawesome.io/). You can include the Font Awesome font by linking to it as any other stylesheet:
+
+```html
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+```
+
+- This will load the stylesheet from a [Content Delivery Network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network), which is a web service intended to quickly serve files commonly used by multiple websites. In particular, browsers will _cache_ (save) copies of these files locally, so that when you visit a different website (or the same website for a second time), the file will already be downloaded. We will load most of the CSS and JavaScript frameworks used in this class from a CDN.
+
+    <p class="alert alert-info">The `.min` before the `.css` extension in the filename is a convention to indicate that the file is _minimized_: all extraneous spaces, comments, etc. have been removed to make the file as small and quick to download as possible.</p>
+
+Font Awesome icons can then be included in your HTML by including an element with an appropriate CSS class (that sets the style of that content to be the correct font with the correct "character" content). For example, you can include a [Universal Access](http://fontawesome.io/icon/universal-access/) icon with
+
+```html
+<i class="fa fa-universal-access" aria-hidden="true"></i>
+```
+
+- Because the icon has no semantic meaning beyond an appearance, it is often included with a semantically-deficient (empty) `<i>` element. Remember to include an `aria-hidden` attribute so that a screenreader won't try to read the strange letter!
+
+Other icon-based fonts include [Gylphicons](https://glyphicons.com/) and [Octicons](https://octicons.github.com/).
+
+
+### Backgrounds and Images {-}
+You have previously seen how to use the the `background-color` property to color the background of a particular element. However, CSS supports a much wider list of [background-related](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds) properties. For example, the `background-image` property will allow you to set an image as the background of an element:
+
+```css
+header {
+    background-image: url('../img/page-banner.png');
+}
+```
+
+This property takes as a value a [`url()`](https://developer.mozilla.org/en-US/docs/Web/CSS/url) data type, which is written like a function whose parameter is a string with the URI of the resource to load. These URIs can be absolute (e.g., `http://...`), or relative **to the location of the stylesheet** (not to the web page!&mdash;you may need to use `..` if your `.css` file is inside a `css/` directory.
+
+There are additional properties used to customize background images, including `background-positionwhere it should positioned in the element (e.g., centered), how large the image should be, whether it should repeat, whether it should scroll with the page, etc.
+
+```css
+header {
+    background-image: url('../img/page-banner.png');
+    background-position: center top; /* align to center top */
+    background-size: cover; /* stretch so element is filled; preserves ratio (img may be cropped) */
+    background-repeat: no-repeat; /* don't repeat */
+    background-attachment: fixed; /* stay still when window scrolls */
+    background-color: beige; /* can still have this for anything the image doesn't cover
+                                (or for transparent images) */
+}
+```
+
+This is a lot of properties! To understand all the options for their values, read through the [documentation and examples](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds) (also [here](https://www.w3schools.com/css/css_background.asp) and [here](https://css-tricks.com/almanac/properties/b/background/)).
+
+To try and make things easer, CSS also includes a **shorthand property** called just **`background`**. Shorthand properties allow you to specify multiple properties at once, in order to keep your code more compact (if somewhat less readable). Shorthand properties values are written as a _space-separated list of values_; for example, the above is equivalent to:
+
+```css
+header {
+    background: url('../img/page-banner.png') top center / cover no-repeat fixed beige;
+}
+```
+
+- The `background-position` and `background-size` are separated by a `/` since they both can have more than one value.
+- You can include some or all of the available background properties in the shorthand. Unlike most shorthand properties, the `background` properties can go in any order (though the above is recommended).
+
+Note that a shorthand property is interpreted as writing out all of the rules it replaces; so will _replace_ any previous properties within the same rule:
+
+```css
+body {
+    background-color: gold;
+    background: mediumpurple; /* later property override previous ones */
+                              /* page will have a purple background */
+}
+```
+
+There are many, many other properties you can use as well to style your page. Be sure and look through all the documentation and examples, and explore the source code of existing pages to see how they achieved particular effects!
 
 
 ## Resources {-}
+<div class="list-condensed">
 - [CSS Diner](https://flukeout.github.io/) a fun game for practicing with different CSS selectors
 - [CSS Units and Values (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units)
+- [The Code Side of Color](https://www.smashingmagazine.com/2012/10/the-code-side-of-color/)
+- [CSS Backgrounds (MDN)](https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds)
+</div>

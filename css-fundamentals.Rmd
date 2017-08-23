@@ -265,6 +265,9 @@ CSS styling apply to _all_ of the content in an element. And since that content 
 </div>
 ```
 
+We call these [inherited properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance), because the child elements inherit the setting from their ancestor elements. This is a powerful mechanism that allows you to specify properties only once for a given branch of the DOM element tree. In general, try to set these properties on the highest-level element you can, and let the child elements inherit the setting from their ancestor.
+
+### Rule Specificity {-}
 **Important!** Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files to the same page, the files are processed in order they are linked in the HTML. The browser selects elements that match the rule and applies the rule's property. If a later rule selects the same element and applies a different value to that property, the previous value is _overridden_. So in general, all things being equal, **the last rule on the page wins**.
 
 ```css
@@ -291,7 +294,8 @@ because the `.alert` selector has higher specificity so is not overridden.</div>
 
 <p class="alert alert-warning">Precedence rules are **not** a reason to prefer `#id` selectors over `.class` selectors! Instead, you can utilize the more complex selectors described in the next chapter to be able to create reusable rules an avoid duplicating property declarations.</p>
 
-### Resources {-}
+
+## Resources {-}
 
 <div class="list-condensed">
 - [Getting started with CSS (MDN)](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started)

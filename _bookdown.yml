@@ -13,8 +13,8 @@ rmd_files:
   ## HTML & CSS
   - client-side.Rmd
   - html.Rmd
-  - accessibility.Rmd
   - css-fundamentals.Rmd
+  - accessibility.Rmd
   - css-advanced.Rmd
   - css-layout.Rmd
   - responsive-css.Rmd

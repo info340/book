@@ -1,0 +1,218 @@
+# CSS Fundamentals I
+
+**CSS** (**C**ascading **S**tyle **S**heets) is a declarative language used to alter the appearance or _styling_ of a web page. CSS is used to define a set of formatting **rules**, which the browser applies when it renders your page. Thus CSS can tell the browser to use a particular _font_ for the page text, a certain _color_ for the first paragraph in an article, or a picture for the pages _background_.
+
+Files of CSS rules (called **stylesheets**) thus act kind of like Styles or Themes in PowerPoint, but are way more powerful. You can control nearly every aspect of an element's appearance, including its overall placement on the page. To give you some idea of just how much control you have, check out the examples in the [CSS Zen Garden](http://www.mezzoblue.com/zengarden/alldesigns/). Every one of those examples uses the exact same HTML page, but they all look completely different because each one uses a different CSS stylesheet.
+
+This guide builds on the previous <a href="tutorials/html" ui-sref="tutorials.detail({tutorial: 'html'})">_HTML Fundamentals_</a> tutorial. It will explain how to include CSS in your web page and the overall syntax of CSS rules. Additional details can be found in the <a href="tutorials/css-2" ui-sref="tutorials.detail({tutorial: 'css-2'})">_CSS Fundamentals II_</a> guide.
+
+### Additional Resources
+
+- [CSS Tutorial (w3schools)](http://www.w3schools.com/css/default.asp)
+- [Getting started with CSS (MDN)](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started)
+- [CSS-Tricks](https://css-tricks.com/) a blog about tips for using CSS.
+
+## Why Two Different Languages?
+If you are new to web programming, you might be wondering why there are two different languages: HTML for your page content; and CSS for formatting rules. Why not just include the formatting right in with the content?
+
+There is an old, tried-and-true principle in programming referred to as [**"separation of concerns"**](https://en.wikipedia.org/wiki/Separation_of_concerns). Well-designed software keeps separate things separate, so that it's easy to change one without breaking the other. And one of the most common forms of separation is to keep the **data** (content) in a program separate from the **presentation** (appearance) of that data.
+
+By separating content (the HTML) from its appearance (the CSS), we get a number of benefits:
+
+- The same content can easily be presented in different ways (like in the CSS Zen Garden). In web development, you could allow user to choose different "themes" for a site, or you could change the formatting for different audiences (e.g., larger text for vision-impaired users, more compact text for mobile users, or different styles for cultures with different aesthetic sensibilities).
+
+- You can have several HTML pages to all share the same CSS stylesheet, allowing you to change the look of an entire web site by only editing one file. This is an application of the [Don't Repeat Yourself (DRY) principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
+- You can also dynamically adjust the look of your page by applying new style rules to elements in response to user interaction (clicking, hovering, scrolling, etc.)
+
+Good programming style in web development thus keeps the **semantics** (HTML) separate from the **appearance** (CSS). Your HTML should simply describe the meaning of the content, not what it looks like!
+
+For example, while browsers might normally show `<em>` text as italic, we can use CSS to instead make emphasized text underlined, highlighted, larger, flashing, or with some other appearance. The `<em>` says nothing about the visual appearance, just that the text is emphatic, and it's up to the styling to determine how that emphasis should be conveyed visually.
+
+## Including a Stylesheet
+While it's possible to write CSS rules directly into HTML, the best practice is to create a separate CSS **stylesheet** file and connect that to your HTML content. These files are named with the `.css` extension, and are typically put in a `css/` folder in web page's project directory.
+
+Create a new file called **`style.css`** (the name of the file has no significance, `main.css` or `index.css` are also common), and put it in a new folder `css/` in the same folder as your `index.html` file (such as the one you created in the "HTML Fundamentals" tutorial). Your directory structure should look something like:
+
+```
+css/
+|-- style.css
+index.html
+```
+
+Connect the stylesheet to your HTML by adding a **`<link>`** element to your page's `<head>` element:
+
+```html
+<head>
+  ... other elements here...
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+```
+
+The [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) element represents a connection to another resource. The tag includes an attribute indicating the **rel**ation between the resources (e.g., that the linked file is a stylesheet). The `href` attribute should be a _relative path_ from the `.html` file to the `.css` resource. Note also that a `<link>` is an empty element so has no closing tag.
+
+
+## CSS Rule Syntax
+A CSS stylesheet lists **rules** for formatting particular elements in an HTML page. The basic syntax looks like:
+
+```css
+/* this is pseudocode for a CSS rule */
+selector {
+   property: value;
+   property: value;
+}
+
+/* this would be another rule */
+selector {
+   property: value;
+}
+```
+
+A CSS **rule** rule starts with a **selector**, which specifies which elements the rule applies to. The selector is followed by a pair of braces, inside of which is a set of formatting **properties**. Properties are made up of the property _name_ (e.g., `color`) and a _value_ to be assigned to that property (e.g., `purple`). These _name-value pairs_ are separated with a colon, and each name-value pair must end with a semi-colon.
+
+- If you forget the semi-colon, the browser will likely ignore the property and any subsequent properties---and it does so silently without showing an error in the developer tools!
+
+Like most programming languages, CSS ignores new lines and whitespace. However, most developers will use the style shown above, with the brace on the same line as the selector and indented properties.
+
+As a concrete example, the below rule applies to any `h1` elements, and makes them appear in the 'Helvetica' font as white text on a dark gray background:
+
+```css
+h1 {
+  font-family: 'Helvetica';
+  color: white;
+  background-color: #333; /*dark gray*/
+}
+```
+
+Try applying adding this rule to the `.css` file linked in your `index.html` _and reloading the page_, and you should see your headers change their style!
+
+## Example Properties
+While there are [many different formatting properties](http://www.w3schools.com/cssref/default.asp) (some of which are detailed below), here is a short list of some of the styling properties you can change with CSS:
+
+- `font-family`: the "font" of the text (e.g., `'Comic Sans'`). Can also use a comma-separated list, with the browser picking the first item available on that computer.
+- `font-size`: the size of the text (e.g., `12px` to be 12 pixels tall)
+- `font-weight`: boldness (e.g., `bold`)
+- `color`: text color (e.g., either a [named color](http://www.w3schools.com/colors/colors_names.asp) like `red` or a hex value like `#4b2e83`)
+- `background-color`: element background color
+- `opacity`: transparency
+
+And many, many more!
+
+
+## Basic Selectors
+Selectors are used to "select" which HTML elements the rule applies to. There are [many different kinds of selectors](http://www.w3schools.com/cssref/css_selectors.asp) (and see below), but there are two that are most important:
+
+### Element Selectors
+The most basic selector, **element selectors** select elements by their element (tag) name. For example, the below rule will apply the all `<p>` elements, regardless of where they appear on the page:
+
+```css
+p {
+   color: purple;
+}
+```
+
+You can also use this to apply formatting rules to the entire page by selecting the `<body>` element. Note that we generally do _not_ apply formatting to the `<html>` element.
+
+```css
+body {
+   background-color: black;
+   color: white;
+}
+```
+
+### Class Selectors
+Sometimes we want a rule to apply to only _some_ elements of a type. We most often do this by using a **class selector**. This rule will select elements with a `class` attribute that contains the specified name. For example, if we had HTML:
+
+```html
+<!-- HTML -->
+<p class="purple">This text is purple!</p>
+<p>This text is not purple</p>
+```
+
+We could color just the correct paragraph by using the class selector:
+
+```css
+/* CSS */
+.purple {
+   color: purple;
+}
+```
+
+Class selectors are written with a single dot (`.`) preceding the _name of the class_ (not the name of the tag!) The `.` is only used in the CSS rule, not in the HTML `class` attribute.
+
+Class selectors also let us apply a single, consistent styling to multiple different types of elements:
+
+```html
+<!-- HTML -->
+<h1 class="red">I am red!</h1>
+<p class="red">So am I!<p>
+```
+
+Class selectors are often commonly used with `<div>` (block) and `<span>` (inline) elements. These HTML elements have _no_ semantic meaning on their own, but can be given appearance meaning through their `class`. This allows them to "group" content together for styling:
+
+```html
+<div class="cow">
+  <p>Moo moo moo.</p>
+  <p>Moooooooooooooooooooo.</p>
+</div>
+
+<div class="sheep">
+  <p>Baa baa <span class="dark">black</span> sheep, have you any wool?</p>
+</div>
+```
+
+
+
+## The Cascade
+CSS is called **Cascading** Style Sheets because multiple rules can apply to the same element (in a "cascade" of style!)
+
+For example, an HTML element can have multiple classes, written as a space-separated list in the attribute:
+
+```html
+<!-- HTML -->
+<p class="big purple">
+  This tag has two classes: "big" and "purple"
+  (they are separated by spaces)
+</p>
+```
+
+```css
+/* CSS */
+p { /* applies to all paragraphs */
+  font-family: 'Helvetica'
+}
+
+.big { /* applies to all with class="big"
+  font-size: larger;
+}
+
+.purple { /* applies to all with class="purple"
+  color: #4b2e83;
+}
+```
+
+CSS rules are _additive_---if multiple rules apply to the same element, the browser will combine all of the style properties when rendering the content.
+
+CSS styling apply to _all_ of the content in an element. And since that content can contain other elements that may have their own style rules, rules may also in effect be _inherited_:
+
+```html
+<div class="content"> <!-- has own styling -->
+  <div class="sub-div"> <!-- has own styling + .content styling -->
+    <ol class="my-list"> <!-- own styling (ol AND .my-list rules) + .sub-div + .content -->
+
+      <!-- li styling + .my-list + .sub-div + .content -->
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ol>
+  </div>
+</div>
+```
+
+Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files to the same page, the files are processed in order they are linked in the HTML. The browser selects elements that match the rule and applies the rule's property. If a later rule selects the same element and applies a different value to that property, the previous value is _overridden_. So in general, all things being equal, **the last rule on the page wins**.
+
+However, there are some exceptions when CSS treats rules as _not_ equal and favors earlier rules over later ones. This is called [Selector Specificity](https://css-tricks.com/specifics-on-css-specificity/). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser's [developer tools](https://developer.chrome.com/devtools) to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your rule so that it has the same or greater specificity.
+
+## Next Steps
+This guide continues in <a href="tutorials/css-2" ui-sref="tutorials.detail({tutorial: 'css-2'})">_CSS Fundamentals II_</a>.
