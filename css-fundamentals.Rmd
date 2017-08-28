@@ -121,7 +121,7 @@ Below is a short list of common styling properties you may change with CSS; more
 
 Read the documentation for an individual property to determine what options are available!
 
-<p class="alert alert-warning">Note that not all properties or values be effectively or correctly supported by all browers. Be sure and check the browser compatibility listings!</p>
+<p class="alert alert-warning">Note that not all properties or values be effectively or correctly supported by all browsers. Be sure and check the browser compatibility listings!</p>
 
 
 ### CSS Selectors {-}
@@ -292,7 +292,7 @@ div { color: blue; }
 because the `.alert` selector has higher specificity so is not overridden.</div>
 ```
 
-<p class="alert alert-warning">Precedence rules are **not** a reason to prefer `#id` selectors over `.class` selectors! Instead, you can utilize the more complex selectors described in the next chapter to be able to create reusable rules an avoid duplicating property declarations.</p>
+<p class="alert alert-warning">Precedence rules are **not** a reason to prefer `#id` selectors over `.class` selectors! Instead, you can utilize the more complex selectors described in [Chapter 6](#more-css) to be able to create reusable rules an avoid duplicating property declarations.</p>
 
 
 ## Resources {-}

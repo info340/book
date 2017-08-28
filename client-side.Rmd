@@ -34,7 +34,7 @@ Modern web browsers are able to _render_ (interpret and display) all of these ty
 
 <!-- this is borrowed from the 201 book; keep in sync with that -->
 
-Consider the URL bar in the above browser. The URL (Unform Resource Locator) is actually a specialized version of a **URI (Uniform Resource Identifier)**. URIs act a lot like the _address_ on a postal letter sent within a large organization such as a university: you indicate the business address as well as the department and the person, and will get a different response (and different data) from Alice in Accounting than from Sally in Sales.
+Consider the URL bar in the above browser. The URL (Uniform Resource Locator) is actually a specialized version of a **URI (Uniform Resource Identifier)**. URIs act a lot like the _address_ on a postal letter sent within a large organization such as a university: you indicate the business address as well as the department and the person, and will get a different response (and different data) from Alice in Accounting than from Sally in Sales.
 
 - Note that the URI is the **identifier** (think: variable name) for the resource, while the **resource** is the actual _data_ value (the file) that you want to access.
 
@@ -58,7 +58,7 @@ The parts of this URI format include:
 
 - **`path`**: which resource on that web server you wish to access. For the `file` protocol, this is the _absolute path_ to the file. But even when using `https`, for many web servers, this will be the _relative path_ to the file, starting from the "root" folder of that server (which may not be the computer's root folder). For example, if a server used `/Users/joelross/` as its root, then the _path_ to the above HTML file would be `Desktop/index.html` (e.g., `https://domain/Desktop/index.html`).
 
-	**Important!** If you don't specify a path, most web servers will serve the file names `index.html` file from that server's root folder (i.e., the path "defaults" to `index.html`). As such, this is the traditional name for the HTML file containing a websites home page.
+	**Important!** If you don't specify a path, most web servers will serve the file named `index.html` from that server's root folder (i.e., the path "defaults" to `index.html`). As such, this is the traditional name for the HTML file containing a websites home page.
 
 	<p class="alert alert-warning">As in any program, you should always use **relative** paths in web programming, and these paths are frequently (but not always!) relative to the web server's _root folder_.</p>
 

@@ -49,7 +49,7 @@ The HTML standard defines [lots of different elements](https://developer.mozilla
 - `<button>`: a button
 - `<em>`: emphasized content. Note that this doesn't mean _italic_ (which is not semantic), but _emphasized_ (which is semantic). The same as `_text_` in Markdown.
 - `<strong>`: important, strongly stated content. The same as `**text**` in Markdown
-- `<ul>`: an unordered list (simil)
+- `<ul>`: an unordered list (and `<ol>` is an ordered list)
 - `<li>`: a list item (an item in a list)
 - `<table>`: a data table
 - `<form>`: a form for the user to fill out
@@ -210,7 +210,7 @@ All HTML files start with a [document type declaration](https://en.wikipedia.org
 </html>
 ```
 
-`<!DOCTYPE>` isn't technically an HTML tag (it's actally XML). While modern browsers will perform a "best guess" as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!
+`<!DOCTYPE>` isn't technically an HTML tag (it's actually XML). While modern browsers will perform a "best guess" as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!
 
 ### The `<head>` Section {-}
 In addition to the `<body>` element that defines the displayed content, you should also include a `<head>` element that acts as the document "header" (the `<head>` is nested inside the `<html>` at the same level as the `<body>`). The content of the `<head>` element is _not_ shown on the web page&mdash;instead it provides extra (meta) information _about_ the document being rendered.
@@ -279,7 +279,7 @@ You can use this to start off every web page you ever create from now on!
 - [General HTML 5 Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 - [Alphabetical HTML Tag Reference](http://www.w3schools.com/tags/default.asp)
 - [Dive into HTML5](http://diveintohtml5.info/) - Free book on HTML
-- [W3C HTML Validation Service](http://validator.w3.org/)
+- [W3C HTML Validation Service](https://validator.w3.org/nu/)
 </div>
 
 Also remember you can [view the HTML page source](https://www.thoughtco.com/view-html-source-in-chrome-3466725) of _any_ webpage you visit. Use that to explore how others have developed pages and to learn new tricks and techniques!

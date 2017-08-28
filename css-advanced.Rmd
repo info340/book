@@ -1,6 +1,6 @@
 # More CSS
 
-The previous chapter explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
+[Chapter 4](#css) explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
 
 ## Compound Selectors
 
@@ -28,7 +28,7 @@ h2, .menu, #sidebar {
 }
 ```
 
-Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies "general" styling to a large class of elements, whith further rules then customizing particular elements.
+Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies "general" styling to a large class of elements, with further rules then customizing particular elements.
 
 ```css
 /* all headings are Helvetica, bold, and purple */
@@ -325,7 +325,7 @@ Font Awesome icons can then be included in your HTML by including an element wit
 <i class="fa fa-universal-access" aria-hidden="true"></i>
 ```
 
-- Because the icon has no semantic meaning beyond an appearance, it is often included with a semantically-deficient (empty) `<i>` element. Remember to include an `aria-hidden` attribute so that a screenreader won't try to read the strange letter!
+- Because the icon has no semantic meaning beyond an appearance, it is often included with a semantically-deficient (empty) `<i>` element. Remember to include an `aria-hidden` attribute so that a screen-reader won't try to read the strange letter!
 
 Other icon-based fonts include [Gylphicons](https://glyphicons.com/) and [Octicons](https://octicons.github.com/).
 
@@ -341,7 +341,7 @@ header {
 
 This property takes as a value a [`url()`](https://developer.mozilla.org/en-US/docs/Web/CSS/url) data type, which is written like a function whose parameter is a string with the URI of the resource to load. These URIs can be absolute (e.g., `http://...`), or relative **to the location of the stylesheet** (not to the web page!&mdash;you may need to use `..` if your `.css` file is inside a `css/` directory.
 
-There are additional properties used to customize background images, including `background-positionwhere it should positioned in the element (e.g., centered), how large the image should be, whether it should repeat, whether it should scroll with the page, etc.
+There are additional properties used to customize background images, including where it should positioned in the element (e.g., centered), how large the image should be, whether it should repeat, whether it should scroll with the page, etc.
 
 ```css
 header {

@@ -161,7 +161,7 @@ To sum up, you will use three commands with `npm` to install packages:
 3. `npm install --save PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
 
 
-<p class="alert alert-info">While _npm_ is the most popular package maanger (and the one utilized in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with _npm_ and is quickly growing in popularity.</p>
+<p class="alert alert-info">While _npm_ is the most popular package manager (and the one utilized in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with _npm_ and is quickly growing in popularity.</p>
 
 
 

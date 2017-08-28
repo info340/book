@@ -6,11 +6,11 @@ The modern solution to this problem is [**Responsive Web Design**](https://en.wi
 
 ![Example of a responsive web site on multiple devices, with content and layout changing at each size. From [responsivedesign.is](https://responsivedesign.is/examples/outdated-browsers/).](img/responsive/Outdated-Browsers_gdwxre.jpg)
 
-This chapter discusses CSS techniques used to create **responsive** web sites. These techniques underly popular CSS frameworks, so it is important to understand them even if you rely on such tools.
+This chapter discusses CSS techniques used to create **responsive** web sites. These techniques underlie popular CSS frameworks, so it is important to understand them even if you rely on such tools.
 
 
 ## Mobile-First Design
-Responsive design is often framed as a technique to "make it _also_ work on mobile". This approach feels easy since websites are usually developed and tested on desktops, and follows from the software principle of [_graceful degredation_](https://en.wikipedia.org/wiki/Fault_tolerance) (systems should maintain functionality as portions break down, such as the "capability" of having screen real estate).
+Responsive design is often framed as a technique to "make it _also_ work on mobile". This approach feels easy since websites are usually developed and tested on desktops, and follows from the software principle of [_graceful degradation_](https://en.wikipedia.org/wiki/Fault_tolerance) (systems should maintain functionality as portions break down, such as the "capability" of having screen real estate).
 
 But since websites are more likely to be visited on mobile devices, a better approach is to instead utilize **mobile-first design**. This is the idea that you should develop a website so it content and purpose is effectively presented on mobile devices (e.g., the most restricted in terms of screen size, capabilities, etc). Only once this base level of functionality is in place should you add features to make it _also_ look good on larger devices such as desktops. This approach is also known as [_progressive enhancement_](https://en.wikipedia.org/wiki/Progressive_enhancement): provide the core functionality, and then add "extra" features as more capabilities become available.
 
@@ -27,7 +27,7 @@ While there is no magic formula for designing websites to support mobile devices
 
 - **Media**: Small screens don't have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use [compressed](https://tinypng.com/) or lower-resolution images on mobile, and consider using background colors or [linear gradient fills](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.
 
-- **Fonts**: Make sure to use a large enough font that it is readable on small screens... but don't make headings or callout text _too_ large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use [relative units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) to accomodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!
+- **Fonts**: Make sure to use a large enough font that it is readable on small screens... but don't make headings or callout text _too_ large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use [relative units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) to accommodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!
 
 - **Navigation**: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Use small tab bars, or menu icons (e.g., the ["hamburger icon"](https://techcrunch.com/2014/05/24/before-the-hamburger-button-kills-you/)) to show complex menus on command. Most CSS frameworks provide some kind of collapsible navigation for mobile devices.
 
@@ -85,7 +85,7 @@ body {
 }
 ```
 
-A media query is structually similar to a normal CSS rule. The "selector" is written as **`@media`**, indicating that this is a media query not a normal CSS rule. The `@media` is then followed by a _query expression_, somewhat similar to the boolean expressions used in `if` statements. Expressions are written in parentheses, with the [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features) to check, followed by a colon (**`:`**), followed by the value to check against. There are no _relational operators_ (no `>` or `<`) in media queries, so you use media features with names such as `min-width` and `max-width` (to represent `width > x` and `width < x` respectively).
+A media query is structurally similar to a normal CSS rule. The "selector" is written as **`@media`**, indicating that this is a media query not a normal CSS rule. The `@media` is then followed by a _query expression_, somewhat similar to the boolean expressions used in `if` statements. Expressions are written in parentheses, with the [media feature](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features) to check, followed by a colon (**`:`**), followed by the value to check against. There are no _relational operators_ (no `>` or `<`) in media queries, so you use media features with names such as `min-width` and `max-width` (to represent `width > x` and `width < x` respectively).
 
 - Media feature comparisons are not strict inequalities, so `min-width: 1000px` can be read as "width greater than or equal to 1000px".
 

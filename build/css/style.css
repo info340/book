@@ -19,6 +19,15 @@
   content: "Last updated: ";
 }
 
+.book .book-summary {
+  background: #f0f5f9; /* theme the sidebar to distinguish */
+}
+
+.book .book-summary ul.summary li a.title {
+  padding-top:15px;
+  font-size: 15px; /* match height styling? */
+}
+
 /* appendix number fix?*/
 .header-section-number {
     padding-right: .5em;
@@ -51,14 +60,6 @@
   margin-bottom: .5em !important;
 }
 
-.book .book-summary ul.summary li a.title {
-  padding-top:15px;
-  font-size: 15px; /* match height styling? */
-}
-
-.book .book-summary {
-  background: #f0f5f9; /* theme the sidebar to distinguish */
-}
 
 /* Common? */
 p.caption {
@@ -80,4 +81,25 @@ pre code {
 
 .clear {
   clear:both
+}
+
+small { /* css fix */
+    font-size: 80% !important;
+}
+
+/* columns */
+
+.row {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.column {
+    box-sizing: border-box;
+    flex-grow: 1;
+    margin: 0 5px;
+}
+
+.column.col2 {
+    flex-basis: 50%;
 }
