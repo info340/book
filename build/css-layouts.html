@@ -22,10 +22,10 @@
   <meta name="twitter:description" content="The course reader for INFO 343: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info343.github.io/img/busy-spider-icon.png" />
 
-<meta name="author" content="Joel Ross">
+<meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-08-28">
+<meta name="date" content="2017-08-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -243,7 +243,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="block-vs.inline" class="section level2">
 <h2><span class="header-section-number">7.1</span> Block vs. Inline</h2>
 <p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
-<p><strong>Inline</strong> elements (e.g., <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>) are put next to each other on a single line (left to right, unless you specify a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">right-to-left language</a>). <strong>Block</strong> elements (<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>) are placed on subsequent “lines”, from top to bottom.</p>
+<p>As mentioned in Chapter 3, <strong>inline</strong> elements (e.g., <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>) are put next to each other on a single line (left to right, unless you specify a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">right-to-left language</a>). <strong>Block</strong> elements (<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>) are placed on subsequent “lines”, from top to bottom.</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span>
 <span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span></code></pre></div>
 <div class="figure">
@@ -257,14 +257,14 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p class="caption">Example of inline elements, next to each other (even if the code is on separate lines).</p>
 </div>
 <p><em>However</em>, you can force an element to be either <code>block</code> or <code>inline</code> by declaring the <strong><code>display</code></strong> CSS property:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">div<span class="fl">.inlined</span> <span class="kw">{</span>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.inlined</span> <span class="kw">{</span>
   <span class="kw">display:</span> <span class="dt">inline</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- this will produce the same result as using &lt;span&gt; elements --&gt;</span>
 <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;inlined&quot;</span><span class="kw">&gt;</span>Inline element<span class="kw">&lt;/div&gt;</span>
 <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;inlined&quot;</span><span class="kw">&gt;</span>Other inline element<span class="kw">&lt;/div&gt;</span></code></pre></div>
 <p>The <code>display</code> property also allows you to remove elements from the page flow entirely:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">div<span class="fl">.hidden</span> <span class="kw">{</span>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.hidden</span> <span class="kw">{</span>
   <span class="co">/* do not show element at all */</span>
   <span class="kw">display:</span> <span class="dt">none</span><span class="kw">;</span>
 <span class="kw">}</span></code></pre></div>

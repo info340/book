@@ -5,7 +5,7 @@ The previous chapters have discussed how to use CSS to specify the appearance of
 ## Block vs. Inline
 Without any CSS, html elements follow a default **flow** on the page based on the order they appear in the HTML. Layout is based on whether the element is a _block element_ or an _inline element_.
 
-**Inline** elements (e.g., `<em>`, `<a>`, `<span>`) are put next to each other on a single line (left to right, unless you specify a [right-to-left language](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)). **Block** elements (`<p>`, `<ul>`, `<div>`) are placed on subsequent "lines", from top to bottom.
+As mentioned in Chapter 3, **inline** elements (e.g., `<em>`, `<a>`, `<span>`) are put next to each other on a single line (left to right, unless you specify a [right-to-left language](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)). **Block** elements (`<p>`, `<ul>`, `<div>`) are placed on subsequent "lines", from top to bottom.
 
 ```html
 <div>Block element</div>
@@ -24,7 +24,7 @@ Without any CSS, html elements follow a default **flow** on the page based on th
 _However_, you can force an element to be either `block` or `inline` by declaring the **`display`** CSS property:
 
 ```css
-div.inlined {
+.inlined {
   display: inline;
 }
 ```
@@ -38,7 +38,7 @@ div.inlined {
 The `display` property also allows you to remove elements from the page flow entirely:
 
 ```css
-div.hidden {
+.hidden {
   /* do not show element at all */
   display: none;
 }

@@ -115,6 +115,7 @@ As projects become large, it is common for them to build up many _dependencies_:
 {
   "name": "example",
   "version": "1.0.0",
+  "private": true,
   "description": "A project with an example package.json",
   "main": "index.js",
   "scripts": {

@@ -201,7 +201,7 @@ Class selectors are often commonly used with `<div>` (block) and `<span>` (inlin
 </div>
 ```
 
-#### Id Selector
+#### Id Selector {-}
 It is also possible to select HTML elements by their `id` attribute by using an **id selector**. Every HTML element can have an `id` attribute, but unlike the `class` attribute the value of the `id` must be unique within the page. That is, no two elements can have the same value for their `id` attributes.
 
 **Id selectors** start with a `#` sign, followed by the value of the `id`:
@@ -232,11 +232,11 @@ p { /* applies to all paragraphs */
   font-family: 'Helvetica'
 }
 
-.alert { /* applies to all with class="alert" */
+.alert { /* applies to all elements with class="alert" */
   font-size: larger;
 }
 
-.success { /* applies to all with class="success" */
+.success { /* applies to all elements with class="success" */
   color: #28a745; /* a pleasant green */
 }
 ```

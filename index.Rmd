@@ -1,7 +1,7 @@
 ---
 lang: en
 title: 'Client-Side Web Development'
-author: "[Joel Ross](http://faculty.washington.edu/joelross/)"
+author: "[Joel Ross](http://faculty.washington.edu/joelross/) and [Mike Freeman](http://mfviz.com/#/)"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 description: 'The course reader for INFO 343: Client-Side Web Development.'
 github-repo: info343/book
