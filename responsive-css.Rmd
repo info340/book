@@ -27,6 +27,8 @@ While there is no magic formula for designing websites to support mobile devices
 
 - **Media**: Small screens don't have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use [compressed](https://tinypng.com/) or lower-resolution images on mobile, and consider using background colors or [linear gradient fills](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.
 
+    <p class="alert alert-info">[Page bloat](http://idlewords.com/talks/website_obesity.htm) is a real problem. You don't need huge images... or possibly any images at all!</p>
+
 - **Fonts**: Make sure to use a large enough font that it is readable on small screens... but don't make headings or callout text _too_ large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use [relative units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) to accommodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!
 
 - **Navigation**: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Use small tab bars, or menu icons (e.g., the ["hamburger icon"](https://techcrunch.com/2014/05/24/before-the-hamburger-button-kills-you/)) to show complex menus on command. Most CSS frameworks provide some kind of collapsible navigation for mobile devices.
@@ -137,7 +139,7 @@ This structure (starting with "default" mobile rules and then using media querie
 
 (Alternatively, it's also reasonable to organize your stylesheets based on page "section", with the mobile rules for that section given before the media queries for that section. E.g., after all your rules for creating the page header, put the media query with variations for desktop headers. Use whatever organization makes your code readable and maintainable, and leave plenty of comments to guide the reader!)
 
-### Example: Responsive Flexbox
+### Example: Responsive Flexbox {-}
 As another example of using media queries to produce a responsive website, consider how they can combine with [Flexbox](#flexbox) to produce a single-column layout on mobile devices, but a multi-column layout on larger displays. Because a Flexbox layout is just a property applied to existing elements, we can effectively "turn on" the `flex` layout by using media queries.
 
 Consider some simple HTML:

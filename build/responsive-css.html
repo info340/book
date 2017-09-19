@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-13">
+<meta name="date" content="2017-09-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -212,11 +212,21 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i><b>8.2.1</b> Example: Responsive Flexbox</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a><ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -262,7 +272,10 @@ Remember: working on your personal machine doesn’t ensure that it will work on
 <ul>
 <li><p><strong>Layout</strong>: On mobile devices, blocks of content should stack on top of each other, rather than sitting side by side in columns—mobile devices want to only scroll on one axis. <code>fixed</code> content should be kept to a minimum, as it reduces the amount of scrollable screen real-estate.</p>
 <p>As you gain more screen space on desktops, you will <em>want</em> to break content up into columns or otherwise <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width">constrain its width</a> so that it doesn’t stretch to ridiculous lengths; this helps with readability.</p></li>
-<li><p><strong>Media</strong>: Small screens don’t have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use <a href="https://tinypng.com/">compressed</a> or lower-resolution images on mobile, and consider using background colors or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">linear gradient fills</a> instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.</p></li>
+<li><p><strong>Media</strong>: Small screens don’t have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use <a href="https://tinypng.com/">compressed</a> or lower-resolution images on mobile, and consider using background colors or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">linear gradient fills</a> instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.</p>
+<p class="alert alert-info">
+<a href="http://idlewords.com/talks/website_obesity.htm">Page bloat</a> is a real problem. You don’t need huge images… or possibly any images at all!
+</p></li>
 <li><p><strong>Fonts</strong>: Make sure to use a large enough font that it is readable on small screens… but don’t make headings or callout text <em>too</em> large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units">relative units</a> to accommodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!</p></li>
 <li><p><strong>Navigation</strong>: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Use small tab bars, or menu icons (e.g., the <a href="https://techcrunch.com/2014/05/24/before-the-hamburger-button-kills-you/">“hamburger icon”</a>) to show complex menus on command. Most CSS frameworks provide some kind of collapsible navigation for mobile devices.</p></li>
 <li><p><strong>Input and Interaction</strong>: Tap/click targets need to be large-enough on mobile to select using a finger, especially for people with poor eyesight or thick fingers. Tiny icons placed right next to one another, or one-word hyperlinks are difficult to select accurately. Specifying a data type on form fields (e.g., email address, phone number, date, integer) also generates optimized on-screen keyboards, making data entry much easier.</p></li>
@@ -352,8 +365,8 @@ header <span class="kw">{</span>
 </ul>
 <p>This structure (starting with “default” mobile rules and then using media queries with <em>increasingly larger</em> <code>min-width</code> values) produces an effective mobile-first approach and clean way of organizing how the appearance will change as the screen gets larger. Note that while you can define as many media queries as you want, most professionals define only a few that match the common breakpoints between phone, tablet, and desktop screen widths. Since the media queries need to come <strong>after</strong> the mobile rules, they are often included at the end of the stylesheet—give all the mobile rules first, then all the media queries that modify them. (You can and should put multiple rules in each media query).</p>
 <p>(Alternatively, it’s also reasonable to organize your stylesheets based on page “section”, with the mobile rules for that section given before the media queries for that section. E.g., after all your rules for creating the page header, put the media query with variations for desktop headers. Use whatever organization makes your code readable and maintainable, and leave plenty of comments to guide the reader!)</p>
-<div id="example-responsive-flexbox" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> Example: Responsive Flexbox</h3>
+<div id="example-responsive-flexbox" class="section level3 unnumbered">
+<h3>Example: Responsive Flexbox</h3>
 <p>As another example of using media queries to produce a responsive website, consider how they can combine with <a href="css-layouts.html#flexbox">Flexbox</a> to produce a single-column layout on mobile devices, but a multi-column layout on larger displays. Because a Flexbox layout is just a property applied to existing elements, we can effectively “turn on” the <code>flex</code> layout by using media queries.</p>
 <p>Consider some simple HTML:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;row&quot;</span><span class="kw">&gt;</span>
