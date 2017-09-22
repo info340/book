@@ -3,9 +3,8 @@ The previous chapters have covered how to use CSS to make your page both stylish
 
 For this reason, most professional web developers utilize an existing **CSS Framework** instead. A CSS Framework is a stylesheet (a `.css` file!) that contains a large list of pre-defined rules that you can apply to your page. CSS frameworks provide a number of benefits:
 
-- _Normalize browser styling_: most frameworks will apply rules that will "reset" or standardize quirks between browsers, making it so that the same HTML and CSS is displayed more consistently (and without errors). CSS frameworks are _heavily_ tested, so you are less likely to introduce errors when solving common problems.
 - _Applies attractive default styling to all HTML elements_: CSS frameworks make your pages instantly look better through a bunch of element selector rules. Frameworks provide pleasant default fonts, line spacing, spacing, and link styling without any extra effort on your part.
-- _Provides style classes for common UI components_: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, alerts, cards, tabs, drop-down buttons, tooltips, carousels, multi-column layouts, and more. Frameworks enable you to add style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.
+- _Provides style classes for common UI components_: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, in-page tabs, drop-down buttons, multi-column layouts, and more. Frameworks enable you to add style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.
 
 CSS frameworks are thus designed to make your life easier and your development more efficient&mdash;while still enabling you to provide your own customizations and styling with all of the power of CSS.
 
@@ -24,7 +23,7 @@ There are many different CSS frameworks to choose from. Some popular ones includ
 
 - [**Materialize**](http://materializecss.com/) is the other popular Material Design implementation. This is an open-source project, so it is not provided nor supported by Google. However, it is structurally similar to Bootstrap, making it easy to learn and popular among people who know that framework.
 
-- [**normalize.css**](http://necolas.github.io/normalize.css/) is not so much a full framework as a small utility that performs browser normalization (also called a "reset") to make appearances more consistent across browsers. Note that most other frameworks include some version of this package (for example, Bootstrap contains a fork called [Reboot](https://medium.com/css-mine/bootstraps-reboot-next-evolutionary-step-for-css-reset-a30f718521b9)).
+- [**normalize.css**](http://necolas.github.io/normalize.css/) is not so much a full framework as a small utility that performs browser normalization (also called a "reset"). `normalize.css` standardizes the quirks across browsers and making it so that the same HTML and CSS is displayed more consistently and without errors. Note that most other frameworks include some version of this package (for example, Bootstrap contains a fork called [Reboot](https://medium.com/css-mine/bootstraps-reboot-next-evolutionary-step-for-css-reset-a30f718521b9)).
 
     If you choose **not** to use a framework, you should still include `normalize` to make your sites consistent!
 
@@ -328,4 +327,13 @@ There is a lot to unpack in this code, including styling classes and ARIA attrib
 
 <p class="alert alert-warning">The JavaScript included in these CSS frameworks allows you to easily add interactive features, but **they do not mix well with more advanced JavaScript frameworks like React.** To work with React, you'd need to switch instead to a library such as [reactstrap](https://reactstrap.github.io/), which uses the Bootstrap 4 CSS stylesheet, but re-implement the JavaScript portions to fit into the React framework.</p>
 
-<small>This chapter was borrowed to a large extent from a tutorial by David Stearns.</small>
+## Resources {-}
+
+- [Bootstrap 4 Documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
+- [Materialize Documentation](http://materializecss.com/getting-started.html)
+- [Foundation Documentation](http://foundation.zurb.com/sites/docs/)
+- [Material Components for the Web Documentation](https://material.io/components/web/docs/)
+- [`normalize.css` Documentation](http://necolas.github.io/normalize.css/)
+- [Bootstrap 3 Tutorial (w3schools)](https://www.w3schools.com/bootstrap/) For an older version of bootstrap, but many of the componets and examples are similar.
+
+<small>This chapter was borrowed to a large extent from a [tutorial](https://drstearns.github.io/tutorials/cssframeworks/) by [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).</small>

@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-19">
+<meta name="date" content="2017-09-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -126,7 +126,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
 <li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
-<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code>package.json</code></a></li>
+<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code class="unnumbered">package.json</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -226,7 +226,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
 <li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -319,6 +321,9 @@ This course expects you to already be familiar with utilizing Git and GitHub. Fo
 <p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will want to install the <strong>latest version</strong> of Node (6.10+), so you should update it if you haven’t in a while. Node is a command-line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">node</span> --version</code></pre></div>
 <p>Installing Node also installs an additional command-line program called <a href="https://www.npmjs.com/"><strong><em>npm</em></strong></a>. <em>npm</em> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command-line “app store” for developer tools and libraries. <em>npm</em> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <em>npm</em> “registry” lists around 500,000 different packages.</p>
+<p class="alert alert-warning">
+If you have an older version of Node and <code>npm</code> (before Node 6.10 or <code>npm</code> 5.1), you will need to update them. You can re-install the latest version of Node, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
+</p>
 <div id="managing-packages-with-npm" class="section level3 unnumbered">
 <h3>Managing packages with npm</h3>
 <p>You can use the <code>npm</code> program to download and install command-line programs by name:</p>
@@ -337,7 +342,7 @@ Because node packages can be very large, and projects can have lots of them, you
 </p>
 </div>
 <div id="package.json" class="section level3">
-<h3><span class="header-section-number">1.5.1</span> <code>package.json</code></h3>
+<h3><span class="header-section-number">1.5.1</span> <code class="unnumbered">package.json</code></h3>
 <p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <em>npm</em> is able to keep track of these dependencies by recording them in a specialized file called <code>package.json</code> that can be placed inside the project directory. A <code>package.json</code> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
 <div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
   <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;example&quot;</span><span class="fu">,</span>
@@ -384,8 +389,9 @@ While <em>npm</em> is the most popular package manager (and the one utilized in 
 <div class="list-condensed">
 <ul>
 <li><a href="https://www.google.com/chrome/browser/desktop/index.html">Chrome</a></li>
-<li><a href="https://git-scm.com/downloads">git (and Git Bash)</a> - <a href="https://github.com/join">GitHub</a> (sign up)
+<li><a href="https://git-scm.com/downloads">git (and Git Bash)</a>
 <ul>
+<li><a href="https://github.com/join">GitHub</a> (sign up)</li>
 <li>optional: <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Windows</a></li>
 </ul></li>
 <li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>

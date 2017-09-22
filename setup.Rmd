@@ -83,6 +83,8 @@ node --version
 
 Installing Node also installs an additional command-line program called [**_npm_**](https://www.npmjs.com/). _npm_ is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command-line "app store" for developer tools and libraries. _npm_ is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the _npm_ "registry" lists around 500,000 different packages.
 
+<p class="alert alert-warning">If you have an older version of Node and `npm` (before Node 6.10 or `npm` 5.1), you will need to update them. You can re-install the latest version of Node, or just upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.</p>
+
 ### Managing packages with npm {-}
 You can use the `npm` program to download and install command-line programs by name:
 
@@ -110,7 +112,7 @@ Will download the [`lodash`](https://lodash.com/) code library (a set of useful 
 
 <p class="alert alert-warning">Because node packages can be very large, and projects can have lots of them, you want to be sure to **not** commit the `node_modules/` folder to version control. Make sure that the folder is listed in your `.gitignore` file!</p>
 
-### `package.json`
+### `package.json` {-}
 As projects become large, it is common for them to build up many _dependencies_: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project's `node_modules/` folder. _npm_ is able to keep track of these dependencies by recording them in a specialized file called `package.json` that can be placed inside the project directory. A `package.json` file is a text file containing a [JSON](https://en.wikipedia.org/wiki/JSON) list of information about your project. For example:
 
 ```json
@@ -167,14 +169,13 @@ To sum up, you will use three commands with `npm` to install packages:
 <p class="alert alert-info">While _npm_ is the most popular package manager (and the one utilized in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with _npm_ and is quickly growing in popularity.</p>
 
 
-
 ## Resources {-}
 Links to the recommended software are collected here for easy access:
 
 <div class="list-condensed">
 - [Chrome](https://www.google.com/chrome/browser/desktop/index.html)
 - [git (and Git Bash)](https://git-scm.com/downloads)
-		- [GitHub](https://github.com/join) (sign up)
+	- [GitHub](https://github.com/join) (sign up)
     - optional: [Bash on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js (and npm)](https://nodejs.org/)

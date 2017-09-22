@@ -21,7 +21,7 @@ rmd_files:
   - css-frameworks.Rmd
 
   ## JavaScript
-  #- javascript-intro.Rmd
+  - javascript.Rmd
   #- functional-programming.Rmd
   #- dom.Rmd
   #- ajax.Rmd

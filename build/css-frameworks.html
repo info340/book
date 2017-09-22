@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-19">
+<meta name="date" content="2017-09-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="responsive-css.html">
-
+<link rel="next" href="javascript.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -126,7 +126,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
 <li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
-<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code>package.json</code></a></li>
+<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code class="unnumbered">package.json</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -226,7 +226,9 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
 <li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -252,9 +254,8 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>The previous chapters have covered how to use CSS to make your page both stylish and responsive. While it is certain possible to implement an entire site by creating your own CSS rules, that can quickly get tedious: often you’d like a page to have a “standard” set of rules (because the browser’s style-less appearance) and then customize those rules to your liking.</p>
 <p>For this reason, most professional web developers utilize an existing <strong>CSS Framework</strong> instead. A CSS Framework is a stylesheet (a <code>.css</code> file!) that contains a large list of pre-defined rules that you can apply to your page. CSS frameworks provide a number of benefits:</p>
 <ul>
-<li><em>Normalize browser styling</em>: most frameworks will apply rules that will “reset” or standardize quirks between browsers, making it so that the same HTML and CSS is displayed more consistently (and without errors). CSS frameworks are <em>heavily</em> tested, so you are less likely to introduce errors when solving common problems.</li>
 <li><em>Applies attractive default styling to all HTML elements</em>: CSS frameworks make your pages instantly look better through a bunch of element selector rules. Frameworks provide pleasant default fonts, line spacing, spacing, and link styling without any extra effort on your part.</li>
-<li><em>Provides style classes for common UI components</em>: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, alerts, cards, tabs, drop-down buttons, tooltips, carousels, multi-column layouts, and more. Frameworks enable you to add style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.</li>
+<li><em>Provides style classes for common UI components</em>: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, in-page tabs, drop-down buttons, multi-column layouts, and more. Frameworks enable you to add style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.</li>
 </ul>
 <p>CSS frameworks are thus designed to make your life easier and your development more efficient—while still enabling you to provide your own customizations and styling with all of the power of CSS.</p>
 <!-- ### Popular Frameworks {-} -->
@@ -268,7 +269,7 @@ This text discusses Bootstrap 4 as an example. Be careful that you are looking a
 <li><p><a href="http://foundation.zurb.com/"><strong>Foundation</strong></a> is Bootstrap’s chief rival, and has a reputation for being more ahead-of-the-curve than Bootstrap (introducing new features sooner). For example, it was the first framework to use a responsive mobile-first design, and provided a Flexbox-based grid long before Bootstrap. Foundation has most of the same UI elements as Bootstrap, but with a different look and feel (that can be <a href="http://foundation.zurb.com/sites/download.html/#customizeFoundation">customized</a> through a web-based tool).</p></li>
 <li><p><a href="https://material.io/components/web/"><strong>Material Components for the Web (MCW)</strong></a> is an official implementation of Google’s <a href="https://material.google.com/">Material Design</a> visual language. This is the look-and-feel found in most Google products and Android applications. Material Design is very opinionated so MCW is very difficult to customize. The MCW style class names are also very verbose, as they follow the <a href="https://en.bem.info/methodology/">Block, Element, Modifier (BEM)</a> naming scheme.</p></li>
 <li><p><a href="http://materializecss.com/"><strong>Materialize</strong></a> is the other popular Material Design implementation. This is an open-source project, so it is not provided nor supported by Google. However, it is structurally similar to Bootstrap, making it easy to learn and popular among people who know that framework.</p></li>
-<li><p><a href="http://necolas.github.io/normalize.css/"><strong>normalize.css</strong></a> is not so much a full framework as a small utility that performs browser normalization (also called a “reset”) to make appearances more consistent across browsers. Note that most other frameworks include some version of this package (for example, Bootstrap contains a fork called <a href="https://medium.com/css-mine/bootstraps-reboot-next-evolutionary-step-for-css-reset-a30f718521b9">Reboot</a>).</p>
+<li><p><a href="http://necolas.github.io/normalize.css/"><strong>normalize.css</strong></a> is not so much a full framework as a small utility that performs browser normalization (also called a “reset”). <code>normalize.css</code> standardizes the quirks across browsers and making it so that the same HTML and CSS is displayed more consistently and without errors. Note that most other frameworks include some version of this package (for example, Bootstrap contains a fork called <a href="https://medium.com/css-mine/bootstraps-reboot-next-evolutionary-step-for-css-reset-a30f718521b9">Reboot</a>).</p>
 <p>If you choose <strong>not</strong> to use a framework, you should still include <code>normalize</code> to make your sites consistent!</p></li>
 </ul>
 <p>Other frameworks exist as well, each with its own benefits and drawbacks (e.g., <a href="http://getskeleton.com/">Skeleton</a> is designed to be as lightweight as possible, but at the cost of features).</p>
@@ -493,7 +494,7 @@ Utility classes do <strong>not</strong> mean you never have to write any CSS rul
 <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://code.jquery.com/jquery-3.2.1.slim.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
 <span class="co">&lt;!-- the Bootstrap JavaScript library --&gt;</span>
 <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
-<p>See See the chapter on <a href="#javascript">JavaScript</a> for more details on including JavaScript libraries. Note that not all components or utilities require JavaScript.</p>
+<p>See See the chapter on <a href="javascript.html#javascript">JavaScript</a> for more details on including JavaScript libraries. Note that not all components or utilities require JavaScript.</p>
 <p>However, with most Bootstrap components, you don’t actually need to write any JavaScript code. Instead, you just need to provide some particular <code>data-</code> HTML attributes, and the library will take care of everything else.</p>
 <ul>
 <li>A <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">data attributes</a> is an normal HTML attribute that begins with the text <code>data-</code> (e.g., <code>data-thingamabob</code> or <code>data-my-attribute</code>). The HTML specification explicitly says that attributes that begin with <code>data-</code> are legal but not part of the standard, thus enabling them to be used for storing app-specific information. They effectively act as custom “variables” for elements that do not violate the HTML standard.</li>
@@ -529,9 +530,20 @@ The best way to understand these components is to start from the examples in the
 <p class="alert alert-warning">
 The JavaScript included in these CSS frameworks allows you to easily add interactive features, but <strong>they do not mix well with more advanced JavaScript frameworks like React.</strong> To work with React, you’d need to switch instead to a library such as <a href="https://reactstrap.github.io/">reactstrap</a>, which uses the Bootstrap 4 CSS stylesheet, but re-implement the JavaScript portions to fit into the React framework.
 </p>
-<p><small>This chapter was borrowed to a large extent from a tutorial by David Stearns.</small></p>
-
 </div>
+</div>
+<div id="resources-7" class="section level2 unnumbered">
+<h2>Resources</h2>
+<ul>
+<li><a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/">Bootstrap 4 Documentation</a></li>
+<li><a href="http://materializecss.com/getting-started.html">Materialize Documentation</a></li>
+<li><a href="http://foundation.zurb.com/sites/docs/">Foundation Documentation</a></li>
+<li><a href="https://material.io/components/web/docs/">Material Components for the Web Documentation</a></li>
+<li><a href="http://necolas.github.io/normalize.css/"><code>normalize.css</code> Documentation</a></li>
+<li><a href="https://www.w3schools.com/bootstrap/">Bootstrap 3 Tutorial (w3schools)</a> For an older version of bootstrap, but many of the componets and examples are similar.</li>
+</ul>
+<p><small>This chapter was borrowed to a large extent from a <a href="https://drstearns.github.io/tutorials/cssframeworks/">tutorial</a> by <a href="https://ischool.uw.edu/people/faculty/dlsinfo">David Stearns</a>.</small></p>
+
 </div>
 </div>
             </section>
@@ -539,8 +551,8 @@ The JavaScript included in these CSS frameworks allows you to easily add interac
           </div>
         </div>
       </div>
-<a href="responsive-css.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="responsive-css.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="javascript.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
