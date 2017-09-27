@@ -149,7 +149,7 @@ Thus using `npm install` without any arguments means "install all of the require
 
 When installing specific packages, you can have _npm_ add them to the dependencies list by using the `--save` option:
 
-```
+```bash
 npm install --save lodash
 ```
 
@@ -157,12 +157,20 @@ will install `lodash` locally, and list it in the `package.json` file as a depen
 
 Similarly, the `--save-dev` option will instead save the package in the `"devDependencies"` list, which are dependencies needed only for development (writing the program's code) and not for execution (running the program).
 
+If you want to use a _globally_ installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use `npm link` to "include" the global package locally. For example, the below will allow you to use a globally installed version of `lodash` so you don't have to download a copy for each project:
+
+```bash
+npm link lodash
+```
+
+Be sure to `link` any global packages before you run `npm install` so you don't any packages from `package.jon` that you already have!
+
 You can uninstall packages using `npm uninstall`, or can remove packages from the dependencies lists simply by editing the `package.json` file (e.g., with VS Code).
 
 To sum up, you will use three commands with `npm` to install packages:
 
-1. `npm install -g PACKAGE-NAME` to _globally_ install command-line programs
-2. `npm install` to _locally_ install all of the dependencies for a project you check out
+1. `npm install -g PACKAGE-NAME` to _globally_ install command-line programs.
+2. `npm install` to _locally_ install all of the dependencies for a project you check out.
 3. `npm install --save PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
 
 

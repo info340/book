@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-22">
+<meta name="date" content="2017-09-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -368,14 +368,17 @@ Because node packages can be very large, and projects can have lots of them, you
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> install</code></pre></div>
 <p>Thus using <code>npm install</code> without any arguments means “install all of the requirements that have been listed for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub.</p>
 <p>When installing specific packages, you can have <em>npm</em> add them to the dependencies list by using the <code>--save</code> option:</p>
-<pre><code>npm install --save lodash</code></pre>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> install --save lodash</code></pre></div>
 <p>will install <code>lodash</code> locally, and list it in the <code>package.json</code> file as a dependency.</p>
 <p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
+<p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for each project:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> link lodash</code></pre></div>
+<p>Be sure to <code>link</code> any global packages before you run <code>npm install</code> so you don’t any packages from <code>package.jon</code> that you already have!</p>
 <p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
 <p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
 <ol style="list-style-type: decimal">
-<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command-line programs</li>
-<li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out</li>
+<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command-line programs.</li>
+<li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out.</li>
 <li><code>npm install --save PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
 </ol>
 <p class="alert alert-info">

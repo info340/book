@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-22">
+<meta name="date" content="2017-09-27">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -449,10 +449,12 @@ p <span class="kw">{</span> <span class="co">/* applies to all paragraphs */</sp
 p <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span> <span class="kw">}</span>
 p <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">blue</span><span class="kw">;</span> <span class="kw">}</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p&gt;</span>This text will be blue, because that rule comes last!<span class="kw">&lt;/p&gt;</span></code></pre></div>
-<p>However, there are some exceptions when CSS treats rules as <em>not</em> equal and favors earlier rules over later ones. This is called <a href="https://css-tricks.com/specifics-on-css-specificity/">Selector Specificity</a>. In general, more specific selectors (<code>#id</code>) take precedence over less specific ones (<code>.class</code>, which is more specific than <code>tag</code>). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser’s <a href="https://developer.chrome.com/devtools">developer tools</a> to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.alert</span> <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span> <span class="kw">}</span>
+<p>However, there are some exceptions when CSS treats rules as <em>not</em> equal and favors earlier rules over later ones. This is called <a href="https://css-tricks.com/specifics-on-css-specificity/">Selector Specificity</a>. In general, more specific selectors (<code>#id</code>) take precedence over less specific ones (<code>.class</code>, which is more specific than <code>tag</code>). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser’s <a href="https://developer.chrome.com/devtools">developer tools</a> to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity:</p>
+<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* css */</span>
+<span class="fl">.alert</span> <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span> <span class="kw">}</span>
 div <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">blue</span><span class="kw">;</span> <span class="kw">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;alert&quot;</span><span class="kw">&gt;</span>This text will be red, even though the `div` selector is last,
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- html --&gt;</span>
+<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;alert&quot;</span><span class="kw">&gt;</span>This text will be red, even though the `div` selector is last,
 because the `.alert` selector has higher specificity so is not overridden.<span class="kw">&lt;/div&gt;</span></code></pre></div>
 <p class="alert alert-warning">
 Precedence rules are <strong>not</strong> a reason to prefer <code>#id</code> selectors over <code>.class</code> selectors! Instead, you can utilize the more complex selectors described in <a href="more-css.html#more-css">Chapter 6</a> to be able to create reusable rules an avoid duplicating property declarations.

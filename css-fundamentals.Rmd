@@ -280,14 +280,16 @@ p { color: blue; }
 <p>This text will be blue, because that rule comes last!</p>
 ```
 
-However, there are some exceptions when CSS treats rules as _not_ equal and favors earlier rules over later ones. This is called [Selector Specificity](https://css-tricks.com/specifics-on-css-specificity/). In general, more specific selectors (`#id`) take precedence over less specific ones (`.class`, which is more specific than `tag`). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser's [developer tools](https://developer.chrome.com/devtools) to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity.
+However, there are some exceptions when CSS treats rules as _not_ equal and favors earlier rules over later ones. This is called [Selector Specificity](https://css-tricks.com/specifics-on-css-specificity/). In general, more specific selectors (`#id`) take precedence over less specific ones (`.class`, which is more specific than `tag`). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser's [developer tools](https://developer.chrome.com/devtools) to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity:
 
 ```css
+/* css */
 .alert { color: red; }
 div { color: blue; }
 ```
 
 ```html
+<!-- html -->
 <div class="alert">This text will be red, even though the `div` selector is last,
 because the `.alert` selector has higher specificity so is not overridden.</div>
 ```
