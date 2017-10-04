@@ -51,6 +51,8 @@ You connect the stylesheet to your HTML by adding a **`<link>`** element to your
 
 The [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) element represents a connection to another resource. The tag includes an attribute indicating the **rel**ation between the resources (e.g., that the linked file is a stylesheet). The `href` attribute should be a _relative path_ from the `.html` file to the `.css` resource. Note also that a `<link>` is an empty element so has no closing tag.
 
+- It is also possible to include CSS code directly in your HTML by embedded it in a `<style>` element in the `<head>`, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.
+
 ### Overall Syntax {-}
 A CSS stylesheet lists **rules** for formatting particular elements in an HTML page. The basic syntax looks like:
 

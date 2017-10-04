@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-09-27">
+<meta name="date" content="2017-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -228,7 +228,27 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a><ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -318,11 +338,11 @@ This course expects you to already be familiar with utilizing Git and GitHub. Fo
 <div id="node-and-npm" class="section level2">
 <h2><span class="header-section-number">1.5</span> Node and npm</h2>
 <p><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> (commonly just “Node”) is a a command-line runtime environment for the JavaScript programming language—that is, a program that is used to <em>interpret</em> and <em>execute</em> programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see <a href="#JavaScript">Chapter: JavaScript</a>), Node provides a platform for installing and running a wide variety of “helper” programs that are frequently used in web development.</p>
-<p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will want to install the <strong>latest version</strong> of Node (6.10+), so you should update it if you haven’t in a while. Node is a command-line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
+<p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will want to install the <strong>latest version</strong> of Node (8.6+), so you should update it if you haven’t in a while. Node is a command-line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">node</span> --version</code></pre></div>
 <p>Installing Node also installs an additional command-line program called <a href="https://www.npmjs.com/"><strong><em>npm</em></strong></a>. <em>npm</em> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command-line “app store” for developer tools and libraries. <em>npm</em> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <em>npm</em> “registry” lists around 500,000 different packages.</p>
 <p class="alert alert-warning">
-If you have an older version of Node and <code>npm</code> (before Node 6.10 or <code>npm</code> 5.1), you will need to update them. You can re-install the latest version of Node, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
+If you have an older version of Node and <code>npm</code> (before Node 8.6 or <code>npm</code> 5.1), you will need to update them. You can re-install the latest version of Node, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
 </p>
 <div id="managing-packages-with-npm" class="section level3 unnumbered">
 <h3>Managing packages with npm</h3>

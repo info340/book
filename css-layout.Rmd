@@ -167,7 +167,7 @@ Finally, you can specify an element's `position` to be **`absolute`**, meaning _
 
 ### Floating {-}
 
-<img src="img/css/bunny.jpg" alt="cute bunny" style="float:right;margin:1em;">
+<img src="img/css/bunny.jpg" alt="cute bunny" style="float:right;margin-left:1em;">
 
 You can also remove an element from it's normal position in the _flow_ by making it **float**. This is commonly done with pictures, but can be done with any element (such as `<div>`). A floated element is shoved over to one side of the screen, with the rest of the content wrapping around it:
 

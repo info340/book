@@ -328,12 +328,13 @@ There is a lot to unpack in this code, including styling classes and ARIA attrib
 <p class="alert alert-warning">The JavaScript included in these CSS frameworks allows you to easily add interactive features, but **they do not mix well with more advanced JavaScript frameworks like React.** To work with React, you'd need to switch instead to a library such as [reactstrap](https://reactstrap.github.io/), which uses the Bootstrap 4 CSS stylesheet, but re-implement the JavaScript portions to fit into the React framework.</p>
 
 ## Resources {-}
-
+<div class="list-condensed">
 - [Bootstrap 4 Documentation](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 - [Materialize Documentation](http://materializecss.com/getting-started.html)
 - [Foundation Documentation](http://foundation.zurb.com/sites/docs/)
 - [Material Components for the Web Documentation](https://material.io/components/web/docs/)
 - [`normalize.css` Documentation](http://necolas.github.io/normalize.css/)
 - [Bootstrap 3 Tutorial (w3schools)](https://www.w3schools.com/bootstrap/) For an older version of bootstrap, but many of the componets and examples are similar.
+</div>
 
 <small>This chapter was borrowed to a large extent from a [tutorial](https://drstearns.github.io/tutorials/cssframeworks/) by [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).</small>

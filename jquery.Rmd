@@ -1,0 +1,16 @@
+# jQuery and Libraries
+
+
+
+
+A webpage can include multiple `<script>` tags, each specifying their own script file. These scripts will be executed by the interpreter whenever they are encountered, top to bottom. Variables and functions in JavaScript are usually defined _globally_, which means that any variables or functions created in one script will be available for use in the next.
+
+Thus additional JavaScript modules can be "imported" by including their script file as a `<script>` tag _before_ the script that needs to use them (no explicit `import` statement is necessary). These scripts will then make additional **global variables** available for use by later scripts.
+
+- Moreover, rather than downloading third-party modules as part of a package like Anaconda, the path to third-party JavaScript modules are specified as an internet URI so that the module is downloaded along with the rest of the web page. For example:
+
+  ```html
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  ```
+
+  will "import" (download and include) the [D3](https://d3js.org/) library and provide a global `d3` variable for later scripts to use&mdash;similar to `import d3` in Python.

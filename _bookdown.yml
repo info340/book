@@ -24,6 +24,7 @@ rmd_files:
   - javascript.Rmd
   #- functional-programming.Rmd
   #- dom.Rmd
+  #- jquery.RmD
   #- ajax.Rmd
 
   ## React (what chapter divisions?)
