@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info343.github.io/" />
+  <meta property="og:image" content="https://info343.github.io/img/busy-spider-icon.png" />
+  <meta property="og:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="github-repo" content="info343/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info343.github.io/img/busy-spider-icon.png" />
+
+<meta name="author" content="Joel Ross and Mike Freeman">
+
+
+<meta name="date" content="2017-10-04">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
+<link rel="prev" href="javascript.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="chapter" data-level="1" data-path="machine-setup.html"><a href="machine-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="machine-setup.html"><a href="machine-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="machine-setup.html"><a href="machine-setup.html#code-editors"><i class="fa fa-check"></i><b>1.2</b> Code Editors</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#atom"><i class="fa fa-check"></i>Atom</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#brackets"><i class="fa fa-check"></i>Brackets</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#sublime-text"><i class="fa fa-check"></i>Sublime Text</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="machine-setup.html"><a href="machine-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
+<li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
+<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code class="unnumbered">package.json</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a><ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i><b>2.1</b> Client-Side File Types</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#http-requests-and-servers"><i class="fa fa-check"></i><b>2.2</b> HTTP Requests and Servers</a><ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-tags"><i class="fa fa-check"></i>Some Example Tags</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
+<li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a><ul>
+<li class="chapter" data-level="4.1" data-path="css.html"><a href="css.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>4.2</b> CSS Rules</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="css.html"><a href="css.html#the-cascade"><i class="fa fa-check"></i><b>4.3</b> The Cascade</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html"><i class="fa fa-check"></i><b>5</b> Standards and Accessibility</a><ul>
+<li class="chapter" data-level="5.1" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#web-standards"><i class="fa fa-check"></i><b>5.1</b> Web Standards</a></li>
+<li class="chapter" data-level="5.2" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#why-accessibility"><i class="fa fa-check"></i><b>5.2</b> Why Accessibility</a></li>
+<li class="chapter" data-level="5.3" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#supporting-accessibility"><i class="fa fa-check"></i><b>5.3</b> Supporting Accessibility</a><ul>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#semantic-html"><i class="fa fa-check"></i>Semantic HTML</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#aria"><i class="fa fa-check"></i>ARIA</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#page-structure-navigable"><i class="fa fa-check"></i>Page Structure (Navigable)</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#visual-information-perceivable"><i class="fa fa-check"></i>Visual Information (Perceivable)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-css.html"><a href="more-css.html"><i class="fa fa-check"></i><b>6</b> More CSS</a><ul>
+<li class="chapter" data-level="6.1" data-path="more-css.html"><a href="more-css.html#compound-selectors"><i class="fa fa-check"></i><b>6.1</b> Compound Selectors</a><ul>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#group-selector"><i class="fa fa-check"></i>Group Selector</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#combined-selectors"><i class="fa fa-check"></i>Combined Selectors</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#attribute-selectors"><i class="fa fa-check"></i>Attribute Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-css.html"><a href="more-css.html#property-values"><i class="fa fa-check"></i><b>6.2</b> Property Values</a><ul>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#css-units"><i class="fa fa-check"></i>Units &amp; Sizes</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#fonts-and-icons"><i class="fa fa-check"></i>Fonts and Icons</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="css-layouts.html"><a href="css-layouts.html"><i class="fa fa-check"></i><b>7</b> CSS Layouts</a><ul>
+<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#block-vs.inline"><i class="fa fa-check"></i><b>7.1</b> Block vs. Inline</a></li>
+<li class="chapter" data-level="7.2" data-path="css-layouts.html"><a href="css-layouts.html#the-box-model"><i class="fa fa-check"></i><b>7.2</b> The Box Model</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#changing-the-flow"><i class="fa fa-check"></i><b>7.3</b> Changing the Flow</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a><ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a><ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a><ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a><ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a><ul>
+<li><a href="functional-programming.html#working-with-this">Working with <code>this</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i><b>11.4.1</b> Map</a></li>
+<li class="chapter" data-level="11.4.2" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i><b>11.4.2</b> Filter</a></li>
+<li class="chapter" data-level="11.4.3" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i><b>11.4.3</b> Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functional-programming"><i class="fa fa-check"></i><b>11.5</b> Pure Functional Programming</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="functional-programming" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Functional Programming in JS</h1>
+<p>Despite it’s name, the JavaScript language was based more on <a href="https://en.wikipedia.org/wiki/Scheme_(programming_language)">Scheme</a> than it was on Java. Scheme is a <strong>functional programming language</strong>, which means it follows a programming paradigm centered on <em>functions</em> rather than on <em>variables</em>, objects, and statements as you’ve done before (known as <em>imperative programming</em>). An alternative to object-oriented programming, functional programming provides a framework for thinking about how to give instructions to a computer. While JavaScript is not a fully functional language, it does support a number of functional programming features that are vital to developing effective and interactive systems. This chapter introduces these functional concepts.</p>
+<div id="functions-are-variables" class="section level2">
+<h2><span class="header-section-number">11.1</span> Functions ARE Variables</h2>
+<p>Normally you’ve considered functions as “named sequences of instructions”, or groupings of lines of code that are given a name. But in a functional programming paradigm, functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class citizens</a>—that is, they are “things” (values) that can be organized and manipulated <em>just like variables</em>.</p>
+<p>In JavaScript, <strong>functions ARE variables</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a function called `sayHello`</span>
+<span class="kw">function</span> <span class="at">sayHello</span>(name) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//what kind of thing is `sayHello` ?</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="kw">typeof</span> sayHello)<span class="op">;</span>  <span class="co">//=&gt; &#39;function&#39;</span></code></pre></div>
+<p>Just like <code>let x = 3</code> defines a variable for a value of type <code>number</code>, or <code>let msg = &quot;hello&quot;</code> defines a variable for a value of type <code>string</code>, the above <code>sayHello</code> function is actually a variable for a <em>value</em> of type <code>function</code>!</p>
+<p class="alert alert-warning">
+<strong>Important</strong>: we refer to a function by it’s name <em>without</em> the parentheses!
+</p>
+<p>The fact that functions <strong>are</strong> variables is the core realization to make when programming in a functional style. You need to be able to think about functions as <strong>things</strong> (nouns), rather than as <strong>behaviors</strong> (verbs). If you imagine that functions are “recipes”, then you need to think about them as <em>pages from the cookbook</em> (that can be bound together or handed to a friend), rather than just the sequence of actions that they tell you to perform.</p>
+<p>And because functions are just another type of variable, they can be used <strong>anywhere</strong> that a “regular” variable can be used. For example, functions are values, so they can be assigned to other variables!</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a function called `sayHello`</span>
+<span class="kw">function</span> <span class="at">sayHello</span>(name) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//assign the `sayHello` value to a new variable `greet`</span>
+<span class="kw">let</span> greet <span class="op">=</span> sayHello<span class="op">;</span>
+
+<span class="co">//call the function assigned to the `greet` variable</span>
+<span class="at">greet</span>(<span class="st">&quot;world&quot;</span>)<span class="op">;</span>  <span class="co">//logs &quot;Hello world&quot;</span></code></pre></div>
+<ul>
+<li>It helps to think of functions as just a special kind of array. Just as <em>arrays</em> have a special syntax <code>[]</code> (bracket notation) that can be used to “get” a value from the list, <em>functions</em> have a special syntax <code>()</code> (parentheses) that can be used to “run” the function.</li>
+</ul>
+<div id="anonymous-functions" class="section level3 unnumbered">
+<h3>Anonymous Functions</h3>
+<p>Functions are values, just like arrays and objects. And just as arrays and objects can be written as literals which can be <em>anonymously</em> passed into functions, JavaScript supports <strong>anonymous functions</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">var</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span> <span class="co">//named variable (not anonymous)</span>
+<span class="va">console</span>.<span class="at">log</span>(array)<span class="op">;</span> <span class="co">//pass in named var</span>
+<span class="va">console</span>.<span class="at">log</span>( [<span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span>] )<span class="op">;</span> <span class="co">//pass in anonymous value</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//named function (normal)</span>
+<span class="kw">function</span> <span class="at">sayHello</span>(person)<span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//an anonymous function (with no name!)</span>
+<span class="co">//(We can&#39;t reference this without a name, so writing an anonymous function is</span>
+<span class="co">//not a valid statement)</span>
+<span class="kw">function</span>(person) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//anonymous function (value) assigned to variable</span>
+<span class="co">//equivalent to the version in the previous example</span>
+<span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>(person) <span class="op">{</span>
+  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<ul>
+<li>You can think of this structure as equivalent to declaring and assigning an array <code>let myVar = [1,2,3]</code>… just in this case instead of taking the anonymous array (right-hand side) and giving it a name, we’re taking an <em>anonymous function</em> and giving it a name!</li>
+</ul>
+<p>Thus you can define named functions in one of to ways: either my making an explicitly named function or by assigning an anonymous function to a variable:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//these produce the same function</span>
+<span class="kw">function</span> <span class="at">foo</span>(bar) <span class="op">{}</span>
+<span class="kw">let</span> foo <span class="op">=</span> <span class="kw">function</span>(bar) <span class="op">{}</span></code></pre></div>
+<p>The only difference between these two constructions is one of <em>ordering</em>. When the JavaScript interpreter is initially reading and parsing the script file, it will put variable and function declarations into memory before it executes any of the file. In effect, JavaScript will seem to “move” variable and function declarations to the top of the file! This process is called <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"><strong>hoisting</strong></a> (declarations are “hoisted” to the top of the script). <!-- ```js
+//this will work even though the function is declared after it is called!
+sayHello("world");
+
+function sayHello(name) { console.log("Hello, "+name); }
+``` --> Hoisting <em>only</em> works for named function declarations: assigning an anonymous function to a variable will not hoist that function’s definition:</p>
+<!-- ```js
+sayHello("world"); //ReferenceError: sayHello is not defined
+
+let sayHello = function(name) { console.log("Hello, "+name); }
+``` -->
+<p>In practice, you should <strong>always</strong> declare and define functions before you use them (put them all at the top of the file!), which will reduce the impact of hoisting and allow you to use either construction.</p>
+</div>
+</div>
+<div id="object-functions" class="section level2">
+<h2><span class="header-section-number">11.2</span> Object Functions</h2>
+<p>Moreover, functions are values, so they can be assigned as values of <em>object properties</em> (since object properties are like name-spaced variables):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//an object representing a dog</span>
+<span class="kw">let</span> dog <span class="op">=</span> <span class="op">{</span>
+    <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Sparky&#39;</span>
+    <span class="dt">breed</span><span class="op">:</span> <span class="st">&#39;mutt&#39;</span>
+<span class="op">}</span>
+
+<span class="co">//assign an anonymous function to the `bark` property</span>
+<span class="va">dog</span>.<span class="at">bark</span> <span class="op">=</span> <span class="kw">function</span>()<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;woof!&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//call the function</span>
+<span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//logs &quot;woof!&quot;</span></code></pre></div>
+<ul>
+<li>Again, this is just like how you can assign an array as an object’s property. With an array value you would use bracket notation to use it’s “special power”; with a function value you use parentheses!</li>
+</ul>
+<p>This is how we can create an equivalent of “member functions” (or methods) for individual objects: the <code>dog</code> object now has a function <code>bark()</code>!</p>
+<div id="working-with-this" class="section level3 unnumbered">
+<h3>Working with <code>this</code></h3>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// An object representing a Dog</span>
+<span class="kw">let</span> fido <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
+  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;woofs&quot;</span>)<span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">// An object representing another Dog</span>
+<span class="kw">let</span> spot <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Spot&quot;</span><span class="op">,</span>
+  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;yips&quot;</span>)<span class="op">}</span>
+<span class="op">}</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;***This is Fido barking:***&#39;</span>)<span class="op">;</span>
+<span class="va">fido</span>.<span class="at">bark</span>( <span class="co">/*this = fido*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;***This is Spot barking***&#39;</span>)<span class="op">;</span>
+<span class="va">spot</span>.<span class="at">bark</span>( <span class="co">/*this = spot*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Spot yips&quot;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;***This is Fido using Spot&#39;s bark***&quot;</span>)<span class="op">;</span>
+<span class="va">fido</span>.<span class="at">bark</span> <span class="op">=</span> <span class="va">spot</span>.<span class="at">bark</span><span class="op">;</span> <span class="co">//assign the function</span>
+<span class="va">fido</span>.<span class="at">bark</span>( <span class="co">/*this = fido*/</span>) <span class="co">//=&gt; &quot;Fido yips&quot;</span></code></pre></div>
+<p>//note about bugs, will improve this with arrow functions</p>
+</div>
+</div>
+<div id="callback-functions" class="section level2">
+<h2><span class="header-section-number">11.3</span> Callback Functions</h2>
+<p>Moreover, functions are values, so they can be <em>passed as parameters to other functions</em>!</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># create a function `say_hello`</span>
+<span class="kw">def</span> say_hello(name):
+    <span class="bu">print</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)
+
+<span class="co"># a function that takes ANOTHER FUNCTION as an argument</span>
+<span class="co"># this function will call the argument function, passing it &quot;world&quot;</span>
+<span class="kw">def</span> do_with_world(func_to_call):
+  <span class="co"># call the given function with an argument of &quot;world&quot;</span>
+  func_to_call(<span class="st">&quot;world&quot;</span>)
+
+<span class="co"># call `do_with_world`, saying the &quot;thing to do&quot; is `say_hello`</span>
+do_with_world(say_hello)  <span class="co"># prints &quot;Hello world&quot;</span></code></pre></div>
+<p>In this case, the <code>do_with_world</code> function will <em>execute</em> whatever function it is given, passing in a value of <code>&quot;world&quot;</code>. (You can think of this as similar to having a function that accesses the <code>'world'</code> key of a given dictionary).</p>
+<ul>
+<li><strong>Important note</strong>: when we pass <code>say_hello</code> as an argument, we don’t put any parentheses after it! Putting the parentheses after the function name <em>executes</em> the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to <em>resolve</em> to its returned value, rather than being the function value itself. It’s like passing in the baked cake rather than the recipe page.</li>
+</ul>
+<p>```python def greet(): # version with no args return “Hello”</p>
+<p># print out the function print(say_hello) # prints <function say_hello>, the function</p>
+<p># resolve the expression, then print that out print(say_hello()) # prints “Hello”, which is what <code>say_hello()</code> resolves to. ```</p>
+<p>A function that is passed into another is commonly referred to as a <strong>callback function</strong>: it is an argument that the other function will “call back to” and execute when needed.</p>
+<p>Functions can take more than one <em>callback function</em> as arguments, which can be a useful way of <em>composing</em> behaviors.</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> do_at_once(first_callback, second_callback):
+    first_callback()  <span class="co"># execute the first function</span>
+    <span class="bu">print</span>(<span class="st">&quot;and&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
+    second_callback()  <span class="co"># execute the second function</span>
+    <span class="bu">print</span>(<span class="st">&quot;at the same time! &quot;</span>)
+
+<span class="kw">def</span> pat_head():
+    <span class="bu">print</span>(<span class="st">&quot;pat your head&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
+
+<span class="kw">def</span> rub_belly():
+    <span class="bu">print</span>(<span class="st">&quot;rub your belly&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
+
+<span class="co"># pass in the callbacks to &quot;do at once&quot;</span>
+do_at_once(pat_head, rub_belly)</code></pre></div>
+<p>This idea of <em>passing functions are arguments to other functions</em> is at the heart of functional programming, and is what gives it expressive power: we can define program behavior primarily in terms of the behaviors that are run, and less in terms of the data variables used.</p>
+</div>
+<div id="functional-looping" class="section level2">
+<h2><span class="header-section-number">11.4</span> Functional Looping</h2>
+<p>Why do we care about treating functions as variables, or defining anonymous lambda functions? Because doing so allows us to <em>replace loops with function calls</em> in some situations. For particular kinds of loops, this can make the code more <em>expressive</em> (more clearly indicative of what it is doing).</p>
+<div id="map" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Map</h3>
+<p>For example, consider the following loop:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(n): <span class="co"># a function that squares a number</span>
+    <span class="cf">return</span> n<span class="op">**</span><span class="dv">2</span>
+
+numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+
+squares <span class="op">=</span> []  <span class="co"># the transformed list</span>
+<span class="cf">for</span> number <span class="op">in</span> numbers:
+    transformed <span class="op">=</span> square(number)
+    squares.append(transformed)
+<span class="bu">print</span>(squares)  <span class="co"># [1, 4, 9, 16, 25]</span></code></pre></div>
+<p>This loop represents a <strong>mapping</strong> operation: it takes an original list (e.g., of numbers 1 to 5) and produces a <em>new</em> list with each of the original elements transformed in a certain way (e.g., squared). This is a common operation to apply: maybe you want to “transform” a list so that all the values are rounded or lowercase, or you want to <em>map</em> a list of words to a list of their lengths. It is possible to make these changes uses the same pattern as above: create an empty list, then loop through the original list and <code>append</code> the transformed values to the new list.</p>
+<p>However, Python also provides a <em>built-in function</em> called <strong><code>map()</code></strong> that directly peform this kind of mapping operation on a list without needing to use a loop:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(n):  <span class="co"># a function that squares a number</span>
+    <span class="cf">return</span> n<span class="op">**</span><span class="dv">2</span>
+
+numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+
+squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(square, numbers))
+<span class="bu">print</span>(squares)  <span class="co"># [1, 4, 9, 16, 25]</span></code></pre></div>
+<p>The <code>map()</code> function takes a list a produces a <em>new</em> list with each of the elements transformed. The <code>map()</code> function takes in two arguments: the second is the list to transform, and the first is the <em>name of a callback function</em> that will do the transformation. This callback function must take in a <em>single</em> argument (an element to transform) and return a value (the transformed element).</p>
+<ul>
+<li>Note that in Python 3, the <code>map()</code> function returns an <em>iterator</em>, which is a list-like sequence similar to that returned by a dictionary’s <code>keys()</code> or <code>items()</code> methods. Thus in order to interact with it as a list, it needs to be converted using the <code>list()</code> function.</li>
+</ul>
+<p>The <code>map()</code> callback function (e.g., <code>square()</code> in the above example) can also be specified using an anonymous lambda, which allows for concisely written code (but often at the expense of readability—see <em>List Comprehensions</em> below for a more elegant, Pythonic solution).</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> n:n<span class="op">**</span><span class="dv">2</span>, numbers))</code></pre></div>
+</div>
+<div id="filter" class="section level3">
+<h3><span class="header-section-number">11.4.2</span> Filter</h3>
+<p>A second common operation is to <strong>filter</strong> a list of elements, removing elements that we don’t want (or more accurately: only keeping elements that we DO want). For example, consider the following loop:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(n):  <span class="co"># a function that determines if a number is even</span>
+    remainder <span class="op">=</span> n <span class="op">%</span> <span class="dv">2</span>  <span class="co"># get remainder when dividing by 2 (modulo operator)</span>
+    <span class="cf">return</span> remainder <span class="op">==</span> <span class="dv">0</span>  <span class="co"># True if no remainder, False otherwise</span>
+
+numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>]  <span class="co"># an initial list</span>
+
+evens <span class="op">=</span> []  <span class="co"># the filtered list</span>
+<span class="cf">for</span> number <span class="op">in</span> numbers:
+    <span class="cf">if</span> is_even(number):
+      evens.append(number)
+<span class="bu">print</span>(evens)  <span class="co"># [2, 8]</span></code></pre></div>
+<p>With this <strong>filtering</strong> loop, we are <em>keeping</em> the values for which the <code>is_even()</code> function returns true (the function determines “what to let in” not “what to keep out”), which we do by appending the “good” values to a new list.</p>
+<p>Similar to <code>map()</code>, Python provides a <em>built-in function</em> called <strong><code>filter()</code></strong> that will directly perform this filtering:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(n):  <span class="co"># a function that determines if a number is even</span>
+    <span class="cf">return</span> (n <span class="op">%</span> <span class="dv">2</span>) <span class="op">==</span> <span class="dv">0</span>  <span class="co"># True if no remainder, False otherwise</span>
+
+numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>]  <span class="co"># an initial list</span>
+
+evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(is_even, numbers))
+<span class="bu">print</span>(evens)  <span class="co"># [2, 8]</span></code></pre></div>
+<p>The <code>filter()</code> function takes a list a produces a <em>new</em> list that contains only the elements that <em>do match</em> a specific criteria. The <code>filter()</code> function takes in two arguments: the second is the list to filter, and the first is the <em>name of a callback function</em> that will do the filtering. This callback function must take in a <em>single</em> argument (an element to consider) and return <code>True</code> if the element should be included in the filtered list (or <code>False</code> if it should not be included).</p>
+<p>Because <code>map()</code> and <code>filter()</code> both produce list-like sequences, it is possible to take the returned value from one function and pass it in as the argument to the next. For example:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]
+
+<span class="co"># get the squares of EVEN numbers only</span>
+filtered <span class="op">=</span> <span class="bu">filter</span>(is_even, numbers)  <span class="co"># filter the numbers</span>
+squares <span class="op">=</span> <span class="bu">map</span>(square, filtered)  <span class="co"># map the filtered values</span>
+<span class="bu">print</span>(<span class="bu">list</span>(squares))  <span class="co"># [4, 16, 36]</span>
+
+<span class="co"># or in one statement, passing results anonymously</span>
+squares <span class="op">=</span> <span class="bu">map</span>(square,
+          <span class="bu">filter</span>(is_even,
+          numbers))  <span class="co"># watch out for the parentheses!</span>
+<span class="bu">print</span>(<span class="bu">list</span>(squares))  <span class="co"># [4, 16, 36]</span></code></pre></div>
+<p>This structure can potentially make it easier to understand the code’s intent: it is “<code>square</code>ing the <code>is_even</code> <code>numbers</code>”!</p>
+</div>
+<div id="reduce" class="section level3">
+<h3><span class="header-section-number">11.4.3</span> Reduce</h3>
+<p>The third important operation in functional programming (besides <em>mapping</em> and <em>filtering</em>) is <strong>reducing</strong> a list. Reducing a list means to <em>aggregate</em> that lists values togther, transforming the list into a single value. For example, the built-in <code>sum()</code> function is a <em>reducing</em> operation (and in fact, the most common one!): it reduces a list of numbers to a single summed value.</p>
+<ul>
+<li>You can think of <code>reduce()</code> as a <em>generalization</em> of the <code>sum()</code> function—but rather than just adding (<code>+</code>) the values together, <code>reduce()</code> allows you to specify what operation to perform when aggregating (e.g., <a href="https://en.wikipedia.org/wiki/Factorial">multiplication</a>).</li>
+</ul>
+<p>Because the <code>reduce()</code> function can be complex to interpret, it was actually <em>removed</em> from the set of “core” built-in functions in Python 3 and relegated to the <code>functools</code> module. Thus we need to import the function in order to use it:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></code></pre></div>
+<p>To understand how a <em>reduce</em> operation works, consider the following basic loop:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> multiply(x, y): <span class="co"># a function that multiplies two numbers</span>
+    <span class="cf">return</span> x<span class="op">*</span>y
+
+numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+
+running_total <span class="op">=</span> <span class="dv">1</span>  <span class="co"># an accumulated aggregate</span>
+<span class="cf">for</span> number <span class="op">in</span> numbers:
+    running_total <span class="op">=</span> multiply(running_total, number)
+<span class="bu">print</span>(running_total)  <span class="co"># 120  (1*2*3*4*5)</span></code></pre></div>
+<p>This loop <strong>reduces</strong> the list into an “accumulated” product (factorial) of all the numbers in the list. Inside the loop, the <code>multiply()</code> function is called and passed the “current total” and the “new value” to be combined into the aggregate (<em>in that order</em>). The resulting total is then reassigned as the “current total” for the next iteration.</p>
+<p>The <strong><code>reduce()</code></strong> function does exactly this work: it takes as arguments a <em>callback</em> function used to combine the current running total with the new value, and a list of values to combine. Whereas the <code>map()</code> and <code>filter()</code> callback functions each took 1 argument, the <code>reduce()</code> callback function requires <strong>2</strong> arguments: the first will be the “running total”, and the second will be the “new value” to mix into the aggregate. (While this ordering doesn’t influence the factorial example, it is relevant for other operations):</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> multiply(x, y): <span class="co"># a function that multiplies two numbers</span>
+    <span class="cf">return</span> x<span class="op">*</span>y
+
+numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+
+product <span class="op">=</span> <span class="bu">reduce</span>(multiply, numbers)
+<span class="bu">print</span>(product)  <span class="co"># 120</span></code></pre></div>
+<ul>
+<li>The <code>reduce()</code> function aggregates into a single value, so the result doesn’t need to be converted from an <em>iterator</em> to a list!</li>
+</ul>
+<p>To summarize, the <code>map()</code>, <code>filter()</code>, and <code>reduce()</code> operations work as follows:</p>
+<div class="figure">
+<img src="img/map-filter-reduce-in-emoji-python.png" alt="Map, filter, reduce explained with emoji" />
+<p class="caption">Map, filter, reduce explained with emoji</p>
+</div>
+<p>All together, the <strong>map</strong>, <strong>filter</strong>, and <strong>reduce</strong> operations form the basic for a functional consideration of a program. Indeed, these kinds of operations are very common when discussing data manipulations: for example, the famous <a href="https://en.wikipedia.org/wiki/MapReduce">MapReduce</a> model involves “mapping” each element through a complex function (on a different computer no less!), and then “reducing” the results into a single answer.</p>
+</div>
+</div>
+<div id="pure-functional-programming" class="section level2">
+<h2><span class="header-section-number">11.5</span> Pure Functional Programming</h2>
+<p>//avoiding side effects, etc.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="javascript.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info343/book/edit/master/functional-programming.Rmd",
+"text": "Edit"
+},
+"download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+</body>
+
+</html>

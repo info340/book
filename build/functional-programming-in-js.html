@@ -25,15 +25,15 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-04">
+<meta name="date" content="2017-10-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="machine-setup.html">
-<link rel="next" href="html-fundamentals.html">
+<link rel="prev" href="javascript.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -59,43 +59,6 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -249,6 +212,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
 <li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming-in-js.html"><a href="functional-programming-in-js.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -269,85 +233,18 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="client-side-development" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Client-Side Development</h1>
-<p>Web development is the process of implementing (programming) web sites and applications that users can access over the internet. However, the internet is a network involving <em>many</em> different computers all communicating with one another. These computers can be divided into two different groups: <strong>servers</strong> store (“host”) content and provide (“serve”) it to other computers, while <strong>clients</strong> request that content and then present it to the human users.</p>
-<p>Consider the process of viewing a basic web page, such as the <a href="https://en.wikipedia.org/wiki/Informatics">Wikipedia entry on Informatics</a>. In order to visit this page, the user types the web address (<code>https://en.wikipedia.org/wiki/Informatics</code>) into the URL bar, or clicks on a link to go to the page. In either case, user’s computer is the <strong>client</strong>, and their browser takes that address or link and uses it to create an <strong>HTTP Request</strong>—a <em>request</em> for data sent following the <em><strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol</em>. This request is like a letter asking for information, and is sent to a different computer: the <strong>web server</strong> that contains that information.</p>
-<div class="figure">
-<img src="img/client-side/client-server-comm.png" alt="A diagram of client/server communication." />
-<p class="caption">A diagram of client/server communication.</p>
-</div>
-<p>The web server will receive this request, and based on its content (e.g., where it was sent to) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for respond to user interaction (button clicks), images or other assets to show, and so forth.</p>
-<p>The client’s web browser will then take all of these different files in the response and use them to <em>render</em> the web page for the user to see: it wil determine what text to show, what font and color to make that text, where to put the images, and is ready to do something else when the user clicks on one of those images. Indeed, a web browser is just a computer program that is able to send HTTP requests on behalf of the user, and then render the resulting response.</p>
-<p>Given this interaction, <strong>client-side web development</strong> involves implementing programs (writing code) that is interpreted by the <em>browser</em>, and so is executed by the client. It is authoring the code that is sent in the server’s response. This code specifies how websites should appear and how the user should interact with them. On the other hand, <strong>server-side web development</strong> involves implementing programs that the <em>server</em> uses to determine which client-side code is delivered. As an example, a server-side program contains the logic to determine which cat picture should be sent along with the request, while a client-side program contains the logic about where and how that picture should appear on the page.</p>
-<p>This course focuses on <em>client-side web development</em>, or developing programs that are executed by the browser (generally as a response to a web server request). While we will cover how client-side programs can interact with a server, many of the concepts discussed here can also be run inside a browser without relying on an external server (called “running locally”).</p>
-<div id="client-side-file-types" class="section level2">
-<h2><span class="header-section-number">2.1</span> Client-Side File Types</h2>
-<p>It is the web browser’s job to interpret and render the source code files sent by a server as part of an HTTP response. As a client-side web programmer, your task is to write this source code for the browser to interpret. There are multiple different types of source code files, including:</p>
-<ul>
-<li><p><strong><code>.html</code></strong> files containing code written in HTML (HyperText Markup Language). This code will specify the textual and <em>semantic</em> content of the web page. See the chapter <a href="html-fundamentals.html#html-fundamentals">HTML Fundamentals</a> for details on HTML.</p></li>
-<li><p><strong><code>.css</code></strong> files containing code written in CSS (Cascading Style Sheets). This code is used to specify styling and <em>visual appearance</em> properties (e.g., color and font) for the HTML content. See the chapter <a href="#css-fundamentals">CSS Fundamentals</a> for details on CSS.</p></li>
-<li><p><strong><code>.js</code></strong> files containing code written in JavaScript. This code is used to specify <em>interactive behaviors</em> that the website will perform—for example, what should change when the user clicks a button. Note that JavaScript code are “programs” that sent over by the web server as part of the response, but are <em>executed</em> on the client’s computer. See the chapter <a href="#javascript-fundamentals">JavaScript Fundamentals</a> for details on JavaScript.</p></li>
-</ul>
-<p>HTTP responses may also include additional <strong>asset</strong> files, such as images (<code>.png</code>, <code>.jpg</code>, <code>.gif</code>, etc), fonts, video or music files, etc.</p>
-</div>
-<div id="http-requests-and-servers" class="section level2">
-<h2><span class="header-section-number">2.2</span> HTTP Requests and Servers</h2>
-<p>Modern web browsers are able to <em>render</em> (interpret and display) all of these types of files, combining them together into the modern, interactive web pages you use every day. In fact, you can open up almost any file inside a web browser, such as by right-clicking on the file and selecting “Open With”, or dragging the file into the browser program. HTML files act as the basis for web pages, so you can open a <code>.html</code> file inside your web browser by double-clicking on it (the same way you would open a <code>.docx</code> file in MS Word):</p>
-<div class="figure">
-<img src="img/client-side/plain-site.png" alt="An very simple HTML file. See Chapter 3 for source code." />
-<p class="caption">An very simple HTML file. See Chapter 3 for source code.</p>
-</div>
-<!-- this is borrowed from the 201 book; keep in sync with that -->
-<p>Consider the URL bar in the above browser. The URL (Uniform Resource Locator) is actually a specialized version of a <strong>URI (Uniform Resource Identifier)</strong>. URIs act a lot like the <em>address</em> on a postal letter sent within a large organization such as a university: you indicate the business address as well as the department and the person, and will get a different response (and different data) from Alice in Accounting than from Sally in Sales.</p>
-<ul>
-<li>Note that the URI is the <strong>identifier</strong> (think: variable name) for the resource, while the <strong>resource</strong> is the actual <em>data</em> value (the file) that you want to access.</li>
-</ul>
-<p>Like postal letter addresses, URIs have a very specific format used to direct the request to the right resource.</p>
-<div class="figure">
-<img src="img/client-side/uri-schema.png" title="URI schema" alt="The format (schema) of a URI." />
-<p class="caption">The format (schema) of a URI.</p>
-</div>
-<p>The parts of this URI format include:</p>
-<ul>
-<li><p><strong><code>scheme</code></strong> (also <strong><code>protocol</code></strong>): the “language” that the computer will use to send the request for the resource (file).</p>
-<p>In the example browser window above, the protocol is <code>file</code>, meaning that the computer is accessing the resource from the file system. When sending requests to web servers, you would use <code>https</code> (<strong>s</strong>ecure HTTP). <em>Don’t use insecure <code>http</code>!</em></p>
-<p>Web page <em>hyperlinks</em> often include URIs with the <a href="https://css-tricks.com/snippets/html/mailto-links/"><code>mailto</code></a> protocol (for email links) or the <a href="https://developers.google.com/web/fundamentals/device-access/click-to-call/click-to-call"><code>tel</code></a> for phone numbers.</p></li>
-<li><p><strong><code>domain</code></strong>: the address of the web server to request information from. You can think of this as the recipient of the request letter.</p>
-<p>In the browser window example, there is no domain because the <code>file</code> protocol doesn’t require it.</p></li>
-<li><p><strong><code>port</code></strong> (<em>optional</em>): used to determine where to connect to the web server. By default, web requests use port 80, but some web servers accept connections on other ports—e.g., <code>8080</code>, <code>8000</code> and <code>3000</code> are all common on development servers, described below.</p></li>
-<li><p><strong><code>path</code></strong>: which resource on that web server you wish to access. For the <code>file</code> protocol, this is the <em>absolute path</em> to the file. But even when using <code>https</code>, for many web servers, this will be the <em>relative path</em> to the file, starting from the “root” folder of that server (which may not be the computer’s root folder). For example, if a server used <code>/Users/joelross/</code> as its root, then the <em>path</em> to the above HTML file would be <code>Desktop/index.html</code> (e.g., <code>https://domain/Desktop/index.html</code>).</p>
-<p><strong>Important!</strong> If you don’t specify a path, most web servers will serve the file named <code>index.html</code> from that server’s root folder (i.e., the path “defaults” to <code>index.html</code>). As such, this is the traditional name for the HTML file containing a websites home page.</p>
-<p class="alert alert-warning">
-As in any program, you should always use <strong>relative</strong> paths in web programming, and these paths are frequently (but not always!) relative to the web server’s <em>root folder</em>.
-</p></li>
-<li><strong><code>query</code></strong> (<em>optional</em>): extra <strong>parameters</strong> (arguments) included in the request about what resource to access. The leading <code>?</code> is part of the query.</li>
-<li><p><strong><code>fragment</code></strong> (<em>optional</em>): indicates which part (“fragment”) of the resource to access. This is used for example to let the user “jump” to the middle of a web page. The leading <code>#</code> is part of the query.</p></li>
-</ul>
-<div id="development-servers" class="section level3 unnumbered">
-<h3>Development Servers</h3>
-<p>As noted above, it is possible to request a <code>.html</code> file (open a web page) using the <code>file</code> protocol by simply opening that file directly in the browser. This works fine for testing most client-side programs. However, there are a few client-side interactions that for <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">security reasons</a> only work if a web page is requested from a web server (e.g., via the <code>http</code> protocol).</p>
-<p>For this reason, it is recommended that you develop client-side web applications using a <strong>local development web server</strong>. This is a web server that you run from your own computer—your machine acts as a web server, and you use the browser to have your computer send a request <em>to itself</em> for the webpage. Think about mailing yourself a letter. Development web servers can help get around cross-origin request restrictions, as well as offer additional benefits to speed development—such as <em>automatically reloading the web browser when the source code changes</em>.</p>
-<p>There are many different ways to run a simple development server from the command-line (such as using the Python <code>http.server</code> module). These servers, when started, will “serve” files using the current directory as the “root” folder. So again, if you start a server from <code>/Users/joelross</code>, you will be able to access the <code>Desktop/index.html</code> file at <code>http://127.0.0.1:port/Desktop/index.html</code> (which port will depend on which development server you use).</p>
-<ul>
-<li><p>The address <code>127.0.0.1</code> is the IP address for <code>localhost</code> which is the domain of your local machine (the “local host”). Most development servers, when started, will tell you the URL for the server’s root directory.</p></li>
-<li><p>Most commonly, you will want to start the web server from the root directory of your <em>project</em>, so that the relative path <code>index.html</code> finds the file you expect.</p></li>
-<li><p>You can usually stop a command-line development server with the universal <code>ctrl-c</code> cancel command. Otherwise, you’ll want to leave the server running in a background terminal as long as you are working on your project.</p></li>
-</ul>
-<p class="alert alert-success">
-If you use the recommended <a href="https://github.com/tapio/live-server"><strong>live-server</strong></a> utility, it will open a web browser to the root folder and <em>automatically reload the page</em> whenever you <strong>save</strong> changes to a file in that folder. This will make your life much, much better.
-</p>
+<div id="functional-programming-in-js" class="section level1">
+<h1><span class="header-section-number">Chapter 11</span> Functional Programming in JS</h1>
+<p>Coming soon…</p>
 
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="machine-setup.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="html-fundamentals.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="javascript.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -376,7 +273,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info343/book/edit/master/client-side.Rmd",
+"link": "https://github.com/info343/book/edit/master/functional-programming.Rmd",
 "text": "Edit"
 },
 "download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
@@ -388,17 +285,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

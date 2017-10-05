@@ -22,7 +22,7 @@ rmd_files:
 
   ## JavaScript
   - javascript.Rmd
-  #- functional-programming.Rmd
+  # - functional-programming.Rmd
   #- dom.Rmd
   #- jquery.RmD
   #- ajax.Rmd
