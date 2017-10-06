@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-04">
+<meta name="date" content="2017-10-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -253,16 +253,17 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
 <li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a><ul>
-<li><a href="functional-programming.html#working-with-this">Working with <code>this</code></a></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
 </ul></li>
-<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a></li>
 <li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
-<li class="chapter" data-level="11.4.1" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i><b>11.4.1</b> Map</a></li>
-<li class="chapter" data-level="11.4.2" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i><b>11.4.2</b> Filter</a></li>
-<li class="chapter" data-level="11.4.3" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i><b>11.4.3</b> Reduce</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functional-programming"><i class="fa fa-check"></i><b>11.5</b> Pure Functional Programming</a></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -293,7 +294,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>In JavaScript, <strong>functions ARE variables</strong>:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a function called `sayHello`</span>
 <span class="kw">function</span> <span class="at">sayHello</span>(name) <span class="op">{</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
 <span class="op">}</span>
 
 <span class="co">//what kind of thing is `sayHello` ?</span>
@@ -306,7 +307,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <p>And because functions are just another type of variable, they can be used <strong>anywhere</strong> that a “regular” variable can be used. For example, functions are values, so they can be assigned to other variables!</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a function called `sayHello`</span>
 <span class="kw">function</span> <span class="at">sayHello</span>(name) <span class="op">{</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
 <span class="op">}</span>
 
 <span class="co">//assign the `sayHello` value to a new variable `greet`</span>
@@ -325,20 +326,20 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <span class="va">console</span>.<span class="at">log</span>( [<span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span>] )<span class="op">;</span> <span class="co">//pass in anonymous value</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//named function (normal)</span>
 <span class="kw">function</span> <span class="at">sayHello</span>(person)<span class="op">{</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
 <span class="op">}</span>
 
 <span class="co">//an anonymous function (with no name!)</span>
 <span class="co">//(We can&#39;t reference this without a name, so writing an anonymous function is</span>
 <span class="co">//not a valid statement)</span>
 <span class="kw">function</span>(person) <span class="op">{</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
 <span class="op">}</span>
 
 <span class="co">//anonymous function (value) assigned to variable</span>
 <span class="co">//equivalent to the version in the previous example</span>
 <span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>(person) <span class="op">{</span>
-  <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>person)<span class="op">;</span>
 <span class="op">}</span></code></pre></div>
 <ul>
 <li>You can think of this structure as equivalent to declaring and assigning an array <code>let myVar = [1,2,3]</code>… just in this case instead of taking the anonymous array (right-hand side) and giving it a name, we’re taking an <em>anonymous function</em> and giving it a name!</li>
@@ -381,185 +382,360 @@ let sayHello = function(name) { console.log("Hello, "+name); }
 <li>Again, this is just like how you can assign an array as an object’s property. With an array value you would use bracket notation to use it’s “special power”; with a function value you use parentheses!</li>
 </ul>
 <p>This is how we can create an equivalent of “member functions” (or methods) for individual objects: the <code>dog</code> object now has a function <code>bark()</code>!</p>
-<div id="working-with-this" class="section level3 unnumbered">
-<h3>Working with <code>this</code></h3>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">// An object representing a Dog</span>
-<span class="kw">let</span> fido <span class="op">=</span> <span class="op">{</span>
-  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
-  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;woofs&quot;</span>)<span class="op">}</span>
-<span class="op">}</span>
+<ul>
+<li>Similar to Java, you can refer to the <em>object on which a function is called</em> using the keyword <code>this</code>. Note that the manner in which the <code>this</code> variable is assigned can lead to some subtle errors when using callback functions (below). For more details, see <a href="#es6">the chapter on ES6 features</a>.</li>
+</ul>
+<!-- ### Working with <code>this</code> {-}
 
-<span class="co">// An object representing another Dog</span>
-<span class="kw">let</span> spot <span class="op">=</span> <span class="op">{</span>
-  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Spot&quot;</span><span class="op">,</span>
-  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;yips&quot;</span>)<span class="op">}</span>
-<span class="op">}</span>
+```js
+// An object representing a Dog
+let fido = {
+  name: "Fido",
+  bark: function() { console.log(this.name, "woofs")}
+}
 
-<span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;***This is Fido barking:***&#39;</span>)<span class="op">;</span>
-<span class="va">fido</span>.<span class="at">bark</span>( <span class="co">/*this = fido*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span>
+// An object representing another Dog
+let spot = {
+  name: "Spot",
+  bark: function() { console.log(this.name, "yips")}
+}
 
-<span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;***This is Spot barking***&#39;</span>)<span class="op">;</span>
-<span class="va">spot</span>.<span class="at">bark</span>( <span class="co">/*this = spot*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Spot yips&quot;</span>
+console.log('***This is Fido barking:***');
+fido.bark( /*this = fido*/ ); //=> "Fido woofs"
 
-<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;***This is Fido using Spot&#39;s bark***&quot;</span>)<span class="op">;</span>
-<span class="va">fido</span>.<span class="at">bark</span> <span class="op">=</span> <span class="va">spot</span>.<span class="at">bark</span><span class="op">;</span> <span class="co">//assign the function</span>
-<span class="va">fido</span>.<span class="at">bark</span>( <span class="co">/*this = fido*/</span>) <span class="co">//=&gt; &quot;Fido yips&quot;</span></code></pre></div>
-<p>//note about bugs, will improve this with arrow functions</p>
-</div>
+console.log('***This is Spot barking***');
+spot.bark( /*this = spot*/ ); //=> "Spot yips"
+
+console.log("***This is Fido using Spot's bark***");
+fido.bark = spot.bark; //assign the function
+fido.bark( /*this = fido*/) //=> "Fido yips"
+```
+ -->
 </div>
 <div id="callback-functions" class="section level2">
 <h2><span class="header-section-number">11.3</span> Callback Functions</h2>
-<p>Moreover, functions are values, so they can be <em>passed as parameters to other functions</em>!</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co"># create a function `say_hello`</span>
-<span class="kw">def</span> say_hello(name):
-    <span class="bu">print</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)
+<p>Finally, functions are values, so they can be <em>passed as parameters to other functions</em>!</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a function `sayHello`</span>
+<span class="kw">function</span> <span class="at">sayHello</span>(name)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+<span class="op">}</span>
 
-<span class="co"># a function that takes ANOTHER FUNCTION as an argument</span>
-<span class="co"># this function will call the argument function, passing it &quot;world&quot;</span>
-<span class="kw">def</span> do_with_world(func_to_call):
-  <span class="co"># call the given function with an argument of &quot;world&quot;</span>
-  func_to_call(<span class="st">&quot;world&quot;</span>)
+<span class="co">//a function that takes ANOTHER FUNCTION as an argument</span>
+<span class="co">//this function will call the argument function, passing it &quot;world&quot;</span>
+<span class="kw">function</span> <span class="at">doWithWorld</span>(funcToCall)<span class="op">{</span>
+    <span class="co">//call the given function with an argument of &quot;world&quot;</span>
+    <span class="at">funcToCall</span>(<span class="st">&quot;world&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>
 
-<span class="co"># call `do_with_world`, saying the &quot;thing to do&quot; is `say_hello`</span>
-do_with_world(say_hello)  <span class="co"># prints &quot;Hello world&quot;</span></code></pre></div>
-<p>In this case, the <code>do_with_world</code> function will <em>execute</em> whatever function it is given, passing in a value of <code>&quot;world&quot;</code>. (You can think of this as similar to having a function that accesses the <code>'world'</code> key of a given dictionary).</p>
+<span class="at">doWithWorld</span>(sayHello)<span class="op">;</span>  <span class="co">//logs &quot;Hello world&quot;;</span></code></pre></div>
+<p>In this case, the <code>doWithWorld</code> function will <em>execute</em> whatever function it is given, passing in a value of <code>&quot;world&quot;</code>. (You can kind of think of this as similar to having a function that accesses the <code>'world'</code> property of a given object).</p>
 <ul>
-<li><strong>Important note</strong>: when we pass <code>say_hello</code> as an argument, we don’t put any parentheses after it! Putting the parentheses after the function name <em>executes</em> the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to <em>resolve</em> to its returned value, rather than being the function value itself. It’s like passing in the baked cake rather than the recipe page.</li>
+<li><p><strong>Important note</strong>: when we pass <code>sayHello</code> as an argument, we don’t put any parentheses after it! Putting the parentheses after the function name <em>executes</em> the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to <em>resolve</em> to its returned value, rather than being the function value itself. It’s like passing in the baked cake rather than the recipe page.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">greet</span>() <span class="op">{</span>  <span class="co">//version with no args for clarity</span>
+    <span class="cf">return</span> <span class="st">&quot;Hello&quot;</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//log out the function value itself</span>
+<span class="va">console</span>.<span class="at">log</span>(greet)<span class="op">;</span>  <span class="co">//logs e.g., [Function: greet], the function</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="at">greet</span>())<span class="op">;</span>  <span class="co">//logs &quot;Hello&quot;, which is what `sayHello()` resolves to</span></code></pre></div></li>
 </ul>
-<p>```python def greet(): # version with no args return “Hello”</p>
-<p># print out the function print(say_hello) # prints <function say_hello>, the function</p>
-<p># resolve the expression, then print that out print(say_hello()) # prints “Hello”, which is what <code>say_hello()</code> resolves to. ```</p>
 <p>A function that is passed into another is commonly referred to as a <strong>callback function</strong>: it is an argument that the other function will “call back to” and execute when needed.</p>
-<p>Functions can take more than one <em>callback function</em> as arguments, which can be a useful way of <em>composing</em> behaviors.</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> do_at_once(first_callback, second_callback):
-    first_callback()  <span class="co"># execute the first function</span>
-    <span class="bu">print</span>(<span class="st">&quot;and&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
-    second_callback()  <span class="co"># execute the second function</span>
-    <span class="bu">print</span>(<span class="st">&quot;at the same time! &quot;</span>)
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">doLater</span>(callback) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I&#39;m waiting a bit...&quot;</span>)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Okay, time to work!&quot;</span>)<span class="op">;</span>
+    <span class="at">callback</span>()<span class="op">;</span>  <span class="co">//&quot;call back&quot; and execute that function</span>
+<span class="op">}</span>
 
-<span class="kw">def</span> pat_head():
-    <span class="bu">print</span>(<span class="st">&quot;pat your head&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
+<span class="kw">function</span> <span class="at">doHomework</span>() <span class="op">{</span>
+    <span class="co">// ...</span>
+<span class="op">};</span>
 
-<span class="kw">def</span> rub_belly():
-    <span class="bu">print</span>(<span class="st">&quot;rub your belly&quot;</span>, end<span class="op">=</span><span class="st">&quot; &quot;</span>)
+<span class="at">doLater</span>(doHomework)<span class="op">;</span></code></pre></div>
+<p>Functions can take more than one callback function as arguments, which can be a useful way of <em>composing</em> behaviors.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">doTogether</span>(firstCallback<span class="op">,</span> secondCallback)<span class="op">{</span>
+    <span class="at">firstCallback</span>()<span class="op">;</span>  <span class="co">//execute the first function</span>
+    <span class="at">secondCallback</span>()<span class="op">;</span>  <span class="co">//execute the second function</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;at the same time!&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
 
-<span class="co"># pass in the callbacks to &quot;do at once&quot;</span>
-do_at_once(pat_head, rub_belly)</code></pre></div>
-<p>This idea of <em>passing functions are arguments to other functions</em> is at the heart of functional programming, and is what gives it expressive power: we can define program behavior primarily in terms of the behaviors that are run, and less in terms of the data variables used.</p>
+<span class="kw">function</span> <span class="at">patHead</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;pat your head&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">function</span> <span class="at">rubBelly</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;rub your belly&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//pass in the callbacks to do them together</span>
+<span class="at">doTogether</span>(patHead<span class="op">,</span> rubBelly)<span class="op">;</span></code></pre></div>
+<p>This idea of <em>passing functions are arguments to other functions</em> is at the heart of functional programming, and is what gives it expressive power: we can define program behavior primarily in terms of the behaviors that are run, and less in terms of the data variables used. Moreover, callback functions are vital for supporting <strong>interactivity</strong>: many built-in JavaScript functions take in a callback function that specifies what should occur at some specific time (e.g., when the user clicks a button).</p>
+<p>Often a callback function will be defined just to be passed into a single other function. This makes naming the callback somewhat redundant, and so it is more common to utilize <strong>anonymous callback functions</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//name anonymous function by assigning to variable</span>
+<span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>(name)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">function</span> <span class="at">doWithWorld</span>(funcToCall)<span class="op">{</span>
+    <span class="at">funcToCall</span>(<span class="st">&quot;world&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//pass the named function by name</span>
+<span class="at">doWithWorld</span>(sayHello)<span class="op">;</span>
+
+<span class="co">//pass in anonymous version of the function</span>
+<span class="at">doWithWorld</span>(<span class="kw">function</span>(name)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>In a way, we’ve just “copy-and-pasted” the anonymous value (which happens to be a function) into the <code>doWithWorld()</code> call—just as you would do with any other anonymous variable type.</p></li>
+<li><p>Look carefully at the location of the closing brace <code>}</code> and parenthesis <code>)</code> on the last line. The brace ends the definition of the anonymous function value (the first and only parameter to <code>doWithWorld</code>), and the parenthesis ends <em>the parameter list</em> of the <code>doWithWorld</code> function. You need to include both for the syntax to be valid!</p>
+<ul>
+<li>And since anonymous functions can be defined within other anonymous functions, it is not unusual to have lots of <code>})</code> lines in your code.</li>
+</ul></li>
+</ul>
+<div id="closures" class="section level3 unnumbered">
+<h3>Closures</h3>
+<p>Functions are values, so not only can then be passed as parameters to other functions, they can also be <em>returned as results</em> of other functions!</p>
+<!-- https://slides.com/joelross/arch-w17-typescript/edit #26-->
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//This function produces ANOTHER FUNCTION</span>
+<span class="co">//which greets a person with a given greeting</span>
+<span class="kw">function</span> <span class="at">makeGreeterFunc</span>(greeting)<span class="op">{</span>
+    <span class="co">//explicitly store the param as a local variable (for clarity)</span>
+    <span class="kw">let</span> localGreeting <span class="op">=</span> greeting<span class="op">;</span>
+
+    <span class="co">//A new function that uses the `greeting` param</span>
+    <span class="co">//this is just a value!</span>
+    <span class="kw">let</span> aGreeterFunc <span class="op">=</span> <span class="kw">function</span>(name)<span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(localGreeting<span class="op">+</span><span class="st">&quot; &quot;</span><span class="op">+</span>name)<span class="op">;</span>
+    <span class="op">}</span>
+
+    <span class="cf">return</span> aGreeterFunc<span class="op">;</span> <span class="co">//return the value (which happens to be a function)</span>
+<span class="op">}</span>
+
+<span class="co">//Use the &quot;maker&quot; to create two new functions</span>
+<span class="kw">let</span> sayHello <span class="op">=</span> <span class="at">makeGreeterFunc</span>(<span class="st">&#39;Hello&#39;</span>)<span class="op">;</span> <span class="co">//says &#39;Hello&#39; to a name</span>
+<span class="kw">let</span> sayHowdy <span class="op">=</span> <span class="at">makeGreeterFunc</span>(<span class="st">&#39;Howdy&#39;</span>)<span class="op">;</span> <span class="co">//says &#39;Howdy&#39; to a name</span>
+
+<span class="co">//call the functions that were made</span>
+<span class="at">sayHello</span>(<span class="st">&#39;world&#39;</span>)<span class="op">;</span> <span class="co">//&quot;Hello world&quot;</span>
+<span class="at">sayHello</span>(<span class="st">&#39;Dave&#39;</span>)<span class="op">;</span> <span class="co">//&quot;Hello Dave&quot;</span>
+<span class="at">sayHowdy</span>(<span class="st">&#39;world&#39;</span>)<span class="op">;</span> <span class="co">//&quot;Howdy wold&quot;</span>
+<span class="at">sayHowdy</span>(<span class="st">&#39;partner&#39;</span>)<span class="op">;</span> <span class="co">//&quot;Howdy partner&quot;</span></code></pre></div>
+<ul>
+<li><p>In this example, we’ve defined a function <code>makeGreeterFunc</code> that takes in some information (a greeting) as a parameter. It uses that information to create a new function <code>aGreeterFunc</code>—this function will have different behavior depending on the parameter (e.g., it can say “Hello” or “Howdy” or any other greeting given). We then return this new <code>aGreeterFunc</code> so that it can be used later (outside of the “maker” function).</p>
+<p>When we then call the <code>makeGreeterFunc()</code>, the result (a function) is assigned to a variable (e.g., <code>sayHello</code>). And because that result is a function, we can call it with a parameter! Thus <code>makeGreeterFunc</code> acts a bit like a “factory” for making other functions, which can then be used where needed.</p></li>
+</ul>
+<p>The most significant part of this example is the <em>scoping</em> of the <code>greeting</code> variable (and its <code>localGreeting</code> alias). Normally, you would think about <code>localGreeting</code> as being scoped to <code>makeGreeterFunc</code>—once the maker function is finished, then the <code>localGreeting</code> variable should be lost. However, the <code>greeting</code> variable was in scope when the <code>aGreeterFunc</code> was created, and thus <em>remains in scope</em> (available) for that <code>aGreeteFunc</code> even after the maker function has returned!</p>
+<p>This structure in which a function “remembers” its context (the in-scope variables around it) is called a <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md"><strong>closure</strong></a>. Even though the <code>localGreeting</code> variable was scoped outside of the <code>aGreeterFunc</code>, it has been <em>enclosed</em> by that function so it continues to be available later. Closures are one of the most powerful yet confusing techniques in JavaScript, and are a highly effective way of saving data in variables (instead of relying on global variables or other poor programming styles). They will also be useful when dealing with some problems introduced by <a href="#ajax">Asynchronous Programming</a></p>
+</div>
 </div>
 <div id="functional-looping" class="section level2">
 <h2><span class="header-section-number">11.4</span> Functional Looping</h2>
-<p>Why do we care about treating functions as variables, or defining anonymous lambda functions? Because doing so allows us to <em>replace loops with function calls</em> in some situations. For particular kinds of loops, this can make the code more <em>expressive</em> (more clearly indicative of what it is doing).</p>
-<div id="map" class="section level3">
-<h3><span class="header-section-number">11.4.1</span> Map</h3>
-<p>For example, consider the following loop:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(n): <span class="co"># a function that squares a number</span>
-    <span class="cf">return</span> n<span class="op">**</span><span class="dv">2</span>
+<p>Another way that functional programming and callback functions specifically are utilized is to <em>replace loops with function calls</em>. For a number of common looping patterns, this can make the code more <em>expressive</em>—more clearly indicative of what it is doing and thus easier to understand. Functional looping was introduced in <code>ES5</code>.</p>
+<p>To understand functional looping, first consider the common for loop used to iterate through an array of objects:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">}</span>]<span class="op">;</span>
 
-numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+<span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="va">array</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>)<span class="op">{</span>
+    <span class="kw">let</span> currentItem <span class="op">=</span> array[i]<span class="op">;</span> <span class="co">//convenience variable for current item</span>
 
-squares <span class="op">=</span> []  <span class="co"># the transformed list</span>
-<span class="cf">for</span> number <span class="op">in</span> numbers:
-    transformed <span class="op">=</span> square(number)
-    squares.append(transformed)
-<span class="bu">print</span>(squares)  <span class="co"># [1, 4, 9, 16, 25]</span></code></pre></div>
-<p>This loop represents a <strong>mapping</strong> operation: it takes an original list (e.g., of numbers 1 to 5) and produces a <em>new</em> list with each of the original elements transformed in a certain way (e.g., squared). This is a common operation to apply: maybe you want to “transform” a list so that all the values are rounded or lowercase, or you want to <em>map</em> a list of words to a list of their lengths. It is possible to make these changes uses the same pattern as above: create an empty list, then loop through the original list and <code>append</code> the transformed values to the new list.</p>
-<p>However, Python also provides a <em>built-in function</em> called <strong><code>map()</code></strong> that directly peform this kind of mapping operation on a list without needing to use a loop:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> square(n):  <span class="co"># a function that squares a number</span>
-    <span class="cf">return</span> n<span class="op">**</span><span class="dv">2</span>
+    <span class="co">//do something with current item</span>
+    <span class="va">console</span>.<span class="at">log</span>(currentItem)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<p>While this loop may be familiar and fast, it does require extra work to manage the loop control variable (the <code>i</code>), which can get especially confusing when dealing with nested loops (and nested data structures are very common in JavaScript!)</p>
+<p>As an alternative, you can consider using the Array type’s <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach"><code>forEach()</code></a> method:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">},</span> <span class="op">{</span>...<span class="op">}</span>]<span class="op">;</span>
 
-numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+<span class="co">//function for what to do with each item</span>
+<span class="kw">function</span> <span class="at">printItem</span>(currentItem)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(currentItem<span class="op">;</span>)
+<span class="op">}</span>
 
-squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(square, numbers))
-<span class="bu">print</span>(squares)  <span class="co"># [1, 4, 9, 16, 25]</span></code></pre></div>
-<p>The <code>map()</code> function takes a list a produces a <em>new</em> list with each of the elements transformed. The <code>map()</code> function takes in two arguments: the second is the list to transform, and the first is the <em>name of a callback function</em> that will do the transformation. This callback function must take in a <em>single</em> argument (an element to transform) and return a value (the transformed element).</p>
+<span class="co">//print out each item</span>
+<span class="va">array</span>.<span class="at">forEach</span>(printItem)<span class="op">;</span></code></pre></div>
+<p>The <code>forEach()</code> method goes through each item in the array and executes the given <em>callback function</em>, passing that item as a parameter to the callback. In effect, it lets you specify “what to do with each element” in the array as a separate function, and then “apply” that function to each elements.</p>
 <ul>
-<li>Note that in Python 3, the <code>map()</code> function returns an <em>iterator</em>, which is a list-like sequence similar to that returned by a dictionary’s <code>keys()</code> or <code>items()</code> methods. Thus in order to interact with it as a list, it needs to be converted using the <code>list()</code> function.</li>
+<li><p><code>forEach()</code> is a <em>built-in</em> method for Arrays—similar to <code>push()</code> or <code>indexOf()</code>. For reference, the “implementation” of the <code>forEach()</code> function looks something like:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">Array</span>.<span class="at">forEach</span> <span class="op">=</span> <span class="kw">function</span>(callback) <span class="op">{</span> <span class="co">//define the Array&#39;s forEach method</span>
+    <span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="kw">this</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) <span class="op">{</span>
+        <span class="at">callback</span>(<span class="kw">this</span>[i]<span class="op">,</span> i<span class="op">,</span> <span class="kw">this</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+<p>In effect, the method does the job of managing the loop and the loop control variable for you, allowing you to just focus on what you want to do for each item.</p></li>
+<li><p>The <em>callback function</em> give to the <code>forEach()</code> will be executed with up to three argument (in order): (1) the <em>current item</em> in the array, (2) the <em>index</em> of the item in the array, and (3) the <em>array itself</em>. This means that your callback can contain up to three arguments, but since all arguments are optional in JavaScript, it can also be used with fewer—you don’t need to include an argument for the index or array if you aren’t utilizing them!</p></li>
 </ul>
-<p>The <code>map()</code> callback function (e.g., <code>square()</code> in the above example) can also be specified using an anonymous lambda, which allows for concisely written code (but often at the expense of readability—see <em>List Comprehensions</em> below for a more elegant, Pythonic solution).</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
-squares <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> n:n<span class="op">**</span><span class="dv">2</span>, numbers))</code></pre></div>
-</div>
-<div id="filter" class="section level3">
-<h3><span class="header-section-number">11.4.2</span> Filter</h3>
-<p>A second common operation is to <strong>filter</strong> a list of elements, removing elements that we don’t want (or more accurately: only keeping elements that we DO want). For example, consider the following loop:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(n):  <span class="co"># a function that determines if a number is even</span>
-    remainder <span class="op">=</span> n <span class="op">%</span> <span class="dv">2</span>  <span class="co"># get remainder when dividing by 2 (modulo operator)</span>
-    <span class="cf">return</span> remainder <span class="op">==</span> <span class="dv">0</span>  <span class="co"># True if no remainder, False otherwise</span>
-
-numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>]  <span class="co"># an initial list</span>
-
-evens <span class="op">=</span> []  <span class="co"># the filtered list</span>
-<span class="cf">for</span> number <span class="op">in</span> numbers:
-    <span class="cf">if</span> is_even(number):
-      evens.append(number)
-<span class="bu">print</span>(evens)  <span class="co"># [2, 8]</span></code></pre></div>
-<p>With this <strong>filtering</strong> loop, we are <em>keeping</em> the values for which the <code>is_even()</code> function returns true (the function determines “what to let in” not “what to keep out”), which we do by appending the “good” values to a new list.</p>
-<p>Similar to <code>map()</code>, Python provides a <em>built-in function</em> called <strong><code>filter()</code></strong> that will directly perform this filtering:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> is_even(n):  <span class="co"># a function that determines if a number is even</span>
-    <span class="cf">return</span> (n <span class="op">%</span> <span class="dv">2</span>) <span class="op">==</span> <span class="dv">0</span>  <span class="co"># True if no remainder, False otherwise</span>
-
-numbers <span class="op">=</span> [<span class="dv">2</span>,<span class="dv">7</span>,<span class="dv">1</span>,<span class="dv">8</span>,<span class="dv">3</span>]  <span class="co"># an initial list</span>
-
-evens <span class="op">=</span> <span class="bu">list</span>(<span class="bu">filter</span>(is_even, numbers))
-<span class="bu">print</span>(evens)  <span class="co"># [2, 8]</span></code></pre></div>
-<p>The <code>filter()</code> function takes a list a produces a <em>new</em> list that contains only the elements that <em>do match</em> a specific criteria. The <code>filter()</code> function takes in two arguments: the second is the list to filter, and the first is the <em>name of a callback function</em> that will do the filtering. This callback function must take in a <em>single</em> argument (an element to consider) and return <code>True</code> if the element should be included in the filtered list (or <code>False</code> if it should not be included).</p>
-<p>Because <code>map()</code> and <code>filter()</code> both produce list-like sequences, it is possible to take the returned value from one function and pass it in as the argument to the next. For example:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]
-
-<span class="co"># get the squares of EVEN numbers only</span>
-filtered <span class="op">=</span> <span class="bu">filter</span>(is_even, numbers)  <span class="co"># filter the numbers</span>
-squares <span class="op">=</span> <span class="bu">map</span>(square, filtered)  <span class="co"># map the filtered values</span>
-<span class="bu">print</span>(<span class="bu">list</span>(squares))  <span class="co"># [4, 16, 36]</span>
-
-<span class="co"># or in one statement, passing results anonymously</span>
-squares <span class="op">=</span> <span class="bu">map</span>(square,
-          <span class="bu">filter</span>(is_even,
-          numbers))  <span class="co"># watch out for the parentheses!</span>
-<span class="bu">print</span>(<span class="bu">list</span>(squares))  <span class="co"># [4, 16, 36]</span></code></pre></div>
-<p>This structure can potentially make it easier to understand the code’s intent: it is “<code>square</code>ing the <code>is_even</code> <code>numbers</code>”!</p>
-</div>
-<div id="reduce" class="section level3">
-<h3><span class="header-section-number">11.4.3</span> Reduce</h3>
-<p>The third important operation in functional programming (besides <em>mapping</em> and <em>filtering</em>) is <strong>reducing</strong> a list. Reducing a list means to <em>aggregate</em> that lists values togther, transforming the list into a single value. For example, the built-in <code>sum()</code> function is a <em>reducing</em> operation (and in fact, the most common one!): it reduces a list of numbers to a single summed value.</p>
+<p>While it is possible to make a named callback function for <code>forEach()</code>, it is <em>much</em> more common to use an <strong>anonymous callback function</strong>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//print each item in the array</span>
+<span class="va">array</span>.<span class="at">forEach</span>(<span class="kw">function</span>(item)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(item)<span class="op">;</span>
+<span class="op">}</span>)</code></pre></div>
 <ul>
-<li>You can think of <code>reduce()</code> as a <em>generalization</em> of the <code>sum()</code> function—but rather than just adding (<code>+</code>) the values together, <code>reduce()</code> allows you to specify what operation to perform when aggregating (e.g., <a href="https://en.wikipedia.org/wiki/Factorial">multiplication</a>).</li>
+<li><p>This code can almost be read as: “take the <code>array</code> and <code>forEach</code> thing execute the <code>function</code> on that <code>item</code>”.</p></li>
+<li><p>This is similar in usage to the <a href="https://docs.oracle.com/javase/1.5.0/docs/guide/language/foreach.html">enhanced for loop</a> in Java.</p></li>
 </ul>
-<p>Because the <code>reduce()</code> function can be complex to interpret, it was actually <em>removed</em> from the set of “core” built-in functions in Python 3 and relegated to the <code>functools</code> module. Thus we need to import the function in order to use it:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></code></pre></div>
+<div id="map" class="section level3 unnumbered">
+<h3>Map</h3>
+<p>JavaScript provides a number of other functional loop methods. For example, consider the following “regular” loop:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">square</span>(n) <span class="op">{</span> <span class="co">//a function that squares a number</span>
+    <span class="cf">return</span> n<span class="op">*</span>n<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+
+<span class="kw">let</span> squares <span class="op">=</span> []<span class="op">;</span> <span class="co">//the transformed array</span>
+<span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="va">numbers</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>)<span class="op">{</span>
+    <span class="kw">let</span> transformed <span class="op">=</span> <span class="at">square</span>(numbers[i])<span class="op">;</span> <span class="co">//call our square() function</span>
+    <span class="va">squares</span>.<span class="at">push</span>(transformed)<span class="op">;</span> <span class="co">//add transformed to the list</span>
+<span class="op">}</span>
+<span class="va">console</span>.<span class="at">log</span>(squares)<span class="op">;</span> <span class="co">// [1, 4, 9, 16, 25]</span></code></pre></div>
+<p>This loop represents a <strong>mapping</strong> operation: it takes an original array (e.g., of numbers 1 to 5) and produces a <em>new</em> array with each of the original elements transformed in a certain way (e.g., squared). This is a common operation to apply: maybe you want to “transform” an array so that all the values are rounded or lowercase, or you want to <em>map</em> an array of words to an array of their lengths, or you want to <em>map</em> an array of values to an array of <code>&lt;li&gt;</code> HTML strings. It is possible to make all these changes using the above code pattern: create a new empty array, then loop through the original array and <code>push</code> the transformed values onto that new array.</p>
+<p>However, JavaScript also provides a <em>built-in array method</em> called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><strong><code>map()</code></strong></a> that directly performs this kind of mapping operation on an array without needing to use a loop:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">square</span>(n) <span class="op">{</span> <span class="co">//a function that squares a number</span>
+    <span class="cf">return</span> n<span class="op">*</span>n<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+
+<span class="co">//map the numbers using the `square` transforming function</span>
+<span class="kw">let</span> squares <span class="op">=</span> <span class="va">numbers</span>.<span class="at">map</span>(square)<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(squares)<span class="op">;</span> <span class="co">// [1, 4, 9, 16, 25]</span></code></pre></div>
+<p>The array’s <code>map()</code> function produces a <strong>new</strong> array with each of the elements transformed. The <code>map()</code> function takes as an argument <em>a callback function</em> that will do the transformation. The callback function should as an argument the element to transform, and <strong>return</strong> a value (the transformed element).</p>
+<ul>
+<li>Callback functions for <code>map()</code> will be passed the same three arguments as the callback functions for <code>forEach()</code>: the element, the index, and the array.</li>
+</ul>
+<p>And again, the <code>map()</code> callback function (e.g., <code>square()</code> in the above example) is more commonly written as an anonymous callback function:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+<span class="kw">let</span> squares <span class="op">=</span> <span class="va">numbers</span>.<span class="at">map</span>(<span class="kw">function</span>(item)<span class="op">{</span>
+    <span class="cf">return</span> n<span class="op">*</span>n<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+</div>
+<div id="filter" class="section level3 unnumbered">
+<h3>Filter</h3>
+<p>A second common operation is to <strong>filter</strong> a list of elements, removing elements that we don’t want (or more accurately: only keeping elements that we <em>DO</em> want). For example, consider the following loop:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">isEven</span>(n) <span class="op">{</span> <span class="co">//a function that determines if a number is even</span>
+    <span class="kw">let</span> remainder <span class="op">=</span> n <span class="op">%</span> <span class="dv">2</span><span class="op">;</span> <span class="co">//get remainder when dividing by 2 (modulo operator)</span>
+    <span class="cf">return</span> remainder <span class="op">==</span> <span class="dv">0</span><span class="op">;</span> <span class="co">//true if no remainder, false otherwise</span>
+<span class="op">}</span>
+
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">2</span><span class="op">,</span><span class="dv">7</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">8</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+
+<span class="kw">let</span> evens <span class="op">=</span> []<span class="op">;</span> <span class="co">//the filtered array</span>
+<span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="va">numbers</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>)<span class="op">{</span>
+    <span class="cf">if</span>(<span class="at">isEven</span>(numbers[i]))<span class="op">{</span>
+        <span class="va">evens</span>.<span class="at">push</span>(numbers[i])<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span>
+<span class="va">console</span>.<span class="at">log</span>(evens)<span class="op">;</span> <span class="co">//[2, 8]</span></code></pre></div>
+<p>With this <strong>filtering</strong> loop, we are <em>keeping</em> the values for which the <code>isEven()</code> function returns <code>true</code> (the function determines “what to let in” not “what to keep out”; a <a href="https://www.schneier.com/blog/archives/2011/01/whitelisting_vs.html">whitelist</a>), which we do by appending the “good” values to a new array.</p>
+<p>Similar to <code>map()</code>, JavaScript arrays include a <em>built-in method</em> called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><strong><code>filter()</code></strong></a> that will directly perform this filtering:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">isEven</span>(n) <span class="op">{</span> <span class="co">//a function that determines if a number is even</span>
+    <span class="cf">return</span> (n <span class="op">%</span> <span class="dv">2</span>) <span class="op">==</span> <span class="dv">0</span><span class="op">;</span> <span class="co">//true if no remainder, false otherwise</span>
+<span class="op">}</span>
+
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">2</span><span class="op">,</span><span class="dv">7</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">8</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+
+<span class="kw">let</span> evens <span class="op">=</span> <span class="va">numbers</span>.<span class="at">filter</span>(isEven)<span class="op">;</span> <span class="co">//the filtered array</span>
+
+<span class="va">console</span>.<span class="at">log</span>(evens)<span class="op">;</span> <span class="co">//[2, 8]</span></code></pre></div>
+<p>The array’s <code>filter()</code> function produces a <strong>new</strong> array that contains only the elements that <em>do match</em> a specific criteria. The <code>filter()</code> function takes as an argument <em>a callback function</em> that will make this decision. The callback function takes in the same arguments as <code>forEach()</code> and <code>map()</code>, and should return <code>true</code> if the given element should be included in the filtered array (or <code>false</code> if it should not).</p>
+<ul>
+<li><p>And again, we usually use <em>anonymous callback functions</em> for <code>filter()</code>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">2</span><span class="op">,</span><span class="dv">7</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">8</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+<span class="kw">let</span> evens <span class="op">=</span> <span class="va">numbers</span>.<span class="at">filter</span>(<span class="kw">function</span>(n) <span class="op">{</span> <span class="cf">return</span> (n<span class="op">%</span><span class="dv">2</span>)<span class="op">==</span><span class="dv">0</span><span class="op">;</span> <span class="op">}</span>)<span class="op">;</span> <span class="co">//one-liner!</span></code></pre></div>
+<p>(Since JavaScript ignores whitespace, we can compact simple callbacks onto a single line. <a href="#es6">ES6 and Beyond</a> describes an even more compact syntax for such functions).</p></li>
+</ul>
+<p>Because <code>map()</code> and <code>filter()</code> are both called on and produce arrays, it is possible <strong>chain</strong> them together, calling subsequent methods on each returned value:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
+
+<span class="co">//get the squares of EVEN numbers only</span>
+<span class="kw">let</span> filtered <span class="op">=</span> <span class="va">numbers</span>.<span class="at">filter</span>(isEven)<span class="op">;</span>
+<span class="kw">let</span> squares <span class="op">=</span> <span class="va">filtered</span>.<span class="at">map</span>(square)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(squares)<span class="op">;</span> <span class="co">//[4, 16, 36]</span>
+
+<span class="co">//or in one statement, using results anonymously</span>
+<span class="kw">let</span> squares <span class="op">=</span> <span class="va">numbers</span>.<span class="at">filter</span>(isEven)
+                     .<span class="at">map</span>(square)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(squares)<span class="op">;</span> <span class="co">//[4, 16, 36]</span></code></pre></div>
+<p>This structure can potentially make it easier to understand the code’s intent than using a set of nested loops or conditionals: we are taking <code>numbers</code> and then <em>filtering</em> for the evens and <em>mapping</em> to squares!</p>
+</div>
+<div id="reduce" class="section level3 unnumbered">
+<h3>Reduce</h3>
+<p>The third important operation in functional programming (besides <em>mapping</em> and <em>filtering</em>) is <strong>reducing</strong> an array. Reducing an array means to <em>aggregate</em> that array’s values together, transforming the array elements into a single value. For example, summing an array is a <em>reducing</em> operation (and in fact, the most common one!): it reduces an array of numbers to a single summed value.</p>
+<ul>
+<li>You can think of <code>reduce()</code> as a <em>generalization</em> of the <code>sum()</code> function found in many other languages—but rather than just adding (<code>+</code>) the values together, <code>reduce()</code> allows you to specify what operation to perform when aggregating (e.g., <a href="https://en.wikipedia.org/wiki/Factorial">multiplication</a>).</li>
+</ul>
 <p>To understand how a <em>reduce</em> operation works, consider the following basic loop:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> multiply(x, y): <span class="co"># a function that multiplies two numbers</span>
-    <span class="cf">return</span> x<span class="op">*</span>y
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">add</span>(x<span class="op">,</span> y) <span class="op">{</span> <span class="co">//a function that adds two numbers</span>
+    <span class="cf">return</span> x<span class="op">+</span>y<span class="op">;</span>
+<span class="op">}</span>
 
-numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
 
-running_total <span class="op">=</span> <span class="dv">1</span>  <span class="co"># an accumulated aggregate</span>
-<span class="cf">for</span> number <span class="op">in</span> numbers:
-    running_total <span class="op">=</span> multiply(running_total, number)
-<span class="bu">print</span>(running_total)  <span class="co"># 120  (1*2*3*4*5)</span></code></pre></div>
-<p>This loop <strong>reduces</strong> the list into an “accumulated” product (factorial) of all the numbers in the list. Inside the loop, the <code>multiply()</code> function is called and passed the “current total” and the “new value” to be combined into the aggregate (<em>in that order</em>). The resulting total is then reassigned as the “current total” for the next iteration.</p>
-<p>The <strong><code>reduce()</code></strong> function does exactly this work: it takes as arguments a <em>callback</em> function used to combine the current running total with the new value, and a list of values to combine. Whereas the <code>map()</code> and <code>filter()</code> callback functions each took 1 argument, the <code>reduce()</code> callback function requires <strong>2</strong> arguments: the first will be the “running total”, and the second will be the “new value” to mix into the aggregate. (While this ordering doesn’t influence the factorial example, it is relevant for other operations):</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="kw">def</span> multiply(x, y): <span class="co"># a function that multiplies two numbers</span>
-    <span class="cf">return</span> x<span class="op">*</span>y
+<span class="kw">let</span> runningTotal <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> <span class="co">//an accumulated aggregate</span>
+<span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="va">numbers</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>)<span class="op">{</span>
+    runningTotal <span class="op">=</span> <span class="at">add</span>(runningTotal<span class="op">,</span> numbers[i])<span class="op">;</span>
+<span class="op">}</span>
+<span class="va">console</span>.<span class="at">log</span>(runningTotal)<span class="op">;</span> <span class="co">//120</span></code></pre></div>
+<p>This loop <strong>reduces</strong> the array into an “accumulated” sum of all the numbers in the list. Inside the loop, the <code>add()</code> function is called and passed the “current total” and the “new value” to be combined into the aggregate (<em>in that order</em>). The resulting total is then reassigned as the “current total” for the next iteration.</p>
+<p>The <em>built-in array method</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><strong><code>reduce()</code></strong></a> does exactly this work: it takes as an argument <em>a callback function</em> used to combine the current running total with the new value, and returns the aggregated total. Whereas the <code>map()</code> and <code>filter()</code> callback functions each usually took 1 argument (with 2 others optional), the <code>reduce()</code> callback function requires <strong>2</strong> arguments (with 2 others optional): the first will be the “running total” (called the <strong>accumulator</strong>), and the second will be the “new value” to mix into the aggregate. (While this ordering doesn’t influence the summation example, it is relevant for other operations):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">add</span>(x<span class="op">,</span> y) <span class="op">{</span> <span class="co">//a function that adds two numbers</span>
+    <span class="cf">return</span> x<span class="op">+</span>y<span class="op">;</span>
+<span class="op">}</span>
 
-numbers <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]  <span class="co"># an initial list</span>
+<span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
 
-product <span class="op">=</span> <span class="bu">reduce</span>(multiply, numbers)
-<span class="bu">print</span>(product)  <span class="co"># 120</span></code></pre></div>
-<ul>
-<li>The <code>reduce()</code> function aggregates into a single value, so the result doesn’t need to be converted from an <em>iterator</em> to a list!</li>
-</ul>
+<span class="kw">let</span> sum <span class="op">=</span> <span class="va">numbers</span>.<span class="at">reduce</span>(add)<span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(sum)<span class="op">;</span> <span class="co">//15</span></code></pre></div>
+<p>The <code>reduce()</code> function (not the callback, but <code>reduce()</code> itself) has a second optional argument <em>after</em> the callback function representing the initial starting value of the reduction. For example, if we wanted our summation function to start with <code>10</code> instead of <code>0</code>, we’d use:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//sum starting from 10</span>
+<span class="kw">let</span> sum <span class="op">=</span> <span class="va">numbers</span>.<span class="at">reduce</span>(add<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></code></pre></div>
+<p>Note that the syntax can be a little hard to parse if you use an anonymous callback function:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//sum starting from 10</span>
+<span class="va">numbers</span>.<span class="at">reduce</span>(<span class="kw">function</span>(x<span class="op">,</span> y)<span class="op">{</span>
+    <span class="cf">return</span> x<span class="op">+</span>y<span class="op">;</span>
+<span class="op">},</span> <span class="dv">10</span>)<span class="op">;</span> <span class="co">//the starting value comes AFTER the callback!</span></code></pre></div>
+<p>The <em>accumulator</em> value can be any type you want! For example, you can have the starting value be an empty object <code>{}</code> instead of a number, and have the accumulator use the current value to “update” that object (which is “accumulating” information).</p>
 <p>To summarize, the <code>map()</code>, <code>filter()</code>, and <code>reduce()</code> operations work as follows:</p>
+<!-- should use JS specific version? Just code as text?? -->
 <div class="figure">
-<img src="img/map-filter-reduce-in-emoji-python.png" alt="Map, filter, reduce explained with emoji" />
-<p class="caption">Map, filter, reduce explained with emoji</p>
+<img src="img/javascript/map-filter-reduce-in-emoji.png" alt="Map, filter, reduce explained with emoji. Not valid JavaScript syntax." />
+<p class="caption">Map, filter, reduce explained with emoji. Not valid JavaScript syntax.</p>
 </div>
 <p>All together, the <strong>map</strong>, <strong>filter</strong>, and <strong>reduce</strong> operations form the basic for a functional consideration of a program. Indeed, these kinds of operations are very common when discussing data manipulations: for example, the famous <a href="https://en.wikipedia.org/wiki/MapReduce">MapReduce</a> model involves “mapping” each element through a complex function (on a different computer no less!), and then “reducing” the results into a single answer.</p>
 </div>
 </div>
-<div id="pure-functional-programming" class="section level2">
-<h2><span class="header-section-number">11.5</span> Pure Functional Programming</h2>
-<p>//avoiding side effects, etc.</p>
+<div id="pure-functions" class="section level2">
+<h2><span class="header-section-number">11.5</span> Pure Functions</h2>
+<p><small>This section was adapted a <a href="https://drstearns.github.io/tutorials/jsfunctional/">tutorial</a> by <a href="https://ischool.uw.edu/people/faculty/dlsinfo">Dave Stearns</a>.</small></p>
+<p>The concept of <em>first-class functions</em> (functions are values) is central to any functional programming language. However, there is more to the functional programming paradigm than just callback functions. In a fully functional programming language, you construct programs by combining small, reusable, <strong>pure</strong> functions that take in some inputted data, transform it, and then return that data for future use. <em>Pure</em> functions have the following qualities:</p>
+<ul>
+<li>They operate only on their inputs, and make no reference to other data (e.g., variables at a higher scope such as <em>globals</em>)</li>
+<li>They never modify their inputs—instead, they always return new data or a reference to an unmodified input</li>
+<li>They have no <em>side effects</em> outside of their outputs (e.g., they never modify variables at a higher scope)</li>
+<li>Because of these previous rules, they always return the same outputs for the same inputs</li>
+</ul>
+<p>A functional program sends its initial input state through a series of these pure functions, much like a plumbing system sends water through a series of pipes, filters, valves, splitters, heaters, coolers, and pumps. The output of the “final” function in this chain becomes the program’s output.</p>
+<p>Pure functions are almost always easier to test and reason about. Since they have no side-effects, you can simply test all possible classes of inputs and verify that you get the correct outputs. If all of your pure functions are well-tested, you can then combine them together to create highly-predictable and reliable programs. Functional programs can also be easier to read and reason about because they end up looking highly <em>declarative</em>: it reads as a series of data transformations (e.g., take the data, then filter it, then transform it, then sort it, then print it), with the output of each function becoming the input to the next.</p>
+<p>Although some functional programming zealots would argue that all programs should be written in a functional style, it’s better to think of functional programming as another tool in your toolbox that is appropriate for some jobs, and not so much for others. Object-oriented programming is often the better choice for long-running, highly-interactive client programs, while functional is a better choice for short-lived programs or systems that handle discrete transactions (like many web applications). It’s also possible to combine the two styles: for example, React components can be either object-oriented or functional, and you often use some functional techniques within object-oriented components.</p>
+<ul>
+<li>Indeed, the latest versions of Java—a highly object-oriented language—<a href="https://www.ibm.com/developerworks/library/j-java8idioms1/index.html">add support</a> for functional programming!</li>
+</ul>
+<p>If you are interested in doing more serious functional programming in JavaScript, there are a large number of additional libraries that can help support that:</p>
+<ul>
+<li><a href="https://lodash.com/">Lodash</a> (and it’s more pure variant <a href="https://github.com/lodash/lodash/wiki/FP-Guide">lodash/fp</a>)</li>
+<li><a href="http://ramdajs.com/">Ramda</a></li>
+<li><a href="http://danieltao.com/lazy.js/">Lazy.js</a></li>
+</ul>
+<p>There are also many languages that were designed to be functional from the get-go, but can be compiled down into JavaScript to run on web browsers. These include <a href="https://clojure.org/">Clojure</a> (via <a href="https://github.com/clojure/clojurescript">ClojureScript</a>) and <a href="http://elm-lang.org/">Elm</a>.</p>
+</div>
+<div id="resources-9" class="section level2 unnumbered">
+<h2>Resources</h2>
+<ul>
+<li><a href="http://reactivex.io/learnrx/">Functional Programming in JavaScript</a> a <em>fantastic</em> interactive tutorial for learning functional programming in JS</li>
+<li><a href="http://eloquentjavascript.net/05_higher_order.html">Higher Order Functions</a> a chapter from the online textbook <em>Eloquent JavaScript</em></li>
+<li><a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&amp;%20closures/README.md#you-dont-know-js-scope--closures">Scope &amp; Closures</a> an online textbook with an extremely detailed explanation of scoping in JavaScript</li>
+</ul>
 
 </div>
 </div>
@@ -610,6 +786,17 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

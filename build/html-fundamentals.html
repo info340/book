@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-04">
+<meta name="date" content="2017-10-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -249,6 +249,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
 <li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a><ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -335,7 +351,7 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 </div>
 <div id="attributes" class="section level3 unnumbered">
 <h3>Attributes</h3>
-<p>The start tag of an element may also contain one or more <strong>attributes</strong>. These are similar to attributes in object-oriented programming: they specify <em>properties</em>, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format <code>attributeName=value</code>; values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:</p>
+<p>The start tag of an element may also contain one or more <strong>attributes</strong>. These are similar to attributes in object-oriented programming: they specify <em>properties</em>, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format <code>attributeName=value</code> (no spaces are allowed around the <code>=</code>); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;tag</span><span class="ot"> attributeA=</span><span class="st">&quot;value&quot;</span><span class="ot"> attributeB=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;</span>
    content
 <span class="kw">&lt;/tag&gt;</span></code></pre></div>

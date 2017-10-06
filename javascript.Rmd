@@ -146,6 +146,8 @@ console.log(typeof shoeSize);  //=> 'number'
 
 - As in Java, JavaScript variables should be given descriptive names using [camelCase](https://en.wikipedia.org/wiki/Camel_case).
 
+    <p class="alert alert-info">**Pro-tip:** Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: `textString`, `wordsArray`, `totalNum`, `itemStr`, etc..</p>
+
 Declared variables have a default value of `undefined`&mdash;a value representing that the variable has no value. This is somewhat similar to `null` in Java (though JavaScript _also_ as an `null` value that is not commonly used):
 
 ```js
@@ -154,11 +156,11 @@ let hoursSlept;
 console.log(hoursSlept);  //=> undefined
 ```
 
-Note that the `let` keyword is in fact new syntax introduced with `ES6`: older versions of JavaScript used the `var` keyword instead (and you will see `var` in most existing examples and tutorials). The difference is that variables declared with `let` are **"block (lexically) scoped"**, meaning they are only available within the _block_ (the `{}`) in which they are defined. This is the same way variables are scoped in Java. Variables declared with `var`, on the other hand, are "functionally scoped" so are available anywhere within the _function_ in which they are defined. This means that you could declare a variable within an `if` block, and that variable would continue to be available outside that block! Thus `let` allows for cleaner, more efficient code, and with less bugs.
+Note that the `let` keyword is in fact new syntax introduced with `ES6`: older versions of JavaScript used the `var` keyword instead (and you will see `var` in most existing examples and tutorials). The difference is that variables declared with `let` are **"block scoped"**, meaning they are only available within the _block_ (the `{}`) in which they are defined. This is the same way variables are scoped in Java. Variables declared with `var`, on the other hand, are "functionally scoped" so are available anywhere within the _function_ in which they are defined. This means that you could declare a variable within an `if` block, and that variable would continue to be available outside that block! Thus `let` allows for cleaner, more efficient code, and with less bugs.
 
 - `let` is the one `ES6` feature supported by IE 11, meaning it can be used with [most all current browsers](http://caniuse.com/#search=let). However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using `var`
 
-Along with `let`, JavaScript variables can also be declared using the `const` keyword to indicate that they are _constant_ (similar to what the `final` keyword does in Java). A `const` variable is lexically scoped, but can only be assigned once:
+Along with `let`, JavaScript variables can also be declared using the `const` keyword to indicate that they are _constant_ (similar to what the `final` keyword does in Java). A `const` variable is block scoped, but can only be assigned once:
 
 ```js
 const ISCHOOL_URL = 'https://ischool.uw.edu'; //declare constant

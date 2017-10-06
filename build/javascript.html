@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-04">
+<meta name="date" content="2017-10-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="css-frameworks.html">
-
+<link rel="next" href="functional-programming.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -249,6 +249,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
 <li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a><ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -397,17 +413,20 @@ Note course assumes you already are already familiar with introductory programmi
 <span class="va">console</span>.<span class="at">log</span>(<span class="kw">typeof</span> shoeSize)<span class="op">;</span>  <span class="co">//=&gt; &#39;number&#39;</span></code></pre></div>
 <ul>
 <li><p>The <code>typeof</code> operator will return the data type of a variable. It is not widely used outside of debugging.</p></li>
-<li><p>As in Java, JavaScript variables should be given descriptive names using <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>.</p></li>
+<li><p>As in Java, JavaScript variables should be given descriptive names using <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>.</p>
+<p class="alert alert-info">
+**Pro-<a href="tip:**" class="uri">tip:**</a> Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: <code>textString</code>, <code>wordsArray</code>, <code>totalNum</code>, <code>itemStr</code>, etc..
+</p></li>
 </ul>
 <p>Declared variables have a default value of <code>undefined</code>—a value representing that the variable has no value. This is somewhat similar to <code>null</code> in Java (though JavaScript <em>also</em> as an <code>null</code> value that is not commonly used):</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a variable (not assigned)</span>
 <span class="kw">let</span> hoursSlept<span class="op">;</span>
 <span class="va">console</span>.<span class="at">log</span>(hoursSlept)<span class="op">;</span>  <span class="co">//=&gt; undefined</span></code></pre></div>
-<p>Note that the <code>let</code> keyword is in fact new syntax introduced with <code>ES6</code>: older versions of JavaScript used the <code>var</code> keyword instead (and you will see <code>var</code> in most existing examples and tutorials). The difference is that variables declared with <code>let</code> are <strong>“block (lexically) scoped”</strong>, meaning they are only available within the <em>block</em> (the <code>{}</code>) in which they are defined. This is the same way variables are scoped in Java. Variables declared with <code>var</code>, on the other hand, are “functionally scoped” so are available anywhere within the <em>function</em> in which they are defined. This means that you could declare a variable within an <code>if</code> block, and that variable would continue to be available outside that block! Thus <code>let</code> allows for cleaner, more efficient code, and with less bugs.</p>
+<p>Note that the <code>let</code> keyword is in fact new syntax introduced with <code>ES6</code>: older versions of JavaScript used the <code>var</code> keyword instead (and you will see <code>var</code> in most existing examples and tutorials). The difference is that variables declared with <code>let</code> are <strong>“block scoped”</strong>, meaning they are only available within the <em>block</em> (the <code>{}</code>) in which they are defined. This is the same way variables are scoped in Java. Variables declared with <code>var</code>, on the other hand, are “functionally scoped” so are available anywhere within the <em>function</em> in which they are defined. This means that you could declare a variable within an <code>if</code> block, and that variable would continue to be available outside that block! Thus <code>let</code> allows for cleaner, more efficient code, and with less bugs.</p>
 <ul>
 <li><code>let</code> is the one <code>ES6</code> feature supported by IE 11, meaning it can be used with <a href="http://caniuse.com/#search=let">most all current browsers</a>. However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using <code>var</code></li>
 </ul>
-<p>Along with <code>let</code>, JavaScript variables can also be declared using the <code>const</code> keyword to indicate that they are <em>constant</em> (similar to what the <code>final</code> keyword does in Java). A <code>const</code> variable is lexically scoped, but can only be assigned once:</p>
+<p>Along with <code>let</code>, JavaScript variables can also be declared using the <code>const</code> keyword to indicate that they are <em>constant</em> (similar to what the <code>final</code> keyword does in Java). A <code>const</code> variable is block scoped, but can only be assigned once:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">const</span> ISCHOOL_URL <span class="op">=</span> <span class="st">&#39;https://ischool.uw.edu&#39;</span><span class="op">;</span> <span class="co">//declare constant</span>
 ISCHOOL_URL <span class="op">=</span> <span class="st">&#39;https://example.com&#39;</span><span class="op">;</span> <span class="co">//TypeError: Assignment to constant variable.</span></code></pre></div>
 <div id="basic-data-types" class="section level3 unnumbered">
@@ -727,8 +746,8 @@ For more examples of the horror of JavaScript coercion, see <a href="https://www
           </div>
         </div>
       </div>
-<a href="css-frameworks.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="css-frameworks.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functional-programming.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

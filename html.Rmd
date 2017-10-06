@@ -72,7 +72,7 @@ Because that syntax is somewhat awkward to type, most source-code editors will l
 Comments can appear anywhere in the file. Just as in other languages, they are ignored by any program reading the file (with a few interesting exceptions), but they do remain in the page and are visible when you [view the page source](http://webdesign.about.com/od/chrome/a/view-source-chrome.htm).
 
 ### Attributes {-}
-The start tag of an element may also contain one or more **attributes**. These are similar to attributes in object-oriented programming: they specify _properties_, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format `attributeName=value`; values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:
+The start tag of an element may also contain one or more **attributes**. These are similar to attributes in object-oriented programming: they specify _properties_, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format `attributeName=value` (no spaces are allowed around the `=`); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:
 
 ```html
 <tag attributeA="value" attributeB="value">
