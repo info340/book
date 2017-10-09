@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-06">
+<meta name="date" content="2017-10-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -265,6 +265,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
 <li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="dom-manipulation.html"><a href="dom-manipulation.html"><i class="fa fa-check"></i><b>12</b> DOM Manipulation</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -297,12 +298,12 @@ Note course assumes you already are already familiar with introductory programmi
 <p>Indeed, JavaScript is an <strong>interpreted language</strong>, in that the computer (specifically a <em>JavaScript Interpreter</em>) translates the high-level language into machine language <em>on the fly at runtime</em>. The interpreter will read and execute one line of code at a time, executing that line before it even begins to consider the next. This is in contrast with <em>compiled languages</em> like C or Java that have the computer do the translation in one pass (at compile-time), and then only execute the program after the whole thing is converted to machine language.</p>
 <ul>
 <li><p>This on-the-fly translation means that interpreted languages like JavaScript are usually slower than compiled languages, but not enough that we’ll notice (web browsers include <em>highly</em> optimized interpreters). The bigger drawback is that without the compile step, program errors appear at runtime rather than compile time, making them more difficult to catch and fix. As such, JavaScript developers make heavy use of various <a href="https://en.wikipedia.org/wiki/Lint_%28software%29">linting</a> tools (which flag common problems that can lead to runtime errors), as well as <a href="https://facebook.github.io/jest/">automated testing</a> systems to check against a variety of inputs.</p>
-<p>Many JavaScript editors this kind of error checking—for example, VS Code provides syntax error checking out of the box, with more <a href="https://code.visualstudio.com/docs/languages/javascript#_linters">detailed linting</a> available through extensions. See <a href="https://code.visualstudio.com/docs/languages/javascript">this article</a> for more code features that support programming in JavaScript, including IntelliSense and type checking.</p></li>
+<p>Many JavaScript editors do this kind of error checking—for example, VS Code provides syntax error checking out of the box, with more <a href="https://code.visualstudio.com/docs/languages/javascript#_linters">detailed linting</a> available through extensions. See <a href="https://code.visualstudio.com/docs/languages/javascript">this article</a> for more code features that support programming in JavaScript, including IntelliSense and type checking.</p></li>
 </ul>
 <p>Although JavaScript was designed for and is most commonly used within web browsers (which contain their own JavaScript Interpreters), it can also be executed on the command-line by using <a href="https://nodejs.org/en/">Node.js</a>, allowing JavaScript to be a fully general language. Both techniques are described in this chapter.</p>
 <div id="history-and-versions" class="section level3 unnumbered">
 <h3>History and Versions</h3>
-<p>The JavaScript language was developed by <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a> (the co-founded of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days… a fact which may help explain some of the quirks in the language.</p>
+<p>The JavaScript language was developed by <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a> (the co-founder of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days… a fact which may help explain some of the quirks in the language.</p>
 <ul>
 <li><p>Despite the names, <em>JavaScript</em> and the <em>Java</em> language have nothing to do with one another (and are in fact totally separate programming languages used in drastically different contexts). JavaScript was named after Java as a marketing ploy to cash in on the popularity of the latter. It is the programming equivalent of the <a href="https://www.rottentomatoes.com/m/transmorphers_2007/">Transmorphers</a> movie.</p></li>
 <li><p>The JavaScript language is officially an implementation of <a href="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a> (named for the European Computer Manufacturers Association) specification. Hence versions of JavaScript are labeled with the prefix “ES”. For example, this chapter includes describes <code>ES5</code> (JavaScript 5) syntax.</p></li>
@@ -325,7 +326,7 @@ Note course assumes you already are already familiar with introductory programmi
 <ul>
 <li>Notice that the <code>&lt;script&gt;</code> element is <em>not</em> empty! It is possible to include JavaScript code directly inside the tag, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.</li>
 </ul>
-<p>The <code>&lt;script&gt;</code> tag can be included anywhere in an HTML page. Most commonly it is either placed in the <code>&lt;head&gt;</code> in order for the script to be executed <em>before</em> the page content loads, or at the very end of the <code>&lt;body&gt;</code> in order for the script to be executed <em>afer</em> the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting <code>&lt;script&gt;</code> tags at the end of the <code>&lt;body&gt;</code>:</p>
+<p>The <code>&lt;script&gt;</code> tag can be included anywhere in an HTML page. Most commonly it is either placed in the <code>&lt;head&gt;</code> in order for the script to be executed <em>before</em> the page content loads, or at the very end of the <code>&lt;body&gt;</code> in order for the script to be executed <em>after</em> the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting <code>&lt;script&gt;</code> tags at the end of the <code>&lt;body&gt;</code>:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
 <span class="kw">&lt;html&gt;</span>
 <span class="kw">&lt;head&gt;</span>
@@ -483,12 +484,12 @@ boolOne <span class="op">||</span> boolTwo
 
 <span class="co">//access using bracket notation</span>
 <span class="va">console</span>.<span class="at">log</span>( names[<span class="dv">1</span>] )<span class="op">;</span>  <span class="co">// &quot;Paul&quot;</span>
-<span class="va">console</span>.<span class="at">log</span>( things[<span class="dv">3</span>][<span class="dv">2</span>] )<span class="op">;</span>  <span class="co">// 8</span>
+<span class="va">console</span>.<span class="at">log</span>( things[<span class="dv">3</span>][<span class="dv">2</span>] )<span class="op">;</span>  <span class="co">// 3</span>
 
-letters[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;z&#39;</span><span class="op">;</span>  <span class="co">//assign new value at index 0</span>
-<span class="va">console</span>.<span class="at">log</span>( letters )<span class="op">;</span>  <span class="co">// [&#39;z&#39;, &#39;b&#39;, &#39;c&#39;]</span></code></pre></div>
+numbers[<span class="dv">0</span>] <span class="op">=</span> <span class="st">&#39;343&#39;</span><span class="op">;</span>  <span class="co">//assign new value at index 0</span>
+<span class="va">console</span>.<span class="at">log</span>( numbers )<span class="op">;</span>  <span class="co">// [343, 2, 2, 3, 5, 8]</span></code></pre></div>
 <p>Note that it is possible to assign a value to <em>any</em> index in the array, even if that index is “out of bounds”. This will <em>grow</em> the array (increase its length) to include that index—intermediate indices will be given values of <code>undefined</code>. The <em>length</em> of the array (accessed via the <code>.length</code> attribute) will always be the index of the “last” element + 1, even if there are fewer defined values within the array.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">var</span> letters <span class="op">=</span> [<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;c&#39;</span>]<span class="op">;</span>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> letters <span class="op">=</span> [<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;c&#39;</span>]<span class="op">;</span>
 <span class="va">console</span>.<span class="at">log</span>(<span class="va">letters</span>.<span class="at">length</span>)<span class="op">;</span>  <span class="co">// 3</span>
 letters[<span class="dv">5</span>] <span class="op">=</span> <span class="st">&#39;f&#39;</span><span class="op">;</span>  <span class="co">//grows the array</span>
 <span class="va">console</span>.<span class="at">log</span>(letters)<span class="op">;</span>  <span class="co">// [ &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, , , &#39;f&#39; ]</span>
@@ -535,6 +536,16 @@ letters[<span class="dv">5</span>] <span class="op">=</span> <span class="st">&#
 <span class="co">//objects can be empty (contains no properties)</span>
 <span class="kw">let</span> empty <span class="op">=</span> <span class="op">{}</span></code></pre></div>
 <p><em>Important note:</em> Objects are an <strong>unordered</strong> collection of key-value pairs! Because you reference a value by its <em>property name</em> and not by its position (as you do in an array), the exact ordering of those elements doesn’t matter—the interpreter just goes immediately to the value associated with the property. This almost means that when you log out an Object, the order in which the properties are printed may not match the order in which you specified them in the literal.</p>
+<ul>
+<li><p>If you <code>console.log()</code> an object, you will usually see a nicely format version of that object. However, if you try to convert that object to a <em>string</em> (e.g., via concatenation: <code>let output = &quot;my object: &quot;+myObject</code>), you will instead be presented with the “string version” of that object: <code>[object Object]</code>. This is not an array, but the String version of an object (similar to the hash you get when you try and print a Java array directly). You can instead use the fact that <code>console.log</code> accepts <em>multiple parameters</em> to output an object with a leading string:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> myObject <span class="op">=</span> <span class="op">{</span><span class="dt">a</span><span class="op">:</span><span class="dv">1</span><span class="op">,</span> <span class="dt">b</span><span class="op">:</span><span class="dv">2</span><span class="op">}</span>
+
+<span class="co">//convert object to string, won&#39;t log nicely</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;My object: &quot;</span> <span class="op">+</span> myObject)<span class="op">;</span> <span class="co">//=&gt; My object: [object Object]</span>
+
+<span class="co">//log the object directly</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;My object &quot;</span><span class="op">,</span> myObject)<span class="op">;</span> <span class="co">//=&gt; My object {a: 1, b: 2}</span></code></pre></div></li>
+</ul>
 <p>Despite the name, JavaScript Objects have nothing to do with Object-Oriented Programing. However, they can be used to represent “things” in the same way as a Java object, with each property acting like an “attribute” (instance variable):</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//an object representing a Person (spacing is for readability; white-space is ignored)</span>
 <span class="kw">let</span> person <span class="op">=</span> <span class="op">{</span>

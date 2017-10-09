@@ -42,7 +42,7 @@ Because a CSS framework is _just a CSS file_, you include one in your page using
   <!--... other elements here...-->
 
   <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.csss">
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.css">
   <link rel="stylesheet" href="css/my-style.css">
 </head>
 ```

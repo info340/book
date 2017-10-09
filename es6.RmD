@@ -1,9 +1,13 @@
 # ES6 and Beyond
 
+//syntactic sugar
+    //template literals
+    //spread ??
+
 //classes
+- oop :p
 
 //arrow functions
+- functional programming
 
-//template literals
-
-//spread ??
+//modules

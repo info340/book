@@ -63,7 +63,7 @@ Universal design applies to websites as well:
 
 If you make sure that your web page is well-structured and navigable by those with screen readers, it will ensure that it is navigable by _other_ machines, such as search engine indexers. Or for unusual or future browsers (a virtual reality browser perhaps).
 
-Thus supporting accessibility in client-side web development is important both for helping a population that is often overlooked (a form of social justice), as well as for supporting new technologies and systems.
+Thus supporting accessibility in client-side web development is important both for helping a population that is often overlooked (a form of social justice), as well as for supporting new technologies and systems. This fact is [increasingly being acknowledged](http://www.fastcodesign.com/3054927/the-big-idea/microsofts-inspiring-bet-on-a-radical-new-type-of-design-thinking) by companies as key to usability, and thus it is important that you apply it to your own design work.
 
 <p class="alert alert-info">In addition to individual capabilities, people are also reliant on a large amount of existing _infrastructure_ to ensure that they have an internet connection and their requests can reach your web server. The lack of such access is often tied to economic or social inequalities, forming what is called the [_digital divide_](https://en.wikipedia.org/wiki/Digital_divide). Considering the availability of network access and other infrastructural needs is vitally important when developing information technologies, but is difficult to manage through client-side development (though see [Responsive Design](#responsive-css) for some things you can do).</p>
 

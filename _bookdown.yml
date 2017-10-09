@@ -23,8 +23,8 @@ rmd_files:
   ## JavaScript
   - javascript.Rmd
   - functional-programming.Rmd
-  #- dom.Rmd
-  #- jquery.RmD
+  - dom.Rmd
+  #- libraries.RmD # inc jQuery
   #- ajax.Rmd
   #- es6.Rmd
 

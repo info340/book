@@ -11,13 +11,13 @@ Indeed, JavaScript is an **interpreted language**, in that the computer (specifi
 
 - This on-the-fly translation means that interpreted languages like JavaScript are usually slower than compiled languages, but not enough that we'll notice (web browsers include _highly_ optimized interpreters). The bigger drawback is that without the compile step, program errors appear at runtime rather than compile time, making them more difficult to catch and fix. As such, JavaScript developers make heavy use of various [linting](https://en.wikipedia.org/wiki/Lint_%28software%29) tools (which flag common problems that can lead to runtime errors), as well as [automated testing](https://facebook.github.io/jest/) systems to check against a variety of inputs.
 
-    Many JavaScript editors this kind of error checking&mdash;for example, VS Code provides syntax error checking out of the box, with more [detailed linting](https://code.visualstudio.com/docs/languages/javascript#_linters) available through extensions. See [this article](https://code.visualstudio.com/docs/languages/javascript) for more code features that support programming in JavaScript, including IntelliSense and type checking.
+    Many JavaScript editors do this kind of error checking&mdash;for example, VS Code provides syntax error checking out of the box, with more [detailed linting](https://code.visualstudio.com/docs/languages/javascript#_linters) available through extensions. See [this article](https://code.visualstudio.com/docs/languages/javascript) for more code features that support programming in JavaScript, including IntelliSense and type checking.
 
 Although JavaScript was designed for and is most commonly used within web browsers (which contain their own JavaScript Interpreters), it can also be executed on the command-line by using [Node.js](https://nodejs.org/en/), allowing JavaScript to be a fully general language. Both techniques are described in this chapter.
 
 
 ### History and Versions {-}
-The JavaScript language was developed by [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich) (the co-founded of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days... a fact which may help explain some of the quirks in the language.
+The JavaScript language was developed by [Brendan Eich](https://en.wikipedia.org/wiki/Brendan_Eich) (the co-founder of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days... a fact which may help explain some of the quirks in the language.
 
 - Despite the names, _JavaScript_ and the _Java_ language have nothing to do with one another (and are in fact totally separate programming languages used in drastically different contexts). JavaScript was named after Java as a marketing ploy to cash in on the popularity of the latter. It is the programming equivalent of the [Transmorphers](https://www.rottentomatoes.com/m/transmorphers_2007/) movie.
 
@@ -43,7 +43,7 @@ JavaScript scripts are most commonly executed in a web browser as part of the br
 
 - Notice that the `<script>` element is _not_ empty! It is possible to include JavaScript code directly inside the tag, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.
 
-The `<script>` tag can be included anywhere in an HTML page. Most commonly it is either placed in the `<head>` in order for the script to be executed _before_ the page content loads, or at the very end of the `<body>` in order for the script to be executed _afer_ the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting `<script>` tags at the end of the `<body>`:
+The `<script>` tag can be included anywhere in an HTML page. Most commonly it is either placed in the `<head>` in order for the script to be executed _before_ the page content loads, or at the very end of the `<body>` in order for the script to be executed _after_ the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting `<script>` tags at the end of the `<body>`:
 
 ```html
 <!DOCTYPE html>
@@ -237,16 +237,16 @@ let empty = [];
 
 //access using bracket notation
 console.log( names[1] );  // "Paul"
-console.log( things[3][2] );  // 8
+console.log( things[3][2] );  // 3
 
-letters[0] = 'z';  //assign new value at index 0
-console.log( letters );  // ['z', 'b', 'c']
+numbers[0] = '343';  //assign new value at index 0
+console.log( numbers );  // [343, 2, 2, 3, 5, 8]
 ```
 
 Note that it is possible to assign a value to _any_ index in the array, even if that index is "out of bounds". This will _grow_ the array (increase its length) to include that index&mdash;intermediate indices will be given values of `undefined`. The _length_ of the array (accessed via the `.length` attribute) will always be the index of the "last" element + 1, even if there are fewer defined values within the array.
 
 ```js
-var letters = ['a', 'b', 'c'];
+let letters = ['a', 'b', 'c'];
 console.log(letters.length);  // 3
 letters[5] = 'f';  //grows the array
 console.log(letters);  // [ 'a', 'b', 'c', , , 'f' ]
@@ -303,6 +303,18 @@ let empty = {}
 
 _Important note:_ Objects are an **unordered** collection of key-value pairs! Because you reference a value by its _property name_ and not by its position (as you do in an array), the exact ordering of those elements doesn't matter&mdash;the interpreter just goes immediately to the value associated with the property. This almost means that when you log out an Object, the order in which the properties are printed may not match the order in which you specified them in the literal.
 
+- If you `console.log()` an object, you will usually see a nicely format version of that object. However, if you try to convert that object to a _string_ (e.g., via concatenation: `let output = "my object: "+myObject`), you will instead be presented with the "string version" of that object: `[object Object]`. This is not an array, but the String version of an object (similar to the hash you get when you try and print a Java array directly). You can instead use the fact that `console.log` accepts _multiple parameters_ to output an object with a leading string:
+
+    ```js
+    let myObject = {a:1, b:2}
+
+    //convert object to string, won't log nicely
+    console.log("My object: " + myObject); //=> My object: [object Object]
+
+    //log the object directly
+    console.log("My object ", myObject); //=> My object {a: 1, b: 2}
+    ```
+
 Despite the name, JavaScript Objects have nothing to do with Object-Oriented Programing. However, they can be used to represent "things" in the same way as a Java object, with each property acting like an "attribute" (instance variable):
 
 ```js
@@ -319,6 +331,8 @@ let person = {
   }
 }
 ```
+
+
 
 #### Accessing Objects {-}
 Similar to arrays, Object values can be access via **bracket notation**, specifying the _property name_ as the index. If an object does not explicitly have a property value, accessing that key produces `undefined` (the property's value is `undefined`).
