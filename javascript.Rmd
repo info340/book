@@ -146,7 +146,7 @@ console.log(typeof shoeSize);  //=> 'number'
 
 - As in Java, JavaScript variables should be given descriptive names using [camelCase](https://en.wikipedia.org/wiki/Camel_case).
 
-    <p class="alert alert-info">**Pro-tip:** Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: `textString`, `wordsArray`, `totalNum`, `itemStr`, etc..</p>
+    <p class="alert alert-info">**Pro Tip:** Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: `textString`, `wordsArray`, `totalNum`, `itemStr`, etc..</p>
 
 Declared variables have a default value of `undefined`&mdash;a value representing that the variable has no value. This is somewhat similar to `null` in Java (though JavaScript _also_ as an `null` value that is not commonly used):
 
@@ -479,13 +479,13 @@ The **`condition`** can be any expression that evaluates to a Boolean value. But
 ```js
 //check if a `person` variable has a `name` property
 if(person.name){
-    console.log('Person does not have a name');
+    console.log('Person does have a name!');
 }
 ```
 
 In the above example, the condition will only coerce to `true` if `person.name` is defined (_not_ `undefined`) and is not empty. If somehow the variable has not been assigned (e.g., the user didn't fill out the form completely), then the condition will not be true.
 
-- While using `person.name != undefined` is an equivalent expression, it is more idiomatic to utilize the coercion and have plain variable as the conditional expression.
+- While using `person.name !== undefined` is an equivalent expression, it is more idiomatic to utilize the coercion and have plain variable as the conditional expression.
 
 Additionally, JavaScript provides a [ternary conditional operator](https://en.wikipedia.org/wiki/%3F:) that lets you write a simple `if` statement as a single expression:
 

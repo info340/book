@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-09">
+<meta name="date" content="2017-10-14">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -416,7 +416,7 @@ Note course assumes you already are already familiar with introductory programmi
 <li><p>The <code>typeof</code> operator will return the data type of a variable. It is not widely used outside of debugging.</p></li>
 <li><p>As in Java, JavaScript variables should be given descriptive names using <a href="https://en.wikipedia.org/wiki/Camel_case">camelCase</a>.</p>
 <p class="alert alert-info">
-**Pro-<a href="tip:**" class="uri">tip:**</a> Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: <code>textString</code>, <code>wordsArray</code>, <code>totalNum</code>, <code>itemStr</code>, etc..
+**Pro <a href="Tip:**" class="uri">Tip:**</a> Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: <code>textString</code>, <code>wordsArray</code>, <code>totalNum</code>, <code>itemStr</code>, etc..
 </p></li>
 </ul>
 <p>Declared variables have a default value of <code>undefined</code>—a value representing that the variable has no value. This is somewhat similar to <code>null</code> in Java (though JavaScript <em>also</em> as an <code>null</code> value that is not commonly used):</p>
@@ -669,11 +669,11 @@ For more examples of the horror of JavaScript coercion, see <a href="https://www
 <p>The <strong><code>condition</code></strong> can be any expression that evaluates to a Boolean value. But since any value can be <em>coerced</em> into Booleans, you can put any value you want inside the <code>if</code> condition. This is actually really useful—since <code>undefined</code> is a falsy value, you can use this coercion to check if a variable has been assigned or not:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//check if a `person` variable has a `name` property</span>
 <span class="cf">if</span>(<span class="va">person</span>.<span class="at">name</span>)<span class="op">{</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Person does not have a name&#39;</span>)<span class="op">;</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Person does have a name!&#39;</span>)<span class="op">;</span>
 <span class="op">}</span></code></pre></div>
 <p>In the above example, the condition will only coerce to <code>true</code> if <code>person.name</code> is defined (<em>not</em> <code>undefined</code>) and is not empty. If somehow the variable has not been assigned (e.g., the user didn’t fill out the form completely), then the condition will not be true.</p>
 <ul>
-<li>While using <code>person.name != undefined</code> is an equivalent expression, it is more idiomatic to utilize the coercion and have plain variable as the conditional expression.</li>
+<li>While using <code>person.name !== undefined</code> is an equivalent expression, it is more idiomatic to utilize the coercion and have plain variable as the conditional expression.</li>
 </ul>
 <p>Additionally, JavaScript provides a <a href="https://en.wikipedia.org/wiki/%3F:">ternary conditional operator</a> that lets you write a simple <code>if</code> statement as a single expression:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> x<span class="op">;</span> <span class="co">//declare variable</span>
