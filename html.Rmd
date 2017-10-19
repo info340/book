@@ -167,7 +167,7 @@ In an HTML document, the "root" element of the tree is always an **`<html>`** el
 </html>
 ```
 
-This model of HTML as a tree of "nodes"&mdash;along with an API (programming interface) for manipulating them&mdash; is known as the [**Document Object Model (DOM)**](https://en.wikipedia.org/wiki/Document_Object_Model). See [Chapter: DOM]() for details.
+This model of HTML as a tree of "nodes"&mdash;along with an API (programming interface) for manipulating them&mdash; is known as the [**Document Object Model (DOM)**](https://en.wikipedia.org/wiki/Document_Object_Model). See [Chapter 12](#dom) for details.
 
 <p class="alert alert-warning">**Caution!** HTML elements have to be "closed" correctly, or the semantic meaning may be incorrect! If you forget to close the `<h1>` tag, then _all_ of the following content will be considered part of the heading! Remember to close your inner tags _before_ you close the outer ones. [Validating](http://validator.w3.org/) your HTML can help with this.</p>
 

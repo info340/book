@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-14">
+<meta name="date" content="2017-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -265,7 +265,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
 <li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="dom-manipulation.html"><a href="dom-manipulation.html"><i class="fa fa-check"></i><b>12</b> DOM Manipulation</a></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a><ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -341,6 +356,9 @@ Note course assumes you already are already familiar with introductory programmi
    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/script.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
 <span class="kw">&lt;/body&gt;</span>
 <span class="kw">&lt;html&gt;</span></code></pre></div>
+<ul>
+<li>Most browsers also support adding a <code>defer</code> attribute to the <code>&lt;script&gt;</code> element that tells the browser to defer downloading and running the script until the page is fully loaded and rendered to the screen. With this attribute, you can put the <code>&lt;script&gt;</code> element in the <code>&lt;head&gt;</code> without any issues. However, this attribute is not supported in IE 9 or earlier; it is thus still best practice to put the <code>&lt;script&gt;</code> element at the end of the body.</li>
+</ul>
 <p>While JavaScript most commonly is used to manipulate the web page content and is thus pretty obvious to the user, it <em>also</em> can produce “terminal-like” output—including printed text and <strong>error messages</strong>. This output can be viewed through the <strong>JavaScript Console</strong> included as a <em>developer tool</em> in the Chrome browser (other browsers include similar tools):</p>
 <div class="figure">
 <img src="img/javascript/chrome-dev-console.png" alt="Accessing the developer console in Chrome." />

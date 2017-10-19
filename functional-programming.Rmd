@@ -488,7 +488,7 @@ let runningTotal = 0; //an accumulated aggregate
 for(let i=0; i<numbers.length; i++){
     runningTotal = add(runningTotal, numbers[i]);
 }
-console.log(runningTotal); //120
+console.log(runningTotal); //15
 ```
 
 This loop **reduces** the array into an "accumulated" sum of all the numbers in the list. Inside the loop, the `add()` function is called and passed the "current total" and the "new value" to be combined into the aggregate (_in that order_). The resulting total is then reassigned as the "current total" for the next iteration.

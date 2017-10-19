@@ -1,3 +1,5 @@
+<!-- TDOO: check https://w3c.github.io/using-aria/ for further details to include? -->
+
 # Standards and Accessibility
 
 This chapter details considerations and techniques to ensure that your web pages and applications can be used by ___everyone___, regardless of their choice of web browser or their own physical abilities.
@@ -259,5 +261,6 @@ In conclusion, creating accessible content basically means writing proper and se
 - [**Teach Access Tutorial**](https://teachaccess.github.io/tutorial/) for creating accessible web pages. Provides lost of examples and details. Be sure and check out the [code checklist](https://teachaccess.github.io/tutorial/#/12) and the [design checklist](https://teachaccess.github.io/tutorial/#/19).
 - [UW Accessibility Checklist](http://www.washington.edu/accessibility/checklist/) a thorough and detailed list of considerations for developing accessible systems put together by UW. See also their [complete list of tools and resources](http://www.washington.edu/accessibility/web/tools-and-resources/).
 - [ARIA Resources (MDN)](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
+- [Using ARIA (w3c)](https://w3c.github.io/using-aria/) official guidance for using the ARIA specification
 - [WAVE Accessibility Evaluation Service](http://wave.webaim.org/)
 </div>

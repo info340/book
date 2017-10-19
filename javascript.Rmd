@@ -62,6 +62,8 @@ The `<script>` tag can be included anywhere in an HTML page. Most commonly it is
 <html>
 ```
 
+- Most browsers also support adding a `defer` attribute to the `<script>` element that tells the browser to defer downloading and running the script until the page is fully loaded and rendered to the screen. With this attribute, you can put the `<script>` element in the `<head>` without any issues. However, this attribute is not supported in IE 9 or earlier; it is thus still best practice to put the `<script>` element at the end of the body.
+
 While JavaScript most commonly is used to manipulate the web page content and is thus pretty obvious to the user, it _also_ can produce "terminal-like" output&mdash;including printed text and **error messages**. This output can be viewed through the **JavaScript Console** included as a _developer tool_ in the Chrome browser (other browsers include similar tools):
 
 ![Accessing the developer console in Chrome.](img/javascript/chrome-dev-console.png)

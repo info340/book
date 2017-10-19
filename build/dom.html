@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info343.github.io/" />
+  <meta property="og:image" content="https://info343.github.io/img/busy-spider-icon.png" />
+  <meta property="og:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="github-repo" content="info343/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 343: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info343.github.io/img/busy-spider-icon.png" />
+
+<meta name="author" content="Joel Ross and Mike Freeman">
+
+
+<meta name="date" content="2017-10-19">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
+<link rel="prev" href="functional-programming.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code > span.dt { color: #204a87; } /* DataType */
+code > span.dv { color: #0000cf; } /* DecVal */
+code > span.bn { color: #0000cf; } /* BaseN */
+code > span.fl { color: #0000cf; } /* Float */
+code > span.ch { color: #4e9a06; } /* Char */
+code > span.st { color: #4e9a06; } /* String */
+code > span.co { color: #8f5902; font-style: italic; } /* Comment */
+code > span.ot { color: #8f5902; } /* Other */
+code > span.al { color: #ef2929; } /* Alert */
+code > span.fu { color: #000000; } /* Function */
+code > span.er { color: #a40000; font-weight: bold; } /* Error */
+code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #000000; } /* Constant */
+code > span.sc { color: #000000; } /* SpecialChar */
+code > span.vs { color: #4e9a06; } /* VerbatimString */
+code > span.ss { color: #4e9a06; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #000000; } /* Variable */
+code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code > span.ex { } /* Extension */
+code > span.at { color: #c4a000; } /* Attribute */
+code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Book</a></li>
+<li class="chapter" data-level="1" data-path="machine-setup.html"><a href="machine-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="machine-setup.html"><a href="machine-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="machine-setup.html"><a href="machine-setup.html#code-editors"><i class="fa fa-check"></i><b>1.2</b> Code Editors</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#atom"><i class="fa fa-check"></i>Atom</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#brackets"><i class="fa fa-check"></i>Brackets</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#sublime-text"><i class="fa fa-check"></i>Sublime Text</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="machine-setup.html"><a href="machine-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
+<li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
+<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code class="unnumbered">package.json</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a><ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i><b>2.1</b> Client-Side File Types</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#http-requests-and-servers"><i class="fa fa-check"></i><b>2.2</b> HTTP Requests and Servers</a><ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-tags"><i class="fa fa-check"></i>Some Example Tags</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
+<li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a><ul>
+<li class="chapter" data-level="4.1" data-path="css.html"><a href="css.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>4.2</b> CSS Rules</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="css.html"><a href="css.html#the-cascade"><i class="fa fa-check"></i><b>4.3</b> The Cascade</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html"><i class="fa fa-check"></i><b>5</b> Standards and Accessibility</a><ul>
+<li class="chapter" data-level="5.1" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#web-standards"><i class="fa fa-check"></i><b>5.1</b> Web Standards</a></li>
+<li class="chapter" data-level="5.2" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#why-accessibility"><i class="fa fa-check"></i><b>5.2</b> Why Accessibility</a></li>
+<li class="chapter" data-level="5.3" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#supporting-accessibility"><i class="fa fa-check"></i><b>5.3</b> Supporting Accessibility</a><ul>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#semantic-html"><i class="fa fa-check"></i>Semantic HTML</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#aria"><i class="fa fa-check"></i>ARIA</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#page-structure-navigable"><i class="fa fa-check"></i>Page Structure (Navigable)</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#visual-information-perceivable"><i class="fa fa-check"></i>Visual Information (Perceivable)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="more-css.html"><a href="more-css.html"><i class="fa fa-check"></i><b>6</b> More CSS</a><ul>
+<li class="chapter" data-level="6.1" data-path="more-css.html"><a href="more-css.html#compound-selectors"><i class="fa fa-check"></i><b>6.1</b> Compound Selectors</a><ul>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#group-selector"><i class="fa fa-check"></i>Group Selector</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#combined-selectors"><i class="fa fa-check"></i>Combined Selectors</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#attribute-selectors"><i class="fa fa-check"></i>Attribute Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="more-css.html"><a href="more-css.html#property-values"><i class="fa fa-check"></i><b>6.2</b> Property Values</a><ul>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#css-units"><i class="fa fa-check"></i>Units &amp; Sizes</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#fonts-and-icons"><i class="fa fa-check"></i>Fonts and Icons</a></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="more-css.html"><a href="more-css.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="css-layouts.html"><a href="css-layouts.html"><i class="fa fa-check"></i><b>7</b> CSS Layouts</a><ul>
+<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#block-vs.inline"><i class="fa fa-check"></i><b>7.1</b> Block vs. Inline</a></li>
+<li class="chapter" data-level="7.2" data-path="css-layouts.html"><a href="css-layouts.html#the-box-model"><i class="fa fa-check"></i><b>7.2</b> The Box Model</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#changing-the-flow"><i class="fa fa-check"></i><b>7.3</b> Changing the Flow</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a><ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a><ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a><ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a><ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a><ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dom" class="section level1">
+<h1><span class="header-section-number">Chapter 12</span> Document Object Model (DOM)</h1>
+<p>The primary purpose of using JavaScript in a web page is to make that page <strong>interactive</strong>: the JavaScript language is used to program logical decisions that will effect what is shown on the page. It does this primarily by <em>changing the HTML rendered by the browser</em>. For example, JavaScript can be used to change the text inside a <code>&lt;p&gt;</code>, add addition <code>&lt;li&gt;</code> elements to a list, or to give a <code>&lt;div&gt;</code> a new CSS <code>class</code> attribute. The programmatic representation of the HTML elements currently being shown by the browser is known as the <strong>Document Object Model (DOM)</strong>. In web programming JavaScript code is used to modify the DOM (HTML elements) currently being shown by the browser in response to user input, thereby making the page interaction. This chapter introduces the Document Object Model and how to use JavaScript to manipulate it through user-driven interaction.</p>
+<div id="the-dom-api" class="section level2">
+<h2><span class="header-section-number">12.1</span> The DOM API</h2>
+<p>As you should recall from <a href="#html">Chapter 3</a>, HTML elements can be nested, allowing us to consider a webpage as a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)"><strong>“tree”</strong></a> of elements:</p>
+<div class="figure">
+<img src="img/html/dom-tree.jpg" alt="An example DOM tree (a tree of HTML elements)." />
+<p class="caption">An example DOM tree (a tree of HTML elements).</p>
+</div>
+<ul>
+<li>A <strong>tree</strong> is a hierarchical data structure, where each element (called a <em>node</em>) contains references to <em>child</em> elements. Following the arboreal metaphor, the “start” of the tree is called the <em>root note</em>, hierarchical sequences of nodes are called <em>branches</em>, and a <em>node</em> that does not have any children is called a <em>leaf</em>.</li>
+</ul>
+<p>Considering a web page’s content to be a tree of HTML elements is one way to <em>model</em> (represent) the structure of that information. This particular model of a web <em>document</em> (as a tree of <em>object</em> nodes) is called the <strong>Document Object Model</strong>, or <strong>DOM</strong> for short. In many ways the DOM <em>is</em> the HTML (though the HTML rendered in the browser, not the <code>.html</code> source code you’ve written)! Thus we can refer to the web page’s content as “the DOM”, and an HTML element as a “DOM element”.</p>
+<ul>
+<li>Note that even “plain text” content (e.g., what is inside a <code>&lt;p&gt;</code> tag) are considered nodes in the DOM tree—they are “text content” nodes (instead of “element nodes”).</li>
+</ul>
+<p>Moreover, the DOM also provides an <strong>Application Programming Interface (API)</strong> which allows computer <em>applications</em> to <em>programmatically</em> (e.g., through JavaScript code) <em>interact</em> with it: accessing and manipulating the tree of elements. As you may recall from <a href="https://info201.github.io/apis.html">previous courses</a>, an API is often a set of <em>functions</em> and <em>variables</em> that can be used give instructions to a program. The DOM API is no different: it is a group of functions you can call and variables (usually Object properties) you can adjust to change the rendered web content. You write code to call these functions in order to make a page interactive.</p>
+<div id="global-variables" class="section level3 unnumbered">
+<h3>Global Variables</h3>
+<p>You can programmatically access the API in JavaScript by utilizing a set of global variables. <strong>Global variables</strong> are variables that are “globally” scoped: they are available anywhere in the program (not just within a particular function).</p>
+<p class="alert alert-warning">
+An important programming style rule is to <strong>minimize</strong> the use of global variables. Try to avoid creating too many new globals yourself!
+</p>
+<p>Global variables in JavaScript are almost always <em>Objects</em> that have methods as their values. For example, the JavaScript language itself provides a global <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"><strong><code>Math</code></strong></a> object that has includes a number of function properties (e.g., <code>sqrt()</code>, <code>floor()</code>, etc.).</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">console</span>.<span class="at">log</span>( <span class="kw">typeof</span> Math )<span class="op">;</span>  <span class="co">//=&gt; &#39;object&#39;</span>
+<span class="va">console</span>.<span class="at">log</span>( <span class="kw">typeof</span> <span class="va">Math</span>.<span class="at">sqrt</span> )<span class="op">;</span>  <span class="co">//=&gt; &#39;function&#39;</span>
+<span class="va">console</span>.<span class="at">log</span>( <span class="va">Math</span>.<span class="at">sqrt</span>(<span class="dv">25</span>) )<span class="op">;</span> <span class="co">//=&gt; 5</span></code></pre></div>
+<ul>
+<li>In fact, the <code>console</code> object is <em>another</em> global variable provided by the JavaScript runtime (whether inside the browser or inside Node.js)!</li>
+</ul>
+<p>The <em>web browser</em> also provides a number of global variables that you can use. For example <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window"><strong><code>window</code></strong></a> is a global object that represents the browser itself. You can use this object to get information about the browser:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/* example properties */</span>
+<span class="kw">let</span> width <span class="op">=</span> <span class="va">window</span>.<span class="at">innerWidth</span><span class="op">;</span>   <span class="co">//viewport width</span>
+<span class="kw">let</span> height <span class="op">=</span> <span class="va">window</span>.<span class="at">innerHeight</span><span class="op">;</span> <span class="co">//viewport height</span>
+<span class="kw">var</span> url <span class="op">=</span> <span class="va">window</span>.<span class="va">location</span>.<span class="at">href</span><span class="op">;</span> <span class="co">//url for this page</span>
+
+<span class="co">/* example functions */</span>
+<span class="va">window</span>.<span class="at">alert</span>(<span class="st">&quot;Boo!&quot;</span>)<span class="op">;</span> <span class="co">//show a popup alert. Do not use this.</span>
+<span class="va">window</span>.<span class="at">scrollTo</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span> <span class="co">//scroll to a position</span>
+<span class="va">window</span>.<span class="at">setTimeout</span>(callback<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span> <span class="co">//execute callback after an delay</span>
+<span class="va">window</span>.<span class="at">setInterval</span>(callback<span class="op">,</span> <span class="dv">1000</span>)<span class="op">;</span> <span class="co">//execute callback repeatedly after interval</span></code></pre></div>
+<p class="alert alert-warning">
+While these examples are included for completeness, most <code>window</code> functions are rarely used and should be avoided. Popups with the <code>window.alert()</code> function are inelegant, interrupt the user’s actions, and produce a bad user experience—you should instead use in-window alerting options instead (such as showing a <code>&lt;p class=&quot;alert&quot;&gt;</code>). Browser control functions such as <code>scrollTo()</code> are non-standard and can vary drastically across systems and platforms. Proceed with caution when using <code>window</code> functions!
+</p>
+</div>
+</div>
+<div id="dom-manipulation" class="section level2">
+<h2><span class="header-section-number">12.2</span> DOM Manipulation</h2>
+<p>While <code>window</code> represents the Browser, the <strong>DOM</strong> itself is represented by the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document"><strong><code>document</code></strong></a> global object—<code>document</code> <em>is</em> the DOM (the <em>current</em> HTML rendered in the browser). You access properties and call methods of this object in order to manipulate the content displayed in the browser!</p>
+<div id="referencing-html-elements" class="section level3 unnumbered">
+<h3>Referencing HTML Elements</h3>
+<p>In order to manipulate the DOM elements in a page, you first need to get a <em>reference</em> to the element you want to change—that is, you need a variable that refers to that element. You can get these variable references by using one of the <code>document</code> “selector” functions:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//element with id=&quot;foo&quot;</span>
+<span class="kw">let</span> fooElem <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementById</span>(<span class="st">&#39;foo&#39;</span>)<span class="op">;</span>
+
+<span class="co">//elements with class=&quot;row&quot;</span>
+<span class="kw">let</span> rowElems <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementsByClassName</span>(<span class="st">&#39;row&#39;</span>)<span class="op">;</span> <span class="co">//note the plural!</span>
+
+<span class="co">//&lt;li&gt; elements</span>
+<span class="kw">let</span> liElems <span class="op">=</span> <span class="va">document</span>.<span class="at">getElementsByTagName</span>(<span class="st">&#39;li&#39;</span>)<span class="op">;</span> <span class="co">//note the plural!</span>
+
+<span class="co">/*easiest to select by reusing CSS selectors! */</span>
+<span class="kw">let</span> cssSelector <span class="op">=</span> <span class="st">&#39;header p, .title &gt; p&#39;</span><span class="op">;</span>  <span class="co">//a string of a CSS selector</span>
+
+<span class="co">//selects FIRST element that matches css selector</span>
+<span class="kw">let</span> elem <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(cssSelector)<span class="op">;</span>
+
+<span class="co">//matches ALL elements that match css selector</span>
+<span class="kw">let</span> elems <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelectorAll</span>(cssSelector)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>The <code>document.querySelector()</code> is <em>by far</em> the most flexible and easy to use of these methods: it can easily do the same as all the other methods (just put in an id, class, or element selector). <strong>You should always use <code>querySelector()</code></strong>.</p></li>
+<li><p>Note that the methods that return multiple nodes (e.g., <code>querySelectorAll</code>) return a <a href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList"><code>NodeList</code></a> object. While this is like an array (you can access elements via index through bracket notation and it has a <code>.length</code> property), it is <strong>not</strong> an array: meaning it doesn’t support methods like <code>forEach()</code> and <code>map()</code> across all browsers. If you need to iterate through a <code>NodeList</code>, you should use a regular <code>for</code> loop. But in practice, you’re much more likely to only work with single elements at a time.</p></li>
+</ul>
+</div>
+<div id="modifying-html-elements" class="section level3 unnumbered">
+<h3>Modifying HTML Elements</h3>
+<p>Once you have a reference to an element, you access properties and call methods on that object in order to modify its state in the DOM—which will in turn modify how it <em>currently</em> is displayed on the page. Thus by modifying these objects, you are dynamically changing the web page’s content!</p>
+<p class="alert alert-warning">
+<strong>Important</strong>: setting these properties do not change the <code>.html</code> source code file! Instead, they just change the <em>rendered DOM elements</em> (think: the content stored in the computer’s memory rather than in a file). If you refresh the page, the content will go back to how the <code>.html</code> source code file specifies it should appear—unless that also loads the script that modifies the DOM. What is shown on the page is the HTML with the JavaScript modifications added in.
+</p>
+<div id="changing-content" class="section level4 unnumbered">
+<h4>Changing Content</h4>
+<p>You can use JavaScript to access and modify the <strong>content</strong> of a DOM element (e.g., the stuff between the start and close tags):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//get a reference to the FIRST &lt;p&gt; element</span>
+<span class="kw">let</span> elem <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(elem)<span class="op">;</span> <span class="co">//to demonstrate</span>
+
+<span class="kw">let</span> text <span class="op">=</span> <span class="va">elem</span>.<span class="at">textContent</span><span class="op">;</span> <span class="co">//the text content of the elem</span>
+<span class="va">elem</span>.<span class="at">textContent</span> <span class="op">=</span> <span class="st">&quot;This is different content!&quot;</span><span class="op">;</span> <span class="co">//change the content</span>
+
+<span class="kw">let</span> html <span class="op">=</span> <span class="va">elem</span>.<span class="at">innerHTML</span><span class="op">;</span> <span class="co">//content including HTML</span>
+<span class="va">elem</span>.<span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;This is &lt;em&gt;different&lt;/em&gt; content!&quot;</span><span class="op">;</span> <span class="co">//interpreted as HTML</span></code></pre></div>
+<p>The <code>textContent</code> property of the element refers to <em>all</em> of the content, but considered as “plain text” this means that it is considered a “safe” property: you can assign strings that contain’s HTML code (e.g., <code>&lt;em&gt;Hello&lt;/em&gt;</code>), but that code will be escaped and not interpreted as HTML (instead the <code>&lt;</code> and <code>&gt;</code> will be written out as if you had used <a href="https://www.w3schools.com/html/html_entities.asp">HTML entities</a>). The <code>.innerHTML</code> property, on the other hand, is “not safe”: any HTML included in the String you assign to it will be converted into DOM elements. This makes it not a great property to use unless unless you are absolutely certain the content came from a trusted source.</p>
+<ul>
+<li><p>The <code>innerHTML</code> property should be used primarily for including <em>inline</em> elements such as <code>&lt;em&gt;</code> or <code>&lt;strong&gt;</code>. For more complex HTML content, it is cleaner code (separation of concerns!) to explicitly create new elements—see below for details.</p></li>
+<li><p>You can “clear” the content of an element by setting it’s content to be an empty string (<code>''</code>):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> alertElem <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;.alert&#39;</span>)<span class="op">;</span>
+<span class="va">alertElem</span>.<span class="at">textContent</span> <span class="op">=</span> <span class="st">&#39;&#39;</span><span class="op">;</span> <span class="co">//no more alert!</span></code></pre></div></li>
+</ul>
+</div>
+<div id="changing-attributes" class="section level4 unnumbered">
+<h4>Changing Attributes</h4>
+<p>You can also change the <strong>attributes</strong> of individual elements. Each attribute defined in the HTML specification is typically exposed as a <em>property</em> of the element object:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//get a reference to the `#picture` element</span>
+<span class="kw">let</span> imgElem <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#picture&#39;</span>)<span class="op">;</span>
+
+<span class="co">//access the attribute</span>
+<span class="va">console</span>.<span class="at">log</span>( <span class="va">imgElem</span>.<span class="at">src</span> )<span class="op">;</span> <span class="co">//logs the source of the image</span>
+
+<span class="co">//modify the attribute</span>
+<span class="va">imgElem</span>.<span class="at">src</span> <span class="op">=</span> <span class="st">&#39;my-picture.png&#39;</span><span class="op">;</span></code></pre></div>
+<p class="alert alert-warning">
+You <strong>cannot</strong> access <code>element.class</code> or <code>element.style</code> attributes directly in this way; see below for specifics on changing the CSS of an element.
+</p>
+<p>You can alternatively modify element attributes by using the methods <code>getAttribute()</code> (passing it which attribute to access) and <code>setAttribute()</code> (passing it which attribute to modify and what value to assign to that attribute):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> imgElem <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#picture&#39;</span>)<span class="op">;</span>
+<span class="va">imgElement</span>.<span class="at">setAttribute</span>(<span class="st">&#39;src&#39;</span><span class="op">,</span> <span class="st">&#39;my-other-picture.png&#39;</span>)<span class="op">;</span> <span class="co">//set the src</span>
+
+<span class="va">console</span>.<span class="at">log</span>( <span class="va">imgElem</span>.<span class="at">getAttribute</span>(<span class="st">&#39;src&#39;</span>) )<span class="op">;</span> <span class="co">//=&gt; &#39;my-other-picture.png&#39;</span>
+
+<span class="co">//the `hasAttribute()` method returns a boolean.</span>
+<span class="kw">let</span> isThick <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;svg rect&#39;</span>)
+                      .<span class="at">hasAttribute</span>(<span class="st">&#39;stroke-width&#39;</span>)<span class="op">;</span> <span class="co">//chained anonymous variables</span></code></pre></div>
+<p>These methods will let you interact with attributes that are <em>not</em> defined by the HTML spec, such as <code>data-</code> attribute. However, they <em>don’t</em> work with certain element attributes (such as the <code>value</code> attribute of an <code>&lt;input&gt;</code> element). Other elements may have their own special DOM properties: see the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM Documentation</a> for a list of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces">HTML interfaces</a>.</p>
+</div>
+<div id="changing-element-css" class="section level4">
+<h4><span class="header-section-number">12.2.0.1</span> Changing Element CSS</h4>
+<p>It is possible to modify the <strong>CSS classes</strong> (and even inline styling) of an element. But rather than using the <code>class</code> property like with othe attributes, you instead access the <strong><code>className</code></strong> property. On modern browsers (IE 10 or later), this property supports methods <code>.add()</code> and <code>.remove()</code> for adding and removing classes from the list:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//access list of classes</span>
+<span class="kw">let</span> classList <span class="op">=</span> <span class="va">elem</span>.<span class="at">classList</span><span class="op">;</span>
+
+<span class="co">//add a class</span>
+<span class="va">elem</span>.<span class="va">classList</span>.<span class="at">add</span>(<span class="st">&#39;small&#39;</span>)<span class="op">;</span> <span class="co">//add a single class</span>
+<span class="va">elem</span>.<span class="va">classList</span>.<span class="at">add</span>(<span class="st">&#39;alert&#39;</span><span class="op">,</span><span class="st">&#39;alert-warning&#39;</span>)<span class="op">;</span> <span class="co">//add multiples classes (not on IE)</span>
+
+<span class="co">//remove a class</span>
+<span class="va">elem</span>.<span class="va">classList</span>.<span class="at">remove</span>(<span class="st">&#39;small&#39;</span>)<span class="op">;</span>
+
+<span class="co">//&quot;toggle&quot; (add if missing, remove if present)</span>
+<span class="va">elem</span>.<span class="va">classList</span>.<span class="at">toggle</span>(<span class="st">&#39;small&#39;</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>While IE 10+ does support these methods, it doesn’t support <em>multiple arguments</em> for them (so you can’t add multiple classes in a single method call). If you need to support older browsers (including any version of IE), you can instead modify the <code>.className</code> property as if it were a String:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//fallback for IE (all)</span>
+<span class="kw">var</span> classes <span class="op">=</span> <span class="va">elem</span>.<span class="at">className</span><span class="op">;</span>
+classes <span class="op">+=</span> <span class="st">&#39; &#39;</span><span class="op">+</span> <span class="st">&#39;sweet sour&#39;</span><span class="op">;</span> <span class="co">//modify the string (append!)</span>
+<span class="va">elem</span>.<span class="at">className</span> <span class="op">=</span> classes<span class="op">;</span>     <span class="co">//reassign</span></code></pre></div>
+<p>The <code>classList</code> methods work perfectly on Microsoft Edge.</p></li>
+</ul>
+<p>It is also possible to access and modify individual CSS properties of elements through the DOM element’s <code>style</code> property. <code>.style</code> references an Object whose keys are the CSS property names (but written in <em>camelCase</em> instead of <em>kabob-case</em>)</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> h1 <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;h1&#39;</span>)<span class="op">;</span>
+<span class="va">h1</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&#39;green&#39;</span><span class="op">;</span>
+<span class="va">h1</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&#39;black&#39;</span><span class="op">;</span> <span class="co">//not `.background-color`</span></code></pre></div>
+<p class="alert alert-info">
+<p>In general, you should modify element CSS by changing the class of the element, rather than specific style properties</p>
+</div>
+</div>
+<div id="modifying-the-dom-tree" class="section level3 unnumbered">
+<h3>Modifying the DOM Tree</h3>
+<p>In addition to modifying the individual DOM elements, it is also possible to access and modify the <em>DOM tree itself!</em> That is, you can create new elements and add them to the tree (read: webpage), remove elements from the tree, or pluck them out of the tree and insert them somewhere else!</p>
+<p>First, note that each JavaScript DOM element has <a href="https://www.w3schools.com/js/js_htmldom_navigation.asp"><em>read-only</em> properties</a> referring to its parent, children, and sibling elements:</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;main&gt;</span>
+    <span class="kw">&lt;section</span><span class="ot"> id=</span><span class="st">&quot;first-section&quot;</span><span class="kw">&gt;</span>
+        <span class="kw">&lt;p&gt;</span>First paragraph<span class="kw">&lt;/p&gt;</span>
+        <span class="kw">&lt;p&gt;</span>Second paragraph<span class="kw">&lt;/p&gt;</span>
+    <span class="kw">&lt;/section&gt;</span>
+    <span class="kw">&lt;section</span><span class="ot"> id=</span><span class="st">&quot;second-section&quot;</span><span class="kw">&gt;&lt;/section&gt;</span>
+<span class="kw">&lt;main&gt;</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//get reference to the first section</span>
+<span class="kw">let</span> firstSection <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;#first-section&#39;</span>)<span class="op">;</span>
+
+<span class="co">//get reference to the &quot;parent&quot; node</span>
+<span class="kw">let</span> main <span class="op">=</span> <span class="va">firstSection</span>.<span class="at">parentElement</span><span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(main)<span class="op">;</span> <span class="co">//&lt;main&gt;...&lt;/main&gt;</span>
+
+<span class="co">//get reference to the child elements (2 paragraphs)</span>
+<span class="kw">let</span> paragraphs <span class="op">=</span> <span class="va">firstSection</span>.<span class="at">children</span><span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">paragraphs</span>.<span class="at">length</span>)<span class="op">;</span> <span class="co">//2</span>
+<span class="va">console</span>.<span class="at">log</span>(paragraphs[<span class="dv">0</span>])<span class="op">;</span> <span class="co">//&lt;p&gt;First paragraph&lt;/p&gt;</span>
+
+<span class="co">//get reference to the the next sibling</span>
+<span class="kw">let</span> sectionSection <span class="op">=</span> <span class="va">firstSection</span>.<span class="at">nextElementSibling</span><span class="op">;</span>
+<span class="va">console</span>.<span class="at">log</span>(secondSection)<span class="op">;</span> <span class="co">//&lt;section id=&quot;second-section&quot;&gt;&lt;/section&gt;</span></code></pre></div>
+<ul>
+<li><p>Note that these properties only deal with <em>HTML elements</em>—text content nodes are ignored. You can instead use equivalent properties <code>parentNode</code> and <code>childNodes</code> to also consider text content nodes.</p>
+<p>SVG content doesn’t support <code>parentElement</code>, but does support <code>parentNode</code>.</p></li>
+</ul>
+<p>You can also call methods to create and add new HTML DOM elements to the tree. The <code>document.createElement()</code> function is used to create a new HTML element. However this element is <em>not</em> created a part of the tree (after all, you haven’t specified where it would put into the page)! Thus you need to also use a method such as <code>appendChild</code> to add that new element as a child of another element:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a new &lt;p&gt; (not yet in the tree)</span>
+<span class="kw">let</span> newP <span class="op">=</span> <span class="va">document</span>.<span class="at">createElement</span>(<span class="st">&#39;p&#39;</span>)<span class="op">;</span>
+<span class="va">newP</span>.<span class="at">textContent</span> <span class="op">=</span> <span class="st">&quot;I&#39;m new!&quot;</span><span class="op">;</span>
+
+<span class="co">//create Node of textContent only (not an HTML element, just text)</span>
+<span class="kw">let</span> newText <span class="op">=</span> <span class="va">document</span>.<span class="at">createTextNode</span>(<span class="st">&quot;I&#39;m blank&quot;</span>)<span class="op">;</span>
+
+<span class="kw">let</span> main <span class="op">=</span> <span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;main&#39;</span>)<span class="op">;</span>
+<span class="va">main</span>.<span class="at">appendChild</span>(newP)<span class="op">;</span> <span class="co">//add element INSIDE (at end)</span>
+<span class="va">main</span>.<span class="at">appendChild</span>(newText)<span class="op">;</span> <span class="co">//add the text inside, AFTER the &lt;p&gt;</span>
+
+<span class="co">//add anonymous new node BEFORE element. Parameters are: (new, old)</span>
+<span class="va">main</span>.<span class="at">insertBefore</span>(<span class="va">document</span>.<span class="at">createTextNode</span>(<span class="st">&quot;First!&quot;</span>)<span class="op">,</span> newP)<span class="op">;</span>
+
+<span class="co">//replace node. Parameters are: (new, old)</span>
+<span class="va">main</span>.<span class="at">replaceChild</span>(<span class="va">document</span>.<span class="at">createTextNode</span>(<span class="st">&#39;boo&#39;</span>)<span class="op">,</span> newText)<span class="op">;</span>
+
+<span class="co">//remove node</span>
+<span class="va">main</span>.<span class="at">removeChild</span>(<span class="va">main</span>.<span class="at">querySelector</span>(<span class="st">&#39;p&#39;</span>))<span class="op">;</span></code></pre></div>
+<p>The <code>appendChild()</code> method is considered a cleaner approach than just modifying the <code>innerHTML</code> property, as it allows you to adjust the DOM tree without erasing what was previously there. A common practice is to use <code>document.createElement()</code> to create a <em>block</em> element, then set the <code>innerHTML</code> of that element to its content (which can include <em>inline</em> elements), and then use <code>appendChild</code> to add the new block element to the tree at the desired location.</p>
+</div>
+<div id="accessibility" class="section level3 unnumbered">
+<h3>Accessibility</h3>
+<p>Whenever you learn a new technology, you should ask: <strong>how does this affect accessibility?</strong> With the JavaScript code modifying the rendered DOM, it is possible that the content of a page will change <em>after</em> it has been read by a screen reader. And while a sighted user will likely be able to see the change visually, a screen reader has no way of knowing that something on the page is different unless you tell it.</p>
+<p>You can let screen readers know that an element in a page may have its content change <em>in the future</em> by making that element into an <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">ARIA Live Region</a>. Live regions are “watched” by assistive technologies, and whenever the content changes they will speak the new content to the reader as if it were being read for the first time.</p>
+<p>You make an element into a live region by giving it the <code>aria-live</code> attribute:</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> aria-live=</span><span class="st">&quot;polite&quot;</span><span class="kw">&gt;</span>
+  This content can change!
+<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<p>The value assigned to the <code>aria-live</code> attribute is the “politeness level”, which specifies the priority by which the screen reader should read the change. The most common option (that you should almost always use) is <code>&quot;polite&quot;</code>, which indicates that the changed text will be read only once the user has <em>paused</em> whatever is currently being read. A <code>&quot;polite&quot;</code> alert doesn’t interrupt the currently being read text or description, but instead will be injected when there is a break (if the current reading goes on for too long, then the new content will not be spoken).</p>
+<ul>
+<li>The other option is <code>&quot;assertive&quot;</code>, which indicates that the new content should be spoken as soon as it changes, possibly interrupting other content. This should only be used for important information (like alerts, warnings, or errors), as it can interrupt the user’s flow in ways that are very disorienting. In short: <em>always be polite!</em></li>
+</ul>
+</div>
+</div>
+<div id="listening-for-events" class="section level2">
+<h2><span class="header-section-number">12.3</span> Listening for Events</h2>
+<p>In order to make a page <strong>interactive</strong> (that is, able to change in response to user actions), you need to be able to respond to <em>user events</em>. Whenever a user interacts with a computer, the operating system announces that interaction as an <strong>event</strong>—the <em>event</em> of a button being clicked, the <em>event</em> of the mouse being moved, the <em>event</em> of a keyboard key being pressed, etc. These events are <strong>broadcast</strong> to the entire system, allowing any application (including the browser) to “respond” the occurrence of the event, such as by executing a particular JavaScript function.</p>
+<p>Thus in order to respond to user actions (and the <em>events</em> those actions generate), we need to define a function that will be executed <strong>when the event occurs</strong>. You will define a function as normal, but the function will not get called by you as a particular step in your script. Instead, the function you specify will be executed <em>by the system</em> when an event occurs, which will be at some indeterminate time in the future. This process is known as <a href="https://en.wikipedia.org/wiki/Event-driven_programming">event-driven programming</a>. It is also an example of <a href="https://en.wikipedia.org/wiki/Asynchrony_(computer_programming)"><strong>asynchronous programming</strong></a>: in which statements are not executed in a single order one after another (“synchronously”), but may occur “out of order” or even at the same time! (For more about working with asynchronous programming, see <a href="#ajax">Chapter 14</a>).</p>
+<p>In order for your script to respond to user events, you need to <em>register an event listener</em>. This is a bit like following someone on social media: you specify that you want to “listen” for updates from that person, as well as what you want to do when you “hear” some news from that person.</p>
+<ul>
+<li>Specifying that you want Slack to notify you when your name is mentioned is another good analogy!</li>
+</ul>
+<p>The DOM API allows you to register an event listener by call the <strong><code>.addEventListener()</code></strong> on a selected element (e.g., on the element that you want to listen to). This method takes two arguments: a string representing what kind of event you want to listen for, and a <em>callback function</em> to execute when you hear that event:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//a (named) callback function</span>
+<span class="kw">function</span> <span class="at">onClickCallback</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;You clicked me!&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//get a reference to the element we want to &quot;listen&quot; to</span>
+<span class="kw">let</span> button <span class="op">=</span> <span class="va">document</span>.<span class="va">querySelect</span>.<span class="at">select</span>(<span class="st">&#39;button&#39;</span>)<span class="op">;</span>
+
+<span class="co">//register a listener for &#39;click&#39; events</span>
+<span class="va">button</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> onClickCallback)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>When the button is clicked by the user, it will “shout” out a <code>'click'</code> event (“I was clicked! I was clicked!”). Because you have set up a listener (an alert/notification) for such an occurrence, your script will be able to do something—and that something that it will do is run the specified callback function.</p>
+<p>It’s like you handed someone a recipe and told them “when I call you, bake this cake!”</p></li>
+<li><p>It is <strong>much</strong> more common to use an <em>anonymous function</em> as the callback:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> button <span class="op">=</span> <span class="va">document</span>.<span class="va">querySelect</span>.<span class="at">select</span>(<span class="st">&#39;button&#39;</span>)<span class="op">;</span>
+<span class="va">button</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;You clicked me!&quot;</span>)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div></li>
+<li><p>Note that this listener <em>only</em> applies to that particular button—if you wanted to respond to a different button, you’d need to register a separate listener! Also, as the method name implies, it is possible to add multiple listeners (callbacks) to the same element for the same event: all of them will be executed “at once”.</p></li>
+</ul>
+<p>The event callback will be passed in a single argument: an object representing the <em>“event”</em> that occurred. (Since all parameters are optional in JavaScript, and it wasn’t used in the above example, it wasn’t included in the callback definition). This event includes information such as where the event occurred (in x,y coordinates), what DOM element caused the event, and more:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">elem</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> <span class="kw">function</span>(event) <span class="op">{</span>
+   <span class="co">//get who was clicked;</span>
+   <span class="kw">let</span> clickedElem <span class="op">=</span> <span class="va">event</span>.<span class="at">target</span><span class="op">;</span> <span class="co">//target property of the event</span>
+   <span class="va">console</span>.<span class="at">log</span>(clickedElem)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>Also note that sometimes you want to stop the “normal” results of an event from occurring. For example, perhaps you don’t want a button to do it’s normal button thing (such as submitting a form), and instead want to provide your own custom behavior. To support this, you can “interrupt the event” by calling the following methods on the event:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">submitBtn</span>.<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> <span class="kw">function</span>(event) <span class="op">{</span>
+
+  <span class="va">event</span>.<span class="at">preventDefault</span>()<span class="op">;</span> <span class="co">//don&#39;t do normal behavior</span>
+  <span class="va">event</span>.<span class="at">stopPropagation</span>()<span class="op">;</span> <span class="co">//don&#39;t pass the event to parents</span>
+
+  <span class="co">//..do custom behavior here</span>
+
+  <span class="cf">return</span> <span class="kw">false</span><span class="op">;</span> <span class="co">//don&#39;t do normal behavior OR propagate! (for IE)</span>
+<span class="op">}</span>)</code></pre></div>
+<div id="types-of-events" class="section level3 unnumbered">
+<h3>Types of Events</h3>
+<p>There are <a href="https://developer.mozilla.org/en-US/docs/Web/Events">numerous different events</a> that you can listen for, including:</p>
+<ul>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent">Mouse Events</a> such as <strong><code>'click'</code></strong>. The <code>event.offsetX</code> and <code>event.offsetY</code> will provide (x,y) coordinates for the clicks location <em>relative to the target element</em>; you can use <code>clientX/Y</code> for coordinates relative to the browser window, or <code>pageX/Y</code> for coordinates relative to the document (regardless of scrolling). See <a href="http://www.quirksmode.org/mobile/viewports.html">this post</a> for details, and <a href="http://www.quirksmode.org/m/tests/mouseprops.html">this page</a> for an example.</p>
+<p>Other mouse events include <code>'dblclick'</code> (double-click), <code>'mousedown'</code> (mouse button is pressed down, may be held), <code>'hover'</code> (mouse hover), <code>'mouseenter'</code> (mouse moves over element), <code>'mousemove'</code> (mouse moves over element), and <code>'mouseleave'</code> (mouse moves of of element).</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent">Keyboard Events</a> such as <strong><code>'keydown'</code></strong>. The <code>event.key</code> property is used to determine <em>which key</em> was pressed, giving a <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values">predefined key value</a> you can check:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">elem</span>.<span class="at">addEventListener</span>(<span class="st">&#39;keydown&#39;</span><span class="op">,</span> <span class="kw">function</span>(event)<span class="op">{</span>
+    <span class="cf">if</span>(<span class="va">event</span>.<span class="at">key</span> <span class="op">===</span> <span class="st">&#39;ArrowUp&#39;</span>)<span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Going up!&quot;</span>)
+    <span class="op">}</span>
+    <span class="co">//...</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>The <code>event</code> object also has properties to check if any “modifier keys” such as shift, control, or meta (Windows/command) are held when the event occurs.</p>
+<p>Note that you almost always want to respond to the <code>'keydown'</code> and <code>'keyup'</code> events; the <code>'keypressed'</code> event is sent later and only applies to non-modifier keys.</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window#Event_handlers">Window Events</a> are event created by the <code>window</code> global, which we are also able to register event listeners on! For example, the <code>'resize'</code> event can be used to identify when the window has changed size (e.g., if you want to make the content responsive as well as the CSS):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">window</span>.<span class="at">addEventListener</span>(<span class="st">&quot;resize&quot;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="co">//...</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>(See <a href="https://developer.mozilla.org/en-US/docs/Web/Events/resize">the documentation</a> for advise on using this callback)</p>
+<p>Additionally, the <code>window</code> global defines a special event callback that occurs when the web page has finished loading. You can assign your own function to this callback to run code only <em>after</em> the webpage has loaded (e.g., for scripts specified in the <code>&lt;head&gt;</code>):</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">window</span>.<span class="at">onload</span> <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="co">//...do stuff once page is ready (e.g., run the rest of your code)</span>
+<span class="op">}</span></code></pre></div></li>
+</ul>
+<p class="alert alert-warning">
+<strong>Style guideline</strong>: always register event listeners in the JavaScript—do <em>not</em> utilize the HTML attributes such as <code>onClick</code>. This is to help keep concerns separated: the HTML should not need to know anything about the JavaScript that is utilized (since the browser may not even support JavaScript!), but it’s okay for the JavaScript to rely on and modify the HTML.
+</p>
+</div>
+<div id="event-driven-programming" class="section level3 unnumbered">
+<h3>Event-Driven Programming</h3>
+<p>In a typical web program event callback functions can occur repeatedly, over and over again (e.g., every time the user clicks a button). This makes them potentially act a bit like the body of a <code>while</code> loop. However, because these callbacks are <em>functions</em>, any variables defined within them are <strong>scoped</strong> to that function, and will not be available on subsequent executions. Thus if you want to keep track of some additional information (e.g., how many times the button was clicked), you will need to use a variable declared <em>outside</em> of the function (e.g., a <strong>global</strong> ). Such variables can be used to represent the <strong>state</strong> (situation) of the program, which can then be used to determine what behavior to perform when an event occurs, following the below pattern:</p>
+<pre><code>//pseudocode
+WHEN an event occurs {
+   check the STATE of the program;
+   DECIDE what to do based on that state;
+   UPDATE the state as necessary for the next event;
+}</code></pre>
+<p>For example:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> clickCount <span class="op">=</span> <span class="dv">0</span><span class="op">;</span>  <span class="co">//keep track of the &quot;state&quot; (global)</span>
+<span class="va">document</span>.<span class="at">querySelector</span>(<span class="st">&#39;button&#39;</span>).<span class="at">addEventListener</span>(<span class="st">&#39;click&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">if</span>(clickCount <span class="op">&gt;</span> <span class="dv">10</span>) <span class="op">{</span>  <span class="co">//decide what to do</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I think you&#39;ve had enough&quot;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+    <span class="cf">else</span> <span class="op">{</span>
+        clickCount<span class="op">++;</span>  <span class="co">//change state (+1)</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;You clicked me!&#39;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li>These “state” variables can be global, or can simply be declared within a containing function as a closure. State variables are often objects, with individual values stored as the properties. This provides a name-spacing feature, and helps to keep the code from being cluttered with many variables.</li>
+</ul>
+</div>
+</div>
+<div id="resources-10" class="section level2 unnumbered">
+<h2>Resources</h2>
+<ul>
+<li><a href="https://css-tricks.com/dom/">What is the DOM? (CSS-Tricks)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Document Object Model reference (MDN)</a> complete DOM reference</li>
+<li><a href="https://www.w3schools.com/js/js_htmldom.asp">JavaScript HTML DOM reference (w3c)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">Introduction to Events (MDN)</a></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="functional-programming.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info343/book/edit/master/dom.Rmd",
+"text": "Edit"
+},
+"download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

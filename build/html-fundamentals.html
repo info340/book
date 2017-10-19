@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-14">
+<meta name="date" content="2017-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -265,7 +265,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
 <li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="dom-manipulation.html"><a href="dom-manipulation.html"><i class="fa fa-check"></i><b>12</b> DOM Manipulation</a></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a><ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -410,7 +425,7 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
     <span class="kw">&lt;p&gt;</span>This is <span class="kw">&lt;em&gt;</span>conteeeeent<span class="kw">&lt;/em&gt;</span>!<span class="kw">&lt;/p&gt;</span>
   <span class="kw">&lt;body&gt;</span>
 <span class="kw">&lt;/html&gt;</span></code></pre></div>
-<p>This model of HTML as a tree of “nodes”—along with an API (programming interface) for manipulating them— is known as the <a href="https://en.wikipedia.org/wiki/Document_Object_Model"><strong>Document Object Model (DOM)</strong></a>. See <a href="">Chapter: DOM</a> for details.</p>
+<p>This model of HTML as a tree of “nodes”—along with an API (programming interface) for manipulating them— is known as the <a href="https://en.wikipedia.org/wiki/Document_Object_Model"><strong>Document Object Model (DOM)</strong></a>. See <a href="dom.html#dom">Chapter 12</a> for details.</p>
 <p class="alert alert-warning">
 <strong>Caution!</strong> HTML elements have to be “closed” correctly, or the semantic meaning may be incorrect! If you forget to close the <code>&lt;h1&gt;</code> tag, then <em>all</em> of the following content will be considered part of the heading! Remember to close your inner tags <em>before</em> you close the outer ones. <a href="http://validator.w3.org/">Validating</a> your HTML can help with this.
 </p>

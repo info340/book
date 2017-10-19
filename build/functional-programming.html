@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-14">
+<meta name="date" content="2017-10-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="javascript.html">
-<link rel="next" href="dom-manipulation.html">
+<link rel="next" href="dom.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -265,7 +265,22 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
 <li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="dom-manipulation.html"><a href="dom-manipulation.html"><i class="fa fa-check"></i><b>12</b> DOM Manipulation</a></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a><ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -677,7 +692,7 @@ fido.bark( /*this = fido*/) //=> "Fido yips"
 <span class="cf">for</span>(<span class="kw">let</span> i<span class="op">=</span><span class="dv">0</span><span class="op">;</span> i<span class="op">&lt;</span><span class="va">numbers</span>.<span class="at">length</span><span class="op">;</span> i<span class="op">++</span>)<span class="op">{</span>
     runningTotal <span class="op">=</span> <span class="at">add</span>(runningTotal<span class="op">,</span> numbers[i])<span class="op">;</span>
 <span class="op">}</span>
-<span class="va">console</span>.<span class="at">log</span>(runningTotal)<span class="op">;</span> <span class="co">//120</span></code></pre></div>
+<span class="va">console</span>.<span class="at">log</span>(runningTotal)<span class="op">;</span> <span class="co">//15</span></code></pre></div>
 <p>This loop <strong>reduces</strong> the array into an “accumulated” sum of all the numbers in the list. Inside the loop, the <code>add()</code> function is called and passed the “current total” and the “new value” to be combined into the aggregate (<em>in that order</em>). The resulting total is then reassigned as the “current total” for the next iteration.</p>
 <p>The <em>built-in array method</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><strong><code>reduce()</code></strong></a> does exactly this work: it takes as an argument <em>a callback function</em> used to combine the current running total with the new value, and returns the aggregated total. Whereas the <code>map()</code> and <code>filter()</code> callback functions each usually took 1 argument (with 2 others optional), the <code>reduce()</code> callback function requires <strong>2</strong> arguments (with 2 others optional): the first will be the “running total” (called the <strong>accumulator</strong>), and the second will be the “new value” to mix into the aggregate. (While this ordering doesn’t influence the summation example, it is relevant for other operations):</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">add</span>(x<span class="op">,</span> y) <span class="op">{</span> <span class="co">//a function that adds two numbers</span>
@@ -746,7 +761,7 @@ fido.bark( /*this = fido*/) //=> "Fido yips"
         </div>
       </div>
 <a href="javascript.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dom-manipulation.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="dom.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
