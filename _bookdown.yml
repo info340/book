@@ -7,11 +7,11 @@ edit: https://github.com/info343/book/edit/master/%s
 rmd_files:
   - index.Rmd
 
-  ## environment setup
+  ## environment setup and fundamentals
   - setup.Rmd
+  - client-side.Rmd
 
   ## HTML & CSS
-  - client-side.Rmd
   - html.Rmd
   - css-fundamentals.Rmd
   - accessibility.Rmd
@@ -24,7 +24,7 @@ rmd_files:
   - javascript.Rmd
   - functional-programming.Rmd
   - dom.Rmd
-  #- libraries.RmD # inc jQuery
+  - libraries.RmD # inc jQuery
   #- ajax.Rmd
   #- es6.Rmd
 

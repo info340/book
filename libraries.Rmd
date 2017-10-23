@@ -1,0 +1,292 @@
+# JavaScript Libraries
+Many web programmers encounter the same programming requirements as they develop interactive web sites. For example, many websites will need to wrangle and manipulate objects and arrays, show standard components (such as modal windows or collapsible content), or do similar forms of complex DOM manipulation. Since one of the main principles of software development is [___reuse___](https://en.wikipedia.org/wiki/Reusability), developers will often make the code solving these problems available for others to use in the form of **libraries and frameworks**. These are publicly release script files that you can download and include in your project, allowing you to more quickly and easily develop complex applications. This is the amazing thing about the open-source community: people solve problems and then make those solutions available to others.
+
+Modern web applications make _extensive_ use of external libraries, whether by integrating many different libraries into a single app, or by relying on a particular framework (which may itself be comprised of many different libraries)! This chapter describes how to include and utilize external JavaScript libraries in your web page, and presents the popular [jQuery](https://jquery.com/) library as an example.
+
+- For a sense of scale, the [**npm**](https://www.npmjs.com/) package manager's directory lists almost _half a million_ different JavaScript libraries!
+
+Note that external scripts are generally referred to as either _libraries_ or _frameworks_. However, these terms are not entirely interchangeable. A **library** is a set of behaviors (functions) that you are able to utilize and call within your code. For example, `Lodash` (described below) is a library that provides utility functions you can use. You call a library's code at your whim. A **framework**, on the other hand, provides a set of code into which you insert your _own_ behaviors, either by subclassing provided components or by specifying your own callback functions. The framework calls _your_ code at its whim. [Martin Fowler](http://martinfowler.com/bliki/InversionOfControl.html) refers to this as an _"Inversion of control"_. Frameworks often seem to be easier to use (they do more with less work on your part!), but can be hard to customize to achieve your exact goals. Libraries may be harder to use, but can likely be deployed exactly as needed. This chapter focuses mainly on _libraries_; [React](https://reactjs.org/) (detailed in later chapters) is more of a framework.
+
+
+## Including a Library
+Just like you can include multiple CSS files in a page with multiple `<link>` elements, you can include multiple JavaScript scripts with multiple `<script>` elements.
+
+```html
+<script src="alpha.js"></script> <!-- run this script first -->
+<script src="beta.js"></script> <!-- run this script second -->
+```
+
+_Importantly_, script files are executed in the order in which they appear in the DOM. This matters because all scripts included via the `<script>` element are all run within the same [namespace](https://en.wikipedia.org/wiki/Namespace). This means variables and functions declared in one script file are also available in later scripts&mdash; it's almost as if all the script files have been combined into a single file.
+
+```js
+/* alpha.js */
+let message = "Hello World";
+```
+
+```js
+/* beta.js */
+console.log(message); //=> "Hello World"
+                      //variable was defined in previous script!
+```
+
+The order matters: if `beta.js` were included _before_ `alpha.js`, then when it is run the `message` variable won't have been defined yet, causing an error.
+
+<p class="alert alert-info">Other techniques for managing and organizing large numbers of script files will be discussed in [Chapter 15](#es6).</p>
+
+Like CSS frameworks, JavaScript libraries are thus included in a page by providing a `<script>` tag that references the JavaScript file that contains that library's code. For example, you can include the [Lodash](https://lodash.com/) of helpful data processing functions:
+
+```html
+<body>
+    ...content
+
+    <!-- include JavaScript files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+    <script src="js/my-script.js"></script>
+</body>
+```
+
+- Like CSS frameworks, JavaScript libraries can be accessed by referencing the file on a **CDN**, by downloading the source code directly (check for the `.js` file; you may need to unpack a `.zip` file), or by installing the library via a package manager like `npm`. Refer to [Chapter 3](#including-a-framework) for details&mdash;just change `.css` to `.js`!
+
+
+- Like CSS, JavaScript files can be _minimized_ (usually named as `.min.js` files). Minimizing JavaScript files not only removes whitespace, but also often replaces local variable names with shorter, meaningless ones such as `a` or `x`.
+
+You **always** want to load external libraries before your script, so that any variables and functions they define will be available to your code! If you put your script first, then those functions won't be available yet!
+
+Because all JavaScript files share the same namespace, most popular libraries make all of their functions available as properties of a single **global variable**. For example, Lodash provides a global variable called **`_`** (a single underscore&mdash;a "low dash"). You use this variable to call the provided functions:
+
+```js
+let array = [3,4,3];
+
+let unique = _.uniq(array); //call function of lodash object
+
+console.log(unique); //[3,4], the unique elements!
+```
+
+- Once the library is loaded, the globals it provide can be accessed just like built-in globals `window`, `document`, `Math`, etc.
+
+- Lodash uses an otherwise silly variable name so that it's quick and easy to type, and to avoid conflicts with other variables you might create.
+
+Lodash provides [lots of useful functions](https://lodash.com/docs/) that can be called on the global `_` object. For example:
+
+<div class="list-condensed">
+- [`_.random()`](https://lodash.com/docs/4.17.4#random) to generate a random number within a range
+- [`_.range()`](https://lodash.com/docs/4.17.4#range) to generate an array of numbers within a range
+- [`_.includes()`](https://lodash.com/docs/4.17.4#includes) to determine if a value is in an array (cross-browser!)
+- [`_.pick()`](https://lodash.com/docs/4.17.4#pick) to produce a new object that has only select properties of another
+- [`_.merge()`](https://lodash.com/docs/4.17.4#merge) to combine the properties of two objects into a single new object
+</div>
+
+Note that exactly what global object is provided (and what functions it has) is different for every different library. You need to look through the documentation (often the `README.md` file on Github) for instructions and examples on how to call and utilize that library.
+
+- "Knowing" a library or framework is just about being familiar with what functions you can call from it!
+
+<p class="alert alert-info">**Pro-tip**: Visual Studio Code will [automatically download the type definitions](https://code.visualstudio.com/docs/editor/intellisense) for any library listed as a dependency in the project's `package.json`. For example, if you include Lodash as a dependency (by installing it with `npm install --save lodash`), then just typing the `_.` will cause VS Code to provide autocomplete options. This makes it a good idea to install JavaScript libraries via `npm`, even if you plan on loading the library from a CDN instead of from a local file.</p>
+
+
+## Example: jQuery
+As an extended example of a JavaScript library, the remainder of this chapter describes [**jQuery**](https://jquery.com/)&mdash;a popular JavaScript library that helps with DOM manipulation. jQuery was designed to provide easier, faster, and more reliable methods for manipulating the DOM in the ways described in the previous chapter. jQuery is one of the most popular libraries used in web development, and is used in around [70% of the most popular websites](https://trends.builtwith.com/javascript/jQuery).
+
+jQuery was developed to help fill in gaps in the JavaScript language and to standardize functionality across browsers. It made it so that you could write manipulate the DOM while writing 10% of the code, and produce scripts that would run on both Firefox _and_ Internet Explorer!
+
+However, in the 10+ years since it's release, later versions of the JavaScript language and the DOM API have improved (e.g., by introducing a `querySelector()` function) so that much of what made jQuery special is now standard and widely supported. Indeed, jQuery' approach to interactive webpages is now common practice. Nevertheless, jQuery is still commonly used in web systems ([Bootstrap's JavaScript components](http://getbootstrap.com/docs/4.0/getting-started/javascript/) utilize jQuery), and is popular enough that it you should be familiar with it in the likely chance that you need to engage with a web system build more than 3 years ago.
+
+As with other libraries, you [include jQuery](https://jquery.com/download/) by referencing it from a `<script>` tag in your HTML (_before your own script!_):
+
+```html
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+```
+
+- Note that version jQuery `3.x` is for [current browsers](https://jquery.com/browser-support/). If you need to support an older version (e.g., IE 6-8), you can use version `1.12`. Yes, jQuery supports IE 6!
+
+Loading the jQuery library creates a **`jQuery`** variable in the global scope, meaning you can access this variable and utilize it in your script.
+
+The `jQuery` variable is actually a _function_ that you can call, called the **Selector function**. This function is used to select DOM elements by [CSS selector](http://api.jquery.com/category/selectors/basic-css-selectors/), similar to how `document.querySelector()` works:
+
+```js
+//selects element with id="foo" (e.g., <p id="foo">)
+let fooElem = jQuery('#foo');
+
+//selects all <a> elements
+let allLinksArray = jQuery('a');
+```
+
+However, it is much more common to use a provided _alias_ for the `jQuery()` function called **`$()`**. This "shortcut" lets you select elements with a single character (instead of 6)!
+
+```js
+//selects element with id="foo" (e.g., <p id="foo">)
+let fooElem = $('#foo');
+
+//selects all <a> elements
+let allLinksArray = $('a');
+```
+
+- Similar to Lodash's `_`, jQuery uses `$` because no one in their right might would name a variable that, so the chance of having a namespace conflict is minimal.
+
+Like `document.querySelector()`, the jQuery selector function handles most all [selectors](http://api.jquery.com/category/selectors/) you are familiar with from CSS, as well as some additional useful pseudo-classes:
+
+```js
+$('#my-div') // by id
+$('div') // by type
+$('.my-class') // by class
+$('header, footer') // group selector
+$('nav a') // descendant selector
+$('p.red') // scoped selector
+
+$('section:first') // first <section> element
+                   // (not a css selector!)
+```
+
+### Maniputing the DOM {-}
+Once you've selected some elements, jQuery provides _methods_ that perform most of the [manipulations](http://api.jquery.com/category/attributes/) you would do using DOM properties:
+
+```js
+var txt = $('#my-div').text();      //get the textContent
+$('#my-div').text('new info!');     //change the textContent
+
+$('#my-div').html('<em>new html!</em>'); //change the HTML
+
+$('svg rect').attr('height');       //get attribute (of all selected)
+$('svg rect').attr('height',200);   //set attribute (of all selected)
+$('svg rect').attr( {x:50, y:60} ); //set multiple attributes by passing in an object
+
+$('section').addClass('container'); //add class (to all selected)
+$('section').removeClass('old');    //remove class (from all selected)
+
+$('body').css('font-size','24px');  //set css property (of all selected)
+$('body').css( {'font-size':'24px',
+                'font-family':'Helvetica'} ); //set multiple properties via an object
+```
+
+If you compare this to the equivalent operations using the DOM, you'll notice that (a) jQuery is much more concise. jQuery is also more powerful: for example, you can set multiple attributes with a single call to `.attr()` by passing in an _object_ containing the attributes you wish to set (the keys are the attribute names). This lets you easily change lots of attributes at once!
+
+<p class="alert alert-warning">Importantly, note that all of these methods apply the change to ___all___ elements selected by the jQuery selector function. You do not need to use a loop to apply changes to multiple elements; you can just select the elements you wish to modify and change them all at once. This does mean that you may need to be careful about your selector&mdash;only select the elements you actually wish to work with!</p>
+
+jQuery also provides methods that allow you to [manipulate](https://api.jquery.com/category/manipulation/) the DOM tree (e.g., to add, move, or remove elements):
+
+```js
+//create an element (not yet in the DOM)
+let newP = $('<p class="new">This is a new element</p>'); //notice the tag!
+
+//add content to DOM
+$('main').append(newP); //add the element INSIDE <main>, at end
+$('main').append('<em>new</em>'); //can a create element on the fly!
+
+$('main').prepend('<em>new</em>'); //add new <em> element INSIDE <main>, at beginning
+
+$('main').before('<header>'); //insert new <header> BEFORE <main> (older sibling)
+                              //notice you can omit the closing tag if no content
+
+$('footer').insertAfter('main'); //insert selected (<footer>) AFTER parameter (<main>)
+                                 //since the <footer> was selected, it will move!
+
+$('main').wrap('<div class="container"></div>'); //surround the <main> with a .container
+
+$('footer').remove(); //remove selected <footer> element
+$('main').empty(); //remove all child elements of <main>
+```
+
+The first important thing to note is that you create new elements by provided the HTML content (including the tag `<>`) to the `$()` function. This is distinct from `document.createElement()`, which explicitly does _not_ include the `<>` angle brackets. If creating an element with no content, you can even just specify the start tag!
+
+jQuery also provides much more powerful manipulation methods, allowing you to easily position elements [inside](http://api.jquery.com/category/manipulation/dom-insertion-inside/), [outside](http://api.jquery.com/category/manipulation/dom-insertion-outside/), [around](http://api.jquery.com/category/manipulation/dom-insertion-around/), and [in place of](http://api.jquery.com/category/manipulation/dom-replacement/) other elements.
+
+<p class="alert alert-warning">Although jQuery will allow you to create arbitrarily complex HTML elements to add to the DOM, you should **avoid** writing large chunks of HTML inside your `.js` file to append via jQuery (e.g., don't add an entire DOM tree at once!). This violates the separation of concerns, and makes your code difficult to read, interpret, and modify (because your HTML is now in two places!). If you do need to dynamically insert large amounts of "hard-coded" HTML, you should instead write that content inside the `.html` file, make it invisible (e.g., `display:none`), and then use jQuery to move and show the element when needed.</p>
+
+
+### Handling Events {-}
+jQuery also provides _convenience_ methods for registering event listeners:
+
+```js
+$('#button').click(function(event) {
+   console.log('clicky clicky!');
+
+   //who was clicked
+   let element = $(event.target);
+});
+```
+
+By using a method such as `.click(callback)` rather than `.addEventListener('click', callback)`, you avoid potential hard-to-catch bugs that may get introduced from misspelling `'click'`&mdash;rather than having the browser listen for `'clik'` events and then never seeming to respond to your actions, it will instead report an error (`.clik()` is not a known function!)
+
+The [`event`](http://api.jquery.com/category/events/event-object/) parameter passed into the `.click()` function's callback is exactly like the `event` passed to callbacks of `addEventListener()` (though jQuery standardizes cross-browser quirks)&mdash;thus you can access the source of the event with the `event.target` property. However, this property refers to a DOM element, _not_ a jQuery selector. DOM elements don't support the jQuery methods described above&mdash;those are only available to "jQuery selection objects". Thus if you want to work with a DOM element, you need to "select" it again using the `$()` function, thus providing a jQuery selection that has all the useful jQuery methods.
+
+- Additionally, jQuery assigns the `this` variable inside an event callback to the event's target; this you can equivalently use `$(this)` to select the element.
+
+The previous chapter noted the `window.onload` even listener, which was used to determine when the DOM had finished loading and so was ready to be manipulated. jQuery provides a similar functionality via the `.ready()` listener (usually called on the whole `document`):
+
+```js
+$(document).ready(function() { //this need not be an anonymous function
+    //program goes here
+    console.log('Hello world!');
+
+    //...
+});
+```
+
+This is a very common pattern: often with jQuery entire programs will be specified inside the `.ready()` callback, so that the `<script>` tags can be placed in the `<head>` and downloaded quickly but still run only when the DOM is available. This pattern is _so_ common in fact, that the jQuery selector function can serve as a shortcut to it:
+
+```js
+//equivalent to the above
+$(function() {
+    //program goes here
+    console.log('Hello world!');
+
+    //...
+});
+```
+- If you pass a _function_ rather than a Selector string to the `$()` jQuery function, it will be interpreted as specifying a callback function to run when the document is ready! This is something to be aware of if you look at someone else's code and see it just start with a random `$(function)`.
+
+### And more! {-}
+This is only the tip of the iceberg for what jQuery can do. For example, jQuery also provides a number of [utility](http://api.jquery.com/category/utilities/) functions that can be called on the `jQuery` (or `$`) global:
+
+```js
+//check if an item is in an array
+$.inArray(4, [3,4,3] );
+jQuery.inArray(4, [3,4,3] ); //equivalent, but maybe easier to read
+
+//find an item in an array that matches the filter function
+//this is like .filter, but works on old browsers (if right jQuery version)
+$.grep( [3,4,3], function(item) {
+   return item > 3;
+});
+
+//iterate over arrays or objects -- works for either!
+$.each( [3,4,3], function(key, value) {
+   console.log('Give me a '+value);
+});
+
+$.each( {first:'Joel',last:'Ross'}, function(key, value) {
+   console.log(key+' name: '+value);
+});
+```
+
+- This can be useful, though JavaScript native functions or Lodash methods will often be easier and (computationally) faster.
+
+But as a final fun example: jQuery also provides functions that allow you to easily produce [animated effects](http://api.jquery.com/category/effects/)!
+
+```js
+$('#id').fadeIn(1000);   //fade in over 1 second
+$('#id').fadeOut(500);   //fade out over 1/2 sec
+$('#id').slideDown(200); //slide down over 200ms
+$('#id').slideUp(500);   //slide up over 500ms
+$('#id').toggle();       //toggle whether displayed
+
+//custom animation syntax:
+//$(selector).animate({targetProperties}, speed [, doneCallback]);
+$("#box").animate({
+    left: '500px', //make the box fly around!
+    opacity: '0.5',
+    height: '200px',
+    width: '200px'
+}, 1500);
+```
+
+<!-- ## Example: Bootstrap
+//another example: Bootstrap's JS
+//example: collapse? -->
+
+## Resources {-}
+<div class="list-condensed">
+- [Lodash Documentation](https://lodash.com/docs/)
+- [jQuery Documentation](http://api.jquery.com/)
+- [jQuery Learning Center](https://learn.jquery.com/)
+- [jQuery Tutorial (w3c)](https://www.w3schools.com/jquery/)
+</div>

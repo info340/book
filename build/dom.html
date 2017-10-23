@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-19">
+<meta name="date" content="2017-10-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="functional-programming.html">
-
+<link rel="next" href="javascript-libraries.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -281,6 +281,15 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="13" data-path="javascript-libraries.html"><a href="javascript-libraries.html"><i class="fa fa-check"></i><b>13</b> JavaScript Libraries</a><ul>
+<li class="chapter" data-level="13.1" data-path="javascript-libraries.html"><a href="javascript-libraries.html#including-a-library"><i class="fa fa-check"></i><b>13.1</b> Including a Library</a></li>
+<li class="chapter" data-level="13.2" data-path="javascript-libraries.html"><a href="javascript-libraries.html#example-jquery"><i class="fa fa-check"></i><b>13.2</b> Example: jQuery</a><ul>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#maniputing-the-dom"><i class="fa fa-check"></i>Maniputing the DOM</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#handling-events"><i class="fa fa-check"></i>Handling Events</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#and-more"><i class="fa fa-check"></i>And more!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -456,7 +465,8 @@ classes <span class="op">+=</span> <span class="st">&#39; &#39;</span><span clas
 <span class="va">h1</span>.<span class="va">style</span>.<span class="at">color</span> <span class="op">=</span> <span class="st">&#39;green&#39;</span><span class="op">;</span>
 <span class="va">h1</span>.<span class="va">style</span>.<span class="at">backgroundColor</span> <span class="op">=</span> <span class="st">&#39;black&#39;</span><span class="op">;</span> <span class="co">//not `.background-color`</span></code></pre></div>
 <p class="alert alert-info">
-<p>In general, you should modify element CSS by changing the class of the element, rather than specific style properties</p>
+In general, you should modify element CSS by changing the class of the element, rather than specific style properties.
+</p>
 </div>
 </div>
 <div id="modifying-the-dom-tree" class="section level3 unnumbered">
@@ -626,12 +636,14 @@ WHEN an event occurs {
 </div>
 <div id="resources-10" class="section level2 unnumbered">
 <h2>Resources</h2>
+<div class="list-condensed">
 <ul>
 <li><a href="https://css-tricks.com/dom/">What is the DOM? (CSS-Tricks)</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">Document Object Model reference (MDN)</a> complete DOM reference</li>
 <li><a href="https://www.w3schools.com/js/js_htmldom.asp">JavaScript HTML DOM reference (w3c)</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events">Introduction to Events (MDN)</a></li>
 </ul>
+</div>
 
 </div>
 </div>
@@ -640,8 +652,8 @@ WHEN an event occurs {
           </div>
         </div>
       </div>
-<a href="functional-programming.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="functional-programming.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="javascript-libraries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

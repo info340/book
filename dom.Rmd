@@ -178,7 +178,7 @@ h1.style.color = 'green';
 h1.style.backgroundColor = 'black'; //not `.background-color`
 ```
 
-<p class="alert alert-info">In general, you should modify element CSS by changing the class of the element, rather than specific style properties
+<p class="alert alert-info">In general, you should modify element CSS by changing the class of the element, rather than specific style properties.</p>
 
 
 ### Modifying the DOM Tree {-}
@@ -400,7 +400,9 @@ document.querySelector('button').addEventListener('click', function() {
 
 
 ## Resources {-}
+<div class="list-condensed">
 - [What is the DOM? (CSS-Tricks)](https://css-tricks.com/dom/)
 - [Document Object Model reference (MDN)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) complete DOM reference
 - [JavaScript HTML DOM reference (w3c)](https://www.w3schools.com/js/js_htmldom.asp)
 - [Introduction to Events (MDN)](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events)
+</div>

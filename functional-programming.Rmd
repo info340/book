@@ -560,6 +560,8 @@ There are also many languages that were designed to be functional from the get-g
 
 
 ## Resources {-}
+<div class="list-condensed">
 - [Functional Programming in JavaScript](http://reactivex.io/learnrx/) a _fantastic_ interactive tutorial for learning functional programming in JS
 - [Higher Order Functions](http://eloquentjavascript.net/05_higher_order.html) a chapter from the online textbook _Eloquent JavaScript_
 - [Scope & Closures](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/README.md#you-dont-know-js-scope--closures) an online textbook with an extremely detailed explanation of scoping in JavaScript
+</div>
