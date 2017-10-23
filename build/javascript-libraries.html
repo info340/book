@@ -33,7 +33,7 @@
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="dom.html">
-
+<link rel="next" href="ajax.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -290,6 +290,8 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a></li>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 and Beyond</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -331,7 +333,7 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
                       <span class="co">//variable was defined in previous script!</span></code></pre></div>
 <p>The order matters: if <code>beta.js</code> were included <em>before</em> <code>alpha.js</code>, then when it is run the <code>message</code> variable won’t have been defined yet, causing an error.</p>
 <p class="alert alert-info">
-Other techniques for managing and organizing large numbers of script files will be discussed in <a href="#es6">Chapter 15</a>.
+Other techniques for managing and organizing large numbers of script files will be discussed in <a href="es6.html#es6">Chapter 15</a>.
 </p>
 <p>Like CSS frameworks, JavaScript libraries are thus included in a page by providing a <code>&lt;script&gt;</code> tag that references the JavaScript file that contains that library’s code. For example, you can include the <a href="https://lodash.com/">Lodash</a> of helpful data processing functions:</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span>
@@ -460,14 +462,18 @@ Although jQuery will allow you to create arbitrarily complex HTML elements to ad
 </div>
 <div id="handling-events" class="section level3 unnumbered">
 <h3>Handling Events</h3>
-<p>jQuery also provides <em>convenience</em> methods for registering event listeners:</p>
+<p>jQuery also provides <em>convenience methods</em> for registering event listeners:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#button&#39;</span>).<span class="at">click</span>(<span class="kw">function</span>(event) <span class="op">{</span>
    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;clicky clicky!&#39;</span>)<span class="op">;</span>
 
    <span class="co">//who was clicked</span>
    <span class="kw">let</span> element <span class="op">=</span> <span class="at">$</span>(<span class="va">event</span>.<span class="at">target</span>)<span class="op">;</span>
 <span class="op">}</span>)<span class="op">;</span></code></pre></div>
-<p>By using a method such as <code>.click(callback)</code> rather than <code>.addEventListener('click', callback)</code>, you avoid potential hard-to-catch bugs that may get introduced from misspelling <code>'click'</code>—rather than having the browser listen for <code>'clik'</code> events and then never seeming to respond to your actions, it will instead report an error (<code>.clik()</code> is not a known function!)</p>
+<ul>
+<li><p>There are equivalent methods for other events: <code>.mousedown()</code> <code>.keypress()</code>, etc. If you want to listen for an event that jQuery doesn’t provide a convenience method for, you can use the <code>.on()</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#search-input&#39;</span>).<span class="at">on</span>(<span class="st">&#39;input&#39;</span><span class="op">,</span> callback)<span class="op">;</span></code></pre></div></li>
+</ul>
+<p>By using a method such as <code>.click(callback)</code> rather than <code>.addEventListener('click', callback)</code> or event <code>.on('click', callback)</code>, you avoid potential hard-to-catch bugs that may get introduced from misspelling <code>'click'</code>—rather than having the browser listen for <code>'clik'</code> events and then never seeming to respond to your actions, it will instead report an error (<code>.clik()</code> is not a known function!)</p>
 <p>The <a href="http://api.jquery.com/category/events/event-object/"><code>event</code></a> parameter passed into the <code>.click()</code> function’s callback is exactly like the <code>event</code> passed to callbacks of <code>addEventListener()</code> (though jQuery standardizes cross-browser quirks)—thus you can access the source of the event with the <code>event.target</code> property. However, this property refers to a DOM element, <em>not</em> a jQuery selector. DOM elements don’t support the jQuery methods described above—those are only available to “jQuery selection objects”. Thus if you want to work with a DOM element, you need to “select” it again using the <code>$()</code> function, thus providing a jQuery selection that has all the useful jQuery methods.</p>
 <ul>
 <li>Additionally, jQuery assigns the <code>this</code> variable inside an event callback to the event’s target; this you can equivalently use <code>$(this)</code> to select the element.</li>
@@ -553,8 +559,8 @@ Although jQuery will allow you to create arbitrarily complex HTML elements to ad
           </div>
         </div>
       </div>
-<a href="dom.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="dom.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ajax.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

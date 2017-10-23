@@ -193,7 +193,7 @@ jQuery also provides much more powerful manipulation methods, allowing you to ea
 
 
 ### Handling Events {-}
-jQuery also provides _convenience_ methods for registering event listeners:
+jQuery also provides _convenience methods_ for registering event listeners:
 
 ```js
 $('#button').click(function(event) {
@@ -204,7 +204,13 @@ $('#button').click(function(event) {
 });
 ```
 
-By using a method such as `.click(callback)` rather than `.addEventListener('click', callback)`, you avoid potential hard-to-catch bugs that may get introduced from misspelling `'click'`&mdash;rather than having the browser listen for `'clik'` events and then never seeming to respond to your actions, it will instead report an error (`.clik()` is not a known function!)
+- There are equivalent methods for other events: `.mousedown()` `.keypress()`, etc. If you want to listen for an event that jQuery doesn't provide a convenience method for, you can use the `.on()` function:
+
+    ```js
+    $('#search-input').on('input', callback);
+    ```
+
+By using a method such as `.click(callback)` rather than `.addEventListener('click', callback)` or event `.on('click', callback)`, you avoid potential hard-to-catch bugs that may get introduced from misspelling `'click'`&mdash;rather than having the browser listen for `'clik'` events and then never seeming to respond to your actions, it will instead report an error (`.clik()` is not a known function!)
 
 The [`event`](http://api.jquery.com/category/events/event-object/) parameter passed into the `.click()` function's callback is exactly like the `event` passed to callbacks of `addEventListener()` (though jQuery standardizes cross-browser quirks)&mdash;thus you can access the source of the event with the `event.target` property. However, this property refers to a DOM element, _not_ a jQuery selector. DOM elements don't support the jQuery methods described above&mdash;those are only available to "jQuery selection objects". Thus if you want to work with a DOM element, you need to "select" it again using the `$()` function, thus providing a jQuery selection that has all the useful jQuery methods.
 

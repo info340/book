@@ -290,6 +290,8 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
+<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a></li>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 and Beyond</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -408,7 +410,7 @@ let sayHello = function(name) { console.log("Hello, "+name); }
 </ul>
 <p>This is how we can create an equivalent of “member functions” (or methods) for individual objects: the <code>dog</code> object now has a function <code>bark()</code>!</p>
 <ul>
-<li>Similar to Java, you can refer to the <em>object on which a function is called</em> using the keyword <code>this</code>. Note that the manner in which the <code>this</code> variable is assigned can lead to some subtle errors when using callback functions (below). For more details, see <a href="#es6">the chapter on ES6 features</a>.</li>
+<li>Similar to Java, you can refer to the <em>object on which a function is called</em> using the keyword <code>this</code>. Note that the manner in which the <code>this</code> variable is assigned can lead to some subtle errors when using callback functions (below). For more details, see <a href="es6.html#es6">the chapter on ES6 features</a>.</li>
 </ul>
 <!-- ### Working with <code>this</code> {-}
 
@@ -552,7 +554,7 @@ fido.bark( /*this = fido*/) //=> "Fido yips"
 <p>When we then call the <code>makeGreeterFunc()</code>, the result (a function) is assigned to a variable (e.g., <code>sayHello</code>). And because that result is a function, we can call it with a parameter! Thus <code>makeGreeterFunc</code> acts a bit like a “factory” for making other functions, which can then be used where needed.</p></li>
 </ul>
 <p>The most significant part of this example is the <em>scoping</em> of the <code>greeting</code> variable (and its <code>localGreeting</code> alias). Normally, you would think about <code>localGreeting</code> as being scoped to <code>makeGreeterFunc</code>—once the maker function is finished, then the <code>localGreeting</code> variable should be lost. However, the <code>greeting</code> variable was in scope when the <code>aGreeterFunc</code> was created, and thus <em>remains in scope</em> (available) for that <code>aGreeteFunc</code> even after the maker function has returned!</p>
-<p>This structure in which a function “remembers” its context (the in-scope variables around it) is called a <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md"><strong>closure</strong></a>. Even though the <code>localGreeting</code> variable was scoped outside of the <code>aGreeterFunc</code>, it has been <em>enclosed</em> by that function so it continues to be available later. Closures are one of the most powerful yet confusing techniques in JavaScript, and are a highly effective way of saving data in variables (instead of relying on global variables or other poor programming styles). They will also be useful when dealing with some problems introduced by <a href="#ajax">Asynchronous Programming</a></p>
+<p>This structure in which a function “remembers” its context (the in-scope variables around it) is called a <a href="https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch5.md"><strong>closure</strong></a>. Even though the <code>localGreeting</code> variable was scoped outside of the <code>aGreeterFunc</code>, it has been <em>enclosed</em> by that function so it continues to be available later. Closures are one of the most powerful yet confusing techniques in JavaScript, and are a highly effective way of saving data in variables (instead of relying on global variables or other poor programming styles). They will also be useful when dealing with some problems introduced by <a href="ajax.html#ajax">Asynchronous Programming</a></p>
 </div>
 </div>
 <div id="functional-looping" class="section level2">
@@ -668,7 +670,7 @@ fido.bark( /*this = fido*/) //=> "Fido yips"
 <li><p>And again, we usually use <em>anonymous callback functions</em> for <code>filter()</code>:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">2</span><span class="op">,</span><span class="dv">7</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">8</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span>  <span class="co">//an initial array</span>
 <span class="kw">let</span> evens <span class="op">=</span> <span class="va">numbers</span>.<span class="at">filter</span>(<span class="kw">function</span>(n) <span class="op">{</span> <span class="cf">return</span> (n<span class="op">%</span><span class="dv">2</span>)<span class="op">==</span><span class="dv">0</span><span class="op">;</span> <span class="op">}</span>)<span class="op">;</span> <span class="co">//one-liner!</span></code></pre></div>
-<p>(Since JavaScript ignores whitespace, we can compact simple callbacks onto a single line. <a href="#es6">ES6 and Beyond</a> describes an even more compact syntax for such functions).</p></li>
+<p>(Since JavaScript ignores whitespace, we can compact simple callbacks onto a single line. <a href="es6.html#es6">ES6 and Beyond</a> describes an even more compact syntax for such functions).</p></li>
 </ul>
 <p>Because <code>map()</code> and <code>filter()</code> are both called on and produce arrays, it is possible <strong>chain</strong> them together, calling subsequent methods on each returned value:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> numbers <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span>]<span class="op">;</span>  <span class="co">//an initial array</span>

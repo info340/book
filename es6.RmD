@@ -1,6 +1,7 @@
-# ES6 and Beyond
+# ES6 and Beyond {#es6}
+Coming soon...
 
-//syntactic sugar
+<!-- //syntactic sugar
     //template literals
     //spread ??
 
@@ -10,4 +11,4 @@
 //arrow functions
 - functional programming
 
-//modules
+//modules -->

@@ -1,0 +1,36 @@
+# AJAX Requests {#ajax}
+Coming soon...
+
+<!--
+
+//motivation: downloading data
+    //we want to send an HTTP request!
+
+//XMLHttpRequest
+    //some history (Microsoft added this! Yes, IE first!)
+
+//XML
+//JSON format (differences from raw JavaScript)
+    //JSON parsing and decoding
+
+//fetch library
+    //polyfills
+//same origin policy
+
+//promises and asynchronicity
+    //another polyfill!
+
+//handling fetch data (chaining promises)
+
+    //async and await (coming soon) [just a note?]
+
+
+
+//forms go here... or just walk through making one in exercise!
+    //form: `method` and `action`
+    //input elements
+    //labels
+    //aria
+    //preventing default
+
+ -->

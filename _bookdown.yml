@@ -25,8 +25,8 @@ rmd_files:
   - functional-programming.Rmd
   - dom.Rmd
   - libraries.RmD # inc jQuery
-  #- ajax.Rmd
-  #- es6.Rmd
+  - ajax.Rmd
+  - es6.Rmd
 
   ## React (what chapter divisions?)
   #- react-intro.Rmd
