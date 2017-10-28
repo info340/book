@@ -256,7 +256,7 @@ Putting this all together produces the following "template" for making a web pag
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
+   <meta charset="utf-8">
    <meta name="author" content="your name">
    <meta name="description" content="description of your page">
    <title>My Page Title</title>

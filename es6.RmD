@@ -11,4 +11,6 @@ Coming soon...
 //arrow functions
 - functional programming
 
-//modules -->
+//modules
+    <script type=module src="app.js"></script> works in latest Chrome (as of Sep 2017) and Safari (March 2017), but need to run from live-server
+ -->

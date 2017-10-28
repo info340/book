@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-22">
+<meta name="date" content="2017-10-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -290,7 +290,17 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a></li>
+<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
+<li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 and Beyond</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -314,41 +324,267 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="ajax" class="section level1">
 <h1><span class="header-section-number">Chapter 14</span> AJAX Requests</h1>
-<p>Coming soon…</p>
+<p>JavaScript allows you to dynamically define the content of a web page, generating the DOM at runtime rather than in <code>.html</code> source files. One of the primary reasons we would want to dynamically produce a DOM is if the web page’s content is based on some <strong>data</strong> that may change over time: for example, the kind of data that is available through a <a href="https://info201.github.io/apis.html#what-is-a-web-api"><strong>Web API</strong></a>. By using JavaScript to render the DOM, you can quickly produce large amounts of HTML needed to display large data sets, sure that you have up-to-date data each time the page loads, and even <em>automatically refresh the page content</em> without requiring the user to reload!</p>
+<p>This chapter describes how to use JavaScript to dynamically send HTTP Requests to download data (without reloading the page!), as well as how to perform the <strong>asynchronous programming</strong> needed when working with web requests and other time-consuming operations.</p>
+<p class="alert alert-info">
+Note that this lecture assumes that you have a basic familiarity with RESTful Web APIS, including how to read and access their endpoints. For a review of some of the terminology used in APIS and RESTful requests, see the <a href="https://info201.github.io/apis.html#restful-requests">INFO 201 course reader</a>.
+</p>
+<div id="ajax" class="section level2">
+<h2><span class="header-section-number">14.1</span> AJAX</h2>
+<p>As discussed in <a href="client-side-development.html#http-requests-and-servers">Chapter 2</a>, you download data from the Internet by sending an <strong>HTTP Request</strong> and then processing the <strong>response</strong>. In everyday usage, HTTP Requests are normally sent by the <em>browser</em> when the user enters a URL or clicks on a link. By default, if you wanted to download new data, you’d need to have the browser send a new request, loading a new page (or reloading the current page) in order to show that result.</p>
+<p>To make modern dynamic web pages that display new data without needing to refresh the browser, we use a technique to send HTTP Requests <em>from JavaScript code</em> rather than from the browser. This allows us to “by-pass” the browser and get new data (and change the webpage) without reloading it! This technique is referred to as <strong>AJAX</strong> (<strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML)—we write code that sends an “request with AJAX” or an “AJAX request”.</p>
+<p class="alert alert-info">
+<em>Fun fact</em>: The technology used to send AJAX requests was originally developed by Microsoft in the late 90s to support their fledgling web version of the Outlook email/calendar app. The JavaScript functions used to send these requests were included in Internet Explorer as a <em>non-standard</em> feature—an example of a browser adding new functionality that it thinks will be useful but that doesn’t work on other platforms. However, AJAX quickly gained popularity (particularly when Google showed off what you could do with it via Gmail and Google Maps), and has since become a standard that is now supported by all browsers. This is how standards come into existence!
+</p>
+<div id="xml-and-json" class="section level3 unnumbered">
+<h3>XML and JSON</h3>
+<p>AJAX is called “AJA<strong>X</strong>” because it was originally designed to request data in XML format. <strong>XML</strong> (E<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage) is a markup language (like HTML) that is used to encode meaning in content in a format that is both human <em>and</em> computer readable. The syntax for XML is <em>exactly</em> the same as HTML: in fact, HTML can be seen as a “subset” of the language. You can think of XML as “HTML, but you get to make up your own element names!”</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="co">&lt;!-- Some XML encoding information about a person --&gt;</span>
+<span class="kw">&lt;person&gt;</span>
+   <span class="kw">&lt;firstName&gt;</span>Alice<span class="kw">&lt;/firstName&gt;</span>
+   <span class="kw">&lt;lastName&gt;</span>Smith<span class="kw">&lt;/lastName&gt;</span>
+   <span class="kw">&lt;favorites&gt;</span>
+      <span class="kw">&lt;music&gt;</span>jazz<span class="kw">&lt;/music&gt;</span>
+      <span class="kw">&lt;food&gt;</span>pizza<span class="kw">&lt;/food&gt;</span>
+      <span class="kw">&lt;numbers&gt;</span>
+          <span class="kw">&lt;item&gt;</span>12<span class="kw">&lt;/item&gt;</span>
+          <span class="kw">&lt;item&gt;</span>42<span class="kw">&lt;/item&gt;</span>
+      <span class="kw">&lt;/numbers&gt;</span>
+   <span class="kw">&lt;/favorites&gt;</span>
+<span class="kw">&lt;/person&gt;</span></code></pre></div>
+<ul>
+<li>The XML language does not define any particular tags the way HTML does; instead it is up to individual applications to determine what tags it will recognize and interpret (and what tags it would see as gibberish)—what is referred to as a <a href="https://en.wikipedia.org/wiki/XML_schema">XML Schema</a>.</li>
+</ul>
+<p>At the time AJAX was first developed, XML was the most common way of encoding generic data for transmission. And because XML is a tree of elements just like the DOM, similar methods could be used to navigate and extract information from the tree. However, XML is a very <em>verbose</em> language: it requires a lot of characters to encode information (meaning that the amount of data being transferred is larger), and traversing an element tree requires a lot of code. As such, JavaScript developers (led by <a href="https://en.wikipedia.org/wiki/Douglas_Crockford">Douglas Crockford</a>) developed an alternative language called <strong>JSON</strong> (<strong>J</strong>ava<strong>S</strong>cript <strong>O</strong>bject <strong>N</strong>otation) that is more compact than XML and can be <em>directly</em> parsed into JavaScript objects and arrays:</p>
+<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;firstName&quot;</span><span class="fu">:</span> <span class="st">&quot;Alice&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;lastName&quot;</span><span class="fu">:</span> <span class="st">&quot;Smith&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;favorites&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;music&quot;</span><span class="fu">:</span> <span class="st">&quot;jazz&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;food&quot;</span><span class="fu">:</span> <span class="st">&quot;pizza&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;numbers&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">12</span><span class="ot">,</span> <span class="dv">42</span><span class="ot">]</span>
+  <span class="fu">}</span>
+<span class="fu">}</span></code></pre></div>
+<p>JSON format uses a syntax that is almost identical to that for defining Object literals in JavaScript, with a few key differences:</p>
+<div class="list-condensed">
+<ul>
+<li>JSON always defines an Object <code>{}</code> at the “top level”.</li>
+<li>JSON object <strong>keys</strong> (which must be strings) <em>must</em> be written in double-quotes.</li>
+<li>JSON <strong>values</strong> can only be strings, numbers, booleans (<code>true</code> or <code>false</code>), arrays (<code>[]</code>), or other objects. You cannot include a function in JSON.</li>
+<li>JSON objects and arrays can’t have trailing commas or other extraneous symbols—no comments!</li>
+</ul>
+</div>
+<p>The JavaScript language provides a global object <code>JSON</code> (like the global <code>Math</code> object) that can be used to convert from encoded <em>strings</em> of JSON content (e.g., the above code block as a single string variable <code>'{&quot;firstName&quot;:&quot;Alice&quot;}'</code>) to JavaScript objects, and vice versa:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//convert from Object to encoded String</span>
+<span class="kw">let</span> personObj <span class="op">=</span> <span class="op">{</span><span class="dt">firstName</span><span class="op">:</span><span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dt">lastName</span><span class="op">:</span><span class="st">&quot;Smith&quot;</span><span class="op">,</span> <span class="dt">id</span><span class="op">:</span><span class="dv">12</span><span class="op">}</span> <span class="co">//JavaScript object</span>
+<span class="kw">let</span> personString <span class="op">=</span> <span class="va">JSON</span>.<span class="at">stringify</span>(personObj)<span class="op">;</span> <span class="co">//turn object into JSON string</span>
+<span class="va">console</span>.<span class="at">log</span>(personString)<span class="op">;</span> <span class="co">//=&gt; &#39;{&quot;firstName&quot;:&quot;Alice&quot;,&quot;lastName&quot;:&quot;Smith&quot;,&quot;id&quot;:12}&#39;</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="kw">typeof</span> personString)<span class="op">;</span> <span class="co">//=&gt; &#39;string&#39;</span>
+
+<span class="co">//convert from encoded String to Object</span>
+<span class="kw">let</span> favoritesString <span class="op">=</span> <span class="st">&#39;{&quot;music&quot;:&quot;jazz&quot;, &quot;numbers&quot;:[12,42]}&#39;</span><span class="op">;</span> <span class="co">//a string, not an object!</span>
+<span class="kw">let</span> favoritesObj <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(favoritesString)<span class="op">;</span> <span class="co">//turn JSON string into object</span>
+<span class="va">console</span>.<span class="at">log</span>(favoritesObj)<span class="op">;</span> <span class="co">//=&gt; { music: &#39;jazz&#39;, numbers: [ 12, 42 ] }</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="kw">typeof</span> favoritesObj)<span class="op">;</span> <span class="co">//=&gt; &#39;object&#39;</span></code></pre></div>
+<ul>
+<li>Note that if your JSON string is not properly formatted (e.g., you’re missing a quote), the <code>JSON.parse()</code> function will throw a <code>SyntaxError</code>. The exact error in the JSON string can be hard to find; <a href="https://jsonformatter.curiousconcept.com/">online tools</a> can help show the problem.</li>
+</ul>
+<p>JSON has replaced XML as the encoding of choice for working with AJAX requests—however, the technique is still referred as “AJAX” (“AJA<em>J</em>” isn’t as easy to say!)</p>
+</div>
+</div>
+<div id="fetching-data" class="section level2">
+<h2><span class="header-section-number">14.2</span> Fetching Data</h2>
+<p>AJAX support is built into browsers through the included <code>XMLHttpRequest</code> global variable (the “xml http thing”). This object provides functions that allow you to send an HTTP request to the server, but the object’s API is <strong>really complex to use</strong>:</p>
+<p><details> <summary>An example <code>XMLHTTPRequest</code></summary></p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create a new XMLHttpRequest object</span>
+<span class="kw">let</span> request <span class="op">=</span> <span class="kw">new</span> <span class="at">XMLHttpRequest</span>()<span class="op">;</span>
+
+<span class="co">//configure it to do an HTTP GET request for some URL</span>
+<span class="va">request</span>.<span class="at">open</span>(<span class="st">&#39;GET&#39;</span><span class="op">,</span> <span class="st">&#39;https://domain.com/data&#39;</span><span class="op">,</span> <span class="kw">true</span>)<span class="op">;</span>
+
+<span class="co">//add a listener for the &quot;load&quot; event (when the data has been downloaded)</span>
+<span class="va">request</span>.<span class="at">addEventListener</span>(<span class="st">&#39;load&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="cf">if</span> (<span class="va">request</span>.<span class="at">status</span> <span class="op">&gt;=</span> <span class="dv">200</span> <span class="op">&amp;&amp;</span> <span class="va">request</span>.<span class="at">status</span> <span class="op">&lt;</span> <span class="dv">400</span>) <span class="op">{</span> <span class="co">//check response status</span>
+        <span class="kw">let</span> data <span class="op">=</span> <span class="va">JSON</span>.<span class="at">parse</span>(<span class="va">request</span>.<span class="at">responseText</span>)<span class="op">;</span>
+        <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span> <span class="co">//do something with the data</span>
+    <span class="op">}</span>
+<span class="op">}</span>)<span class="op">;</span>
+
+<span class="co">//listen for &quot;error&quot; events if there was a network error</span>
+<span class="va">request</span>.<span class="at">addEventListener</span>(<span class="st">&#39;error&#39;</span><span class="op">,</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="co">//handle error...</span>
+<span class="op">}</span>)
+
+<span class="co">//finally, send the request to the server!</span>
+<span class="va">request</span>.<span class="at">send</span>()<span class="op">;</span></code></pre></div>
+<p></details></p>
+<p>Instead of needing to understand all that code, developers tended to use functions from external libraries such as jQuery’s <a href="http://api.jquery.com/jQuery.getJSON/"><code>$.getJSON()</code></a> or <a href="http://api.jquery.com/jQuery.ajax/"><code>$.ajax()</code></a>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">$</span>.<span class="at">getJSON</span>(<span class="st">&#39;https://domain.com/data&#39;</span><span class="op">,</span> <span class="kw">function</span>(data) <span class="op">{</span>
+    <span class="co">//`data` is the already-parsed JSON data</span>
+    <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span> <span class="co">//do something with the data</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>But this requires including the jQuery library in your page, and <a href="http://youmightnotneedjquery.com/">since the need for jQuery is rapidly going away</a>, other options are now <em>built in</em> to modern browsers. In particular, we will utilize the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API"><strong><code>fetch()</code></strong></a> API to easily send AJAX requests for data!</p>
+<div class="alert alert-warning">
+<code>fetch()</code> is an recent standard—so recent that it is not supported by <a href="http://caniuse.com/#feat=fetch">IE (any) or Safari 10</a>. However, we can still use <code>fetch()</code> with these browsers by including a <a href="https://en.wikipedia.org/wiki/Polyfill"><strong>polyfill</strong></a>—an external library that replicates an existing API in platforms that don’t support it! The <a href="https://github.com/github/fetch"><code>fetch()</code> polyfill</a> will provide a <code>fetch()</code> function to browsers that don’t provide it (leaving other browsers unchanged) that uses the existing <code>XMLHttpRequest</code> without you needing to interact with that object.
+</p>
+<p>It’s easiest to just load the polyfill from a <a href="https://cdnjs.com/libraries/fetch">CDN</a>:</p>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- put this BEFORE your own script! --&gt;</span>
+<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
+</div>
+<p>The <code>fetch()</code> function makes it easy to send a request: simply call it and pass in the URL of the data you wish to download:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">fetch</span>(<span class="st">&#39;https://domain.com/data&#39;</span>)<span class="op">;</span></code></pre></div>
+<!-- //same origin policy & live-server?? Necessary?? -->
+<p class="alert alert-warning">
+In some browsers, you will not be able to send an AJAX request when the web page is loading via the <code>file://</code> protocol (e.g., by double-clicking on the <code>.html</code> file). This is a security feature to keep you from accidentally running an HTML file that contains malicious JavaScript that will download a virus onto your computer. Instead, you should run a local web server such as <code>live-server</code> for testing AJAX requests.
+</p>
+</div>
+<div id="asynchronous-programming" class="section level2">
+<h2><span class="header-section-number">14.3</span> Asynchronous Programming</h2>
+<p>However, the <code>fetch()</code> function does <strong>NOT</strong> directly return the data you want to download! Downloading data off the internet can take a long time: the network connection may be slow and the amount of data to download may be quite large (metadata for the latest 100 tweets from Twitter involves almost 500k of JSON content). Because fetching data may take time, AJAX requests are made <strong>asynchronously</strong> (that’s the “A” in AJAX)—the download will occur <em>at the same time</em> that the rest of the code is being executed. Thus the download and the remaining script will <em>not</em> be synchronized; they will be “asynchronous”.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;About to send request&#39;</span>)<span class="op">;</span> <span class="co">//statement 1</span>
+
+<span class="co">//send request for data to the url</span>
+<span class="at">fetch</span>(url)<span class="op">;</span>  <span class="co">//statement 2</span>
+
+<span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Sent request&#39;</span>)<span class="op">;</span> <span class="co">//statement 3</span>
+
+<span class="co">//The data is actually received sometime later,</span>
+<span class="co">//when the JS interpreter is down here!</span></code></pre></div>
+<ul>
+<li><p>In the above example, the JS interpreter will execute statement 1, then statement 2 (the <code>fetch()</code> call). It will then precede <em>immediately</em> to statement 3 (the second <code>console.log</code>), without waiting for the request to finish! The download will continue to occur in the background, and will finish at some point later in the program—though we don’t know exactly when.</p></li>
+<li><p>It is best to think of <code>fetch()</code> as a function that will just “<em>start</em> to download data”, not one that actually downloads data!</p></li>
+</ul>
+<p>Because <code>fetch()</code> is an <strong>asynchronous function</strong> (it’s code is run asynchronously), it returns what is called a <a href="https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Promise.jsm/Promise"><strong>Promise</strong></a>. A Promise is object that holds a value which may not be available yet—you can think of a Promise as like a placeholder where the result of the asynchronous function call will eventually be stored (it is a “promise” to eventually have some data, though that promise may be kept or broken!).</p>
+<ul>
+<li>Promises are the modern way of handling asynchronous functions, but as part of the ES6 standard they are <a href="http://caniuse.com/#feat=promises">not yet available to all browsers</a> (specifically: Internet Explorer). So you’ll need to include <a href="https://github.com/stefanpenner/es6-promise"><em>another polyfill</em></a> to support IE. This is also available from a <a href="https://cdnjs.com/libraries/es6-promise">CDN</a>.</li>
+</ul>
+<p>Promises have three possible states: <em>pending</em> (the data is downloading), <em>fulfilled</em> (the data has finished downloading), or <em>rejected</em> (the data failed to download and the promise was “broken”). We are able to specify <em>callback functions</em> (similar to event listeners) that occur when a pending Promise is either successfully fulfilled or has been rejected. The “on success” callback function is specified by calling the <strong><code>.then()</code></strong> function on the Promise object, and passing the “on success callback” as a parameter:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">onSuccessCallback</span>(response) <span class="op">{</span> <span class="co">//what to do when we get the response</span>
+    <span class="va">console</span>.<span class="at">log</span>(response)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//When fulfilled, execute the callback function (which will be passed the response)</span>
+<span class="kw">let</span> promise <span class="op">=</span> <span class="at">fetch</span>(url)<span class="op">;</span>
+<span class="va">promise</span>.<span class="at">then</span>(onSuccessCallback)<span class="op">;</span>
+
+<span class="co">//It is much more common to use anonymous variables/callbacks:</span>
+<span class="at">fetch</span>(url).<span class="at">then</span>(<span class="kw">function</span>(response) <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(response)<span class="op">;</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>The “on success” callback will be passed a single parameter: the <strong>data value</strong> that the Promise was made for (e.g., the data that will eventually be downloaded from <code>fetch()</code>). So when the callback is executed, you will have access to the data! For example, when the <code>fetch()</code> Promise is fulfilled, it will pass an object representing the <em>response</em> to the HTTP Request:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> promise <span class="op">=</span> <span class="at">fetch</span>(url)<span class="op">;</span>
+<span class="va">promise</span>.<span class="at">then</span>(<span class="kw">function</span>(response)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>( <span class="va">response</span>.<span class="at">url</span> )<span class="op">;</span> <span class="co">//a string of where the request was sent</span>
+    <span class="va">console</span>.<span class="at">log</span>( <span class="va">response</span>.<span class="at">status</span> )<span class="op">;</span> <span class="co">//the HTTP status code (e.g., 200, 404)</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>This response object does have a <code>body</code> property that represents the “body” (data content) of the HTTP response. However, that body stored as a “stream” of 0s and 1s, not as a JavaScript object (or even a string you can <code>JSON.parse()</code>)! In order to get the body into a format you can use, you will need to “encode” it into a JavaScript object by calling the <strong><code>.json()</code></strong> method on it.</p>
+<ul>
+<li>There is also an equivalent <code>.text()</code> method to encode a response body into plain text.</li>
+</ul>
+<div id="chaining-promises" class="section level3 unnumbered">
+<h3>Chaining Promises</h3>
+<p><strong>But there’s a catch</strong>: the “encoding” process performed by the <code>.json()</code> might take some time (particularly for a large amount of data). So instead of blocking (pausing) the rest of your program while that encoding occurs, the <code>.json()</code> method returns <em>another Promise</em> as a placeholder for when the encoded body is available! So you will then need to specify a <code>.then()</code> callback for <em>that</em> Promise as well.</p>
+<p>However, a Promise’s <code>.then()</code> function has a neat property that makes this easy to do. Calling the <code>.then()</code> function on a Promise returns a new Promise as a placeholder for any data produced by the <code>.then()</code> function. This promised data will be whatever value is <em>returned</em> by the “on success” callback function. This allows you to in effect “chain” <code>.then()</code> calls together, each of which can perform some kind of transformation on the data:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">function</span> <span class="at">makeQuestion</span>(dataString) <span class="op">{</span> <span class="co">//a function to make a string a question</span>
+    <span class="cf">return</span> dataString <span class="op">+</span> <span class="st">&#39;???&#39;</span><span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//image a hypothetical asynchronous function `getAsyncString`</span>
+<span class="co">//it returns a Promise (placeholder) for a string load from a given source</span>
+<span class="kw">let</span> originalPromise <span class="op">=</span> <span class="at">getAsyncString</span>(myDataSource)<span class="op">;</span>
+
+<span class="co">//when the original promise is fulfilled, call `makeQuestion` on it</span>
+<span class="co">//`questionPromise` will be a placeholder for that transformed data</span>
+<span class="kw">let</span> questionPromise <span class="op">=</span> <span class="va">originalPromise</span>.<span class="at">then</span>(makeUpperCase)<span class="op">;</span>
+
+<span class="co">//when the `questionPromise` is fulfilled, call an anonymous callback on it</span>
+<span class="co">//the callback will be passed the transformed (&quot;question&quot;) data</span>
+<span class="va">questionPromise</span>.<span class="at">then</span>(<span class="kw">function</span>(data)<span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span> <span class="co">//data will be a question!</span>
+<span class="op">}</span>)</code></pre></div>
+<p>More commonly, we use <em>anonymous variables</em> for subsequent promises, allowing you to chain them together in a way that almost reads like English!</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">getAsyncString</span>()
+    .<span class="at">then</span>(makeQuestion)
+    .<span class="at">then</span>(<span class="kw">function</span>(data)<span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span>
+    <span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>But wait there’s more! <code>.then()</code> also has a special feature where if the “on success” callback function returns a <em>Promise</em> (rather than another kind of value), then the “outer” promise will take on the state of that new returned Promise. This means that you can just <em>return</em> a Promise from inside a <code>.then()</code> callback, and that Promise will be the subject of the subsequent <code>.then()</code> call:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> outerPromise <span class="op">=</span> <span class="at">getAsyncString</span>(myFirstSource).<span class="at">then</span>(<span class="kw">function</span>(firstData)<span class="op">{</span>
+    <span class="co">//do something with `firstData`</span>
+
+    <span class="kw">let</span> newPromise <span class="op">=</span> <span class="at">getAsyncString</span>(mySecondSource)<span class="op">;</span> <span class="co">//a second async call!</span>
+    <span class="cf">return</span> newPromise<span class="op">;</span> <span class="co">//return the promise.</span>
+<span class="op">}</span>)<span class="op">;</span> <span class="co">//`outerPromise` now takes on the state and data of `newPromise`</span>
+
+<span class="va">outerPromise</span>.<span class="at">then</span>(<span class="kw">function</span>(secondData)<span class="op">{</span>
+    <span class="co">//do something with `secondData`, the data downloaded from `mySecondSource`</span>
+<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>Going back to <code>fetch()</code> to bring it all together: since the <code>.json()</code> encoding function returns a Promise, you can simply <em>return</em> that Promise from the <code>.then()</code> callback in order to make it available to subsequent <code>.then()</code> calls!</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">fetch</span>(url)  <span class="co">//start the download</span>
+    .<span class="at">then</span>(<span class="kw">function</span>(response) <span class="op">{</span>  <span class="co">//when done downloading</span>
+        <span class="kw">let</span> dataPromise <span class="op">=</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span>  <span class="co">//start encoding into an object</span>
+        <span class="cf">return</span> dataPromise<span class="op">;</span>  <span class="co">//hand this Promise up</span>
+    <span class="op">}</span>)
+    .<span class="at">then</span>(<span class="kw">function</span>(data) <span class="op">{</span>  <span class="co">//when done encoding</span>
+        <span class="co">//do something with the data!!</span>
+        <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span> <span class="co">//will now be encoded as a JavaScript object!</span>
+    <span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<p>This code example will allow you to download data and encode it into a plain old JavaScript object that you can work with.</p>
+</div>
+<div id="handling-errors" class="section level3 unnumbered">
+<h3>Handling Errors</h3>
+<p>When downloading data from the internet, it is always possible that the HTTP request may fail. The request may be sent to the wrong URL, the client computer may be having connection problems, or the receiving server may be having problems.</p>
+<p>In order to deal with inevitable errors, Promises provide a <strong><code>.catch()</code></strong> method that is used to specify a callback that should occur if the Promise is <em>rejected</em> (an error occurs). This callback function will be passed an <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error object</a> that contains details about the error.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">fetch</span>(url)
+    .<span class="at">then</span>(<span class="kw">function</span>(response) <span class="op">{</span>  <span class="co">//when done downloading</span>
+        <span class="cf">return</span> <span class="va">response</span>.<span class="at">json</span>()<span class="op">;</span>  <span class="co">//second promise is anonymous</span>
+    <span class="op">}</span>)
+    .<span class="at">then</span>(<span class="kw">function</span>(data) <span class="op">{</span>  <span class="co">//when done encoding</span>
+        <span class="co">//do something with the data!!</span>
+        <span class="va">console</span>.<span class="at">log</span>(data)<span class="op">;</span> <span class="co">//will now be encoded as a JavaScript object!</span>
+    <span class="op">}</span>)
+    .<span class="at">catch</span>(<span class="kw">function</span>(err) <span class="op">{</span>
+        <span class="co">//do something with the error</span>
+        <span class="va">console</span>.<span class="at">error</span>(err)<span class="op">;</span>  <span class="co">//e.g., show in the console</span>
+    <span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li><p>Importantly, the <code>.catch()</code> method will “catch” errors from <em>all previous</em> Promises in a <code>.then()</code> chain! This means that the above <code>.catch()</code> will show both errors in the downloading (<code>.fetch()</code>), and errors in the body encoding (<code>.json()</code>).</p></li>
+<li><p>You will almost always want to show the error to the user in some way, such as by creating an <a href="http://getbootstrap.com/docs/4.0/components/alerts/">alert</a> element in the DOM.</p></li>
+<li><p>The <code>.catch()</code> function <em>also</em> returns a Promise, so you can continue to chain <code>.then()</code> calls after it. These later callbacks will only be executed if no previous Promise has been rejected (that is, there haven’t been any errors yet).</p></li>
+</ul>
+<p><strong>Important</strong>: a Promise will only be rejected if there is an actual “Error” in sending the request. If the server replies with a <a href="https://httpstatuses.com/401">401</a> error (e.g., you didn’t have permission to access the resource) or just the message “invalid API key”, that won’t be handled by <code>.catch()</code>. From JavaScript’s perspective, the request went through perfectly—it’s not fetch’s fault that the data you asked for wasn’t what you actually wanted!</p>
+<ul>
+<li>You can use the <code>response.status</code> and <code>response.ok</code> properties to check the status of the HTTP response.</li>
+</ul>
+<p>As such, you will want to make sure to handle things like bad responses or unexpected response bodies, both in testing your application (to make sure the request is sent to the correct URL) and when handling any user input.</p>
 <!--
+## async/await
+//this lets you write asynchronous code in a more "synchronous" style, by specifying lines of code that will only execute after the promise is resolved (fulfilled or rejected).
 
-//motivation: downloading data
-    //we want to send an HTTP request!
-
-//XMLHttpRequest
-    //some history (Microsoft added this! Yes, IE first!)
-
-//XML
-//JSON format (differences from raw JavaScript)
-    //JSON parsing and decoding
-
-//fetch library
-    //polyfills
-//same origin policy
-
-//promises and asynchronicity
-    //another polyfill!
-
-//handling fetch data (chaining promises)
-
-    //async and await (coming soon) [just a note?]
-
-
-
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function
+https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9
+-->
+<!--
 //forms go here... or just walk through making one in exercise!
     //form: `method` and `action`
     //input elements
     //labels
     //aria
     //preventing default
+-->
+</div>
+</div>
+<div id="resources-12" class="section level2 unnumbered">
+<h2>Resources</h2>
+<div class="list-condensed">
+<ul>
+<li><a href="https://webdesign.tutsplus.com/tutorials/an-introduction-to-ajax-for-front-end-designers--cms-25099">An Introduction to AJAX for Front-End Developers (tuts+)</a></li>
+<li><a href="https://developers.google.com/web/updates/2015/03/introduction-to-fetch">An Introduction to <code>fetch()</code> (Google)</a></li>
+<li><a href="https://developers.google.com/web/fundamentals/primers/promises">JavaScript Promises: an Introduction (Google)</a></li>
+</ul>
+</div>
 
- -->
-
+</div>
 </div>
             </section>
 

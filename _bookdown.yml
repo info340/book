@@ -36,7 +36,7 @@ rmd_files:
   #- react-router.Rmd
 
   ## Additional Topics
+  # jest.Rmd
   # webpack
   # firebase
-  # jest
   # redux

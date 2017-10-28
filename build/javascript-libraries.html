@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-22">
+<meta name="date" content="2017-10-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -290,7 +290,17 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a></li>
+<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
+<li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
 <li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 and Beyond</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -380,7 +390,7 @@ Other techniques for managing and organizing large numbers of script files will 
 <h2><span class="header-section-number">13.2</span> Example: jQuery</h2>
 <p>As an extended example of a JavaScript library, the remainder of this chapter describes <a href="https://jquery.com/"><strong>jQuery</strong></a>—a popular JavaScript library that helps with DOM manipulation. jQuery was designed to provide easier, faster, and more reliable methods for manipulating the DOM in the ways described in the previous chapter. jQuery is one of the most popular libraries used in web development, and is used in around <a href="https://trends.builtwith.com/javascript/jQuery">70% of the most popular websites</a>.</p>
 <p>jQuery was developed to help fill in gaps in the JavaScript language and to standardize functionality across browsers. It made it so that you could write manipulate the DOM while writing 10% of the code, and produce scripts that would run on both Firefox <em>and</em> Internet Explorer!</p>
-<p>However, in the 10+ years since it’s release, later versions of the JavaScript language and the DOM API have improved (e.g., by introducing a <code>querySelector()</code> function) so that much of what made jQuery special is now standard and widely supported. Indeed, jQuery’ approach to interactive webpages is now common practice. Nevertheless, jQuery is still commonly used in web systems (<a href="http://getbootstrap.com/docs/4.0/getting-started/javascript/">Bootstrap’s JavaScript components</a> utilize jQuery), and is popular enough that it you should be familiar with it in the likely chance that you need to engage with a web system build more than 3 years ago.</p>
+<p>However, in the 10+ years since it’s release, later versions of the JavaScript language and the DOM API have improved (e.g., by introducing a <code>querySelector()</code> function) so that much of what made jQuery special is <a href="http://youmightnotneedjquery.com/">now standard and widely supported</a>. Indeed, jQuery’ approach to interactive webpages is now common practice. Nevertheless, jQuery is still commonly used in web systems (<a href="http://getbootstrap.com/docs/4.0/getting-started/javascript/">Bootstrap’s JavaScript components</a> utilize jQuery), and is popular enough that it you should be familiar with it in the likely chance that you need to engage with a web system build more than 3 years ago.</p>
 <p>As with other libraries, you <a href="https://jquery.com/download/">include jQuery</a> by referencing it from a <code>&lt;script&gt;</code> tag in your HTML (<em>before your own script!</em>):</p>
 <div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-3.2.1.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
 <ul>
