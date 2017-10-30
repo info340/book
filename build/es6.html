@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-28">
+<meta name="date" content="2017-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -301,7 +301,20 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 and Beyond</a></li>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 Features</a><ul>
+<li class="chapter" data-level="15.1" data-path="es6.html"><a href="es6.html#classes"><i class="fa fa-check"></i><b>15.1</b> Classes</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#es6-class-syntax"><i class="fa fa-check"></i>ES6 Class Syntax</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#inheritance"><i class="fa fa-check"></i>Inheritance</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i><b>15.2</b> Arrow Functions</a><ul>
+<li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.3</b> Modules</a></li>
+<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.4</b> Other Features</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resource"><i class="fa fa-check"></i>Resource</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -323,22 +336,334 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="es6" class="section level1">
-<h1><span class="header-section-number">Chapter 15</span> ES6 and Beyond</h1>
-<p>Coming soon…</p>
-<!-- //syntactic sugar
-    //template literals
-    //spread ??
+<h1><span class="header-section-number">Chapter 15</span> ES6 Features</h1>
+<p>As discussed in <a href="javascript.html#history-and-versions">Chapter 10</a>, the ECMAScript specification for the JavaScript language has gone through several different versions, each of which adds new syntax and features to try and make the language more powerful or easier to work with. In 2015, a new version of the language was released—officially called “ECMAScript 2015”, most developers refer to it by the working name <strong>“ES6”</strong> (e.g., version 6 of the language).</p>
+<p>This chapter introduces some of the most notable and useful features introduced in ES6—particularly those that will be utilized by the React framework (discussed in the following chapters).</p>
+<p class="alert alert-warning">
+ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by modern browsers</a>, with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won’t be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the <a href="https://babeljs.io/">Babel</a> compiler, which will “<em>transpile</em>” JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it’s automatically performed by provided build tools), but it is also possible to <a href="https://babeljs.io/docs/setup/#installation">install</a> and utilize the Babel compiler yourself.
+</p>
+<div id="classes" class="section level2">
+<h2><span class="header-section-number">15.1</span> Classes</h2>
+<p>While JavaScript is primarily a <em>scripting</em> and functional language, it does support a form of <strong>Object Oriented Programming</strong> like that used in the Java language. That is, we are able to define <strong>classes</strong> of data and methods that act on that data, and then <strong>instantiate</strong> those classes into <strong>objects</strong> that can be manipulated. ES6 introduces a new <code>class</code> syntax so that creating classes in JavaScript even <em>looks</em> like how you make classes in Java!</p>
+<div id="why-classes" class="section level3 unnumbered">
+<h3>Why Classes?</h3>
+<p>The whole point of using classes in programming—whether Java or JavaScript—is to perform <strong>abstraction</strong>: we want to be able to <em>encapsulate</em> (“group”) together parts of our code so we can talk about it at a higher level. So rather than needing to think about the program purely in terms of <code>Numbers</code>, <code>Strings</code>, and <code>Arrays</code>, we can think about it in terms of <code>Dogs</code>, <code>Cats</code> or <code>Persons</code>.</p>
+<p>In particular, classes <em>encapsulate</em> two things:</p>
+<ol style="list-style-type: decimal">
+<li><p>The <strong>data</strong> (variables) that describe the thing. These are known as <em>attributes</em>, <em>fields</em> or <em>instance variables</em> (variables that below to a particular <em>instance</em>, or example, of the class). For example, we might talk about a <code>Person</code> object’s <code>name</code> (a String), <code>age</code> (a Number), and Halloween haul (an array of candy).</p></li>
+<li><p>The <strong>behaviors</strong> (functions) that operate on, utilize, or change that data. These are known as <em>methods</em> (technically <em>instance methods</em>, since they operate on a particular instance of the class). For example, a <code>Person</code> may be able to <code>sayHello()</code>, <code>trickOrTreat()</code>, or <code>eatCandy()</code>.</p></li>
+</ol>
+<p>In JavaScript, an Object’s properties can be seen as the <em>attributes</em> of that object. For example:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">let</span> person <span class="op">=</span> <span class="op">{</span>
+   <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Ada&#39;</span><span class="op">,</span>
+   <span class="dt">age</span><span class="op">:</span> <span class="dv">21</span><span class="op">,</span>
+   <span class="dt">costume</span><span class="op">:</span> <span class="st">&#39;Cheshire Cat&#39;</span>
+   <span class="dt">trickOrTreat</span><span class="op">:</span> <span class="kw">function</span>(newCandy)<span class="op">{</span>
+      <span class="kw">this</span>.<span class="va">candy</span>.<span class="at">push</span>(newCandy)<span class="op">;</span>
+   <span class="op">}</span>
+<span class="op">}</span>
 
-//classes
-- oop :p
+<span class="co">//tell me about this person!</span>
+<span class="va">console</span>.<span class="at">log</span>(<span class="va">person</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; is a &quot;</span> <span class="op">+</span> <span class="va">person</span>.<span class="at">costume</span>)<span class="op">;</span></code></pre></div>
+<p>This Object represents a thing with <code>name</code>, <code>age</code> and <code>costume</code> attributes (but we haven’t yet indicated that this Object has the <em>class</em>ification of “Person”). The value of the <code>trickOrTreat()</code> property is a function (remember: functions are values!), and is an example of how an Object can “have” a function.</p>
+<ul>
+<li>JavaScript even uses the <code>this</code> keyword to refer to <em>which</em> object that function being called on, just like Java! See <a href="es6.html#working-with-this">below</a> for more on the <code>this</code> keyword and its quirks.</li>
+</ul>
+<p>A <strong>Class</strong> (<em>class</em>ification) acts as <em>template/recipe/blueprint</em> for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an “instance of” (example of) a class: we <strong>instantiate</strong> an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a> provide a syntax by which these “templates” can be defined.</p>
+</div>
+<div id="review-classes-in-java" class="section level3 unnumbered">
+<h3>Review: Classes in Java</h3>
+<p>First, consider the following simple class defined in <em>Java</em> (which should be review from earlier programming courses):</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//class declaration</span>
+<span class="kw">public</span> <span class="kw">class</span> Person {
+
+    <span class="co">//attributes (private)</span>
+    <span class="kw">private</span> String firstName;
+    <span class="kw">private</span> <span class="dt">int</span> age;
+
+    <span class="co">//a Constructor method</span>
+    <span class="co">//this is called when the class is instantiated (with `new`)</span>
+    <span class="co">//and has the job of initializing the attributes</span>
+    <span class="kw">public</span> <span class="fu">Person</span>(String newName, <span class="dt">int</span> newAge){
+        <span class="co">//assign parameters to the attributes</span>
+        <span class="kw">this</span>.<span class="fu">firstName</span> = newName;
+        <span class="kw">this</span>.<span class="fu">age</span> = newAge;
+    }
+
+    <span class="co">//return this Person&#39;s name</span>
+    <span class="kw">public</span> String <span class="fu">getName</span>() {
+        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">firstName</span>; <span class="co">//return own attribute</span>
+    }
+
+    <span class="co">//grow a year</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">haveBirthday</span>() {
+        <span class="kw">this</span>.<span class="fu">age</span>++; <span class="co">//increase this person&#39;s age (accessing own attribute)</span>
+    }
+
+    <span class="co">//a method that takes in a Person type as a parameter</span>
+    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">sayHello</span>(Person otherPerson) {
+        <span class="co">//call method on parameter object for printing</span>
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Hello, &quot;</span> + otherPerson.<span class="fu">getName</span>());
+
+        <span class="co">//access own attribute for printing</span>
+        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I am &quot;</span> + <span class="kw">this</span>.<span class="fu">age</span> +  <span class="st">&quot; years old&quot;</span>);
+    }
+}</code></pre></div>
+<p>You can of course utilize this class (instantiate it and call its methods) as follows:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
+    <span class="co">//instantiate two new People objects</span>
+    Person aliceObj = <span class="kw">new</span> <span class="fu">Person</span>(<span class="st">&quot;Alice&quot;</span>, <span class="dv">21</span>);
+    Person bobObj = <span class="kw">new</span> <span class="fu">Person</span>(<span class="st">&quot;Bob&quot;</span>, <span class="dv">42</span>);
+
+    <span class="co">//call method on Alice (changing her fields)</span>
+    aliceObj.<span class="fu">haveBirthday</span>();
+
+    <span class="co">//call the method ON Alice, and PASS Bob as a param to it</span>
+    aliceObj.<span class="fu">sayHello</span>(bobObj);
+}</code></pre></div>
+<p>A few things to note about this syntax:</p>
+<ol style="list-style-type: decimal">
+<li>You declare (announce) that you’re defining a class by using the <code>class</code> keyword.</li>
+<li>Java attributes are <em>declared</em> at the top of the class block (but assigned in the constructor).</li>
+<li>Classes have <strong>constructor</strong> methods that are used to instantiate the attributes.</li>
+<li>Class methods are declared <em>inside</em> the class declaration (inside the block, indenting one step).</li>
+<li>Class methods can access (use) the object’s attribute variables by referring to them as <code>this.attributeName</code>.</li>
+<li>You <strong>instantiate</strong> objects of the class’s type by using the <code>new</code> keyword and then calling a method with the name of the class (e.g., <code>new Person()</code>). That method <em>is</em> the constructor, so is passed the constructor’s parameters.</li>
+<li>You call methods on objects by using <strong>dot notation</strong> (e.g., <code>object.methodName()</code>).</li>
+<li>Instantiated objects are just variables, and so can be passed into other methods.</li>
+</ol>
+</div>
+<div id="es6-class-syntax" class="section level3 unnumbered">
+<h3>ES6 Class Syntax</h3>
+<p>Here is how you would create <em>the exact same class</em> in JavaScript using ES6 syntax:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//class declaration</span>
+<span class="kw">class</span> Person <span class="op">{</span>
+
+    <span class="co">//a Constructor method</span>
+    <span class="co">//this is called when the class is instantiated (with `new`)</span>
+    <span class="co">//and has the job of initializing the attributes</span>
+    <span class="at">constructor</span>(newName<span class="op">,</span> newAge) <span class="op">{</span>
+        <span class="co">//assign parameters to the attributes</span>
+        <span class="kw">this</span>.<span class="at">firstName</span> <span class="op">=</span> newName<span class="op">;</span>
+        <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> newAge<span class="op">;</span>
+    <span class="op">}</span>
+
+    <span class="co">//return this Person&#39;s name</span>
+    <span class="at">getName</span>() <span class="op">{</span>
+        <span class="cf">return</span> <span class="kw">this</span>.<span class="at">firstName</span><span class="op">;</span> <span class="co">//return own attribute</span>
+    <span class="op">}</span>
+
+    <span class="co">//grow a year</span>
+    <span class="at">haveBirthday</span>() <span class="op">{</span>
+        <span class="kw">this</span>.<span class="at">age</span><span class="op">++;</span> <span class="co">//increase this person&#39;s age (accessing own attribute)</span>
+    <span class="op">}</span>
+
+    <span class="co">//a method that takes in a Person type as a parameter</span>
+    <span class="at">sayHello</span>(otherPerson) <span class="op">{</span>
+        <span class="co">//call method on parameter object for printing</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span> <span class="op">+</span> <span class="va">otherPerson</span>.<span class="at">getName</span>())<span class="op">;</span>
+
+        <span class="co">//access own attribute for printing</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I am &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">age</span> <span class="op">+</span>  <span class="st">&quot; years old&quot;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+<p>And here is how you would use this class:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//instantiate two new People objects</span>
+<span class="kw">let</span> aliceObj <span class="op">=</span> <span class="kw">new</span> <span class="at">Person</span>(<span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">21</span>)<span class="op">;</span>
+<span class="kw">let</span> bobObj <span class="op">=</span> <span class="kw">new</span> <span class="at">Person</span>(<span class="st">&quot;Bob&quot;</span><span class="op">,</span> <span class="dv">42</span>)<span class="op">;</span>
+
+<span class="co">//call method on Alice (changing her attributes)</span>
+<span class="va">aliceObj</span>.<span class="at">haveBirthday</span>()<span class="op">;</span>
+
+<span class="co">//call the method ON Alice, and PASS Bob as a param to it</span>
+<span class="va">aliceObj</span>.<span class="at">sayHello</span>(bobObj)<span class="op">;</span></code></pre></div>
+<p>As you can see, this syntax is <em>very, <strong>very</strong></em> similar to Java! Just like with JavaScript functions, most of the changes have involved getting rid of type declarations. In fact, you can write a class in Java and then just delete a few words to make it an ES6 class.</p>
+<p>Things to notice:</p>
+<ol style="list-style-type: decimal">
+<li><em>Just like in Java</em>, JavaScript classes are declared using the <code>class</code> keyword (this is what was introduced in ES6).</li>
+<li>JavaScript classes <strong>do not</strong> declare attributes ahead of time (at the top of the class). Unlike Java, JavaScript variables always “exist”, they’re just <code>undefined</code> until assigned, so you don’t need to explicitly declare them.
+<ul>
+<li>In JavaScript, nothing is private; you effectively have <code>public</code> access to all attributes and functions.</li>
+</ul></li>
+<li>JavaScript classes always have only one <strong>constructor</strong> (if any), and the function is simply called <code>constructor()</code>.
+<ul>
+<li>That’s even clearer than Java, where you only know it’s a constructor because it lacks a return type.</li>
+</ul></li>
+<li><p><em>Just like in Java</em>, JavaScript class methods are declared <em>inside</em> the class declaration (inside the block, indenting one step).</p>
+<p>But note that you don’t need to use the word <code>function</code> to indicate that a method is a function; just provide the name &amp; parameters. This is because the only things <em>in</em> the class are functions, so declaring it as such would be redundant.</p></li>
+<li><em>Just like in Java</em>, JavaScript class methods can access (use) the object’s attribute variables by referring to them as <code>this.attributeName</code>.</li>
+<li><em>Just like in Java</em>, you <strong>instantiate</strong> objects of the class’s type by using the <code>new</code> keyword and then calling a method with the name of the class (e.g., <code>new Person()</code>). That method <em>is</em> the <code>constructor()</code>, so is passed the constructor’s parameters.</li>
+<li><em>Just like in Java</em>, you call methods on objects by using <strong>dot notation</strong> (e.g., <code>object.methodName()</code>).</li>
+<li><p><em>Just like in Java</em>, instantiated objects are just variables, and so can be passed into other methods.</p></li>
+</ol>
+<p>So really, it’s just like Java—except that for the differences in how you declare functions and the fact that we use the word <code>constructor</code> to name the constructor methods.</p>
+<p>The other difference is that while in Java we usually define each class inside it’s own file, in JavaScript you often create multiple classes in a single file, at the same global “level” as you declared other, non-class functions:</p>
+<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//script.js</span>
+<span class="st">&#39;use strict&#39;</span><span class="op">;</span>
+
+<span class="co">//declare a class</span>
+<span class="kw">class</span> Dog <span class="op">{</span>
+    <span class="at">bark</span>() <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//declare another class</span>
+<span class="kw">class</span> Cat <span class="op">{</span>
+    <span class="at">meow</span>() <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//declare a (non-class) function</span>
+<span class="kw">function</span> <span class="at">petAnimal</span>(animal) <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
+
+<span class="co">//at the &quot;main&quot; level, instantiate the classes and call the functions</span>
+<span class="kw">let</span> fido <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>()<span class="op">;</span>
+<span class="at">petAnimal</span>(fido)<span class="op">;</span> <span class="co">//pass this Dog object to the function</span></code></pre></div>
+<p class="alert alert-warning">
+Although the above syntax looks like Java, it’s important to remember that JavaScript class instances are still <em>just normal Objects like any other</em>. For example, you can add new properties and functions to that object, or overwrite the value of any property. Although it looks like a Java class, it doesn’t really behave like one.
+</p>
+</div>
+<div id="inheritance" class="section level3 unnumbered">
+<h3>Inheritance</h3>
+<p>The ES6 <code>class</code> syntax also allows you to specify <strong>class inheritance</strong>, by which one class can <code>extend</code> another. Inheritance allows you to specify that one class is a <em>more specialized version</em> of another: that is, a version of that class with “extra abilities” (such as additional methods).</p>
+<p>As in Java, you use the <code>extends</code> keyword to indicate that one class should <strong>inherit</strong> from another:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//The &quot;parent/super&quot; class</span>
+<span class="kw">class</span> Dog <span class="op">{</span>
+  <span class="at">constructor</span>(name) <span class="op">{</span>
+      <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span>
+  <span class="op">}</span>
+
+  <span class="at">sit</span>() <span class="op">{</span>
+      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;The dog &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span><span class="op">+</span><span class="st">&#39; sits. Good boy.&#39;</span>)<span class="op">;</span>
+  <span class="op">}</span>
+
+  <span class="at">bark</span>() <span class="op">{</span>
+      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;&quot;Woof!&quot;&#39;</span>)<span class="op">;</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//The &quot;child/sub&quot; class (inherits abilities from Dog)</span>
+<span class="kw">class</span> Husky <span class="kw">extends</span> Dog <span class="op">{</span>
+    <span class="at">constructor</span>(name<span class="op">,</span> distance) <span class="op">{</span>
+        <span class="kw">super</span>(name)<span class="op">;</span> <span class="co">//call parent constructor</span>
+        <span class="kw">this</span>.<span class="at">distance</span> <span class="op">=</span> distance<span class="op">;</span>
+    <span class="op">}</span>
+
+    <span class="co">//a new method (&quot;special ability&quot;)</span>
+    <span class="at">throwFootball</span>() <span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Husky &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span><span class="op">+</span><span class="st">&#39; throws &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">dist</span><span class="op">+</span><span class="st">&#39; yards&#39;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+
+    <span class="co">//override (replace) parent&#39;s method</span>
+    <span class="at">bark</span>() <span class="op">{</span>
+      <span class="kw">super</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//call parent method</span>
+      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;(Go huskies!)&quot;</span>)<span class="op">;</span>
+    <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//usage</span>
+<span class="kw">let</span> dog <span class="op">=</span> <span class="kw">new</span> <span class="at">Husky</span>(<span class="st">&quot;Harry&quot;</span><span class="op">,</span> <span class="dv">60</span>)<span class="op">;</span> <span class="co">//make a Husky</span>
+<span class="va">dog</span>.<span class="at">sit</span>()<span class="op">;</span> <span class="co">//call inherited method</span>
+<span class="va">dog</span>.<span class="at">throwFootball</span>()<span class="op">;</span> <span class="co">//call own method</span>
+<span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//call own (overridden) method</span></code></pre></div>
+<p>In this case, the class <code>Husky</code> is a <em>specialized version</em> of the class <code>Dog</code>: it <strong><em>is a</em></strong> <code>Dog</code> that has a few special abilities (e.g., it can throw a football). We refer to the base, less specialized class (<code>Dog</code>) as the <strong>parent</strong> or <strong>super class</strong>, and the derived, more specialized class (<code>Husky</code>) as the <strong>child</strong> or <strong>sub-class</strong>.</p>
+<p>The sub-class <code>Husky</code> class <strong>inherits</strong> the methods defined in its parent: even though the <code>Husky</code> class didn’t define a <code>sit()</code> method, it still has that method define because the <em>parent</em> has that method defined! By extending an existing class, you get can get a lot of methods for free!</p>
+<p>The <code>Husky</code> class is also able to <strong>override</strong> its parents methods, defining it’s own specialized version (e.g., <code>bark()</code>). This is useful for adding customization, or for providing specific implementations of callbacks that may be utilized by a framework—a pattern that you’ll see in React.</p>
+<p class="alert alert-info">
+Note that despite this discussion, <em>JavaScript is not actually an object-oriented language</em>. JavaScript instead uses a <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">prototype system</a> for defining types of Objects, which allows what is called <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance">prototypical inheritance</a>. The ES6 <code>class</code> keyword doesn’t change that: instead, it is simply a “shortcut syntax” for specifying Object prototypes in the same way that has been supported since the first version of JavaScript. The <code>class</code> keyword makes it easy to define something that looks and acts like an OOP class, but JavaScript isn’t object-oriented! See <a href="http://aaditmshah.github.io/why-prototypal-inheritance-matters/">this (detailed) explanation</a> for further discussion.
+</p>
+</div>
+</div>
+<div id="arrow-functions" class="section level2">
+<h2><span class="header-section-number">15.2</span> Arrow Functions</h2>
+<p>As described in <a href="functional-programming.html#functional-programming">Chapter 11</a>, JavaScript lets you define functions as <em>anonymous values</em>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>(name) <span class="op">{</span>
+  <span class="cf">return</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<p>As you have seen, the use of anonymous functions is incredibly common in JavaScript, particularly when used as anonymous callbacks. Because this is so common, ES6 introduced a simpler, more concise <em>shortcut syntax</em> for quickly specifying anonymous functions. Though officially called <a href="https://en.wikipedia.org/wiki/Anonymous_function">lambda functions</a>, they are more commonly known as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions"><strong>arrow functions</strong></a>, because of how they utilize an “arrow” symbol <strong><code>=&gt;</code></strong>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> (name) <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="cf">return</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<p>To turn an anonymous function into an <em>arrow function</em>, you just remove the <code>function</code> keyword from the definition, and place an arrow <code>=&gt;</code> between the parameter list and the block (indicating that the parameter list “goes to” the following block). This saves you a couple of characters when typing.</p>
+<p>And for simple callback functions, you can make this even <em>more</em> compact:</p>
+<div class="list-condensed">
+<ol style="list-style-type: decimal">
+<li>If the function takes only a single parameter, you can leave off the <code>()</code> around the parameter list.</li>
+<li>If the function body has only a single statement, you can leave the <code>{}</code> off the block.</li>
+<li>If the function body has only a single statement <em>AND</em> that statement returns a value, you can leave off the <code>return</code> keyword (the “single statement” arrow function returns the result of the last statement, which will either be an expression or <code>undefined</code>).</li>
+</ol>
+</div>
+<p>Thus the above <code>sayHello</code> method could be written using <strong>concise body</strong> format as:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> name <span class="op">=&gt;</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span></code></pre></div>
+<ul>
+<li>I recommend you always leave the parentheses <code>()</code> on the parameter list, as it helps with readability (and makes it easier to adjust the parameters later)!</li>
+</ul>
+<p>Note that if a function takes no parameters, you <strong>must</strong> include the <code>()</code> to indicate it is an arrow function:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//normal function syntax</span>
+<span class="kw">let</span> printHello <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//arrow syntax</span>
+<span class="kw">let</span> printHello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="co">//concise body</span>
+<span class="kw">let</span> printHello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span></code></pre></div>
+<p>Arrow functions are particularly useful for specifying <em>anonymous callback functions</em>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span> <span class="co">//an array to work with</span>
+
+<span class="co">//normal function</span>
+<span class="va">array</span>.<span class="at">map</span>(<span class="kw">function</span>(num) <span class="op">{</span>
+  <span class="cf">return</span> num<span class="op">*</span><span class="dv">2</span><span class="op">;</span> <span class="co">//multiply each item by 2</span>
+<span class="op">}</span>)<span class="op">;</span>
+
+<span class="co">//arrow syntax</span>
+<span class="va">array</span>.<span class="at">map</span>(num <span class="op">=&gt;</span> <span class="op">{</span>
+  <span class="cf">return</span> num<span class="op">*</span><span class="dv">2</span><span class="op">;</span> <span class="co">//multiply each item by 2</span>
+<span class="op">}</span>)<span class="op">;</span>
+
+<span class="co">//concise body</span>
+<span class="va">array</span>.<span class="at">map</span>(num <span class="op">=&gt;</span> num<span class="op">*</span><span class="dv">2</span>)<span class="op">;</span></code></pre></div>
+<p class="alert alert-info">
+Arrow functions are great and you should always use them for anonymous callback functions (if your target platform supports them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
+</p>
+<div id="working-with-this" class="section level3 unnumbered">
+<h3>Working with <code>this</code></h3>
+</div>
+</div>
+<div id="modules" class="section level2">
+<h2><span class="header-section-number">15.3</span> Modules</h2>
+</div>
+<div id="other-features" class="section level2">
+<h2><span class="header-section-number">15.4</span> Other Features</h2>
+<blockquote>
+<p>Syntactic Sugar causes cancer of the semicolon - <a href="http://www.cs.yale.edu/homes/perlis-alan/quotes.html">Alan Perlis</a></p>
+</blockquote>
+<!--
 
 //arrow functions
 - functional programming
 
 //modules
     <script type=module src="app.js"></script> works in latest Chrome (as of Sep 2017) and Safari (March 2017), but need to run from live-server
- -->
 
+//syntactic sugar
+//template literals
+//spread ??
+ -->
+</div>
+<div id="resource" class="section level2 unnumbered">
+<h2>Resource</h2>
+<div class="list-condensed">
+<ul>
+<li><a href="https://github.com/metagrover/ES6-for-humans">ES6 For Humans</a> an good online text on ES6</li>
+<li><a href="https://github.com/lukehoban/es6features#readme">ECMAScript 6</a> A good unofficial summary with examples</li>
+<li><a href="http://es6-features.org/">ES6 Features</a> (also shows equivalent ES5 syntax where possible)</li>
+<li><a href="http://www.ecma-international.org/ecma-262/6.0/">ECMAScript 2015 Language Specification</a> official standard</li>
+</ul>
+</div>
+
+</div>
 </div>
             </section>
 

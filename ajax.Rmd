@@ -319,3 +319,5 @@ https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away
 - [An Introduction to `fetch()` (Google)](https://developers.google.com/web/updates/2015/03/introduction-to-fetch)
 - [JavaScript Promises: an Introduction (Google)](https://developers.google.com/web/fundamentals/primers/promises)
 </div>
+
+<!-- http://papaparse.com/ <- csv parsing -->

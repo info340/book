@@ -1,16 +1,372 @@
-# ES6 and Beyond {#es6}
-Coming soon...
+# ES6 Features {#es6}
+As discussed in [Chapter 10](#history-and-versions), the ECMAScript specification for the JavaScript language has gone through several different versions, each of which adds new syntax and features to try and make the language more powerful or easier to work with. In 2015, a new version of the language was released&mdash;officially called "ECMAScript 2015", most developers refer to it by the working name **"ES6"** (e.g., version 6 of the language).
 
-<!-- //syntactic sugar
-    //template literals
-    //spread ??
+This chapter introduces some of the most notable and useful features introduced in ES6&mdash;particularly those that will be utilized by the React framework (discussed in the following chapters).
 
-//classes
-- oop :p
+<p class="alert alert-warning">ES6 is [mostly supported by modern browsers](http://kangax.github.io/compat-table/es6/), with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won't be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the [Babel](https://babeljs.io/) compiler, which will "_transpile_" JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it's automatically performed by provided build tools), but it is also possible to [install](https://babeljs.io/docs/setup/#installation) and utilize the Babel compiler yourself.</p>
+
+## Classes
+While JavaScript is primarily a _scripting_ and functional language, it does support a form of **Object Oriented Programming** like that used in the Java language. That is, we are able to define **classes** of data and methods that act on that data, and then **instantiate** those classes into **objects** that can be manipulated. ES6 introduces a new `class` syntax so that creating classes in JavaScript even _looks_ like how you make classes in Java!
+
+### Why Classes? {-}
+The whole point of using classes in programming&mdash;whether Java or JavaScript&mdash;is to perform **abstraction**: we want to be able to _encapsulate_ ("group") together parts of our code so we can talk about it at a higher level. So rather than needing to think about the program purely in terms of `Numbers`, `Strings`, and `Arrays`, we can think about it in terms of `Dogs`, `Cats` or `Persons`.
+
+In particular, classes _encapsulate_ two things:
+
+1. The **data** (variables) that describe the thing. These are known as _attributes_, _fields_ or _instance variables_ (variables that below to a particular _instance_, or example, of the class). For example, we might talk about a `Person` object's `name` (a String), `age` (a Number), and Halloween haul (an array of candy).
+
+2. The **behaviors** (functions) that operate on, utilize, or change that data. These are known as _methods_ (technically _instance methods_, since they operate on a particular instance of the class). For example, a `Person` may be able to `sayHello()`, `trickOrTreat()`, or `eatCandy()`.
+
+In JavaScript, an Object's properties can be seen as the _attributes_ of that object. For example:
+
+```javascript
+let person = {
+   name: 'Ada',
+   age: 21,
+   costume: 'Cheshire Cat'
+   trickOrTreat: function(newCandy){
+      this.candy.push(newCandy);
+   }
+}
+
+//tell me about this person!
+console.log(person.name + " is a " + person.costume);
+```
+
+This Object represents a thing with `name`, `age` and `costume` attributes (but we haven't yet indicated that this Object has the *class*ification of "Person"). The value of the `trickOrTreat()` property is a function (remember: functions are values!), and is an example of how an Object can "have" a function.
+
+- JavaScript even uses the `this` keyword to refer to _which_ object that function being called on, just like Java! See [below](#working-with-this) for more on the `this` keyword and its quirks.
+
+A **Class** (*class*ification) acts as
+_template/recipe/blueprint_ for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an "instance of" (example of) a class: we **instantiate** an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. [ES6 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) provide a syntax by which these "templates" can be defined.
+
+### Review: Classes in Java {-}
+First, consider the following simple class defined in _Java_ (which should be review from earlier programming courses):
+
+```java
+//class declaration
+public class Person {
+
+    //attributes (private)
+    private String firstName;
+    private int age;
+
+    //a Constructor method
+    //this is called when the class is instantiated (with `new`)
+    //and has the job of initializing the attributes
+    public Person(String newName, int newAge){
+        //assign parameters to the attributes
+        this.firstName = newName;
+        this.age = newAge;
+    }
+
+    //return this Person's name
+    public String getName() {
+        return this.firstName; //return own attribute
+    }
+
+    //grow a year
+    public void haveBirthday() {
+        this.age++; //increase this person's age (accessing own attribute)
+    }
+
+    //a method that takes in a Person type as a parameter
+    public void sayHello(Person otherPerson) {
+        //call method on parameter object for printing
+        System.out.println("Hello, " + otherPerson.getName());
+
+        //access own attribute for printing
+        System.out.println("I am " + this.age +  " years old");
+    }
+}
+```
+
+You can of course utilize this class (instantiate it and call its methods) as follows:
+
+```java
+public static void main(String[] args) {
+    //instantiate two new People objects
+    Person aliceObj = new Person("Alice", 21);
+    Person bobObj = new Person("Bob", 42);
+
+    //call method on Alice (changing her fields)
+    aliceObj.haveBirthday();
+
+    //call the method ON Alice, and PASS Bob as a param to it
+    aliceObj.sayHello(bobObj);
+}
+```
+
+A few things to note about this syntax:
+
+1. You declare (announce) that you're defining a class by using the `class` keyword.
+2. Java attributes are _declared_ at the top of the class block (but assigned in the constructor).
+3. Classes have **constructor** methods that are used to instantiate the attributes.
+4. Class methods are declared _inside_ the class declaration (inside the block, indenting one step).
+5. Class methods can access (use) the object's attribute variables by referring to them as `this.attributeName`.
+6. You **instantiate** objects of the class's type by using the `new` keyword and then calling a method with the name of the class (e.g., `new Person()`). That method _is_ the constructor, so is passed the constructor's parameters.
+7. You call methods on objects by using **dot notation** (e.g., `object.methodName()`).
+8. Instantiated objects are just variables, and so can be passed into other methods.
+
+### ES6 Class Syntax {-}
+Here is how you would create _the exact same class_ in JavaScript using ES6 syntax:
+
+```javascript
+//class declaration
+class Person {
+
+    //a Constructor method
+    //this is called when the class is instantiated (with `new`)
+    //and has the job of initializing the attributes
+    constructor(newName, newAge) {
+        //assign parameters to the attributes
+        this.firstName = newName;
+        this.age = newAge;
+    }
+
+    //return this Person's name
+    getName() {
+        return this.firstName; //return own attribute
+    }
+
+    //grow a year
+    haveBirthday() {
+        this.age++; //increase this person's age (accessing own attribute)
+    }
+
+    //a method that takes in a Person type as a parameter
+    sayHello(otherPerson) {
+        //call method on parameter object for printing
+        console.log("Hello, " + otherPerson.getName());
+
+        //access own attribute for printing
+        console.log("I am " + this.age +  " years old");
+    }
+}
+```
+
+And here is how you would use this class:
+
+```javascript
+//instantiate two new People objects
+let aliceObj = new Person("Alice", 21);
+let bobObj = new Person("Bob", 42);
+
+//call method on Alice (changing her attributes)
+aliceObj.haveBirthday();
+
+//call the method ON Alice, and PASS Bob as a param to it
+aliceObj.sayHello(bobObj);
+```
+
+As you can see, this syntax is _very, **very**_ similar to Java! Just like with JavaScript functions, most of the changes have involved getting rid of type declarations. In fact, you can write a class in Java and then just delete a few words to make it an ES6 class.
+
+Things to notice:
+
+1. _Just like in Java_, JavaScript classes are declared using the `class` keyword (this is what was introduced in ES6).
+2. JavaScript classes **do not** declare attributes ahead of time (at the top of the class). Unlike Java, JavaScript variables always "exist", they're just `undefined` until assigned, so you don't need to explicitly declare them.
+    - In JavaScript, nothing is private; you effectively have `public` access to all attributes and functions.
+3. JavaScript classes always have only one **constructor** (if any), and the function is simply called `constructor()`.
+    - That's even clearer than Java, where you only know it's a constructor because it lacks a return type.
+4. _Just like in Java_, JavaScript class methods are declared _inside_ the class declaration (inside the block, indenting one step).
+
+    But note that you don't need to use the word `function` to indicate that a method is a function; just provide the name & parameters. This is because the only things _in_ the class are functions, so declaring it as such would be redundant.
+
+5. _Just like in Java_, JavaScript class methods can access (use) the object's attribute variables by referring to them as `this.attributeName`.
+6. _Just like in Java_, you **instantiate** objects of the class's type by using the `new` keyword and then calling a method with the name of the class (e.g., `new Person()`). That method _is_ the `constructor()`, so is passed the constructor's parameters.
+7. _Just like in Java_, you call methods on objects by using **dot notation** (e.g., `object.methodName()`).
+8. _Just like in Java_, instantiated objects are just variables, and so can be passed into other methods.
+
+So really, it's just like Java&mdash;except that for the differences in how you declare functions and the fact that we use the word `constructor` to name the constructor methods.
+
+The other difference is that while in Java we usually define each class inside it's own file, in JavaScript you often create multiple classes in a single file, at the same global "level" as you declared other, non-class functions:
+
+```javascript
+//script.js
+'use strict';
+
+//declare a class
+class Dog {
+    bark() { /*...*/ }
+}
+
+//declare another class
+class Cat {
+    meow() { /*...*/ }
+}
+
+//declare a (non-class) function
+function petAnimal(animal) { /*...*/ }
+
+//at the "main" level, instantiate the classes and call the functions
+let fido = new Dog();
+petAnimal(fido); //pass this Dog object to the function
+```
+
+<p class="alert alert-warning">Although the above syntax looks like Java, it's important to remember that JavaScript class instances are still _just normal Objects like any other_. For example, you can add new properties and functions to that object, or overwrite the value of any property. Although it looks like a Java class, it doesn't really behave like one.</p>
+
+### Inheritance {-}
+The ES6 `class` syntax also allows you to specify **class inheritance**, by which one class can `extend` another. Inheritance allows you to specify that one class is a _more specialized version_ of another: that is, a version of that class with "extra abilities" (such as additional methods).
+
+As in Java, you use the `extends` keyword to indicate that one class should **inherit** from another:
+
+```js
+//The "parent/super" class
+class Dog {
+  constructor(name) {
+      this.name = name;
+  }
+
+  sit() {
+      console.log('The dog '+this.name+' sits. Good boy.');
+  }
+
+  bark() {
+      console.log('"Woof!"');
+  }
+}
+
+//The "child/sub" class (inherits abilities from Dog)
+class Husky extends Dog {
+    constructor(name, distance) {
+        super(name); //call parent constructor
+        this.distance = distance;
+    }
+
+    //a new method ("special ability")
+    throwFootball() {
+        console.log('Husky '+this.name+' throws '+this.dist+' yards');
+    }
+
+    //override (replace) parent's method
+    bark() {
+      super.bark(); //call parent method
+      console.log("(Go huskies!)");
+    }
+}
+
+//usage
+let dog = new Husky("Harry", 60); //make a Husky
+dog.sit(); //call inherited method
+dog.throwFootball(); //call own method
+dog.bark(); //call own (overridden) method
+```
+
+In this case, the class `Husky` is a _specialized version_ of the class `Dog`: it ___is a___ `Dog` that has a few special abilities (e.g., it can throw a football). We refer to the base, less specialized class (`Dog`) as the **parent** or **super class**, and the derived, more specialized class (`Husky`) as the **child** or **sub-class**.
+
+The sub-class `Husky` class **inherits** the methods defined in its parent: even though the `Husky` class didn't define a `sit()` method, it still has that method define because the _parent_ has that method defined! By extending an existing class, you get can get a lot of methods for free!
+
+The `Husky` class is also able to **override** its parents methods, defining it's own specialized version (e.g., `bark()`). This is useful for adding customization, or for providing specific implementations of callbacks that may be utilized by a framework&mdash;a pattern that you'll see in React.
+
+<p class="alert alert-info">Note that despite this discussion, _JavaScript is not actually an object-oriented language_. JavaScript instead uses a [prototype system](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes) for defining types of Objects, which allows what is called [prototypical inheritance](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance). The ES6 `class` keyword doesn't change that: instead, it is simply a "shortcut syntax" for specifying Object prototypes in the same way that has been supported since the first version of JavaScript. The `class` keyword makes it easy to define something that looks and acts like an OOP class, but JavaScript isn't object-oriented! See [this (detailed) explanation](http://aaditmshah.github.io/why-prototypal-inheritance-matters/) for further discussion.</p>
+
+
+## Arrow Functions
+As described in [Chapter 11](#functional-programming), JavaScript lets you define functions as _anonymous values_:
+
+```js
+let sayHello = function(name) {
+  return 'Hello '+name;
+}
+```
+
+As you have seen, the use of anonymous functions is incredibly common in JavaScript, particularly when used as anonymous callbacks. Because this is so common, ES6 introduced a simpler, more concise _shortcut syntax_ for quickly specifying anonymous functions. Though officially called [lambda functions](https://en.wikipedia.org/wiki/Anonymous_function), they are more commonly known as [**arrow functions**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), because of how they utilize an "arrow" symbol **`=>`**:
+
+```js
+let sayHello = (name) => {
+    return 'Hello '+name;
+}
+```
+
+To turn an anonymous function into an _arrow function_, you just remove the `function` keyword from the definition, and place an arrow `=>` between the parameter list and the block (indicating that the parameter list "goes to" the following block). This saves you a couple of characters when typing.
+
+And for simple callback functions, you can make this even _more_ compact:
+
+<div class="list-condensed">
+1. If the function takes only a single parameter, you can leave off the `()` around the parameter list.
+2. If the function body has only a single statement, you can leave the `{}` off the block.
+3. If the function body has only a single statement _AND_ that statement returns a value, you can leave off the `return` keyword (the "single statement" arrow function returns the result of the last statement, which will either be an expression or `undefined`).
+</div>
+
+Thus the above `sayHello` method could be written using **concise body** format as:
+
+```js
+let sayHello = name => 'Hello '+name;
+```
+
+- I recommend you always leave the parentheses `()` on the parameter list, as it helps with readability (and makes it easier to adjust the parameters later)!
+
+Note that if a function takes no parameters, you **must** include the `()` to indicate it is an arrow function:
+
+```js
+//normal function syntax
+let printHello = function() {
+    console.log('Hello world');
+}
+
+//arrow syntax
+let printHello = () => {
+    console.log('Hello world');
+}
+
+//concise body
+let printHello = () => console.log('Hello world');
+```
+
+Arrow functions are particularly useful for specifying _anonymous callback functions_:
+
+```js
+let array = [1,2,3]; //an array to work with
+
+//normal function
+array.map(function(num) {
+  return num*2; //multiply each item by 2
+});
+
+//arrow syntax
+array.map(num => {
+  return num*2; //multiply each item by 2
+});
+
+//concise body
+array.map(num => num*2);
+```
+
+<p class="alert alert-info">Arrow functions are great and you should always use them for anonymous callback functions (if your target platform supports them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.</p>
+
+### Working with <code>this</code> {-}
+
+
+
+
+## Modules
+
+
+## Other Features
+
+> Syntactic Sugar causes cancer of the semicolon - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
+
+
+
+
+<!--
 
 //arrow functions
 - functional programming
 
 //modules
     <script type=module src="app.js"></script> works in latest Chrome (as of Sep 2017) and Safari (March 2017), but need to run from live-server
+
+//syntactic sugar
+//template literals
+//spread ??
  -->
+
+
+## Resource {-}
+<div class="list-condensed">
+- [ES6 For Humans](https://github.com/metagrover/ES6-for-humans) an good online text on ES6
+- [ECMAScript 6](https://github.com/lukehoban/es6features#readme) A good unofficial summary with examples
+- [ES6 Features](http://es6-features.org/) (also shows equivalent ES5 syntax where possible)
+- [ECMAScript 2015 Language Specification](http://www.ecma-international.org/ecma-262/6.0/) official standard
+</div>
