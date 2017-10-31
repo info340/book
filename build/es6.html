@@ -312,8 +312,11 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
 </ul></li>
 <li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.3</b> Modules</a></li>
-<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.4</b> Other Features</a></li>
-<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resource"><i class="fa fa-check"></i>Resource</a></li>
+<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.4</b> Other Features</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#destructuring-and-spreading"><i class="fa fa-check"></i>Destructuring and Spreading</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -480,12 +483,15 @@ ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by m
 <p>As you can see, this syntax is <em>very, <strong>very</strong></em> similar to Java! Just like with JavaScript functions, most of the changes have involved getting rid of type declarations. In fact, you can write a class in Java and then just delete a few words to make it an ES6 class.</p>
 <p>Things to notice:</p>
 <ol style="list-style-type: decimal">
-<li><em>Just like in Java</em>, JavaScript classes are declared using the <code>class</code> keyword (this is what was introduced in ES6).</li>
-<li>JavaScript classes <strong>do not</strong> declare attributes ahead of time (at the top of the class). Unlike Java, JavaScript variables always “exist”, they’re just <code>undefined</code> until assigned, so you don’t need to explicitly declare them.
+<li><p><em>Just like in Java</em>, JavaScript classes are declared using the <code>class</code> keyword (this is what was introduced in ES6).</p>
+<p class="alert">
+Always name classes in PascalCase (starting with an Upper case letter)!
+</p></li>
+<li><p>JavaScript classes <strong>do not</strong> declare attributes ahead of time (at the top of the class). Unlike Java, JavaScript variables always “exist”, they’re just <code>undefined</code> until assigned, so you don’t need to explicitly declare them.</p>
 <ul>
 <li>In JavaScript, nothing is private; you effectively have <code>public</code> access to all attributes and functions.</li>
 </ul></li>
-<li>JavaScript classes always have only one <strong>constructor</strong> (if any), and the function is simply called <code>constructor()</code>.
+<li><p>JavaScript classes always have only one <strong>constructor</strong> (if any), and the function is simply called <code>constructor()</code>.</p>
 <ul>
 <li>That’s even clearer than Java, where you only know it’s a constructor because it lacks a return type.</li>
 </ul></li>
@@ -609,6 +615,9 @@ Note that despite this discussion, <em>JavaScript is not actually an object-orie
 
 <span class="co">//concise body</span>
 <span class="kw">let</span> printHello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span></code></pre></div>
+<ul>
+<li>Despite the above example, it’s better style to include the <code>{}</code> around a function body that doesn’t return a value.</li>
+</ul>
 <p>Arrow functions are particularly useful for specifying <em>anonymous callback functions</em>:</p>
 <div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span> <span class="co">//an array to work with</span>
 
@@ -625,35 +634,277 @@ Note that despite this discussion, <em>JavaScript is not actually an object-orie
 <span class="co">//concise body</span>
 <span class="va">array</span>.<span class="at">map</span>(num <span class="op">=&gt;</span> num<span class="op">*</span><span class="dv">2</span>)<span class="op">;</span></code></pre></div>
 <p class="alert alert-info">
-Arrow functions are great and you should always use them for anonymous callback functions (if your target platform supports them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
+Arrow functions are great and you should always use them for anonymous callback functions (if your target platform suppo them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
 </p>
 <div id="working-with-this" class="section level3 unnumbered">
 <h3>Working with <code>this</code></h3>
+<p>In JavaScript, functions are called on <strong>Objects</strong> by using <em>dot notation</em> (e.g., <code>myObject.myFunction()</code>). Inside a function, you can refer to the Object that the function was called on by using the <strong><code>this</code></strong> keyword. <code>this</code> is a local variable that is <em>implicitly assigned</em> the Object as a value.</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> doggy <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
+  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
+      <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;woofs&quot;</span>)<span class="op">;</span> <span class="co">//`this` is object the function was called on</span>
+  <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="va">doggy</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span></code></pre></div>
+<ul>
+<li>Here the <code>this</code> is assigned the object <code>doggy</code>, what <code>.bark()</code> was called on.</li>
+</ul>
+<p>But because functions are values and so can be assigned to multiple variables (given multiple labels), the object that a function is called on may not necessarily be the object that it was first assigned to as a property. <code>this</code> refers to object the function is called on at execution time, not at the time of definition:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//An object representing a Dog</span>
+<span class="kw">let</span> doggy <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
+  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; woofs&quot;</span>)<span class="op">;</span> <span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">// An object representing another Dog</span>
+<span class="kw">let</span> doggo <span class="op">=</span> <span class="op">{</span>
+  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Spot&quot;</span><span class="op">,</span>
+  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; yips&quot;</span>)<span class="op">}</span>
+<span class="op">}</span>
+
+<span class="co">//This is Fido barking</span>
+<span class="va">doggy</span>.<span class="at">bark</span>( <span class="co">/*this = doggy*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span>
+
+<span class="co">//This is Spot barking</span>
+<span class="va">doggo</span>.<span class="at">bark</span>( <span class="co">/*this = doggo*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Spot yips&quot;</span>
+
+<span class="co">//This is Fido using Spot&#39;s bark!</span>
+<span class="va">doggy</span>.<span class="at">bark</span> <span class="op">=</span> <span class="va">doggo</span>.<span class="at">bark</span><span class="op">;</span> <span class="co">//assign the function value to `doggy`</span>
+<span class="va">doggy</span>.<span class="at">bark</span>( <span class="co">/*this = doggy*/</span>) <span class="co">//=&gt; &quot;Fido yips&quot;</span></code></pre></div>
+<ul>
+<li>Notice how the <code>this</code> variable is implicitly assigned a value of whatever object it was called on—even the function is assigned to a new object later!</li>
+</ul>
+<p>But because the <code>this</code> variable refers to the object the function is called on, problems can arise for <em>anonymous callback functions</em> that are not called on any object in particular:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Person <span class="op">{</span>
+   <span class="at">constructor</span>(name)<span class="op">{</span> <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span> <span class="op">}</span> <span class="co">//basic constructor</span>
+
+   <span class="co">//greet each person in the given array</span>
+   <span class="at">greetAll</span>(peopleArray) <span class="op">{</span>
+      <span class="co">//loop through each Person using a callback</span>
+      <span class="va">peopleArray</span>.<span class="at">forEach</span>(<span class="kw">function</span>(person) <span class="op">{</span>
+         <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hi&quot;</span><span class="op">+</span><span class="va">person</span>.<span class="at">name</span><span class="op">+</span><span class="st">&quot;, I&#39;m &quot;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span>)<span class="op">;</span>
+      <span class="op">}</span>)<span class="op">;</span>
+   <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+<p>In this example, the <code>greetAll()</code> function will produce an error: <code>TypeError: Cannot read property 'name' of undefined</code>. That is because the <code>this</code> is being called from within an anonymous callback function (the <code>function(person){...}</code>)—and that callback isn’t being called on any particular object (notice the lack of dot notation). Since the anonymous callback isn’t being executed on an object, <code>this</code> is assigned a value of <code>undefined</code> (and you can’t access <code>undefined.name</code>).</p>
+<p>The solution to this problem is to use <em>arrow functions</em>. An arrow function has the special feature that it shares the same lexical <code>this</code> as its surrounded code: that is, the <code>this</code> will not be reassigned to a (non-existent) object when used within an arrow function:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Person <span class="op">{</span>
+   <span class="at">constructor</span>(name)<span class="op">{</span> <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span> <span class="op">}</span>
+
+   <span class="at">greetAll</span>(peopleArray) <span class="op">{</span>
+      <span class="va">peopleArray</span>.<span class="at">forEach</span>((person) <span class="op">=&gt;</span> <span class="op">{</span> <span class="co">//arrow function (subtle difference)</span>
+         <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hi&quot;</span><span class="op">+</span><span class="va">person</span>.<span class="at">name</span><span class="op">+</span><span class="st">&quot;, I&#39;m &quot;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span>)<span class="op">;</span> <span class="co">//works correctly!</span>
+      <span class="op">}</span>)<span class="op">;</span>
+   <span class="op">}</span>
+<span class="op">}</span></code></pre></div>
+<p>This property makes arrow functions invaluable when specifying callback functions, particularly once classes and objects are involved. <em>Always use arrow functions for anonymous callbacks!</em></p>
 </div>
 </div>
 <div id="modules" class="section level2">
 <h2><span class="header-section-number">15.3</span> Modules</h2>
+<p>So far, you’ve mostly be writing all of your JavaScript code in a single script (e.g., <code>index.js</code>), even if you’d included some other libraries via additional <code>&lt;script&gt;</code> tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug (“where <em>was</em> that function defied?”), can introduce problems with the shared global namespace (“did I already declare a <code>user</code> variable?”), and overall mixes code in a way that violates the <em>Separation of Concerns</em> principle.</p>
+<p>The solution to this problem is to split up your application’s code into separate <strong>modules</strong> (scripts), each of which is responsible for a separate piece of functionality. And rather than loading each module through a separate <code>&lt;script&gt;</code> tag (potentially leading to ordering and dependency issues while continuing to pollute the global namespace), you can define each module as a self-contained script that explicitly “imports” (loads) the functions and variables it needs from other modules. This allows you to better organize your program as it gets large.</p>
+<p>While separating code into modules is a common in the Node.js environment, ES6 adds syntax that allows you to treat individual <code>.js</code> files as modules that can communicate with one another. These are known as <a href="http://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules"><strong>ES6 Modules</strong></a>.</p>
+<div class="alert alert-warning">
+<p>
+<strong>Browsers do not yet support this syntax!</strong> However, modern applications are usually packaged using a <em>bundling</em> build tool such as <a href="https://webpack.github.io/">webpack</a>, which will do the work of “compiling” modules into a single script file (and that we will use with React).
+</p>
+<p>
+Note that the ECMAScript committee is currently <a href="https://whatwg.github.io/loader/">a specification for browser-native module loaders</a>. For example, it is possible to try out modules in the latest versions of Chrome (as of <strong>September 2017</strong>) and Safari (as of March 2017) by specifying the <code>type=module</code> attribute for a <code>&lt;script&gt;</code> tag (and loading the page via a web server). But the most common solution will be to use an external loading app like webpack.
+</p>
+</div>
+<p>As in Java, ES6 Modules are able to “load” external modules or libraries by using the <strong><code>import</code></strong> keyword:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Java example: import `Random` variable from `java.util` to use globally</span>
+<span class="kw">import</span> java.util.Random</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//JavaScript: import the `Random` variable from a `util.js` module</span>
+<span class="im">import</span> <span class="op">{</span> Random <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./util&#39;</span><span class="op">;</span></code></pre></div>
+<p>This is most common version of the ES6 <code>import</code> syntax: you write the keyword <code>import</code>, following by a set of braces <code>{ }</code> containing a comma-separated sequence of variables you wish to “import” from a particular module. This is followed by the <code>from</code> keyword, followed by a string containing the <strong>relative path</strong> to the module script to import. Note that including the extension of the module script is usually optional (by default, ES6 will look for files ending in <code>.js</code>).</p>
+<ul>
+<li><p>Be sure to include the <code>./</code> to indicate that you’re loading a file from a particular directory. If you leave that off, the module loader will look for a module installed on the <em>load path</em> (e.g., in <code>node_modules/</code>). That is how you load external files such as jQuery though:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//with jquery installed in `node_modules/`</span>
+<span class="co">//import the `$` and `jQuery` variables</span>
+<span class="im">import</span> <span class="op">{</span>$<span class="op">,</span> jQuery<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;jquery&#39;</span><span class="op">;</span></code></pre></div></li>
+</ul>
+<p>If you want to make a variable available from one module to use in another, you will need to <strong>export</strong> it (so that it can be “imported” elsewhere). You do this by using the <strong><code>export</code></strong> keyword, placed in front of the variable declaration:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
+<span class="im">export</span> <span class="kw">let</span> question <span class="op">=</span> <span class="st">&quot;Why&#39;d the chicken cross the road?&quot;</span><span class="op">;</span>
+<span class="im">export</span> <span class="kw">let</span> answer <span class="op">=</span> <span class="st">&quot;To get to the other side&quot;</span><span class="op">;</span>
+<span class="im">export</span> <span class="kw">function</span> <span class="at">laugh</span>() <span class="op">{</span>
+    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hahaha&quot;</span>)<span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
+<span class="im">import</span> <span class="op">{</span> question<span class="op">,</span> answer<span class="op">,</span> laugh <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span>
+
+<span class="va">console</span>.<span class="at">log</span>(question)<span class="op">;</span> <span class="co">//=&gt; &quot;Why&#39;d the chicken cross the road?&quot;</span>
+<span class="va">console</span>.<span class="at">log</span>(answer)<span class="op">;</span> <span class="co">//=&gt; &quot;To get to the other side&quot;</span>
+<span class="at">laugh</span>()<span class="op">;</span> <span class="co">//&quot;hahaha&quot;</span></code></pre></div>
+<ul>
+<li>Note that you can export functions as well as variables, since functions <em>are</em> values!</li>
+<li>Once a value has been imported, it is available globally (just as if it were defined in a previous <code>&lt;script&gt;</code> tag)</li>
+</ul>
+<p>There are a number of ways to export and import variables, giving you significant customization on which values you wish to share and load:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
+<span class="im">export</span> <span class="kw">function</span> <span class="at">foo</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;foo&#39;</span><span class="op">;</span> <span class="op">}</span> <span class="co">//make available (as above)</span>
+
+<span class="kw">function</span> <span class="at">bar</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;bar&#39;</span><span class="op">;</span> <span class="op">}</span>
+<span class="im">export</span> bar<span class="op">;</span> <span class="co">//export previously defined variable</span>
+
+<span class="im">export</span> <span class="op">{</span> bar <span class="im">as</span> barFunction <span class="op">};</span> <span class="co">//provide an &quot;alias&quot; (consumer name) for value</span>
+
+<span class="co">//will not be available (a &quot;private&quot; function)</span>
+<span class="kw">function</span> <span class="at">baz</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;baz&#39;</span><span class="op">;</span> <span class="op">}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
+<span class="im">import</span> <span class="op">{</span>foo<span class="op">,</span> barFunction<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//import multiple values</span>
+<span class="at">foo</span>() <span class="co">//=&gt; &#39;foo&#39;</span>
+<span class="at">barFunction</span>() <span class="co">//=&gt; &#39;bar&#39;</span>
+
+<span class="im">import</span> <span class="op">{</span>foo <span class="im">as</span> myFoo<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//provide an &quot;alias&quot; for value</span>
+<span class="at">myFoo</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;foo&#39;</span>
+
+<span class="im">import</span> <span class="op">*</span> <span class="im">as</span> theModule <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//import everything that was exported</span>
+                                          <span class="co">//loads as a single object with values</span>
+                                          <span class="co">//as properties</span>
+<span class="va">theModule</span>.<span class="at">foo</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;foo&#39;</span>
+<span class="va">theModule</span>.<span class="at">barFunction</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;bar&#39;</span>
+<span class="va">theModule</span>.<span class="at">baz</span>()<span class="op">;</span> <span class="co">//Error [private function]</span></code></pre></div>
+<p>Note the additional syntax options in this example:</p>
+<ul>
+<li><p>You can use the <strong><code>as</code></strong> keyword to “alias” a variable either when it is exported (so it is shared with a different name) or when it is imported (so it is loaded and assigned a different name). This is particularly useful when trying to produce a clean API for a module (so you <code>export</code> values with consistent names, even if you don’t use those internally), or when you want to <code>import</code> a variable with a very long name.</p></li>
+<li><p>It is possible to just <code>import</code> <em>everything</em> that was exported by a module using the <strong><code>import * as</code></strong> syntax. You specify an object name that will represent the values exported module (e.g., <code>theModule</code> in the example), and each exported variable will be a <em>property</em> of that object. This is particularly useful when you may be adding extra <code>exports</code> to a module during development, but don’t want to keep adjusting the <code>import</code> statement.</p></li>
+<li><p>Note also that <em>only</em> the variables you <code>export</code> are made available to other modules! This allows you to make variables and functions that are “private” to a module!</p>
+<!-- ```js
+/*** my-module.js ***/
+let secretPassword = 12345;
+
+export function checkPassword(password) {
+    return password == secretPassword; //check if they are the same
+}
+```
+
+```js
+/*** index.js ***/
+import * as module from './my-module';
+
+console.log(module.secretPassword); //undefined, variable was not exported
+
+module.checkPassword('password'); //false, passwords don't match
+``` --></li>
+</ul>
+<p>Finally, each module can also <code>export</code> a <em>single</em> (just one!) <strong>default</strong> variable, which provides a slight shortcut when importing the variable from that module. You specify the <em>default export</em> by including the <strong><code>default</code></strong> keyword immediately after <code>export</code>:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
+<span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">sayHello</span>() <span class="op">{</span>
+    <span class="cf">return</span> <span class="st">&#39;Hello world!&#39;</span><span class="op">;</span>
+<span class="op">}</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
+<span class="im">import</span> greet <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span>
+
+<span class="at">greet</span>()<span class="op">;</span> <span class="co">//=&gt; &quot;Hello world!&quot;</span></code></pre></div>
+<ul>
+<li>When importing a <code>default</code> export, you just provide the variable name (“alias”) you wish to refer to that exported value by.</li>
+<li><p>Note that it is also possible to make anonymous values into <code>default</code> exports:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** animals.js ***/</span>
+<span class="im">export</span> <span class="im">default</span> [<span class="st">&#39;lion&#39;</span><span class="op">,</span> <span class="st">&#39;tiger&#39;</span><span class="op">,</span> <span class="st">&#39;bear&#39;</span>]<span class="op">;</span> <span class="co">//export anonymous array</span></code></pre></div></li>
+</ul>
+<p>The <code>default</code> export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single <code>class</code>. That single <code>class</code> can be made the <code>default</code> export, allowing other modules to import it quickly and easily as <code>import MyComponent from './MyComponent.js'</code>.</p>
+<div class="alert alert-info">
+This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js utilizes an alternate module loading system called <a href="https://nodejs.org/docs/latest/api/modules.html#modules_modules">CommonJS</a>. This uses the built-in method <code>require()</code> to load a module (which returns a single “exported” variable as a result). Values are exported from a module by assigning them to the <code>module.exports</code> global. This coure will exclusively utilize ES6 Modules, but it’s good to be aware of the alternate CommonJS approach when searching for help.
+</p>
 </div>
 <div id="other-features" class="section level2">
 <h2><span class="header-section-number">15.4</span> Other Features</h2>
 <blockquote>
 <p>Syntactic Sugar causes cancer of the semicolon - <a href="http://www.cs.yale.edu/homes/perlis-alan/quotes.html">Alan Perlis</a></p>
 </blockquote>
-<!--
+<p>There are a few other notable syntax options provided by ES6 that you will likely come across.</p>
+<div id="template-strings" class="section level3 unnumbered">
+<h3>Template Strings</h3>
+<p>In ES6, you can declare Strings that contain embedded expressions, allowing you to “inject” an expression directly into a string (rather than needing to concatenate the String with that expression). These are known as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"><strong>template strings</strong></a> (or <em>template literals</em>). Template strings are written in back ticks (<strong><code>``</code></strong>) rather than quotes, with the injected expressions written inside of a <strong><code>${}</code></strong> token:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> name <span class="op">=</span> <span class="st">&#39;world&#39;</span><span class="op">;</span>
+<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>name<span class="sc">}</span><span class="vs">!`</span><span class="op">;</span> <span class="co">//template string</span>
+<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;</span></code></pre></div>
+<ul>
+<li>Template strings can also include line breaks, allowing you to make multi-line strings!</li>
+</ul>
+<p>Note that you can put <em>any</em> expression inside the <code>${}</code> token; however, it’s best practice to keep the expression as simple as possible (such as by using a local variable) to support readability:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> name <span class="op">=</span> <span class="st">&#39;world&#39;</span><span class="op">;</span>
 
-//arrow functions
-- functional programming
+<span class="co">//greeting with capitalization. Don&#39;t do this!</span>
+<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span><span class="va">name</span>.<span class="at">substr</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>).<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">!`</span>
+<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;;</span>
 
-//modules
-    <script type=module src="app.js"></script> works in latest Chrome (as of Sep 2017) and Safari (March 2017), but need to run from live-server
+<span class="co">//do this instead!</span>
+<span class="kw">let</span> capitalizedName <span class="op">=</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>).<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">1</span>)<span class="op">;</span>
+<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>capitalizedName<span class="sc">}</span><span class="vs">`</span>
+<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;;</span></code></pre></div>
+<!-- One more example:
 
-//syntactic sugar
-//template literals
-//spread ??
- -->
+```js
+//provide a name, an animal, and a verb
+function excuse(name, animal, verb) {
+  let email = `Hello Professor ${name},
+
+Please excuse my missing assignment,
+as my ${animal} ate it.
+
+${verb} you later,
+A Student`;
+
+  console.log(email);
+}
+
+excuse('Joel', 'Lemur', 'Smell');
+``` -->
 </div>
-<div id="resource" class="section level2 unnumbered">
-<h2>Resource</h2>
+<div id="destructuring-and-spreading" class="section level3 unnumbered">
+<h3>Destructuring and Spreading</h3>
+<p>ES6 also introduced <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"><strong>destructing assignments</strong></a>, which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. You do this by writing the variables you wish to assign to inside of <strong><code>[]</code></strong> on the <em>left-hand side</em> of the assignment—almost like you are assigning to an array!</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]
+<span class="kw">let</span> [x<span class="op">,</span> y<span class="op">,</span> z] <span class="op">=</span> array<span class="op">;</span> <span class="co">//assign array elements to `x`, `y`, `z` respectively</span>
+<span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">//=&gt; 1;</span>
+<span class="va">console</span>.<span class="at">log</span>(y)<span class="op">;</span> <span class="co">//=&gt; 2;</span>
+<span class="va">console</span>.<span class="at">log</span>(z)<span class="op">;</span> <span class="co">//=&gt; 3;</span></code></pre></div>
+<p>If the array contains more than the target number of elements the extra elements will be ignored. However, you can capture them by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"><strong>spread operator</strong></a> (<strong><code>...</code></strong>), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> dimensions <span class="op">=</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">40</span>]<span class="op">;</span>
+<span class="kw">let</span> [width<span class="op">,</span> height<span class="op">,</span> ...<span class="at">rest</span>] <span class="op">=</span> dimensions
+<span class="va">console</span>.<span class="at">log</span>(width)<span class="op">;</span>  <span class="co">//=&gt; 10</span>
+<span class="va">console</span>.<span class="at">log</span>(height)<span class="op">;</span> <span class="co">//=&gt; 20</span>
+<span class="va">console</span>.<span class="at">log</span>(rest)<span class="op">;</span>   <span class="co">//=&gt; [30, 40];</span></code></pre></div>
+<p>More commonly, the <em>spread operator</em> is used to specify that a function can take an undefined number of arguments, and to gather all of these objects into a single array:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//a function that logs out all of the parameters</span>
+<span class="kw">function</span> <span class="at">gather</span>(...<span class="at">args</span>)<span class="op">{</span>
+    <span class="co">//all the parameters will be grouped into a single array `args`</span>
+    <span class="va">args</span>.<span class="at">forEach</span>((arg) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="va">console</span>.<span class="at">log</span>(arg) <span class="co">//can log out all of them, no matter how many!</span>
+    <span class="op">}</span>)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="at">gather</span>(<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;c&#39;</span>)<span class="op">;</span> <span class="co">//=&gt; &quot;a&quot; &quot;b&quot; &quot;c&quot;</span>
+<span class="at">gather</span>(<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span>)<span class="op">;</span> <span class="co">//=&gt; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot;</span>
+
+<span class="co">//a function that adds up all the arguments (no matter how many)</span>
+<span class="kw">function</span> <span class="at">sum</span>(...<span class="at">numbers</span>) <span class="op">{</span>
+    <span class="co">//number is an array, so we can `reduce()` it!</span>
+    <span class="kw">let</span> total <span class="op">=</span> <span class="va">numbers</span>.<span class="at">reduce</span>((runningTotal<span class="op">,</span> num) <span class="op">=&gt;</span> <span class="op">{</span>
+        <span class="cf">return</span> runningTotal <span class="op">+</span> num<span class="op">;</span> <span class="co">//new total</span>
+    <span class="op">},</span> <span class="dv">0</span>)<span class="op">;</span> <span class="co">//start at 0</span>
+
+    <span class="cf">return</span> total<span class="op">;</span>
+
+    <span class="co">//or as one line with a concise arrow function:</span>
+    <span class="cf">return</span> <span class="va">numbers</span>.<span class="at">reduce</span>((total<span class="op">,</span> n) <span class="op">=&gt;</span> total<span class="op">+</span>n)<span class="op">;</span>
+<span class="op">}</span>
+
+<span class="at">sum</span>(<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>)<span class="op">;</span> <span class="co">// =&gt; 10</span>
+<span class="at">sum</span>(<span class="dv">10</span><span class="op">,</span><span class="dv">20</span><span class="op">,</span><span class="dv">30</span><span class="op">,</span><span class="dv">40</span>)<span class="op">;</span> <span class="co">// =&gt; 100</span></code></pre></div>
+<p>These are a few of the more common and potentially useful ES6 features. However, remember that most of these are just “syntactic shortcuts” for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don’t need to utilize these features in your code (though they can be helpful), and they will often show up in how we utilize libraries such as React.</p>
+<p class="alert">
+Arrow functions are not optional. <strong>Always use arrow functions for anonymous callbacks!</strong>
+</p>
+</div>
+</div>
+<div id="resources-13" class="section level2 unnumbered">
+<h2>Resources</h2>
 <div class="list-condensed">
 <ul>
 <li><a href="https://github.com/metagrover/ES6-for-humans">ES6 For Humans</a> an good online text on ES6</li>
