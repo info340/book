@@ -421,6 +421,15 @@ class Person {
 
 This property makes arrow functions invaluable when specifying callback functions, particularly once classes and objects are involved. _Always use arrow functions for anonymous callbacks!_
 
+<div class="alert alert-info">Alternatively, it is possible to "permanently" associate a particular `this` value with a function, no matter what object that function is called on. This is called **binding** the `this`, and is done by calling the [`.bind()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) method on the function and passing in the value you want to be assigned to `this`. The `.bind()` method will return a _new function_ that has the value bound to it; often you will then take this new function and "re-assign" it to the old function variable:
+
+```js
+//re-assign function
+myFunction = myFunction.bind(thisValue);
+```
+
+This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.</div>
+
 
 ## Modules
 So far, you've mostly be writing all of your JavaScript code in a single script (e.g., `index.js`), even if you'd included some other libraries via additional `<script>` tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug ("where _was_ that function defied?"), can introduce problems with the shared global namespace ("did I already declare a `user` variable?"), and overall mixes code in a way that violates the _Separation of Concerns_ principle.

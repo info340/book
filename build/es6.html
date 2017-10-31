@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-10-30">
+<meta name="date" content="2017-10-31">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -699,6 +699,12 @@ Arrow functions are great and you should always use them for anonymous callback 
    <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 <p>This property makes arrow functions invaluable when specifying callback functions, particularly once classes and objects are involved. <em>Always use arrow functions for anonymous callbacks!</em></p>
+<div class="alert alert-info">
+<p>Alternatively, it is possible to “permanently” associate a particular <code>this</code> value with a function, no matter what object that function is called on. This is called <strong>binding</strong> the <code>this</code>, and is done by calling the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>.bind()</code></a> method on the function and passing in the value you want to be assigned to <code>this</code>. The <code>.bind()</code> method will return a <em>new function</em> that has the value bound to it; often you will then take this new function and “re-assign” it to the old function variable:</p>
+<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//re-assign function</span>
+myFunction <span class="op">=</span> <span class="va">myFunction</span>.<span class="at">bind</span>(thisValue)<span class="op">;</span></code></pre></div>
+This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.
+</div>
 </div>
 </div>
 <div id="modules" class="section level2">
