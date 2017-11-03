@@ -163,7 +163,7 @@ If you want to use a _globally_ installed package in your local project (e.g., h
 npm link lodash
 ```
 
-Be sure to `link` any global packages before you run `npm install` so you don't any packages from `package.jon` that you already have!
+Be sure to `link` any global packages before you run `npm install` so you don't download any packages from `package.jon` that you already have!
 
 You can uninstall packages using `npm uninstall`, or can remove packages from the dependencies lists simply by editing the `package.json` file (e.g., with VS Code).
 
