@@ -479,7 +479,7 @@ Because node packages can be very large, and projects can have lots of them, you
 <p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
 <p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for each project:</p>
 <div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> link lodash</code></pre></div>
-<p>Be sure to <code>link</code> any global packages before you run <code>npm install</code> so you don’t any packages from <code>package.jon</code> that you already have!</p>
+<p>Be sure to <code>link</code> any global packages before you run <code>npm install</code> so you don’t download any packages from <code>package.jon</code> that you already have!</p>
 <p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
 <p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
 <ol style="list-style-type: decimal">
