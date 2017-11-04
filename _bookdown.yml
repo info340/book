@@ -28,15 +28,14 @@ rmd_files:
   - ajax.Rmd
   - es6.Rmd
 
-  ## React (what chapter divisions?)
-  #- react-intro.Rmd
-  #- react-components.Rmd
-  #- react-lifecycle.Rmd
-  #- react-interactivity.Rmd
+  ## React
+  - react-intro.Rmd
+  - react-interactive.Rmd
   #- react-router.Rmd
 
   ## Additional Topics
   # jest.Rmd
-  # webpack
+  # webpack.Rmd
+  # css-in-js.Rmd
   # firebase
   # redux

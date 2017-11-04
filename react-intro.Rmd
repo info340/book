@@ -1,0 +1,31 @@
+# Introduction to React {#react}
+
+<p class="alert alert-warning">This chapter is not yet written. As a placeholder, see the below links to relevant documentation.</p>
+
+## What is React?
+
+- [React.js](https://reactjs.org/)
+- [React "Hello World"](https://reactjs.org/docs/hello-world.html)
+- [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+
+
+### Create React App {-}
+
+- [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
+
+## JSX
+
+- [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
+
+## React Components
+
+- [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+
+## Props
+
+- [Components and Props](https://reactjs.org/docs/components-and-props.html)
+
+
+## Other Resources {-}
+- [React Slides (Au16)](http://slides.com/joelross/info343au16-react#/)
+- [React API References](https://reactjs.org/docs/react-api.html)

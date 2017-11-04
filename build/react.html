@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="client-side-development.html">
-<link rel="next" href="css.html">
+<link rel="prev" href="es6.html">
+<link rel="next" href="interactive-react.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -355,226 +355,49 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="html-fundamentals" class="section level1">
-<h1><span class="header-section-number">Chapter 3</span> HTML Fundamentals</h1>
-<p>A webpage on the internet is simply a set of files that the browser <em>renders</em> (shows) in a particular way, allowing you to interact with it. The most basic way to control how a browser displays content (e.g., words, images, etc) is by <em>encoding</em> that content in HTML.</p>
-<p><strong>HTML</strong> (<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a <em>markup language</em>): it adds additional details to information (like notes in the margin of a book), but doesn’t contain any logic. HTML is a “hypertext” markup language because it was <a href="https://en.wikipedia.org/wiki/HTML#Development">originally intended</a> to mark up a document with <a href="https://en.wikipedia.org/wiki/Hyperlink">hyperlinks</a>, or links to other documents. In modern usage, HTML describes the <strong>semantic meaning</strong> of content: it marks what content is the a <em>heading</em>, what content is a <em>paragraph</em>, what content is a <em>definition</em>, what content is an <em>image</em>, what content is a <em>hyperlink</em>, and so forth.</p>
-<ul>
-<li>HTML serves a similar function to <a href="https://info201.github.io/markdown.html">Markdown</a>, but is much more expressive and powerful.</li>
-</ul>
-<p>This chapter provides an overview and explanation of HTML’s syntax (how to use it to annotate content). HTML’s syntax is very simple, and generally only takes someone a few days to learn—though using it effectively can require more practice.</p>
-<div id="html-elements" class="section level2">
-<h2><span class="header-section-number">3.1</span> HTML Elements</h2>
-<p>HTML content is normally written in <code>.html</code> files. By using the <code>.html</code> extension, your editor, computer, and browser should automatically know that this file will contain content marked up in HTML.</p>
-<p class="alert alert-info">
-As mentioned in Chapter 2, most web servers will by default serve a file named <strong><code>index.html</code></strong>, and so that filename is traditionally used for a website’s home page.
-</p>
-<p>As with all programming languages, <code>.html</code> files are really just plain text files with a special extension, so can be created in any text editor. However, using a coding editor such as <a href="##visual-studio-code">VS Code</a> provides <a href="https://code.visualstudio.com/docs/languages/html">additional helpful features</a> that can speed up your development process.</p>
-<p>HTML files contain the <strong>content</strong> of your web page: the text that you want to show on the page. This content is then annotated (marked up) by surrounding it with <strong>tags</strong>:</p>
-<div class="figure">
-<img src="img/html/element-diagram.png" alt="Basic syntax for an HTML element." />
-<p class="caption">Basic syntax for an HTML element.</p>
-</div>
-<p>The <strong>opening/start tag</strong> comes before the content and tell the computer “I’m about to give you content with some meaning”, while the <strong>closing/end tag</strong> comes after the content to tell the computer “I’m done giving content with that meaning.” For example, the <code>&lt;h1&gt;</code> tag represents a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">top-level heading</a> (equivalent to one <code>#</code> in Markdown), and so the open tag says “here’s the start of the heading” and the closing tag says “that’s the end of the heading”.</p>
-<p>Tags are written with a less-than symbol <strong><code>&lt;</code></strong>, then the name of the tag (often a single letter), then a greater-than symbol <strong><code>&gt;</code></strong>. An <em>end tag</em> is written just like a <em>start tag</em>, but includes a forward slash <code>/</code> immediately after the less-than symbol—this indicates that the tag is closing the annotation.</p>
-<ul>
-<li><p>HTML tag names are not case sensitive, but you should always write them in all lowercase.</p></li>
-<li><p>Line breaks and white space around tags (including indentation) is ignored. Tags may thus be written on their own line, or <em>inline</em> with the content. These two uses of the <code>&lt;p&gt;</code> tag (which marks a <em>paragraph</em> of content) are equivalent:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p&gt;</span>
-   The itsy bitsy spider went up the water spout.
-<span class="kw">&lt;/p&gt;</span>
-
-<span class="kw">&lt;p&gt;</span>The itsy bitsy spider went up the water spout.<span class="kw">&lt;/p&gt;</span></code></pre></div></li>
-</ul>
-<p>Taken together, the tags and the content they <em>contain</em> are called an <strong>HTML Element</strong>. A website is made of a bunch of these elements.</p>
-<div id="some-example-tags" class="section level3 unnumbered">
-<h3>Some Example Tags</h3>
-<p>The HTML standard defines <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">lots of different elements</a>, each of which marks a different meaning for the content. Common elements include:</p>
-<div class="list-condensed">
-<ul>
-<li><code>&lt;h1&gt;</code>: a 1st-level heading</li>
-<li><code>&lt;h2&gt;</code>: a 2nd-level heading (and so on, down to <code>&lt;h6&gt;</code>)</li>
-<li><code>&lt;p&gt;</code>: a paragraph of text</li>
-<li><code>&lt;a&gt;</code>: an “anchor”, or a hyperlink</li>
-<li><code>&lt;img&gt;</code>: an image</li>
-<li><code>&lt;button&gt;</code>: a button</li>
-<li><code>&lt;em&gt;</code>: emphasized content. Note that this doesn’t mean <em>italic</em> (which is not semantic), but <em>emphasized</em> (which is semantic). The same as <code>_text_</code> in Markdown.</li>
-<li><code>&lt;strong&gt;</code>: important, strongly stated content. The same as <code>**text**</code> in Markdown</li>
-<li><code>&lt;ul&gt;</code>: an unordered list (and <code>&lt;ol&gt;</code> is an ordered list)</li>
-<li><code>&lt;li&gt;</code>: a list item (an item in a list)</li>
-<li><code>&lt;table&gt;</code>: a data table</li>
-<li><code>&lt;form&gt;</code>: a form for the user to fill out</li>
-<li><code>&lt;svg&gt;</code>: a <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics">Scalable Vector Graphic</a> (a “coded” image)</li>
-<li><code>&lt;circle&gt;</code>: a circle (in an <code>&lt;svg&gt;</code> element)</li>
-<li><code>&lt;div&gt;</code>: a division (section) of content. Also acts as an empty <em>block</em> element (followed by a line break)</li>
-<li><code>&lt;span&gt;</code>: a span (section) of content. Also acts as an empty <em>inline</em> element (not followed by a line break)</li>
-</ul>
-</div>
-</div>
-<div id="comments" class="section level3 unnumbered">
-<h3>Comments</h3>
-<p>As with every programming language, HTML includes a way to add comments to your code. It does this by using a tag with special syntax:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- this is a comment --&gt;</span>
-<span class="kw">&lt;p&gt;</span>this is is not a comment<span class="kw">&lt;/p&gt;</span></code></pre></div>
-<p>Because that syntax is somewhat awkward to type, most source-code editors will let you comment-out the currently highlighted text by pressing <code>cmd + /</code> (or <code>ctrl + /</code> on Windows). If you’re using a code editor, try placing your cursor on a line and using that keyboard command to comment and un-comment the line.</p>
-<p>Comments can appear anywhere in the file. Just as in other languages, they are ignored by any program reading the file (with a few interesting exceptions), but they do remain in the page and are visible when you <a href="http://webdesign.about.com/od/chrome/a/view-source-chrome.htm">view the page source</a>.</p>
-</div>
-<div id="attributes" class="section level3 unnumbered">
-<h3>Attributes</h3>
-<p>The start tag of an element may also contain one or more <strong>attributes</strong>. These are similar to attributes in object-oriented programming: they specify <em>properties</em>, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format <code>attributeName=value</code> (no spaces are allowed around the <code>=</code>); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;tag</span><span class="ot"> attributeA=</span><span class="st">&quot;value&quot;</span><span class="ot"> attributeB=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;</span>
-   content
-<span class="kw">&lt;/tag&gt;</span></code></pre></div>
-<p>For example, a hyperlink anchor (<code>&lt;a&gt;</code>) uses a <code>href</code> (“<strong>h</strong>ypertext <strong>ref</strong>erence”) attribute to specify where the content should link to:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;https://ischool.uw.edu&quot;</span><span class="kw">&gt;</span>iSchool homepage<span class="kw">&lt;/a&gt;</span></code></pre></div>
-<ul>
-<li><p>In a hyperlink, the <em>content</em> of the tag is the displayed text, and the <em>attribute</em> specifies the link’s URL. Contrast this to the same link in Markdown:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="ot">[iSchool homepage](https://ischool.uw.edu)</span></code></pre></div></li>
-</ul>
-<p>Similarly, an image (<code>&lt;img&gt;</code>) uses the <code>src</code> (<strong>s</strong>ou<strong>rc</strong>e) attribute to specify what picture it is showing. The <code>alt</code> attribute contains alternate text to use if the browser can’t show images—such as with screen readers (for the visible impaired) and search engine indexers.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;baby_picture.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;a cute baby&quot;</span><span class="kw">&gt;</span></code></pre></div>
-<ul>
-<li>Note that because an <code>&lt;img&gt;</code> has no textual content, it is an <em>empty element</em> (see below).</li>
-</ul>
-<p>There are also a number of <a href="http://www.w3schools.com/tags/ref_standardattributes.asp">global attributes</a> that can be used on any element. For example:</p>
-<ul>
-<li><p>Every HTML element can include an <strong><code>id</code></strong> attribute, which is used to give them a unique identifier so that we can refer to them later (e.g., from CSS or JavaScript). <code>id</code> attributes are named like variable names, and must be <strong>unique</strong> on the page.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>My Web Page<span class="kw">&lt;/h1&gt;</span></code></pre></div>
-<p>The <code>id</code> attribute is most commonly used used to create <a href="https://www.w3.org/TR/html4/struct/links.html#h-12.2.3">“bookmark hyperlinks”</a>, which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the <code>id</code> as the <strong>fragment</strong> of the URI to link to (e.g., after the <code>#</code> in the URI).</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html#nav&quot;</span><span class="kw">&gt;</span>Link to element on `index.html` with `id=&quot;nav&quot;`<span class="kw">&lt;/a&gt;</span>
-<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#footnote&quot;</span><span class="kw">&gt;</span>Link to element on current page with `id=&quot;footnote&quot;`<span class="kw">&lt;/a&gt;</span></code></pre></div>
-<p>Note that the title attribute does NOT contain the <code>#</code> symbol, but the URI to link to does.</p></li>
-<li><p>The <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> lang=</span><span class="st">&quot;sp&quot;</span><span class="kw">&gt;</span>No me gusta<span class="kw">&lt;/p&gt;</span></code></pre></div>
-<p>Specify the <code>lang</code> attribute for the <code>&lt;html&gt;</code> element (see below) to define the default language of the page; that way you don’t need to mark the language of every element. <strong>Always include this attribute</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></code></pre></div></li>
-</ul>
-</div>
-<div id="empty-elements" class="section level3 unnumbered">
-<h3>Empty Elements</h3>
-<p>A few HTML elements don’t require a closing tag because they <em>can’t</em> contain any content. These tags are often used for inserting media into a web page, such as with the <code>&lt;img&gt;</code> tag. With an <code>&lt;img&gt;</code> tag, you can specify the path to the image file in the <code>src</code> attribute, but the image element itself can’t contain additional text or other content. Since it can’t contain any content, we leave off the end tag entirely:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;picture.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;description of image for screen readers and indexers&quot;</span><span class="kw">&gt;</span></code></pre></div>
-<p>Older versions of HTML (and current related languages like <a href="https://en.wikipedia.org/wiki/XML">XML</a>) required you to include forward slash <code>/</code> just before the greater-than symbol. This “end” slash indicated that the element was complete and expected no further content:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;picture.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;description of image for screen readers and indexers&quot;</span> <span class="kw">/&gt;</span></code></pre></div>
-<p>This is no longer required in HTML5, so feel free to omit that forward slash (though some purists, or those working with XML, will still include it).</p>
-</div>
-</div>
-<div id="nesting-elements" class="section level2">
-<h2><span class="header-section-number">3.2</span> Nesting Elements</h2>
-<p>Web pages are made up of multiple (hundreds! thousands!) of HTML elements. Moreover, HTML elements can be <strong>nested</strong>: that is, the content of an HTML element can contain <em>other</em> HTML tags (and thus other HTML elements):</p>
-<div class="figure">
-<img src="img/html/nesting.png" alt="An example of element nesting: the &lt;em&gt; element is nested in the &lt;h1&gt; element’s content." />
-<p class="caption">An example of element nesting: the <code>&lt;em&gt;</code> element is nested in the <code>&lt;h1&gt;</code> element’s content.</p>
-</div>
-<p>The semantic meaning indicated by an element applies to <em>all</em> its content: thus all the text in the above example is a top-level heading, and the content “(with emphasis)” is emphasized in addition.</p>
-<p>Because elements can contain elements which can <em>themselves</em> contain elements, an HTML document ends up being structured as a <a href="https://en.wikipedia.org/wiki/Tree_(data_structure)"><strong>“tree”</strong></a> of elements:</p>
-<div class="figure">
-<img src="img/html/dom-tree.jpg" alt="An example DOM tree (a tree of HTML elements)." />
-<p class="caption">An example DOM tree (a tree of HTML elements).</p>
-</div>
-<p>In an HTML document, the “root” element of the tree is always an <strong><code>&lt;html&gt;</code></strong> element. Inside this we put a <code>&lt;body&gt;</code> element to contain the document’s “body” (that is, the shown content):</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;body&gt;</span>
-    <span class="kw">&lt;h1&gt;</span>Hello world!<span class="kw">&lt;/h1&gt;</span>
-    <span class="kw">&lt;p&gt;</span>This is <span class="kw">&lt;em&gt;</span>conteeeeent<span class="kw">&lt;/em&gt;</span>!<span class="kw">&lt;/p&gt;</span>
-  <span class="kw">&lt;body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
-<p>This model of HTML as a tree of “nodes”—along with an API (programming interface) for manipulating them— is known as the <a href="https://en.wikipedia.org/wiki/Document_Object_Model"><strong>Document Object Model (DOM)</strong></a>. See <a href="dom.html#dom">Chapter 12</a> for details.</p>
+<div id="react" class="section level1">
+<h1><span class="header-section-number">Chapter 16</span> Introduction to React</h1>
 <p class="alert alert-warning">
-<strong>Caution!</strong> HTML elements have to be “closed” correctly, or the semantic meaning may be incorrect! If you forget to close the <code>&lt;h1&gt;</code> tag, then <em>all</em> of the following content will be considered part of the heading! Remember to close your inner tags <em>before</em> you close the outer ones. <a href="http://validator.w3.org/">Validating</a> your HTML can help with this.
+This chapter is not yet written. As a placeholder, see the below links to relevant documentation.
 </p>
-<div id="block-vs.inline-elements" class="section level3 unnumbered">
-<h3>Block vs. Inline Elements</h3>
-<p>All HTML elements fall into one of two categories:</p>
+<div id="what-is-react" class="section level2">
+<h2><span class="header-section-number">16.1</span> What is React?</h2>
 <ul>
-<li><p><strong>Block elements</strong> form a visible “block” on a page—in particular, they will be on a new line from the previous content, and any content after it will also be on a new line. These tend to be structural elements for a page: headings (<code>&lt;h1&gt;</code>), paragraphs (<code>&lt;p&gt;</code>), lists (<code>&lt;ul&gt;</code>), etc.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span></code></pre></div>
-<div class="figure">
-<img src="img/html/block-element.png" alt="Two block elements rendered on a page." />
-<p class="caption">Two block elements rendered on a page.</p>
-</div></li>
-<li><p><strong>Inline elements</strong> are contained “in the line” of content. These will <em>not</em> have a line break after them. Inline elements are used to modify the content rather than set it apart, such as giving it emphasis (<code>&lt;em&gt;</code>) or declaring that it to be a hyperlink (<code>&lt;a&gt;</code>).</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;span&gt;</span>Inline element<span class="kw">&lt;/span&gt;</span>
-<span class="kw">&lt;span&gt;</span>Other inline element<span class="kw">&lt;/span&gt;</span></code></pre></div>
-<div class="figure">
-<img src="img/html/inline-element.png" alt="Two inline elements rendered on a page." />
-<p class="caption">Two inline elements rendered on a page.</p>
-</div></li>
+<li><a href="https://reactjs.org/">React.js</a></li>
+<li><a href="https://reactjs.org/docs/hello-world.html">React “Hello World”</a></li>
+<li><a href="https://reactjs.org/tutorial/tutorial.html">React Tutorial</a></li>
 </ul>
-<p>Inline elements go inside of block elements, and it’s common to put block elements inside of the other block elements (e.g., an <code>&lt;li&gt;</code> inside of a <code>&lt;ul&gt;</code>, or a <code>&lt;p&gt;</code> inside of a <code>&lt;div&gt;</code>). However, it is invalid to to nest a block element inside of an inline element—the content won’t make sense, and probably won’t look right.</p>
-<p class="alert alert-warning">
-Some elements have further restrictions on nesting. For example, a <code>&lt;ul&gt;</code> (unordered list) is <em>only</em> allowed to contain <code>&lt;li&gt;</code> elements—anything else is invalid markup.
-</p>
-</div>
-</div>
-<div id="web-page-structure" class="section level2">
-<h2><span class="header-section-number">3.3</span> Web Page Structure</h2>
-<p>Now that you understand how to specify HTML elements, you can begin making real web pages! However, there are a few more tags you need to know and include for a valid, modern web page.</p>
-<div id="doctype-declaration" class="section level3 unnumbered">
-<h3>Doctype Declaration</h3>
-<p>All HTML files start with a <a href="https://en.wikipedia.org/wiki/Document_type_declaration">document type declaration</a>, commonly referred to as the “Doctype.” This tells the rendering program (e.g., the browser) what format and syntax your document is using. Since you’re writing pages with HTML 5, you can declare it as follows:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
-    ...
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
-<p><code>&lt;!DOCTYPE&gt;</code> isn’t technically an HTML tag (it’s actually XML). While modern browsers will perform a “best guess” as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!</p>
-</div>
-<div id="the-head-section" class="section level3 unnumbered">
-<h3>The <code>&lt;head&gt;</code> Section</h3>
-<p>In addition to the <code>&lt;body&gt;</code> element that defines the displayed content, you should also include a <code>&lt;head&gt;</code> element that acts as the document “header” (the <code>&lt;head&gt;</code> is nested inside the <code>&lt;html&gt;</code> at the same level as the <code>&lt;body&gt;</code>). The content of the <code>&lt;head&gt;</code> element is <em>not</em> shown on the web page—instead it provides extra (meta) information <em>about</em> the document being rendered.</p>
-<p>There are a couple of common elements you should include in the <code>&lt;head&gt;</code>:</p>
+<div id="create-react-app" class="section level3 unnumbered">
+<h3>Create React App</h3>
 <ul>
-<li><p>A <strong><code>&lt;title&gt;</code></strong>, which specifies the “title” of the webpage:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;title&gt;</span>My Page Title<span class="kw">&lt;/title&gt;</span></code></pre></div>
-<p>Browsers will show the page title in the tab at the top of the browser window, and use that as the default bookmark name if you bookmark the page. But the title is <em>also</em> used by search indexers and screen readers for the blind, since it often provides a strong signal about what the page’s subject. Thus your title should be informative and reflective of the content.</p></li>
-<li><p>A <code>&lt;meta&gt;</code> tag that specifies the character encoding of the page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></code></pre></div>
-<p>The <code>&lt;meta&gt;</code> tag itself represents “metadata” (information about the page’s data), and uses an attribute and value to specify that information. The most important <code>&lt;meta&gt;</code> tag is for the character set, which tells the browser how to convert binary bits from the server into letters. Nearly all editors these days will save files in the <code>UTF-8</code> character set, which supports the mixing of different scripts (Latin, Cyrillic, Chinese, Arabic, etc) in the same file.</p></li>
-<li><p>You can also use the <code>&lt;meta&gt;</code> tag to include more information about the author, description, and keywords for your page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;your name&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;description&quot;</span><span class="ot"> content=</span><span class="st">&quot;description of your page&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;keywords&quot;</span><span class="ot"> content=</span><span class="st">&quot;list,of,keywords,separate,by,commas&quot;</span><span class="kw">&gt;</span></code></pre></div>
-<p>Note that the <code>name</code> attribute is used to specify the “variable name” for that piece of metadata, while the <code>content</code> attribute is used to specify the “value” of that metadata. <code>&lt;meta&gt;</code> elements are <em>empty elements</em> and have no content of their own.</p>
-<p>Again, these are not visible in the browser window (because they are in the <code>&lt;head&gt;</code>!), but will be used by search engines to index your page.</p>
-<ul>
-<li><em>At the very least, always include author information for the pages you create!</em></li>
-</ul></li>
-<li><p>We will discuss additional elements for the <code>&lt;head&gt;</code> section throughout the text, such as using <code>&lt;link&gt;</code> to include CSS and using <code>&lt;script&gt;</code> to include JavaScript.</p></li>
+<li><a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md">Create React App User Guide</a></li>
 </ul>
 </div>
 </div>
-<div id="web-page-template" class="section level2">
-<h2><span class="header-section-number">3.4</span> Web Page Template</h2>
-<p>Putting this all together produces the following “template” for making a web page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;head&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;your name&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;description&quot;</span><span class="ot"> content=</span><span class="st">&quot;description of your page&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;title&gt;</span>My Page Title<span class="kw">&lt;/title&gt;</span>
-<span class="kw">&lt;/head&gt;</span>
-<span class="kw">&lt;body&gt;</span>
-   ...
-   Content goes here!
-   ...
-<span class="kw">&lt;/body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
-<p>You can use this to start off every web page you ever create from now on!</p>
-</div>
-<div id="resources-1" class="section level2 unnumbered">
-<h2>Resources</h2>
-<div class="list-condensed">
+<div id="jsx" class="section level2">
+<h2><span class="header-section-number">16.2</span> JSX</h2>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML">Getting Starting with HTML</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">General HTML 5 Reference</a></li>
-<li><a href="http://www.w3schools.com/tags/default.asp">Alphabetical HTML Tag Reference</a></li>
-<li><a href="http://diveintohtml5.info/">Dive into HTML5</a> - Free book on HTML</li>
-<li><a href="https://validator.w3.org/nu/">W3C HTML Validation Service</a></li>
+<li><a href="https://reactjs.org/docs/introducing-jsx.html">Introducing JSX</a></li>
 </ul>
 </div>
-<p>Also remember you can <a href="https://www.thoughtco.com/view-html-source-in-chrome-3466725">view the HTML page source</a> of <em>any</em> webpage you visit. Use that to explore how others have developed pages and to learn new tricks and techniques!</p>
+<div id="react-components" class="section level2">
+<h2><span class="header-section-number">16.3</span> React Components</h2>
+<ul>
+<li><a href="https://reactjs.org/docs/thinking-in-react.html">Thinking in React</a></li>
+</ul>
+</div>
+<div id="props" class="section level2">
+<h2><span class="header-section-number">16.4</span> Props</h2>
+<ul>
+<li><a href="https://reactjs.org/docs/components-and-props.html">Components and Props</a></li>
+</ul>
+</div>
+<div id="other-resources" class="section level2 unnumbered">
+<h2>Other Resources</h2>
+<ul>
+<li><a href="http://slides.com/joelross/info343au16-react#/">React Slides (Au16)</a></li>
+<li><a href="https://reactjs.org/docs/react-api.html">React API References</a></li>
+</ul>
 
 </div>
 </div>
@@ -583,8 +406,8 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
           </div>
         </div>
       </div>
-<a href="client-side-development.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="css.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="es6.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-react.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -613,7 +436,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info343/book/edit/master/html.Rmd",
+"link": "https://github.com/info343/book/edit/master/react-intro.Rmd",
 "text": "Edit"
 },
 "download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
