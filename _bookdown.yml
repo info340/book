@@ -33,9 +33,12 @@ rmd_files:
   - react-interactive.Rmd
   #- react-router.Rmd
 
+  - firebase.Rmd
+
+
   ## Additional Topics
   # jest.Rmd
   # webpack.Rmd
-  # css-in-js.Rmd
-  # firebase
+
   # redux
+  # css-in-js.Rmd
