@@ -18,7 +18,12 @@
 
 - [The Component Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
 
+<!-- mention `componentDidUpdate()` as alternative for `componentWillMount()` -->
+
 ## React Events
 
 - [Handling Events](https://reactjs.org/docs/handling-events.html)
 - [React Forms](https://reactjs.org/docs/forms.html)
+
+
+<!-- External libraries (e.g., react-strap) should go somewhere... maybe a third React chapter? -->

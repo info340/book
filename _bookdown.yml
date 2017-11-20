@@ -31,14 +31,14 @@ rmd_files:
   ## React
   - react-intro.Rmd
   - react-interactive.Rmd
-  #- react-router.Rmd
 
   - firebase.Rmd
+  - router.Rmd # move this before firebase?
+
+  # redux
+  # css-in-js.Rmd
 
 
   ## Additional Topics
   # jest.Rmd
   # webpack.Rmd
-
-  # redux
-  # css-in-js.Rmd

@@ -1,0 +1,244 @@
+# Client-Side Routing
+This chapter discusses how to use React to effectively develop **Single Page Applications (SPA)**&mdash;web applications that are located on a single web page (HTML file), but use AJAX requests and DOM manipulation to produce the _appearance_ of multiple "web pages". This structure is facilitated by the use of the _client-side routing_ library `react-router`, which allows you to render different Components based on the browser's URL, allowing each View ("page") to be treated as a unique [resource](https://en.wikipedia.org/wiki/Web_resource).
+
+
+## Single-Page Applications
+As you've seen in previous chapters, the React framework lets you dynamically render different _Views_ (Components) based on different conditions such as the `state` of the app. For example, you can have a blogging app that could have a `this.state.blogPostId` variable, and then use that variable to determine which blog post to display. Often these Views act as entirely separate **pages**&mdash;you either show one View or an another. As such, you'd often like each View to be treated as an individual _resource_ and so to have its own [**URI**](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier), thus allowing each View to be referenced individually. For example, each blog post could have it's own URI, allowing a user to type in a particular URL to see a specific post (and letting that user share the post with others).
+
+<!-- - While you could achieve unique URIs by making each View be a separate HTML file (e.g., `index.html`, `about.html`), this quickly becomes infeasible for a large amount of resources, such as when you want to make a new "web page" for each blog post stored in a database. Moveover, separate `.html` files would not be able to share data/state or components (e.g., a shared navigation element). -->
+
+In order to achieve this effect, you can utilize **client-side routing**. With client-side routing, determining which View to display based on the URL (how to "route", or map that URL to the correct resource) is performed on the _client-side_ by JavaScript code. This is distinct from _server-side routing_, in that the server isn't deciding which resource to show (i.e., which `.html` file to respond to a request with), but rather responds with a single HTML file whose JavaScript dynamically determines what resource to show (i.e., which React component to render) based on the _URI_ that request was sent to!
+
+- In this context, "routing" involves taking the resource identifier (the URI) and determining what _representation_ of that resource should be displayed&mdash;what View to show. A "route" is thus a URI, which will refer to a particular View of the resource.
+
+Client-side routing allows you to have unique URLs for each View, but will also make the app work faster&mdash;instead of needing to download an entire brand new page from the server, you only need to download the requisite extra data (using an AJAX request), with much of the other content (the HTML, CSS, etc) already being in place. Moreover, this will all your app to easily share both state data and particular components (e.g., headers, navigation, etc).
+
+- [Google Drive](https://drive.google.com) is a good example of a Single-Page Application. Notice how if you navigate to a new folder, the URL changes (so you can link to individual folders), but only a single "pane" of the page changes.
+
+
+Because React applications are component-based, you can perform _client-side routing_ in React by using [conditional rendering](https://reactjs.org/docs/conditional-rendering.html) to only render components if the current route is correct. This follows a structure similar to:
+
+```jsx
+class App extends Component {
+  render() {
+    //pick a component based on the URL
+    let componentToRender = null;
+    if(currentUrl === 'domain/home'){ //pseudocode comparison with URL
+      componentToRender = <HomePage />;
+    }
+    else if(currentUrl === 'domain/about'){
+      componentToRender = <AboutPage />;
+    }
+    //render that component
+    return componentToRender;
+  }
+}
+```
+
+- That is, _if_ the current URL **matches** a particular route, then the Component will be rendered.
+
+
+## React-Router
+Third-party libraries such as [**React Router**](https://reacttraining.com/react-router/) provide Components that include this functionality, allowing you to easily develop single-page applications.
+
+<p class="alert alert-warning">This chapter details how to use **version 4** of React Router, released in _March 2017_. This version is significantly different from the previous versions (2.x and 3.x). Be careful when looking up examples and resources that they're utilizing the same version as you!</p>
+
+As with other libraries, you [begin using React Router](https://reacttraining.com/react-router/web/guides/quick-start) by installing the `react-router-dom` library (the browser-specific version of React Router):
+
+```bash
+npm install --save react-router-dom
+```
+
+You will then need to `import` any Components you wish to use into the `.js` files containing your React code. For example:
+
+```js
+//import BrowserRouter (but call it `Router`), Route, and Link
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+```
+
+These Components are described in the following sections.
+
+### Routing {-}
+The [**`<BrowserRouter>`**](https://reacttraining.com/react-router/web/api/BrowserRouter) Component (which is often imported with an alias, causing it to be instantiated as `<Router>`) is the "base" Component used by React Router. This Component does all the work of keeping the React app's UI (e.g., which Components are rendered) in sync with the browser's URL. The `BrowserRouter` "listens" for changes to the URL, and then slightly passes information about the current route (called the **`path`**) to its child components as a `prop`. This allows each child to always know what route is currently shown in the URL, without needing to access it directly.
+
+- With React Router, a "route" is defined by the _path_ portion of a URI (see [Chapter 2](#http-requests-and-servers)). This is the part that comes _after_ the protocol and domain (e.g., after the `https://mydomain.com/`). Thus the `/home` route would refer to the URI `https://mydomain.com/home`, while the `/about` route would refer to the URI `https://mydomain.com/about`.
+
+- `BrowserRouter` utilizes the [HTML5 history API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) to interact with the brower's URL and history (what allows you to go "back" and "forward" between URLs). This API is supported by [modern browsers](https://caniuse.com/#feat=history), but older browsers (i.e., IE 9) would need to use `<HashRouter>` as an drop-in alternate. `HashRouter` uses the [fragment identifier](https://en.wikipedia.org/wiki/Fragment_identifier) portion of the URI to track what "page" the app should be showing, causing URL's to include an extra hash `#` symbol in them (e.g., `https://mydomain.com/#/about`).
+
+Inside (as a child of) the `<BrowserRouter>`, you can specify route-based views using the [**`<Route>`**](https://reacttraining.com/react-router/web/api/Route) Component. This Component will render some content (a `component`) only when the URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders the specified Component (similar to in the pseudo-code example above). If the URL doesn't match the route, then the Component is not rendered. Both the `path` to match and the `component` to render are passed in as props:
+
+```jsx
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        {/* if currentUrl == '/home', render <HomePage> */}
+        <Route path='/home' component={HomePage} />
+
+        {/* if currentUrl == '/about', render <AboutPage> */}
+        <Route path='/about' component={AboutPage} />
+      </BrowserRouter>
+    );
+  }
+}
+```
+
+The [**`path`**](https://reacttraining.com/react-router/web/api/Route/path-string) prop is used to indicate the route that you wish to match. This route should _always_ start with a leading `/` (since it's the path that comes after the domain in the URI). Note that this can be a multi-part path (e.g., `/assignments/react`), and can even include URL parameters (see below).
+
+- Note that by default the `path` will "match" even if it is contained in only part of the URL. For example, `<Route path='/about' />` will match a URL of `/about` _OR_ `/about/me`. A path of `/` will match _any_ URL! You can customize what how strict the matching is by specifying the [`exact`](https://reacttraining.com/react-router/web/api/Route/exact-bool) prop (indicating that the path has to match entirely) and/or the [`strict`](https://reacttraining.com/react-router/web/api/Route/strict-bool) prop, which will cause the router to respect any trailing `/` you include.
+
+- Importantly, each `<Route>` determines whether it should render its component _independently_ from each other: they are each `if` statement, not `if else` statements! Thus it is possible for more than one `<Route>` to match the current URL and render its component (and you may actually want to do this sometimes, if a Component is only a part of a "page"). However, it is very common to have each "route" be mutually exclusive so that only one "page" is shown at a time. You can enforce this by nesting the `<Route>` elements inside of a [`<Switch>`](https://reacttraining.com/react-router/web/api/Switch) element:
+
+    ```jsx
+    <BrowserRouter>
+      <Switch>
+        <Route path='/home' component={HomePage} />
+        <Route path='/about' component={AboutPage} />
+      </Switch>
+    </BrowserRouter>
+    ```
+
+    This can be particularly useful when working with URL Parameters.
+
+    <p class="alert alert-success">_Pro tip_: It is often useful to specify the routes as a `const` variable (e.g., `routes`) that is an object containing paths and which component to render for that path. Then you can use a `map()` operation to render those `<Route>` elements. This makes it easy to check and change the URIs used in your page later. See [Route Config](https://reacttraining.com/react-router/web/example/route-config) for an example.</p>
+
+The [**`component`**](https://reacttraining.com/react-router/web/api/Route/component) prop is used to specify _which_ Component should be rendered if the route matches. The component is specified by name as an inline JSX expression (so inside `{}`); you're actually passing a _reference to the class_ to the `<Router>`, so it can then instantiate that class!
+
+- The rendered Component (e.g., `HomePage` or `AboutPage`) will be passed [a few different props](https://reacttraining.com/react-router/web/api/Route/Route-props) from the `<Router>` which give it some context about the current route match that caused it to be rendered. However, you may notice that there is no where in this syntax to specify a prop that _you_ may want to pass to the element (e.g., something from the `state` such as the current logged in user).
+
+    In order to pass in your own props, you specify a [`render`](https://reacttraining.com/react-router/web/api/Route/render-func) prop instead of the `component` prop. This prop takes in a _callback function_ which will be passed in the "router props", to which you can then add in your own props:
+
+    ```jsx
+    <Route path='/home' render={(routerProps) => (
+        {/* use spread operator to convert the object into individual props */]}
+        <HomePage {...routerProps} myMessageProp={"Hello World"} />
+    )}
+    ```
+
+    **In general**, you should utilize the `component` prop instead of `render`. It is cleaner, and helps to keep the page Components self-contained and "separated".
+
+
+#### URL Parameters {-}
+It is also possible to include _variables_ in the matched route using what are called [**URL Parameters**](https://reacttraining.com/react-router/web/example/url-params). As you may recall from [reading a RESTful API](https://info201.github.io/apis.html#uris), URI endpoints are often specified with "variables" written using **`:param`** syntax (a colon `:` followed by the parameter name). For example, the URI
+
+```
+https://api.github.com/users/:username
+```
+
+from the [Github API](https://developer.github.com/v3/users/) refers to a particular user&mdash;you can _replace_ `:username` with any value you want: `https://api.github.com/users/joelwross` refers to the `joelwross` user, while `https://api.github.com/users/mkfreeman` refers to the `mkfreeman` user.
+
+React Router supports a similar syntax when specifying Route paths. For example:
+
+```jsx
+<Route path='/post/:postId' component={BlogPost} />
+```
+
+will match a path that starts with `/post/` and is followed by any other path segment (e.g., `/post/hello`, `/post/2017-10-31`, etc). The `:postId` (because it starts with the leading `:`) will be treated as a parameter which will be assigned whatever value is part of the URI in that spot&mdash;so `/post/hello` would have `'hello'` as the `postId`, and `/post/2017-10-31` would have `'2017-10-31'` as the `postId`.
+
+
+The value assigned to the URL parameter will be passed to the rendered component (e.g., `<BlogPost>` in the above example) as a part of the [**`match` prop**](https://reacttraining.com/react-router/web/api/match), which is one of the "router props" that the `<Router>` element passes into its `component`.
+
+As such, the value of the URL parameters will be available to the rendered Component as **`this.props.match.params.paramName`**. The rendered component can then use this prop to determine what content to render, perhaps accessing that data from a Model module.
+
+```jsx
+class BlogPost extends Component {
+  render() {
+    return (
+        <h1>You are looking at blog post {this.props.match.params.postId}</h1>
+    )
+  }
+}
+```
+
+#### Nesting Routes {-}
+As you're working with React Router, remember that `<Route>` elements are _just React Components_ (that include an `if` statement causing them not to render if the URL is incorrect). That means that&mdash;as long as they are inside a `<Router>`, you can include them anywhere inside your application, mixing them in with normal HTML and React Components:
+
+```jsx
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <header>
+          <h1>Page Title</h1>
+        </header>
+        <BrowserRouter>
+          <Route path='/home' component={HomePage} />
+          <Route path='/about' component={AboutPage} />
+        </BrowserRouter>
+      </div>
+    );
+  }
+}
+
+class HomePage extends Component {
+  render() {
+    return (
+      <div>
+        <h2>Home Page</h2>
+        {/* if route includes /blog, show the blog */}
+        <Route path={match.url + '/blog'} component={BlogPartial} />
+      </div>
+    );
+  }
+}
+```
+
+### Linking {-}
+While specifying `<Route>` elements will allow you to show different "pages" at different URLs, in order for a Single Page Application to function you need to be able to _navigate between routes_ without causing the page to reload. Thus you can't just use normal `<a>` elements to link between "pages"&mdash;browsers interpret clicking on `<a>` elements as a command to send a new HTTP request, and you instead just want to change the URL and re-render the App.
+
+Instead, React Router provides a [**`<Link>`**](https://reacttraining.com/react-router/web/api/Link) element that you can use to create a hyperlink to another route within the application. This component takes **`to`** prop that you use to specify the route that it links to:
+
+```jsx
+<Link to='/about'>Click to visit the About Page</Link>
+```
+
+- The component will render as an `<a>` element with a special `onClick` handler that keeps the browser from loading a new page. Thus you can specify an content that you would put in the `<a>` (such as the hyperlink text) as child content of the `<Link>`.
+
+- It is also possible to specify additional parts (e.g., query parameters, fragments) as part of the link. See the documentation for details.
+
+- React Router also provides a [`<NavLink>`](https://reacttraining.com/react-router/web/api/NavLink) Component that lets you specify a specific CSS class or styling that should apply to the element if the `to` route matches the _current route_. This is used for example to have a navigation section "highlight" the link to the page you're currently on, helping the user understand where they are on the page.
+
+Finally, React Router provides a [**`<Redirect>`**](https://reacttraining.com/react-router/web/api/Redirect) component that, when rendered, will navigate the browser to the given route. This will allow you to "programmatically" navigate the user to a different route (without requiring the user to click on a link)&mdash;you just need to render the `<Redirect>` and the page will change.
+
+- Note that in order for the `<Redirect>` to work, you need to _render_ it (e.g., return it from a Component's `render()` function). This a good way to programmatically redirect is to specify a `state` variable (e.g., `shouldRedirect`), and then conditionally render the `<Redirect>` if that state variable becomes true:
+
+```jsx
+class LoginPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {};
+  }
+
+  componentDidMount() {
+    //hypothetical method to check if user is logged in
+    checkAuthenticationState().then((status) => {
+      if(status === LOGGED_IN) //user is logged in
+        this.setState({redirect: true}); //re-render, but redirect
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {/* Redirect if we're supposed to */}
+        {this.state.redirect &&
+          <Redirect to='/home' />
+        }
+
+        <form class="login-form"> {/* Otherwise, show the form */}
+          ...
+        </form>
+      </div>
+    );
+  }
+}
+```
+
+That covers most of the basic features of React Router. Be sure to check out the [documentation](https://reacttraining.com/react-router/web/guides/philosophy) for more details, as well as the [extensive examples](https://reacttraining.com/react-router/web/example/basic) (though they use some alternate, less readable React syntax).
+
+
+## Resources {-}
+<div class="list-condensed">
+- [React Router Official Guide](https://reacttraining.com/react-router/web/guides/) - starts with "Philosophy" that explains how it is used
+- [React Router API](https://reacttraining.com/react-router/web/api/) - complete list of Components and props
+</div>
