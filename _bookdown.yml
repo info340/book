@@ -34,8 +34,8 @@ rmd_files:
 
   - firebase.Rmd
   - router.Rmd # move this before firebase?
+  - redux.Rmd
 
-  # redux
   # css-in-js.Rmd
 
 

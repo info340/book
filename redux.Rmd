@@ -1,0 +1,3 @@
+# Redux
+
+See official documentation at <https://redux.js.org/>, <https://redux.js.org/docs/introduction/>, and <https://redux.js.org/docs/basics/>.
