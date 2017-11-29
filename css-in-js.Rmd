@@ -3,12 +3,13 @@ This chapter discusses writing **CSS in JS**, a technique by which CSS styles an
 <!-- CSS in JS is supported [directly by React](https://reactjs.org/docs/dom-elements.html#style) or through  [one of _many_](https://github.com/MicheleBertoli/css-in-js) external libraries; representative examples are presented below. -->
 
 
+
 ## Why CSS in JS?
 In November 2014, Facebook's Christopher Chedeau gave a [**talk**](https://speakerdeck.com/vjeux/react-css-in-js) outlining many of the issues that occur when trying to develop CSS for a large application:
 
 <div class="figure">
 <a href="https://speakerdeck.com/vjeux/react-css-in-js"><img src="img/css-in-js/vjeux-slide.png" alt="A slide from Chedeau's talk. Click to view the entire deck."></a>
-<p class="caption">A slide from Chedeau's talk. Click to view the entire deck.</p>
+<p class="caption">A slide from Chedeau's talk. Click the image to view the entire deck.</p>
 </div>
 
 In short, the talk points out how defining CSS classes in fact defines **global variables**: because stylesheets are loaded across the entire page, each class definition is effectively "global" and available to each Component within that page. If you define a class `.button` somewhere in your CSS, then every Component has access to the `.button` class.
