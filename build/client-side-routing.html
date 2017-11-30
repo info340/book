@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -406,20 +370,20 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="https://drive.google.com">Google Drive</a> is a good example of a Single-Page Application. Notice how if you navigate to a new folder, the URL changes (so you can link to individual folders), but only a single “pane” of the page changes.</li>
 </ul>
 <p>Because React applications are component-based, you can perform <em>client-side routing</em> in React by using <a href="https://reactjs.org/docs/conditional-rendering.html">conditional rendering</a> to only render components if the current route is correct. This follows a structure similar to:</p>
-<pre class="jsx"><code>class App extends Component {
-  render() {
-    //pick a component based on the URL
-    let componentToRender = null;
-    if(currentUrl === &#39;domain/home&#39;){ //pseudocode comparison with URL
-      componentToRender = &lt;HomePage /&gt;;
-    }
-    else if(currentUrl === &#39;domain/about&#39;){
-      componentToRender = &lt;AboutPage /&gt;;
-    }
-    //render that component
-    return componentToRender;
-  }
-}</code></pre>
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//pick a component based on the URL</span>
+    <span class="token keyword">let</span> componentToRender <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>currentUrl <span class="token operator">===</span> <span class="token string">'domain/home'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//pseudocode comparison with URL</span>
+      componentToRender <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HomePage</span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>currentUrl <span class="token operator">===</span> <span class="token string">'domain/about'</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      componentToRender <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>AboutPage</span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//render that component</span>
+    <span class="token keyword">return</span> componentToRender<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <ul>
 <li>That is, <em>if</em> the current URL <strong>matches</strong> a particular route, then the Component will be rendered.</li>
 </ul>
@@ -431,10 +395,10 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 This chapter details how to use <strong>version 4</strong> of React Router, released in <em>March 2017</em>. This version is significantly different from the previous versions (2.x and 3.x). Be careful when looking up examples and resources that they’re utilizing the same version as you!
 </p>
 <p>As with other libraries, you <a href="https://reacttraining.com/react-router/web/guides/quick-start">begin using React Router</a> by installing the <code>react-router-dom</code> library (the browser-specific version of React Router):</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">npm</span> install --save react-router-dom</code></pre></div>
+<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save react-router-dom</code></pre>
 <p>You will then need to <code>import</code> any Components you wish to use into the <code>.js</code> files containing your React code. For example:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//import BrowserRouter (but call it `Router`), Route, and Link</span>
-<span class="im">import</span> <span class="op">{</span> BrowserRouter <span class="im">as</span> Router<span class="op">,</span> Route<span class="op">,</span> Link<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;react-router-dom&#39;</span></code></pre></div>
+<pre class="language-js"><code><span class="token comment">//import BrowserRouter (but call it `Router`), Route, and Link</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> BrowserRouter <span class="token keyword">as</span> Router<span class="token punctuation">,</span> Route<span class="token punctuation">,</span> Link<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router-dom'</span></code></pre>
 <p>These Components are described in the following sections.</p>
 <div id="routing" class="section level3 unnumbered">
 <h3>Routing</h3>
@@ -444,29 +408,29 @@ This chapter details how to use <strong>version 4</strong> of React Router, rele
 <li><p><code>BrowserRouter</code> utilizes the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History_API">HTML5 history API</a> to interact with the brower’s URL and history (what allows you to go “back” and “forward” between URLs). This API is supported by <a href="https://caniuse.com/#feat=history">modern browsers</a>, but older browsers (i.e., IE 9) would need to use <code>&lt;HashRouter&gt;</code> as an drop-in alternate. <code>HashRouter</code> uses the <a href="https://en.wikipedia.org/wiki/Fragment_identifier">fragment identifier</a> portion of the URI to track what “page” the app should be showing, causing URL’s to include an extra hash <code>#</code> symbol in them (e.g., <code>https://mydomain.com/#/about</code>).</p></li>
 </ul>
 <p>Inside (as a child of) the <code>&lt;BrowserRouter&gt;</code>, you can specify route-based views using the <a href="https://reacttraining.com/react-router/web/api/Route"><strong><code>&lt;Route&gt;</code></strong></a> Component. This Component will render some content (a <code>component</code>) only when the URL <em>matches</em> a specified <strong><code>path</code></strong>. In effect, the <code>Route</code> Component handles checking <em><code>if</code></em> the current URL matches the specified path, and if so renders the specified Component (similar to in the pseudo-code example above). If the URL doesn’t match the route, then the Component is not rendered. Both the <code>path</code> to match and the <code>component</code> to render are passed in as props:</p>
-<pre class="jsx"><code>class App extends Component {
-  render() {
-    return (
-      &lt;BrowserRouter&gt;
-        {/* if currentUrl == &#39;/home&#39;, render &lt;HomePage&gt; */}
-        &lt;Route path=&#39;/home&#39; component={HomePage} /&gt;
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BrowserRouter</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">{</span><span class="token comment">/* if currentUrl == '/home', render &lt;HomePage> */</span><span class="token punctuation">}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/home<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>HomePage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
 
-        {/* if currentUrl == &#39;/about&#39;, render &lt;AboutPage&gt; */}
-        &lt;Route path=&#39;/about&#39; component={AboutPage} /&gt;
-      &lt;/BrowserRouter&gt;
-    );
-  }
-}</code></pre>
+        <span class="token punctuation">{</span><span class="token comment">/* if currentUrl == '/about', render &lt;AboutPage> */</span><span class="token punctuation">}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/about<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>AboutPage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BrowserRouter</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The <a href="https://reacttraining.com/react-router/web/api/Route/path-string"><strong><code>path</code></strong></a> prop is used to indicate the route that you wish to match. This route should <em>always</em> start with a leading <code>/</code> (since it’s the path that comes after the domain in the URI). Note that this can be a multi-part path (e.g., <code>/assignments/react</code>), and can even include URL parameters (see below).</p>
 <ul>
 <li><p>Note that by default the <code>path</code> will “match” even if it is contained in only part of the URL. For example, <code>&lt;Route path='/about' /&gt;</code> will match a URL of <code>/about</code> <em>OR</em> <code>/about/me</code>. A path of <code>/</code> will match <em>any</em> URL! You can customize what how strict the matching is by specifying the <a href="https://reacttraining.com/react-router/web/api/Route/exact-bool"><code>exact</code></a> prop (indicating that the path has to match entirely) and/or the <a href="https://reacttraining.com/react-router/web/api/Route/strict-bool"><code>strict</code></a> prop, which will cause the router to respect any trailing <code>/</code> you include.</p></li>
 <li><p>Importantly, each <code>&lt;Route&gt;</code> determines whether it should render its component <em>independently</em> from each other: they are each <code>if</code> statement, not <code>if else</code> statements! Thus it is possible for more than one <code>&lt;Route&gt;</code> to match the current URL and render its component (and you may actually want to do this sometimes, if a Component is only a part of a “page”). However, it is very common to have each “route” be mutually exclusive so that only one “page” is shown at a time. You can enforce this by nesting the <code>&lt;Route&gt;</code> elements inside of a <a href="https://reacttraining.com/react-router/web/api/Switch"><code>&lt;Switch&gt;</code></a> element:</p>
-<pre class="jsx"><code>&lt;BrowserRouter&gt;
-  &lt;Switch&gt;
-    &lt;Route path=&#39;/home&#39; component={HomePage} /&gt;
-    &lt;Route path=&#39;/about&#39; component={AboutPage} /&gt;
-  &lt;/Switch&gt;
-&lt;/BrowserRouter&gt;</code></pre>
+<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BrowserRouter</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Switch</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/home<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>HomePage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/about<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>AboutPage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Switch</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BrowserRouter</span><span class="token punctuation">></span></span></code></pre>
 <p>This can be particularly useful when working with URL Parameters.</p>
 <p class="alert alert-success">
 <em>Pro tip</em>: It is often useful to specify the routes as a <code>const</code> variable (e.g., <code>routes</code>) that is an object containing paths and which component to render for that path. Then you can use a <code>map()</code> operation to render those <code>&lt;Route&gt;</code> elements. This makes it easy to check and change the URIs used in your page later. See <a href="https://reacttraining.com/react-router/web/example/route-config">Route Config</a> for an example.
@@ -476,10 +440,10 @@ This chapter details how to use <strong>version 4</strong> of React Router, rele
 <ul>
 <li><p>The rendered Component (e.g., <code>HomePage</code> or <code>AboutPage</code>) will be passed <a href="https://reacttraining.com/react-router/web/api/Route/Route-props">a few different props</a> from the <code>&lt;Router&gt;</code> which give it some context about the current route match that caused it to be rendered. However, you may notice that there is no where in this syntax to specify a prop that <em>you</em> may want to pass to the element (e.g., something from the <code>state</code> such as the current logged in user).</p>
 <p>In order to pass in your own props, you specify a <a href="https://reacttraining.com/react-router/web/api/Route/render-func"><code>render</code></a> prop instead of the <code>component</code> prop. This prop takes in a <em>callback function</em> which will be passed in the “router props”, to which you can then add in your own props:</p>
-<pre class="jsx"><code>&lt;Route path=&#39;/home&#39; render={(routerProps) =&gt; (
-    {/* use spread operator to convert the object into individual props */]}
-    &lt;HomePage {...routerProps} myMessageProp={&quot;Hello World&quot;} /&gt;
-)}</code></pre>
+<pre class="language-jsx"><code><span class="token operator">&lt;</span>Route path<span class="token operator">=</span><span class="token string">'/home'</span> render<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>routerProps<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token comment">/* use spread operator to convert the object into individual props */</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HomePage</span> <span class="token spread"><span class="token punctuation">{</span><span class="token punctuation">...</span><span class="token attr-value">routerProps</span><span class="token punctuation">}</span></span> <span class="token attr-name">myMessageProp</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span><span class="token string">"Hello World"</span><span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+<span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre>
 <p><strong>In general</strong>, you should utilize the <code>component</code> prop instead of <code>render</code>. It is cleaner, and helps to keep the page Components self-contained and “separated”.</p></li>
 </ul>
 <div id="url-parameters" class="section level4 unnumbered">
@@ -488,55 +452,55 @@ This chapter details how to use <strong>version 4</strong> of React Router, rele
 <pre><code>https://api.github.com/users/:username</code></pre>
 <p>from the <a href="https://developer.github.com/v3/users/">Github API</a> refers to a particular user—you can <em>replace</em> <code>:username</code> with any value you want: <code>https://api.github.com/users/joelwross</code> refers to the <code>joelwross</code> user, while <code>https://api.github.com/users/mkfreeman</code> refers to the <code>mkfreeman</code> user.</p>
 <p>React Router supports a similar syntax when specifying Route paths. For example:</p>
-<pre class="jsx"><code>&lt;Route path=&#39;/post/:postId&#39; component={BlogPost} /&gt;</code></pre>
+<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/post/:postId<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>BlogPost<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span></code></pre>
 <p>will match a path that starts with <code>/post/</code> and is followed by any other path segment (e.g., <code>/post/hello</code>, <code>/post/2017-10-31</code>, etc). The <code>:postId</code> (because it starts with the leading <code>:</code>) will be treated as a parameter which will be assigned whatever value is part of the URI in that spot—so <code>/post/hello</code> would have <code>'hello'</code> as the <code>postId</code>, and <code>/post/2017-10-31</code> would have <code>'2017-10-31'</code> as the <code>postId</code>.</p>
 <p>The value assigned to the URL parameter will be passed to the rendered component (e.g., <code>&lt;BlogPost&gt;</code> in the above example) as a part of the <a href="https://reacttraining.com/react-router/web/api/match"><strong><code>match</code> prop</strong></a>, which is one of the “router props” that the <code>&lt;Router&gt;</code> element passes into its <code>component</code>.</p>
 <p>As such, the value of the URL parameters will be available to the rendered Component as <strong><code>this.props.match.params.paramName</code></strong>. The rendered component can then use this prop to determine what content to render, perhaps accessing that data from a Model module.</p>
-<pre class="jsx"><code>class BlogPost extends Component {
-  render() {
-    return (
-        &lt;h1&gt;You are looking at blog post {this.props.match.params.postId}&lt;/h1&gt;
-    )
-  }
-}</code></pre>
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">BlogPost</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>You are looking at blog post <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>match<span class="token punctuation">.</span>params<span class="token punctuation">.</span>postId<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 <div id="nesting-routes" class="section level4 unnumbered">
 <h4>Nesting Routes</h4>
 <p>As you’re working with React Router, remember that <code>&lt;Route&gt;</code> elements are <em>just React Components</em> (that include an <code>if</code> statement causing them not to render if the URL is incorrect). That means that—as long as they are inside a <code>&lt;Router&gt;</code>, you can include them anywhere inside your application, mixing them in with normal HTML and React Components:</p>
-<pre class="jsx"><code>class App extends Component {
-  render() {
-    return (
-      &lt;div&gt;
-        &lt;header&gt;
-          &lt;h1&gt;Page Title&lt;/h1&gt;
-        &lt;/header&gt;
-        &lt;BrowserRouter&gt;
-          &lt;Route path=&#39;/home&#39; component={HomePage} /&gt;
-          &lt;Route path=&#39;/about&#39; component={AboutPage} /&gt;
-        &lt;/BrowserRouter&gt;
-      &lt;/div&gt;
-    );
-  }
-}
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Page Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BrowserRouter</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/home<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>HomePage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/about<span class="token punctuation">'</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>AboutPage<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>BrowserRouter</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-class HomePage extends Component {
-  render() {
-    return (
-      &lt;div&gt;
-        &lt;h2&gt;Home Page&lt;/h2&gt;
-        {/* if route includes /blog, show the blog */}
-        &lt;Route path={match.url + &#39;/blog&#39;} component={BlogPartial} /&gt;
-      &lt;/div&gt;
-    );
-  }
-}</code></pre>
+<span class="token keyword">class</span> <span class="token class-name">HomePage</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Home Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">{</span><span class="token comment">/* if route includes /blog, show the blog */</span><span class="token punctuation">}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Route</span> <span class="token attr-name">path</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>match<span class="token punctuation">.</span>url <span class="token operator">+</span> <span class="token string">'/blog'</span><span class="token punctuation">}</span></span> <span class="token attr-name">component</span><span class="token script language-javascript"><span class="token punctuation">=</span><span class="token punctuation">{</span>BlogPartial<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </div>
 <div id="linking" class="section level3 unnumbered">
 <h3>Linking</h3>
 <p>While specifying <code>&lt;Route&gt;</code> elements will allow you to show different “pages” at different URLs, in order for a Single Page Application to function you need to be able to <em>navigate between routes</em> without causing the page to reload. Thus you can’t just use normal <code>&lt;a&gt;</code> elements to link between “pages”—browsers interpret clicking on <code>&lt;a&gt;</code> elements as a command to send a new HTTP request, and you instead just want to change the URL and re-render the App.</p>
 <p>Instead, React Router provides a <a href="https://reacttraining.com/react-router/web/api/Link"><strong><code>&lt;Link&gt;</code></strong></a> element that you can use to create a hyperlink to another route within the application. This component takes <strong><code>to</code></strong> prop that you use to specify the route that it links to:</p>
-<pre class="jsx"><code>&lt;Link to=&#39;/about&#39;&gt;Click to visit the About Page&lt;/Link&gt;</code></pre>
+<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Link</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/about<span class="token punctuation">'</span></span><span class="token punctuation">></span></span>Click to visit the About Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>Link</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li><p>The component will render as an <code>&lt;a&gt;</code> element with a special <code>onClick</code> handler that keeps the browser from loading a new page. Thus you can specify an content that you would put in the <code>&lt;a&gt;</code> (such as the hyperlink text) as child content of the <code>&lt;Link&gt;</code>.</p></li>
 <li><p>It is also possible to specify additional parts (e.g., query parameters, fragments) as part of the link. See the documentation for details.</p></li>
@@ -546,35 +510,35 @@ class HomePage extends Component {
 <ul>
 <li>Note that in order for the <code>&lt;Redirect&gt;</code> to work, you need to <em>render</em> it (e.g., return it from a Component’s <code>render()</code> function). This a good way to programmatically redirect is to specify a <code>state</code> variable (e.g., <code>shouldRedirect</code>), and then conditionally render the <code>&lt;Redirect&gt;</code> if that state variable becomes true:</li>
 </ul>
-<pre class="jsx"><code>class LoginPage extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {};
-  }
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">LoginPage</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  componentDidMount() {
-    //hypothetical method to check if user is logged in
-    checkAuthenticationState().then((status) =&gt; {
-      if(status === LOGGED_IN) //user is logged in
-        this.setState({redirect: true}); //re-render, but redirect
-    })
-  }
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//hypothetical method to check if user is logged in</span>
+    <span class="token function">checkAuthenticationState</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>status<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>status <span class="token operator">===</span> LOGGED_IN<span class="token punctuation">)</span> <span class="token comment">//user is logged in</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>redirect<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//re-render, but redirect</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
 
-  render() {
-    return (
-      &lt;div&gt;
-        {/* Redirect if we&#39;re supposed to */}
-        {this.state.redirect &amp;&amp;
-          &lt;Redirect to=&#39;/home&#39; /&gt;
-        }
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">{</span><span class="token comment">/* Redirect if we're supposed to */</span><span class="token punctuation">}</span>
+        <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>redirect <span class="token operator">&amp;&amp;</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Redirect</span> <span class="token attr-name">to</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>/home<span class="token punctuation">'</span></span> <span class="token punctuation">/></span></span>
+        <span class="token punctuation">}</span>
 
-        &lt;form class=&quot;login-form&quot;&gt; {/* Otherwise, show the form */}
-          ...
-        &lt;/form&gt;
-      &lt;/div&gt;
-    );
-  }
-}</code></pre>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>login-form<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token punctuation">{</span><span class="token comment">/* Otherwise, show the form */</span><span class="token punctuation">}</span>
+          <span class="token operator">...</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>That covers most of the basic features of React Router. Be sure to check out the <a href="https://reacttraining.com/react-router/web/guides/philosophy">documentation</a> for more details, as well as the <a href="https://reacttraining.com/react-router/web/example/basic">extensive examples</a> (though they use some alternate, less readable React syntax).</p>
 </div>
 </div>

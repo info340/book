@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -429,12 +393,12 @@ Remember: working on your personal machine doesn’t ensure that it will work on
 <h3>Specifying Viewport</h3>
 <p>Mobile web browsers will do some work on their own to adjust the web page in response to screen size—primarily by “shrinking” the content to fit. This often produces the effect of the website being “zoomed out” and the user enlarging the web page to a readable size and then scrolling around the page to view the content. While it may “work” it is not an ideal user interaction—this behavior can also interfere with attempts to be explicit about how webpages should adjust to the size of the screen.</p>
 <p>To fix this, you need to specify the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">viewport size and scale</a> by including an appropriate <code>&lt;meta&gt;</code> element in your HTML:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
-  <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- always need this --&gt;</span>
-  <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;viewport&quot;</span><span class="ot"> content=</span><span class="st">&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;</span><span class="kw">&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- always need this --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1, shrink-to-fit=no<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-  <span class="co">&lt;!-- more head elements, including &lt;link&gt; ... --&gt;</span>
-<span class="kw">&lt;/head&gt;</span></code></pre></div>
+  <span class="token comment">&lt;!-- more head elements, including &lt;link> ... --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
 <p>Including this element will keep the text size from adjusting to the browser’s width (though <em>very</em> narrow browsers may still shrink the text).</p>
 <p>While not technically part of any web standard, the <code>viewport</code> meta element was introduced by Safari and is supported by <a href="https://www.quirksmode.org/mobile/metaviewport/">most mobile browsers</a>. The <code>content</code> attribute for the above meta tag sets 3 <a href="https://css-tricks.com/snippets/html/responsive-meta-tag/">properties</a> for mobile browsers: <code>width</code> (how big the viewport should be, specified to be the size of the device screen), <code>initial-scale</code> (how much to initially “zoom” the page, specified to be 1x or no zoom), and <code>shrink-to-fit</code> (tells Safari 9.0+ <a href="https://bitsofco.de/ios-safari-and-shrink-to-fit/">not to shrink the content to fit</a>).</p>
 <p class="alert alert-success">
@@ -446,35 +410,35 @@ You should include the <code>viewport</code> meta tag in all of your responsive 
 <h2><span class="header-section-number">8.2</span> Media Queries</h2>
 <p>In order to define a webpage with a responsive appearance, you need to be able to <em>conditionally</em> change the applied style rules depending on the size of the screen (or browser window). We can conditionally apply CSS rules by using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"><strong>media queries</strong></a>. A <em>media query</em> is a bit like an <code>if</code> statement in CSS: it specifies a <em>condition</em> and the rules (<em>selectors</em> and <em>properties</em>) that should apply when that condition is true.</p>
 <p>Media queries have syntax similar to the following:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* A normal CSS rule, will apply to all screen sizes */</span>
-body <span class="kw">{</span>
-    <span class="kw">font-size:</span> <span class="dt">14px</span><span class="kw">;</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* A normal CSS rule, will apply to all screen sizes */</span>
+<span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* A Media Query */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">768px</span><span class="dv">)</span>
-<span class="dv">{</span>
-    <span class="co">/* these rules apply ONLY on screens 768px and wider */</span>
+<span class="token comment">/* A Media Query */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/* these rules apply ONLY on screens 768px and wider */</span>
 
-    <span class="co">/* a normal CSS rule */</span>
-    body <span class="kw">{</span>
-        <span class="kw">font-size:</span> <span class="dt">18px</span><span class="kw">;</span>
-        <span class="kw">background-color:</span> beige<span class="kw">;</span>
-    <span class="kw">}</span>
-    <span class="co">/* another CSS rule */</span>
-    <span class="fl">.mobile-call-icon</span> <span class="kw">{</span>
-        <span class="kw">display:</span> <span class="dt">none</span><span class="kw">;</span> <span class="co">/* don&#39;t show on large displays */</span>
-    <span class="kw">}</span>
-<span class="dv">}</span></code></pre></div>
+    <span class="token comment">/* a normal CSS rule */</span>
+    <span class="token selector">body</span> <span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> 18px<span class="token punctuation">;</span>
+        <span class="token property">background-color</span><span class="token punctuation">:</span> beige<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">/* another CSS rule */</span>
+    <span class="token selector">.mobile-call-icon</span> <span class="token punctuation">{</span>
+        <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span> <span class="token comment">/* don't show on large displays */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>A media query is structurally similar to a normal CSS rule. The “selector” is written as <strong><code>@media</code></strong>, indicating that this is a media query not a normal CSS rule. The <code>@media</code> is then followed by a <em>query expression</em>, somewhat similar to the boolean expressions used in <code>if</code> statements. Expressions are written in parentheses, with the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features">media feature</a> to check, followed by a colon (<strong><code>:</code></strong>), followed by the value to check against. There are no <em>relational operators</em> (no <code>&gt;</code> or <code>&lt;</code>) in media queries, so you use media features with names such as <code>min-width</code> and <code>max-width</code> (to represent <code>width &gt; x</code> and <code>width &lt; x</code> respectively).</p>
 <ul>
 <li><p>Media feature comparisons are not strict inequalities, so <code>min-width: 1000px</code> can be read as “width greater than or equal to 1000px”.</p></li>
 <li><p>It is also possible to use the <em>logical operators</em> <code>and</code> and <code>not</code> to combine media feature checks. You can produce an “or” operator using a group selector (a comma <strong><code>,</code></strong>).</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* style rules for screens between 768px and 992px */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">768px</span><span class="dv">) and (max-width: </span><span class="dt">992px</span><span class="dv">)</span> <span class="dv">{</span> <span class="dv">}</span>
+<pre class="language-css"><code><span class="token comment">/* style rules for screens between 768px and 992px */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span> and <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
 
-<span class="co">/* style rules for screens larger than 700px OR in landscape orientation */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">700px</span><span class="dv">),</span> <span class="dv">(orientation: </span><span class="dt">landscape</span><span class="dv">)</span> <span class="dv">{</span> <span class="dv">}</span></code></pre></div></li>
+<span class="token comment">/* style rules for screens larger than 700px OR in landscape orientation */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 700px<span class="token punctuation">)</span>, <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre></li>
 </ul>
 <p>The <code>@media</code> rule is followed by a <strong><code>{}</code></strong> block, inside of which are listed <em>further regular CSS rules</em>. These rules will <em>only</em> be applied if the <code>@media</code> rule holds. If the <code>@media</code> rule does not apply, then these “inner” rules will be ignored. These “inner” rules can utilize all the selectors and properties value outside of media queries—think of them as mini “conditional” stylesheets!</p>
 <p class="alert alert-warning">
@@ -482,25 +446,25 @@ You need to put <em>full rules</em> (including the selector!) inside of the medi
 </p>
 <p>Media queries follow the same ordering behavior as other CSS rules: <strong>the last rule on the page wins</strong>. In practice, this means that media queries can be used to specify conditional rules that will <em>override</em> more “general rules”. So in the example above, the page is set to have a <code>font-size</code> of <code>14px</code> using a rule that will apply on any screens. However, on larger screens, the media query will also apply, overriding that property to instead make the default font size <code>18px</code>.</p>
 <p>Following a <strong>mobile-first approach</strong>, this means that your “normal” CSS should define the styling for a the page on a mobile device. Media queries can then be used to add successive sets of rules that will “replace” the mobile styling with properties specific to larger displays.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* on small mobile devices, the header has a purple background */</span>
-header <span class="kw">{</span>
-    <span class="kw">font-size:</span> <span class="dt">1.2rem</span><span class="kw">;</span>
-    <span class="kw">background-color:</span> mediumpurple<span class="kw">;</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* on small mobile devices, the header has a purple background */</span>
+<span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2rem<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> mediumpurple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* on 768px OR LARGER displays */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">768px</span><span class="dv">)</span> <span class="dv">{</span>
-    header <span class="kw">{</span>
-        <span class="kw">font-size:</span> <span class="dt">1.5rem</span><span class="kw">;</span> <span class="co">/* make the header larger font on larger displays */</span>
-    <span class="kw">}</span>
-<span class="dv">}</span>
+<span class="token comment">/* on 768px OR LARGER displays */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">header</span> <span class="token punctuation">{</span>
+        <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span> <span class="token comment">/* make the header larger font on larger displays */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* on 992px OR LARGER displays */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">992px</span><span class="dv">)</span> <span class="dv">{</span>
-    header <span class="kw">{</span>
-        <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&#39;../img/banner.png&#39;</span><span class="dt">)</span> <span class="co">/* use background image */</span>
-    <span class="kw">}</span>
-<span class="dv">}</span></code></pre></div>
+<span class="token comment">/* on 992px OR LARGER displays */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">header</span> <span class="token punctuation">{</span>
+        <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url('../img/banner.png')</span> <span class="token comment">/* use background image */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <ul>
 <li>In this example, the <code>&lt;header&gt;</code> is given a simple purple background and default font size. When loaded on mobile devices, this is the only rule that applies (the media queries aren’t valid), so that is all the styling that occurs.</li>
 <li>But on devices <code>768px</code> <em>or wider</em> (like a tablet), the first media query is activated. This will then run a second rule that applies to the <code>&lt;header&gt;</code>, overriding the font to be larger (<code>1.5rem</code>)—it’s as if we had listed those two <code>header</code> rules one after another, and the later one wins. But the first rule continues to apply, making the background purple.</li>
@@ -512,45 +476,45 @@ header <span class="kw">{</span>
 <h3>Example: Responsive Flexbox</h3>
 <p>As another example of using media queries to produce a responsive website, consider how they can combine with <a href="css-layouts.html#flexbox">Flexbox</a> to produce a single-column layout on mobile devices, but a multi-column layout on larger displays. Because a Flexbox layout is just a property applied to existing elements, we can effectively “turn on” the <code>flex</code> layout by using media queries.</p>
 <p>Consider some simple HTML:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;row&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;column&quot;</span><span class="kw">&gt;</span>column ONE content<span class="kw">&lt;/div&gt;</span>
-  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;column&quot;</span><span class="kw">&gt;</span>column TWO content<span class="kw">&lt;/div&gt;</span>
-  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;column&quot;</span><span class="kw">&gt;</span>column THREE content<span class="kw">&lt;/div&gt;</span>
-  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;column&quot;</span><span class="kw">&gt;</span>column FOUR content<span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column ONE content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column TWO content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column THREE content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column FOUR content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>By default (without any style rules applied to the <code>.row</code> or <code>.column</code> classes), the four inner <code>&lt;div&gt;</code> elements (as block elements) will stack on top of each other. This is the behavior you want on mobile narrow screens, so now additional CSS or Flexbox usage is needed.</p>
 <p>In order to turn these divs into columns on larger displays, introduce a media query that applies the <code>flex</code> layout to the <code>.row</code> (which acts as the <em>container</em>), thereby lining up the <code>.column</code> elements (which act as the <em>items</em>)</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* on devices 768px OR WIDER */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">768px</span><span class="dv">)</span>
-<span class="dv">{</span>
-    <span class="fl">.row</span> <span class="kw">{</span> <span class="co">/* row becomes a flexbox container */</span>
-        <span class="kw">display:</span> flex<span class="kw">;</span>
-    <span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* on devices 768px OR WIDER */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
+<span class="token punctuation">{</span>
+    <span class="token selector">.row</span> <span class="token punctuation">{</span> <span class="token comment">/* row becomes a flexbox container */</span>
+        <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="fl">.column</span>  <span class="kw">{</span> <span class="co">/* column becomes a flexbox item */</span>
-        <span class="kw">flex-grow:</span> <span class="dt">1</span><span class="kw">;</span> <span class="co">/* make the columns grow equally to fill the row */</span>
-    <span class="kw">}</span>
-<span class="dv">}</span></code></pre></div>
+    <span class="token selector">.column</span>  <span class="token punctuation">{</span> <span class="token comment">/* column becomes a flexbox item */</span>
+        <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span> <span class="token comment">/* make the columns grow equally to fill the row */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You can also add an additional media query at another breakpoint so that the layout starts out stacked, then switches to two columns on medium-sized displays (leading to a two-by-two grid), and <em>then</em> switches to four columns on large displays:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* on devices 768px OR WIDER */</span>
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">768px</span><span class="dv">)</span>
-<span class="dv">{</span>
-    <span class="fl">.row</span> <span class="kw">{</span> <span class="co">/* row is a flexbox container */</span>
-        <span class="kw">display:</span> flex<span class="kw">;</span>
-        <span class="kw">flex-wrap:</span> wrap<span class="kw">;</span> <span class="co">/* wrap extra items to the next &quot;line&quot; */</span>
-    <span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* on devices 768px OR WIDER */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
+<span class="token punctuation">{</span>
+    <span class="token selector">.row</span> <span class="token punctuation">{</span> <span class="token comment">/* row is a flexbox container */</span>
+        <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+        <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span> <span class="token comment">/* wrap extra items to the next "line" */</span>
+    <span class="token punctuation">}</span>
 
-    <span class="fl">.column</span>  <span class="kw">{</span> <span class="co">/* column is a flexbox item */</span>
-        <span class="kw">flex-basis:</span> <span class="dt">50%</span><span class="kw">;</span> <span class="co">/* columns take up 50% of parent by default */</span>
-        <span class="kw">flex-grow:</span> <span class="dt">1</span><span class="kw">;</span>
-    <span class="kw">}</span>
-<span class="dv">}</span>
+    <span class="token selector">.column</span>  <span class="token punctuation">{</span> <span class="token comment">/* column is a flexbox item */</span>
+        <span class="token property">flex-basis</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span> <span class="token comment">/* columns take up 50% of parent by default */</span>
+        <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="dv">@media</span> <span class="dv">(min-width: </span><span class="dt">1200px</span><span class="dv">)</span> <span class="dv">{</span>
-    <span class="fl">.column</span> <span class="kw">{</span>
-        <span class="kw">flex-basis:</span> <span class="dt">auto</span><span class="kw">;</span> <span class="co">/* columns are automatically sized based on content */</span>
-    <span class="kw">}</span>
-<span class="dv">}</span></code></pre></div>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+    <span class="token selector">.column</span> <span class="token punctuation">{</span>
+        <span class="token property">flex-basis</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token comment">/* columns are automatically sized based on content */</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>In this case, the first media query (<code>768px +</code> or medium-sized displays) applies the <code>flex</code> layout and specifies that the items should <code>wrap</code> if they overflow the container… which they will, since each item has a default <code>flex-basis</code> size of <code>50%</code> of the container. This will cause each of the 4 items to take up 50% of the parent, wrapping around to the next line.</p>
 <p>Then when the screen is larger (<code>1200px +</code> or large-size displays), the second media query is applied and <em>overrides</em> the <code>flex-basis</code> so that it will automatically calculate based on the content size, rather than being <code>50%</code> of the parent. That way as long as the columns fit within the parent, they will all line up in a row (they have the <code>flex-grow</code> property to make them equally spread out).</p>
 <p>The best way to get a feel for how this works is to see it in action: see <a href="https://codepen.io/joelross/pen/YxvBzG"><strong>this CodePen</strong></a> for an example of the above behavior—resize the browser and watch the layout change!</p>

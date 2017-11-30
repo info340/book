@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -421,11 +385,11 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 |-- index.html</code></pre>
 <p>(<code>style.css</code>, <code>main.css</code>, and <code>index.css</code> are all common names for the “main” stylesheet).</p>
 <p>You connect the stylesheet to your HTML by adding a <strong><code>&lt;link&gt;</code></strong> element to your page’s <code>&lt;head&gt;</code> element:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
-  <span class="co">&lt;!--... other elements here...--&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token comment">&lt;!--... other elements here...--></span>
 
-  <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;css/style.css&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/head&gt;</span></code></pre></div>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>css/style.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
 <p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a> element represents a connection to another resource. The tag includes an attribute indicating the <strong>rel</strong>ation between the resources (e.g., that the linked file is a stylesheet). The <code>href</code> attribute should be a <em>relative path</em> from the <code>.html</code> file to the <code>.css</code> resource. Note also that a <code>&lt;link&gt;</code> is an empty element so has no closing tag.</p>
 <ul>
 <li>It is also possible to include CSS code directly in your HTML by embedded it in a <code>&lt;style&gt;</code> element in the <code>&lt;head&gt;</code>, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.</li>
@@ -433,27 +397,27 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="overall-syntax" class="section level3 unnumbered">
 <h3>Overall Syntax</h3>
 <p>A CSS stylesheet lists <strong>rules</strong> for formatting particular elements in an HTML page. The basic syntax looks like:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* this is pseudocode for a CSS rule */</span>
-selector <span class="kw">{</span>
-   <span class="kw">property:</span> value<span class="kw">;</span>
-   <span class="kw">property:</span> value<span class="kw">;</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* this is pseudocode for a CSS rule */</span>
+<span class="token selector">selector</span> <span class="token punctuation">{</span>
+   <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
+   <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* this would be another, second rule */</span>
-selector <span class="kw">{</span>
-   <span class="kw">property:</span> value<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<span class="token comment">/* this would be another, second rule */</span>
+<span class="token selector">selector</span> <span class="token punctuation">{</span>
+   <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>A CSS <strong>rule</strong> rule starts with a <strong>selector</strong>, which specifies which elements the rule applies to. The selector is followed by a pair of braces <strong><code>{}</code></strong>, inside of which is a set of formatting <strong>properties</strong>. Properties are made up of the property <em>name</em> (e.g., <code>color</code>), followed by a colon (<strong><code>:</code></strong>), followed by a <em>value</em> to be assigned to that property (e.g., <code>purple</code>). Each name-value pair must end with a semi-colon (<strong><code>;</code></strong>).</p>
 <ul>
 <li>If you forget the semi-colon, the browser will likely ignore the property and any subsequent properties—and it does so silently without showing an error in the developer tools!</li>
 </ul>
 <p>Like most programming languages, CSS ignores new lines and whitespace. However, most developers will use the styling shown above, with the brace on the same line as the selector and indented properties.</p>
 <p>As a concrete example, the below rule applies to any <code>h1</code> elements, and makes them appear in the ‘Helvetica’ font as white text on a dark gray background:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">h1 <span class="kw">{</span>
-  <span class="kw">font-family:</span> <span class="st">&#39;Helvetica&#39;</span><span class="kw">;</span>
-  <span class="kw">color:</span> <span class="dt">white</span><span class="kw">;</span>
-  <span class="kw">background-color:</span> <span class="dt">#333</span><span class="kw">;</span> <span class="co">/*dark gray*/</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica'</span><span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span> <span class="token comment">/*dark gray*/</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Note that CSS <strong>comments</strong> are written using the same block-comment syntax used in Java (<code>/* a comment */</code>), but <em>cannot</em> be written using inline-comment syntax (<code>//a comment</code>).</p>
 <p class="alert alert-warning">
 When you modify a CSS file, you will need to <em>reload the page in your browser</em> to see the changed appearance. If you are using a program such as <code>live-server</code>, this reloading should happen automatically!
@@ -469,16 +433,16 @@ Pro-tip: modern editors such as VS Code will provide auto-complete suggestions f
 <ul>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family"><code>font-family</code></a>: the “font” of the text (e.g., <code>'Comic Sans'</code>). Font names containing white space <em>must</em> be put in quotes (single or double), and I tend to quote any specific font name as well.</p>
 <p>Note that the value for the <code>font-family</code> property can also be a <em>comma-separated list</em> of fonts, with the browser picking the first item that is available on that computer:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* pick Helvetic Nue if exists, else Helvetica, else Arial, else the default</span>
-<span class="co">   sans-serif font */</span>
-font-family<span class="dv">:</span> <span class="st">&#39;Helvetica Nue&#39;</span>, <span class="st">&#39;Helvetica&#39;</span>, <span class="st">&#39;Arial&#39;</span>, sans-serif;</code></pre></div></li>
+<pre class="language-css"><code><span class="token comment">/* pick Helvetic Nue if exists, else Helvetica, else Arial, else the default
+   sans-serif font */</span>
+<span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span>, <span class="token string">'Helvetica'</span>, <span class="token string">'Arial'</span>, sans-serif<span class="token punctuation">;</span></code></pre></li>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size"><code>font-size</code></a>: the size of the text (e.g., <code>12px</code> to be 12 pixels tall). The value must include units (so <code>12px</code>, not <code>12</code>). See the next chapter for details on Units &amp; Sizes.</p></li>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"><code>font-weight</code></a>: boldness (e.g., <code>bold</code>, or a numerical value such as <code>700</code>).</p></li>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color"><code>color</code></a>: text color (e.g., either a <a href="http://www.w3schools.com/colors/colors_names.asp">named color</a> like <code>red</code> or a hex value like <code>#4b2e83</code>. See the next chapter for details on colors. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color"><code>background-color</code></a> property specifies the background color for the element.</p></li>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border"><code>border</code></a>: a border for the element (see “Box Model” in the next chapter). Note that this is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">short-hand property</a> which actually sets multiple related properties at once. The value is thus an <em>ordered</em> list of values separated by <strong>spaces</strong>:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* border-width should be 3px, border-style should be dashed, and border-color</span>
-<span class="co">   should be red */</span>
-border<span class="dv">:</span> 3px dashed red;</code></pre></div></li>
+<pre class="language-css"><code><span class="token comment">/* border-width should be 3px, border-style should be dashed, and border-color
+   should be red */</span>
+<span class="token property">border</span><span class="token punctuation">:</span> 3px dashed red<span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>Read the documentation for an individual property to determine what options are available!</p>
 <p class="alert alert-warning">
@@ -491,35 +455,35 @@ Note that not all properties or values be effectively or correctly supported by 
 <div id="element-selector" class="section level4 unnumbered">
 <h4>Element Selector</h4>
 <p>The most basic selector, the <strong>element selector</strong> selects elements by their element (tag) name. For example, the below rule will apply the all <code>&lt;p&gt;</code> elements, regardless of where they appear on the page:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> <span class="dt">purple</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You can also use this to apply formatting rules to the entire page by selecting the <code>&lt;body&gt;</code> element. Note that for clarity/speed purposes, we generally do <em>not</em> apply formatting to the <code>&lt;html&gt;</code> element.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
-   <span class="kw">background-color:</span> <span class="dt">black</span><span class="kw">;</span>
-   <span class="kw">color:</span> <span class="dt">white</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+   <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 <div id="class-selector" class="section level4 unnumbered">
 <h4>Class Selector</h4>
 <p>Sometimes you want a rule to apply to only <em>some</em> elements of a particular type. You will most often do this by using a <strong>class selector</strong>. This rule will select elements with a <code>class</code> attribute that contains the specified name. For example, if you had HTML:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- HTML --&gt;</span>
-<span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;highlighted&quot;</span><span class="kw">&gt;</span>This text is highlighted!<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;p&gt;</span>This text is not highlighted<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>highlighted<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This text is highlighted!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text is not highlighted<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>You could color just the correct paragraph by using the class selector:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* CSS */</span>
-<span class="fl">.highlighted</span> <span class="kw">{</span>
-   <span class="kw">background-color:</span> <span class="dt">yellow</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">.highlighted</span> <span class="token punctuation">{</span>
+   <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Class selectors are written with a single dot (<strong><code>.</code></strong>) preceding the <em>name of the class</em> (not the name of the tag!) The <code>.</code> is only used in the CSS rule, not in the HTML <code>class</code> attribute.</p>
 <p>Class selectors also let us apply a single, consistent styling to multiple different types of elements:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- HTML --&gt;</span>
-<span class="kw">&lt;h1</span><span class="ot"> class=</span><span class="st">&quot;alert-flashing&quot;</span><span class="kw">&gt;</span>I am a flashing alert!<span class="kw">&lt;/h1&gt;</span>
-<span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;alert-flashing&quot;</span><span class="kw">&gt;</span>So am I!<span class="kw">&lt;p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I am a flashing alert!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>So am I!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased.</p>
 <p>Note that HTML elements can contain <strong>multiple classes</strong>; each class name is separate by a <strong>space</strong>:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;alert flashing&quot;</span><span class="kw">&gt;</span>I have TWO classes: &quot;alert&quot; and &quot;flashing&quot;<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;alert-flashing&quot;</span><span class="kw">&gt;</span>I have ONE class: &quot;alert-flashing&quot;<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have TWO classes: "alert" and "flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have ONE class: "alert-flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>The class selector will select any element that <em>contains</em> that class in its list. So the first paragraph in the above example would be selected by either <code>.alert</code> <strong>OR</strong> <code>.flashing</code>.</p>
 <p class="alert alert-warning">
 You should always strive to give CSS classes <a href="https://css-tricks.com/semantic-class-names/"><strong>semantic names</strong></a> that describe the purpose of element, rather than just what it looks like. <code>highlighted</code> is a better class name than just <code>yellow</code>, because it tells you what you’re styling (and will remain sensible even if you change the styling later). Overall, seek to make your class names <em>informative</em>, so that your code is easy to understand and modify later.
@@ -528,26 +492,26 @@ You should always strive to give CSS classes <a href="https://css-tricks.com/sem
 There are also more formal methodologies for naming classes that you may wish to utilize, the most popular of which is <a href="https://en.bem.info/methodology/quick-start/">BEM (Block, Element, Modifier)</a>.
 </p>
 <p>Class selectors are often commonly used with <code>&lt;div&gt;</code> (block) and <code>&lt;span&gt;</code> (inline) elements. These HTML elements have <em>no</em> semantic meaning on their own, but can be given appearance meaning through their <code>class</code> attribute. This allows them to “group” content together for styling:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;cow&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;p&gt;</span>Moo moo moo.<span class="kw">&lt;/p&gt;</span>
-  <span class="kw">&lt;p&gt;</span>Moooooooooooooooooooo.<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;/div&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>cow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Moo moo moo.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Moooooooooooooooooooo.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
-<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;sheep&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;p&gt;</span>Baa baa <span class="kw">&lt;span</span><span class="ot"> class=</span><span class="st">&quot;dark&quot;</span><span class="kw">&gt;</span>black<span class="kw">&lt;/span&gt;</span> sheep, have you any wool?<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sheep<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Baa baa <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>black<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> sheep, have you any wool?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 </div>
 <div id="id-selector" class="section level4 unnumbered">
 <h4>Id Selector</h4>
 <p>It is also possible to select HTML elements by their <code>id</code> attribute by using an <strong>id selector</strong>. Every HTML element can have an <code>id</code> attribute, but unlike the <code>class</code> attribute the value of the <code>id</code> must be unique within the page. That is, no two elements can have the same value for their <code>id</code> attributes.</p>
 <p><strong>Id selectors</strong> start with a <code>#</code> sign, followed by the value of the <code>id</code>:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;sidebar&quot;</span><span class="kw">&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sidebar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
    This div contains the sidebar for the page
-<span class="kw">&lt;/div&gt;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* the one element with id=&quot;sidebar&quot; */</span>
-<span class="fl">#sidebar</span> <span class="kw">{</span>
-    <span class="kw">background-color:</span> lightgray<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/* the one element with id="sidebar" */</span>
+<span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> lightgray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The <code>id</code> attribute is more specific (it’s always just one element!) but less flexible than the <code>class</code> attribute, and makes it harder to “reuse” your styling across multiple elements or multiple pages. Thus you should <em>almost always use a class selector instead</em>, unless you are referring to a single, specific element.</p>
 </div>
 </div>
@@ -556,50 +520,50 @@ There are also more formal methodologies for naming classes that you may wish to
 <h2><span class="header-section-number">4.3</span> The Cascade</h2>
 <p>CSS is called <strong>Cascading</strong> Style Sheets because multiple rules can apply to the same element (in a “cascade” of style!)</p>
 <p>CSS rules are <em>additive</em>—if multiple rules apply to the same element, the browser will combine all of the style properties when rendering the content:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* CSS */</span>
-p <span class="kw">{</span> <span class="co">/* applies to all paragraphs */</span>
-  <span class="kw">font-family:</span> <span class="st">&#39;Helvetica&#39;</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all paragraphs */</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica'</span>
+<span class="token punctuation">}</span>
 
-<span class="fl">.alert</span> <span class="kw">{</span> <span class="co">/* applies to all elements with class=&quot;alert&quot; */</span>
-  <span class="kw">font-size:</span> <span class="dt">larger</span><span class="kw">;</span>
-<span class="kw">}</span>
+<span class="token selector">.alert</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all elements with class="alert" */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="fl">.success</span> <span class="kw">{</span> <span class="co">/* applies to all elements with class=&quot;success&quot; */</span>
-  <span class="kw">color:</span> <span class="dt">#28a745</span><span class="kw">;</span> <span class="co">/* a pleasant green */</span>
-<span class="kw">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- HTML --&gt;</span>
-<span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;alert success&quot;</span><span class="kw">&gt;</span>
+<span class="token selector">.success</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all elements with class="success" */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #28a745<span class="token punctuation">;</span> <span class="token comment">/* a pleasant green */</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert success<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   This paragraph will be in Helvetica font, a larger font-size, and green color,
   because all 3 of the above rules apply to it.
-<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>CSS styling apply to <em>all</em> of the content in an element. And since that content can contain other elements that may have their own style rules, rules may also in effect be <em>inherited</em>:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;content&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- has own styling --&gt;</span>
-  <span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;sub-sec&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- has own styling + .content styling --&gt;</span>
-    <span class="kw">&lt;ol</span><span class="ot"> class=</span><span class="st">&quot;demo-list&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- own styling (ol AND .demo-list rules) + .sub-sec + .content --&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- has own styling --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sub-sec<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- has own styling + .content styling --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>demo-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- own styling (ol AND .demo-list rules) + .sub-sec + .content --></span>
 
-      <span class="co">&lt;!-- li styling + .demo-list + .sub-sec + .content --&gt;</span>
-      <span class="kw">&lt;li&gt;</span>Item 1<span class="kw">&lt;/li&gt;</span>
-      <span class="kw">&lt;li&gt;</span>Item 2<span class="kw">&lt;/li&gt;</span>
-      <span class="kw">&lt;li&gt;</span>Item 3<span class="kw">&lt;/li&gt;</span>
-    <span class="kw">&lt;/ol&gt;</span>
-  <span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;/div&gt;</span></code></pre></div>
+      <span class="token comment">&lt;!-- li styling + .demo-list + .sub-sec + .content --></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>We call these <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance">inherited properties</a>, because the child elements inherit the setting from their ancestor elements. This is a powerful mechanism that allows you to specify properties only once for a given branch of the DOM element tree. In general, try to set these properties on the highest-level element you can, and let the child elements inherit the setting from their ancestor.</p>
 <div id="rule-specificity" class="section level3 unnumbered">
 <h3>Rule Specificity</h3>
 <p><strong>Important!</strong> Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files to the same page, the files are processed in order they are linked in the HTML. The browser selects elements that match the rule and applies the rule’s property. If a later rule selects the same element and applies a different value to that property, the previous value is <em>overridden</em>. So in general, all things being equal, <strong>the last rule on the page wins</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* two rules, both alike in specificity */</span>
-p <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span> <span class="kw">}</span>
-p <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">blue</span><span class="kw">;</span> <span class="kw">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p&gt;</span>This text will be blue, because that rule comes last!<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* two rules, both alike in specificity */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text will be blue, because that rule comes last!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>However, there are some exceptions when CSS treats rules as <em>not</em> equal and favors earlier rules over later ones. This is called <a href="https://css-tricks.com/specifics-on-css-specificity/">Selector Specificity</a>. In general, more specific selectors (<code>#id</code>) take precedence over less specific ones (<code>.class</code>, which is more specific than <code>tag</code>). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser’s <a href="https://developer.chrome.com/devtools">developer tools</a> to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* css */</span>
-<span class="fl">.alert</span> <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span> <span class="kw">}</span>
-div <span class="kw">{</span> <span class="kw">color:</span> <span class="dt">blue</span><span class="kw">;</span> <span class="kw">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- html --&gt;</span>
-<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;alert&quot;</span><span class="kw">&gt;</span>This text will be red, even though the `div` selector is last,
-because the `.alert` selector has higher specificity so is not overridden.<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* css */</span>
+<span class="token selector">.alert</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">div</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- html --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This text will be red, even though the `div` selector is last,
+because the `.alert` selector has higher specificity so is not overridden.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p class="alert alert-warning">
 Precedence rules are <strong>not</strong> a reason to prefer <code>#id</code> selectors over <code>.class</code> selectors! Instead, you can utilize the more complex selectors described in <a href="more-css.html#more-css">Chapter 6</a> to be able to create reusable rules an avoid duplicating property declarations.
 </p>

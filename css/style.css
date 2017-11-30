@@ -79,6 +79,10 @@ pre code {
   white-space: inherit;
 }
 
+.book .book-body .page-wrapper .page-inner section.normal pre {
+  background-color: #f5f2f0; /* specificity for prism */  
+}
+
 .clear {
   clear:both
 }

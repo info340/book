@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -401,37 +365,37 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="including-a-library" class="section level2">
 <h2><span class="header-section-number">13.1</span> Including a Library</h2>
 <p>Just like you can include multiple CSS files in a page with multiple <code>&lt;link&gt;</code> elements, you can include multiple JavaScript scripts with multiple <code>&lt;script&gt;</code> elements.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;alpha.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span> <span class="co">&lt;!-- run this script first --&gt;</span>
-<span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;beta.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span> <span class="co">&lt;!-- run this script second --&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>alpha.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- run this script first --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>beta.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- run this script second --></span></code></pre>
 <p><em>Importantly</em>, script files are executed in the order in which they appear in the DOM. This matters because all scripts included via the <code>&lt;script&gt;</code> element are all run within the same <a href="https://en.wikipedia.org/wiki/Namespace">namespace</a>. This means variables and functions declared in one script file are also available in later scripts— it’s almost as if all the script files have been combined into a single file.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/* alpha.js */</span>
-<span class="kw">let</span> message <span class="op">=</span> <span class="st">&quot;Hello World&quot;</span><span class="op">;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/* beta.js */</span>
-<span class="va">console</span>.<span class="at">log</span>(message)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello World&quot;</span>
-                      <span class="co">//variable was defined in previous script!</span></code></pre></div>
+<pre class="language-js"><code><span class="token comment">/* alpha.js */</span>
+<span class="token keyword">let</span> message <span class="token operator">=</span> <span class="token string">"Hello World"</span><span class="token punctuation">;</span></code></pre>
+<pre class="language-js"><code><span class="token comment">/* beta.js */</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello World"</span>
+                      <span class="token comment">//variable was defined in previous script!</span></code></pre>
 <p>The order matters: if <code>beta.js</code> were included <em>before</em> <code>alpha.js</code>, then when it is run the <code>message</code> variable won’t have been defined yet, causing an error.</p>
 <p class="alert alert-info">
 Other techniques for managing and organizing large numbers of script files will be discussed in <a href="es6.html#es6">Chapter 15</a>.
 </p>
 <p>Like CSS frameworks, JavaScript libraries are thus included in a page by providing a <code>&lt;script&gt;</code> tag that references the JavaScript file that contains that library’s code. For example, you can include the <a href="https://lodash.com/">Lodash</a> of helpful data processing functions:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
     ...content
 
-    <span class="co">&lt;!-- include JavaScript files --&gt;</span>
-    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-    <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/my-script.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
-<span class="kw">&lt;/body&gt;</span></code></pre></div>
+    <span class="token comment">&lt;!-- include JavaScript files --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>js/my-script.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li><p>Like CSS frameworks, JavaScript libraries can be accessed by referencing the file on a <strong>CDN</strong>, by downloading the source code directly (check for the <code>.js</code> file; you may need to unpack a <code>.zip</code> file), or by installing the library via a package manager like <code>npm</code>. Refer to <a href="css-frameworks.html#including-a-framework">Chapter 3</a> for details—just change <code>.css</code> to <code>.js</code>!</p></li>
 <li><p>Like CSS, JavaScript files can be <em>minimized</em> (usually named as <code>.min.js</code> files). Minimizing JavaScript files not only removes whitespace, but also often replaces local variable names with shorter, meaningless ones such as <code>a</code> or <code>x</code>.</p></li>
 </ul>
 <p>You <strong>always</strong> want to load external libraries before your script, so that any variables and functions they define will be available to your code! If you put your script first, then those functions won’t be available yet!</p>
 <p>Because all JavaScript files share the same namespace, most popular libraries make all of their functions available as properties of a single <strong>global variable</strong>. For example, Lodash provides a global variable called <strong><code>_</code></strong> (a single underscore—a “low dash”). You use this variable to call the provided functions:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span>
+<pre class="language-js"><code><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="kw">let</span> unique <span class="op">=</span> <span class="va">_</span>.<span class="at">uniq</span>(array)<span class="op">;</span> <span class="co">//call function of lodash object</span>
+<span class="token keyword">let</span> unique <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">uniq</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call function of lodash object</span>
 
-<span class="va">console</span>.<span class="at">log</span>(unique)<span class="op">;</span> <span class="co">//[3,4], the unique elements!</span></code></pre></div>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>unique<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//[3,4], the unique elements!</span></code></pre>
 <ul>
 <li><p>Once the library is loaded, the globals it provide can be accessed just like built-in globals <code>window</code>, <code>document</code>, <code>Math</code>, etc.</p></li>
 <li><p>Lodash uses an otherwise silly variable name so that it’s quick and easy to type, and to avoid conflicts with other variables you might create.</p></li>
@@ -460,78 +424,78 @@ Other techniques for managing and organizing large numbers of script files will 
 <p>jQuery was developed to help fill in gaps in the JavaScript language and to standardize functionality across browsers. It made it so that you could write manipulate the DOM while writing 10% of the code, and produce scripts that would run on both Firefox <em>and</em> Internet Explorer!</p>
 <p>However, in the 10+ years since it’s release, later versions of the JavaScript language and the DOM API have improved (e.g., by introducing a <code>querySelector()</code> function) so that much of what made jQuery special is <a href="http://youmightnotneedjquery.com/">now standard and widely supported</a>. Indeed, jQuery’ approach to interactive webpages is now common practice. Nevertheless, jQuery is still commonly used in web systems (<a href="http://getbootstrap.com/docs/4.0/getting-started/javascript/">Bootstrap’s JavaScript components</a> utilize jQuery), and is popular enough that it you should be familiar with it in the likely chance that you need to engage with a web system build more than 3 years ago.</p>
 <p>As with other libraries, you <a href="https://jquery.com/download/">include jQuery</a> by referencing it from a <code>&lt;script&gt;</code> tag in your HTML (<em>before your own script!</em>):</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://code.jquery.com/jquery-3.2.1.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://code.jquery.com/jquery-3.2.1.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li>Note that version jQuery <code>3.x</code> is for <a href="https://jquery.com/browser-support/">current browsers</a>. If you need to support an older version (e.g., IE 6-8), you can use version <code>1.12</code>. Yes, jQuery supports IE 6!</li>
 </ul>
 <p>Loading the jQuery library creates a <strong><code>jQuery</code></strong> variable in the global scope, meaning you can access this variable and utilize it in your script.</p>
 <p>The <code>jQuery</code> variable is actually a <em>function</em> that you can call, called the <strong>Selector function</strong>. This function is used to select DOM elements by <a href="http://api.jquery.com/category/selectors/basic-css-selectors/">CSS selector</a>, similar to how <code>document.querySelector()</code> works:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//selects element with id=&quot;foo&quot; (e.g., &lt;p id=&quot;foo&quot;&gt;)</span>
-<span class="kw">let</span> fooElem <span class="op">=</span> <span class="at">jQuery</span>(<span class="st">&#39;#foo&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">//selects element with id="foo" (e.g., &lt;p id="foo">)</span>
+<span class="token keyword">let</span> fooElem <span class="token operator">=</span> <span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token string">'#foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//selects all &lt;a&gt; elements</span>
-<span class="kw">let</span> allLinksArray <span class="op">=</span> <span class="at">jQuery</span>(<span class="st">&#39;a&#39;</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//selects all &lt;a> elements</span>
+<span class="token keyword">let</span> allLinksArray <span class="token operator">=</span> <span class="token function">jQuery</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>However, it is much more common to use a provided <em>alias</em> for the <code>jQuery()</code> function called <strong><code>$()</code></strong>. This “shortcut” lets you select elements with a single character (instead of 6)!</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//selects element with id=&quot;foo&quot; (e.g., &lt;p id=&quot;foo&quot;&gt;)</span>
-<span class="kw">let</span> fooElem <span class="op">=</span> <span class="at">$</span>(<span class="st">&#39;#foo&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">//selects element with id="foo" (e.g., &lt;p id="foo">)</span>
+<span class="token keyword">let</span> fooElem <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#foo'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//selects all &lt;a&gt; elements</span>
-<span class="kw">let</span> allLinksArray <span class="op">=</span> <span class="at">$</span>(<span class="st">&#39;a&#39;</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//selects all &lt;a> elements</span>
+<span class="token keyword">let</span> allLinksArray <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>Similar to Lodash’s <code>_</code>, jQuery uses <code>$</code> because no one in their right might would name a variable that, so the chance of having a namespace conflict is minimal.</li>
 </ul>
 <p>Like <code>document.querySelector()</code>, the jQuery selector function handles most all <a href="http://api.jquery.com/category/selectors/">selectors</a> you are familiar with from CSS, as well as some additional useful pseudo-classes:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#my-div&#39;</span>) <span class="co">// by id</span>
-<span class="at">$</span>(<span class="st">&#39;div&#39;</span>) <span class="co">// by type</span>
-<span class="at">$</span>(<span class="st">&#39;.my-class&#39;</span>) <span class="co">// by class</span>
-<span class="at">$</span>(<span class="st">&#39;header, footer&#39;</span>) <span class="co">// group selector</span>
-<span class="at">$</span>(<span class="st">&#39;nav a&#39;</span>) <span class="co">// descendant selector</span>
-<span class="at">$</span>(<span class="st">&#39;p.red&#39;</span>) <span class="co">// scoped selector</span>
+<pre class="language-js"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#my-div'</span><span class="token punctuation">)</span> <span class="token comment">// by id</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span> <span class="token comment">// by type</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.my-class'</span><span class="token punctuation">)</span> <span class="token comment">// by class</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'header, footer'</span><span class="token punctuation">)</span> <span class="token comment">// group selector</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'nav a'</span><span class="token punctuation">)</span> <span class="token comment">// descendant selector</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'p.red'</span><span class="token punctuation">)</span> <span class="token comment">// scoped selector</span>
 
-<span class="at">$</span>(<span class="st">&#39;section:first&#39;</span>) <span class="co">// first &lt;section&gt; element</span>
-                   <span class="co">// (not a css selector!)</span></code></pre></div>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'section:first'</span><span class="token punctuation">)</span> <span class="token comment">// first &lt;section> element</span>
+                   <span class="token comment">// (not a css selector!)</span></code></pre>
 <div id="maniputing-the-dom" class="section level3 unnumbered">
 <h3>Maniputing the DOM</h3>
 <p>Once you’ve selected some elements, jQuery provides <em>methods</em> that perform most of the <a href="http://api.jquery.com/category/attributes/">manipulations</a> you would do using DOM properties:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">var</span> txt <span class="op">=</span> <span class="at">$</span>(<span class="st">&#39;#my-div&#39;</span>).<span class="at">text</span>()<span class="op">;</span>      <span class="co">//get the textContent</span>
-<span class="at">$</span>(<span class="st">&#39;#my-div&#39;</span>).<span class="at">text</span>(<span class="st">&#39;new info!&#39;</span>)<span class="op">;</span>     <span class="co">//change the textContent</span>
+<pre class="language-js"><code><span class="token keyword">var</span> txt <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#my-div'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">//get the textContent</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#my-div'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">'new info!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//change the textContent</span>
 
-<span class="at">$</span>(<span class="st">&#39;#my-div&#39;</span>).<span class="at">html</span>(<span class="st">&#39;&lt;em&gt;new html!&lt;/em&gt;&#39;</span>)<span class="op">;</span> <span class="co">//change the HTML</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#my-div'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token string">'&lt;em>new html!&lt;/em>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//change the HTML</span>
 
-<span class="at">$</span>(<span class="st">&#39;svg rect&#39;</span>).<span class="at">attr</span>(<span class="st">&#39;height&#39;</span>)<span class="op">;</span>       <span class="co">//get attribute (of all selected)</span>
-<span class="at">$</span>(<span class="st">&#39;svg rect&#39;</span>).<span class="at">attr</span>(<span class="st">&#39;height&#39;</span><span class="op">,</span><span class="dv">200</span>)<span class="op">;</span>   <span class="co">//set attribute (of all selected)</span>
-<span class="at">$</span>(<span class="st">&#39;svg rect&#39;</span>).<span class="at">attr</span>( <span class="op">{</span><span class="dt">x</span><span class="op">:</span><span class="dv">50</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span><span class="dv">60</span><span class="op">}</span> )<span class="op">;</span> <span class="co">//set multiple attributes by passing in an object</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'svg rect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'height'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//get attribute (of all selected)</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'svg rect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'height'</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//set attribute (of all selected)</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'svg rect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>x<span class="token punctuation">:</span><span class="token number">50</span><span class="token punctuation">,</span> y<span class="token punctuation">:</span><span class="token number">60</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//set multiple attributes by passing in an object</span>
 
-<span class="at">$</span>(<span class="st">&#39;section&#39;</span>).<span class="at">addClass</span>(<span class="st">&#39;container&#39;</span>)<span class="op">;</span> <span class="co">//add class (to all selected)</span>
-<span class="at">$</span>(<span class="st">&#39;section&#39;</span>).<span class="at">removeClass</span>(<span class="st">&#39;old&#39;</span>)<span class="op">;</span>    <span class="co">//remove class (from all selected)</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'section'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//add class (to all selected)</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'section'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">removeClass</span><span class="token punctuation">(</span><span class="token string">'old'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//remove class (from all selected)</span>
 
-<span class="at">$</span>(<span class="st">&#39;body&#39;</span>).<span class="at">css</span>(<span class="st">&#39;font-size&#39;</span><span class="op">,</span><span class="st">&#39;24px&#39;</span>)<span class="op">;</span>  <span class="co">//set css property (of all selected)</span>
-<span class="at">$</span>(<span class="st">&#39;body&#39;</span>).<span class="at">css</span>( <span class="op">{</span><span class="st">&#39;font-size&#39;</span><span class="op">:</span><span class="st">&#39;24px&#39;</span><span class="op">,</span>
-                <span class="st">&#39;font-family&#39;</span><span class="op">:</span><span class="st">&#39;Helvetica&#39;</span><span class="op">}</span> )<span class="op">;</span> <span class="co">//set multiple properties via an object</span></code></pre></div>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">'font-size'</span><span class="token punctuation">,</span><span class="token string">'24px'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//set css property (of all selected)</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span> <span class="token punctuation">{</span><span class="token string">'font-size'</span><span class="token punctuation">:</span><span class="token string">'24px'</span><span class="token punctuation">,</span>
+                <span class="token string">'font-family'</span><span class="token punctuation">:</span><span class="token string">'Helvetica'</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//set multiple properties via an object</span></code></pre>
 <p>If you compare this to the equivalent operations using the DOM, you’ll notice that (a) jQuery is much more concise. jQuery is also more powerful: for example, you can set multiple attributes with a single call to <code>.attr()</code> by passing in an <em>object</em> containing the attributes you wish to set (the keys are the attribute names). This lets you easily change lots of attributes at once!</p>
 <p class="alert alert-warning">
 Importantly, note that all of these methods apply the change to <strong><em>all</em></strong> elements selected by the jQuery selector function. You do not need to use a loop to apply changes to multiple elements; you can just select the elements you wish to modify and change them all at once. This does mean that you may need to be careful about your selector—only select the elements you actually wish to work with!
 </p>
 <p>jQuery also provides methods that allow you to <a href="https://api.jquery.com/category/manipulation/">manipulate</a> the DOM tree (e.g., to add, move, or remove elements):</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//create an element (not yet in the DOM)</span>
-<span class="kw">let</span> newP <span class="op">=</span> <span class="at">$</span>(<span class="st">&#39;&lt;p class=&quot;new&quot;&gt;This is a new element&lt;/p&gt;&#39;</span>)<span class="op">;</span> <span class="co">//notice the tag!</span>
+<pre class="language-js"><code><span class="token comment">//create an element (not yet in the DOM)</span>
+<span class="token keyword">let</span> newP <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'&lt;p class="new">This is a new element&lt;/p>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//notice the tag!</span>
 
-<span class="co">//add content to DOM</span>
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">append</span>(newP)<span class="op">;</span> <span class="co">//add the element INSIDE &lt;main&gt;, at end</span>
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">append</span>(<span class="st">&#39;&lt;em&gt;new&lt;/em&gt;&#39;</span>)<span class="op">;</span> <span class="co">//can a create element on the fly!</span>
+<span class="token comment">//add content to DOM</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span>newP<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//add the element INSIDE &lt;main>, at end</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'&lt;em>new&lt;/em>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//can a create element on the fly!</span>
 
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">prepend</span>(<span class="st">&#39;&lt;em&gt;new&lt;/em&gt;&#39;</span>)<span class="op">;</span> <span class="co">//add new &lt;em&gt; element INSIDE &lt;main&gt;, at beginning</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">prepend</span><span class="token punctuation">(</span><span class="token string">'&lt;em>new&lt;/em>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//add new &lt;em> element INSIDE &lt;main>, at beginning</span>
 
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">before</span>(<span class="st">&#39;&lt;header&gt;&#39;</span>)<span class="op">;</span> <span class="co">//insert new &lt;header&gt; BEFORE &lt;main&gt; (older sibling)</span>
-                              <span class="co">//notice you can omit the closing tag if no content</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">before</span><span class="token punctuation">(</span><span class="token string">'&lt;header>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//insert new &lt;header> BEFORE &lt;main> (older sibling)</span>
+                              <span class="token comment">//notice you can omit the closing tag if no content</span>
 
-<span class="at">$</span>(<span class="st">&#39;footer&#39;</span>).<span class="at">insertAfter</span>(<span class="st">&#39;main&#39;</span>)<span class="op">;</span> <span class="co">//insert selected (&lt;footer&gt;) AFTER parameter (&lt;main&gt;)</span>
-                                 <span class="co">//since the &lt;footer&gt; was selected, it will move!</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'footer'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">insertAfter</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//insert selected (&lt;footer>) AFTER parameter (&lt;main>)</span>
+                                 <span class="token comment">//since the &lt;footer> was selected, it will move!</span>
 
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">wrap</span>(<span class="st">&#39;&lt;div class=&quot;container&quot;&gt;&lt;/div&gt;&#39;</span>)<span class="op">;</span> <span class="co">//surround the &lt;main&gt; with a .container</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">wrap</span><span class="token punctuation">(</span><span class="token string">'&lt;div class="container">&lt;/div>'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//surround the &lt;main> with a .container</span>
 
-<span class="at">$</span>(<span class="st">&#39;footer&#39;</span>).<span class="at">remove</span>()<span class="op">;</span> <span class="co">//remove selected &lt;footer&gt; element</span>
-<span class="at">$</span>(<span class="st">&#39;main&#39;</span>).<span class="at">empty</span>()<span class="op">;</span> <span class="co">//remove all child elements of &lt;main&gt;</span></code></pre></div>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'footer'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//remove selected &lt;footer> element</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//remove all child elements of &lt;main></span></code></pre>
 <p>The first important thing to note is that you create new elements by provided the HTML content (including the tag <code>&lt;&gt;</code>) to the <code>$()</code> function. This is distinct from <code>document.createElement()</code>, which explicitly does <em>not</em> include the <code>&lt;&gt;</code> angle brackets. If creating an element with no content, you can even just specify the start tag!</p>
 <p>jQuery also provides much more powerful manipulation methods, allowing you to easily position elements <a href="http://api.jquery.com/category/manipulation/dom-insertion-inside/">inside</a>, <a href="http://api.jquery.com/category/manipulation/dom-insertion-outside/">outside</a>, <a href="http://api.jquery.com/category/manipulation/dom-insertion-around/">around</a>, and <a href="http://api.jquery.com/category/manipulation/dom-replacement/">in place of</a> other elements.</p>
 <p class="alert alert-warning">
@@ -541,15 +505,15 @@ Although jQuery will allow you to create arbitrarily complex HTML elements to ad
 <div id="handling-events" class="section level3 unnumbered">
 <h3>Handling Events</h3>
 <p>jQuery also provides <em>convenience methods</em> for registering event listeners:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#button&#39;</span>).<span class="at">click</span>(<span class="kw">function</span>(event) <span class="op">{</span>
-   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;clicky clicky!&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#button'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicky clicky!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-   <span class="co">//who was clicked</span>
-   <span class="kw">let</span> element <span class="op">=</span> <span class="at">$</span>(<span class="va">event</span>.<span class="at">target</span>)<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+   <span class="token comment">//who was clicked</span>
+   <span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token function">$</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li><p>There are equivalent methods for other events: <code>.mousedown()</code> <code>.keypress()</code>, etc. If you want to listen for an event that jQuery doesn’t provide a convenience method for, you can use the <code>.on()</code> function:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#search-input&#39;</span>).<span class="at">on</span>(<span class="st">&#39;input&#39;</span><span class="op">,</span> callback)<span class="op">;</span></code></pre></div></li>
+<pre class="language-js"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#search-input'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">,</span> callback<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>By using a method such as <code>.click(callback)</code> rather than <code>.addEventListener('click', callback)</code> or event <code>.on('click', callback)</code>, you avoid potential hard-to-catch bugs that may get introduced from misspelling <code>'click'</code>—rather than having the browser listen for <code>'clik'</code> events and then never seeming to respond to your actions, it will instead report an error (<code>.clik()</code> is not a known function!)</p>
 <p>The <a href="http://api.jquery.com/category/events/event-object/"><code>event</code></a> parameter passed into the <code>.click()</code> function’s callback is exactly like the <code>event</code> passed to callbacks of <code>addEventListener()</code> (though jQuery standardizes cross-browser quirks)—thus you can access the source of the event with the <code>event.target</code> property. However, this property refers to a DOM element, <em>not</em> a jQuery selector. DOM elements don’t support the jQuery methods described above—those are only available to “jQuery selection objects”. Thus if you want to work with a DOM element, you need to “select” it again using the <code>$()</code> function, thus providing a jQuery selection that has all the useful jQuery methods.</p>
@@ -557,20 +521,20 @@ Although jQuery will allow you to create arbitrarily complex HTML elements to ad
 <li>Additionally, jQuery assigns the <code>this</code> variable inside an event callback to the event’s target; this you can equivalently use <code>$(this)</code> to select the element.</li>
 </ul>
 <p>The previous chapter noted the <code>window.onload</code> even listener, which was used to determine when the DOM had finished loading and so was ready to be manipulated. jQuery provides a similar functionality via the <code>.ready()</code> listener (usually called on the whole <code>document</code>):</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(document).<span class="at">ready</span>(<span class="kw">function</span>() <span class="op">{</span> <span class="co">//this need not be an anonymous function</span>
-    <span class="co">//program goes here</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world!&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//this need not be an anonymous function</span>
+    <span class="token comment">//program goes here</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="co">//...</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This is a very common pattern: often with jQuery entire programs will be specified inside the <code>.ready()</code> callback, so that the <code>&lt;script&gt;</code> tags can be placed in the <code>&lt;head&gt;</code> and downloaded quickly but still run only when the DOM is available. This pattern is <em>so</em> common in fact, that the jQuery selector function can serve as a shortcut to it:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//equivalent to the above</span>
-<span class="at">$</span>(<span class="kw">function</span>() <span class="op">{</span>
-    <span class="co">//program goes here</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world!&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">//equivalent to the above</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//program goes here</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="co">//...</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>If you pass a <em>function</em> rather than a Selector string to the <code>$()</code> jQuery function, it will be interpreted as specifying a callback function to run when the document is ready! This is something to be aware of if you look at someone else’s code and see it just start with a random <code>$(function)</code>.</li>
 </ul>
@@ -578,42 +542,42 @@ Although jQuery will allow you to create arbitrarily complex HTML elements to ad
 <div id="and-more" class="section level3 unnumbered">
 <h3>And more!</h3>
 <p>This is only the tip of the iceberg for what jQuery can do. For example, jQuery also provides a number of <a href="http://api.jquery.com/category/utilities/">utility</a> functions that can be called on the <code>jQuery</code> (or <code>$</code>) global:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//check if an item is in an array</span>
-<span class="va">$</span>.<span class="at">inArray</span>(<span class="dv">4</span><span class="op">,</span> [<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>] )<span class="op">;</span>
-<span class="va">jQuery</span>.<span class="at">inArray</span>(<span class="dv">4</span><span class="op">,</span> [<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>] )<span class="op">;</span> <span class="co">//equivalent, but maybe easier to read</span>
+<pre class="language-js"><code><span class="token comment">//check if an item is in an array</span>
+$<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+jQuery<span class="token punctuation">.</span><span class="token function">inArray</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//equivalent, but maybe easier to read</span>
 
-<span class="co">//find an item in an array that matches the filter function</span>
-<span class="co">//this is like .filter, but works on old browsers (if right jQuery version)</span>
-<span class="va">$</span>.<span class="at">grep</span>( [<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="kw">function</span>(item) <span class="op">{</span>
-   <span class="cf">return</span> item <span class="op">&gt;</span> <span class="dv">3</span><span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span>
+<span class="token comment">//find an item in an array that matches the filter function</span>
+<span class="token comment">//this is like .filter, but works on old browsers (if right jQuery version)</span>
+$<span class="token punctuation">.</span><span class="token function">grep</span><span class="token punctuation">(</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token keyword">return</span> item <span class="token operator">></span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//iterate over arrays or objects -- works for either!</span>
-<span class="va">$</span>.<span class="at">each</span>( [<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>]<span class="op">,</span> <span class="kw">function</span>(key<span class="op">,</span> value) <span class="op">{</span>
-   <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Give me a &#39;</span><span class="op">+</span>value)<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span>
+<span class="token comment">//iterate over arrays or objects -- works for either!</span>
+$<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Give me a '</span><span class="token operator">+</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="va">$</span>.<span class="at">each</span>( <span class="op">{</span><span class="dt">first</span><span class="op">:</span><span class="st">&#39;Joel&#39;</span><span class="op">,</span><span class="dt">last</span><span class="op">:</span><span class="st">&#39;Ross&#39;</span><span class="op">},</span> <span class="kw">function</span>(key<span class="op">,</span> value) <span class="op">{</span>
-   <span class="va">console</span>.<span class="at">log</span>(key<span class="op">+</span><span class="st">&#39; name: &#39;</span><span class="op">+</span>value)<span class="op">;</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+$<span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>first<span class="token punctuation">:</span><span class="token string">'Joel'</span><span class="token punctuation">,</span>last<span class="token punctuation">:</span><span class="token string">'Ross'</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>key<span class="token operator">+</span><span class="token string">' name: '</span><span class="token operator">+</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>This can be useful, though JavaScript native functions or Lodash methods will often be easier and (computationally) faster.</li>
 </ul>
 <p>But as a final fun example: jQuery also provides functions that allow you to easily produce <a href="http://api.jquery.com/category/effects/">animated effects</a>!</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="at">$</span>(<span class="st">&#39;#id&#39;</span>).<span class="at">fadeIn</span>(<span class="dv">1000</span>)<span class="op">;</span>   <span class="co">//fade in over 1 second</span>
-<span class="at">$</span>(<span class="st">&#39;#id&#39;</span>).<span class="at">fadeOut</span>(<span class="dv">500</span>)<span class="op">;</span>   <span class="co">//fade out over 1/2 sec</span>
-<span class="at">$</span>(<span class="st">&#39;#id&#39;</span>).<span class="at">slideDown</span>(<span class="dv">200</span>)<span class="op">;</span> <span class="co">//slide down over 200ms</span>
-<span class="at">$</span>(<span class="st">&#39;#id&#39;</span>).<span class="at">slideUp</span>(<span class="dv">500</span>)<span class="op">;</span>   <span class="co">//slide up over 500ms</span>
-<span class="at">$</span>(<span class="st">&#39;#id&#39;</span>).<span class="at">toggle</span>()<span class="op">;</span>       <span class="co">//toggle whether displayed</span>
+<pre class="language-js"><code><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//fade in over 1 second</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeOut</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//fade out over 1/2 sec</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slideDown</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//slide down over 200ms</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slideUp</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//slide up over 500ms</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#id'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>       <span class="token comment">//toggle whether displayed</span>
 
-<span class="co">//custom animation syntax:</span>
-<span class="co">//$(selector).animate({targetProperties}, speed [, doneCallback]);</span>
-<span class="at">$</span>(<span class="st">&quot;#box&quot;</span>).<span class="at">animate</span>(<span class="op">{</span>
-    <span class="dt">left</span><span class="op">:</span> <span class="st">&#39;500px&#39;</span><span class="op">,</span> <span class="co">//make the box fly around!</span>
-    <span class="dt">opacity</span><span class="op">:</span> <span class="st">&#39;0.5&#39;</span><span class="op">,</span>
-    <span class="dt">height</span><span class="op">:</span> <span class="st">&#39;200px&#39;</span><span class="op">,</span>
-    <span class="dt">width</span><span class="op">:</span> <span class="st">&#39;200px&#39;</span>
-<span class="op">},</span> <span class="dv">1500</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//custom animation syntax:</span>
+<span class="token comment">//$(selector).animate({targetProperties}, speed [, doneCallback]);</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#box"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">animate</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    left<span class="token punctuation">:</span> <span class="token string">'500px'</span><span class="token punctuation">,</span> <span class="token comment">//make the box fly around!</span>
+    opacity<span class="token punctuation">:</span> <span class="token string">'0.5'</span><span class="token punctuation">,</span>
+    height<span class="token punctuation">:</span> <span class="token string">'200px'</span><span class="token punctuation">,</span>
+    width<span class="token punctuation">:</span> <span class="token string">'200px'</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1500</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <!-- ## Example: Bootstrap
 //another example: Bootstrap's JS
 //example: collapse? -->

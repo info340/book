@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -429,13 +393,13 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <p><strong>However</strong>, in a React app you should integrate Firebase directly into your source code instead of modifying the HTML. You can do this by modifying the <strong><code>index.js</code></strong> file:</p>
 <ol style="list-style-type: decimal">
 <li><p>First, install and <a href="https://www.npmjs.com/package/firebase">Firebase library</a> using <code>npm</code>:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash"><span class="co"># in your app repo</span>
-<span class="kw">npm</span> install --save firebase</code></pre></div></li>
+<pre class="language-bash"><code><span class="token comment"># in your app repo</span>
+<span class="token function">npm</span> <span class="token function">install</span> --save firebase</code></pre></li>
 <li><p><code>import</code> the Firebase library into your <code>index.js</code> file. To only load the core firebase functionality, you can just import the <code>'firebase/app'</code> module.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="im">import</span> firebase <span class="im">from</span> <span class="st">&#39;firebase/app&#39;</span><span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">import</span> firebase <span class="token keyword">from</span> <span class="token string">'firebase/app'</span><span class="token punctuation">;</span></code></pre>
 <p>You can also <code>import</code> modules with the specific pieces of functionality you need, such as user authentication and the real-time database.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="im">import</span> <span class="st">&#39;firebase/auth&#39;</span><span class="op">;</span>
-<span class="im">import</span> <span class="st">&#39;firebase/database&#39;</span><span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">import</span> <span class="token string">'firebase/auth'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token string">'firebase/database'</span><span class="token punctuation">;</span></code></pre>
 <p>(These modules don’t export any need functions beyond modifications to the core Firebase app, so you don’t need to assign a variable name to the resulting value).</p></li>
 <li><p>To configure your web app, <strong>copy and paste</strong> the contents of the <code>&lt;script&gt;</code> file shown on the Firebase Web Console (The <code>// Initialize Firebase ...</code> part). Do this <em>before</em> the <code>ReactDOM.render()</code> call.</p>
 <p>This will specify <em>which</em> Firebase project your web app should connect to.</p></li>
@@ -457,14 +421,14 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <div id="creating-users" class="section level3 unnumbered">
 <h3>Creating Users</h3>
 <p>In order to create a user programmatically (e.g., from JavaScript when the user submits a sign-up form), you can use a function provided by the <code>firebase</code> module. Specifically, you’ll call the wordily-named function <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword"><code>firebase.auth().createUserWithEmailAndPassword</code></a> passing it the email and password the user is signing up with. This will create a new user account in Firebase (you can view it in the Firebase Web Console), <em>as well as</em> log in the user.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">firebase</span>.<span class="at">auth</span>().<span class="at">createUserWithEmailAndPassword</span>(email<span class="op">,</span> password)
-    .<span class="at">then</span>((firebaseUser) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;User created: &#39;</span><span class="op">+</span><span class="va">firebaseUser</span>.<span class="at">uid</span>)<span class="op">;</span>
-        <span class="co">//...</span>
-    <span class="op">}</span>)
-    .<span class="at">catch</span>((error) <span class="op">=&gt;</span> <span class="op">{</span> <span class="co">//report any errors</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="va">error</span>.<span class="at">message</span>)<span class="op">;</span>
-    <span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code>firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createUserWithEmailAndPassword</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>firebaseUser<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'User created: '</span><span class="token operator">+</span>firebaseUser<span class="token punctuation">.</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">//report any errors</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li><p>Remember to <code>import firebase from 'firebase/app'</code> in any module that you need to access the <code>firebase</code> global variable!</p></li>
 <li><p>The <code>createUser...</code> method is called on <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth"><code>firebase.auth()</code></a>. The <code>auth()</code> function returns an “authenticator” object that can manage user login which gets an “authenticator” object that is connected to the web service and can manage user login information.</p></li>
@@ -476,13 +440,13 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <div id="user-profiles" class="section level4 unnumbered">
 <h4>User Profiles</h4>
 <p>It is also possible to store some additional information for each user in what is called the user’s <a href="https://firebase.google.com/docs/auth/web/manage-users#get_a_users_profile"><strong>profile</strong></a>. Specifically, each user can assigned a <code>displayName</code> (a username separate from an email address) and a <code>photoURL</code> (a link to a profile picture for that user).</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> name <span class="op">=</span> <span class="va">firebaseUser</span>.<span class="at">displayName</span><span class="op">;</span> <span class="co">//the user&#39;s name</span>
-<span class="kw">let</span> pic <span class="op">=</span> <span class="va">firebaseUser</span>.<span class="at">photoURL</span><span class="op">;</span> <span class="co">//the user&#39;s picture</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> name <span class="token operator">=</span> firebaseUser<span class="token punctuation">.</span>displayName<span class="token punctuation">;</span> <span class="token comment">//the user's name</span>
+<span class="token keyword">let</span> pic <span class="token operator">=</span> firebaseUser<span class="token punctuation">.</span>photoURL<span class="token punctuation">;</span> <span class="token comment">//the user's picture</span></code></pre>
 <p>You can <a href="https://firebase.google.com/docs/auth/web/manage-users#update_a_users_profile">specify these profile properties</a> of a Firebase User by by calling its <a href="https://firebase.google.com/docs/reference/js/firebase.User#updateProfile"><code>updateProfile()</code></a> method, passing it an object with the new values to assign to those properties:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">firebaseUser</span>.<span class="at">updateProfie</span>(<span class="op">{</span>
-    <span class="dt">displayName</span><span class="op">:</span> <span class="st">&quot;Ada&quot;</span><span class="op">,</span>
-    <span class="dt">photoURL</span><span class="op">:</span> <span class="st">&quot;http://domain.com/picture.png&quot;</span>
-<span class="op">}</span>)</code></pre></div>
+<pre class="language-js"><code>firebaseUser<span class="token punctuation">.</span><span class="token function">updateProfie</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    displayName<span class="token punctuation">:</span> <span class="token string">"Ada"</span><span class="token punctuation">,</span>
+    photoURL<span class="token punctuation">:</span> <span class="token string">"http://domain.com/picture.png"</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <ul>
 <li>This method <em>also</em> returns a Promise, so you can use <code>.then()</code> to do something after the profile is updated, or <code>.catch()</code> to handle any errors. Note that a good practice is to call this method from inside the <code>createUserWithEmailAndPassword()</code> callback (on the passed in Firebase User), and then return the resulting promise for handling, thereby “chaining” the user creation and profile specification.</li>
 </ul>
@@ -495,15 +459,15 @@ You <strong>cannot</strong> assign values directly to any Firebase variables (in
 <h3>Authentication Events</h3>
 <p>The <code>firebase.auth()</code> variable will keep track of which Firebase User is currently logged in—and this information persists <a href="https://firebase.google.com/docs/auth/web/auth-state-persistence">even after the browser is closed</a>. This means that every time you reload the page, the <code>firebase.auth()</code> function will perform the authentication and “re-login” the user.</p>
 <p>The recommended way to <a href="https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user">determine who is currently logged</a> in is to register an <strong>event listener</strong> for to listen for events that occur with the “state” of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the “initial state” is set), or when a user logs out. You can register this listener by using the <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onAuthStateChanged"><code>onAuthStateChanged</code></a> method:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> authUnregFunc <span class="op">=</span> <span class="va">firebase</span>.<span class="at">auth</span>().<span class="at">onAuthStateChanged</span>((firebaseUser) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">if</span>(firebaseUser)<span class="op">{</span> <span class="co">//firebaseUser defined: is logged in</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;logged in&#39;</span>)<span class="op">;</span>
-        <span class="co">//do something with firebaseUser (e.g. assign with this.setState())</span>
-    <span class="op">}</span>
-    <span class="cf">else</span> <span class="op">{</span> <span class="co">//firebaseUser undefined: is not logged in</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;logged out&#39;</span>)<span class="op">;</span>
-    <span class="op">}</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> authUnregFunc <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onAuthStateChanged</span><span class="token punctuation">(</span><span class="token punctuation">(</span>firebaseUser<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>firebaseUser<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//firebaseUser defined: is logged in</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'logged in'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">//do something with firebaseUser (e.g. assign with this.setState())</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment">//firebaseUser undefined: is not logged in</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'logged out'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li><p>Because this authentication involves connecting to the Firebase app, it my perform network access. Thus in a React application, this listener should be registered in the <strong><code>componentDidMount()</code></strong> lifecycle callback.</p></li>
 <li><p>The <code>onAuthStateChanged()</code> method takes a callback as a parameter, which will be handed a value representing the current Firebase User (or undefined if no one is logged in).</p>
@@ -514,13 +478,13 @@ You <strong>cannot</strong> assign values directly to any Firebase variables (in
 <div id="signing-in-and-out" class="section level4 unnumbered">
 <h4>Signing In and Out</h4>
 <p>You can sign a user in or out by using addition methods called on <code>firebase.auth()</code>, which do exactly what they suggest:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//sign in a user</span>
-<span class="va">firebase</span>.<span class="at">auth</span>().<span class="at">signInWithEmailAndPassword</span>(email<span class="op">,</span> password)
-   .<span class="at">catch</span>(err <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(err))<span class="op">;</span> <span class="co">//log any errors for debugging</span>
+<pre class="language-js"><code><span class="token comment">//sign in a user</span>
+firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">signInWithEmailAndPassword</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
+   <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//log any errors for debugging</span>
 
-<span class="co">//sign out a user</span>
-<span class="va">firebase</span>.<span class="at">auth</span>().<span class="at">signOut</span>()
-    .<span class="at">catch</span>(err <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(err))<span class="op">;</span> <span class="co">//log any errors for debugging</span></code></pre></div>
+<span class="token comment">//sign out a user</span>
+firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">signOut</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//log any errors for debugging</span></code></pre>
 <ul>
 <li>Both of these methods return Promises, so you can <code>.catch()</code> and display any errors.</li>
 </ul>
@@ -531,22 +495,22 @@ You <strong>cannot</strong> assign values directly to any Firebase variables (in
 <h2><span class="header-section-number">18.3</span> Realtime Database</h2>
 <p>One of the main features provided by the Firebase web service is a <strong>realtime database</strong> for storing and accessing data in the cloud. You can think of this database as being a <em>single giant JSON object in the Cloud</em> that can be simultaneously accessed and modified by multiple clients—and since each client reads the same database, changes made by one user will be seen by others as <em>real-time updates</em>.</p>
 <p>For example, you might have a database that is structured like:</p>
-<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
-  <span class="dt">&quot;people&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-    <span class="dt">&quot;amit&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-      <span class="dt">&quot;age&quot;</span> <span class="fu">:</span> <span class="dv">35</span><span class="fu">,</span>
-      <span class="dt">&quot;petName&quot;</span> <span class="fu">:</span> <span class="st">&quot;Spot&quot;</span>
-    <span class="fu">},</span>
-    <span class="dt">&quot;sarah&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-      <span class="dt">&quot;age&quot;</span> <span class="fu">:</span> <span class="dv">42</span><span class="fu">,</span>
-      <span class="dt">&quot;petName&quot;</span> <span class="fu">:</span> <span class="st">&quot;Rover&quot;</span>
-    <span class="fu">},</span>
-    <span class="dt">&quot;zhang&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-      <span class="dt">&quot;age&quot;</span> <span class="fu">:</span> <span class="dv">13</span><span class="fu">,</span>
-      <span class="dt">&quot;petName&quot;</span> <span class="fu">:</span> <span class="st">&quot;Fluffy&quot;</span>
-    <span class="fu">}</span>
-  <span class="fu">}</span>
-<span class="fu">}</span></code></pre></div>
+<pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"people"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"amit"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"age"</span> <span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
+      <span class="token property">"petName"</span> <span class="token operator">:</span> <span class="token string">"Spot"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"sarah"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"age"</span> <span class="token operator">:</span> <span class="token number">42</span><span class="token punctuation">,</span>
+      <span class="token property">"petName"</span> <span class="token operator">:</span> <span class="token string">"Rover"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"zhang"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"age"</span> <span class="token operator">:</span> <span class="token number">13</span><span class="token punctuation">,</span>
+      <span class="token property">"petName"</span> <span class="token operator">:</span> <span class="token string">"Fluffy"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This database object has a <code>people</code> key that refers to an object, which itself contains keys that refer to individual “person” objects (each of which has an <code>age</code> and <code>petName</code> property).</p>
 <p>In the Firebase Web Console (under the “Database” tab in the navigation menu), this data structure would be presented as:</p>
 <div class="figure">
@@ -571,12 +535,12 @@ Although the JSON database can have many levels of nested objects, best practice
 <li>Basically, inside the “rules” object you specify a JSON tree that mirrors the structure of your database. But instead of having a value for the keys in your database, you specify an object with <code>&quot;.read&quot;</code> and <code>&quot;.write&quot;</code> properties. The values of these properties are boolean expressions that state whether or not the current user is able to read (access) or write (modify) that value.</li>
 </ul>
 <p>Luckily, Firebase provides a handy set of <a href="https://firebase.google.com/docs/database/security/quickstart#sample-rules"><strong>sample rules</strong></a> that cover the most common situations. For example:</p>
-<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
-  <span class="dt">&quot;rules&quot;</span><span class="fu">:</span> <span class="fu">{</span>
-    <span class="dt">&quot;.read&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span>
-    <span class="dt">&quot;.write&quot;</span><span class="fu">:</span> <span class="kw">true</span>
-  <span class="fu">}</span>
-<span class="fu">}</span></code></pre></div>
+<pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">".read"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">".write"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This specifies that everyone can both read and write the entire database. This is a good rule to begin with for testing. For more details on how to write specific security rules, see <a href="https://firebase.google.com/docs/database/security/securing-data">Secure Your Data</a></p>
 <ul>
 <li>Be sure and hit “Publish” to save your changes!</li>
@@ -585,51 +549,51 @@ Although the JSON database can have many levels of nested objects, best practice
 <div id="reading-and-writing-data" class="section level3 unnumbered">
 <h3>Reading and Writing Data</h3>
 <p>Once you’ve set up access rules for your database, you can begin reading and writing data to it programmatically from your JavaScript. To do this, you will need to first get a <em>reference to the database</em>. This is done using the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference"><code>firebase.database().ref()</code></a> method. This method takes as a parameter the key-path of the element in the JSON you wish to access:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//get reference to the &quot;root&quot; of the database: the containing JSON</span>
-<span class="kw">let</span> rootRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>()<span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">//get reference to the "root" of the database: the containing JSON</span>
+<span class="token keyword">let</span> rootRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//refers to the &#39;people&#39; value in the database</span>
-<span class="kw">let</span> peopleRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people&#39;</span>)<span class="op">;</span>
+<span class="token comment">//refers to the 'people' value in the database</span>
+<span class="token keyword">let</span> peopleRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//refers to the &quot;sarah&quot; value inside the &quot;people&quot; value in the database</span>
-<span class="co">//similar to `database.people.sarah` using dot notation</span>
-<span class="kw">let</span> sarahRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people/sarah&#39;</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//refers to the "sarah" value inside the "people" value in the database</span>
+<span class="token comment">//similar to `database.people.sarah` using dot notation</span>
+<span class="token keyword">let</span> sarahRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people/sarah'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Indeed, every single value in the Firebase database can be accessed using a URI-style “path notation”, where each nested key is indicated by a slash <strong><code>/</code></strong> (rather than the <code>.</code> in dot notation). Since this parameter is just a string, you can use string concatenation to construct the path to a particular value you wish to reference (e.g., if you only want to b working with the value for a particular person).</p>
 <ul>
 <li>In fact, this “path” can be used to reference that database value as a specific <em>resource</em> (in the RESTFul sense). Each database entry can be accessed at <code>https://my-project-name.firebaseio.com/path/to/value</code>. This is how you can modify Firebase by using pure AJAX requests (instead of the <code>firebase</code> library).</li>
 </ul>
 <p>Alternatively, you can use the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#child"><code>.child()</code></a> method to get a reference to a specific “child” element in the database:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//this is equivalent to the above</span>
-<span class="kw">let</span> sarahRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people&#39;</span>).<span class="at">child</span>(<span class="st">&#39;sarah&#39;</span>)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token comment">//this is equivalent to the above</span>
+<span class="token keyword">let</span> sarahRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">child</span><span class="token punctuation">(</span><span class="token string">'sarah'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Once you have a reference to a particular entry in the database, you can modify the value at that entry using the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#set"><strong><code>.set()</code></strong></a> method. This method takes as an argument an <em>object</em> containing the keys and values you wish to assign to the that particular reference:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sarahRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people&#39;</span>).<span class="at">child</span>(<span class="st">&#39;sarah&#39;</span>)<span class="op">;</span>
+<pre class="language-js"><code><span class="token keyword">let</span> sarahRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">child</span><span class="token punctuation">(</span><span class="token string">'sarah'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//change Sarah&#39;s age to 43 (happy birthday!)</span>
-<span class="va">sarahRef</span>.<span class="at">set</span>( <span class="op">{</span><span class="dt">age</span><span class="op">:</span> <span class="dv">43</span><span class="op">}</span> )
-    .<span class="at">catch</span>(err <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(err))<span class="op">;</span> <span class="co">//log any errors for debugging</span></code></pre></div>
+<span class="token comment">//change Sarah's age to 43 (happy birthday!)</span>
+sarahRef<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>age<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">}</span> <span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//log any errors for debugging</span></code></pre>
 <ul>
 <li><p>Similar to React’s <code>setState()</code> method, the Firebase’s <code>set()</code> method will <em>overwrite</em> the values for any keys specified in its parameter, but leave other values unchanged. Any keys that did not previous exist will be added:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">sarahRef</span>.<span class="at">set</span>( <span class="op">{</span><span class="dt">favFood</span><span class="op">:</span> <span class="st">&quot;pizza&quot;</span><span class="op">}</span> )<span class="op">;</span> <span class="co">//add a new key</span>
+<pre class="language-js"><code>sarahRef<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>favFood<span class="token punctuation">:</span> <span class="token string">"pizza"</span><span class="token punctuation">}</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//add a new key</span>
 
-<span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people&#39;</span>).<span class="at">set</span>(<span class="op">{</span> <span class="co">//add a new entry to `people`</span>
-        <span class="dt">ada</span><span class="op">:</span> <span class="op">{</span><span class="dt">age</span><span class="op">:</span><span class="dv">27</span><span class="op">,</span> <span class="dt">petName</span><span class="op">:</span><span class="st">&quot;Charles&quot;</span><span class="op">}</span> <span class="co">//27-year-old Ada has pet named &quot;Charles&quot;</span>
-    <span class="op">}</span>)<span class="op">;</span></code></pre></div></li>
+firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token comment">//add a new entry to `people`</span>
+        ada<span class="token punctuation">:</span> <span class="token punctuation">{</span>age<span class="token punctuation">:</span><span class="token number">27</span><span class="token punctuation">,</span> petName<span class="token punctuation">:</span><span class="token string">"Charles"</span><span class="token punctuation">}</span> <span class="token comment">//27-year-old Ada has pet named "Charles"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 </div>
 <div id="listening-for-data-changes" class="section level3 unnumbered">
 <h3>Listening for Data Changes</h3>
 <p>Because Firebase is structured as <em>realtime</em> database (that may change over time), you read data from it by registering an <strong>event listener</strong> to listen for changes to that database. Firebase provides a method <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#on"><code>.on()</code></a> for registering such listeners. Similar to the DOM’s <code>addEventListener()</code> function, Firebase’s <code>on()</code> method takes two parameters: an event name (as a string) and a callback function that should be executed when the event occurs:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> amitRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;people/amit&#39;</span>)<span class="op">;</span>
-<span class="va">amitRef</span>.<span class="at">on</span>(<span class="st">&#39;value&#39;</span><span class="op">,</span> (snapshot) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="kw">let</span> amitValue <span class="op">=</span> <span class="va">snapshot</span>.<span class="at">val</span>()<span class="op">;</span>
-    <span class="va">console</span>.<span class="at">log</span>(amitValue)<span class="op">;</span> <span class="co">//=&gt; { age: 35, petName: &quot;Spot&quot; }</span>
-    <span class="co">//can do something else with amitValue (e.g., assign with this.setState())</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> amitRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people/amit'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+amitRef<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>snapshot<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> amitValue <span class="token operator">=</span> snapshot<span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>amitValue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> { age: 35, petName: "Spot" }</span>
+    <span class="token comment">//can do something else with amitValue (e.g., assign with this.setState())</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li><p>While Firebase supports a number of different “database change events”, the most common to listen for is the <strong><code>'value'</code></strong> event, which occurs when the data entry is first created <em>or</em> whenever it changes. Other events include <code>child_added</code>, <code>child_removed</code>, and <code>child_changed</code>, which can be useful if you want to know <em>how</em> the database changed (not just that it did change)!</p></li>
 <li><p>The callback function will be passed a <a href="https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot">data snapshot</a> as a parameter. This is a wrapper around the database JSON tree (allowing you to navigate it e.g., with <code>.child()</code>). More commonly, you will want to convert it into an actual JavaScript object by calling the <code>.val()</code> method on it.</p></li>
 <li><p>Because this listener involves network access, in a React App you would want to register this listener in the <code>componentDidMount()</code> callback. You’ll also need to “clean up” and remove the listener if the component gets removed (in the <code>componentWillUnmount()</code> callback) to avoid errors. You can remove a listener from a database reference by using the <code>.off()</code> method (to cancel the <code>.on()</code>):</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="va">amitRef</span>.<span class="at">off</span>()<span class="op">;</span></code></pre></div></li>
+<pre class="language-js"><code>amitRef<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>Note that you can also read a single value once (without needing to register and unregister a listener) by using the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#once"><code>.once()</code></a> method, which will return a promise that will contain the read data (once it is downloaded).</p>
 <div id="firebase-arrays" class="section level4 unnumbered">
@@ -638,33 +602,33 @@ Although the JSON database can have many levels of nested objects, best practice
 <p>The problem is that with an array, an index number doesn’t always refer to the same element! For example, if you have an array <code>['a', 'b' 'c']</code>, then index <code>1</code> may initially refer to the <code>'b'</code>. However, if you add an element onto the beginning of the array, then suddenly that <code>1</code> index refers to the <code>'a'</code>, and so if a user was trying to modify the <code>'b'</code> before their machine was aware of the change, they may end up editing the wrong value! This bug is an example of a <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, which can occur when two processes are modifying data <em>concurrently</em> (at the same time).</p>
 <!-- could put code version of example ?? -->
 <p>To avoid this problem, Firebase treats all data structures as Objects, so that each value in the JSON tree has a <em>unique</em> key. That way each client will always be modifying the value they expect. However, Firebase does offer a way that you can treat Objects as arrays: databases references support a <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#push"><strong><code>push()</code></strong></a> method that will automatically add a value to an object with an <strong>auto-generated key</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> tasksRef <span class="op">=</span> <span class="va">firebase</span>.<span class="at">database</span>().<span class="at">ref</span>(<span class="st">&#39;tasks&#39;</span>)<span class="op">;</span> <span class="co">//an object of tasks</span>
-<span class="va">tasksRef</span>.<span class="at">push</span>(<span class="op">{</span><span class="dt">description</span><span class="op">:</span><span class="st">&#39;First things first&#39;</span><span class="op">}</span>) <span class="co">//add one task</span>
-<span class="va">tasksRef</span>.<span class="at">push</span>(<span class="op">{</span><span class="dt">description</span><span class="op">:</span><span class="st">&#39;Next things next&#39;</span><span class="op">}</span>) <span class="co">//add another task</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> tasksRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'tasks'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//an object of tasks</span>
+tasksRef<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>description<span class="token punctuation">:</span><span class="token string">'First things first'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//add one task</span>
+tasksRef<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>description<span class="token punctuation">:</span><span class="token string">'Next things next'</span><span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//add another task</span></code></pre>
 <p>This will produce a database with a structure:</p>
-<div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
-  <span class="dt">&quot;tasks&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-    <span class="dt">&quot;-KyxgJhKOVeAj2ibPxrO&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-      <span class="dt">&quot;description&quot;</span> <span class="fu">:</span> <span class="st">&quot;First things first&quot;</span>
-    <span class="fu">},</span>
-    <span class="dt">&quot;-KyxgMDJueu17348NxDF&quot;</span> <span class="fu">:</span> <span class="fu">{</span>
-      <span class="dt">&quot;description&quot;</span> <span class="fu">:</span> <span class="st">&quot;Next things next&quot;</span>
-    <span class="fu">}</span>
-  <span class="fu">}</span>
-<span class="fu">}</span></code></pre></div>
+<pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">"tasks"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"-KyxgJhKOVeAj2ibPxrO"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"description"</span> <span class="token operator">:</span> <span class="token string">"First things first"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"-KyxgMDJueu17348NxDF"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"description"</span> <span class="token operator">:</span> <span class="token string">"Next things next"</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <ul>
 <li>Notice how the <code>tasks</code> is an Object (even though we “pushed” elements into it), and each “task” is assigned an auto-generated key. You would thus still be able to interact with <code>tasks</code> as if it were an array, but instead of using a value from <code>0</code> to <code>length</code> as the index, you’ll use a generated “key” as the index.</li>
 </ul>
 <p>Firebase <em>snapshots</em> do support a <code>forEach()</code> function that you can use to iterate through their elements, allowing you to loop through the elements in an array. However, if you want to do something more complex (like <code>map()</code>, <code>filter()</code>, or <code>reduce()</code>), you need an actual array. The best way to get this is use call <code>Objects.keys()</code> on the <code>snapshot.val()</code> in order to get an array of the keys, and then you can iterate/map that (accessing each element in the “array” using bracket notation).</p>
 <p>Note that when looping through an “array”, each element is treated handled separately from its key (the same way that a <code>forEach()</code> loop lets you work with array elements separately from their index). But since you <em>need</em> that key as an identifier in order to <code>ref()</code> and modify the JSON element later, you will need to make sure that you “save” the key in the object as you processing it:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//assume `tasksSapshot` is a snapshot of the `tasks` &quot;array&quot;</span>
-<span class="kw">let</span> tasksObject <span class="op">=</span> <span class="va">tasksSnapshot</span>.<span class="at">val</span>()<span class="op">;</span> <span class="co">//convert snapshot to value</span>
-<span class="kw">let</span> taskKeys <span class="op">=</span> <span class="va">Object</span>.<span class="at">keys</span>(tasksObject)<span class="op">;</span>
-<span class="kw">let</span> taskArray <span class="op">=</span> <span class="va">taskKeys</span>.<span class="at">map</span>((key) <span class="op">=&gt;</span> <span class="op">{</span> <span class="co">//map array of keys into array of tasks</span>
-    <span class="kw">let</span> task <span class="op">=</span> tasksObject[key]<span class="op">;</span> <span class="co">//access element at that key</span>
-    <span class="va">task</span>.<span class="at">key</span> <span class="op">=</span> key<span class="op">;</span> <span class="co">//save the key for later referencing!</span>
-    <span class="cf">return</span> task<span class="op">;</span> <span class="co">//the transformed object to store in the array</span>
-<span class="op">}</span>)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token comment">//assume `tasksSapshot` is a snapshot of the `tasks` "array"</span>
+<span class="token keyword">let</span> tasksObject <span class="token operator">=</span> tasksSnapshot<span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//convert snapshot to value</span>
+<span class="token keyword">let</span> taskKeys <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>tasksObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> taskArray <span class="token operator">=</span> taskKeys<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">//map array of keys into array of tasks</span>
+    <span class="token keyword">let</span> task <span class="token operator">=</span> tasksObject<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//access element at that key</span>
+    task<span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span> <span class="token comment">//save the key for later referencing!</span>
+    <span class="token keyword">return</span> task<span class="token punctuation">;</span> <span class="token comment">//the transformed object to store in the array</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p class="alert alert-warning">
 Don’t lose your key!
 </p>

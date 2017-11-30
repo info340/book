@@ -1,8 +1,8 @@
 # config for gitbook output
 bookdown::gitbook:
-  css: css/style.css
-  highlight: tango
-  # pandoc_args: --no-highlight
+  css: [css/style.css, css/prism.min.css]
+  # highlight: tango
+  pandoc_args: ["--filter", "./lib/prism-filter.js"]
   config:
     toc:
       collapse: section

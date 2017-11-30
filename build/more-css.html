@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -399,116 +363,116 @@ code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Inf
 <div id="group-selector" class="section level3 unnumbered">
 <h3>Group Selector</h3>
 <p>The <strong>group selector</strong> allows you to have a single rule apply to elements matched by lots of different selectors. To do this, separate each selector with a comma (<strong><code>,</code></strong>); the properties defined in the rule will then apply to any element that is matched by <em>any</em> of the selectors. For example, if you want to have a single style for all headings, you might use:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* applies to h1, h2, AND h3 tags */</span>
-h1, h2, h3 <span class="kw">{</span>
-    <span class="kw">font-family:</span> Helvetica<span class="kw">;</span>
-    <span class="kw">color:</span> <span class="dt">#4b2e83</span><span class="kw">;</span> <span class="co">/* UW purple */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* applies to h1, h2, AND h3 tags */</span>
+<span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Helvetica<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span> <span class="token comment">/* UW purple */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The comma-separated selectors can by <strong>any</strong> kind of selector, including <code>.class</code> or <code>#id</code> selectors (or any of the combound selectors described below):</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* can also include class or id selectors */</span>
-<span class="co">/* this rule applies to h2 elements, &quot;menu&quot; classed elements, and the</span>
-<span class="co">   #sidebar element */</span>
-h2, <span class="fl">.menu</span>, <span class="fl">#sidebar</span> <span class="kw">{</span>
-    <span class="kw">background-color:</span> <span class="dt">gray</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* can also include class or id selectors */</span>
+<span class="token comment">/* this rule applies to h2 elements, "menu" classed elements, and the
+   #sidebar element */</span>
+<span class="token selector">h2, .menu, #sidebar</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies “general” styling to a large class of elements, with further rules then customizing particular elements.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* all headings are Helvetica, bold, and purple */</span>
-h1, h2, h3 <span class="kw">{</span>
-    <span class="kw">font-family:</span> Helvetica<span class="kw">;</span>
-    <span class="kw">font-weight:</span> <span class="dt">bold</span><span class="kw">;</span>
-    <span class="kw">color:</span> <span class="dt">#4b2e83</span><span class="kw">;</span> <span class="co">/* UW purple */</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* all headings are Helvetica, bold, and purple */</span>
+<span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Helvetica<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span> <span class="token comment">/* UW purple */</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* h2 elements are not bolded, but italic */</span>
-h2 <span class="kw">{</span>
-    <span class="kw">font-weight:</span> <span class="dt">normal</span><span class="kw">;</span> <span class="co">/* not bold, overrides previous rule */</span>
-    <span class="kw">font-style:</span> <span class="dt">italic</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<span class="token comment">/* h2 elements are not bolded, but italic */</span>
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> normal<span class="token punctuation">;</span> <span class="token comment">/* not bold, overrides previous rule */</span>
+    <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 <div id="combined-selectors" class="section level3 unnumbered">
 <h3>Combined Selectors</h3>
 <p>It is also possible to combine element, class, and id selectors together to be more specific about where a rule applies. You do this by simply putting the class or id selector <em>immediately after</em> the previous selector, without a comma or space or anything between them:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Selects only p elements that have class=&quot;alert&quot;</span>
-<span class="co">   Other p elements and &quot;alert&quot; classed elements not affected */</span>
-p<span class="fl">.alert</span> <span class="kw">{</span>
-  <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span>
-<span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* Selects only p elements that have class="alert"
+   Other p elements and "alert" classed elements not affected */</span>
+<span class="token selector">p.alert</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* Selects only h1 elements that have id=&quot;title&quot; */</span>
-<span class="co">/* Note that this is redundant, since only one element can have the id! */</span>
-h1<span class="fl">#title</span> <span class="kw">{</span>
-  <span class="kw">color:</span> <span class="dt">purple</span><span class="kw">;</span>
-<span class="kw">}</span>
+<span class="token comment">/* Selects only h1 elements that have id="title" */</span>
+<span class="token comment">/* Note that this is redundant, since only one element can have the id! */</span>
+<span class="token selector">h1#title</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* Selects elements that have class &quot;alert&quot; AND class &quot;success&quot; */</span>
-<span class="fl">.alert.success</span> <span class="kw">{</span>
-  <span class="kw">color:</span> <span class="dt">green</span><span class="kw">;</span>
-  <span class="kw">font-size:</span> <span class="dt">larger</span><span class="kw">;</span>
-<span class="kw">}</span>
+<span class="token comment">/* Selects elements that have class "alert" AND class "success" */</span>
+<span class="token selector">.alert.success</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">/* And can combine with group selector */</span>
-<span class="co">/* applies to &lt;p class=&quot;highlighted&quot;&gt; and &lt;li class=&quot;selected&quot;&gt; */</span>
-p<span class="fl">.highlighted</span>, li<span class="fl">.marked</span> <span class="kw">{</span>
-  <span class="kw">background-color:</span> <span class="dt">yellow</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<span class="token comment">/* And can combine with group selector */</span>
+<span class="token comment">/* applies to &lt;p class="highlighted"> and &lt;li class="selected"> */</span>
+<span class="token selector">p.highlighted, li.marked</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This specificity can allow you to reuse class names (e.g., for shared semantics and readability purposes) but have them work differently for different elements. So a “highlighted” paragraph <code>p.highlighted</code> might look different than a “highlighted” heading <code>h1.highlighted</code>.</p>
 <p>Note that putting a space between the selectors parts instead specifies a <strong>descendant selector</strong>, which has a totally separate meaning. Every character matters!</p>
 </div>
 <div id="descendant-selector" class="section level3 unnumbered">
 <h3>Descendant Selector</h3>
 <p>So far, all selectors mentioned will apply to matching elements regardless of where they are in the HTML element tree. But sometimes you want to be more specific and style only a set of elements that exist within a particular parent or ancestor element, and not all the other matching elements elsewhere in the page. You can do this form of targeted selecting using a <strong>descendant selector</strong>. This is written by putting a blank space (<strong><code> </code></strong>) between selectors. Elements are only selected if they have <em>parents that match the selectors that precede them</em>:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;header&gt;</span>
-   <span class="kw">&lt;h1&gt;</span>Welcome to the page<span class="kw">&lt;/h1&gt;</span>
-   <span class="kw">&lt;p&gt;</span>I am a special paragraph<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;/header&gt;</span>
-<span class="kw">&lt;section&gt;</span>
-   <span class="kw">&lt;p&gt;</span>some other paragraph<span class="kw">&lt;/p&gt;</span>
-<span class="kw">&lt;/section&gt;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/*</span>
-<span class="co">  Selects p elements that exist within header elements</span>
-<span class="co">  Other p elements will not be affected</span>
-<span class="co"> */</span>
-header p <span class="kw">{</span>
-    <span class="co">/* ... */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Welcome to the page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>I am a special paragraph<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>some other paragraph<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/*
+  Selects p elements that exist within header elements
+  Other p elements will not be affected
+ */</span>
+<span class="token selector">header p</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You can have as many “levels” of a descendant selector as you want, and each level can be made up of any kind of selector. However, it is best to not have more than 2 or 3 levels. If you need to be more specific than that, then perhaps defining a new <code>.class</code> is in order.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* selects elements with class=&quot;logo&quot;</span>
-<span class="co">   contained within &lt;p&gt; elements</span>
-<span class="co">   contained within &lt;header&gt; elements */</span>
-header p <span class="fl">.logo</span> <span class="kw">{</span>
-    <span class="co">/* ... */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* selects elements with class="logo"
+   contained within &lt;p> elements
+   contained within &lt;header> elements */</span>
+<span class="token selector">header p .logo</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Note that descendant selectors will select matching descendant elements <em>anywhere</em> lower in the tree branch, not just direct children, so the <code>.logo</code> elements here could be nested several layers below the <code>&lt;p&gt;</code> element (perhaps inside a <code>&lt;span&gt;</code>). This is usually a good idea because you may introduce new nesting layers to your page as you go along, and don’t want to modify the CSS. But if you really want to select only <em>direct</em> children, you can use a variant known as a <strong>child selector</strong>, which uses a <strong><code>&gt;</code></strong> symbol to indicate direct descendants only:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;body&gt;</span>
-  <span class="kw">&lt;p&gt;</span>Body content<span class="kw">&lt;/p&gt;</span>
-  <span class="kw">&lt;section&gt;</span>
-    <span class="kw">&lt;p&gt;</span>Section content<span class="kw">&lt;/p&gt;</span>
-  <span class="kw">&lt;/section&gt;</span>
-<span class="kw">&lt;/body&gt;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* Selects page content (immediately within body),</span>
-<span class="co">   not section content (immediately within section) */</span>
-body &gt; p <span class="kw">{</span>
-  <span class="kw">color:</span> <span class="dt">blue</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Body content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Section content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/* Selects page content (immediately within body),
+   not section content (immediately within section) */</span>
+<span class="token selector">body > p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 <div id="pseudo-classes" class="section level3 unnumbered">
 <h3>Pseudo-classes</h3>
 <p>The last kind of selector you will commonly use in web development is the application of what are called <strong>pseudo-classes</strong>. These select elements based on what <strong>state</strong> the element is in: for example, whether a link has been visited, or whether the mouse is hovering over some content. You can almost think of these as pre-defined classes built into the browser, that are added and removed as you interact with the page.</p>
 <p>Pseudo-classes are written by placing a colon (<strong><code>:</code></strong>) and the name of the pseudo-class immediately after a basic selector like an element selector. You’ll see this most commonly with styling hyperlinks:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* style for unvisited links */</span>
-a<span class="dv">:link</span> <span class="kw">{</span> <span class="co">/*...*/</span> <span class="kw">}</span>
+<pre class="language-css"><code><span class="token comment">/* style for unvisited links */</span>
+<span class="token selector">a:link</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
 
-<span class="co">/* style for visited links */</span>
-a<span class="dv">:visited</span> <span class="kw">{</span> <span class="co">/*...*/</span> <span class="kw">}</span>
+<span class="token comment">/* style for visited links */</span>
+<span class="token selector">a:visited</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
 
-<span class="co">/* style for links the user is hovering over with the mouse */</span>
-a<span class="dv">:hover</span> <span class="kw">{</span> <span class="co">/*...*/</span> <span class="kw">}</span>
+<span class="token comment">/* style for links the user is hovering over with the mouse */</span>
+<span class="token selector">a:hover</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
 
-<span class="co">/* style for links that have keyboard focus */</span>
-a<span class="dv">:focus</span> <span class="kw">{</span> <span class="co">/*...*/</span> <span class="kw">}</span>
+<span class="token comment">/* style for links that have keyboard focus */</span>
+<span class="token selector">a:focus</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
 
-<span class="co">/* style for links as they are being &#39;activated&#39; (clicked) */</span>
-a<span class="dv">:active</span> <span class="kw">{</span> <span class="co">/*...*/</span> <span class="kw">}</span></code></pre></div>
+<span class="token comment">/* style for links as they are being 'activated' (clicked) */</span>
+<span class="token selector">a:active</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span></code></pre>
 <p class="alert alert-warning">
 Remember to always set both <code>hover</code> <em>and</em> <code>focus</code>, to support accessibility for people who cannot use a mouse. Additionally, <code>a:hover</code> <em>must</em> come after <code>a:link</code> and <code>a:visited</code>, and <code>a:active</code> must come after <code>a:hover</code> for these states to work correctly.
 </p>
@@ -517,17 +481,17 @@ Remember to always set both <code>hover</code> <em>and</em> <code>focus</code>, 
 <div id="attribute-selectors" class="section level3 unnumbered">
 <h3>Attribute Selectors</h3>
 <p>Finally, it is also possible to select element that have a particular attribute by using an <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors"><strong>attribute selector</strong></a>. Attribute selectors are written by placing brackets <strong><code>[]</code></strong> after a basic selector; inside the brackets you list the attribute and value you want to select for using <code>attribute=value</code> syntax:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* select all p elements whose &quot;lang=sp&quot; */</span>
-p<span class="ch">[lang=</span><span class="st">&quot;sp&quot;</span><span class="ch">]</span> <span class="kw">{</span>
-    <span class="kw">color:</span> <span class="dt">red</span><span class="kw">;</span>
-    <span class="kw">background-color:</span> orange<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* select all p elements whose "lang=sp" */</span>
+<span class="token selector">p[lang="sp"]</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>It is also possible to select attributes that only “partially” match a particular value; see the documentation for details.</p>
 <p>Note that it is most common to use this selector when styling form inputs; for example, to make checked boxes appear different than unchecked boxes:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* select &lt;input type=&quot;checked&quot;&gt; that have the &quot;checked&quot; state */</span>
-input<span class="ch">[type=checkbox]</span><span class="dv">:checked</span> <span class="kw">{</span>
-    <span class="kw">color:</span> <span class="dt">green</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* select &lt;input type="checked"> that have the "checked" state */</span>
+<span class="token selector">input[type=checkbox]:checked</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </div>
 <div id="property-values" class="section level2">
@@ -609,24 +573,24 @@ input<span class="ch">[type=checkbox]</span><span class="dv">:checked</span> <sp
 <h3>Colors</h3>
 <p>Colors of CSS properties can be specified in a few different ways.</p>
 <p>You can use one of a list of 140 <a href="http://www.w3schools.com/cssref/css_colornames.asp">predefined color names</a>:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> mediumpurple<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> mediumpurple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>While this does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a <a href="http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/">fascinating history</a>.</p>
 <p>Alternatively, you can specify a color as a <a href="https://en.wikipedia.org/wiki/RGB_color_model">“red-green-blue”</a> (RGB) value. This is a way of representing <em>additive color</em>, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> <span class="dt">rgb(147</span>, <span class="dt">112</span>, <span class="dt">219)</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>147, 112, 219<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* medium purple */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This value option is actually a <em>function</em> that takes a couple of parameters representing the amount of red, green, and blue respectively. Each parameter ranges from <code>0</code> (none of that color) to <code>255</code> (that color at full). Thus <code>rgb(255,0,0)</code> is pure bright red, <code>rgb(255,0,255)</code> is full red and blue but no green (creating magenta), <code>rgb(0,0,0)</code> is black and <code>rgb(255,255,255)</code> is white.</p>
 <p>Note that if you want to make the color somewhat transparent, you can also specify an <a href="https://en.wikipedia.org/wiki/Alpha_compositing">alpha</a> value using the <code>rgba()</code> function. This function takes a 4th parameter, which is a decimal value from <code>0</code> (fully transparent) to <code>1.0</code> (fully opaque):</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">background-color:</span> <span class="dt">rgba(0</span>,<span class="dt">0</span>,<span class="dt">0</span>,<span class="dt">0.5)</span><span class="kw">;</span> <span class="co">/* semi-transparent black */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">background-color</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0,0,0,0.5<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* semi-transparent black */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>CSS also <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">supports</a> <code>hsl()</code> and <code>hsla()</code> functions for specifying color in terms of a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">hue, saturation, lightness</a> color model.</p>
 <p>Finally, and most commonly, you can specify the RGB value as a <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> (base-16) number.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-   <span class="kw">color:</span> <span class="dt">#9370db</span><span class="kw">;</span> <span class="co">/* medium purple */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> #9370db<span class="token punctuation">;</span> <span class="token comment">/* medium purple */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>In this format, the color starts with a <code>#</code>, the first two characters represent the red (ranging from <code>00</code> to <code>FF</code>, which is hex for <code>255</code>), the second two characters represent the green, and the third two the blue:</p>
 <div class="figure">
 <img src="img/css/hex-reading.png" alt="How to reading a hex value, from Smashing Magazine." />
@@ -637,9 +601,9 @@ input<span class="ch">[type=checkbox]</span><span class="dv">:checked</span> <sp
 <div id="fonts-and-icons" class="section level3 unnumbered">
 <h3>Fonts and Icons</h3>
 <p>As mentioned in the previous chapter, you specify the typographical “font” for text using the <strong><code>font-family</code></strong> property. This property takes a <em>comma-separated list</em> of fonts to use; the browser will render the text using the first font in the list that is available (you can think of the rest as “back-ups”).</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">p <span class="kw">{</span>
-    <span class="kw">font-family:</span> <span class="st">&#39;Helvetica Nue&#39;</span>, <span class="st">&#39;Helvetica&#39;</span>, <span class="st">&#39;Arial&#39;</span>, <span class="dt">sans-serif</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span>, <span class="token string">'Helvetica'</span>, <span class="token string">'Arial'</span>, sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>The last font in the list should always be a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family">generic family name</a>. These are a list of “categories” that the browser can draw upon even if the computer doesn’t have any common fonts available. In pracice, the most common generic families used are <code>serif</code> (fonts with <a href="https://en.wikipedia.org/wiki/Serif">serifs</a>, e.g., “Times”), <code>sans-serif</code> (fonts <em>without</em> serifs, e.g., “Arial”), and <code>monospace</code> (fonts with <a href="https://en.wikipedia.org/wiki/Monospaced_font">equal width characters</a>, e.g., “Courier”).</p>
 <div class="figure">
 <img src="img/css/serifs.jpg" alt="Serif vs. Sans-Serif fonts. From 99designs.ca." />
@@ -647,31 +611,31 @@ input<span class="ch">[type=checkbox]</span><span class="dv">:checked</span> <sp
 </div>
 <p>It is also possible to include specific fonts in your web page, which will be delivered to the browser by the web server in case the client doesn’t have the previously available. You do this manually by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face"><code>@font-face</code></a> rule, and specifying the url for the font file (usually in <a href="https://en.wikipedia.org/wiki/Web_Open_Font_Format"><code>.woff2</code></a> format).</p>
 <p>However, it is usually easier to instead include a stylesheet that <em>already has this rule in place</em>. For example, the <a href="https://fonts.google.com/">Google Fonts</a> collection provides more than 800 different freely available fonts that you can include directly in your web page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;head&gt;</span>
-    <span class="co">&lt;!-- ... --&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token comment">&lt;!-- ... --></span>
 
-    <span class="co">&lt;!-- load stylesheet with font first so it is available --&gt;</span>
-    <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;https://fonts.googleapis.com/css?family=Encode+Sans&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
+    <span class="token comment">&lt;!-- load stylesheet with font first so it is available --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css?family=Encode+Sans<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 
-    <span class="co">&lt;!-- load stylesheet next --&gt;</span>
-    <span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;css/style.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;/head&gt;</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
-    <span class="kw">font-family:</span> <span class="st">&#39;Encode Sans&#39;</span>, <span class="dt">sans-serif</span><span class="kw">;</span> <span class="co">/* can now use Encode Sans */</span>
-<span class="kw">}</span></code></pre></div>
+    <span class="token comment">&lt;!-- load stylesheet next --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>css/style.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Encode Sans'</span>, sans-serif<span class="token punctuation">;</span> <span class="token comment">/* can now use Encode Sans */</span>
+<span class="token punctuation">}</span></code></pre>
 <p class="alert alert-info">
 Notice that the <code>&lt;link&gt;</code> reference can be to an external file on a different domain! This is common practice when utilizing fonts and CSS frameworks.
 </p>
 <p><strong>Important</strong> Note that when using Google Fonts, you’ll need to specify if you also want variations such as <strong>bold</strong> or <em>italic</em> typesets. For example, the <a href="https://fonts.google.com/specimen/Encode+Sans">Encode Sans</a> font is available in font weights (what you would set with <code>font-weight</code>) from <code>100</code> to <code>900</code>, but you need to specify these in the linked resource:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- includes normal (400) and bold (700) weights --&gt;</span>
-<span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;https://fonts.googleapis.com/css?family=Encode+Sans:400,700&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token comment">&lt;!-- includes normal (400) and bold (700) weights --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css?family=Encode+Sans:400,700<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>If you don’t include the different set of glyphs for the bolded font, then setting the text in that font to bold won’t have any effect (because the browser doesn’t now how to show text in “Bold Encode Sans”)!</p>
 <p>You can also use external font styles to easily add <strong>icons</strong> (symbols) to your web page by using an <em>dingbat (icon) font</em>. These are similar in concept to the infamous <a href="https://en.wikipedia.org/wiki/Wingdings">Wingdings</a> font: they are fonts where instead of the letter “A” looking like two bent lines with a bar between, it instead looks like a heart or a face or some other symbol. By including such a font, you get access to a large number of symbols that can easily be styled (read: colored and sized) to suit your needs.</p>
 <p class="alert alert-info">
 <a href="https://en.wikipedia.org/wiki/Emoji">Emoji</a> are defined using a different set of <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> values, and are browser and operating-system instead of being available through a font.
 </p>
 <p>The most popular icon set is called <a href="http://fontawesome.io/">Font Awesome</a>. You can include the Font Awesome font by linking to it as any other stylesheet:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;link</span><span class="ot"> href=</span><span class="st">&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&quot;</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li><p>This will load the stylesheet from a <a href="https://en.wikipedia.org/wiki/Content_delivery_network">Content Delivery Network (CDN)</a>, which is a web service intended to quickly serve files commonly used by multiple websites. In particular, browsers will <em>cache</em> (save) copies of these files locally, so that when you visit a different website (or the same website for a second time), the file will already be downloaded. We will load most of the CSS and JavaScript frameworks used in this class from a CDN.</p>
 <p class="alert alert-info">
@@ -679,7 +643,7 @@ The <code>.min</code> before the <code>.css</code> extension in the filename is 
 </p></li>
 </ul>
 <p>Font Awesome icons can then be included in your HTML by including an element with an appropriate CSS class (that sets the style of that content to be the correct font with the correct “character” content). For example, you can include a <a href="http://fontawesome.io/icon/universal-access/">Universal Access</a> icon with</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;i</span><span class="ot"> class=</span><span class="st">&quot;fa fa-universal-access&quot;</span><span class="ot"> aria-hidden=</span><span class="st">&quot;true&quot;</span><span class="kw">&gt;&lt;/i&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fa fa-universal-access<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li>Because the icon has no semantic meaning beyond an appearance, it is often included with a semantically-deficient (empty) <code>&lt;i&gt;</code> element. Remember to include an <code>aria-hidden</code> attribute so that a screen-reader won’t try to read the strange letter!</li>
 </ul>
@@ -688,35 +652,35 @@ The <code>.min</code> before the <code>.css</code> extension in the filename is 
 <div id="backgrounds-and-images" class="section level3 unnumbered">
 <h3>Backgrounds and Images</h3>
 <p>You have previously seen how to use the the <code>background-color</code> property to color the background of a particular element. However, CSS supports a much wider list of <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds">background-related</a> properties. For example, the <code>background-image</code> property will allow you to set an image as the background of an element:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">header <span class="kw">{</span>
-    <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&#39;../img/page-banner.png&#39;</span><span class="dt">)</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url('../img/page-banner.png')</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This property takes as a value a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/url"><code>url()</code></a> data type, which is written like a function whose parameter is a string with the URI of the resource to load. These URIs can be absolute (e.g., <code>http://...</code>), or relative <strong>to the location of the stylesheet</strong> (not to the web page!—you may need to use <code>..</code> if your <code>.css</code> file is inside a <code>css/</code> directory.</p>
 <p>There are additional properties used to customize background images, including where it should positioned in the element (e.g., centered), how large the image should be, whether it should repeat, whether it should scroll with the page, etc.</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">header <span class="kw">{</span>
-    <span class="kw">background-image:</span> <span class="dt">url(</span><span class="st">&#39;../img/page-banner.png&#39;</span><span class="dt">)</span><span class="kw">;</span>
-    <span class="kw">background-position:</span> <span class="dt">center</span> <span class="dt">top</span><span class="kw">;</span> <span class="co">/* align to center top */</span>
-    <span class="kw">background-size:</span> cover<span class="kw">;</span> <span class="co">/* stretch so element is filled; preserves ratio (img may be cropped) */</span>
-    <span class="kw">background-repeat:</span> <span class="dt">no-repeat</span><span class="kw">;</span> <span class="co">/* don&#39;t repeat */</span>
-    <span class="kw">background-attachment:</span> <span class="dt">fixed</span><span class="kw">;</span> <span class="co">/* stay still when window scrolls */</span>
-    <span class="kw">background-color:</span> beige<span class="kw">;</span> <span class="co">/* can still have this for anything the image doesn&#39;t cover</span>
-<span class="co">                                (or for transparent images) */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url">url('../img/page-banner.png')</span><span class="token punctuation">;</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> center top<span class="token punctuation">;</span> <span class="token comment">/* align to center top */</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span> <span class="token comment">/* stretch so element is filled; preserves ratio (img may be cropped) */</span>
+    <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span> <span class="token comment">/* don't repeat */</span>
+    <span class="token property">background-attachment</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span> <span class="token comment">/* stay still when window scrolls */</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> beige<span class="token punctuation">;</span> <span class="token comment">/* can still have this for anything the image doesn't cover
+                                (or for transparent images) */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This is a lot of properties! To understand all the options for their values, read through the <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds">documentation and examples</a> (also <a href="https://www.w3schools.com/css/css_background.asp">here</a> and <a href="https://css-tricks.com/almanac/properties/b/background/">here</a>).</p>
 <p>To try and make things easer, CSS also includes a <strong>shorthand property</strong> called just <strong><code>background</code></strong>. Shorthand properties allow you to specify multiple properties at once, in order to keep your code more compact (if somewhat less readable). Shorthand properties values are written as a <em>space-separated list of values</em>; for example, the above is equivalent to:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">header <span class="kw">{</span>
-    <span class="kw">background:</span> <span class="dt">url(</span><span class="st">&#39;../img/page-banner.png&#39;</span><span class="dt">)</span> <span class="dt">top</span> <span class="dt">center</span> / cover <span class="dt">no-repeat</span> <span class="dt">fixed</span> beige<span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url('../img/page-banner.png')</span> top center / cover no-repeat fixed beige<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <ul>
 <li>The <code>background-position</code> and <code>background-size</code> are separated by a <code>/</code> since they both can have more than one value.</li>
 <li>You can include some or all of the available background properties in the shorthand. Unlike most shorthand properties, the <code>background</code> properties can go in any order (though the above is recommended).</li>
 </ul>
 <p>Note that a shorthand property is interpreted as writing out all of the rules it replaces; so will <em>replace</em> any previous properties within the same rule:</p>
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css">body <span class="kw">{</span>
-    <span class="kw">background-color:</span> gold<span class="kw">;</span>
-    <span class="kw">background:</span> mediumpurple<span class="kw">;</span> <span class="co">/* later property override previous ones */</span>
-                              <span class="co">/* page will have a purple background */</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> mediumpurple<span class="token punctuation">;</span> <span class="token comment">/* later property override previous ones */</span>
+                              <span class="token comment">/* page will have a purple background */</span>
+<span class="token punctuation">}</span></code></pre>
 <p>Additionally, all of the <code>background</code> properties support <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Using_CSS_multiple_backgrounds">multiple backgrounds</a> by using a <em>comma-separated</em> list of values. This can enable you to easily overlay partially-transparent images on top of each other, similar to using layers in Photoshop.</p>
 <p>There are many, many other properties you can use as well to style your page. Be sure and look through all the documentation and examples, and explore the source code of existing pages to see how they achieved particular effects!</p>
 </div>

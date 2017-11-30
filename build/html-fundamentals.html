@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -415,11 +379,11 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <ul>
 <li><p>HTML tag names are not case sensitive, but you should always write them in all lowercase.</p></li>
 <li><p>Line breaks and white space around tags (including indentation) is ignored. Tags may thus be written on their own line, or <em>inline</em> with the content. These two uses of the <code>&lt;p&gt;</code> tag (which marks a <em>paragraph</em> of content) are equivalent:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
    The itsy bitsy spider went up the water spout.
-<span class="kw">&lt;/p&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 
-<span class="kw">&lt;p&gt;</span>The itsy bitsy spider went up the water spout.<span class="kw">&lt;/p&gt;</span></code></pre></div></li>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>The itsy bitsy spider went up the water spout.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></li>
 </ul>
 <p>Taken together, the tags and the content they <em>contain</em> are called an <strong>HTML Element</strong>. A website is made of a bunch of these elements.</p>
 <div id="some-example-tags" class="section level3 unnumbered">
@@ -449,48 +413,48 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <div id="comments" class="section level3 unnumbered">
 <h3>Comments</h3>
 <p>As with every programming language, HTML includes a way to add comments to your code. It does this by using a tag with special syntax:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- this is a comment --&gt;</span>
-<span class="kw">&lt;p&gt;</span>this is is not a comment<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token comment">&lt;!-- this is a comment --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>this is is not a comment<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>Because that syntax is somewhat awkward to type, most source-code editors will let you comment-out the currently highlighted text by pressing <code>cmd + /</code> (or <code>ctrl + /</code> on Windows). If you’re using a code editor, try placing your cursor on a line and using that keyboard command to comment and un-comment the line.</p>
 <p>Comments can appear anywhere in the file. Just as in other languages, they are ignored by any program reading the file (with a few interesting exceptions), but they do remain in the page and are visible when you <a href="http://webdesign.about.com/od/chrome/a/view-source-chrome.htm">view the page source</a>.</p>
 </div>
 <div id="attributes" class="section level3 unnumbered">
 <h3>Attributes</h3>
 <p>The start tag of an element may also contain one or more <strong>attributes</strong>. These are similar to attributes in object-oriented programming: they specify <em>properties</em>, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format <code>attributeName=value</code> (no spaces are allowed around the <code>=</code>); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;tag</span><span class="ot"> attributeA=</span><span class="st">&quot;value&quot;</span><span class="ot"> attributeB=</span><span class="st">&quot;value&quot;</span><span class="kw">&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>tag</span> <span class="token attr-name">attributeA</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span> <span class="token attr-name">attributeB</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>value<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
    content
-<span class="kw">&lt;/tag&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tag</span><span class="token punctuation">></span></span></code></pre>
 <p>For example, a hyperlink anchor (<code>&lt;a&gt;</code>) uses a <code>href</code> (“<strong>h</strong>ypertext <strong>ref</strong>erence”) attribute to specify where the content should link to:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;https://ischool.uw.edu&quot;</span><span class="kw">&gt;</span>iSchool homepage<span class="kw">&lt;/a&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://ischool.uw.edu<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>iSchool homepage<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li><p>In a hyperlink, the <em>content</em> of the tag is the displayed text, and the <em>attribute</em> specifies the link’s URL. Contrast this to the same link in Markdown:</p>
-<div class="sourceCode"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span class="ot">[iSchool homepage](https://ischool.uw.edu)</span></code></pre></div></li>
+<pre class="language-markdown"><code><span class="token url">[iSchool homepage](https://ischool.uw.edu)</span></code></pre></li>
 </ul>
 <p>Similarly, an image (<code>&lt;img&gt;</code>) uses the <code>src</code> (<strong>s</strong>ou<strong>rc</strong>e) attribute to specify what picture it is showing. The <code>alt</code> attribute contains alternate text to use if the browser can’t show images—such as with screen readers (for the visible impaired) and search engine indexers.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;baby_picture.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;a cute baby&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>baby_picture.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>a cute baby<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <ul>
 <li>Note that because an <code>&lt;img&gt;</code> has no textual content, it is an <em>empty element</em> (see below).</li>
 </ul>
 <p>There are also a number of <a href="http://www.w3schools.com/tags/ref_standardattributes.asp">global attributes</a> that can be used on any element. For example:</p>
 <ul>
 <li><p>Every HTML element can include an <strong><code>id</code></strong> attribute, which is used to give them a unique identifier so that we can refer to them later (e.g., from CSS or JavaScript). <code>id</code> attributes are named like variable names, and must be <strong>unique</strong> on the page.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>My Web Page<span class="kw">&lt;/h1&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>My Web Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
 <p>The <code>id</code> attribute is most commonly used used to create <a href="https://www.w3.org/TR/html4/struct/links.html#h-12.2.3">“bookmark hyperlinks”</a>, which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the <code>id</code> as the <strong>fragment</strong> of the URI to link to (e.g., after the <code>#</code> in the URI).</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;index.html#nav&quot;</span><span class="kw">&gt;</span>Link to element on `index.html` with `id=&quot;nav&quot;`<span class="kw">&lt;/a&gt;</span>
-<span class="kw">&lt;a</span><span class="ot"> href=</span><span class="st">&quot;#footnote&quot;</span><span class="kw">&gt;</span>Link to element on current page with `id=&quot;footnote&quot;`<span class="kw">&lt;/a&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index.html#nav<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to element on `index.html` with `id="nav"`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#footnote<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to element on current page with `id="footnote"`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
 <p>Note that the title attribute does NOT contain the <code>#</code> symbol, but the URI to link to does.</p></li>
 <li><p>The <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> lang=</span><span class="st">&quot;sp&quot;</span><span class="kw">&gt;</span>No me gusta<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>No me gusta<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>Specify the <code>lang</code> attribute for the <code>&lt;html&gt;</code> element (see below) to define the default language of the page; that way you don’t need to mark the language of every element. <strong>Always include this attribute</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span></code></pre></div></li>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre></li>
 </ul>
 </div>
 <div id="empty-elements" class="section level3 unnumbered">
 <h3>Empty Elements</h3>
 <p>A few HTML elements don’t require a closing tag because they <em>can’t</em> contain any content. These tags are often used for inserting media into a web page, such as with the <code>&lt;img&gt;</code> tag. With an <code>&lt;img&gt;</code> tag, you can specify the path to the image file in the <code>src</code> attribute, but the image element itself can’t contain additional text or other content. Since it can’t contain any content, we leave off the end tag entirely:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;picture.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;description of image for screen readers and indexers&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>picture.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description of image for screen readers and indexers<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>Older versions of HTML (and current related languages like <a href="https://en.wikipedia.org/wiki/XML">XML</a>) required you to include forward slash <code>/</code> just before the greater-than symbol. This “end” slash indicated that the element was complete and expected no further content:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;picture.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;description of image for screen readers and indexers&quot;</span> <span class="kw">/&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>picture.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description of image for screen readers and indexers<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span></code></pre>
 <p>This is no longer required in HTML5, so feel free to omit that forward slash (though some purists, or those working with XML, will still include it).</p>
 </div>
 </div>
@@ -508,12 +472,12 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <p class="caption">An example DOM tree (a tree of HTML elements).</p>
 </div>
 <p>In an HTML document, the “root” element of the tree is always an <strong><code>&lt;html&gt;</code></strong> element. Inside this we put a <code>&lt;body&gt;</code> element to contain the document’s “body” (that is, the shown content):</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
-  <span class="kw">&lt;body&gt;</span>
-    <span class="kw">&lt;h1&gt;</span>Hello world!<span class="kw">&lt;/h1&gt;</span>
-    <span class="kw">&lt;p&gt;</span>This is <span class="kw">&lt;em&gt;</span>conteeeeent<span class="kw">&lt;/em&gt;</span>!<span class="kw">&lt;/p&gt;</span>
-  <span class="kw">&lt;body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Hello world!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This is <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span>conteeeeent<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span>!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>This model of HTML as a tree of “nodes”—along with an API (programming interface) for manipulating them— is known as the <a href="https://en.wikipedia.org/wiki/Document_Object_Model"><strong>Document Object Model (DOM)</strong></a>. See <a href="dom.html#dom">Chapter 12</a> for details.</p>
 <p class="alert alert-warning">
 <strong>Caution!</strong> HTML elements have to be “closed” correctly, or the semantic meaning may be incorrect! If you forget to close the <code>&lt;h1&gt;</code> tag, then <em>all</em> of the following content will be considered part of the heading! Remember to close your inner tags <em>before</em> you close the outer ones. <a href="http://validator.w3.org/">Validating</a> your HTML can help with this.
@@ -523,15 +487,15 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <p>All HTML elements fall into one of two categories:</p>
 <ul>
 <li><p><strong>Block elements</strong> form a visible “block” on a page—in particular, they will be on a new line from the previous content, and any content after it will also be on a new line. These tend to be structural elements for a page: headings (<code>&lt;h1&gt;</code>), paragraphs (<code>&lt;p&gt;</code>), lists (<code>&lt;ul&gt;</code>), etc.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span>
-<span class="kw">&lt;div&gt;</span>Block element<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <div class="figure">
 <img src="img/html/block-element.png" alt="Two block elements rendered on a page." />
 <p class="caption">Two block elements rendered on a page.</p>
 </div></li>
 <li><p><strong>Inline elements</strong> are contained “in the line” of content. These will <em>not</em> have a line break after them. Inline elements are used to modify the content rather than set it apart, such as giving it emphasis (<code>&lt;em&gt;</code>) or declaring that it to be a hyperlink (<code>&lt;a&gt;</code>).</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;span&gt;</span>Inline element<span class="kw">&lt;/span&gt;</span>
-<span class="kw">&lt;span&gt;</span>Other inline element<span class="kw">&lt;/span&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
 <div class="figure">
 <img src="img/html/inline-element.png" alt="Two inline elements rendered on a page." />
 <p class="caption">Two inline elements rendered on a page.</p>
@@ -549,10 +513,10 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
 <div id="doctype-declaration" class="section level3 unnumbered">
 <h3>Doctype Declaration</h3>
 <p>All HTML files start with a <a href="https://en.wikipedia.org/wiki/Document_type_declaration">document type declaration</a>, commonly referred to as the “Doctype.” This tells the rendering program (e.g., the browser) what format and syntax your document is using. Since you’re writing pages with HTML 5, you can declare it as follows:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
+<pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     ...
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p><code>&lt;!DOCTYPE&gt;</code> isn’t technically an HTML tag (it’s actually XML). While modern browsers will perform a “best guess” as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!</p>
 </div>
 <div id="the-head-section" class="section level3 unnumbered">
@@ -561,15 +525,15 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
 <p>There are a couple of common elements you should include in the <code>&lt;head&gt;</code>:</p>
 <ul>
 <li><p>A <strong><code>&lt;title&gt;</code></strong>, which specifies the “title” of the webpage:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;title&gt;</span>My Page Title<span class="kw">&lt;/title&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>My Page Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span></code></pre>
 <p>Browsers will show the page title in the tab at the top of the browser window, and use that as the default bookmark name if you bookmark the page. But the title is <em>also</em> used by search indexers and screen readers for the blind, since it often provides a strong signal about what the page’s subject. Thus your title should be informative and reflective of the content.</p></li>
 <li><p>A <code>&lt;meta&gt;</code> tag that specifies the character encoding of the page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;UTF-8&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>The <code>&lt;meta&gt;</code> tag itself represents “metadata” (information about the page’s data), and uses an attribute and value to specify that information. The most important <code>&lt;meta&gt;</code> tag is for the character set, which tells the browser how to convert binary bits from the server into letters. Nearly all editors these days will save files in the <code>UTF-8</code> character set, which supports the mixing of different scripts (Latin, Cyrillic, Chinese, Arabic, etc) in the same file.</p></li>
 <li><p>You can also use the <code>&lt;meta&gt;</code> tag to include more information about the author, description, and keywords for your page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;your name&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;description&quot;</span><span class="ot"> content=</span><span class="st">&quot;description of your page&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;keywords&quot;</span><span class="ot"> content=</span><span class="st">&quot;list,of,keywords,separate,by,commas&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>author<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>your name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description of your page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>keywords<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>list,of,keywords,separate,by,commas<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>Note that the <code>name</code> attribute is used to specify the “variable name” for that piece of metadata, while the <code>content</code> attribute is used to specify the “value” of that metadata. <code>&lt;meta&gt;</code> elements are <em>empty elements</em> and have no content of their own.</p>
 <p>Again, these are not visible in the browser window (because they are in the <code>&lt;head&gt;</code>!), but will be used by search engines to index your page.</p>
 <ul>
@@ -582,20 +546,20 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
 <div id="web-page-template" class="section level2">
 <h2><span class="header-section-number">3.4</span> Web Page Template</h2>
 <p>Putting this all together produces the following “template” for making a web page:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
-<span class="kw">&lt;html</span><span class="ot"> lang=</span><span class="st">&quot;en&quot;</span><span class="kw">&gt;</span>
-<span class="kw">&lt;head&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> charset=</span><span class="st">&quot;utf-8&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;author&quot;</span><span class="ot"> content=</span><span class="st">&quot;your name&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;meta</span><span class="ot"> name=</span><span class="st">&quot;description&quot;</span><span class="ot"> content=</span><span class="st">&quot;description of your page&quot;</span><span class="kw">&gt;</span>
-   <span class="kw">&lt;title&gt;</span>My Page Title<span class="kw">&lt;/title&gt;</span>
-<span class="kw">&lt;/head&gt;</span>
-<span class="kw">&lt;body&gt;</span>
+<pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>author<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>your name<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>description of your page<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>My Page Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
    ...
    Content goes here!
    ...
-<span class="kw">&lt;/body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
 <p>You can use this to start off every web page you ever create from now on!</p>
 </div>
 <div id="resources-1" class="section level2 unnumbered">

@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -409,17 +373,17 @@ ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by m
 <li><p>The <strong>behaviors</strong> (functions) that operate on, utilize, or change that data. These are known as <em>methods</em> (technically <em>instance methods</em>, since they operate on a particular instance of the class). For example, a <code>Person</code> may be able to <code>sayHello()</code>, <code>trickOrTreat()</code>, or <code>eatCandy()</code>.</p></li>
 </ol>
 <p>In JavaScript, an Object’s properties can be seen as the <em>attributes</em> of that object. For example:</p>
-<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">let</span> person <span class="op">=</span> <span class="op">{</span>
-   <span class="dt">name</span><span class="op">:</span> <span class="st">&#39;Ada&#39;</span><span class="op">,</span>
-   <span class="dt">age</span><span class="op">:</span> <span class="dv">21</span><span class="op">,</span>
-   <span class="dt">costume</span><span class="op">:</span> <span class="st">&#39;Cheshire Cat&#39;</span>
-   <span class="dt">trickOrTreat</span><span class="op">:</span> <span class="kw">function</span>(newCandy)<span class="op">{</span>
-      <span class="kw">this</span>.<span class="va">candy</span>.<span class="at">push</span>(newCandy)<span class="op">;</span>
-   <span class="op">}</span>
-<span class="op">}</span>
+<pre class="language-javascript"><code><span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
+   name<span class="token punctuation">:</span> <span class="token string">'Ada'</span><span class="token punctuation">,</span>
+   age<span class="token punctuation">:</span> <span class="token number">21</span><span class="token punctuation">,</span>
+   costume<span class="token punctuation">:</span> <span class="token string">'Cheshire Cat'</span>
+   trickOrTreat<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>newCandy<span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>candy<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>newCandy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//tell me about this person!</span>
-<span class="va">console</span>.<span class="at">log</span>(<span class="va">person</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; is a &quot;</span> <span class="op">+</span> <span class="va">person</span>.<span class="at">costume</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//tell me about this person!</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" is a "</span> <span class="token operator">+</span> person<span class="token punctuation">.</span>costume<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This Object represents a thing with <code>name</code>, <code>age</code> and <code>costume</code> attributes (but we haven’t yet indicated that this Object has the <em>class</em>ification of “Person”). The value of the <code>trickOrTreat()</code> property is a function (remember: functions are values!), and is an example of how an Object can “have” a function.</p>
 <ul>
 <li>JavaScript even uses the <code>this</code> keyword to refer to <em>which</em> object that function being called on, just like Java! See <a href="es6.html#working-with-this">below</a> for more on the <code>this</code> keyword and its quirks.</li>
@@ -429,53 +393,53 @@ ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by m
 <div id="review-classes-in-java" class="section level3 unnumbered">
 <h3>Review: Classes in Java</h3>
 <p>First, consider the following simple class defined in <em>Java</em> (which should be review from earlier programming courses):</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//class declaration</span>
-<span class="kw">public</span> <span class="kw">class</span> Person {
+<pre class="language-java"><code><span class="token comment">//class declaration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
 
-    <span class="co">//attributes (private)</span>
-    <span class="kw">private</span> String firstName;
-    <span class="kw">private</span> <span class="dt">int</span> age;
+    <span class="token comment">//attributes (private)</span>
+    <span class="token keyword">private</span> String firstName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
 
-    <span class="co">//a Constructor method</span>
-    <span class="co">//this is called when the class is instantiated (with `new`)</span>
-    <span class="co">//and has the job of initializing the attributes</span>
-    <span class="kw">public</span> <span class="fu">Person</span>(String newName, <span class="dt">int</span> newAge){
-        <span class="co">//assign parameters to the attributes</span>
-        <span class="kw">this</span>.<span class="fu">firstName</span> = newName;
-        <span class="kw">this</span>.<span class="fu">age</span> = newAge;
-    }
+    <span class="token comment">//a Constructor method</span>
+    <span class="token comment">//this is called when the class is instantiated (with `new`)</span>
+    <span class="token comment">//and has the job of initializing the attributes</span>
+    <span class="token keyword">public</span> <span class="token function">Person</span><span class="token punctuation">(</span>String newName<span class="token punctuation">,</span> <span class="token keyword">int</span> newAge<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//assign parameters to the attributes</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> newName<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> newAge<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//return this Person&#39;s name</span>
-    <span class="kw">public</span> String <span class="fu">getName</span>() {
-        <span class="kw">return</span> <span class="kw">this</span>.<span class="fu">firstName</span>; <span class="co">//return own attribute</span>
-    }
+    <span class="token comment">//return this Person's name</span>
+    <span class="token keyword">public</span> String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>firstName<span class="token punctuation">;</span> <span class="token comment">//return own attribute</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//grow a year</span>
-    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">haveBirthday</span>() {
-        <span class="kw">this</span>.<span class="fu">age</span>++; <span class="co">//increase this person&#39;s age (accessing own attribute)</span>
-    }
+    <span class="token comment">//grow a year</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">haveBirthday</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//increase this person's age (accessing own attribute)</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//a method that takes in a Person type as a parameter</span>
-    <span class="kw">public</span> <span class="dt">void</span> <span class="fu">sayHello</span>(Person otherPerson) {
-        <span class="co">//call method on parameter object for printing</span>
-        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;Hello, &quot;</span> + otherPerson.<span class="fu">getName</span>());
+    <span class="token comment">//a method that takes in a Person type as a parameter</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">sayHello</span><span class="token punctuation">(</span>Person otherPerson<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//call method on parameter object for printing</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span> <span class="token operator">+</span> otherPerson<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="co">//access own attribute for printing</span>
-        System.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot;I am &quot;</span> + <span class="kw">this</span>.<span class="fu">age</span> +  <span class="st">&quot; years old&quot;</span>);
-    }
-}</code></pre></div>
+        <span class="token comment">//access own attribute for printing</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"I am "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">+</span>  <span class="token string">" years old"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>You can of course utilize this class (instantiate it and call its methods) as follows:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(String[] args) {
-    <span class="co">//instantiate two new People objects</span>
-    Person aliceObj = <span class="kw">new</span> <span class="fu">Person</span>(<span class="st">&quot;Alice&quot;</span>, <span class="dv">21</span>);
-    Person bobObj = <span class="kw">new</span> <span class="fu">Person</span>(<span class="st">&quot;Bob&quot;</span>, <span class="dv">42</span>);
+<pre class="language-java"><code><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//instantiate two new People objects</span>
+    Person aliceObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Person bobObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="co">//call method on Alice (changing her fields)</span>
-    aliceObj.<span class="fu">haveBirthday</span>();
+    <span class="token comment">//call method on Alice (changing her fields)</span>
+    aliceObj<span class="token punctuation">.</span><span class="token function">haveBirthday</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="co">//call the method ON Alice, and PASS Bob as a param to it</span>
-    aliceObj.<span class="fu">sayHello</span>(bobObj);
-}</code></pre></div>
+    <span class="token comment">//call the method ON Alice, and PASS Bob as a param to it</span>
+    aliceObj<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span>bobObj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>A few things to note about this syntax:</p>
 <ol style="list-style-type: decimal">
 <li>You declare (announce) that you’re defining a class by using the <code>class</code> keyword.</li>
@@ -491,47 +455,47 @@ ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by m
 <div id="es6-class-syntax" class="section level3 unnumbered">
 <h3>ES6 Class Syntax</h3>
 <p>Here is how you would create <em>the exact same class</em> in JavaScript using ES6 syntax:</p>
-<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//class declaration</span>
-<span class="kw">class</span> Person <span class="op">{</span>
+<pre class="language-javascript"><code><span class="token comment">//class declaration</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
 
-    <span class="co">//a Constructor method</span>
-    <span class="co">//this is called when the class is instantiated (with `new`)</span>
-    <span class="co">//and has the job of initializing the attributes</span>
-    <span class="at">constructor</span>(newName<span class="op">,</span> newAge) <span class="op">{</span>
-        <span class="co">//assign parameters to the attributes</span>
-        <span class="kw">this</span>.<span class="at">firstName</span> <span class="op">=</span> newName<span class="op">;</span>
-        <span class="kw">this</span>.<span class="at">age</span> <span class="op">=</span> newAge<span class="op">;</span>
-    <span class="op">}</span>
+    <span class="token comment">//a Constructor method</span>
+    <span class="token comment">//this is called when the class is instantiated (with `new`)</span>
+    <span class="token comment">//and has the job of initializing the attributes</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>newName<span class="token punctuation">,</span> newAge<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//assign parameters to the attributes</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> newName<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> newAge<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//return this Person&#39;s name</span>
-    <span class="at">getName</span>() <span class="op">{</span>
-        <span class="cf">return</span> <span class="kw">this</span>.<span class="at">firstName</span><span class="op">;</span> <span class="co">//return own attribute</span>
-    <span class="op">}</span>
+    <span class="token comment">//return this Person's name</span>
+    <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>firstName<span class="token punctuation">;</span> <span class="token comment">//return own attribute</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//grow a year</span>
-    <span class="at">haveBirthday</span>() <span class="op">{</span>
-        <span class="kw">this</span>.<span class="at">age</span><span class="op">++;</span> <span class="co">//increase this person&#39;s age (accessing own attribute)</span>
-    <span class="op">}</span>
+    <span class="token comment">//grow a year</span>
+    <span class="token function">haveBirthday</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//increase this person's age (accessing own attribute)</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//a method that takes in a Person type as a parameter</span>
-    <span class="at">sayHello</span>(otherPerson) <span class="op">{</span>
-        <span class="co">//call method on parameter object for printing</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hello, &quot;</span> <span class="op">+</span> <span class="va">otherPerson</span>.<span class="at">getName</span>())<span class="op">;</span>
+    <span class="token comment">//a method that takes in a Person type as a parameter</span>
+    <span class="token function">sayHello</span><span class="token punctuation">(</span>otherPerson<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//call method on parameter object for printing</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span> <span class="token operator">+</span> otherPerson<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="co">//access own attribute for printing</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;I am &quot;</span> <span class="op">+</span> <span class="kw">this</span>.<span class="at">age</span> <span class="op">+</span>  <span class="st">&quot; years old&quot;</span>)<span class="op">;</span>
-    <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
+        <span class="token comment">//access own attribute for printing</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"I am "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">+</span>  <span class="token string">" years old"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>And here is how you would use this class:</p>
-<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//instantiate two new People objects</span>
-<span class="kw">let</span> aliceObj <span class="op">=</span> <span class="kw">new</span> <span class="at">Person</span>(<span class="st">&quot;Alice&quot;</span><span class="op">,</span> <span class="dv">21</span>)<span class="op">;</span>
-<span class="kw">let</span> bobObj <span class="op">=</span> <span class="kw">new</span> <span class="at">Person</span>(<span class="st">&quot;Bob&quot;</span><span class="op">,</span> <span class="dv">42</span>)<span class="op">;</span>
+<pre class="language-javascript"><code><span class="token comment">//instantiate two new People objects</span>
+<span class="token keyword">let</span> aliceObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Alice"</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> bobObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"Bob"</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//call method on Alice (changing her attributes)</span>
-<span class="va">aliceObj</span>.<span class="at">haveBirthday</span>()<span class="op">;</span>
+<span class="token comment">//call method on Alice (changing her attributes)</span>
+aliceObj<span class="token punctuation">.</span><span class="token function">haveBirthday</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//call the method ON Alice, and PASS Bob as a param to it</span>
-<span class="va">aliceObj</span>.<span class="at">sayHello</span>(bobObj)<span class="op">;</span></code></pre></div>
+<span class="token comment">//call the method ON Alice, and PASS Bob as a param to it</span>
+aliceObj<span class="token punctuation">.</span><span class="token function">sayHello</span><span class="token punctuation">(</span>bobObj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>As you can see, this syntax is <em>very, <strong>very</strong></em> similar to Java! Just like with JavaScript functions, most of the changes have involved getting rid of type declarations. In fact, you can write a class in Java and then just delete a few words to make it an ES6 class.</p>
 <p>Things to notice:</p>
 <ol style="list-style-type: decimal">
@@ -556,25 +520,25 @@ Always name classes in PascalCase (starting with an Upper case letter)!
 </ol>
 <p>So really, it’s just like Java—except that for the differences in how you declare functions and the fact that we use the word <code>constructor</code> to name the constructor methods.</p>
 <p>The other difference is that while in Java we usually define each class inside it’s own file, in JavaScript you often create multiple classes in a single file, at the same global “level” as you declared other, non-class functions:</p>
-<div class="sourceCode"><pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="co">//script.js</span>
-<span class="st">&#39;use strict&#39;</span><span class="op">;</span>
+<pre class="language-javascript"><code><span class="token comment">//script.js</span>
+<span class="token string">'use strict'</span><span class="token punctuation">;</span>
 
-<span class="co">//declare a class</span>
-<span class="kw">class</span> Dog <span class="op">{</span>
-    <span class="at">bark</span>() <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
-<span class="op">}</span>
+<span class="token comment">//declare a class</span>
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
+    <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//declare another class</span>
-<span class="kw">class</span> Cat <span class="op">{</span>
-    <span class="at">meow</span>() <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
-<span class="op">}</span>
+<span class="token comment">//declare another class</span>
+<span class="token keyword">class</span> <span class="token class-name">Cat</span> <span class="token punctuation">{</span>
+    <span class="token function">meow</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//declare a (non-class) function</span>
-<span class="kw">function</span> <span class="at">petAnimal</span>(animal) <span class="op">{</span> <span class="co">/*...*/</span> <span class="op">}</span>
+<span class="token comment">//declare a (non-class) function</span>
+<span class="token keyword">function</span> <span class="token function">petAnimal</span><span class="token punctuation">(</span>animal<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">/*...*/</span> <span class="token punctuation">}</span>
 
-<span class="co">//at the &quot;main&quot; level, instantiate the classes and call the functions</span>
-<span class="kw">let</span> fido <span class="op">=</span> <span class="kw">new</span> <span class="at">Dog</span>()<span class="op">;</span>
-<span class="at">petAnimal</span>(fido)<span class="op">;</span> <span class="co">//pass this Dog object to the function</span></code></pre></div>
+<span class="token comment">//at the "main" level, instantiate the classes and call the functions</span>
+<span class="token keyword">let</span> fido <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Dog</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">petAnimal</span><span class="token punctuation">(</span>fido<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//pass this Dog object to the function</span></code></pre>
 <p class="alert alert-warning">
 Although the above syntax looks like Java, it’s important to remember that JavaScript class instances are still <em>just normal Objects like any other</em>. For example, you can add new properties and functions to that object, or overwrite the value of any property. Although it looks like a Java class, it doesn’t really behave like one.
 </p>
@@ -583,45 +547,45 @@ Although the above syntax looks like Java, it’s important to remember that Jav
 <h3>Inheritance</h3>
 <p>The ES6 <code>class</code> syntax also allows you to specify <strong>class inheritance</strong>, by which one class can <code>extend</code> another. Inheritance allows you to specify that one class is a <em>more specialized version</em> of another: that is, a version of that class with “extra abilities” (such as additional methods).</p>
 <p>As in Java, you use the <code>extends</code> keyword to indicate that one class should <strong>inherit</strong> from another:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//The &quot;parent/super&quot; class</span>
-<span class="kw">class</span> Dog <span class="op">{</span>
-  <span class="at">constructor</span>(name) <span class="op">{</span>
-      <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span>
-  <span class="op">}</span>
+<pre class="language-js"><code><span class="token comment">//The "parent/super" class</span>
+<span class="token keyword">class</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="at">sit</span>() <span class="op">{</span>
-      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;The dog &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span><span class="op">+</span><span class="st">&#39; sits. Good boy.&#39;</span>)<span class="op">;</span>
-  <span class="op">}</span>
+  <span class="token function">sit</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'The dog '</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">' sits. Good boy.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  <span class="at">bark</span>() <span class="op">{</span>
-      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;&quot;Woof!&quot;&#39;</span>)<span class="op">;</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+  <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'"Woof!"'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//The &quot;child/sub&quot; class (inherits abilities from Dog)</span>
-<span class="kw">class</span> Husky <span class="kw">extends</span> Dog <span class="op">{</span>
-    <span class="at">constructor</span>(name<span class="op">,</span> distance) <span class="op">{</span>
-        <span class="kw">super</span>(name)<span class="op">;</span> <span class="co">//call parent constructor</span>
-        <span class="kw">this</span>.<span class="at">distance</span> <span class="op">=</span> distance<span class="op">;</span>
-    <span class="op">}</span>
+<span class="token comment">//The "child/sub" class (inherits abilities from Dog)</span>
+<span class="token keyword">class</span> <span class="token class-name">Husky</span> <span class="token keyword">extends</span> <span class="token class-name">Dog</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span> distance<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call parent constructor</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>distance <span class="token operator">=</span> distance<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//a new method (&quot;special ability&quot;)</span>
-    <span class="at">throwFootball</span>() <span class="op">{</span>
-        <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Husky &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span><span class="op">+</span><span class="st">&#39; throws &#39;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">dist</span><span class="op">+</span><span class="st">&#39; yards&#39;</span>)<span class="op">;</span>
-    <span class="op">}</span>
+    <span class="token comment">//a new method ("special ability")</span>
+    <span class="token function">throwFootball</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Husky '</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">' throws '</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>dist<span class="token operator">+</span><span class="token string">' yards'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-    <span class="co">//override (replace) parent&#39;s method</span>
-    <span class="at">bark</span>() <span class="op">{</span>
-      <span class="kw">super</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//call parent method</span>
-      <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;(Go huskies!)&quot;</span>)<span class="op">;</span>
-    <span class="op">}</span>
-<span class="op">}</span>
+    <span class="token comment">//override (replace) parent's method</span>
+    <span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call parent method</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"(Go huskies!)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//usage</span>
-<span class="kw">let</span> dog <span class="op">=</span> <span class="kw">new</span> <span class="at">Husky</span>(<span class="st">&quot;Harry&quot;</span><span class="op">,</span> <span class="dv">60</span>)<span class="op">;</span> <span class="co">//make a Husky</span>
-<span class="va">dog</span>.<span class="at">sit</span>()<span class="op">;</span> <span class="co">//call inherited method</span>
-<span class="va">dog</span>.<span class="at">throwFootball</span>()<span class="op">;</span> <span class="co">//call own method</span>
-<span class="va">dog</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//call own (overridden) method</span></code></pre></div>
+<span class="token comment">//usage</span>
+<span class="token keyword">let</span> dog <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Husky</span><span class="token punctuation">(</span><span class="token string">"Harry"</span><span class="token punctuation">,</span> <span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//make a Husky</span>
+dog<span class="token punctuation">.</span><span class="token function">sit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call inherited method</span>
+dog<span class="token punctuation">.</span><span class="token function">throwFootball</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call own method</span>
+dog<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call own (overridden) method</span></code></pre>
 <p>In this case, the class <code>Husky</code> is a <em>specialized version</em> of the class <code>Dog</code>: it <strong><em>is a</em></strong> <code>Dog</code> that has a few special abilities (e.g., it can throw a football). We refer to the base, less specialized class (<code>Dog</code>) as the <strong>parent</strong> or <strong>super class</strong>, and the derived, more specialized class (<code>Husky</code>) as the <strong>child</strong> or <strong>sub-class</strong>.</p>
 <p>The sub-class <code>Husky</code> class <strong>inherits</strong> the methods defined in its parent: even though the <code>Husky</code> class didn’t define a <code>sit()</code> method, it still has that method define because the <em>parent</em> has that method defined! By extending an existing class, you get can get a lot of methods for free!</p>
 <p>The <code>Husky</code> class is also able to <strong>override</strong> its parents methods, defining it’s own specialized version (e.g., <code>bark()</code>). This is useful for adding customization, or for providing specific implementations of callbacks that may be utilized by a framework—a pattern that you’ll see in React.</p>
@@ -633,13 +597,13 @@ Note that despite this discussion, <em>JavaScript is not actually an object-orie
 <div id="arrow-functions" class="section level2">
 <h2><span class="header-section-number">15.2</span> Arrow Functions</h2>
 <p>As described in <a href="functional-programming.html#functional-programming">Chapter 11</a>, JavaScript lets you define functions as <em>anonymous values</em>:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> <span class="kw">function</span>(name) <span class="op">{</span>
-  <span class="cf">return</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span>
-<span class="op">}</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">'Hello '</span><span class="token operator">+</span>name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>As you have seen, the use of anonymous functions is incredibly common in JavaScript, particularly when used as anonymous callbacks. Because this is so common, ES6 introduced a simpler, more concise <em>shortcut syntax</em> for quickly specifying anonymous functions. Though officially called <a href="https://en.wikipedia.org/wiki/Anonymous_function">lambda functions</a>, they are more commonly known as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions"><strong>arrow functions</strong></a>, because of how they utilize an “arrow” symbol <strong><code>=&gt;</code></strong>:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> (name) <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="cf">return</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span>
-<span class="op">}</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'Hello '</span><span class="token operator">+</span>name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 <p>To turn an anonymous function into an <em>arrow function</em>, you just remove the <code>function</code> keyword from the definition, and place an arrow <code>=&gt;</code> between the parameter list and the block (indicating that the parameter list “goes to” the following block). This saves you a couple of characters when typing.</p>
 <p>And for simple callback functions, you can make this even <em>more</em> compact:</p>
 <div class="list-condensed">
@@ -650,111 +614,111 @@ Note that despite this discussion, <em>JavaScript is not actually an object-orie
 </ol>
 </div>
 <p>Thus the above <code>sayHello</code> method could be written using <strong>concise body</strong> format as:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> sayHello <span class="op">=</span> name <span class="op">=&gt;</span> <span class="st">&#39;Hello &#39;</span><span class="op">+</span>name<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> name <span class="token operator">=></span> <span class="token string">'Hello '</span><span class="token operator">+</span>name<span class="token punctuation">;</span></code></pre>
 <ul>
 <li>I recommend you always leave the parentheses <code>()</code> on the parameter list, as it helps with readability (and makes it easier to adjust the parameters later)!</li>
 </ul>
 <p>Note that if a function takes no parameters, you <strong>must</strong> include the <code>()</code> to indicate it is an arrow function:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//normal function syntax</span>
-<span class="kw">let</span> printHello <span class="op">=</span> <span class="kw">function</span>() <span class="op">{</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span>
-<span class="op">}</span>
+<pre class="language-js"><code><span class="token comment">//normal function syntax</span>
+<span class="token keyword">let</span> <span class="token function-variable function">printHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//arrow syntax</span>
-<span class="kw">let</span> printHello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="op">{</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span>
-<span class="op">}</span>
+<span class="token comment">//arrow syntax</span>
+<span class="token keyword">let</span> <span class="token function-variable function">printHello</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//concise body</span>
-<span class="kw">let</span> printHello <span class="op">=</span> () <span class="op">=&gt;</span> <span class="va">console</span>.<span class="at">log</span>(<span class="st">&#39;Hello world&#39;</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//concise body</span>
+<span class="token keyword">let</span> <span class="token function-variable function">printHello</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello world'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
 <li>Despite the above example, it’s better style to include the <code>{}</code> around a function body that doesn’t return a value.</li>
 </ul>
 <p>Arrow functions are particularly useful for specifying <em>anonymous callback functions</em>:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span>]<span class="op">;</span> <span class="co">//an array to work with</span>
+<pre class="language-js"><code><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//an array to work with</span>
 
-<span class="co">//normal function</span>
-<span class="va">array</span>.<span class="at">map</span>(<span class="kw">function</span>(num) <span class="op">{</span>
-  <span class="cf">return</span> num<span class="op">*</span><span class="dv">2</span><span class="op">;</span> <span class="co">//multiply each item by 2</span>
-<span class="op">}</span>)<span class="op">;</span>
+<span class="token comment">//normal function</span>
+array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> num<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//multiply each item by 2</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//arrow syntax</span>
-<span class="va">array</span>.<span class="at">map</span>(num <span class="op">=&gt;</span> <span class="op">{</span>
-  <span class="cf">return</span> num<span class="op">*</span><span class="dv">2</span><span class="op">;</span> <span class="co">//multiply each item by 2</span>
-<span class="op">}</span>)<span class="op">;</span>
+<span class="token comment">//arrow syntax</span>
+array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>num <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> num<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//multiply each item by 2</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="co">//concise body</span>
-<span class="va">array</span>.<span class="at">map</span>(num <span class="op">=&gt;</span> num<span class="op">*</span><span class="dv">2</span>)<span class="op">;</span></code></pre></div>
+<span class="token comment">//concise body</span>
+array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>num <span class="token operator">=></span> num<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p class="alert alert-info">
 Arrow functions are great and you should always use them for anonymous callback functions (if your target platform suppo them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
 </p>
 <div id="working-with-this" class="section level3 unnumbered">
 <h3>Working with <code>this</code></h3>
 <p>In JavaScript, functions are called on <strong>Objects</strong> by using <em>dot notation</em> (e.g., <code>myObject.myFunction()</code>). Inside a function, you can refer to the Object that the function was called on by using the <strong><code>this</code></strong> keyword. <code>this</code> is a local variable that is <em>implicitly assigned</em> the Object as a value.</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> doggy <span class="op">=</span> <span class="op">{</span>
-  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
-  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span>
-      <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span><span class="op">,</span> <span class="st">&quot;woofs&quot;</span>)<span class="op">;</span> <span class="co">//`this` is object the function was called on</span>
-  <span class="op">}</span>
-<span class="op">}</span>
+<pre class="language-js"><code><span class="token keyword">let</span> doggy <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"Fido"</span><span class="token punctuation">,</span>
+  bark<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">"woofs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//`this` is object the function was called on</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="va">doggy</span>.<span class="at">bark</span>()<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span></code></pre></div>
+doggy<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Fido woofs"</span></code></pre>
 <ul>
 <li>Here the <code>this</code> is assigned the object <code>doggy</code>, what <code>.bark()</code> was called on.</li>
 </ul>
 <p>But because functions are values and so can be assigned to multiple variables (given multiple labels), the object that a function is called on may not necessarily be the object that it was first assigned to as a property. <code>this</code> refers to object the function is called on at execution time, not at the time of definition:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//An object representing a Dog</span>
-<span class="kw">let</span> doggy <span class="op">=</span> <span class="op">{</span>
-  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Fido&quot;</span><span class="op">,</span>
-  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; woofs&quot;</span>)<span class="op">;</span> <span class="op">}</span>
-<span class="op">}</span>
+<pre class="language-js"><code><span class="token comment">//An object representing a Dog</span>
+<span class="token keyword">let</span> doggy <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"Fido"</span><span class="token punctuation">,</span>
+  bark<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" woofs"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">// An object representing another Dog</span>
-<span class="kw">let</span> doggo <span class="op">=</span> <span class="op">{</span>
-  <span class="dt">name</span><span class="op">:</span> <span class="st">&quot;Spot&quot;</span><span class="op">,</span>
-  <span class="dt">bark</span><span class="op">:</span> <span class="kw">function</span>() <span class="op">{</span> <span class="va">console</span>.<span class="at">log</span>(<span class="kw">this</span>.<span class="at">name</span> <span class="op">+</span> <span class="st">&quot; yips&quot;</span>)<span class="op">}</span>
-<span class="op">}</span>
+<span class="token comment">// An object representing another Dog</span>
+<span class="token keyword">let</span> doggo <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"Spot"</span><span class="token punctuation">,</span>
+  bark<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" yips"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-<span class="co">//This is Fido barking</span>
-<span class="va">doggy</span>.<span class="at">bark</span>( <span class="co">/*this = doggy*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Fido woofs&quot;</span>
+<span class="token comment">//This is Fido barking</span>
+doggy<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span> <span class="token comment">/*this = doggy*/</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Fido woofs"</span>
 
-<span class="co">//This is Spot barking</span>
-<span class="va">doggo</span>.<span class="at">bark</span>( <span class="co">/*this = doggo*/</span> )<span class="op">;</span> <span class="co">//=&gt; &quot;Spot yips&quot;</span>
+<span class="token comment">//This is Spot barking</span>
+doggo<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span> <span class="token comment">/*this = doggo*/</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Spot yips"</span>
 
-<span class="co">//This is Fido using Spot&#39;s bark!</span>
-<span class="va">doggy</span>.<span class="at">bark</span> <span class="op">=</span> <span class="va">doggo</span>.<span class="at">bark</span><span class="op">;</span> <span class="co">//assign the function value to `doggy`</span>
-<span class="va">doggy</span>.<span class="at">bark</span>( <span class="co">/*this = doggy*/</span>) <span class="co">//=&gt; &quot;Fido yips&quot;</span></code></pre></div>
+<span class="token comment">//This is Fido using Spot's bark!</span>
+doggy<span class="token punctuation">.</span>bark <span class="token operator">=</span> doggo<span class="token punctuation">.</span>bark<span class="token punctuation">;</span> <span class="token comment">//assign the function value to `doggy`</span>
+doggy<span class="token punctuation">.</span><span class="token function">bark</span><span class="token punctuation">(</span> <span class="token comment">/*this = doggy*/</span><span class="token punctuation">)</span> <span class="token comment">//=> "Fido yips"</span></code></pre>
 <ul>
 <li>Notice how the <code>this</code> variable is implicitly assigned a value of whatever object it was called on—even the function is assigned to a new object later!</li>
 </ul>
 <p>But because the <code>this</code> variable refers to the object the function is called on, problems can arise for <em>anonymous callback functions</em> that are not called on any object in particular:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Person <span class="op">{</span>
-   <span class="at">constructor</span>(name)<span class="op">{</span> <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span> <span class="op">}</span> <span class="co">//basic constructor</span>
+<pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//basic constructor</span>
 
-   <span class="co">//greet each person in the given array</span>
-   <span class="at">greetAll</span>(peopleArray) <span class="op">{</span>
-      <span class="co">//loop through each Person using a callback</span>
-      <span class="va">peopleArray</span>.<span class="at">forEach</span>(<span class="kw">function</span>(person) <span class="op">{</span>
-         <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hi&quot;</span><span class="op">+</span><span class="va">person</span>.<span class="at">name</span><span class="op">+</span><span class="st">&quot;, I&#39;m &quot;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span>)<span class="op">;</span>
-      <span class="op">}</span>)<span class="op">;</span>
-   <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
+   <span class="token comment">//greet each person in the given array</span>
+   <span class="token function">greetAll</span><span class="token punctuation">(</span>peopleArray<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">//loop through each Person using a callback</span>
+      peopleArray<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hi"</span><span class="token operator">+</span>person<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">", I'm "</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>In this example, the <code>greetAll()</code> function will produce an error: <code>TypeError: Cannot read property 'name' of undefined</code>. That is because the <code>this</code> is being called from within an anonymous callback function (the <code>function(person){...}</code>)—and that callback isn’t being called on any particular object (notice the lack of dot notation). Since the anonymous callback isn’t being executed on an object, <code>this</code> is assigned a value of <code>undefined</code> (and you can’t access <code>undefined.name</code>).</p>
 <p>The solution to this problem is to use <em>arrow functions</em>. An arrow function has the special feature that it shares the same lexical <code>this</code> as its surrounded code: that is, the <code>this</code> will not be reassigned to a (non-existent) object when used within an arrow function:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">class</span> Person <span class="op">{</span>
-   <span class="at">constructor</span>(name)<span class="op">{</span> <span class="kw">this</span>.<span class="at">name</span> <span class="op">=</span> name<span class="op">;</span> <span class="op">}</span>
+<pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+   <span class="token function">constructor</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> <span class="token punctuation">}</span>
 
-   <span class="at">greetAll</span>(peopleArray) <span class="op">{</span>
-      <span class="va">peopleArray</span>.<span class="at">forEach</span>((person) <span class="op">=&gt;</span> <span class="op">{</span> <span class="co">//arrow function (subtle difference)</span>
-         <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;Hi&quot;</span><span class="op">+</span><span class="va">person</span>.<span class="at">name</span><span class="op">+</span><span class="st">&quot;, I&#39;m &quot;</span><span class="op">+</span><span class="kw">this</span>.<span class="at">name</span>)<span class="op">;</span> <span class="co">//works correctly!</span>
-      <span class="op">}</span>)<span class="op">;</span>
-   <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
+   <span class="token function">greetAll</span><span class="token punctuation">(</span>peopleArray<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      peopleArray<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">//arrow function (subtle difference)</span>
+         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hi"</span><span class="token operator">+</span>person<span class="token punctuation">.</span>name<span class="token operator">+</span><span class="token string">", I'm "</span><span class="token operator">+</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//works correctly!</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
 <p>This property makes arrow functions invaluable when specifying callback functions, particularly once classes and objects are involved. <em>Always use arrow functions for anonymous callbacks!</em></p>
 <div class="alert alert-info">
 <p>Alternatively, it is possible to “permanently” associate a particular <code>this</code> value with a function, no matter what object that function is called on. This is called <strong>binding</strong> the <code>this</code>, and is done by calling the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind"><code>.bind()</code></a> method on the function and passing in the value you want to be assigned to <code>this</code>. The <code>.bind()</code> method will return a <em>new function</em> that has the value bound to it; often you will then take this new function and “re-assign” it to the old function variable:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//re-assign function</span>
-myFunction <span class="op">=</span> <span class="va">myFunction</span>.<span class="at">bind</span>(thisValue)<span class="op">;</span></code></pre></div>
+<pre class="language-js"><code><span class="token comment">//re-assign function</span>
+myFunction <span class="token operator">=</span> myFunction<span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>thisValue<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.
 </div>
 </div>
@@ -773,59 +737,59 @@ Note that the ECMAScript committee is currently <a href="https://whatwg.github.i
 </p>
 </div>
 <p>As in Java, ES6 Modules are able to “load” external modules or libraries by using the <strong><code>import</code></strong> keyword:</p>
-<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="co">//Java example: import `Random` variable from `java.util` to use globally</span>
-<span class="kw">import</span> java.util.Random</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//JavaScript: import the `Random` variable from a `util.js` module</span>
-<span class="im">import</span> <span class="op">{</span> Random <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./util&#39;</span><span class="op">;</span></code></pre></div>
+<pre class="language-java"><code><span class="token comment">//Java example: import `Random` variable from `java.util` to use globally</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Random</code></pre>
+<pre class="language-js"><code><span class="token comment">//JavaScript: import the `Random` variable from a `util.js` module</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Random <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./util'</span><span class="token punctuation">;</span></code></pre>
 <p>This is most common version of the ES6 <code>import</code> syntax: you write the keyword <code>import</code>, following by a set of braces <code>{ }</code> containing a comma-separated sequence of variables you wish to “import” from a particular module. This is followed by the <code>from</code> keyword, followed by a string containing the <strong>relative path</strong> to the module script to import. Note that including the extension of the module script is usually optional (by default, ES6 will look for files ending in <code>.js</code>).</p>
 <ul>
 <li><p>Be sure to include the <code>./</code> to indicate that you’re loading a file from a particular directory. If you leave that off, the module loader will look for a module installed on the <em>load path</em> (e.g., in <code>node_modules/</code>). That is how you load external files such as jQuery though:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//with jquery installed in `node_modules/`</span>
-<span class="co">//import the `$` and `jQuery` variables</span>
-<span class="im">import</span> <span class="op">{</span>$<span class="op">,</span> jQuery<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;jquery&#39;</span><span class="op">;</span></code></pre></div></li>
+<pre class="language-js"><code><span class="token comment">//with jquery installed in `node_modules/`</span>
+<span class="token comment">//import the `$` and `jQuery` variables</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>$<span class="token punctuation">,</span> jQuery<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'jquery'</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>If you want to make a variable available from one module to use in another, you will need to <strong>export</strong> it (so that it can be “imported” elsewhere). You do this by using the <strong><code>export</code></strong> keyword, placed in front of the variable declaration:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
-<span class="im">export</span> <span class="kw">let</span> question <span class="op">=</span> <span class="st">&quot;Why&#39;d the chicken cross the road?&quot;</span><span class="op">;</span>
-<span class="im">export</span> <span class="kw">let</span> answer <span class="op">=</span> <span class="st">&quot;To get to the other side&quot;</span><span class="op">;</span>
-<span class="im">export</span> <span class="kw">function</span> <span class="at">laugh</span>() <span class="op">{</span>
-    <span class="va">console</span>.<span class="at">log</span>(<span class="st">&quot;hahaha&quot;</span>)<span class="op">;</span>
-<span class="op">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
-<span class="im">import</span> <span class="op">{</span> question<span class="op">,</span> answer<span class="op">,</span> laugh <span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">/*** my-module.js ***/</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> question <span class="token operator">=</span> <span class="token string">"Why'd the chicken cross the road?"</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">let</span> answer <span class="token operator">=</span> <span class="token string">"To get to the other side"</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">laugh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hahaha"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-js"><code><span class="token comment">/*** index.js ***/</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> question<span class="token punctuation">,</span> answer<span class="token punctuation">,</span> laugh <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span>
 
-<span class="va">console</span>.<span class="at">log</span>(question)<span class="op">;</span> <span class="co">//=&gt; &quot;Why&#39;d the chicken cross the road?&quot;</span>
-<span class="va">console</span>.<span class="at">log</span>(answer)<span class="op">;</span> <span class="co">//=&gt; &quot;To get to the other side&quot;</span>
-<span class="at">laugh</span>()<span class="op">;</span> <span class="co">//&quot;hahaha&quot;</span></code></pre></div>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>question<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Why'd the chicken cross the road?"</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>answer<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "To get to the other side"</span>
+<span class="token function">laugh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//"hahaha"</span></code></pre>
 <ul>
 <li>Note that you can export functions as well as variables, since functions <em>are</em> values!</li>
 <li>Once a value has been imported, it is available globally (just as if it were defined in a previous <code>&lt;script&gt;</code> tag)</li>
 </ul>
 <p>There are a number of ways to export and import variables, giving you significant customization on which values you wish to share and load:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
-<span class="im">export</span> <span class="kw">function</span> <span class="at">foo</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;foo&#39;</span><span class="op">;</span> <span class="op">}</span> <span class="co">//make available (as above)</span>
+<pre class="language-js"><code><span class="token comment">/*** my-module.js ***/</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'foo'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">//make available (as above)</span>
 
-<span class="kw">function</span> <span class="at">bar</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;bar&#39;</span><span class="op">;</span> <span class="op">}</span>
-<span class="im">export</span> bar<span class="op">;</span> <span class="co">//export previously defined variable</span>
+<span class="token keyword">function</span> <span class="token function">bar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'bar'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token keyword">export</span> bar<span class="token punctuation">;</span> <span class="token comment">//export previously defined variable</span>
 
-<span class="im">export</span> <span class="op">{</span> bar <span class="im">as</span> barFunction <span class="op">};</span> <span class="co">//provide an &quot;alias&quot; (consumer name) for value</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span> bar <span class="token keyword">as</span> barFunction <span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//provide an "alias" (consumer name) for value</span>
 
-<span class="co">//will not be available (a &quot;private&quot; function)</span>
-<span class="kw">function</span> <span class="at">baz</span>() <span class="op">{</span> <span class="cf">return</span> <span class="st">&#39;baz&#39;</span><span class="op">;</span> <span class="op">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
-<span class="im">import</span> <span class="op">{</span>foo<span class="op">,</span> barFunction<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//import multiple values</span>
-<span class="at">foo</span>() <span class="co">//=&gt; &#39;foo&#39;</span>
-<span class="at">barFunction</span>() <span class="co">//=&gt; &#39;bar&#39;</span>
+<span class="token comment">//will not be available (a "private" function)</span>
+<span class="token keyword">function</span> <span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token string">'baz'</span><span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-js"><code><span class="token comment">/*** index.js ***/</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>foo<span class="token punctuation">,</span> barFunction<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span> <span class="token comment">//import multiple values</span>
+<span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//=> 'foo'</span>
+<span class="token function">barFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//=> 'bar'</span>
 
-<span class="im">import</span> <span class="op">{</span>foo <span class="im">as</span> myFoo<span class="op">}</span> <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//provide an &quot;alias&quot; for value</span>
-<span class="at">myFoo</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;foo&#39;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>foo <span class="token keyword">as</span> myFoo<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span> <span class="token comment">//provide an "alias" for value</span>
+<span class="token function">myFoo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'foo'</span>
 
-<span class="im">import</span> <span class="op">*</span> <span class="im">as</span> theModule <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span> <span class="co">//import everything that was exported</span>
-                                          <span class="co">//loads as a single object with values</span>
-                                          <span class="co">//as properties</span>
-<span class="va">theModule</span>.<span class="at">foo</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;foo&#39;</span>
-<span class="va">theModule</span>.<span class="at">barFunction</span>()<span class="op">;</span> <span class="co">//=&gt; &#39;bar&#39;</span>
-<span class="va">theModule</span>.<span class="at">baz</span>()<span class="op">;</span> <span class="co">//Error [private function]</span></code></pre></div>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> theModule <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span> <span class="token comment">//import everything that was exported</span>
+                                          <span class="token comment">//loads as a single object with values</span>
+                                          <span class="token comment">//as properties</span>
+theModule<span class="token punctuation">.</span><span class="token function">foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'foo'</span>
+theModule<span class="token punctuation">.</span><span class="token function">barFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 'bar'</span>
+theModule<span class="token punctuation">.</span><span class="token function">baz</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//Error [private function]</span></code></pre>
 <p>Note the additional syntax options in this example:</p>
 <ul>
 <li><p>You can use the <strong><code>as</code></strong> keyword to “alias” a variable either when it is exported (so it is shared with a different name) or when it is imported (so it is loaded and assigned a different name). This is particularly useful when trying to produce a clean API for a module (so you <code>export</code> values with consistent names, even if you don’t use those internally), or when you want to <code>import</code> a variable with a very long name.</p></li>
@@ -850,19 +814,19 @@ module.checkPassword('password'); //false, passwords don't match
 ``` --></li>
 </ul>
 <p>Finally, each module can also <code>export</code> a <em>single</em> (just one!) <strong>default</strong> variable, which provides a slight shortcut when importing the variable from that module. You specify the <em>default export</em> by including the <strong><code>default</code></strong> keyword immediately after <code>export</code>:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** my-module.js ***/</span>
-<span class="im">export</span> <span class="im">default</span> <span class="kw">function</span> <span class="at">sayHello</span>() <span class="op">{</span>
-    <span class="cf">return</span> <span class="st">&#39;Hello world!&#39;</span><span class="op">;</span>
-<span class="op">}</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** index.js ***/</span>
-<span class="im">import</span> greet <span class="im">from</span> <span class="st">&#39;./my-module&#39;</span><span class="op">;</span>
+<pre class="language-js"><code><span class="token comment">/*** my-module.js ***/</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">'Hello world!'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-js"><code><span class="token comment">/*** index.js ***/</span>
+<span class="token keyword">import</span> greet <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span>
 
-<span class="at">greet</span>()<span class="op">;</span> <span class="co">//=&gt; &quot;Hello world!&quot;</span></code></pre></div>
+<span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello world!"</span></code></pre>
 <ul>
 <li>When importing a <code>default</code> export, you just provide the variable name (“alias”) you wish to refer to that exported value by.</li>
 <li><p>Note that it is also possible to make anonymous values into <code>default</code> exports:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">/*** animals.js ***/</span>
-<span class="im">export</span> <span class="im">default</span> [<span class="st">&#39;lion&#39;</span><span class="op">,</span> <span class="st">&#39;tiger&#39;</span><span class="op">,</span> <span class="st">&#39;bear&#39;</span>]<span class="op">;</span> <span class="co">//export anonymous array</span></code></pre></div></li>
+<pre class="language-js"><code><span class="token comment">/*** animals.js ***/</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token string">'lion'</span><span class="token punctuation">,</span> <span class="token string">'tiger'</span><span class="token punctuation">,</span> <span class="token string">'bear'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//export anonymous array</span></code></pre></li>
 </ul>
 <p>The <code>default</code> export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single <code>class</code>. That single <code>class</code> can be made the <code>default</code> export, allowing other modules to import it quickly and easily as <code>import MyComponent from './MyComponent.js'</code>.</p>
 <div class="alert alert-info">
@@ -878,23 +842,23 @@ This section describes ES6 modules, which are used with web applications (being 
 <div id="template-strings" class="section level3 unnumbered">
 <h3>Template Strings</h3>
 <p>In ES6, you can declare Strings that contain embedded expressions, allowing you to “inject” an expression directly into a string (rather than needing to concatenate the String with that expression). These are known as <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"><strong>template strings</strong></a> (or <em>template literals</em>). Template strings are written in back ticks (<strong><code>``</code></strong>) rather than quotes, with the injected expressions written inside of a <strong><code>${}</code></strong> token:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> name <span class="op">=</span> <span class="st">&#39;world&#39;</span><span class="op">;</span>
-<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>name<span class="sc">}</span><span class="vs">!`</span><span class="op">;</span> <span class="co">//template string</span>
-<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token template-string"><span class="token string">`Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!`</span></span><span class="token punctuation">;</span> <span class="token comment">//template string</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello, world!"</span></code></pre>
 <ul>
 <li>Template strings can also include line breaks, allowing you to make multi-line strings!</li>
 </ul>
 <p>Note that you can put <em>any</em> expression inside the <code>${}</code> token; however, it’s best practice to keep the expression as simple as possible (such as by using a local variable) to support readability:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> name <span class="op">=</span> <span class="st">&#39;world&#39;</span><span class="op">;</span>
+<pre class="language-js"><code><span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">'world'</span><span class="token punctuation">;</span>
 
-<span class="co">//greeting with capitalization. Don&#39;t do this!</span>
-<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span><span class="va">name</span>.<span class="at">substr</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>).<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">!`</span>
-<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;;</span>
+<span class="token comment">//greeting with capitalization. Don't do this!</span>
+<span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token template-string"><span class="token string">`Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> name<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!`</span></span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello, world!";</span>
 
-<span class="co">//do this instead!</span>
-<span class="kw">let</span> capitalizedName <span class="op">=</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">0</span><span class="op">,</span><span class="dv">1</span>).<span class="at">toUpperCase</span>() <span class="op">+</span> <span class="va">name</span>.<span class="at">substr</span>(<span class="dv">1</span>)<span class="op">;</span>
-<span class="kw">let</span> greeting <span class="op">=</span> <span class="vs">`Hello, </span><span class="sc">${</span>capitalizedName<span class="sc">}</span><span class="vs">`</span>
-<span class="va">console</span>.<span class="at">log</span>(greeting)<span class="op">;</span> <span class="co">//=&gt; &quot;Hello, world!&quot;;</span></code></pre></div>
+<span class="token comment">//do this instead!</span>
+<span class="token keyword">let</span> capitalizedName <span class="token operator">=</span> name<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> name<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> greeting <span class="token operator">=</span> <span class="token template-string"><span class="token string">`Hello, </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>capitalizedName<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello, world!";</span></code></pre>
 <!-- One more example:
 
 ```js
@@ -917,44 +881,44 @@ excuse('Joel', 'Lemur', 'Smell');
 <div id="destructuring-and-spreading" class="section level3 unnumbered">
 <h3>Destructuring and Spreading</h3>
 <p>ES6 also introduced <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"><strong>destructing assignments</strong></a>, which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. You do this by writing the variables you wish to assign to inside of <strong><code>[]</code></strong> on the <em>left-hand side</em> of the assignment—almost like you are assigning to an array!</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> array <span class="op">=</span> [<span class="dv">1</span><span class="op">,</span> <span class="dv">2</span><span class="op">,</span> <span class="dv">3</span>]
-<span class="kw">let</span> [x<span class="op">,</span> y<span class="op">,</span> z] <span class="op">=</span> array<span class="op">;</span> <span class="co">//assign array elements to `x`, `y`, `z` respectively</span>
-<span class="va">console</span>.<span class="at">log</span>(x)<span class="op">;</span> <span class="co">//=&gt; 1;</span>
-<span class="va">console</span>.<span class="at">log</span>(y)<span class="op">;</span> <span class="co">//=&gt; 2;</span>
-<span class="va">console</span>.<span class="at">log</span>(z)<span class="op">;</span> <span class="co">//=&gt; 3;</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">;</span> <span class="token comment">//assign array elements to `x`, `y`, `z` respectively</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 1;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 2;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3;</span></code></pre>
 <p>If the array contains more than the target number of elements the extra elements will be ignored. However, you can capture them by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"><strong>spread operator</strong></a> (<strong><code>...</code></strong>), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="kw">let</span> dimensions <span class="op">=</span> [<span class="dv">10</span><span class="op">,</span> <span class="dv">20</span><span class="op">,</span> <span class="dv">30</span><span class="op">,</span> <span class="dv">40</span>]<span class="op">;</span>
-<span class="kw">let</span> [width<span class="op">,</span> height<span class="op">,</span> ...<span class="at">rest</span>] <span class="op">=</span> dimensions
-<span class="va">console</span>.<span class="at">log</span>(width)<span class="op">;</span>  <span class="co">//=&gt; 10</span>
-<span class="va">console</span>.<span class="at">log</span>(height)<span class="op">;</span> <span class="co">//=&gt; 20</span>
-<span class="va">console</span>.<span class="at">log</span>(rest)<span class="op">;</span>   <span class="co">//=&gt; [30, 40];</span></code></pre></div>
+<pre class="language-js"><code><span class="token keyword">let</span> dimensions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">]</span> <span class="token operator">=</span> dimensions
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 20</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//=> [30, 40];</span></code></pre>
 <p>More commonly, the <em>spread operator</em> is used to specify that a function can take an undefined number of arguments, and to gather all of these objects into a single array:</p>
-<div class="sourceCode"><pre class="sourceCode js"><code class="sourceCode javascript"><span class="co">//a function that logs out all of the parameters</span>
-<span class="kw">function</span> <span class="at">gather</span>(...<span class="at">args</span>)<span class="op">{</span>
-    <span class="co">//all the parameters will be grouped into a single array `args`</span>
-    <span class="va">args</span>.<span class="at">forEach</span>((arg) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="va">console</span>.<span class="at">log</span>(arg) <span class="co">//can log out all of them, no matter how many!</span>
-    <span class="op">}</span>)<span class="op">;</span>
-<span class="op">}</span>
+<pre class="language-js"><code><span class="token comment">//a function that logs out all of the parameters</span>
+<span class="token keyword">function</span> <span class="token function">gather</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//all the parameters will be grouped into a single array `args`</span>
+    args<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> <span class="token comment">//can log out all of them, no matter how many!</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="at">gather</span>(<span class="st">&#39;a&#39;</span><span class="op">,</span> <span class="st">&#39;b&#39;</span><span class="op">,</span> <span class="st">&#39;c&#39;</span>)<span class="op">;</span> <span class="co">//=&gt; &quot;a&quot; &quot;b&quot; &quot;c&quot;</span>
-<span class="at">gather</span>(<span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">,</span><span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">5</span><span class="op">,</span><span class="dv">6</span>)<span class="op">;</span> <span class="co">//=&gt; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot;</span>
+<span class="token function">gather</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "a" "b" "c"</span>
+<span class="token function">gather</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "1" "2" "3" "4" "5" "6"</span>
 
-<span class="co">//a function that adds up all the arguments (no matter how many)</span>
-<span class="kw">function</span> <span class="at">sum</span>(...<span class="at">numbers</span>) <span class="op">{</span>
-    <span class="co">//number is an array, so we can `reduce()` it!</span>
-    <span class="kw">let</span> total <span class="op">=</span> <span class="va">numbers</span>.<span class="at">reduce</span>((runningTotal<span class="op">,</span> num) <span class="op">=&gt;</span> <span class="op">{</span>
-        <span class="cf">return</span> runningTotal <span class="op">+</span> num<span class="op">;</span> <span class="co">//new total</span>
-    <span class="op">},</span> <span class="dv">0</span>)<span class="op">;</span> <span class="co">//start at 0</span>
+<span class="token comment">//a function that adds up all the arguments (no matter how many)</span>
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token operator">...</span>numbers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//number is an array, so we can `reduce()` it!</span>
+    <span class="token keyword">let</span> total <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>runningTotal<span class="token punctuation">,</span> num<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> runningTotal <span class="token operator">+</span> num<span class="token punctuation">;</span> <span class="token comment">//new total</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//start at 0</span>
 
-    <span class="cf">return</span> total<span class="op">;</span>
+    <span class="token keyword">return</span> total<span class="token punctuation">;</span>
 
-    <span class="co">//or as one line with a concise arrow function:</span>
-    <span class="cf">return</span> <span class="va">numbers</span>.<span class="at">reduce</span>((total<span class="op">,</span> n) <span class="op">=&gt;</span> total<span class="op">+</span>n)<span class="op">;</span>
-<span class="op">}</span>
+    <span class="token comment">//or as one line with a concise arrow function:</span>
+    <span class="token keyword">return</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span>total<span class="token punctuation">,</span> n<span class="token punctuation">)</span> <span class="token operator">=></span> total<span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-<span class="at">sum</span>(<span class="dv">3</span><span class="op">,</span><span class="dv">4</span><span class="op">,</span><span class="dv">3</span>)<span class="op">;</span> <span class="co">// =&gt; 10</span>
-<span class="at">sum</span>(<span class="dv">10</span><span class="op">,</span><span class="dv">20</span><span class="op">,</span><span class="dv">30</span><span class="op">,</span><span class="dv">40</span>)<span class="op">;</span> <span class="co">// =&gt; 100</span></code></pre></div>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 10</span>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 100</span></code></pre>
 <p>These are a few of the more common and potentially useful ES6 features. However, remember that most of these are just “syntactic shortcuts” for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don’t need to utilize these features in your code (though they can be helpful), and they will often show up in how we utilize libraries such as React.</p>
 <p class="alert">
 Arrow functions are not optional. <strong>Always use arrow functions for anonymous callbacks!</strong>

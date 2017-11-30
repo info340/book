@@ -16,6 +16,12 @@ Additionally, you may need to install the following libraries separately:
 
 - LaTeX for building to `pdf` ([MiKTeX](https://miktex.org/) for Windows, [MacTex](https://www.tug.org/mactex/) on Mac).
 
+You will _also_ need to install node dependencies for Prism syntax highlighting:
+
+```bash
+npm install
+```
+
 ## Building the Book
 You can use the included [`Makefile`](https://en.wikipedia.org/wiki/Makefile) to build the book:
 

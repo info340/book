@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-11-28">
+<meta name="date" content="2017-11-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -59,45 +59,9 @@
 </script>
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-pre, code { background-color: #f8f8f8; }
-code > span.kw { color: #204a87; font-weight: bold; } /* Keyword */
-code > span.dt { color: #204a87; } /* DataType */
-code > span.dv { color: #0000cf; } /* DecVal */
-code > span.bn { color: #0000cf; } /* BaseN */
-code > span.fl { color: #0000cf; } /* Float */
-code > span.ch { color: #4e9a06; } /* Char */
-code > span.st { color: #4e9a06; } /* String */
-code > span.co { color: #8f5902; font-style: italic; } /* Comment */
-code > span.ot { color: #8f5902; } /* Other */
-code > span.al { color: #ef2929; } /* Alert */
-code > span.fu { color: #000000; } /* Function */
-code > span.er { color: #a40000; font-weight: bold; } /* Error */
-code > span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #000000; } /* Constant */
-code > span.sc { color: #000000; } /* SpecialChar */
-code > span.vs { color: #4e9a06; } /* VerbatimString */
-code > span.ss { color: #4e9a06; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #000000; } /* Variable */
-code > span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #ce5c00; font-weight: bold; } /* Operator */
-code > span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code > span.ex { } /* Extension */
-code > span.at { color: #c4a000; } /* Attribute */
-code > span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
-code > span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
 </head>
 
 <body>
@@ -478,18 +442,18 @@ You should try out this software! Follow the above links to learn how to turn on
 <p>For example, an <code>&lt;h1&gt;</code> element is used to indicate a top-level heading, such as the title of the page. But by default, browsers will give <code>&lt;h1&gt;</code> elements a different visual appearance than unmarked content (usually by making it larger and bold). It is possible to achieve a similar visual effect just using CSS:</p>
 <div class="row">
 <div class="column col2">
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- html --&gt;</span>
-<span class="kw">&lt;h1&gt;</span>This is a real heading!<span class="kw">&lt;/h1&gt;</span>
-<span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;fake-header&quot;</span><span class="kw">&gt;</span>
+<pre class="language-html"><code><span class="token comment">&lt;!-- html --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>This is a real heading!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>fake-header<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     This just LOOKS like a heading.
-<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 </div>
 <div class="column col2">
-<div class="sourceCode"><pre class="sourceCode css"><code class="sourceCode css"><span class="co">/* css */</span>
-<span class="fl">.fake-header</span> <span class="kw">{</span>
-  <span class="kw">font-size:</span> <span class="dt">2em</span><span class="kw">;</span>
-  <span class="kw">font-weight:</span> <span class="dt">bold</span><span class="kw">;</span>
-<span class="kw">}</span></code></pre></div>
+<pre class="language-css"><code><span class="token comment">/* css */</span>
+<span class="token selector">.fake-header</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
 </div>
 </div>
 <div class="figure">
@@ -511,7 +475,7 @@ Never use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 <p>The WCAG is developed by the <a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a>, who <em>also)</em> have authored an additional <strong>web standard</strong> for supporting accessibility. This standard is called the <a href="https://www.w3.org/TR/wai-aria/">Accessible Rich Internet Applications Suite</a>, or <strong>ARIA</strong>. ARIA specifies an <em>extension</em> to HTML, defining additional HTML <em>attributes</em> that can be included in elements in order to provide additional support for screen readers. For example, ARIA provides additional support to help screen readers navigate through a page (for people who can’t just visually scroll), as well as providing a mechanism by which “rich” interactive web apps (such as those you will create with JavaScript) can communicate their behavior to screen readers.</p>
 <p>In short, where the HTML standard falls short in supporting accessibility, ARIA steps in.</p>
 <p>For example, the ARIA specification defines a <a href="https://www.w3.org/TR/wai-aria/roles"><strong><code>role</code></strong></a> attribute that allows non-semantic elements (such as <code>&lt;div&gt;</code> elements) to specify their semantic purpose. For example:</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;btn&quot;</span><span class="ot"> role=</span><span class="st">&quot;button&quot;</span><span class="kw">&gt;</span>Submit<span class="kw">&lt;/div&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Submit<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>would define a unsemantic <code>div</code> element that is <em>styled</em> (via a developer-defined CSS class) to look like a button. But in order to tell the screen reader that this element can be clicked like a button, it is given the <code>role</code> of <code>&quot;button&quot;</code>. There are a <a href="https://www.w3.org/TR/wai-aria/roles#roles_categorization_header">large number</a> of different roles (following a potentially complex classification scheme), and include <a href="https://www.w3.org/TR/wai-aria/roles#widget_rolls">roles for interactive widgets</a> such as a popup <code>dialog</code>, a <code>progressbar</code>, or a <code>menu</code>. These are important when making complex interactions, though for most simpler pages you can stick with the standard semantic elements (e.g., a <code>&lt;button&gt;</code> instead of a custom <code>&lt;div&gt;</code>).</p>
 <p>The other important type of ARIA <code>role</code> are <a href="https://www.w3.org/TR/wai-aria/roles#landmark_role_header">landmark roles</a>. These are roles that are used to indicate specific locations in the document, to allow the screen reader to easily “jump” to different sections of the content (thus making the page <em>navigable</em>). Landmark roles include:</p>
 <ul>
@@ -548,33 +512,33 @@ One metaphor is that nested HTML elements into a <code>&lt;div&gt;</code> is lik
 <h3>Visual Information (Perceivable)</h3>
 <p>Webpages often contain a significant amount of <em>primarily visual</em> information. In addition to obvious media such as images or video, interactive elements may be labeled visually (e.g., a search button that shows a magnifying glass). In order to make web pages accessible, screen readers need a way to <strong>perceive</strong> and correctly interpret such content.</p>
 <p>The most common form of visual information are images (created with the <code>&lt;img&gt;</code> element). In order to make images accessible, you should always include an <code>alt</code> attribute that gives <strong>alt</strong>ernate text for when the images cannot be displayed (e.g., on screen readers, but also if the image fails to load):</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;baby_picture.jpg&quot;</span><span class="ot"> alt=</span><span class="st">&quot;a cute baby&quot;</span><span class="kw">&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>baby_picture.jpg<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>a cute baby<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
 <p>This will be read by screen readers as “a cute baby, image”. Note that the “alt-text” should not include introductory text such as <em>“a picture of”</em>, as screen readers will already report that something is an image!</p>
 <p class="alert alert-success">
 Every image should include an <code>alt</code> attribute!
 </p>
 <p>For more complex images (such as charts or infographics), you can instead provide a <em>link</em> to a longer description by using the <code>longdesc</code> attribute. This attribute takes a value that is a URI (relative or absolute; what you would put in the <code>href</code> attribute of a hyperlink) referring to where the description can be found. Screen readers will prompt the user with the option to then navigate to this long description.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;accessibility_infographic.png&quot;</span>
-<span class="ot">     alt=</span><span class="st">&quot;an infographic showing how to make web pages accessible&quot;</span>
-<span class="ot">     longdesc=</span><span class="st">&quot;infographic_text.html&quot;</span><span class="kw">&gt;</span> <span class="co">&lt;!-- link to other page with text description --&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>accessibility_infographic.png<span class="token punctuation">"</span></span>
+     <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>an infographic showing how to make web pages accessible<span class="token punctuation">"</span></span>
+     <span class="token attr-name">longdesc</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>infographic_text.html<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- link to other page with text description --></span></code></pre>
 <p>Of course, including descriptive text is good for <em>any</em> user, not just the visually impaired! If you wish to add a caption to an image, you can do so accessibly by placing the image inside a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/figure"><code>&lt;figure&gt;</code></a> element, and then using a <code>&lt;figcaption&gt;</code> element to semantically designate the caption.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;figure&gt;</span>
-    <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;chart.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;a chart showing some information&quot;</span><span class="kw">&gt;</span>
-    <span class="kw">&lt;figcaption&gt;</span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figure</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>a chart showing some information<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>figcaption</span><span class="token punctuation">></span></span>
         A caption for the above figure. It provides the same information,
         but in a text format.
-    <span class="kw">&lt;/figcaption&gt;</span>
-<span class="kw">&lt;/figure&gt;</span></code></pre></div>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figcaption</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>figure</span><span class="token punctuation">></span></span></code></pre>
 <p>(The <code>&lt;figure&gt;</code> element is another good example of how multiple HTML elements may be nested and combined to produce complex but accessible page structure!)</p>
 <p>On the other hand, some images (or other elements) are purely decorative: company logos, icons that accompany text descriptions on buttons, etc. You can cause a screen reader to “skip” these elements by using an ARIA attribute <code>aria-hidden</code>. The element will still appear on the page, it just will be ignored by screen readers.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="co">&lt;!-- a search button with an icon --&gt;</span>
-<span class="co">&lt;!-- the icon will not be read, but the button text will be --&gt;</span>
-<span class="kw">&lt;button&gt;&lt;img</span><span class="ot"> src=</span><span class="st">&quot;search_icon.png&quot;</span><span class="ot"> aria-hidden=</span><span class="st">&quot;true&quot;</span><span class="kw">&gt;</span>Search<span class="kw">&lt;/button&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token comment">&lt;!-- a search button with an icon --></span>
+<span class="token comment">&lt;!-- the icon will not be read, but the button text will be --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>search_icon.png<span class="token punctuation">"</span></span> <span class="token attr-name">aria-hidden</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Search<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>It is also possible to use ARIA attribute to provide an equivalent to an <code>alt</code> tag for elements other than <code>&lt;img&gt;</code>, such as a <code>&lt;div&gt;</code> that may be styled in a purely visual way (perhaps with a background image). The <strong><code>aria-label</code></strong> acts like the alt attribute for any element, specifying what text should be read <em>in place of the normal content</em>.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;green-rect&quot;</span><span class="ot"> aria-label=</span><span class="st">&quot;a giant green rectangle&quot;</span><span class="kw">&gt;&lt;/div&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>green-rect<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>a giant green rectangle<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>For longer descriptions, use the <strong><code>aria-describedby</code></strong> attribute to include a reference to the <code>id</code> of a different element <em>on the same page</em> that contains the textual description. <code>aria-describedby</code> takes as a value a fragment reference (similar to a bookmark hyperlink) to the element containing the description.</p>
-<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;green-rect&quot;</span><span class="ot"> aria-describedby=</span><span class="st">&quot;#rectDetail&quot;</span><span class="kw">&gt;&lt;/div&gt;</span>
-<span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;rectDetail&quot;</span><span class="kw">&gt;</span>The above rectangle is giant and green.<span class="kw">&lt;/p&gt;</span></code></pre></div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>green-rect<span class="token punctuation">"</span></span> <span class="token attr-name">aria-describedby</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#rectDetail<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>rectDetail<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>The above rectangle is giant and green.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>As with bookmark hyperlinks, notice that the <code>aria-describedby</code> value starts with a <code>#</code>, but the target element’s <code>id</code> does not.</p>
 <p>Additionally, note that while <code>aria-label</code> attributes <em>replaces</em> its elements content, the <code>aria-describedby</code> attribute will be read <em>after</em> the element’s content (see also <a href="https://www.aaron-gustafson.com/notebook/aria-quicktip-labelledby-vs-describedby/">here</a>).</p>
 <p>ARIA provides a number of other attributes that can be used to control screen readers, but these are the most common and useful.</p>
