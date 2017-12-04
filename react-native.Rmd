@@ -11,7 +11,7 @@ The easiest way to start a new React Native application is to use the [**`create
 To use this program install it **globally**, and then execute it to create a new React Native project in the current folder:
 
 ```bash
-create-react-native-app react-native-demo
+create-react-native-app MyNativeApp
 ```
 
 This scaffolding will include a number of configuration files (see the [User Guide](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md) for details), but you'll mostly be interested in **`App.js`**, whose _default_ export will be the "root" component of your application (mobile apps are usually designed around a View component that is shown, rather than an `index.js` style script to execute).
@@ -35,6 +35,7 @@ There are a few different ways to "run" and test your application as you're deve
 
     - For iOS, you can start up the Simulator program (it is found inside `Xcode.app/Contents/Developer/Applications`. If you right-click on the `Xcode.app` program and select "Show Package Contents", you will be able to navigate to it). You will then be able to install and run an app on Simulator (using Expo) via the **`npm run ios`** command. You can access the development menu on the device by hitting `cmd-d`.
 
+- Finally, [Expo Snack](https://snack.expo.io/) allows you to develop, test, and run simple React Native apps entirely online! This can be a good way to test out the design or to share code snippets with others.
 
 ## React Native Apps
 Writing React Native code uses the same process and techniques as writing normal React code: you define **Components** that `render` Views, which themselves are made up of more Components! These components can be passed in **props** and track **state** just like in React. In fact, if you look at the default **`App.js`** file created by `create-react-native-app`, you'll see that it's just basic React code.

@@ -374,7 +374,7 @@
 <h2><span class="header-section-number">22.1</span> Getting Setup</h2>
 <p>The easiest way to start a new React Native application is to use the <a href="https://github.com/react-community/create-react-native-app"><strong><code>create-react-native-app</code></strong></a> program. This works almost identically to the <code>create-react-app</code> program you know and love, except it will scaffold you a React Native application and provide build scripts utilizes for testing and developing native apps.</p>
 <p>To use this program install it <strong>globally</strong>, and then execute it to create a new React Native project in the current folder:</p>
-<pre class="language-bash"><code>create-react-native-app react-native-demo</code></pre>
+<pre class="language-bash"><code>create-react-native-app MyNativeApp</code></pre>
 <p>This scaffolding will include a number of configuration files (see the <a href="https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md">User Guide</a> for details), but you’ll mostly be interested in <strong><code>App.js</code></strong>, whose <em>default</em> export will be the “root” component of your application (mobile apps are usually designed around a View component that is shown, rather than an <code>index.js</code> style script to execute).</p>
 <p class="alert alert-warning">
 <code>create-react-native-app</code> doesn’t currently work with <code>npm</code> version <code>5.0</code> or greater. Until this is fixed, the best solution is to use <a href="https://yarnpkg.com/en/"><strong>yarn</strong></a> to install and manage react native applications. Note that installing <code>yarn</code> may cause <a href="https://stackoverflow.com/questions/33870520/npm-install-cannot-find-module-semver">issues</a> with <code>npm</code> that you’d need to resolve: proceed with caution if under a deadline! Alternatively, you can downgrade to an older version of <code>npm</code> using <code>npm install -g npm@4</code>
@@ -391,6 +391,7 @@
 <p>You can then install and run an app on the emulator (using Expo) via the <strong><code>npm run android</code></strong> command. You can access the development menu on the device from the notification, or by hitting <code>cmd-m</code>.</p></li>
 <li><p>For iOS, you can start up the Simulator program (it is found inside <code>Xcode.app/Contents/Developer/Applications</code>. If you right-click on the <code>Xcode.app</code> program and select “Show Package Contents”, you will be able to navigate to it). You will then be able to install and run an app on Simulator (using Expo) via the <strong><code>npm run ios</code></strong> command. You can access the development menu on the device by hitting <code>cmd-d</code>.</p></li>
 </ul></li>
+<li><p>Finally, <a href="https://snack.expo.io/">Expo Snack</a> allows you to develop, test, and run simple React Native apps entirely online! This can be a good way to test out the design or to share code snippets with others.</p></li>
 </ul>
 </div>
 </div>
