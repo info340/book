@@ -218,14 +218,14 @@ class LoginPage extends Component {
   }
 
   render() {
+    if(this.state.redirect) { //if we should redirect
+      return <Redirect to='/home' />;
+    }
+
+    //otherwise, show the form
     return (
       <div>
-        {/* Redirect if we're supposed to */}
-        {this.state.redirect &&
-          <Redirect to='/home' />
-        }
-
-        <form class="login-form"> {/* Otherwise, show the form */}
+        <form class="login-form">
           ...
         </form>
       </div>
@@ -234,7 +234,36 @@ class LoginPage extends Component {
 }
 ```
 
+<p class="alert alert-warning">Caution: you should _not_ render a `<Redirect>` element as the child of displayed content (e.g., inside a `<div>`). This can cause issues with the redirect taking multiple "DOM update cycles" to process, interfering with your application's processing. Instead, determine whether you should redirect and if so `return` just the `<Redirect>` element (e.g., a "break early" sentinel condition).</p>
+
 That covers most of the basic features of React Router. Be sure to check out the [documentation](https://reacttraining.com/react-router/web/guides/philosophy) for more details, as well as the [extensive examples](https://reacttraining.com/react-router/web/example/basic) (though they use some alternate, less readable React syntax).
+
+
+### React Router and Github Pages {-}
+React Router's client-side routing introduce a few additional considerations when the you wish to deploy your app on a non-development server, such as Github Pages (e.g., what happens when you [deploy](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages) a `create-react-app` project).
+
+_First_, consider what happens when you type a route (e.g., `https://domain.com/about` to access the `/about` route) into the browser's URL bar in order to navigate to it. This creates an HTTP Request for the resource at the URI with an `/about` path. When that request is received by the web server, that server will perform _server-side routing_ and attempt to access the resource at that location (e.g., it will look for an `/about/index.html` page). But this isn't what you want to happen&dmdash;because there is no content at that resource (no `/about/index.html`), the server will return a [404](https://http.cat/404) error.
+
+Instead, you want the server to take the request for the `/about` resource and _instead_ return your root `/index.html` page, but with the appropriate JavaScript code which will allow the _client-side routing_ to change the browser's URL bar and show the content at the `/about` route. In effect, you want the server to be able to return your root `index.html` page no matter what route is specified in the HTTP Request!
+
+It is perfectly possible to have a web server do this (to _not_ perform server-side routing and instead always return `/index.html` no matter what resource is requested); indeed, this is what the Create React App development server does. However GitHub Pages doesn't have this functionality: if you send an HTTP request for a resource that doesn't exist (e.g., `/about`), you will receive a 404 error. There are a few ways to work around this:
+
+1. You can utilize a [**`<HashRouter>`**](https://reacttraining.com/react-router/web/api/HashRouter) instead of a `<BrowserRouter>` The `<HashRouter>` uses the [fragment identifier](https://en.wikipedia.org/wiki/Fragment_identifier) portion of the URI to record and track which route the user is viewing: the HTTP request is thus sent to `https://domain.com/index.html#/about` to get the `/about` route&mdash;and since `index.html` is the default resource, this can be abbreviated to `https://domain.com/#/about`, which is _almost_ as good. In this way you are always requesting the appropriate resource (`/index.html`), but can still perform client-side routing. The trade-off is that your URLs will have extraneous `#` symbols in them (which also makes utilizing inner-page navigation with the fragment more difficult), and going to `domain.com/about` will _still_ cause a 404 error.
+
+2. The other approach is to replace Github Page's 404 page with something that goes to your `index.html` (using _server-side routing_)&mdash;so instead of the user being shown the 404, they are shown your `index.html` which is about to do the client-side routing! [`spa-github-pages`](https://github.com/rafrex/spa-github-pages) provides some boilerplate for doing this, but it is a "hacky" approach as is not recommended.
+
+3. The best approach would be to utilize a different web hosting system that better supports the server-side routing needed for single-page applications. For example, [Firebase Hosting](https://firebase.google.com/docs/hosting/) allows you to specify a [rewrite rule](https://firebase.google.com/docs/hosting/url-redirects-rewrites#section-rewrites) that will cause the server to return your `index.html` no matter which route the HTTP Request specifies. Create React App also has some [details](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#firebase) about deploying to Firebase.
+
+
+_Second_, in addition to the server-side routing issue, you will need to do extra work to handle `<Redirect>` elements if your application's URL is in a _subresource_ of the server (e.g., it can be found at `https://domain.com/app/index.html`). While `<Link>` elements will route correctly in this case (`<Link to='/home'>` will go to `https://domain.com/app/home`), `<Redirect>` elements will _overwrite_ the path part of the URI: `<Redirect to='/home'>` will take you to to `https://domain.com/home`, losing the fact that your application is in `/app` resource.
+
+Luckily, it is easy to support this behavior and tell React Router that all paths should be treated relative to that subresource (relative to the `/app` path). You do this by passing the [**`basename`**](https://reacttraining.com/react-router/web/api/BrowserRouter/basename-string) prop to the `<Router>`:
+
+```jsx
+<BrowserRouter basename={process.env.PUBLIC_URL+'/'}>
+```
+
+- This example specifies that the "base" uri should be whatever URI was listed in the `"homepage"` key of the project's `package.json` folder, such as what you specifying when [deploying Create React App to Github Pages](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#github-pages). You would want to use that exact expression (`process.env.PUBLIC_URL`), which is a global variable referring to the _env_ironment of the bundling node process; the `PUBLIC_URL` key is assigned the `homepage` property by Create React App.
 
 
 ## Resources {-}
