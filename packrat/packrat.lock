@@ -56,7 +56,7 @@ Hash: e3a02070cf705d3ad1c5af1635a515a3
 Package: bindrcpp
 Source: CRAN
 Version: 0.2
-Hash: 465c5d1c8a405bc4b5f2bf773bf13b55
+Hash: 8ab2dbf7ea120cf2d31183e0bf388485
 Requires: Rcpp, bindr, plogr
 
 Package: bitops
@@ -94,7 +94,7 @@ Hash: e53fb8c58673df868183697e39a6a4d6
 Package: dplyr
 Source: CRAN
 Version: 0.7.2
-Hash: 0da461d989cac5291b73fac8bb82e4ea
+Hash: a4e8be0458f97a40806bcced654de815
 Requires: BH, R6, Rcpp, assertthat, bindrcpp, glue, magrittr,
     pkgconfig, plogr, rlang, tibble
 
@@ -199,6 +199,7 @@ Hash: 0dda4a2654a22b36a715c2b0b6fbacac
 Package: plogr
 Source: CRAN
 Version: 0.1-1
+Hash: fb19215402e2d9f1c7f803dcaa806fc2
 
 Package: plyr
 Source: CRAN

@@ -187,3 +187,14 @@ And with that, you can automatically test if your page's interactivity works as 
 
 ### Practice {-}
 Add functionality to the `index.js` file so that when the "Panic" button is pressed, the HTML's `.alert` element is displayed. Then write a test in `index.spec.js` to confirm that this behavior works.
+
+
+<!-- ## Testing React with Enzyme
+
+React Jest
+- enzyme mounting
+- inspecting content
+- assert .text(), .length, etc
+- automating interaction (simulate)
+- test specific props/state (can adjust them as well!)
+- bonus: function mock/spy -->

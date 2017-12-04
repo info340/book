@@ -1,0 +1,181 @@
+# Special Topics: React Native {#react-native}
+
+As a special topic, this chapter provides a brief introduction to [**React Native**](https://facebook.github.io/react-native/), a framework for using React to build mobile applications (e.g., apps for Android or iOS). The React Native framework provides a set of build tools that allow you to _compile_ React code (written in JavaScript) into _native_ mobile code (Java for Android; Objective-C for iOS). This allows you to utilize your existing knowledge of client-side web development to also create mobile apps as if you had written them in their normal development language! Moreover, the same React code can be converted into apps for both iOS and Android (as well as for the web), with you only needing to adjust any platform-specific features. Three platforms for the price of one!
+
+- This chapter's explanation mirrors the [official tutorial](https://facebook.github.io/react-native/docs/getting-started.html) for React Native; see that for more details.
+
+
+## Getting Setup
+The easiest way to start a new React Native application is to use the [**`create-react-native-app`**](https://github.com/react-community/create-react-native-app) program. This works almost identically to the  `create-react-app` program you know and love, except it will scaffold you a React Native application and provide build scripts utilizes for testing and developing native apps.
+
+To use this program install it **globally**, and then execute it to create a new React Native project in the current folder:
+
+```bash
+create-react-native-app react-native-demo
+```
+
+This scaffolding will include a number of configuration files (see the [User Guide](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md) for details), but you'll mostly be interested in **`App.js`**, whose _default_ export will be the "root" component of your application (mobile apps are usually designed around a View component that is shown, rather than an `index.js` style script to execute).
+
+<p class="alert alert-warning">`create-react-native-app` doesn't currently work with `npm` version `5.0` or greater. Until this is fixed, the best solution is to use [**yarn**](https://yarnpkg.com/en/) to install and manage react native applications. Note that installing `yarn` may cause [issues](https://stackoverflow.com/questions/33870520/npm-install-cannot-find-module-semver) with `npm` that you'd need to resolve: proceed with caution if under a deadline! Alternatively, you can downgrade to an older version of `npm` using `npm install -g npm@4`</p>
+
+
+### Running React Native Apps {-}
+There are a few different ways to "run" and test your application as you're developing it, depending on the platform (Android or iOS) you're targeting:
+
+- For either platform, you can test your React Native code on a **physical device** by using the [**Expo**](https://expo.io/) app. This is a separate mobile application that "connects" to a server run by the `create-react-native-app` build scripts, displaying updates to your app in real time. In order to use _Expo_, install the app on your phone, and then use `npm start` to begin the development server. The server will show a [QR code](https://en.wikipedia.org/wiki/QR_code) in the command-line that you can scan to have your phone connect to the server (assuming they are on the same wireless network); this will run your developed app on the phone, and even automatically refresh it when you save changes to the file!
+
+- It is also possible to run your React Native app on [**virtual devices**](https://en.wikipedia.org/wiki/Virtual_machine) (e.g., **emulators**) for either platform. These are "virtual" phones that run on your own computer, allowing you to develop and test mobile apps without needing a specific device.
+
+    Note that you will need to have the appropriate development environment installed and set up for each platform: [Android Studio](https://developer.android.com/studio/index.html) for Android, and [Xcode](https://developer.apple.com/xcode/) for iOS. Xcode only runs on MacOS.
+
+
+    - For Android, you will need to create and start up an emulator with Android Studio: go to `Tools > Android > AVD Manager` to open up the Android Virtual Device Manager. You can then choose "Create Virtual Device…" in order to launch the wizard to specify a new emulator.
+
+        You can then install and run an app on the emulator (using Expo) via the **`npm run android`** command. You can access the development menu on the device from the notification, or by hitting `cmd-m`.
+
+    - For iOS, you can start up the Simulator program (it is found inside `Xcode.app/Contents/Developer/Applications`. If you right-click on the `Xcode.app` program and select "Show Package Contents", you will be able to navigate to it). You will then be able to install and run an app on Simulator (using Expo) via the **`npm run ios`** command. You can access the development menu on the device by hitting `cmd-d`.
+
+
+## React Native Apps
+Writing React Native code uses the same process and techniques as writing normal React code: you define **Components** that `render` Views, which themselves are made up of more Components! These components can be passed in **props** and track **state** just like in React. In fact, if you look at the default **`App.js`** file created by `create-react-native-app`, you'll see that it's just basic React code.
+
+However, instead of eventually rendering HTML elements (such as `<div>` or `<button>`), React Native apps render one of the framework's [built-in components](https://facebook.github.io/react-native/docs/components-and-apis.html). Each of these components is able to be "compiled" into a an appropriate "native" version. For example, a [`<View>`](https://facebook.github.io/react-native/docs/view.html) is compiled into a `<div>` element on the web, an `android.View` element on Android, and a `UIView` element on iOS.
+
+- Just as React components almost always return a `<div>` with some content nested inside of it, React Native components almost always return a `<View>` with some content nested inside of it. `<View>` elements are particularly important when _styling_ your app; see below.
+
+Other basic components include:
+
+- [`<Text>`](https://facebook.github.io/react-native/docs/text.html) components represent displayed text (similar in purpose to a `<p>`, though they get compiled into inline `<span>` elements on the web). All displayed text must be inside one of these elements; you can't have a "text node" directly under a `<View>` like you can in HTML. `<Text>` elements also support cascading styling.
+
+- [`<Image`>](https://facebook.github.io/react-native/docs/image.html) components are used to display images (similar to a `<img>`). You specify which image to display by passing in a `source` prop. This can be a remote reference (e.g., `https://domain.com/picture.png`), or a local image. In order to refer to a local image file, you should import it using Node's `require()` method, specifying the path to the image file _relative to the Component_. This will the build tools to load the file as a [data URI](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) when rendering the image, and ensuring that the asset is packaged with the native app correctly.
+
+    ```jsx
+    <Image source={ require('./path/to/picture.png') }/>
+    ```
+
+    Additionally, you should always specify an `accessibilityLabel` prop specifying how the image should be read to _screen readers_ (yes, they exist for mobile devices! Blind people also use phones).
+
+
+### Styling React Native {-}
+You customize the appearance of React Native components by specifying styling properties in their **`style`** prop, similar to [React inline styling](#react-inline-styles). Note that Android and iOS don't support CSS, so you don't utilize `className` in React Native.
+
+However, because it's often useful to organize styles into groups and give them labels, React Native provides a [`Stylesheet.create()`](https://facebook.github.io/react-native/docs/stylesheet.html) similar to that used by Aphrodite. Defining a stylesheet helps with code organization, as well as providing a more efficient native implementation (since you don't need to duplicate style objects)&mdash;and efficient matters a lot more on resource-constrained mobile devices!
+
+
+Although you specify style properties similar to CSS properties (e.g., with the same property names), React Native stylesheets do **not** use CSS! In particular, styles do not normally ___cascade___: specifying the `fontSize` for a `<View>` will not cause that property to be applied to multiple nested `<Text>` elements. This feature is missing because styling does not normally cascade in Android and iOS, and React Native can run more effectively by not needing to traverse the element tree to check if each and every property is defined by a parent. Moreover, this means that each component can be better _isolated_ (developed as a stand-alone, drop-in piece of an application), because there is no chance of accidentally inheriting some styling.
+
+- However, [nested](https://facebook.github.io/react-native/docs/text.html#nested-text) `<Text>` components will inherit from their parents as a convenience, allowing you to easily style parts of a text block (e.g., to make some text highlighted).
+
+You can specify an element's size by setting it's `width` and `height` style properties. These properties should be assigned **unitless** numbers (you don't include `px` or `rem`). The value measures the number of [_density-independent pixels_](https://en.wikipedia.org/wiki/Device-independent_pixel), which is a pixel-value that scales based on the resolution (dots-per-inch, or `dpi`) of the device. This allows the sizing to be consistent on "retina" displays.
+
+Any elements that are not given a fixed size&mdash;as well as any element positioning&mdash;is primarily performed with [Flexbox](https://facebook.github.io/react-native/docs/flexbox.html) properties! The Flexbox framework allows you to provide a layout that will be consistent across different screen sizes. The "root" element (usually a `<View>`) of a component is rendered as a "flex item", but each `<View>` can also be made into its own "flex container" in order to specify the direction (which defaults to a vertical "column"), size, or spacing of its content:
+
+```jsx
+//declare a stylesheet
+const styles = StyleSheet.create({
+    outer: {
+        flex: 1; //this View should fill vertical space
+        flexDirection: 'row'; //children should be layed out horizontally
+    }
+    inner: {
+        flex: 1; //take up equal extra space
+    }
+})
+
+//an example app
+export default class App {
+    render() {
+        return (
+            <View style={styles.outer}>
+                <Text style={styles.inner}>Item 1</Text>
+                <Text style={styles.inner}>Item 2</Text>
+                <Text style={styles.inner}>Item 2</Text>
+            </View>
+        )
+    }
+}
+```
+
+### Interaction {-}
+React Native apps can be made interactive using a similar process to regular React apps: you specify an event handler which can be used to modify the **state** and re-render the component. However, The events that you listen for are slightly different with React Native. For example, a [`<Button>`](https://facebook.github.io/react-native/docs/button.html) element accepts an **`onPress`** property (instead of `onClick`):
+
+```jsx
+<Button onPress={() => this.handlePress()}>Press me!</Button>
+```
+
+- Note that the callback is not passed any parameters, so you don't have an `event` to work with.
+
+In order to get [text input](https://facebook.github.io/react-native/docs/handling-text-input.html), you use a [`<TextInput>`](https://facebook.github.io/react-native/docs/textinput.html) component (which is a lot like an `<input type="text">` element in HTML). This element can be made to be a _controlled input_ just like with normal React, though you would use the `onChangeText` prop to listen for text changes (the callback function will be passed in the updated text):
+
+```jsx
+<TextInput
+    placeholder="Type something!"
+    value={this.state.inputValue}
+    onChangeText={ (newText) => this.setState({inputValue:newText}) }
+    />
+```
+
+### Lists and Data {-}
+Information applications often need to display _lists_ of data values (e.g., a list of tasks to complete). While it is possible to `map()` an array variable to an array of `<View>` elements to render, Android and iOS support more specific techniques that allow for better responsiveness and efficiency when displayed on mobile devices. For example, these components will automatically render only a "portion" of the list that is currently visible on the small screen, loading new Views into memory only when the user scrolls down to see them. This allows the user to smoothly "flick" through a list of items.
+
+You can create such an optimized list in React Native by rendering a [`<FlatList>`](https://facebook.github.io/react-native/docs/flatlist.html) component. This component takes two main properties: **`data`**, which is an array of data values to "map" into Views; and **`renderItem`**, which is a function that does the "mapping" (similar to the `render` function for `react-router`):
+
+```jsx
+<FlatList
+    data={myDataArray}
+    renderItem={ (args) => <Text>{args.item.text}</Text> }
+    />
+```
+
+- Each element in the `data` array _must_ contain a `key` property that React uses to keep track of each item in the list (though you can pass a function that extracts a value as the key to the `keyExtractor` prop).
+
+- The actual "data item" will be found in the `item` property of the callback function's arguments (the `index` property will contain the index of that item). However, it's common to use [object destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to instead only pass the the specific property of the parameter object:
+
+    ```js
+    function renderListItem({item}) { //param is `item = args.item`
+        return <Text>{item.text}</Text>; //can access item directly
+    }
+
+    function renderWithIndex({item, index}) { //gets two params: args.item and args.index
+        return <Text>{index} - {item.text}</TEXT>;
+    }
+    ```
+
+If you would like to download data from the internet to display using React Native, you use the [`fetch()`](https://facebook.github.io/react-native/docs/network.html) API just like you've used in the web!
+
+```jsx
+export default class App extends Component {
+    constructor(props){
+        super(props);
+        this.state = {data:[]}
+    }
+
+    componentDidMount() {
+        fetch(dataURI)
+            .then((res) => res.json())
+            .then((data) => {
+                this.setState({data: data});
+            })
+            .catch((err) => console.error)
+    }
+
+    render() {
+        return (
+            <View>
+                <FlatList data={this.state.data}
+                    renderItem={({item}) => <Text>{item.text}</Text>}
+                    />
+            </View>
+        )
+    }
+}
+```
+
+Overall, React Native is simply another way of _building_ (but not implementing!) React applications, and makes heavy use of many of the modern frameworks and techniques (e.g., Flexbox, fetch) discussed throughout this course
+
+<!--
+## Resources {-}
+<div class="list-condensed">
+-
+</div>
+ -->
