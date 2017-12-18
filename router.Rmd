@@ -270,4 +270,5 @@ Luckily, it is easy to support this behavior and tell React Router that all path
 <div class="list-condensed">
 - [React Router Official Guide](https://reacttraining.com/react-router/web/guides/) - starts with "Philosophy" that explains how it is used
 - [React Router API](https://reacttraining.com/react-router/web/api/) - complete list of Components and props
+- [Accessible React Navigation](http://almerosteyn.com/2017/03/accessible-react-navigation) - a blog post on making routing accessible
 </div>

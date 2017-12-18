@@ -27,3 +27,5 @@
 
 
 <!-- External libraries (e.g., react-strap) should go somewhere... maybe a third React chapter? -->
+
+<!-- Mention using libraries/global variables https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-global-variables -->
