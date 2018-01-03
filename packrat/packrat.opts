@@ -9,6 +9,7 @@ load.external.packages.on.startup: TRUE
 ignored.packages: 
 quiet.package.installation: TRUE
 snapshot.recommended.packages: FALSE
+Repos: CRAN=http://cran.rstudio.com/
 snapshot.fields:
     Imports
     Depends

@@ -4,25 +4,62 @@ This course will cover a wide variety of tools and techniques used in modern web
 
 <p class="alert alert-info">Note that iSchool lab machines should have all appropriate software already installed and ready to use.</p>
 
+In summary, you'll need to install and set up the following software on your machine (more information below on each of these). Feel free to use alternative software, but these are the suggested programs for the course (i.e., the ones which we will provide support for):
+
+- [**Google Chrome**]((https://www.google.com/chrome/browser/desktop/index.html)) as your web browser
+- [**Visual Studio Code**](https://code.visualstudio.com/) as your code editor
+- [**Node.js**](https://nodejs.org/en/) as a JavaScript engine
+- [**_npm_**](https://www.npmjs.com/) as a JavaScript package manager
+- [**Git Bash**](https://git-scm.com/downloads) as a bash terminal (for windows users, already installed on macs)
+- [**Git**](https://git-scm.com/downloads) as a version control system (for windows users, already installed on macs)
+
 ## Web Browser
 The first thing you'll need is a web browser for viewing the web pages you make! We recommend you install and utilize [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class.
 
 - You can access the Chrome Developer tools by selecting **View > Developer > Developer Tools** from Chrome's main menu (`Cmd+Option+I` on a Mac, `Ctrl+Shift+I` on Windows). You will almost always want to have these tools open when doing web development, particularly when including interactivity via JavaScript.
 
-Other modern browsers such as [**Firefox**](https://www.mozilla.org/en-US/firefox/new/) or [**Microsoft Edge**](https://www.microsoft.com/en-us/windows/microsoft-edge) will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways which will be discussed extensively throughout the course.
+Other modern browsers such as [**Firefox**](https://www.mozilla.org/en-US/firefox/new/) or [**Microsoft Edge**](https://www.microsoft.com/en-us/windows/microsoft-edge) will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.
 
 
 ## Code Editors
 In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend **Visual Studio Code** as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)
 
 ### Visual Studio Code {-}
-[Visual Studio Code](https://code.visualstudio.com/) (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft&mdash;yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of [community-built extensions](https://code.visualstudio.com/docs/editor/extension-gallery) for adding even more features. Although fairly new, it is updated regularly and has has become my main editors for programming. VS Code is actually a stand-alone web application, so it's written in the same HTML, CSS, and JavaScript you'll learn in this course!
+[Visual Studio Code](https://code.visualstudio.com/) (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft&mdash;yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of [community-built extensions](https://code.visualstudio.com/docs/editor/extension-gallery) for adding even more features. Although fairly new, it is updated regularly and has has become one of our main editors for programming. VS Code is actually a stand-alone web application, so it's written in the same HTML, CSS, and JavaScript you'll learn in this course!
 
 To install VS Code, follow the above link and Click the "Download" button to download the installer (e.g, `.exe`) file, then double-click on that to install the application.
 
 Once you've installed VS Code, the trick to using it effectively is to get comfortable with the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette). If you hit `Cmd+Shift+P`, VS Code will open a small window where you can search for whatever you want the editor to do. For example, if you type in `markdown` you can get list of commands related to Markdown files (including the ability to open up a preview). The `Format Code` option is particularly useful.
 
 For more information about using VS Code, see [the documentation](https://code.visualstudio.com/docs), which includes [videos](https://code.visualstudio.com/docs/getstarted/introvideos) if you find them useful. The documentation for programming in [HTML](https://code.visualstudio.com/docs/languages/html), [CSS](https://code.visualstudio.com/docs/languages/css), and especially [JavaScript](https://code.visualstudio.com/docs/languages/javascript) also contain lots of tips and tricks.
+
+We suggest you install the following extensions to help you write well formatted code:
+
+- [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint) for catching JavaScript errors
+
+In order to get the linter set up, you'll also need to globall install `jshint` with this command on the terminal (more info on using `npm` below):
+
+```bash
+npm install -g jshint
+```
+
+Furthermore, we suggest the following user-settings to make using your text editor even easier (hit `cmd + ,` to get to your user settings):
+
+```json
+// Remove this comment and the comments at the end of each line -- these are for informational purposes, but will not work in your settings
+{
+  "editor.formatOnSave": true,        // have the text editor auto-format your code when you save 
+  "editor.tabSize": 4,                // set the tab size to 4 spaces
+  "editor.detectIndentation": false,  // don't have the text editor detect tabs v.s. spaces 
+  "jshint.enable": true,              // enable the eshint linter
+    "jshint.options": {
+        "strict": "global",           // require JavaScript files to declare "use strict";
+        "esversion": "6"              // set es version to 6
+    }
+}
+```
+
+While we suggest using VSCode for this course, one of these other editors may be of interest to you.
 
 ### Atom {-}
 [Atom](https://atom.io/) is a text editor built by the folks at GitHub and has been gaining in popularity. It is very similar to VS Code in terms of features, but has a somewhat different interface and community. It has a similar _command-palette_ to VS Code, and is arguably even nicer about editing Markdown specifically. The document you are reading was authored in Atom.
@@ -31,7 +68,7 @@ For more information about using VS Code, see [the documentation](https://code.v
 [Brackets](http://brackets.io/) is a coding editor authored by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list.
 
 ### Sublime Text {-}
-[Sublime Text](https://www.sublimetext.com/3) is a very popular text editor with excellent defaults and a variety of available extensions (though you'll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is my application of choice for when I just write to write a plain text file.
+[Sublime Text](https://www.sublimetext.com/3) is a very popular text editor with excellent defaults and a variety of available extensions (though you'll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is a great option to write a plain text file.
 
 
 ## Bash (Command Line)

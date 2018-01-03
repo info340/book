@@ -6,8 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -25,7 +26,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2017-12-04">
+<meta name="date" content="2018-01-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +35,7 @@
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="index.html">
 <link rel="next" href="client-side-development.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -67,7 +69,6 @@
 <body>
 
 
-
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
 
     <div class="book-summary">
@@ -90,7 +91,7 @@
 <li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
 <li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and npm</a><ul>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
-<li class="chapter" data-level="1.5.1" data-path="machine-setup.html"><a href="machine-setup.html#package.json"><i class="fa fa-check"></i><b>1.5.1</b> <code class="unnumbered">package.json</code></a></li>
+<li><a href="machine-setup.html#package.json"><code>package.json</code></a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -371,23 +372,51 @@
 <p class="alert alert-info">
 Note that iSchool lab machines should have all appropriate software already installed and ready to use.
 </p>
+<p>In summary, you’ll need to install and set up the following software on your machine (more information below on each of these). Feel free to use alternative software, but these are the suggested programs for the course (i.e., the ones which we will provide support for):</p>
+<ul>
+<li><a href="(https://www.google.com/chrome/browser/desktop/index.html)"><strong>Google Chrome</strong></a> as your web browser</li>
+<li><a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a> as your code editor</li>
+<li><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> as a JavaScript engine</li>
+<li><a href="https://www.npmjs.com/"><strong><em>npm</em></strong></a> as a JavaScript package manager</li>
+<li><a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> as a bash terminal (for windows users, already installed on macs)</li>
+<li><a href="https://git-scm.com/downloads"><strong>Git</strong></a> as a version control system (for windows users, already installed on macs)</li>
+</ul>
 <div id="web-browser" class="section level2">
 <h2><span class="header-section-number">1.1</span> Web Browser</h2>
 <p>The first thing you’ll need is a web browser for viewing the web pages you make! We recommend you install and utilize <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class.</p>
 <ul>
 <li>You can access the Chrome Developer tools by selecting <strong>View &gt; Developer &gt; Developer Tools</strong> from Chrome’s main menu (<code>Cmd+Option+I</code> on a Mac, <code>Ctrl+Shift+I</code> on Windows). You will almost always want to have these tools open when doing web development, particularly when including interactivity via JavaScript.</li>
 </ul>
-<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways which will be discussed extensively throughout the course.</p>
+<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function in this class and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.</p>
 </div>
 <div id="code-editors" class="section level2">
 <h2><span class="header-section-number">1.2</span> Code Editors</h2>
 <p>In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend <strong>Visual Studio Code</strong> as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)</p>
 <div id="visual-studio-code" class="section level3 unnumbered">
 <h3>Visual Studio Code</h3>
-<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. Although fairly new, it is updated regularly and has has become my main editors for programming. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. Although fairly new, it is updated regularly and has has become one of our main editors for programming. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
 <p>To install VS Code, follow the above link and Click the “Download” button to download the installer (e.g, <code>.exe</code>) file, then double-click on that to install the application.</p>
 <p>Once you’ve installed VS Code, the trick to using it effectively is to get comfortable with the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">Command Palette</a>. If you hit <code>Cmd+Shift+P</code>, VS Code will open a small window where you can search for whatever you want the editor to do. For example, if you type in <code>markdown</code> you can get list of commands related to Markdown files (including the ability to open up a preview). The <code>Format Code</code> option is particularly useful.</p>
 <p>For more information about using VS Code, see <a href="https://code.visualstudio.com/docs">the documentation</a>, which includes <a href="https://code.visualstudio.com/docs/getstarted/introvideos">videos</a> if you find them useful. The documentation for programming in <a href="https://code.visualstudio.com/docs/languages/html">HTML</a>, <a href="https://code.visualstudio.com/docs/languages/css">CSS</a>, and especially <a href="https://code.visualstudio.com/docs/languages/javascript">JavaScript</a> also contain lots of tips and tricks.</p>
+<p>We suggest you install the following extensions to help you write well formatted code:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint">JSHint</a> for catching JavaScript errors</li>
+</ul>
+<p>In order to get the linter set up, you’ll also need to globall install <code>jshint</code> with this command on the terminal (more info on using <code>npm</code> below):</p>
+<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g jshint</code></pre>
+<p>Furthermore, we suggest the following user-settings to make using your text editor even easier (hit <code>cmd + ,</code> to get to your user settings):</p>
+<pre class="language-json"><code>// Remove this comment and the comments at the end of each line -- these are for informational purposes<span class="token punctuation">,</span> but will not work in your settings
+<span class="token punctuation">{</span>
+  <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>        // have the text editor auto-format your code when you save 
+  <span class="token property">"editor.tabSize"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>                // set the tab size to <span class="token number">4</span> spaces
+  <span class="token property">"editor.detectIndentation"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  // don't have the text editor detect tabs v.s. spaces 
+  <span class="token property">"jshint.enable"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>              // enable the eshint linter
+    <span class="token property">"jshint.options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token string">"global"</span><span class="token punctuation">,</span>           // require JavaScript files to declare <span class="token string">"use strict"</span><span class="token punctuation">;</span>
+        <span class="token property">"esversion"</span><span class="token operator">:</span> <span class="token string">"6"</span>              // set es version to <span class="token number">6</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>While we suggest using VSCode for this course, one of these other editors may be of interest to you.</p>
 </div>
 <div id="atom" class="section level3 unnumbered">
 <h3>Atom</h3>
@@ -399,7 +428,7 @@ Note that iSchool lab machines should have all appropriate software already inst
 </div>
 <div id="sublime-text" class="section level3 unnumbered">
 <h3>Sublime Text</h3>
-<p><a href="https://www.sublimetext.com/3">Sublime Text</a> is a very popular text editor with excellent defaults and a variety of available extensions (though you’ll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is my application of choice for when I just write to write a plain text file.</p>
+<p><a href="https://www.sublimetext.com/3">Sublime Text</a> is a very popular text editor with excellent defaults and a variety of available extensions (though you’ll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is a great option to write a plain text file.</p>
 </div>
 </div>
 <div id="bash-command-line" class="section level2">
@@ -457,8 +486,8 @@ If you have an older version of Node and <code>npm</code> (before Node 8.6 or <c
 Because node packages can be very large, and projects can have lots of them, you want to be sure to <strong>not</strong> commit the <code>node_modules/</code> folder to version control. Make sure that the folder is listed in your <code>.gitignore</code> file!
 </p>
 </div>
-<div id="package.json" class="section level3">
-<h3><span class="header-section-number">1.5.1</span> <code class="unnumbered">package.json</code></h3>
+<div id="package.json" class="section level3 unnumbered">
+<h3><code>package.json</code></h3>
 <p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <em>npm</em> is able to keep track of these dependencies by recording them in a specialized file called <code>package.json</code> that can be placed inside the project directory. A <code>package.json</code> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
 <pre class="language-json"><code><span class="token punctuation">{</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"example"</span><span class="token punctuation">,</span>
@@ -529,9 +558,8 @@ While <em>npm</em> is the most popular package manager (and the one utilized in 
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -540,7 +568,7 @@ While <em>npm</em> is the most popular package manager (and the one utilized in 
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,
@@ -575,7 +603,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
