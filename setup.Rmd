@@ -12,6 +12,7 @@ In summary, you'll need to install and set up the following software on your mac
 - [**_npm_**](https://www.npmjs.com/) as a JavaScript package manager
 - [**Git Bash**](https://git-scm.com/downloads) as a bash terminal (for windows users, already installed on macs)
 - [**Git**](https://git-scm.com/downloads) as a version control system (for windows users, already installed on macs)
+- [**live-server**](https://www.npmjs.com/package/live-server) as a local development server (simply run `npm install live-server`)
 
 ## Web Browser
 The first thing you'll need is a web browser for viewing the web pages you make! We recommend you install and utilize [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class.
