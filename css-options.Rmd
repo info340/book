@@ -1,6 +1,6 @@
-# More CSS
+# CSS Options
 
-[Chapter 4](#css) explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
+[Chapter 5](#css) explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
 
 ## Compound Selectors
 

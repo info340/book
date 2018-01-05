@@ -108,6 +108,9 @@ small { /* css fix */
     flex-basis: 50%;
 }
 
-
+/* Hide the top header */
+#about-the-book > h1  {
+    display:none;
+  }
 
 /* Overwriting highlight colors */

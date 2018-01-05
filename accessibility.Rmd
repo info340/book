@@ -2,7 +2,12 @@
 
 # Standards and Accessibility
 
-This chapter details considerations and techniques to ensure that your web pages and applications can be used by ___everyone___, regardless of their choice of web browser or their own physical abilities.
+This chapter details considerations and techniques to ensure that your web pages and applications can be used by ___everyone___, regardless of their choice of web browser or their own physical abilities. It will provide detailed information on the following strategies for buiding accessible pages:
+
+- Using **semantically meaningful** HTML tags
+- Providing **alternate text** for visual features (i.e., images)
+- Describing the **role** of elements on your page (if it isn't clear based on the element type)
+- Hiding **unnecessary content** (i.e., visual flare) from screen readers
 
 ## Web Standards
 As discussed in [Chapter 2](#client-side-development), the HTML and CSS files you author are delivered to clients upon request. The code within these files is _interpreted_ by the **web browser** in order to create the visual presentation that the user can see and interact with.
@@ -21,7 +26,7 @@ Modern web standards are created and maintained by a huge group of stakeholders 
 
 Getting so many people to agree on a standard of communication takes time; thus web standards change relatively slowly: the HTML 4 standard was adopted in 1997, but the **HTML 5** standard (that this course teaches) wasn't finalized [until 2014](https://en.wikipedia.org/wiki/HTML#History). The **CSS 3** standard is broken up into more than 50 different _modules_ that are developed and introduced independently, and so is continuously being adopted piece-wise.
 
-<p class="alert alert-info"> When introducing new or experimental CSS properties, browsers historically utilized [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in naming the properties. As standards are being decided upon, each browser may treat that property in a slightly different way, thus forcing developers who want to use the "latest and greatest" to provide a different definition or value for each vendor. Prefixes are a naming convention that will cause the property to only be understood and applied by a particular browser; e.g., <span style="white-space: nowrap">`-webkit-hyphens`</span> would use the [Webkit](https://en.wikipedia.org/wiki/WebKit) version of `hyphens` property (for controlling word breaks), while <span style="white-space: nowrap">`-ms-hyphens`</span> would use the IE version. This practice is currently discouraged and being fazed out, though prefixes may be required when supporting older browsers. Tools such as [Autoprefixer](https://github.com/postcss/autoprefixer) can help automatically manage prefixes.</p>
+<p class="alert alert-info"> When introducing new or experimental CSS properties, browsers historically utilized [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in naming the properties. As standards are being decided upon, each browser may treat that property in a slightly different way, thus forcing developers who want to use the "latest and greatest" to provide a different definition or value for each vendor. Prefixes are a naming convention that will cause the property to only be understood and applied by a particular browser; e.g., <span style="white-space: nowrap">`-webkit-hyphens`</span> would use the [Webkit](https://en.wikipedia.org/wiki/WebKit) version of `hyphens` property (for controlling word breaks), while <span style="white-space: nowrap">`-ms-hyphens`</span> would use the IE version. This practice is currently discouraged and being phased out, though prefixes may be required when supporting older browsers. Tools such as [Autoprefixer](https://github.com/postcss/autoprefixer) can help automatically manage prefixes.</p>
 
 In general, as long as you program webpages that conform to web standards, they will work on all "_modern browsers_"&mdash;though there may still be a few cross-browser compatibility concerns to notice. You should thus test and **validate** your code against the standards. Luckily, there the W3C provides online tools that can help validate code:
 
@@ -141,7 +146,7 @@ Be sure and check the documentation for each of these elements to determine when
 
 
 ### ARIA {-}
-The WCAG is developed by the [Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/), who _also)_ have authored an additional **web standard** for supporting accessibility. This standard is called the [Accessible Rich Internet Applications Suite](https://www.w3.org/TR/wai-aria/), or **ARIA**. ARIA specifies an _extension_ to HTML, defining additional HTML _attributes_ that can be included in elements in order to provide additional support for screen readers. For example, ARIA provides additional support to help screen readers navigate through a page (for people who can't just visually scroll), as well as providing a mechanism by which "rich" interactive web apps (such as those you will create with JavaScript) can communicate their behavior to screen readers.
+The WCAG is developed by the [Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/), who _also_ have authored an additional **web standard** for supporting accessibility. This standard is called the [Accessible Rich Internet Applications Suite](https://www.w3.org/TR/wai-aria/), or **ARIA**. ARIA specifies an _extension_ to HTML, defining additional HTML _attributes_ that can be included in elements in order to provide additional support for screen readers. For example, ARIA provides additional support to help screen readers navigate through a page (for people who can't just visually scroll), as well as providing a mechanism by which "rich" interactive web apps (such as those you will create with JavaScript) can communicate their behavior to screen readers.
 
 In short, where the HTML standard falls short in supporting accessibility, ARIA steps in.
 
