@@ -28,7 +28,7 @@ h2, .menu, #sidebar {
 }
 ```
 
-Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies "general" styling to a large class of elements, with further rules then customizing particular elements.
+Note that since later rules take precedence earlier ones, you can use a group select to apply a property to multiple different elements, then include additional rules to add variations. For example, you can have one rule that applies "general" styling to a large class of elements, with further rules then customizing particular elements.
 
 ```css
 /* all headings are Helvetica, bold, and purple */
@@ -125,8 +125,8 @@ Note that descendant selectors will select matching descendant elements _anywher
 ```
 
 ```css
-/* Selects page content (immediately within body),
-   not section content (immediately within section) */
+/* Selects paragraph "Body content" (immediate child of body),
+   not paragraph "Section content" (immediate child of section) */
 body > p {
   color: blue;
 }
@@ -158,6 +158,27 @@ a:active { /*...*/ }
 
 Note that there are [many additional pseudo-classes](https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes), including ones that consider specific element attributes (e.g., if a checkbox is `:checked`) or where an element is located within its parent (e.g., if it is the `:first` or `:last-child`, which can be useful for styling lists).
 
+#### nth-* Selectors {-}
+Two powerful pseudo-class selectors are the `nth-child` and `nth-of-type` selectors. These selectors allow you to select specific elements based on their position in the DOM. For example, you may want the third `<li>` element in a (each) list to have a certain style. To do that, you can use the either the `nth-child` or `nth-of-type` selector (there'a great description of the difference between these [here](https://css-tricks.com/the-difference-between-nth-child-and-nth-of-type/)):
+
+```css 
+/* Get third li element  */
+li:nth-of-type(3) {
+  color:red;
+}
+
+```
+
+The `nth-*` selectors also support the keywords `odd` and `even`, which is really useful for styling tables:
+
+
+```css
+/* Give every-other row a light-gray background */
+tr:nth-of-type(even) {
+  background-color:#eee;
+}
+```
+
 ### Attribute Selectors {-}
 Finally, it is also possible to select element that have a particular attribute by using an [**attribute selector**](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors). Attribute selectors are written by placing brackets **`[]`** after a basic selector; inside the brackets you list the attribute and value you want to select for using `attribute=value` syntax:
 
@@ -174,7 +195,7 @@ It is also possible to select attributes that only "partially" match a particula
 Note that it is most common to use this selector when styling form inputs; for example, to make checked boxes appear different than unchecked boxes:
 
 ```css
-/* select <input type="checked"> that have the "checked" state */
+/* select <input type="checkbox"> that have the "checked" state */
 input[type=checkbox]:checked {
     color: green;
 }

@@ -388,7 +388,7 @@
 <span class="token selector">h2, .menu, #sidebar</span> <span class="token punctuation">{</span>
     <span class="token property">background-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Note that since later rules earlier ones, you can use a group select to apply a property to multiple different element, but then include additional rules to add variations. For example, you can have one rule that applies “general” styling to a large class of elements, with further rules then customizing particular elements.</p>
+<p>Note that since later rules take precedence earlier ones, you can use a group select to apply a property to multiple different elements, then include additional rules to add variations. For example, you can have one rule that applies “general” styling to a large class of elements, with further rules then customizing particular elements.</p>
 <pre class="language-css"><code><span class="token comment">/* all headings are Helvetica, bold, and purple */</span>
 <span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
     <span class="token property">font-family</span><span class="token punctuation">:</span> Helvetica<span class="token punctuation">;</span>
@@ -462,8 +462,8 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Section content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
-<pre class="language-css"><code><span class="token comment">/* Selects page content (immediately within body),
-   not section content (immediately within section) */</span>
+<pre class="language-css"><code><span class="token comment">/* Selects paragraph "Body content" (immediate child of body),
+   not paragraph "Section content" (immediate child of section) */</span>
 <span class="token selector">body > p</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
@@ -490,6 +490,20 @@
 Remember to always set both <code>hover</code> <em>and</em> <code>focus</code>, to support accessibility for people who cannot use a mouse. Additionally, <code>a:hover</code> <em>must</em> come after <code>a:link</code> and <code>a:visited</code>, and <code>a:active</code> must come after <code>a:hover</code> for these states to work correctly.
 </p>
 <p>Note that there are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">many additional pseudo-classes</a>, including ones that consider specific element attributes (e.g., if a checkbox is <code>:checked</code>) or where an element is located within its parent (e.g., if it is the <code>:first</code> or <code>:last-child</code>, which can be useful for styling lists).</p>
+<div id="nth--selectors" class="section level4 unnumbered">
+<h4>nth-* Selectors</h4>
+<p>Two powerful pseudo-class selectors are the <code>nth-child</code> and <code>nth-of-type</code> selectors. These selectors allow you to select specific elements based on their position in the DOM. For example, you may want the third <code>&lt;li&gt;</code> element in a (each) list to have a certain style. To do that, you can use the either the <code>nth-child</code> or <code>nth-of-type</code> selector (there’a great description of the difference between these <a href="https://css-tricks.com/the-difference-between-nth-child-and-nth-of-type/">here</a>):</p>
+<pre class="language-css"><code><span class="token comment">/* Get third li element  */</span>
+<span class="token selector">li:nth-of-type(3)</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>nth-*</code> selectors also support the keywords <code>odd</code> and <code>even</code>, which is really useful for styling tables:</p>
+<pre class="language-css"><code><span class="token comment">/* Give every-other row a light-gray background */</span>
+<span class="token selector">tr:nth-of-type(even)</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span>#eee<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
 </div>
 <div id="attribute-selectors" class="section level3 unnumbered">
 <h3>Attribute Selectors</h3>
@@ -501,7 +515,7 @@ Remember to always set both <code>hover</code> <em>and</em> <code>focus</code>, 
 <span class="token punctuation">}</span></code></pre>
 <p>It is also possible to select attributes that only “partially” match a particular value; see the documentation for details.</p>
 <p>Note that it is most common to use this selector when styling form inputs; for example, to make checked boxes appear different than unchecked boxes:</p>
-<pre class="language-css"><code><span class="token comment">/* select &lt;input type="checked"> that have the "checked" state */</span>
+<pre class="language-css"><code><span class="token comment">/* select &lt;input type="checkbox"> that have the "checked" state */</span>
 <span class="token selector">input[type=checkbox]:checked</span> <span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
