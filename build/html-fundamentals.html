@@ -26,7 +26,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-01-03">
+<meta name="date" content="2018-01-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,6 +114,7 @@
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
 <li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
+<li><a href="html-fundamentals.html#the-body-section">The <code>&lt;body&gt;</code> Section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
@@ -369,7 +370,7 @@
 <div id="html-fundamentals" class="section level1">
 <h1><span class="header-section-number">Chapter 3</span> HTML Fundamentals</h1>
 <p>A webpage on the internet is simply a set of files that the browser <em>renders</em> (shows) in a particular way, allowing you to interact with it. The most basic way to control how a browser displays content (e.g., words, images, etc) is by <em>encoding</em> that content in HTML.</p>
-<p><strong>HTML</strong> (<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a <em>markup language</em>): it adds additional details to information (like notes in the margin of a book), but doesn’t contain any logic. HTML is a “hypertext” markup language because it was <a href="https://en.wikipedia.org/wiki/HTML#Development">originally intended</a> to mark up a document with <a href="https://en.wikipedia.org/wiki/Hyperlink">hyperlinks</a>, or links to other documents. In modern usage, HTML describes the <strong>semantic meaning</strong> of content: it marks what content is the a <em>heading</em>, what content is a <em>paragraph</em>, what content is a <em>definition</em>, what content is an <em>image</em>, what content is a <em>hyperlink</em>, and so forth.</p>
+<p><strong>HTML</strong> (<strong>H</strong>yper<strong>T</strong>ext <strong>M</strong>arkup <strong>L</strong>anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a <em>markup language</em>: it adds additional details to information (like notes in the margin of a book), but doesn’t contain any logic. HTML is a “hypertext” markup language because it was <a href="https://en.wikipedia.org/wiki/HTML#Development">originally intended</a> to mark up a document with <a href="https://en.wikipedia.org/wiki/Hyperlink">hyperlinks</a>, or links to other documents. In modern usage, HTML describes the <strong>semantic meaning</strong> of content: it marks what content is a <em>heading</em>, what content is a <em>paragraph</em>, what content is a <em>definition</em>, what content is an <em>image</em>, what content is a <em>hyperlink</em>, and so forth.</p>
 <ul>
 <li>HTML serves a similar function to <a href="https://info201.github.io/markdown.html">Markdown</a>, but is much more expressive and powerful.</li>
 </ul>
@@ -453,8 +454,8 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>My Web Page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span></code></pre>
 <p>The <code>id</code> attribute is most commonly used used to create <a href="https://www.w3.org/TR/html4/struct/links.html#h-12.2.3">“bookmark hyperlinks”</a>, which are hyperlinks to a particular location on a page (i.e., that cause the page to scroll down). You do this by including the <code>id</code> as the <strong>fragment</strong> of the URI to link to (e.g., after the <code>#</code> in the URI).</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index.html#nav<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to element on `index.html` with `id="nav"`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#footnote<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to element on current page with `id="footnote"`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
-<p>Note that the title attribute does NOT contain the <code>#</code> symbol, but the URI to link to does.</p></li>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link to element on current page with `id="title"`<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>Note that, when specifying an id (i.e., <code>&lt;h1 id=&quot;title&quot;&gt;</code>) you do not include the <code>#</code> symbol. However, to <em>link</em> to an element with id <code>title</code>, you include the <code>#</code> symbole before the id (i.e., `<a href="more-css.html#title">)</p></li>
 <li><p>The <code>lang</code> attribute is used to indicate the language in which the element’s content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>sp<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>No me gusta<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p>Specify the <code>lang</code> attribute for the <code>&lt;html&gt;</code> element (see below) to define the default language of the page; that way you don’t need to mark the language of every element. <strong>Always include this attribute</strong>.</p>
@@ -517,6 +518,7 @@ As mentioned in Chapter 2, most web servers will by default serve a file named <
 <p class="alert alert-warning">
 Some elements have further restrictions on nesting. For example, a <code>&lt;ul&gt;</code> (unordered list) is <em>only</em> allowed to contain <code>&lt;li&gt;</code> elements—anything else is invalid markup.
 </p>
+<p>Note, while different element types have different default displays (<code>block</code> v.s. <code>inline</code>), we can change how an element is displayed using CSS (more on this later).</p>
 </div>
 </div>
 <div id="web-page-structure" class="section level2">
@@ -554,6 +556,48 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
 <li><p>We will discuss additional elements for the <code>&lt;head&gt;</code> section throughout the text, such as using <code>&lt;link&gt;</code> to include CSS and using <code>&lt;script&gt;</code> to include JavaScript.</p></li>
 </ul>
 </div>
+<div id="the-body-section" class="section level3 unnumbered">
+<h3>The <code>&lt;body&gt;</code> Section</h3>
+<p>The <code>&lt;body&gt;</code> section of your page contains all elements that you want to render for your user. The content in your <code>&lt;body&gt;</code> section should be organized into a variety of <em><strong>semantically meaning</strong></em> sections (more on this in <a href="standards-and-accessibility.html">this chapter</a>). These descriptive containers aren’t explicitly visible to your user, but allow you to organize your content into meaningful sections, allowing screen readers to process the information, and making your code <em>much</em> more interpretable:</p>
+<ul>
+<li><code>header</code>: The top of your page, which may contain an image, description of your page, and navigational elements</li>
+<li><code>nav</code>: The navigation section (typically in the <code>header</code>), which allows users to link to different sections of your page</li>
+<li><code>main</code>: The main component of you page, which is comprised of multiple <code>sections</code></li>
+<li><code>section</code>: A distinct section of content on your page, containing text, images, links, headers, etc.</li>
+<li><code>footer</code>: The section at the bottom of your page, which contains copyright information and additional links.</li>
+</ul>
+<p>While you can make a page <em>appear</em> the same without these organizational elements, it is crucial for screen readers to be able to navigate between these sections. It will also help you keep your page well organized. A typical page body may have this structure</p>
+<pre class="language-html"><code><span class="token doctype">&lt;!doctype html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- Declare meta information about your page as described above--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token comment">&lt;!-- Page header --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>            
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span><span class="token punctuation">></span></span>
+                <span class="token comment">&lt;!-- navigation links in here --></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+
+        <span class="token comment">&lt;!-- Main section of content --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Page content in here...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>More page content here<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span>
+
+        <span class="token comment">&lt;!-- Footer at bottom of page --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">></span></span>
+            <span class="token comment">&lt;!-- copyright information here --></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
+<p>You’ll populate the sections above (i.e., <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>) with your desired content using desired HTML tags.</p>
+</div>
 </div>
 <div id="web-page-template" class="section level2">
 <h2><span class="header-section-number">3.4</span> Web Page Template</h2>
@@ -572,7 +616,7 @@ Some elements have further restrictions on nesting. For example, a <code>&lt;ul&
    ...
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<p>You can use this to start off every web page you ever create from now on!</p>
+<p>You can use this to start off every web page you ever create from now on! Alternatively, you can use the Visual Studio Code shortcut of writing an exclamation point (<code>!</code>) then hitting the <code>tab</code> key in a <code>.html</code> file to create this skeleton.</p>
 </div>
 <div id="resources-1" class="section level2 unnumbered">
 <h2>Resources</h2>

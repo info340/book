@@ -26,7 +26,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-01-03">
+<meta name="date" content="2018-01-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -114,6 +114,7 @@
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
 <li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
+<li><a href="html-fundamentals.html#the-body-section">The <code>&lt;body&gt;</code> Section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
@@ -374,9 +375,9 @@
 <img src="img/client-side/client-server-comm.png" alt="A diagram of client/server communication." />
 <p class="caption">A diagram of client/server communication.</p>
 </div>
-<p>The web server will receive this request, and based on its content (e.g., where it was sent to) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for respond to user interaction (button clicks), images or other assets to show, and so forth.</p>
+<p>The web server will receive this request, and based on its content (e.g., the parameters of the URL) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.</p>
 <p>The client’s web browser will then take all of these different files in the response and use them to <em>render</em> the web page for the user to see: it wil determine what text to show, what font and color to make that text, where to put the images, and is ready to do something else when the user clicks on one of those images. Indeed, a web browser is just a computer program that is able to send HTTP requests on behalf of the user, and then render the resulting response.</p>
-<p>Given this interaction, <strong>client-side web development</strong> involves implementing programs (writing code) that is interpreted by the <em>browser</em>, and so is executed by the client. It is authoring the code that is sent in the server’s response. This code specifies how websites should appear and how the user should interact with them. On the other hand, <strong>server-side web development</strong> involves implementing programs that the <em>server</em> uses to determine which client-side code is delivered. As an example, a server-side program contains the logic to determine which cat picture should be sent along with the request, while a client-side program contains the logic about where and how that picture should appear on the page.</p>
+<p>Given this interaction, <strong>client-side web development</strong> involves implementing programs (writing code) that is interpreted by the <em>browser</em>, and is executed by the <em>client</em>. It is authoring the code that is sent in the server’s response. This code specifies how websites should appear and how the user should interact with them. On the other hand, <strong>server-side web development</strong> involves implementing programs that the <em>server</em> uses to determine which client-side code is delivered. As an example, a server-side program contains the logic to determine which cat picture should be sent along with the request, while a client-side program contains the logic about where and how that picture should appear on the page.</p>
 <p>This course focuses on <em>client-side web development</em>, or developing programs that are executed by the browser (generally as a response to a web server request). While we will cover how client-side programs can interact with a server, many of the concepts discussed here can also be run inside a browser without relying on an external server (called “running locally”).</p>
 <div id="client-side-file-types" class="section level2">
 <h2><span class="header-section-number">2.1</span> Client-Side File Types</h2>

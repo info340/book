@@ -2,7 +2,7 @@
 
 A webpage on the internet is simply a set of files that the browser _renders_ (shows) in a particular way, allowing you to interact with it. The most basic way to control how a browser displays content (e.g., words, images, etc) is by _encoding_ that content in HTML.
 
-**HTML** (**H**yper**T**ext **M**arkup **L**anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a _markup language_): it adds additional details to information (like notes in the margin of a book), but doesn't contain any logic. HTML is a "hypertext" markup language because it was [originally intended](https://en.wikipedia.org/wiki/HTML#Development) to mark up a document with [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink), or links to other documents. In modern usage, HTML describes the **semantic meaning** of content: it marks what content is the a _heading_, what content is a _paragraph_, what content is a _definition_, what content is an _image_, what content is a _hyperlink_, and so forth.
+**HTML** (**H**yper**T**ext **M**arkup **L**anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a _markup language_: it adds additional details to information (like notes in the margin of a book), but doesn't contain any logic. HTML is a "hypertext" markup language because it was [originally intended](https://en.wikipedia.org/wiki/HTML#Development) to mark up a document with [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink), or links to other documents. In modern usage, HTML describes the **semantic meaning** of content: it marks what content is a _heading_, what content is a _paragraph_, what content is a _definition_, what content is an _image_, what content is a _hyperlink_, and so forth.
 
 - HTML serves a similar function to [Markdown](https://info201.github.io/markdown.html), but is much more expressive and powerful.
 
@@ -112,10 +112,10 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
 
     ```html
     <a href="index.html#nav">Link to element on `index.html` with `id="nav"`</a>
-    <a href="#footnote">Link to element on current page with `id="footnote"`</a>
+    <a href="#title">Link to element on current page with `id="title"`</a>
     ```
 
-    Note that the title attribute does NOT contain the `#` symbol, but the URI to link to does.
+    Note that, when specifying an id (i.e., `<h1 id="title">`) you do not include the `#` symbol. However, to _link_ to an element with id `title`, you include the `#` symbole before the id (i.e., `<a href="#title">)
 
 - The `lang` attribute is used to indicate the language in which the element's content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:
 
@@ -196,6 +196,7 @@ Inline elements go inside of block elements, and it's common to put block elemen
 
 <p class="alert alert-warning">Some elements have further restrictions on nesting. For example, a `<ul>` (unordered list) is _only_ allowed to contain `<li>` elements&mdash;anything else is invalid markup.</p>
 
+Note, while different element types have different default displays (`block` v.s. `inline`), we can change how an element is displayed using CSS (more on this later).
 
 ## Web Page Structure
 Now that you understand how to specify HTML elements, you can begin making real web pages! However, there are a few more tags you need to know and include for a valid, modern web page.
@@ -249,6 +250,51 @@ There are a couple of common elements you should include in the `<head>`:
 
 - We will discuss additional elements for the `<head>` section throughout the text, such as using `<link>` to include CSS and using `<script>` to include JavaScript.
 
+### The `<body>` Section {-}
+The `<body>` section of your page contains all elements that you want to render for your user. The content in your `<body>` section should be organized into a variety of _**semantically meaning**_ sections (more on this in [this chapter](standards-and-accessibility.html)). These descriptive containers aren't explicitly visible to your user, but allow you to organize your content into meaningful sections, allowing screen readers to process the information, and making your code _much_ more interpretable:
+
+- `header`: The top of your page, which may contain an image, description of your page, and navigational elements
+- `nav`: The navigation section (typically in the `header`), which allows users to link to different sections of your page
+- `main`: The main component of you page, which is comprised of multiple `sections`
+- `section`: A distinct section of content on your page, containing text, images, links, headers, etc.
+- `footer`: The section at the bottom of your page, which contains copyright information and additional links.
+
+While you can make a page _appear_ the same without these organizational elements, it is crucial for screen readers to be able to navigate between these sections. It will also help you keep your page well organized. A typical page body may have this structure
+
+```html
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Declare meta information about your page as described above-->
+    </head>
+    <body>
+        <!-- Page header -->
+        <header>            
+            <nav>
+                <!-- navigation links in here -->
+            </nav>
+        </header>
+
+        <!-- Main section of content -->
+        <main>
+            <section>
+                <p>Page content in here...</p>
+            </section>
+            <section>
+                <p>More page content here</p>
+            </section>
+        </main>
+
+        <!-- Footer at bottom of page -->
+        <footer>
+            <!-- copyright information here -->
+        </footer>
+    </body>
+</html>
+```
+
+You'll populate the sections above (i.e., `<header>`, `<main>`, `<footer>`) with your desired content using desired HTML tags. 
+
 ## Web Page Template
 Putting this all together produces the following "template" for making a web page:
 
@@ -269,7 +315,7 @@ Putting this all together produces the following "template" for making a web pag
 </html>
 ```
 
-You can use this to start off every web page you ever create from now on!
+You can use this to start off every web page you ever create from now on! Alternatively, you can use the Visual Studio Code shortcut of writing an exclamation point (`!`) then hitting the `tab` key in a `.html` file to create this skeleton.
 
 
 ## Resources {-}
