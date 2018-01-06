@@ -115,7 +115,7 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
     <a href="#title">Link to element on current page with `id="title"`</a>
     ```
 
-    Note that, when specifying an id (i.e., `<h1 id="title">`) you do not include the `#` symbol. However, to _link_ to an element with id `title`, you include the `#` symbole before the id (i.e., `<a href="#title">)
+    Note that, when specifying an id (i.e., `<h1 id="title">`) you do not include the `#` symbol. However, to _link_ to an element with id `title`, you include the `#` symbole before the id (i.e., `<a href="#title">`)
 
 - The `lang` attribute is used to indicate the language in which the element's content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:
 
