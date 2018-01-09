@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -26,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-01-05">
+<meta name="date" content="2018-01-09">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -35,7 +34,6 @@
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="css-options.html">
 <link rel="next" href="responsive-css.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -67,6 +65,7 @@
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -159,14 +158,14 @@
 <li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="css-layouts.html"><a href="css-layouts.html"><i class="fa fa-check"></i><b>7</b> CSS Layouts</a><ul>
-<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#block-vs.inline"><i class="fa fa-check"></i><b>7.1</b> Block vs. Inline</a></li>
+<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#display"><i class="fa fa-check"></i><b>7.1</b> Display</a></li>
 <li class="chapter" data-level="7.2" data-path="css-layouts.html"><a href="css-layouts.html#the-box-model"><i class="fa fa-check"></i><b>7.2</b> The Box Model</a><ul>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#padding"><i class="fa fa-check"></i>Padding</a></li>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#border"><i class="fa fa-check"></i>Border</a></li>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#margin"><i class="fa fa-check"></i>Margin</a></li>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#changing-the-flow"><i class="fa fa-check"></i><b>7.3</b> Changing the Flow</a><ul>
+<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#position"><i class="fa fa-check"></i><b>7.3</b> Position</a><ul>
 <li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#floating"><i class="fa fa-check"></i>Floating</a></li>
 </ul></li>
 <li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
@@ -369,9 +368,9 @@
             <section class="normal" id="section-">
 <div id="css-layouts" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> CSS Layouts</h1>
-<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!</p>
-<div id="block-vs.inline" class="section level2">
-<h2><span class="header-section-number">7.1</span> Block vs. Inline</h2>
+<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts: - <strong>Display</strong>: determines how elements share horizontal space - <strong>Position</strong>: allows you to adjust the location of the natural flow of elements - <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
+<div id="display" class="section level2">
+<h2><span class="header-section-number">7.1</span> Display</h2>
 <p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
 <p>As mentioned in Chapter 3, <strong>inline</strong> elements (e.g., <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>) are put next to each other on a single line (left to right, unless you specify a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">right-to-left language</a>). <strong>Block</strong> elements (<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>) are placed on subsequent “lines”, from top to bottom.</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
@@ -407,7 +406,7 @@
 <div id="the-box-model" class="section level2">
 <h2><span class="header-section-number">7.2</span> The Box Model</h2>
 <p>The <a href="https://www.w3.org/TR/CSS2/box.html"><strong>CSS Box Model</strong></a> is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually laid out on the page.</p>
-<p>All HTML element (<em>including text!</em>) include an imaginary <strong>box</strong> around their content. Elements are laid out with their boxes next to each other (side by side for <code>inline</code>, stacked on top for <code>block</code>). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.</p>
+<p>All HTML elements (<em>including text!</em>) include an imaginary <strong>box</strong> around their content. Elements are laid out with their boxes next to each other (side by side for <code>inline</code>, stacked on top for <code>block</code>). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.</p>
 <p>First off, you can set the <strong><code>width</code></strong> and <strong><code>height</code></strong> of elements explicitly, though be careful when you do this. If your <code>width</code> and <code>height</code> are too small, the element’s content will be clipped by default (a behavior controlled by the <code>overflow</code> property). It’s generally best to set only the width <strong>or</strong> the height, but not both. You can also specify a <code>min-width</code> or <code>min-height</code> to ensure that the width or height is at least a particular size. Conversely, you can use <code>max-width</code> and <code>max-height</code> to constrain the size of the element.</p>
 <p>In order to adjust the spacing between boxes, you can manipulate one of 3 properties:</p>
 <div class="figure">
@@ -470,7 +469,7 @@
 </div>
 <div id="box-sizing" class="section level3 unnumbered">
 <h3>Box-Sizing</h3>
-<p>An elements <code>padding</code>, <code>border</code>, and <code>margin</code> can be used to put space between element content on the page. However, when you assign an explicit <strong><code>width</code></strong> or <strong><code>height</code></strong> to an element, the dimension you specify <strong>does not include</strong> the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties</p>
+<p>An element’s <code>padding</code>, <code>border</code>, and <code>margin</code> can be used to put space between element content on the page. However, when you assign an explicit <strong><code>width</code></strong> or <strong><code>height</code></strong> to an element, the dimension you specify <strong>does not include</strong> the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties</p>
 <pre class="language-css"><code><span class="token selector">.my-box</span> <span class="token punctuation">{</span>
     <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
     <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token comment">/* includes both left and right */</span>
@@ -484,11 +483,24 @@
 <p>This is a common enough change that you may wish to include it in <em>all</em> of your <code>.css</code> files!</p>
 </div>
 </div>
-<div id="changing-the-flow" class="section level2">
-<h2><span class="header-section-number">7.3</span> Changing the Flow</h2>
+<div id="position" class="section level2">
+<h2><span class="header-section-number">7.3</span> Position</h2>
 <p>Specifying the <code>display</code> style and <strong>box</strong> properties will adjust the layout of HTML elements, but they are still following the browser’s default <em>flow</em>. The layout rules will still apply, and elements are influenced by the amount of content and the size of the browser (e.g., for when inline elements “wrap”).</p>
-<p>However, it is possible to position elements outside of the normal flow by specifying the <code>position</code> property.</p>
-<p>For example, giving an element a <strong><code>position:fixed</code></strong> property will specify a “fixed” position of the element <em>relative to the browser window</em>. It will no move no matter where it appears in the HTML or where the browser scrolls. See <a href="http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0">this Code Pen</a> for an example.</p>
+<p>However, it is possible to position elements outside of the normal flow by specifying the <code>position</code> property. Depending on the <code>position</code> property, you can shift the location of elements using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.There are four values that the <code>position</code> property can be set to:</p>
+<blockquote>
+<p><strong>Static</strong>: By default, elements are positioned statically. This is their natural layout, and elements <em>will not</em> be shifted by the <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code> properties.</p>
+</blockquote>
+<blockquote>
+<p><strong>Relative</strong>: Allows you to shift the element <em>relative</em> to it’s natural position on the page. This enables you to move the element using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</p>
+</blockquote>
+<blockquote>
+<p><strong>Fixed</strong>: The <em>fixed</em> position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to <em>always</em> be 50px from the bottom, you could set the properties: <code>position:fixed;</code> and <code>bottom:50px;</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Absolute</strong>: The <em>absolute</em> position allows you to place an element a specific number of pixels from it’s (first non-static) parent element. This allows you to specify where <em>within a parent element</em> you want an element to be positioned.</p>
+</blockquote>
+<p>Note, in order to get <code>position:absolute;</code> to work <em>“as expected”</em>, you’ll need to specify that the <em>parent element</em> is <code>position:relative;</code>. See <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/">this post</a> for more information.</p>
+<p>As an example, giving an element a <strong><code>position:fixed</code></strong> property will specify a “fixed” position of the element <em>relative to the browser window</em>. It will no move no matter where it appears in the HTML or where the browser scrolls. See <a href="http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0">this Code Pen</a> for an example.</p>
 <ul>
 <li><p>In order to specify the location for a <strong><code>fixed</code></strong> element, use the <code>top</code>, <code>left</code>, <code>bottom</code>, and/or <code>right</code> properties to specify distance from the appropriate edge of the browser window:</p>
 <pre class="language-css"><code><span class="token comment">/* make the &lt;nav> element fixed at the top of the browser window */</span>
@@ -499,8 +511,6 @@
     <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token comment">/* same as parent, useful for spanning the page */</span>
 <span class="token punctuation">}</span></code></pre></li>
 </ul>
-<p>You can also specify an element’s <code>position</code> to be <strong><code>relative</code></strong>, meaning <em>relative to its normal position</em>. Note that this leaves the element within normal flow (e.g., for how its padding effects other elements around it). See <a href="http://codepen.io/joelross/pen/XjpYwK?editors=1100#0">this Code Pen</a> to explore this option.</p>
-<p>Finally, you can specify an element’s <code>position</code> to be <strong><code>absolute</code></strong>, meaning <em>relative to it (positioned) parent element</em>. If the parent has not been explicitly positioned (has a declared <code>position</code> property), the element is positioned relative to the root element. Try it out in <a href="http://codepen.io/joelross/pen/NRdzZo?editors=1100#0">this Code Pen</a>. This mostly remove an element from normal flow, though its parent may still be part of the flow and thus may influence the absolutely positioned element’s location.</p>
 <div id="floating" class="section level3 unnumbered">
 <h3>Floating</h3>
 <p><img src="img/css/bunny.jpg" alt="cute bunny" style="float:right;margin-left:1em;"></p>
@@ -593,8 +603,9 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
         </div>
       </div>
 <a href="css-options.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="responsive-css.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="responsive-css.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -603,7 +614,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-require(["gitbook"], function(gitbook) {
+gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,
@@ -638,7 +649,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
