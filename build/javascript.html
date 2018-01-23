@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-01-09">
+<meta name="date" content="2018-01-22">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -370,7 +370,7 @@
 <h1><span class="header-section-number">Chapter 10</span> JavaScript Fundamentals</h1>
 <p>HTML and CSS are <em>markup languages</em>, used to annotate websites to describe their meaning and appearance. But they are not “full” (i.e., <a href="https://en.wikipedia.org/wiki/Turing_completeness">Turing Complete</a>) programming languages—they don’t have variables, control structures, or other features required for the computer to execute an <em>algorithm</em>. So to make <em>interactive</em> websites or complex web applications, you need a complete programming language. And the language used by browsers is <strong>JavaScript</strong>. This chapter introduces the fundamentals of the JavaScript language as used in web development, focusing on variables, data types, and basic control structures. Functions are introduced, but addressed in more detail in the next chapter.</p>
 <p class="alert alert-warning">
-Note course assumes you already are already familiar with introductory programming in a imperative language such as Java. It focuses on how JavaScript differs from languages such as Java, rather than foundational programming concepts. If you need review on those topics, you can check out a <a href="https://en.wikiversity.org/wiki/Introduction_to_Programming">basic programming tutorial</a> or review your notes from a previous programming course.
+Note, this course assumes you already are already familiar with introductory programming in a imperative language such as Java. It focuses on how JavaScript differs from languages such as Java, rather than foundational programming concepts. If you need review on those topics, you can check out a <a href="https://en.wikiversity.org/wiki/Introduction_to_Programming">basic programming tutorial</a> or review your notes from a previous programming course.
 </p>
 <div id="programming-with-javascript" class="section level2">
 <h2><span class="header-section-number">10.1</span> Programming with JavaScript</h2>
@@ -386,7 +386,7 @@ Note course assumes you already are already familiar with introductory programmi
 <p>The JavaScript language was developed by <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a> (the co-founder of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days… a fact which may help explain some of the quirks in the language.</p>
 <ul>
 <li><p>Despite the names, <em>JavaScript</em> and the <em>Java</em> language have nothing to do with one another (and are in fact totally separate programming languages used in drastically different contexts). JavaScript was named after Java as a marketing ploy to cash in on the popularity of the latter. It is the programming equivalent of the <a href="https://www.rottentomatoes.com/m/transmorphers_2007/">Transmorphers</a> movie.</p></li>
-<li><p>The JavaScript language is officially an implementation of <a href="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a> (named for the European Computer Manufacturers Association) specification. Hence versions of JavaScript are labeled with the prefix “ES”. For example, this chapter includes describes <code>ES5</code> (JavaScript 5) syntax.</p></li>
+<li><p>The JavaScript language is officially an implementation of <a href="https://en.wikipedia.org/wiki/ECMAScript">ECMAScript</a> (named for the European Computer Manufacturers Association) specification. Hence versions of JavaScript are labeled with the prefix “ES”. For example, this chapter describes <code>ES5</code> (JavaScript 5) syntax.</p></li>
 </ul>
 <p>Like HTML and CSS, the JavaScript language continues to be developed and refined through new versions. Each new version of JavaScript includes additional syntax shorts, specialized keywords, and additional core functions, but otherwise are compatible with previous code. The main limitation on utilizing new JavaScript features is whether the <em>interpreters</em> found in web browsers are able to support them.</p>
 <p>This course primarily utilizes syntax and features for <code>ES5</code>, which was introduced in 2009 and today is supported by <a href="http://caniuse.com/#feat=es5">all modern browsers</a> (i.e., IE 10 or later). Later chapters will describe features of <code>ES6</code> (also called <code>ES2015</code>), which was introduced in 2015 and works on <a href="http://kangax.github.io/compat-table/es6/">many browsers</a> (e.g., Microsoft Edge but not IE 11). <code>ES7</code> was finalized in 2016 but is still not <a href="http://kangax.github.io/compat-table/esnext/">reliably supported</a>.</p>
@@ -406,7 +406,7 @@ Note course assumes you already are already familiar with introductory programmi
 <ul>
 <li>Notice that the <code>&lt;script&gt;</code> element is <em>not</em> empty! It is possible to include JavaScript code directly inside the tag, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.</li>
 </ul>
-<p>The <code>&lt;script&gt;</code> tag can be included anywhere in an HTML page. Most commonly it is either placed in the <code>&lt;head&gt;</code> in order for the script to be executed <em>before</em> the page content loads, or at the very end of the <code>&lt;body&gt;</code> in order for the script to be executed <em>after</em> the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting <code>&lt;script&gt;</code> tags at the end of the <code>&lt;body&gt;</code>:</p>
+<p>The <code>&lt;script&gt;</code> tag can be included anywhere in an HTML page. Most commonly it is either placed in the <code>&lt;head&gt;</code> in order for the script to be executed <em>before</em> the page content loads, or at the very end of the <code>&lt;body&gt;</code> in order for the script to be executed <em>after</em> the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will (begin by) most commonly be putting <code>&lt;script&gt;</code> tags at the end of the <code>&lt;body&gt;</code>:</p>
 <pre class="language-html"><code><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
@@ -508,7 +508,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>hoursSlept<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> undefined</span></code></pre>
 <p>Note that the <code>let</code> keyword is in fact new syntax introduced with <code>ES6</code>: older versions of JavaScript used the <code>var</code> keyword instead (and you will see <code>var</code> in most existing examples and tutorials). The difference is that variables declared with <code>let</code> are <strong>“block scoped”</strong>, meaning they are only available within the <em>block</em> (the <code>{}</code>) in which they are defined. This is the same way variables are scoped in Java. Variables declared with <code>var</code>, on the other hand, are “functionally scoped” so are available anywhere within the <em>function</em> in which they are defined. This means that you could declare a variable within an <code>if</code> block, and that variable would continue to be available outside that block! Thus <code>let</code> allows for cleaner, more efficient code, and with less bugs.</p>
 <ul>
-<li><code>let</code> is the one <code>ES6</code> feature supported by IE 11, meaning it can be used with <a href="http://caniuse.com/#search=let">most all current browsers</a>. However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using <code>var</code></li>
+<li><code>let</code> is the one <code>ES6</code> feature supported by IE 11, meaning it can be used with <a href="http://caniuse.com/#search=let">most current browsers</a>. However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using <code>var</code></li>
 </ul>
 <p>Along with <code>let</code>, JavaScript variables can also be declared using the <code>const</code> keyword to indicate that they are <em>constant</em> (similar to what the <code>final</code> keyword does in Java). A <code>const</code> variable is block scoped, but can only be assigned once:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> ISCHOOL_URL <span class="token operator">=</span> <span class="token string">'https://ischool.uw.edu'</span><span class="token punctuation">;</span> <span class="token comment">//declare constant</span>
@@ -632,8 +632,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>Despite the name, JavaScript Objects have nothing to do with Object-Oriented Programing. However, they can be used to represent “things” in the same way as a Java object, with each property acting like an “attribute” (instance variable):</p>
 <pre class="language-js"><code><span class="token comment">//an object representing a Person (spacing is for readability; white-space is ignored)</span>
 <span class="token keyword">let</span> person <span class="token operator">=</span> <span class="token punctuation">{</span>
-  first_name<span class="token punctuation">:</span> <span class="token string">'Alice'</span><span class="token punctuation">,</span>
-  last_name<span class="token punctuation">:</span> <span class="token string">'Smith'</span><span class="token punctuation">,</span>
+  firstName<span class="token punctuation">:</span> <span class="token string">'Alice'</span><span class="token punctuation">,</span>
+  lastName<span class="token punctuation">:</span> <span class="token string">'Smith'</span><span class="token punctuation">,</span>
   age<span class="token punctuation">:</span> <span class="token number">40</span><span class="token punctuation">,</span>
   pets<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'rover'</span><span class="token punctuation">,</span> <span class="token string">'fluffy'</span><span class="token punctuation">,</span> <span class="token string">'mittens'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>  <span class="token comment">//value is an array</span>
   favorites<span class="token punctuation">:</span> <span class="token punctuation">{</span>   <span class="token comment">//value is another object</span>
@@ -701,8 +701,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token punctuation">]</span></code></pre>
 <p>This structure can be seen as a list of <strong>records</strong> (the objects), each of which have a number of different <strong>features</strong> (the key-value pairs). This list of feature records is in fact a common way of understanding a <strong>data table</strong> like you would create as an Excel spreadsheet:</p>
 <div class="figure">
-<img src="img/javascript/excel-table.png" alt="An data table." />
-<p class="caption">An data table.</p>
+<img src="img/javascript/excel-table.png" alt="A data table." />
+<p class="caption">A data table.</p>
 </div>
 <p>Each object (record) acts as a “row” in the table, and each property (feature) acts as a “column”. As long as all of the objects share the same keys, this array of objects <em>is</em> a table!</p>
 </div>
@@ -718,14 +718,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">let</span> y <span class="token operator">=</span> <span class="token string">'40'</span> <span class="token operator">-</span> <span class="token number">4</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> 36; can't subtract strings so '40' is coerced to a Number!</span></code></pre>
 <p>JavaScript will also attempt to coerce values when checking for equality with <code>==</code>:</p>
-<pre class="language-js"><code><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">10</span>
-<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'10'</span>
+<pre class="language-js"><code><span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'10'</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num <span class="token operator">==</span> str<span class="token punctuation">)</span> <span class="token comment">//true, the values can be coerced into one another</span></code></pre>
 <p>In this case, the interpreter will coerce the Number <code>10</code> into the String <code>'10'</code> (since numbers can always be made into Strings), and since those Strings are the same, determines that the variables are equal.</p>
 <p>In general this type of automatic coercion can lead to subtle bugs. Thus you should instead always use the <strong><code>===</code></strong> operator (and it’s partner <code>!==</code>), which checks both value <em>and</em> type for equality:</p>
-<pre class="language-js"><code><span class="token keyword">var</span> num <span class="token operator">=</span> <span class="token number">10</span>
-<span class="token keyword">var</span> str <span class="token operator">=</span> <span class="token string">'10'</span>
+<pre class="language-js"><code><span class="token keyword">let</span> num <span class="token operator">=</span> <span class="token number">10</span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'10'</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>num <span class="token operator">===</span> str<span class="token punctuation">)</span> <span class="token comment">//false, the values have different types</span></code></pre>
 <p>JavaScript will do its best to coerce any value when compared. Often this means converting values to Strings, but it will also commonly convert values into <em>booleans</em> to compare them. So for example:</p>
