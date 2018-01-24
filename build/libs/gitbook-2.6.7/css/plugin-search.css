@@ -12,13 +12,12 @@
 .book .book-summary .book-search input:hover {
   width: 100%;
   background: transparent;
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
   box-shadow: none;
   outline: none;
   line-height: 22px;
   padding: 7px 4px;
   color: inherit;
-  box-sizing: border-box;
 }
 .book.with-search .book-summary .book-search {
   top: 0px;

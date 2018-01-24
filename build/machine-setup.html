@@ -6,8 +6,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="The course reader for INFO 343: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -25,7 +26,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-01-22">
+<meta name="date" content="2018-01-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,6 +35,7 @@
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
 <link rel="prev" href="index.html">
 <link rel="next" href="client-side-development.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -65,7 +67,6 @@
 </head>
 
 <body>
-
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -411,10 +412,12 @@ Note that iSchool lab machines should have all appropriate software already inst
   <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>        // have the text editor auto-format your code when you save 
   <span class="token property">"editor.tabSize"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>                // set the tab size to <span class="token number">4</span> spaces
   <span class="token property">"editor.detectIndentation"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  // don't have the text editor detect tabs v.s. spaces 
-  <span class="token property">"jshint.enable"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>              // enable the eshint linter
+  <span class="token property">"jshint.enable"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>              // enable the jshint linter
     <span class="token property">"jshint.options"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token string">"global"</span><span class="token punctuation">,</span>           // require JavaScript files to declare <span class="token string">"use strict"</span><span class="token punctuation">;</span>
-        <span class="token property">"esversion"</span><span class="token operator">:</span> <span class="token string">"6"</span>              // set es version to <span class="token number">6</span>
+        <span class="token property">"esversion"</span><span class="token operator">:</span> <span class="token number">6</span><span class="token punctuation">,</span>               // set es version to <span class="token number">6</span>
+        <span class="token property">"devel"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>                // enable debugging commands like <span class="token string">"console.log"</span>
+        <span class="token property">"browser"</span><span class="token operator">:</span> <span class="token boolean">true</span>               // enable browser variables like <span class="token string">"document"</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>While we suggest using VSCode for this course, one of these other editors may be of interest to you.</p>
@@ -559,9 +562,8 @@ While <em>npm</em> is the most popular package manager (and the one utilized in 
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
+<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -570,7 +572,7 @@ While <em>npm</em> is the most popular package manager (and the one utilized in 
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
 <script>
-gitbook.require(["gitbook"], function(gitbook) {
+require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,
@@ -591,7 +593,7 @@ gitbook.start({
 "link": "https://github.com/info343/book/edit/master/setup.Rmd",
 "text": "Edit"
 },
-"download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
+"download": null,
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -605,7 +607,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

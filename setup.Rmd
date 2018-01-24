@@ -52,7 +52,7 @@ Furthermore, we suggest the following user-settings to make using your text edit
   "editor.formatOnSave": true,        // have the text editor auto-format your code when you save 
   "editor.tabSize": 4,                // set the tab size to 4 spaces
   "editor.detectIndentation": false,  // don't have the text editor detect tabs v.s. spaces 
-  "jshint.enable": true,              // enable the eshint linter
+  "jshint.enable": true,              // enable the jshint linter
     "jshint.options": {
         "strict": "global",           // require JavaScript files to declare "use strict";
         "esversion": 6,               // set es version to 6
