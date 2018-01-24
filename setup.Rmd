@@ -55,7 +55,9 @@ Furthermore, we suggest the following user-settings to make using your text edit
   "jshint.enable": true,              // enable the eshint linter
     "jshint.options": {
         "strict": "global",           // require JavaScript files to declare "use strict";
-        "esversion": "6"              // set es version to 6
+        "esversion": 6,               // set es version to 6
+        "devel": true,                // enable debugging commands like "console.log"
+        "browser": true               // enable browser variables like "document"
     }
 }
 ```
