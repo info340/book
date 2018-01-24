@@ -18,6 +18,12 @@ But since websites are more likely to be visited on mobile devices, a better app
 
 <p class="alert alert-warning">Remember: working on your personal machine doesn't ensure that it will work on anyone else's!</p>
 
+A great way to test the responsiveness of your design is to click on the **Toggle Device Toolbar** icon in your element inspector:
+
+![toggle device toolbar](img/responsive/toggle-device.png)
+
+This will allow you to specify a variety of different screensizes for specific devices of interest (i.e., an iPhone 5s, etc.).
+
 ### Mobile-First Design Principles {-}
 While there is no magic formula for designing websites to support mobile devices, there are a few general principles you should follow:
 
@@ -131,7 +137,7 @@ header {
 }
 ```
 
-- In this example, the `<header>` is given a simple purple background and default font size. When loaded on mobile devices, this is the only rule that applies (the media queries aren't valid), so that is all the styling that occurs.
+- In this example, the `<header>` is given a simple purple background and default font size. When loaded on mobile devices, this is the only rule that applies (the media queries don't apply to the given screensize), so that is all the styling that occurs.
 - But on devices `768px` _or wider_ (like a tablet), the first media query is activated. This will then run a second rule that applies to the `<header>`, overriding the font to be larger (`1.5rem`)&mdash;it's as if we had listed those two `header` rules one after another, and the later one wins. But the first rule continues to apply, making the background purple.
 - Finally, a device `992px` _or wider_ (like a desktop computer), will cause _both_ of the media queries to execute. (since a device whose width is greater than `992px` is ALSO greater than `768px`). Thus the `<header>` will be given a purple background and default font size, which will then be overridden to be a larger font by the first media query. The second media query will add an additional property (a banner image background), which will combine with the previous purple background (e.g., if the banner has any transparency). So on large displays, there will be a banner background on top of purple, with text in a larger (`1.5rem`) font.
 

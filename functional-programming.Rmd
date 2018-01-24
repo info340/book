@@ -72,7 +72,7 @@ let sayHello = function(person) {
 
 - You can think of this structure as equivalent to declaring and assigning an array `let myVar = [1,2,3]`... just in this case instead of taking the anonymous array (right-hand side) and giving it a name, we're taking an _anonymous function_ and giving it a name!
 
-Thus you can define named functions in one of to ways: either my making an explicitly named function or by assigning an anonymous function to a variable:
+Thus you can define named functions in one of to ways: either by making an explicitly named function or by assigning an anonymous function to a variable:
 
 ```js
 //these produce the same function
@@ -121,9 +121,8 @@ dog.bark(); //logs "woof!"
 
 This is how we can create an equivalent of "member functions" (or methods) for individual objects: the `dog` object now has a function `bark()`!
 
-- Similar to Java, you can refer to the _object on which a function is called_ using the keyword `this`. Note that the manner in which the `this` variable is assigned can lead to some subtle errors when using callback functions (below). For more details, see [the chapter on ES6 features](#es6).
+- Similar to Java, you can refer to the _object on which a function is called_ using the keyword `this`. Note that the manner in which the `this` variable is assigned can lead to some subtle errors when using callback functions (below). For more details, see [the chapter on ES6 features](#es6). As a brief example:
 
-<!-- ### Working with <code>this</code> {-}
 
 ```js
 // An object representing a Dog
@@ -139,16 +138,11 @@ let spot = {
 }
 
 console.log('***This is Fido barking:***');
-fido.bark( /*this = fido*/ ); //=> "Fido woofs"
+fido.bark(); //=> "Fido woofs". Note, `this` will refer to the `fido` object. 
 
 console.log('***This is Spot barking***');
-spot.bark( /*this = spot*/ ); //=> "Spot yips"
-
-console.log("***This is Fido using Spot's bark***");
-fido.bark = spot.bark; //assign the function
-fido.bark( /*this = fido*/) //=> "Fido yips"
+spot.bark()); //=> "Spot yips". Note, `this` will refer to the `fido` object. 
 ```
- -->
 
 
 ## Callback Functions
@@ -170,7 +164,7 @@ function doWithWorld(funcToCall){
 doWithWorld(sayHello);  //logs "Hello world";
 ```
 
-In this case, the `doWithWorld` function will _execute_ whatever function it is given, passing in a value of `"world"`. (You can kind of think of this as similar to having a function that accesses the `'world'` property of a given object).
+In this case, the `doWithWorld` function will _execute_ whatever function it is given, passing in a value of `"world"`. 
 
 - **Important note**: when we pass `sayHello` as an argument, we don't put any parentheses after it! Putting the parentheses after the function name _executes_ the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to _resolve_ to its returned value, rather than being the function value itself. It's like passing in the baked cake rather than the recipe page.
 
@@ -388,7 +382,7 @@ let squares = numbers.map(square);
 console.log(squares); // [1, 4, 9, 16, 25]
 ```
 
-The array's `map()` function produces a **new** array with each of the elements transformed. The `map()` function takes as an argument _a callback function_ that will do the transformation. The callback function should as an argument the element to transform, and **return** a value (the transformed element).
+The array's `map()` function produces a **new** array with each of the elements transformed. The `map()` function takes as an argument _a callback function_ that will do the transformation. The callback function should take as an argument the element to transform, and **return** a value (the transformed element).
 
 - Callback functions for `map()` will be passed the same three arguments as the callback functions for `forEach()`: the element, the index, and the array.
 
@@ -400,6 +394,8 @@ let squares = numbers.map(function(item){
     return n*n;
 });
 ```
+
+**Note**: the major difference between the `.forEach` method and the `.map` method is that the `.map` method will **return** each element. If you need to create a new array, you should use `.map`. If you simply need to _do something_ for each element in an array, use `.forEach`.
 
 ### Filter {-}
 A second common operation is to **filter** a list of elements, removing elements that we don't want (or more accurately: only keeping elements that we _DO_ want). For example, consider the following loop:
@@ -529,11 +525,11 @@ To summarize, the `map()`, `filter()`, and `reduce()` operations work as follows
 <!-- should use JS specific version? Just code as text?? -->
 ![Map, filter, reduce explained with emoji. Not valid JavaScript syntax.](img/javascript/map-filter-reduce-in-emoji.png)
 
-All together, the **map**, **filter**, and **reduce** operations form the basic for a functional consideration of a program. Indeed, these kinds of operations are very common when discussing data manipulations: for example, the famous [MapReduce](https://en.wikipedia.org/wiki/MapReduce) model involves "mapping" each element through a complex function (on a different computer no less!), and then "reducing" the results into a single answer.
+All together, the **map**, **filter**, and **reduce** operations form the basic platform for a functional consideration of a program. Indeed, these kinds of operations are very common when discussing data manipulations: for example, the famous [MapReduce](https://en.wikipedia.org/wiki/MapReduce) model involves "mapping" each element through a complex function (on a different computer no less!), and then "reducing" the results into a single answer.
 
 
 ## Pure Functions
-<small>This section was adapted a [tutorial](https://drstearns.github.io/tutorials/jsfunctional/) by [Dave Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).</small>
+<small>This section was adapted from a [tutorial](https://drstearns.github.io/tutorials/jsfunctional/) by [Dave Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).</small>
 
 The concept of _first-class functions_ (functions are values) is central to any functional programming language. However, there is more to the functional programming paradigm than just callback functions. In a fully functional programming language, you construct programs by combining small, reusable, **pure** functions that take in some inputted data, transform it, and then return that data for future use. _Pure_ functions have the following qualities:
 

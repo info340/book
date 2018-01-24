@@ -61,7 +61,7 @@ Because a CSS framework is _just a CSS file_, you include one in your page using
 
 It is most common to include the **minified** versions of CSS frameworks: these are usually named as **`.min.css`** files (e.g., `bootstrap.min.css`). A minified file is one that has extra comments and white space removed, creating a file with a much smaller size (remember that each space and line break is a character so takes up a byte! Bootstrap goes from 160 kilobytes to about 127 kilobytes when minimized). Because web pages have to be downloaded, smaller pages will be downloaded faster, and thus will be "quicker" for the user. While an unminimized CSS file won't "break the bank", the extra white space doesn't provide anything that you need.
 
-- You can almost always convert between the minimized and non-minimized file just by changing the file name between `file.css` and `file.min.css`.
+- You can almost always switch between the minimized and non-minimized file just by changing the file name between `file.css` and `file.min.css` (when using a CDN).
 
 There are a few different ways of accessing a CSS framework's stylesheet in order to link it into your page:
 
@@ -122,14 +122,14 @@ You include the Bootstrap framework by linking its `.css` file to your page (whe
       crossorigin="anonymous">
 ```
 
-(This `<link>` example has 2 additional (optional) attributes: `integrity` gives a [cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) of so the browser can make sure you didn't download a malicious file by mistake, and `crossorigin` which says that no credentials are sent to the remote server&mdash;see the [AJAX](#ajax) chapter for a more detailed discussion).
+(This `<link>` example has 2 additional (optional) attributes: `integrity` gives a [cryptographic hash](https://en.wikipedia.org/wiki/Cryptographic_hash_function) of the source code so the browser can make sure you didn't download a malicious file by mistake, and `crossorigin` which says that no credentials are sent to the remote server&mdash;see the [AJAX](#ajax) chapter for a more detailed discussion).
 
 When you first include the Bootstrap framework, you'll immediately see the effects (usually for the better!): the default font has changed, margins are different, and so forth. The Bootstrap CSS file contains a number of rules that apply to elements without an extra work, including the `<body>` and headers. See [the documentation](https://getbootstrap.com/docs/4.0/content/reboot/) for details about the default styling (as well as the entire "Content" section of the documentation).
 
 ### Utility Classes {-}
 In addition to the base styling rules, Bootstrap also includes a huge number of rules that can be applied to elements by giving them a particular CSS **class**. These [utility classes](https://getbootstrap.com/docs/4.0/utilities) are what gives Bootstrap its power and flexibility.
 
-For example, Bootstrap provides [text utilities](https://getbootstrap.com/docs/4.0/utilities/text/) that allow you to style text just by giving it a CSS class, rather than needing to write a new rule for that element.
+For example, Bootstrap provides [text utilities](https://getbootstrap.com/docs/4.0/utilities/text/) that allow you to style text just by giving it a CSS class, rather than needing to write a new rule for that element. This example shows the `text-justify` utility, which justifies the text (i.e., the letter- and word-spacing is adjusted so that the text falls flush with both margins):
 
 ![The `text-justify` utility class will justify a block of text. Example from the Bootstrap [documentation](https://getbootstrap.com/docs/4.0/utilities/text/#text-alignment).](img/css-frameworks/bootstrap-text-justify.png)
 
@@ -194,7 +194,7 @@ Responsive utilities are named with the size's abbreviation to specify what scre
 
 Many (but not all!) Bootstrap classes support responsive breakpoints. The most common class to do this is the [`container`](https://getbootstrap.com/docs/4.0/layout/overview/#containers) class. Containers are the most basic layout element in Bootstrap, and are required for doing more complex layouts (such as Grids, below). The `container` class gives the element a fixed width that includes some padding on the sides, so that the content isn't right up against the edge of the window. If the size of the window shrinks to the point where the padding would disappear, the `container` responsively changes size so that there remains padding even on the smaller screen!
 
-- See [this Code Pen](https://codepen.io/drstearns/pen/brKKBK) for an example. if you slowly resize the browser, you'll see the text "jump" to a smaller width as you pass each responsive breakpoint.
+- See [this Code Pen](https://codepen.io/drstearns/pen/brKKBK) for an example. If you slowly resize the browser, you'll see the text "jump" to a smaller width as you pass each responsive breakpoint.
 
 - `.container` elements are usually direct children of the `<body>` (e.g., `<header>`, `<main>`). However, if you want a background color or image to "full bleed" to the edges of the viewport, you can put the `.container` inside the another element that is styled with the background, as in the CodePen example.
 

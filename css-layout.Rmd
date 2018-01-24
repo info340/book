@@ -1,8 +1,11 @@
 # CSS Layouts
 
-The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page!
+The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the **top left corner** of the page, and are arranged based on three related (but distinct) concepts:
+- **Display**: determines how elements share horizontal space
+- **Position**: allows you to adjust the location of the natural flow of elements
+- **Box-model**: describes the amount of 2D space taken up by an element, and how much space is between elements
 
-## Block vs. Inline
+## Display
 Without any CSS, html elements follow a default **flow** on the page based on the order they appear in the HTML. Layout is based on whether the element is a _block element_ or an _inline element_.
 
 As mentioned in Chapter 3, **inline** elements (e.g., `<em>`, `<a>`, `<span>`) are put next to each other on a single line (left to right, unless you specify a [right-to-left language](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)). **Block** elements (`<p>`, `<ul>`, `<div>`) are placed on subsequent "lines", from top to bottom.
@@ -52,7 +55,7 @@ There are several other more specific settings, the most useful of which is `inl
 ## The Box Model
 The [**CSS Box Model**](https://www.w3.org/TR/CSS2/box.html) is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually laid out on the page.
 
-All HTML element (_including text!_) include an imaginary **box** around their content. Elements are laid out with their boxes next to each other (side by side for `inline`, stacked on top for `block`). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.
+All HTML elements (_including text!_) include an imaginary **box** around their content. Elements are laid out with their boxes next to each other (side by side for `inline`, stacked on top for `block`). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.
 
 First off, you can set the **`width`** and **`height`** of elements explicitly, though be careful when you do this. If your `width` and `height` are too small, the element's content will be clipped by default (a behavior controlled by the `overflow` property). It's generally best to set only the width **or** the height, but not both. You can also specify a `min-width` or `min-height` to ensure that the width or height is at least a particular size. Conversely, you can use `max-width` and `max-height` to constrain the size of the element.
 
@@ -117,7 +120,7 @@ Finally, the **margin** specifies the space _between_ this box and other nearby 
 Note that browsers typically [collapse](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing) (overlap) the margins of adjacent elements. For example, if you have two paragraphs on top of one another, and you set `margin-bottom` on the first and `margin-top` on the second, most browsers will overlap those margins and just use the larger of the two values to determine the spacing.
 
 ### Box-Sizing {-}
-An elements `padding`, `border`, and `margin` can be used to put space between element content on the page. However, when you assign an explicit **`width`** or **`height`** to an element, the dimension you specify **does not include** the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties
+An element's `padding`, `border`, and `margin` can be used to put space between element content on the page. However, when you assign an explicit **`width`** or **`height`** to an element, the dimension you specify **does not include** the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties
 
 ```css
 .my-box {
@@ -141,12 +144,23 @@ It's common to want to apply this property to **all** of the elements on the pag
 This is a common enough change that you may wish to include it in _all_ of your `.css` files!
 
 
-## Changing the Flow
+## Position
 Specifying the `display` style and **box** properties will adjust the layout of HTML elements, but they are still following the browser's default _flow_. The layout rules will still apply, and elements are influenced by the amount of content and the size of the browser (e.g., for when inline elements "wrap").
 
-However, it is possible to position elements outside of the normal flow by specifying the `position` property.
+However, it is possible to position elements outside of the normal flow by specifying the `position` property. Depending on the `position` property, you can shift the location of elements using the `top`, `bottom`, `left`, and `right` properties.There are four values that the `position` property can be set to:
 
-For example, giving an element a **`position:fixed`** property will specify a "fixed" position of the element _relative to the browser window_. It will no move no matter where it appears in the HTML or where the browser scrolls. See [this Code Pen](http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0) for an example.
+>**Static**: By default, elements are positioned statically. This is their natural layout, and elements _will not_ be shifted by the `top`, `bottom`, `left`, or `right` properties.
+
+>**Relative**: Allows you to shift the element _relative_ to it's natural position on the page. This enables you to move the element using the `top`, `bottom`, `left`, and `right` properties.
+
+>**Fixed**: The _fixed_ position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to _always_ be 50px from the bottom, you could set the properties: `position:fixed;` and `bottom:50px;`.
+
+>**Absolute**: The _absolute_ position allows you to place an element a specific number of pixels from it's (first non-static) parent element. This allows you to specify where _within a parent element_ you want an element to be positioned. 
+
+Note, in order to get `position:absolute;` to work _"as expected"_, you'll need to specify that the _parent element_ is `position:relative;`. See [this post](https://css-tricks.com/absolute-positioning-inside-relative-positioning/) for more information.
+
+
+As an example, giving an element a **`position:fixed`** property will specify a "fixed" position of the element _relative to the browser window_. It will no move no matter where it appears in the HTML or where the browser scrolls. See [this Code Pen](http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0) for an example.
 
 - In order to specify the location for a **`fixed`** element, use the `top`, `left`, `bottom`, and/or `right` properties to specify distance from the appropriate edge of the browser window:
 
@@ -159,11 +173,6 @@ For example, giving an element a **`position:fixed`** property will specify a "f
         width: 100%; /* same as parent, useful for spanning the page */
     }
     ```
-
-You can also specify an element's `position` to be **`relative`**, meaning _relative to its normal position_. Note that this leaves the element within normal flow (e.g., for how its padding effects other elements around it). See [this Code Pen](http://codepen.io/joelross/pen/XjpYwK?editors=1100#0) to explore this option.
-
-Finally, you can specify an element's `position` to be **`absolute`**, meaning _relative to it (positioned) parent element_. If the parent has not been explicitly positioned (has a declared `position` property), the element is positioned relative to the root element. Try it out in [this Code Pen](http://codepen.io/joelross/pen/NRdzZo?editors=1100#0). This mostly remove an element from normal flow, though its parent may still be part of the flow and thus may influence the absolutely positioned element's location.
-
 
 ### Floating {-}
 

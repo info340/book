@@ -2,7 +2,7 @@
 
 HTML and CSS are _markup languages_, used to annotate websites to describe their meaning and appearance. But they are not "full" (i.e., [Turing Complete](https://en.wikipedia.org/wiki/Turing_completeness)) programming languages&mdash;they don't have variables, control structures, or other features required for the computer to execute an _algorithm_. So to make _interactive_ websites or complex web applications, you need a complete programming language. And the language used by browsers is **JavaScript**. This chapter introduces the fundamentals of the JavaScript language as used in web development, focusing on variables, data types, and basic control structures. Functions are introduced, but addressed in more detail in the next chapter.
 
-<p class="alert alert-warning">Note course assumes you already are already familiar with introductory programming in a imperative language such as Java. It focuses on how JavaScript differs from languages such as Java, rather than foundational programming concepts. If you need review on those topics, you can check out a [basic programming tutorial](https://en.wikiversity.org/wiki/Introduction_to_Programming) or review your notes from a previous programming course.</p>
+<p class="alert alert-warning">Note, this course assumes you already are already familiar with introductory programming in a imperative language such as Java. It focuses on how JavaScript differs from languages such as Java, rather than foundational programming concepts. If you need review on those topics, you can check out a [basic programming tutorial](https://en.wikiversity.org/wiki/Introduction_to_Programming) or review your notes from a previous programming course.</p>
 
 ## Programming with JavaScript
 JavaScript is a **high-level, general-purpose programming language**, allowing you to declare instructions for the computer in an almost-human readable way (similar to Java). JavaScript is an _imperative_ language, so you write algorithms as step-by-step instructions (lines of code) using JavaScript's syntax, and the computer will interpret these instructions in order to execute the algorithm. Browsers are able to download scripts written in JavaScript, executing them line-by-line and using those instructions to manipulate what content is displayed.
@@ -21,7 +21,7 @@ The JavaScript language was developed by [Brendan Eich](https://en.wikipedia.org
 
 - Despite the names, _JavaScript_ and the _Java_ language have nothing to do with one another (and are in fact totally separate programming languages used in drastically different contexts). JavaScript was named after Java as a marketing ploy to cash in on the popularity of the latter. It is the programming equivalent of the [Transmorphers](https://www.rottentomatoes.com/m/transmorphers_2007/) movie.
 
-- The JavaScript language is officially an implementation of [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) (named for the European Computer Manufacturers Association) specification. Hence versions of JavaScript are labeled with the prefix "ES". For example, this chapter includes describes `ES5` (JavaScript 5) syntax.
+- The JavaScript language is officially an implementation of [ECMAScript](https://en.wikipedia.org/wiki/ECMAScript) (named for the European Computer Manufacturers Association) specification. Hence versions of JavaScript are labeled with the prefix "ES". For example, this chapter describes `ES5` (JavaScript 5) syntax.
 
 Like HTML and CSS, the JavaScript language continues to be developed and refined through new versions. Each new version of JavaScript includes additional syntax shorts, specialized keywords, and additional core functions, but otherwise are compatible with previous code. The main limitation on utilizing new JavaScript features is whether the _interpreters_ found in web browsers are able to support them.
 
@@ -43,7 +43,7 @@ JavaScript scripts are most commonly executed in a web browser as part of the br
 
 - Notice that the `<script>` element is _not_ empty! It is possible to include JavaScript code directly inside the tag, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.
 
-The `<script>` tag can be included anywhere in an HTML page. Most commonly it is either placed in the `<head>` in order for the script to be executed _before_ the page content loads, or at the very end of the `<body>` in order for the script to be executed _after_ the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will most commonly be putting `<script>` tags at the end of the `<body>`:
+The `<script>` tag can be included anywhere in an HTML page. Most commonly it is either placed in the `<head>` in order for the script to be executed _before_ the page content loads, or at the very end of the `<body>` in order for the script to be executed _after_ the page content loads (and thus allows the JavaScript to immediately interact with the loaded HTML elements). We will (begin by) most commonly be putting `<script>` tags at the end of the `<body>`:
 
 ```html
 <!DOCTYPE html>
@@ -160,7 +160,7 @@ console.log(hoursSlept);  //=> undefined
 
 Note that the `let` keyword is in fact new syntax introduced with `ES6`: older versions of JavaScript used the `var` keyword instead (and you will see `var` in most existing examples and tutorials). The difference is that variables declared with `let` are **"block scoped"**, meaning they are only available within the _block_ (the `{}`) in which they are defined. This is the same way variables are scoped in Java. Variables declared with `var`, on the other hand, are "functionally scoped" so are available anywhere within the _function_ in which they are defined. This means that you could declare a variable within an `if` block, and that variable would continue to be available outside that block! Thus `let` allows for cleaner, more efficient code, and with less bugs.
 
-- `let` is the one `ES6` feature supported by IE 11, meaning it can be used with [most all current browsers](http://caniuse.com/#search=let). However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using `var`
+- `let` is the one `ES6` feature supported by IE 11, meaning it can be used with [most current browsers](http://caniuse.com/#search=let). However, if you do need to support an older browser (e.g., IE 10, Safari 9.3, Android 4.4), you should transpile your code or stick to using `var`
 
 Along with `let`, JavaScript variables can also be declared using the `const` keyword to indicate that they are _constant_ (similar to what the `final` keyword does in Java). A `const` variable is block scoped, but can only be assigned once:
 
@@ -322,8 +322,8 @@ Despite the name, JavaScript Objects have nothing to do with Object-Oriented Pro
 ```js
 //an object representing a Person (spacing is for readability; white-space is ignored)
 let person = {
-  first_name: 'Alice',
-  last_name: 'Smith',
+  firstName: 'Alice',
+  lastName: 'Smith',
   age: 40,
   pets: ['rover', 'fluffy', 'mittens'],  //value is an array
   favorites: {   //value is another object
@@ -408,7 +408,7 @@ let people = [
 
 This structure can be seen as a list of **records** (the objects), each of which have a number of different **features** (the key-value pairs). This list of feature records is in fact a common way of understanding a **data table** like you would create as an Excel spreadsheet:
 
-![An data table.](img/javascript/excel-table.png)
+![A data table.](img/javascript/excel-table.png)
 
 Each object (record) acts as a "row" in the table, and each property (feature) acts as a "column". As long as all of the objects share the same keys, this array of objects _is_ a table!
 
@@ -433,8 +433,8 @@ console.log(y);  //=> 36; can't subtract strings so '40' is coerced to a Number!
 JavaScript will also attempt to coerce values when checking for equality with `==`:
 
 ```js
-var num = 10
-var str = '10'
+let num = 10
+let str = '10'
 
 console.log(num == str) //true, the values can be coerced into one another
 ```
@@ -444,8 +444,8 @@ In this case, the interpreter will coerce the Number `10` into the String `'10'`
 In general this type of automatic coercion can lead to subtle bugs. Thus you should instead always use the **`===`** operator (and it's partner `!==`), which checks both value _and_ type for equality:
 
 ```js
-var num = 10
-var str = '10'
+let num = 10
+let str = '10'
 
 console.log(num === str) //false, the values have different types
 ```
