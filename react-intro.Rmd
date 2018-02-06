@@ -1,31 +1,165 @@
 # Introduction to React {#react}
 
-<p class="alert alert-warning">This chapter is not yet written. As a placeholder, see the below links to relevant documentation.</p>
+## Overview
+React is _a JavaScript library for building user interfaces_. Using the React library will enable you to create reusable **components** that you can combine into robust web applications. We'll continue the pursuit of using **data** to drive web applications by using a structure in which we pass different _data_ to _components_ we create.
 
-## What is React?
-
-- [React.js](https://reactjs.org/)
-- [React "Hello World"](https://reactjs.org/docs/hello-world.html)
-- [React Tutorial](https://reactjs.org/tutorial/tutorial.html)
+Because React is such a popular and configurable library, people use it in complex ways in conjunction with a variety of different tools to manage complex applications. We'll introduce a number of these tools as the course moves forward, but we'll start as simple as possible -- just be aware that some of the examples you find online (even [Facebook's React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)) may leverage additional tools to "simplify" the process.
 
 
-### Create React App {-}
+## React Set-up
+Using React is similar to using other JavaScript libraries in that you'll need to load them into your application to use them. In fact, you'll need to load 3 different libraries (at this point)
 
-- [Create React App User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md)
+```html
+<!-- Read in React scripts -->
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+<!-- Read in Babel Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+```
+The React library actually consists of 2 libraries that are loaded in the script above. The `react.development.js` script is the library used to create React components, while the `react-dom.development.js` library is the library that handels DOM manipulation. The third script that you loaded (`babel`) is what will allow us to write in a new syntax: `jsx`.
 
 ## JSX
+As described in this [introductory post](https://reactjs.org/docs/introducing-jsx.html), `JSX` is a _syntax extension_ to JavaScipt. It provides you with a way to write bare HTML tags in your JavaScript (finally!). We need to include the `babel` script above because your browser won't understand this syntax (`babel` will _transpile_ it for you). For example:
 
-- [Introducing JSX](https://reactjs.org/docs/introducing-jsx.html)
+```jsx
+// A regular JavaScript constant
+const name = "Mike";
+// Use JSX to store an HTML element in a JavaScript variable
+const element = (
+  <h1 className="large">
+    Hello, {name}!
+  </h1>
+);
 
-## React Components
+// Render your element to the DOM in your `root` element
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+```
 
-- [Thinking in React](https://reactjs.org/docs/thinking-in-react.html)
+In the above example the `element` variable stores an HTML element. A few things to note:
 
-## Props
+- To include JavaScript variables in your JSX, simply wrap the variables in curly braces (i.e., `{name}`)
+- Because the word `class` is a protected word in JavaScript, you'll need to use the JSX alternative `className` to set the `class` attribute
+- The `ReactDOM.render()` method takes in two parameters: the element you want to render, and the element _in which_ to render your element.
 
-- [Components and Props](https://reactjs.org/docs/components-and-props.html)
+## Components
+Wouldn't it be great if we could create _our own HTML elements_? For example, what if we were able to define a `<Tweet>` element for a Twitter application? That's what React will enable us to do. Once we create components, we'll be able to refer to them as if they were regular HTML elements that we want to render. We'll leverage JavaScipt's _class inheretence_ structure to create our own classes that extend the React class. These objects have a `render` method that return the element to draw on the DOM. For example:
 
+```jsx
+// Create a component that represents someone's bio
+class Bio extends React.Component {
+    render() {
+        return(
+            <div>
+                <h1>Arthur</h1>
+                <p>Hello, my name is Arthur and I am an Aardvark</p>
+            </div>
+        )
+    }
+}
 
-## Other Resources {-}
-- [React Slides (Au16)](http://slides.com/joelross/info343au16-react#/)
-- [React API References](https://reactjs.org/docs/react-api.html)
+// Render our new Bio component:
+ReactDOM.render(
+  <Bio>,
+  document.getElementById('root')
+);
+```
+
+A few things to note:
+- Our class (`Bio`) must begin with a **capital letter**
+- Our `render` statement can only return **one HTML element** (though it can _contain_ as many HTML elements as you want)
+
+These Components are powerful because you can pass _properties_ to them (just as you would set the _attributes_ to HTML elements).
+
+## Properties
+When you create a React component, you can **pass it properties** in the same way that you would specify HTML attributes. _Properties_ (or _props_) are pieces of data that your component can use to display data that it is passed, making it a flexible templating system. The values passed to a component are accessible within the component as `this.props`. This will allow us to dynamically show information that is passed to the component:
+
+```jsx
+// Define the class Bio to take in `name` and `description` properties
+class Bio extends React.Component {
+    render() {
+        return(
+            <div>
+                <h1>{this.props.name}</h1>
+                <p>{this.props.description}</p>
+            </div>
+        )
+    }
+}
+
+// Render our new Bio component:
+ReactDOM.render(
+  <Bio name="Arthur" description="Hello, my name is Arthur and I am an Aardvark">,
+  document.getElementById('root')
+);
+```
+We are now able to pass in our data of interest as properties. The components that you create have **lifecycle** methods that help keep the DOM up to date as your data changes. For an overview of these methods, you can see the [documentation](https://facebook.github.io/react/docs/react-component.html). For now, it's important to note that a number of functions are invoked **by default** when you change your `props` or your `state` (more on this below). **When your `props` change, your `render` method will be called** (as will a number of other functions to allow you to control the flow of information).
+
+## Nesting Components
+Once we've created components, we can render them inside of other components, just like regular HTML elements! This is a core idea to React, as it uses a **one-directional data flow** where _parent_ components pass data to child components.
+
+Let's imagine that we want to create a list (pretty simple, right?). For each list item (`<li>`) that we want to create, we could render a React component (`ListItem`).
+
+Let's start by creating a ListItem component:
+```javascript
+// Simple ListItem component for showing an <li>
+class ListItem exteds React.Component{
+    render() {
+        return(<li className={this.props.status}>{this.props.text}</li>)
+    }
+});
+```
+The above section is written to accept two properties: `status` and `text`. Note, we again **have to use `className`** to assign a class.
+
+Now we can create a `List` component to render all of our `ListItem` components.
+
+```javascript
+// Data to pass to our List element
+let items = [
+    {text:"Go to the store", status:"complete"},
+    {text:"Go to class", status:'incomplete'}
+];
+
+// A component for creating an entire list
+class List extends React.Component {
+    render() {
+        return(
+            <div>
+                { // Iterate through items + return a ListItem
+                this.props.items.map((item, index) => {
+                    return <ListItem key={'item-' + index} status={item.status} text={item.text} />
+                })
+                }
+            </div>
+        )
+    }
+}
+
+```
+In the above section, we open up a JavaScript section _inside_ of the `<div>` element that we're going to return. We can then access the items via `this.props.items` and iterate through them with the `.map` function. Each iteration will _return_ a `ListItem`.
+
+- Note: React will issue a warning if you don't assign each element a unique **key** to help it identify changes in the DOM.
+
+Finally, we'll pass our `items` data to our `List` component and render it:
+
+```javascript
+// Render your component in the `main` section
+ReactDOM.render(<List items={items}/>,
+    document.querySelector('main')
+);
+```
+
+You should now be able to create simple React components and specify their _properties_. The power of configuring applications using these properties is discussed more in the following chapters.
+
+## Resources
+
+- [Simple React Examples](http://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework/)
+- [Facebook's React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
+- [React Documentation](https://facebook.github.io/react/docs/hello-world.html)
+- [JSX Documentation](https://facebook.github.io/react/docs/introducing-jsx.html)
+- [React if you know jQuery](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)
+- [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
+- [React Component Lifecycle](https://facebook.github.io/react/docs/react-component.html)
