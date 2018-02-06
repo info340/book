@@ -1,18 +1,155 @@
 # Interactive React
-
-<p class="alert alert-warning">This chapter is not yet written. As a placeholder, see the below links to relevant documentation.</p>
+This chapter describes how React components can be leveraged to build interactive and robust applications. Before diving into specifics,
 
 ## State
+So far, we've been discussing how components can receive _properties_ to determine their visual rendering. It's put nicely in [this write-up](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md):
 
-- [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+>_props_ (short for properties) are a Component's configuration, its options if you may. They are received from above and immutable as far as the Component receiving them is concerned.
+>A Component **cannot change its props**, but it is responsible for putting together the props of its child Components.
 
-### State vs. Props {-}
+So, we use **props** to pass data into components which render that data. However, if we want to begin building dynamic applications, we'll need to use **component state** to track change in the _state_ of the application (usually driven by a user).
 
-- [props vs state (blog)](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md)
+A really nice overview of the difference between props and state is in [this article](https://facebook.github.io/react/docs/thinking-in-react.html), which points out a few key ideas:
 
-### Lifting Up State {-}
+- "State is reserved only for interactivity, that is, data that changes over time"
+- Keep your state _as minimal as possible_, and compute information from that state
 
-- [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html)
+So, for example, if you wanted to have a _searchable list_, that component would recieve the list items as an array (which would not change) -- this means that it is part of **props**. However, the search string will change, so we can store the search string in **state**, and _compute the filtered list_ in our `render()` function.
+
+<p class="alert alert alert-warning">Note: one of the most difficult parts of architecting a React application is figuring out what information should be stored as props or state (and in which Components). We suggest you practice this using simple examples, and think carefully about it as you build more robust applications.</p>
+
+We can begin by setting an initial state in the class's `constructor`
+
+```javascript
+// Component for searching a table
+class SearchableTable extends React.Component {
+    // Set an initial state: it will then be accessible as this.state.NAME
+    constructor(props) {
+        super(props); // exposes props to this.props in the constructor
+        this.state = {
+            search:''
+        };
+    }
+    render() {
+        // Use searchstring to filter data
+        ...
+
+        // Render a table in here
+        return(...dom elements ...);
+        ...
+    }
+});
+```
+If we were building a searchable table, the only thing that changes, and therefore the **only data we need to store in state**, is the search string -- we can then filter down our data in the `render` function.
+
+## Events
+Event handlers are assigned in React in the same way that you would assign them to an HTML element using the event name of your choice. Inside of a `.jsx` file, we could leverage the curly braces `{}` inside an HTML section to reference a JavaScript function.
+
+```html
+<input onChange={functionName} />
+```
+
+What we need to figure out is _what to do in that function_. Rather than trying to update elements ourselves, we can simply **update the state**, and let React take care of the rest. When we change state or props, React will re-render our components. Continuing with our example of a searchable table, we could define a function _as part of our component_ that _changes it's state_, and then our UI will be re-rendered:
+
+
+```javascript
+// Component for searching a table
+class SearchApp extends React.Component {
+    // Set an initial state: it will then be accessible as this.state.NAME
+    constructor(porps) {
+        super(props);
+        this.state = {
+            search:''
+        };
+    },
+    // Define a `filter` function to be executed when the input element changes
+    update(event) {
+        // Get event value
+        let value = event.target.value;
+
+        // Change state
+        this.setState({search:value});
+    }
+    render() {
+        // Use searchstring to filter data
+        ...
+
+        // Render a table in here
+        return(
+            <input onChange={this.update} />
+            ...other dom elements...
+        );
+        ...
+    }
+});
+
+```
+In the above section, the `filter` function (which we define -- this **is not** a default React function) will be executed when the `<input>` element changes value. The `filter` function then set's the state using `this.setState({key:value})`. Note **do not** try setting the state directly (i.e., `this.state.searchString = 'something'`). By setting the state, you will **trigger an update**, and React will re-render your DOM. For more information on events that trigger a re-render, see [this State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html) article.
+
+## Lifting Up State
+In architecting a React application, you'll need to make the following design choices:
+
+- What information is tracked as _props_ v.s. _state_?
+- Which components track the _state_ v.s simply receiving _props_?
+- How can you pass information across components?
+
+A simple model for React applications is to have a singe `<App>` Component that tracks the state. That application will pass all information to the other components via _props_. However, this raises a difficult question:
+
+> Given React's _one-directional_ data flow, how can you pass information _back to the `<App>` from a child Component?
+
+For example, if we are building a `SearchApp` that is a searchable table, it may have an `<UserInput>` Component where the user is typing:
+
+```js
+class SearchApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <UserInput/>
+                <Table/>
+            </div>
+        )
+    }
+}
+```
+
+The process of passing information _back up to_ the `SearchApp` from the `UserInput` component is  know as [Lifting State Up](https://reactjs.org/docs/lifting-state-up.html). To accomplish this, we'll need to pass an **event handler** from our parent (`SearchApp`) to the child (`UserInput`). This will allow the parent to register changes when the _child_ experiences events. For example, a `UserInput` element could be structured to _recieve a function as props_ that it will execute `onChange`:
+
+```js
+class UserInput extends React.Component {
+    render() {
+        return (
+            <div>
+                <input onChange={this.props.update}/>
+            </div>
+        )
+    }
+}
+```
+
+The `UserInput` is build to be flexible: it will do whatever function is passed in as `update`. So, we can define a function in our `SearchApp` and pass it to the `UserInput` as a property:
+
+```jsx
+class SearchApp extends React.Component {
+    handleChange(event) {
+        // Get event value
+        let searchValue = event.target.value;
+
+        // Set the state to trigger a re-rendering
+        this.setState({search:searchValue})
+    }
+    render() {
+        // Set the `update` property of the `UserInput` element
+        return (
+            <div>
+                <UserInput update={this.handleChange}/>
+                <Table/>
+            </div>
+        )
+    }
+}
+```
+
+To see a working example of this application, see [this codepen](https://codepen.io/mf_viz/pen/ddXwKP?editors=0010).
 
 ## Component Lifecycle
 
