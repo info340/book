@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="css-options.html">
-<link rel="next" href="responsive-css.html">
+<link rel="prev" href="react.html">
+<link rel="next" href="interactive-react.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -375,234 +375,182 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="css-layouts" class="section level1">
-<h1><span class="header-section-number">Chapter 7</span> CSS Layouts</h1>
-<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts: - <strong>Display</strong>: determines how elements share horizontal space - <strong>Position</strong>: allows you to adjust the location of the natural flow of elements - <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
-<div id="display" class="section level2">
-<h2><span class="header-section-number">7.1</span> Display</h2>
-<p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
-<p>As mentioned in Chapter 3, <strong>inline</strong> elements (e.g., <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>) are put next to each other on a single line (left to right, unless you specify a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">right-to-left language</a>). <strong>Block</strong> elements (<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>) are placed on subsequent “lines”, from top to bottom.</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<div class="figure">
-<img src="img/css/block-element.png" alt="Example of block elements, placed on top of each other." />
-<p class="caption">Example of block elements, placed on top of each other.</p>
-</div>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
-<div class="figure">
-<img src="img/css/inline-element.png" alt="Example of inline elements, next to each other (even if the code is on separate lines)." />
-<p class="caption">Example of inline elements, next to each other (even if the code is on separate lines).</p>
-</div>
-<p><em>However</em>, you can force an element to be either <code>block</code> or <code>inline</code> by declaring the <strong><code>display</code></strong> CSS property:</p>
-<pre class="language-css"><code><span class="token selector">.inlined</span> <span class="token punctuation">{</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<pre class="language-html"><code><span class="token comment">&lt;!-- this will produce the same result as using &lt;span> elements --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<p>The <code>display</code> property also allows you to remove elements from the page flow entirely:</p>
-<pre class="language-css"><code><span class="token selector">.hidden</span> <span class="token punctuation">{</span>
-  <span class="token comment">/* do not show element at all */</span>
-  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>There are several other more specific settings, the most useful of which is <code>inline-block</code>. This lets you treat an element as <code>inline</code> (no line break after), but also gives you the ability to specify its <code>width</code>, <code>height</code>, and other properties only adjustable on <code>block</code> elements. This is particularly useful for making things like lists (<code>&lt;ul&gt;</code>) appear “inline”.</p>
-<div class="figure">
-<img src="img/css/inline-block-example.png" alt="An example of an element with display:inline-block." />
-<p class="caption">An example of an element with <code>display:inline-block</code>.</p>
-</div>
-</div>
-<div id="the-box-model" class="section level2">
-<h2><span class="header-section-number">7.2</span> The Box Model</h2>
-<p>The <a href="https://www.w3.org/TR/CSS2/box.html"><strong>CSS Box Model</strong></a> is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually laid out on the page.</p>
-<p>All HTML elements (<em>including text!</em>) include an imaginary <strong>box</strong> around their content. Elements are laid out with their boxes next to each other (side by side for <code>inline</code>, stacked on top for <code>block</code>). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.</p>
-<p>First off, you can set the <strong><code>width</code></strong> and <strong><code>height</code></strong> of elements explicitly, though be careful when you do this. If your <code>width</code> and <code>height</code> are too small, the element’s content will be clipped by default (a behavior controlled by the <code>overflow</code> property). It’s generally best to set only the width <strong>or</strong> the height, but not both. You can also specify a <code>min-width</code> or <code>min-height</code> to ensure that the width or height is at least a particular size. Conversely, you can use <code>max-width</code> and <code>max-height</code> to constrain the size of the element.</p>
-<p>In order to adjust the spacing between boxes, you can manipulate one of 3 properties:</p>
-<div class="figure">
-<img src="img/css/box-model.png" alt="A diagram of the box model properties" />
-<p class="caption">A diagram of the box model properties</p>
-</div>
-<div id="padding" class="section level3 unnumbered">
-<h3>Padding</h3>
-<p>The <strong>padding</strong> is the space between the content and the border (e.g., the edge of the box).</p>
-<div class="figure">
-<img src="img/css/box-padding.png" alt="An element’s padding." />
-<p class="caption">An element’s padding.</p>
-</div>
-<p>It is possible to specify the padding of each side of the box individually, or a uniform padding for the entire element:</p>
-<pre class="language-css"><code><span class="token comment">/* specify each side individually */</span>
-<span class="token selector">div</span> <span class="token punctuation">{</span>
-  <span class="token property">padding-top</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
-  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
-  <span class="token property">padding-left</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
-  <span class="token property">padding-right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* no units needed on 0 */</span>
+<div id="react-tools" class="section level1">
+<h1><span class="header-section-number">Chapter 17</span> React Tools</h1>
+<p>React and other modern JavaScript development approaches require leveraging a variety of external libraries, and often require other compilation steps such as <strong>transpiling</strong> to ES6, or <strong>bundling</strong> your JavaScript into a single file. There are a variety of tools available to make these steps easier, some of which we’ll introduce here.</p>
+<div id="importing-and-exporting-in-es6" class="section level2">
+<h2><span class="header-section-number">17.1</span> Importing and Exporting in ES6</h2>
+<p>One of the most powerful features of ES6 is the ability to import and export functions from files. This allows you to create reusable blocks of code that are easily integrated to multiple projects. You no longer need to consider if a different JavaScript file has been loaded into the <code>index.html</code> file. Instead, we can import desired functions directly into our scripts. Moreover, it means that you don’t need to include an entire library – you can just import the functions you want, and leave out the rest. This will help prevent namespace collisions and limit the file-size of your project.</p>
+<p>This <a href="http://wesbos.com/javascript-modules/">article</a> provides us with a working definition of <em>JavaScript Modules</em>:</p>
+<blockquote>
+<p>JavaScript modules allow us to chunk our code into separate files inside our project or to use open source modules that we can install via npm. Writing your code in modules helps with organization, maintenance, testing, and most importantly, dependency management.</p>
+</blockquote>
+<p>We’ll begin by writing a simple function that we can <em>export</em> – this will make the functions available to other scripts that <em>import</em> them:</p>
+<pre class="language-javascript"><code><span class="token comment">// In our utility.js file, write a function that converts feet to meters</span>
+<span class="token keyword">function</span> <span class="token function">feetToMeters</span><span class="token punctuation">(</span>feet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> feet <span class="token operator">/</span> <span class="token number">3.28084</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/* specify one value for all sides at once */</span>
-<span class="token selector">div</span> <span class="token punctuation">{</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+<span class="token comment">// Write another function metersToFeet</span>
+<span class="token keyword">function</span> <span class="token function">metersToFeet</span><span class="token punctuation">(</span>meters<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> meters <span class="token operator">*</span> <span class="token number">3.28084</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment">/* specify one value for top/bottom (first)
-   and one for left/right (second) */</span>
-<span class="token selector">div</span> <span class="token punctuation">{</span>
-  <span class="token property">padding</span><span class="token punctuation">:</span> 1em 2em<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-</div>
-<div id="border" class="section level3 unnumbered">
-<h3>Border</h3>
-<p>The <strong>border</strong> (edge of the box) can be made visible and styled in terms of its width, color, and “style”, listed in that order:</p>
-<pre class="language-css"><code><span class="token selector">.boxed</span> <span class="token punctuation">{</span>
-   <span class="token property">border</span><span class="token punctuation">:</span> 2px dashed black<span class="token punctuation">;</span> <span class="token comment">/* border on all sides */</span>
+<span class="token comment">// Export each named function</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>feetToMeters<span class="token punctuation">,</span> metersToFeet<span class="token punctuation">}</span> <span class="token comment">// named exports</span>
+</code></pre>
+<p>If we then wish to use <code>feetToMeters</code> in another function, we can simply import it:</p>
+<pre class="language-javascript"><code><span class="token comment">// In our main.js file, import the feetToMeters function</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>feetToMeters<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./utility'</span> <span class="token comment">// assuming we're in the same directory</span>
+</code></pre>
+<div id="named-v.s.-default-exports" class="section level3">
+<h3><span class="header-section-number">17.1.1</span> Named v.s. default exports</h3>
+<p>The above example demonstrates the use of <em>named</em> exports, in which we explicitly name each object we wish to export, and then explicitly name it to import it.</p>
+<pre class="language-javascript"><code><span class="token comment">// Utility.js ----------</span>
+<span class="token comment">// Write a function that converts feet to meters</span>
+<span class="token comment">// In our utility.js file, write a function that converts feet to meters</span>
+<span class="token keyword">function</span> <span class="token function">feetToMeters</span><span class="token punctuation">(</span>feet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> feet <span class="token operator">/</span> <span class="token number">3.28084</span>
 <span class="token punctuation">}</span>
 
-<span class="token selector">.underlined</span> <span class="token punctuation">{</span>
-   <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span> <span class="token comment">/* border one side */</span>
+<span class="token comment">// Export each named function</span>
+<span class="token keyword">export</span> <span class="token punctuation">{</span>feetToMeters<span class="token punctuation">}</span> <span class="token comment">// named exports</span>
+</code></pre>
+<p>There are then three syntax options for <em>importing</em> <strong>named exports</strong>:</p>
+<pre class="language-javascript"><code><span class="token comment">// Importing options for a named export (see above)</span>
+
+<span class="token comment">// Option 1 -------- import named exports by name</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>feetToMeters<span class="token punctuation">,</span> metersToFeet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./Utility'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> meters <span class="token operator">=</span> <span class="token function">feetToMeters</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// use function</span>
+
+
+<span class="token comment">// Option 2 -------- import named exports by name AS a shorter name</span>
+<span class="token keyword">import</span> feetToMeters <span class="token keyword">as</span> f2m <span class="token keyword">from</span> <span class="token string">'./Utility'</span>
+<span class="token keyword">let</span> meters <span class="token operator">=</span> <span class="token function">f2m</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// use function</span>
+
+
+<span class="token comment">// Option 3 -------- import all named exports with a prefix</span>
+<span class="token comment">// Import our own components</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> Utilities <span class="token keyword">from</span> <span class="token string">'./Utility'</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> meters <span class="token operator">=</span> Utilities<span class="token punctuation">.</span><span class="token function">feetToMeters</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// use function</span></code></pre>
+<p>Alternatively, you can export a <strong>single default object</strong> from a module:</p>
+<pre class="language-javascript"><code><span class="token comment">// Utility.js ----------</span>
+<span class="token comment">// In our utility.js file, write a function that converts feet to meters</span>
+<span class="token keyword">function</span> <span class="token function">feetToMeters</span><span class="token punctuation">(</span>feet<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> feet <span class="token operator">/</span> <span class="token number">3.28084</span>
 <span class="token punctuation">}</span>
 
-<span class="token selector">.something</span> <span class="token punctuation">{</span> <span class="token comment">/* control border properties separately */</span>
-   <span class="token property">border-top-width</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
-   <span class="token property">border-top-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
-   <span class="token property">border-top-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
-   <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span> <span class="token comment">/* rounded corners! */</span>
-<span class="token punctuation">}</span></code></pre>
-</div>
-<div id="margin" class="section level3 unnumbered">
-<h3>Margin</h3>
-<p>Finally, the <strong>margin</strong> specifies the space <em>between</em> this box and other nearby boxes. <code>margin</code> is declared in an equivalent manner to <code>padding</code>.</p>
-<div class="figure">
-<img src="img/css/box-margin.png" alt="An element’s margins." />
-<p class="caption">An element’s margins.</p>
-</div>
-<p>Note that browsers typically <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">collapse</a> (overlap) the margins of adjacent elements. For example, if you have two paragraphs on top of one another, and you set <code>margin-bottom</code> on the first and <code>margin-top</code> on the second, most browsers will overlap those margins and just use the larger of the two values to determine the spacing.</p>
-</div>
-<div id="box-sizing" class="section level3 unnumbered">
-<h3>Box-Sizing</h3>
-<p>An element’s <code>padding</code>, <code>border</code>, and <code>margin</code> can be used to put space between element content on the page. However, when you assign an explicit <strong><code>width</code></strong> or <strong><code>height</code></strong> to an element, the dimension you specify <strong>does not include</strong> the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties</p>
-<pre class="language-css"><code><span class="token selector">.my-box</span> <span class="token punctuation">{</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token comment">/* includes both left and right */</span>
-<span class="token punctuation">}</span></code></pre>
-<p>Then the element will take up 120px on the screen: the width plus the left and right padding.</p>
-<p>However, when specifying more complex or responsive layouts, it’s often useful to have <code>width</code> represent the entire width of the box, and not need to account for the border and padding separately in calculations. You can do this using the <a href="https://css-tricks.com/box-sizing/"><code>box-sizing</code></a> property—a value of <code>border-box</code> will indicate that specified <em>size</em> of the box (e.g., the <code>width</code>) should include the size of the padding and border when determining the content area.</p>
-<p>It’s common to want to apply this property to <strong>all</strong> of the elements on the page, which you can do with the <strong><code>*</code></strong> selector (like a wildcard from the command-line!):</p>
-<pre class="language-css"><code><span class="token selector">*</span> <span class="token punctuation">{</span>
-    <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> <span class="token comment">/* all elements include border and padding in size */</span>
-<span class="token punctuation">}</span></code></pre>
-<p>This is a common enough change that you may wish to include it in <em>all</em> of your <code>.css</code> files!</p>
+<span class="token comment">// Export a default module</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> feetToMeters<span class="token punctuation">;</span> <span class="token comment">// single default export</span>
+</code></pre>
+<p>Then, to import the <strong>default export</strong>, you can use the following syntax:</p>
+<pre class="language-javascript"><code><span class="token keyword">import</span> feetToMeters <span class="token keyword">from</span> <span class="token string">'./Utility.js'</span></code></pre>
+<p>You’ll use this syntax to import // export your own functions, and you’ll also use them to import functions from <strong>external libraries</strong>.</p>
 </div>
 </div>
-<div id="position" class="section level2">
-<h2><span class="header-section-number">7.3</span> Position</h2>
-<p>Specifying the <code>display</code> style and <strong>box</strong> properties will adjust the layout of HTML elements, but they are still following the browser’s default <em>flow</em>. The layout rules will still apply, and elements are influenced by the amount of content and the size of the browser (e.g., for when inline elements “wrap”).</p>
-<p>However, it is possible to position elements outside of the normal flow by specifying the <code>position</code> property. Depending on the <code>position</code> property, you can shift the location of elements using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.There are four values that the <code>position</code> property can be set to:</p>
-<blockquote>
-<p><strong>Static</strong>: By default, elements are positioned statically. This is their natural layout, and elements <em>will not</em> be shifted by the <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code> properties.</p>
-</blockquote>
-<blockquote>
-<p><strong>Relative</strong>: Allows you to shift the element <em>relative</em> to it’s natural position on the page. This enables you to move the element using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</p>
-</blockquote>
-<blockquote>
-<p><strong>Fixed</strong>: The <em>fixed</em> position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to <em>always</em> be 50px from the bottom, you could set the properties: <code>position:fixed;</code> and <code>bottom:50px;</code>.</p>
-</blockquote>
-<blockquote>
-<p><strong>Absolute</strong>: The <em>absolute</em> position allows you to place an element a specific number of pixels from it’s (first non-static) parent element. This allows you to specify where <em>within a parent element</em> you want an element to be positioned.</p>
-</blockquote>
-<p>Note, in order to get <code>position:absolute;</code> to work <em>“as expected”</em>, you’ll need to specify that the <em>parent element</em> is <code>position:relative;</code>. See <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/">this post</a> for more information.</p>
-<p>As an example, giving an element a <strong><code>position:fixed</code></strong> property will specify a “fixed” position of the element <em>relative to the browser window</em>. It will no move no matter where it appears in the HTML or where the browser scrolls. See <a href="http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0">this Code Pen</a> for an example.</p>
-<ul>
-<li><p>In order to specify the location for a <strong><code>fixed</code></strong> element, use the <code>top</code>, <code>left</code>, <code>bottom</code>, and/or <code>right</code> properties to specify distance from the appropriate edge of the browser window:</p>
-<pre class="language-css"><code><span class="token comment">/* make the &lt;nav> element fixed at the top of the browser window */</span>
-<span class="token selector">nav</span> <span class="token punctuation">{</span>
-    <span class="token property">position</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span>
-    <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>  <span class="token comment">/* 0px from the top */</span>
-    <span class="token property">left</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* 0px from the left */</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span> <span class="token comment">/* same as parent, useful for spanning the page */</span>
-<span class="token punctuation">}</span></code></pre></li>
-</ul>
-<div id="floating" class="section level3 unnumbered">
-<h3>Floating</h3>
-<p><img src="img/css/bunny.jpg" alt="cute bunny" style="float:right;margin-left:1em;"></p>
-<p>You can also remove an element from it’s normal position in the <em>flow</em> by making it <strong>float</strong>. This is commonly done with pictures, but can be done with any element (such as <code>&lt;div&gt;</code>). A floated element is shoved over to one side of the screen, with the rest of the content wrapping around it:</p>
-<p style="clear:both;">
-<pre class="language-css"><code><span class="token selector">.floating-image</span> <span class="token punctuation">{</span>
-  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
-  <span class="token property">margin</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span> <span class="token comment">/* for spacing */</span>
-<span class="token punctuation">}</span></code></pre>
-<p>Content will continue to sit along side a floated element until it “clears” it (gets past it to the next line). You can also force content to “clear” a float by using the <code>clear</code> property. An element with this property <em>cannot</em> have other elements floating to the indicated side:</p>
-<pre class="language-css"><code><span class="token selector">.clear-float</span> <span class="token punctuation">{</span>
-    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span> <span class="token comment">/* do not allow floating elements on either side */</span>
-<span class="token punctuation">}</span></code></pre>
-<p>The <code>float</code> property is good for when you simply want some content to sit off to the side. But you should <strong>not</strong> try to use this property for more complex layouts (e.g., multi-column structures); there are better solutions for that.</p>
-<!-- <p class="alert alert-warning">Never use the **`<table>`** tag to structure documents and position content. The `<table>` tag should **only** be used for content that is semantically a table (e.g., a data table). If you want to lay out content in a grid, use a CSS system such as Flexbox (below).</p> -->
+<div id="installing-with-npm" class="section level2">
+<h2><span class="header-section-number">17.2</span> Installing with NPM</h2>
+<p>We introduced the use of NPM in an <a href="https://info343.github.io/machine-setup.html#node-and-npm">earlier chapter</a>, largely to install packages that were described in the <code>package.json</code> file. As we move forward, we’ll use NPM to <strong>install additional packages</strong> and <strong>deploy our code</strong>.</p>
+<p>It’s a common occurrence that, part way through a project, you identify <strong>additional libraries</strong> that you would like to use in your project. You can use NPM to install a package and <strong>add it to your list of packages</strong> if you use the <code>--save</code> option:</p>
+<pre class="language-bash"><code><span class="token comment"># Download the lodash library, and add it to your list of packages</span>
+<span class="token function">npm</span> <span class="token function">install</span> lodash --save  <span class="token comment"># make sure to run this in your project folder</span></code></pre>
+<p>Adding it to your list of packages enables others to install the necessary files to use your program. When you start using a compiling program (like the functionality built into <code>create-react-app</code>) you’ll be able to import functionality from your <code>node_modules</code> folder as you would other functions (i.e., <code>import</code>):</p>
+<pre class="language-javascript"><code><span class="token comment">// In a JS file in a project that gets compiled (using create-react-app)</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>uniq<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lodash'</span><span class="token punctuation">;</span>   <span class="token comment">// import a named export</span>
+<span class="token keyword">let</span> vals <span class="token operator">=</span> <span class="token function">uniq</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// returns [1, 2, 3]</span></code></pre>
 </div>
-</div>
-<div id="flexbox" class="section level2">
-<h2><span class="header-section-number">7.4</span> Flexbox</h2>
-<p>The <code>position</code> and <code>float</code> properties allow you to have individual elements break out of the normal page flow. While it is possible to combine these to produce complex effects such as <strong>multi-column layouts</strong>, this approach is fraught with peril and bugs due to browser inconsistencies. In response, CSS3 has introduced new standards specifically designed for non-linear layouts called <a href="https://css-tricks.com/the-css-box-model/"><strong>Flexbox</strong></a>. The Flexbox layout allows you to efficiently lay out elements inside a container (e.g., columns inside a page) so that the space is <em>flexibly</em> distributed. This provides additional advantages such as ensuring that columns have matching heights.</p>
-<p class="alert alert-warning">
-Flexbox is a new standard that is now supported by <a href="http://caniuse.com/#feat=flexbox">most modern browsers</a>; it has a buggy implementation in Microsoft IE, but is supported in the standards-compliant Edge. For older browsers, you can instead rely on a grid system from one of the popular CSS Frameworks such as Bootstrap.
-</p>
-<p class="alert alert-info">
-Despite it’s capabilities, Flexbox still is designed primarily for one-directional flows (e.g., having one row of columns). To handle true grid-like layouts, browsers are adopting <em>another</em> emerging standard called <a href="https://css-tricks.com/snippets/css/complete-guide-grid/"><strong>Grid</strong></a>. The Grid framework shares some conceptual similarities to Flexbox (configuring child elements inside of a parent container), but utilizes a different set of properties. Learning one should make it easy to pick up the other. Note that the grid framework is <a href="http://caniuse.com/#search=CSS%20grid">less well supported</a> than even Flexbox (it is not supported by IE, Edge, or common older Android devices), so should be used with caution.
-</p>
-<p>To use a Flexbox layout, you need to style <em>two</em> different classes of elements: a <strong>container</strong> (or <strong>parent</strong>) element that acts as a holder for the <strong>item</strong> (or <strong>child</strong>) elements—the child elements are <em>nested</em> inside of the parent:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- Parent --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<div class="figure">
-<img src="img/css/flex-nesting.png" alt="An example of a simple Flexbox layout." />
-<p class="caption">An example of a simple Flexbox layout.</p>
-</div>
-<p>Note that the “outer” parent element has one class (e.g., <code>flex-container</code>, but you can call it whatever you want), and the “inner” child elements share another (e.g., <code>flex-item</code>). Creating an effective Flexbox layout requires you to specify properties for <em>both</em> of these classes. You most often use <code>&lt;div&gt;</code> elements for the parent and child elements (and the child of course can have further content, including more divs, nested within it).</p>
-<p>In order to use a Flexbox layout, give the <em>parent</em> element the <strong><code>display:flex</code></strong> property. This will cause the contents of that parent element to be layed out according to a “flex flow”:</p>
-<pre class="language-css"><code><span class="token selector">.flex-container</span> <span class="token punctuation">{</span> <span class="token comment">/* my flexbox container class */</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
-<span class="token punctuation">}</span></code></pre>
-<p>A flex flow will lay out items <em>horizontally</em> (even if they are block elements!), though you can adjust this by specifying the <em>parent’s</em> <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-3"><code>flex-direction</code></a> property.</p>
-<p>By default, a flex container will fill its parent element (the whole page if the container is in the <code>&lt;body&gt;</code>), and the child items will be sized based on their content like normal. While it is possible to then use dimensional properties such as <code>width</code> and <code>height</code> to size the children within the horizontal layout, Flexbox provides further options that make it more <em>flexible</em>.</p>
-<p>Any <em>immediate child</em> of the flexbox container can use additional properties to define how that particular item should be layed out within the container. There are three main properties used by flex <strong>items</strong>:</p>
-<pre class="language-css"><code><span class="token selector">*</span> <span class="token punctuation">{</span> <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token comment">/* recommended for item sizing */</span>
+<div id="create-react-app" class="section level2">
+<h2><span class="header-section-number">17.3</span> Create-React-App</h2>
+<p>In order to leverage a more complex structure for our code (such as importing and exporting functions), we need to <strong>compile our JavaScript</strong> before loading it into the browser. There are a variety of tools that people use to do this such as <a href="http://gulpjs.com/">Gulp</a>, <a href="http://browserify.org/">Browserify</a>, and <a href="https://webpack.github.io/">Webpack</a>. These tools are great for configuring a build system for your project, but they can be time-consuming to configure (especially if you don’t have any custom specifications that you’re trying to make).</p>
+<p>So, the folks over at React built an amazing tool called <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a>, which combines multiple tools (including Webpack) to compile your code for you. It’s super easy to get started:</p>
+<pre class="language-bash"><code><span class="token comment"># Globally install the create-react-app command-line utility: only do this once!</span>
+<span class="token comment"># Depending on your permissions on your machine, you might need to `sudo npm install....`</span>
+<span class="token function">npm</span> <span class="token function">install</span> -g create-react-app
 
-<span class="token selector">.flex-item</span> <span class="token punctuation">{</span>
-    <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span> <span class="token comment">/* get 1 share of extra space */</span>
-    <span class="token property">flex-shrink</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* do not shrink if items overflow container */</span>
-    <span class="token property">flex-basis</span><span class="token punctuation">:</span> 33%<span class="token punctuation">;</span> <span class="token comment">/* take up 33% of parent initially */</span>
-<span class="token punctuation">}</span></code></pre>
-<ul>
-<li><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-10"><strong><code>flex-grow</code></strong></a> specifies what “share” or ratio of any extra space in the container the item should take up. That is, if the container is <code>500px</code> wide, but the items’ only takes up <code>400px</code> of space, this property determines how much of the remaining <code>100px</code> is given to the item.</p>
-<p>The value is a unitless number (e.g., <code>1</code> or <code>2</code>, defaulting to <code>0</code>), and the amount of remaining space is divided up <em>proportionally</em> among the items with a <code>flex-grow</code>. So an item with <code>flex-grow:2</code> will get twice as much of the remaining space as an item with <code>flex-grow:1</code>. If there are 4 items and <code>100px</code> of space remaining, giving each item <code>flex-grow:1</code> will cause each item to get <code>25px</code> (100/4) of the extra space. If one of the items has <code>flex-grow:2</code>, then it will get <code>40px</code> (<span class="math inline">\(\frac{2}{1+1+1+2}=\frac{2}{5}=40\%\)</span>) of the extra space, while the other three will only get <code>20px</code>.</p>
-<p>In practice, you can give each item a property <code>flex-grow:1</code> to have them take up an equal amount of space in the container.</p></li>
-<li><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-11"><strong><code>flex-shrink</code></strong></a> works similar to <code>flex-grow</code>, but in reverse. It takes as a value a number (default to <code>1</code>), which determine what “share” or ratio it should shrink by in order to accommodate any overflow space. If the specified dimensions of the items exceeds the dimensions of the container (e.g., 4 <code>100px</code> items in a <code>300px</code> container would have <code>100px</code> of “overflow”), the <code>flex-shrink</code> factor indicates how much size needs to be “taken off” the item. A higher number indicates a greater amount of shrinkage.</p>
-<p>In practice, you will often leave this property at default (by not specifying it), <em>except</em> when you want to make sure that an item does NOT shrink by giving it <code>flex-shrink:0</code>.</p></li>
-<li><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-12"><strong><code>flex-basis</code></strong></a> allows you to specify the “initial” dimensions of a particular item. This is similar in concept to the <code>width</code> property, except that <code>flex-basis</code> is more <a href="https://stackoverflow.com/questions/34352140/what-are-the-differences-between-flex-basis-and-width">flexible</a> (e.g., if you change the <code>flex-direction</code> you don’t also have to change from <code>width</code> to <code>height</code>). Note that this value can be an dimensional measurement (absolute units like <code>100px</code>, or a relative unit like <code>25%</code>).</p>
-<p>In practice, using percentages for the <code>flex-basis</code> will let you easily size the columns of your layout.</p></li>
-</ul>
-<div class="figure">
-<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra space each item has after the text content." />
-<p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
+<span class="token comment"># Create a project called my-app (a child of your current directory)</span>
+create-react-app my-app
+
+<span class="token comment"># Change your directory to my-app</span>
+<span class="token function">cd</span> my-app/
+
+<span class="token comment"># Start running a local server with your project: visible at localhost:3000</span>
+<span class="token function">npm</span> start  <span class="token comment"># this functionality is defined in the package.json file that was created</span></code></pre>
+<p>Create React App is somewhat opinionated about the structure of your code, but comes with a number of advantages. For example, it will display <strong>errors and warnings in your browser</strong> window, will <strong>automatically reload</strong> when your JavaScript changes, and will <strong>inject CSS changes</strong> without reloading your page. When you create a new project, the following files will be created:</p>
+<pre class="language-bash"><code>my-app/
+  README.md
+  node_modules/
+  package.json
+  .gitignore
+  public/
+    favicon.ico
+    index.html
+  src/
+    App.css
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg</code></pre>
+<p>From there, you can begin editing your <code>App.js</code> file. Your <code>&lt;App/&gt;</code> component is rendered on the page, so you should augment it as you see fit. You can now import functions directly into a JavaScript file from libraries <strong>or</strong> your own modules:</p>
+<pre class="language-javascript"><code><span class="token comment">// Import desired files</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>Component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span> <span class="token comment">// import the Component class from the react library</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>uniq<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'lodash'</span><span class="token punctuation">;</span>    <span class="token comment">// import a named export from the lodash library</span>
+
+<span class="token comment">// Create a class App by extending Component</span>
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">></span>My App<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// Export the App component to be imported in other files</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> App<span class="token punctuation">;</span></code></pre>
+<div id="building" class="section level3">
+<h3><span class="header-section-number">17.3.1</span> Building</h3>
+<p>In order to build your app for deployment, you will use the <code>npm run build</code> command (you can see what function this does by looking at the <code>package.json</code> file). This will appropriately compile your files (including JavaScript, CSS, images, etc.) into an optimized format. The only tricky thing is if you’re trying to host your build at a particular location, you’ll need to <strong>specify that location</strong> in your <code>package.json</code> file. For example, imagine you’re going to host your site at <code>http://students.washington.edu/YOUR-NAME/info-343/project-name</code>. Create React App assumes that you’ll be hosting your project in the <strong>root of your server</strong>. In other words, when it builds, it will construct relative paths that assume resources are at the root. To adjust this, you’ll need to edit your <code>package.json</code> file:</p>
+<pre class="language-javascript"><code><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"project-name"</span><span class="token punctuation">,</span>
+  <span class="token string">"version"</span><span class="token punctuation">:</span> <span class="token string">"0.1.0"</span><span class="token punctuation">,</span>
+  <span class="token string">"private"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token string">"homepage"</span><span class="token punctuation">:</span> <span class="token string">"http://students.washington.edu/YOUR-NAME/info-343/project-name"</span><span class="token punctuation">,</span>
+  <span class="token operator">...</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>By setting the <code>homepage</code>, the relative paths will be properly constructed. This will create for you a folder called <code>build/</code>, in which you’ll have the necessary files. You can then <strong>move these up a directory</strong> (i.e., out of the <code>build/</code> folder) if you’re going to use your GitHub repo for hosting (this is an unfortunate manual step). Then you should be ready to deploy!</p>
+<p>Another option is to use the <code>gh-pages</code> library. This will provide you with a command line tool to create a <code>gh-pages</code> branch, and move the files in your <code>build/</code> folder up a directory (meaning that you don’t need to go to the URL <code>project-nanme/build/</code>). Here are the steps for using the <code>gh-pages</code> package:</p>
+<pre class="language-bash"><code><span class="token comment"># Install the gh-pages package in your project</span>
+<span class="token function">npm</span> <span class="token function">install</span> gh-pages --save</code></pre>
+<p>Then, edit your <code>package.json</code> file to <strong>add a new command</strong> in the <code>scripts</code> section. You’ll add the <code>&quot;deploy&quot;</code> line of code.</p>
+<pre class="language-json"><code><span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+     <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"react-scripts start"</span><span class="token punctuation">,</span>
+     <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"react-scripts build"</span><span class="token punctuation">,</span>
+     <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"react-scripts test --env=jsdom"</span><span class="token punctuation">,</span>
+     <span class="token property">"eject"</span><span class="token operator">:</span> <span class="token string">"react-scripts eject"</span><span class="token punctuation">,</span>
+     <span class="token property">"deploy"</span><span class="token operator">:</span> <span class="token string">"npm run build&amp;&amp;gh-pages -d build"</span>
+ <span class="token punctuation">}</span></code></pre>
+<p>Then, to deploy a project to the <code>gh-pages</code><em>branch</em> on GitHub, you can simply run this line of code (this will <code>build</code> your project, and <code>commit</code> and <code>push</code> the built project to your branch):</p>
+<pre class="language-bash"><code><span class="token function">npm</span> run deploy</code></pre>
+<p>Then, on your server, you should pull down the code and checkout your <code>gh-pages</code> branch:</p>
+<pre class="language-bash"><code><span class="token comment"># On your server, such as a UW student server</span>
+<span class="token function">git</span> clone PROJECT-URL
+<span class="token function">git</span> checkout gh-pages
+
+<span class="token comment"># To update:</span>
+<span class="token function">git</span> pull origin gh-pages</code></pre>
 </div>
-<p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values).</p>
-<p>The Flexbox framework also provides a number of additional properties that you can specify on the <strong>container</strong> to customize how items of different sizes are organized on the screen:</p>
-<ul>
-<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-6"><code>justify-content</code></a> specifies how the items should be spread out across the container. Note that items that have <code>flex-grow:1</code> will use up the extra space, making this less relevant.</li>
-<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-7"><code>align-items</code></a> is used to specify “cross-axis” alignment (e.g., the vertical alignment of items for a horizontal row).</li>
-<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-4"><code>flex-wrap</code></a> is used to have items “wrap around” to the next line when they overflow the container <em>instead of</em> shrinking to fit. You can then use the <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-8"><code>align-content</code></a> property to specify how these “rows” should be aligned within the container.</li>
-</ul>
-<p>While it may seem like a lot of options, Flexbox layouts will allow you to easily create layouts (such as multi-column pages) that are otherwise very difficult with the regular box model. Moreover, these layouts will be flexible, and can easily be made <strong>responsive</strong> for different devices and screen sizes.</p>
 </div>
-<div id="resources-5" class="section level2 unnumbered">
-<h2>Resources</h2>
-<div class="list-condensed">
+<div id="resources-15" class="section level2">
+<h2><span class="header-section-number">17.4</span> Resources</h2>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Box_model">The Box Model (MDN)</a></li>
-<li><a href="https://css-tricks.com/the-css-box-model/">The CSS Box Model (CSS-Tricks)</a></li>
-<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a> The best explanation of Flexbox properties you’ll find.</li>
-<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a> A similar explanation, but for the Grid framework (not discussed here).</li>
+<li><a href="https://github.com/facebookincubator/create-react-app">React Create App</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export">Export Documentation</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">Import Documentation</a></li>
+<li><a href="https://webpack.github.io/docs/tutorials/getting-started/">Getting Started with WebPack</a></li>
+<li><a href="https://docs.npmjs.com/">Node Package Manage (NPM) Documentation</a></li>
+<li><a href="https://nodejs.org/en/download/">Node Download Page</a></li>
+<li><a href="https://docs.npmjs.com/getting-started/using-a-package.json">Using a Package.json File</a></li>
+<li><a href="http://wesbos.com/javascript-modules/">An Intro to ES6 and NPM</a></li>
 </ul>
-</div>
 
 </div>
 </div>
@@ -611,8 +559,8 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
           </div>
         </div>
       </div>
-<a href="css-options.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="responsive-css.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="react.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="interactive-react.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -641,7 +589,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info343/book/edit/master/css-layout.Rmd",
+"link": "https://github.com/info343/book/edit/master/react-tools.Rmd",
 "text": "Edit"
 },
 "download": null,

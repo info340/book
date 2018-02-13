@@ -30,6 +30,7 @@ rmd_files:
 
   ## React
   - react-intro.Rmd
+  - react-tools.Rmd
   - react-interactive.Rmd
 
   - firebase.Rmd

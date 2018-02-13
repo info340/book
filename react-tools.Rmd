@@ -1,0 +1,240 @@
+# React Tools
+
+React and other modern JavaScript development approaches require leveraging a variety of external libraries, and often require other compilation steps such as **transpiling** to ES6, or **bundling** your JavaScript into a single file. There are a variety of tools available to make these steps easier, some of which we'll introduce here.
+
+
+## Importing and Exporting in ES6
+One of the most powerful features of ES6 is the ability to import and export functions from files. This allows you to create reusable blocks of code that are easily integrated to multiple projects. You no longer need to consider if a different JavaScript file has been loaded into the `index.html` file. Instead, we can import desired functions directly into our scripts. Moreover, it means that you don't need to include an entire library -- you can just import the functions you want, and leave out the rest. This will help prevent namespace collisions and limit the file-size of your project.
+
+This [article](http://wesbos.com/javascript-modules/) provides us with a working definition of _JavaScript Modules_:
+
+>JavaScript modules allow us to chunk our code into separate files inside our project or to use open source modules that we can install via npm. Writing your code in modules helps with organization, maintenance, testing, and most importantly, dependency management.
+
+We'll begin by writing a simple function that we can _export_ -- this will make the functions available to other scripts that _import_ them:
+
+```javascript
+// In our utility.js file, write a function that converts feet to meters
+function feetToMeters(feet) {
+    return feet / 3.28084
+}
+
+// Write another function metersToFeet
+function metersToFeet(meters) {
+    return meters * 3.28084
+}
+
+// Export each named function
+export {feetToMeters, metersToFeet} // named exports
+
+```
+
+If we then wish to use `feetToMeters` in another function, we can simply import it:
+
+```javascript
+// In our main.js file, import the feetToMeters function
+import {feetToMeters} from './utility' // assuming we're in the same directory
+
+```
+
+### Named v.s. default exports
+The above example demonstrates the use of _named_ exports, in which we explicitly name each object we wish to export, and then explicitly name it to import it.
+
+
+```javascript
+// Utility.js ----------
+// Write a function that converts feet to meters
+// In our utility.js file, write a function that converts feet to meters
+function feetToMeters(feet) {
+    return feet / 3.28084
+}
+
+// Export each named function
+export {feetToMeters} // named exports
+
+```
+
+There are then three syntax options for _importing_ **named exports**:
+
+```javascript
+// Importing options for a named export (see above)
+
+// Option 1 -------- import named exports by name
+import {feetToMeters, metersToFeet} from './Utility';
+let meters = feetToMeters(30); // use function
+
+
+// Option 2 -------- import named exports by name AS a shorter name
+import feetToMeters as f2m from './Utility'
+let meters = f2m(30); // use function
+
+
+// Option 3 -------- import all named exports with a prefix
+// Import our own components
+import * as Utilities from './Utility';
+let meters = Utilities.feetToMeters(30); // use function
+```
+
+Alternatively, you can export a **single default object** from a module:
+
+
+```javascript
+// Utility.js ----------
+// In our utility.js file, write a function that converts feet to meters
+function feetToMeters(feet) {
+    return feet / 3.28084
+}
+
+// Export a default module
+export default feetToMeters; // single default export
+
+```
+
+Then, to import the **default export**, you can use the following syntax:
+
+```javascript
+import feetToMeters from './Utility.js'
+```
+
+You'll use this syntax to import // export your own functions, and you'll also use them to import functions from **external libraries**.
+
+## Installing with NPM
+We introduced the use of NPM in an [earlier chapter](https://info343.github.io/machine-setup.html#node-and-npm), largely to install packages that were described in the `package.json` file. As we move forward, we'll use NPM to **install additional packages** and **deploy our code**.
+
+It's a common occurrence that, part way through a project, you identify **additional libraries** that you would like to use in your project. You can use NPM to install a package and **add it to your list of packages** if you use the `--save` option:
+
+```bash
+# Download the lodash library, and add it to your list of packages
+npm install lodash --save  # make sure to run this in your project folder
+```
+
+Adding it to your list of packages enables others to install the necessary files to use your program. When you start using a compiling program (like the functionality built into `create-react-app`) you'll be able to import functionality from your `node_modules` folder as you would other functions (i.e., `import `):
+
+```javascript
+// In a JS file in a project that gets compiled (using create-react-app)
+import {uniq} from 'lodash';   // import a named export
+let vals = uniq([1, 2, 3, 1]); // returns [1, 2, 3]
+```
+
+
+## Create-React-App
+In order to leverage a more complex structure for our code (such as importing and exporting functions), we need to **compile our JavaScript** before loading it into the browser. There are a variety of tools that people use to do this such as [Gulp](http://gulpjs.com/), [Browserify](http://browserify.org/), and [Webpack](https://webpack.github.io/). These tools are great for configuring a build system for your project, but they can be time-consuming to configure (especially if you don't have any custom specifications that you're trying to make).
+
+So, the folks over at React built an amazing tool called [create-react-app](https://github.com/facebookincubator/create-react-app), which combines multiple tools (including Webpack) to compile your code for you. It's super easy to get started:
+
+
+```bash
+# Globally install the create-react-app command-line utility: only do this once!
+# Depending on your permissions on your machine, you might need to `sudo npm install....`
+npm install -g create-react-app
+
+# Create a project called my-app (a child of your current directory)
+create-react-app my-app
+
+# Change your directory to my-app
+cd my-app/
+
+# Start running a local server with your project: visible at localhost:3000
+npm start  # this functionality is defined in the package.json file that was created
+```
+
+Create React App is somewhat opinionated about the structure of your code, but comes with a number of advantages. For example, it will display **errors and warnings in your browser** window, will **automatically reload** when your JavaScript changes, and will **inject CSS changes** without reloading your page. When you create a new project, the following files will be created:
+
+
+```bash
+my-app/
+  README.md
+  node_modules/
+  package.json
+  .gitignore
+  public/
+    favicon.ico
+    index.html
+  src/
+    App.css
+    App.js
+    App.test.js
+    index.css
+    index.js
+    logo.svg
+```
+
+From there, you can begin editing your `App.js` file. Your `<App/>` component is rendered on the page, so you should augment it as you see fit. You can now import functions directly into a JavaScript file from libraries **or** your own modules:
+
+```javascript
+// Import desired files
+import {Component} from 'react' // import the Component class from the react library
+import {uniq} from 'lodash';    // import a named export from the lodash library
+
+// Create a class App by extending Component
+class App extends Component {
+  render() {
+    return <div>My App</div>
+  }
+}
+
+// Export the App component to be imported in other files
+export default App;
+```
+
+### Building
+In order to build your app for deployment, you will use the `npm run build` command (you can see what function this does by looking at the `package.json` file). This will appropriately compile your files (including JavaScript, CSS, images, etc.) into an optimized format. The only tricky thing is if you're trying to host your build at a particular location, you'll need to **specify that location** in your `package.json` file. For example, imagine you're going to host your site at `http://students.washington.edu/YOUR-NAME/info-343/project-name`. Create React App assumes that you'll be hosting your project in the **root of your server**. In other words, when it builds, it will construct relative paths that assume resources are at the root. To adjust this, you'll need to edit your `package.json` file:
+
+```javascript
+{
+  "name": "project-name",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://students.washington.edu/YOUR-NAME/info-343/project-name",
+  .....
+}
+
+```
+
+By setting the `homepage`, the relative paths will be properly constructed. This will create for you a folder called `build/`, in which you'll have the necessary files. You can then **move these up a directory** (i.e., out of the `build/` folder) if you're going to use your GitHub repo for hosting (this is an unfortunate manual step). Then you should be ready to deploy!
+
+Another option is to use the `gh-pages` library. This will provide you with a command line tool to create a `gh-pages` branch, and move the files in your `build/` folder up a directory (meaning that you don't need to go to the URL `project-nanme/build/`). Here are the steps for using the `gh-pages` package:
+
+```bash
+# Install the gh-pages package in your project
+npm install gh-pages --save
+```
+
+Then, edit your `package.json` file to **add a new command** in the `scripts` section. You'll add the `"deploy"` line of code.
+
+```json
+"scripts": {
+     "start": "react-scripts start",
+     "build": "react-scripts build",
+     "test": "react-scripts test --env=jsdom",
+     "eject": "react-scripts eject",
+     "deploy": "npm run build&&gh-pages -d build"
+ }
+```
+
+Then, to deploy a project to the `gh-pages`_branch_ on GitHub, you can simply run this line of code (this will `build` your project, and `commit` and `push` the built project to your branch):
+
+```bash
+npm run deploy
+```
+
+Then, on your server, you should pull down the code and checkout your `gh-pages` branch:
+
+```bash
+# On your server, such as a UW student server
+git clone PROJECT-URL
+git checkout gh-pages
+
+# To update:
+git pull origin gh-pages
+```
+
+## Resources
+
+- [React Create App](https://github.com/facebookincubator/create-react-app)
+- [Export Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export)
+- [Import Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+- [Getting Started with WebPack](https://webpack.github.io/docs/tutorials/getting-started/)
+- [Node Package Manage (NPM) Documentation](https://docs.npmjs.com/)
+- [Node Download Page](https://nodejs.org/en/download/)
+- [Using a Package.json File](https://docs.npmjs.com/getting-started/using-a-package.json)
+- [An Intro to ES6 and NPM](http://wesbos.com/javascript-modules/)
