@@ -1,5 +1,5 @@
 # Interactive React
-This chapter describes how React components can be leveraged to build interactive and robust applications. Before diving into specifics,
+This chapter describes how React components can be used to build interactive and robust applications. It describes how you can store information in a Component's **state**, assign **event** handlers, and leverage the **component lifecycle** to trigger re-rendering of your application.
 
 ## State
 So far, we've been discussing how components can receive _properties_ to determine their visual rendering. It's put nicely in [this write-up](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md):
@@ -41,6 +41,50 @@ class SearchableTable extends React.Component {
 });
 ```
 If we were building a searchable table, the only thing that changes, and therefore the **only data we need to store in state**, is the search string -- we can then filter down our data in the `render` function.
+
+## Component Lifecycle
+The true benefit of using React components to build your application is that **lifecycle events** trigger a _re-rendering_ of the component. As a result, you no longer need to concern yourself with assigning event handlers to update your DOM. Instead, you simply need to **change the data** (_state_ or _props_) of your component, and React will handle the re-rendering.
+
+As described in the [documentation](https://reactjs.org/docs/react-component.html#the-component-lifecycle), there are a set of events that are triggered when a component is **mounted** on the DOM, when the component's data is **updated**, and when the component **unmounts**. Each one of the lifecycle events will be triggered automatically at the appropriate time, and you can define the desired behavior as a method on your class. For example, it's quite common to **load data** when the component is mounted. Here's an example using the `d3-request` package to load a `.csv` file.
+
+```javascript
+// Import the csv loading function and Component
+import {Component} from 'react';
+import { csv } from 'd3-request';
+
+// Define class App by extending Component
+class App extends Component {
+    constructor(props) {
+        super(props);
+
+        // Set initial data as an empty array
+        this.state = {
+            data:[]
+        }
+    }
+
+    // Load data when component mounts: this will trigger automatically
+    componentDidMount() {
+        // Use the csv method to load the data, then set the state
+        csv('data/all_data.csv', (error, data) => {
+
+            // Set the stated: this will trigger a re-rendering of the app
+            this.setState({
+                data: data
+            });
+        })
+    }
+
+    // render method
+    render() {
+        // Do something with your data in here....
+        return <div>My App</div>
+    }
+}
+
+```
+
+In the above code, the `componentDidMount` method will trigger when the component is mounted to the dom. In the method, the state will be updated (`this.setState()`), which will in turn re-render the `App` component. You can write custom event handlers for _any_ of the lifecycle methods, enabling you to have granular control over your application.
 
 ## Events
 Event handlers are assigned in React in the same way that you would assign them to an HTML element using the event name of your choice. Inside of a `.jsx` file, we could leverage the curly braces `{}` inside an HTML section to reference a JavaScript function.
@@ -84,7 +128,7 @@ class SearchApp extends React.Component {
 });
 
 ```
-In the above section, the `filter` function (which we define -- this **is not** a default React function) will be executed when the `<input>` element changes value. The `filter` function then set's the state using `this.setState({key:value})`. Note **do not** try setting the state directly (i.e., `this.state.searchString = 'something'`). By setting the state, you will **trigger an update**, and React will re-render your DOM. For more information on events that trigger a re-render, see [this State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html) article.
+In the above section, the `filter` function (which we define -- this **is not** a default React function) will be executed when the `<input>` element changes value. The `filter` function then set's the state using `this.setState({key:value})`. Note **do not** try setting the state directly (i.e., `this.state.searchString = 'something'`). By setting the state, you will **trigger an update**, and React will re-render your DOM. For more information on events that trigger a re-render, see [this State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html) article. For more information on events, see [here](https://reactjs.org/docs/handling-events.html).
 
 ## Lifting Up State
 In architecting a React application, you'll need to make the following design choices:
@@ -95,7 +139,7 @@ In architecting a React application, you'll need to make the following design ch
 
 A simple model for React applications is to have a singe `<App>` Component that tracks the state. That application will pass all information to the other components via _props_. However, this raises a difficult question:
 
-> Given React's _one-directional_ data flow, how can you pass information _back to the `<App>` from a child Component?
+> Given React's _one-directional_ data flow, how can you pass information _back to the `<App>`_ from a child Component?
 
 For example, if we are building a `SearchApp` that is a searchable table, it may have an `<UserInput>` Component where the user is typing:
 
@@ -151,16 +195,8 @@ class SearchApp extends React.Component {
 
 To see a working example of this application, see [this codepen](https://codepen.io/mf_viz/pen/ddXwKP?editors=0010).
 
-## Component Lifecycle
 
-- [The Component Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
-
-<!-- mention `componentDidUpdate()` as alternative for `componentWillMount()` -->
-
-## React Events
-
-- [Handling Events](https://reactjs.org/docs/handling-events.html)
-- [React Forms](https://reactjs.org/docs/forms.html)
+<!-- - [React Forms](https://reactjs.org/docs/forms.html) -->
 
 
 <!-- External libraries (e.g., react-strap) should go somewhere... maybe a third React chapter? -->

@@ -304,10 +304,9 @@
 </ul></li>
 <li class="chapter" data-level="18" data-path="interactive-react.html"><a href="interactive-react.html"><i class="fa fa-check"></i><b>18</b> Interactive React</a><ul>
 <li class="chapter" data-level="18.1" data-path="interactive-react.html"><a href="interactive-react.html#state"><i class="fa fa-check"></i><b>18.1</b> State</a></li>
-<li class="chapter" data-level="18.2" data-path="interactive-react.html"><a href="interactive-react.html#events"><i class="fa fa-check"></i><b>18.2</b> Events</a></li>
-<li class="chapter" data-level="18.3" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i><b>18.3</b> Lifting Up State</a></li>
-<li class="chapter" data-level="18.4" data-path="interactive-react.html"><a href="interactive-react.html#component-lifecycle"><i class="fa fa-check"></i><b>18.4</b> Component Lifecycle</a></li>
-<li class="chapter" data-level="18.5" data-path="interactive-react.html"><a href="interactive-react.html#react-events"><i class="fa fa-check"></i><b>18.5</b> React Events</a></li>
+<li class="chapter" data-level="18.2" data-path="interactive-react.html"><a href="interactive-react.html#component-lifecycle"><i class="fa fa-check"></i><b>18.2</b> Component Lifecycle</a></li>
+<li class="chapter" data-level="18.3" data-path="interactive-react.html"><a href="interactive-react.html#events"><i class="fa fa-check"></i><b>18.3</b> Events</a></li>
+<li class="chapter" data-level="18.4" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i><b>18.4</b> Lifting Up State</a></li>
 </ul></li>
 <li class="chapter" data-level="19" data-path="firebase.html"><a href="firebase.html"><i class="fa fa-check"></i><b>19</b> Firebase</a><ul>
 <li class="chapter" data-level="19.1" data-path="firebase.html"><a href="firebase.html#setting-up-firebase"><i class="fa fa-check"></i><b>19.1</b> Setting up Firebase</a><ul>
@@ -377,7 +376,7 @@
             <section class="normal" id="section-">
 <div id="interactive-react" class="section level1">
 <h1><span class="header-section-number">Chapter 18</span> Interactive React</h1>
-<p>This chapter describes how React components can be leveraged to build interactive and robust applications. Before diving into specifics,</p>
+<p>This chapter describes how React components can be used to build interactive and robust applications. It describes how you can store information in a Component’s <strong>state</strong>, assign <strong>event</strong> handlers, and leverage the <strong>component lifecycle</strong> to trigger re-rendering of your application.</p>
 <div id="state" class="section level2">
 <h2><span class="header-section-number">18.1</span> State</h2>
 <p>So far, we’ve been discussing how components can receive <em>properties</em> to determine their visual rendering. It’s put nicely in <a href="https://github.com/uberVU/react-guide/blob/master/props-vs-state.md">this write-up</a>:</p>
@@ -415,8 +414,48 @@ Note: one of the most difficult parts of architecting a React application is fig
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>If we were building a searchable table, the only thing that changes, and therefore the <strong>only data we need to store in state</strong>, is the search string – we can then filter down our data in the <code>render</code> function.</p>
 </div>
+<div id="component-lifecycle" class="section level2">
+<h2><span class="header-section-number">18.2</span> Component Lifecycle</h2>
+<p>The true benefit of using React components to build your application is that <strong>lifecycle events</strong> trigger a <em>re-rendering</em> of the component. As a result, you no longer need to concern yourself with assigning event handlers to update your DOM. Instead, you simply need to <strong>change the data</strong> (<em>state</em> or <em>props</em>) of your component, and React will handle the re-rendering.</p>
+<p>As described in the <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">documentation</a>, there are a set of events that are triggered when a component is <strong>mounted</strong> on the DOM, when the component’s data is <strong>updated</strong>, and when the component <strong>unmounts</strong>. Each one of the lifecycle events will be triggered automatically at the appropriate time, and you can define the desired behavior as a method on your class. For example, it’s quite common to <strong>load data</strong> when the component is mounted. Here’s an example using the <code>d3-request</code> package to load a <code>.csv</code> file.</p>
+<pre class="language-javascript"><code><span class="token comment">// Import the csv loading function and Component</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>Component<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> csv <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'d3-request'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Define class App by extending Component</span>
+<span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token function">constructor</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Set initial data as an empty array</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+            data<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Load data when component mounts: this will trigger automatically</span>
+    <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Use the csv method to load the data, then set the state</span>
+        <span class="token function">csv</span><span class="token punctuation">(</span><span class="token string">'data/all_data.csv'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">,</span> data<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+
+            <span class="token comment">// Set the stated: this will trigger a re-rendering of the app</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                data<span class="token punctuation">:</span> data
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// render method</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Do something with your data in here....</span>
+        <span class="token keyword">return</span> <span class="token operator">&lt;</span>div<span class="token operator">></span>My App<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>In the above code, the <code>componentDidMount</code> method will trigger when the component is mounted to the dom. In the method, the state will be updated (<code>this.setState()</code>), which will in turn re-render the <code>App</code> component. You can write custom event handlers for <em>any</em> of the lifecycle methods, enabling you to have granular control over your application.</p>
+</div>
 <div id="events" class="section level2">
-<h2><span class="header-section-number">18.2</span> Events</h2>
+<h2><span class="header-section-number">18.3</span> Events</h2>
 <p>Event handlers are assigned in React in the same way that you would assign them to an HTML element using the event name of your choice. Inside of a <code>.jsx</code> file, we could leverage the curly braces <code>{}</code> inside an HTML section to reference a JavaScript function.</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span>{functionName}</span> <span class="token punctuation">/></span></span></code></pre>
 <p>What we need to figure out is <em>what to do in that function</em>. Rather than trying to update elements ourselves, we can simply <strong>update the state</strong>, and let React take care of the rest. When we change state or props, React will re-render our components. Continuing with our example of a searchable table, we could define a function <em>as part of our component</em> that <em>changes it’s state</em>, and then our UI will be re-rendered:</p>
@@ -450,10 +489,10 @@ Note: one of the most difficult parts of architecting a React application is fig
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>In the above section, the <code>filter</code> function (which we define – this <strong>is not</strong> a default React function) will be executed when the <code>&lt;input&gt;</code> element changes value. The <code>filter</code> function then set’s the state using <code>this.setState({key:value})</code>. Note <strong>do not</strong> try setting the state directly (i.e., <code>this.state.searchString = 'something'</code>). By setting the state, you will <strong>trigger an update</strong>, and React will re-render your DOM. For more information on events that trigger a re-render, see <a href="https://reactjs.org/docs/state-and-lifecycle.html">this State and Lifecycle</a> article.</p>
+<p>In the above section, the <code>filter</code> function (which we define – this <strong>is not</strong> a default React function) will be executed when the <code>&lt;input&gt;</code> element changes value. The <code>filter</code> function then set’s the state using <code>this.setState({key:value})</code>. Note <strong>do not</strong> try setting the state directly (i.e., <code>this.state.searchString = 'something'</code>). By setting the state, you will <strong>trigger an update</strong>, and React will re-render your DOM. For more information on events that trigger a re-render, see <a href="https://reactjs.org/docs/state-and-lifecycle.html">this State and Lifecycle</a> article. For more information on events, see <a href="https://reactjs.org/docs/handling-events.html">here</a>.</p>
 </div>
 <div id="lifting-up-state" class="section level2">
-<h2><span class="header-section-number">18.3</span> Lifting Up State</h2>
+<h2><span class="header-section-number">18.4</span> Lifting Up State</h2>
 <p>In architecting a React application, you’ll need to make the following design choices:</p>
 <ul>
 <li>What information is tracked as <em>props</em> v.s. <em>state</em>?</li>
@@ -462,7 +501,7 @@ Note: one of the most difficult parts of architecting a React application is fig
 </ul>
 <p>A simple model for React applications is to have a singe <code>&lt;App&gt;</code> Component that tracks the state. That application will pass all information to the other components via <em>props</em>. However, this raises a difficult question:</p>
 <blockquote>
-<p>Given React’s <em>one-directional</em> data flow, how can you pass information _back to the <code>&lt;App&gt;</code> from a child Component?</p>
+<p>Given React’s <em>one-directional</em> data flow, how can you pass information <em>back to the <code>&lt;App&gt;</code></em> from a child Component?</p>
 </blockquote>
 <p>For example, if we are building a <code>SearchApp</code> that is a searchable table, it may have an <code>&lt;UserInput&gt;</code> Component where the user is typing:</p>
 <pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">SearchApp</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -505,20 +544,7 @@ Note: one of the most difficult parts of architecting a React application is fig
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>To see a working example of this application, see <a href="https://codepen.io/mf_viz/pen/ddXwKP?editors=0010">this codepen</a>.</p>
-</div>
-<div id="component-lifecycle" class="section level2">
-<h2><span class="header-section-number">18.4</span> Component Lifecycle</h2>
-<ul>
-<li><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">The Component Lifecycle</a></li>
-</ul>
-<!-- mention `componentDidUpdate()` as alternative for `componentWillMount()` -->
-</div>
-<div id="react-events" class="section level2">
-<h2><span class="header-section-number">18.5</span> React Events</h2>
-<ul>
-<li><a href="https://reactjs.org/docs/handling-events.html">Handling Events</a></li>
-<li><a href="https://reactjs.org/docs/forms.html">React Forms</a></li>
-</ul>
+<!-- - [React Forms](https://reactjs.org/docs/forms.html) -->
 <!-- External libraries (e.g., react-strap) should go somewhere... maybe a third React chapter? -->
 <!-- Mention using libraries/global variables https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#using-global-variables -->
 
