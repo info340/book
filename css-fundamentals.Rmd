@@ -4,14 +4,14 @@
 
 Files of CSS rules (called **stylesheets**) thus act kind of like Styles or Themes in PowerPoint, but are way more powerful. You can control nearly every aspect of an element's appearance, including its overall placement on the page.
 
-- To give you some idea of just how much control you have, check out the examples in the [CSS Zen Garden](http://www.mezzoblue.com/zengarden/alldesigns/). Every one of those examples uses the exact same HTML page, but they all look completely different because each one uses a different CSS stylesheet.
+- To give you some idea of just how much control you have, check out the examples in the [CSS Zen Garden](http://www.mezzoblue.com/zengarden/alldesigns/). Every one of those examples uses the exact same HTML content, but they all look completely different because each one uses a different CSS stylesheet.
 
-This chapter will explain how to include CSS in your web page and the overall syntax for declaring basic CSS rules. Additional details and options can be found in [the following chapter](#advanced-css)
+This chapter will explain how to include CSS in your web page and the overall syntax for declaring basic CSS rules. Additional details and options can be found in [the following chapters](#css-options)
 
 ## Why Two Different Languages?
 If you are new to web programming, you might be wondering why there are two different languages: HTML for your page content; and CSS for formatting rules. Why not just include the formatting right in with the content?
 
-There is an old, tried-and-true principle in programming referred to as [**"separation of concerns"**](https://en.wikipedia.org/wiki/Separation_of_concerns). Well-designed software keeps separate things separate, so that it's easy to change one without breaking the other. And one of the most common forms of separation is to keep the **data** (content) in a program separate from the **presentation** (appearance) of that data.
+There is an old, tried-and-true principle in programming referred to as [**"separation of concerns"**](https://en.wikipedia.org/wiki/Separation_of_concerns). Well-designed software keeps separate things separate, so that it's easy to change one without dealing with the other. And one of the most common forms of separation is to keep the **data** (content) in a program separate from the **presentation** (appearance) of that data.
 
 By separating content (the HTML) from its appearance (the CSS), you get a number of benefits:
 
@@ -19,16 +19,16 @@ By separating content (the HTML) from its appearance (the CSS), you get a number
 
 - You can have several HTML pages to all share the same CSS stylesheet, allowing you to change the look of an entire web site by only editing one file. This is an application of the [Don't Repeat Yourself (DRY) principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
 
-- You can also dynamically adjust the look of your page by applying new style rules to elements in response to user interaction (clicking, hovering, scrolling, etc.)
+- You can also dynamically adjust the look of your page by applying new style rules to elements in response to user interaction (clicking, hovering, scrolling, etc.), without changing the content.
 
 - Users who don't care about about the visual appearance (e.g., blind users with screen readers, automated web indexers) can more quickly and effectively engage with the content without needing to determine what information is "content" and what is just "aesthetics".
 
 Good programming style in web development thus keeps the **semantics** (HTML) separate from the **appearance** (CSS). Your HTML should simply describe the meaning of the content, not what it looks like!
 
-For example, while browsers might normally show `<em>` text as italic, we can use CSS to instead make emphasized text underlined, highlighted, larger, flashing, or with some other appearance. The `<em>` says nothing about the visual appearance, just that the text is emphatic, and it's up to the styling to determine how that emphasis should be conveyed _visually_.
+For example, while browsers might normally show `<em>` text as italic, you can use CSS to instead make emphasized text underlined, highlighted, larger, flashing, or with some other appearance. The `<em>` says nothing about the visual appearance, just that the text is emphatic, and it's up to the styling to determine how that emphasis should be conveyed _visually_.
 
 ## CSS Rules
-While it's possible to write CSS rules directly into HTML, the best practice is to create a separate CSS **stylesheet** file and connect that to your HTML content. These files are named with the `.css` extension, and are typically put in a `css/` folder in web page's project directory, as with the following folder structure:
+While it's possible to write CSS rules directly into HTML, the best practice is to create a separate CSS **stylesheet** file and connect that to your HTML content. These files are named with the `.css` extension, and are typically put in a `css/` folder in a web page's project directory, as with the following folder structure:
 
 ```
 my-project/
@@ -57,13 +57,13 @@ The [`<link>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link) e
 A CSS stylesheet lists **rules** for formatting particular elements in an HTML page. The basic syntax looks like:
 
 ```css
-/* this is pseudocode for a CSS rule */
+/* This is pseudocode for a CSS rule */
 selector {
    property: value;
    property: value;
 }
 
-/* this would be another, second rule */
+/* This would be another, second rule */
 selector {
    property: value;
 }
@@ -81,7 +81,7 @@ As a concrete example, the below rule applies to any `h1` elements, and makes th
 h1 {
   font-family: 'Helvetica';
   color: white;
-  background-color: #333; /*dark gray*/
+  background-color: #333; /* dark gray */
 }
 ```
 
@@ -93,11 +93,11 @@ Note that CSS **comments** are written using the same block-comment syntax used 
 ### CSS Properties {-}
 There are [many, many different CSS formatting properties](http://www.w3schools.com/cssref/default.asp) you can use to style HTML elements. All properties are specified using the `name:value` syntax described above&mdash;the key is to determine the name of the property that produces the appearance you want, and then provide a valid value for that property.
 
-<p class="alert alert-info">Pro-tip: modern editors such as VS Code will provide auto-complete suggestions for valid property names and values. Look carefully at those options to discover more!</p>
+<p class="alert alert-info">**Pro Tip**: modern editors such as VS Code will provide auto-complete suggestions for valid property names and values. Look carefully at those options to discover more!</p>
 
-Below is a short list of common styling properties you may change with CSS; more complex properties and their usage is described in the following chapter.
+Below is a short list of common styling properties you may change with CSS; more complex properties and their usage is described in the following chapters.
 
-- [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family): the "font" of the text (e.g., `'Comic Sans'`). Font names containing white space _must_ be put in quotes (single or double), and it's common practice to quote any specific font name as well.
+- [`font-family`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family): the "font" of the text (e.g., `'Comic Sans'`). Font names containing white space _must_ be put in quotes (single or double), and it's common practice to quote any specific font name as well (e.g., `'Arial'`).
 
     Note that the value for the `font-family` property can also be a _comma-separated list_ of fonts, with the browser picking the first item that is available on that computer:
 
@@ -107,13 +107,13 @@ Below is a short list of common styling properties you may change with CSS; more
     font-family: 'Helvetica Nue', 'Helvetica', 'Arial', sans-serif;
     ```
 
-- [`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size): the size of the text (e.g., `12px` to be 12 pixels tall). The value must include units (so `12px`, not `12`). See the next chapter for details on Units & Sizes.
+- [`font-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size): the size of the text (e.g., `12px` to be 12 pixels tall). The value must include units (so `12px`, not `12`). See the next chapter for [details on units & sizes](#css-units).
 
 - [`font-weight`](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight): boldness (e.g., `bold`, or a numerical value such as `700`).
 
-- [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color): text color (e.g., either a [named color](http://www.w3schools.com/colors/colors_names.asp) like `red` or a hex value like `#4b2e83`. See the next chapter for details on colors. The [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) property specifies the background color for the element.
+- [`color`](https://developer.mozilla.org/en-US/docs/Web/CSS/color): text color (e.g., either a [named color](http://www.w3schools.com/colors/colors_names.asp) like `red` or a hex value like `#4b2e83`. See the next chapter for [details on colors](#css-colors). The [`background-color`](https://developer.mozilla.org/en-US/docs/Web/CSS/background-color) property specifies the background color for the element.
 
-- [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border): a border for the element (see "Box Model" in the next chapter). Note that this is a [short-hand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) which actually sets multiple related properties at once. The value is thus an _ordered_ list of values separated by **spaces**:
+- [`border`](https://developer.mozilla.org/en-US/docs/Web/CSS/border): a border for the element (see ["Box Model"](box-model) in Chapter 7). Note that this is a [short-hand property](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties) which actually sets multiple related properties at once. The value is thus an _ordered_ list of values separated by **spaces**:
 
     ```css
     /* border-width should be 3px, border-style should be dashed, and border-color
@@ -123,14 +123,14 @@ Below is a short list of common styling properties you may change with CSS; more
 
 Read the documentation for an individual property to determine what options are available!
 
-<p class="alert alert-warning">Note that not all properties or values be effectively or correctly supported by all browsers. Be sure and check the browser compatibility listings!</p>
+<p class="alert alert-warning">Note that not all properties or values will be effectively or correctly supported by all browsers. Be sure and check the browser compatibility listings!</p>
 
 
 ### CSS Selectors {-}
 Selectors are used to "select" which HTML elements the css rule should apply to. As with properties, there are [many different kinds of selectors](http://www.w3schools.com/cssref/css_selectors.asp) (and see the following chapter), but there are three that are most common:
 
 #### Element Selector {-}
-The most basic selector, the **element selector** selects elements by their element (tag) name. For example, the below rule will apply the all `<p>` elements, regardless of where they appear on the page:
+The most basic selector, the **element selector** selects elements by their element (tag) name. For example, the below rule will apply to the all `<p>` elements, regardless of where they appear on the page:
 
 ```css
 p {
@@ -167,7 +167,7 @@ You could color just the correct paragraph by using the class selector:
 
 Class selectors are written with a single dot (**`.`**) preceding the _name of the class_ (not the name of the tag!) The `.` is only used in the CSS rule, not in the HTML `class` attribute.
 
-Class selectors also let us apply a single, consistent styling to multiple different types of elements:
+Class selectors also let you apply a single, consistent styling to multiple different types of elements:
 
 ```html
 <!-- HTML -->
@@ -175,7 +175,7 @@ Class selectors also let us apply a single, consistent styling to multiple diffe
 <p class="alert-flashing">So am I!<p>
 ```
 
-CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased.
+CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased or snake_cased.
 
 Note that HTML elements can contain **multiple classes**; each class name is separate by a **space**:
 
@@ -214,13 +214,13 @@ It is also possible to select HTML elements by their `id` attribute by using an 
 </div>
 ```
 ```css
-/* the one element with id="sidebar" */
+/* Style the one element with id="sidebar" */
 #sidebar {
     background-color: lightgray;
 }
 ```
 
-The `id` attribute is more specific (it's always just one element!) but less flexible than the `class` attribute, and makes it harder to "reuse" your styling across multiple elements or multiple pages. Thus you should _almost always use a class selector instead_, unless you are referring to a single, specific element.
+The `id` attribute is more specific (it's always just one element!) but less flexible than the `class` attribute, and makes it harder to "reuse" your styling across multiple elements or multiple pages. Thus you should _almost always use a class selector instead of an id selector_, unless you are referring to a single, specific element.
 
 
 ## The Cascade
@@ -251,7 +251,7 @@ p { /* applies to all paragraphs */
 </p>
 ```
 
-CSS styling apply to _all_ of the content in an element. And since that content can contain other elements that may have their own style rules, rules may also in effect be _inherited_:
+CSS styling applies to _all_ of the content in an element. And since that content can contain other elements that may have their own style rules, rules may also in effect be _inherited_:
 
 ```html
 <div class="content"> <!-- has own styling -->
@@ -267,13 +267,13 @@ CSS styling apply to _all_ of the content in an element. And since that content 
 </div>
 ```
 
-We call these [inherited properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance), because the child elements inherit the setting from their ancestor elements. This is a powerful mechanism that allows you to specify properties only once for a given branch of the DOM element tree. In general, try to set these properties on the highest-level element you can, and let the child elements inherit the setting from their ancestor.
+We call these [inherited properties](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance), because the child elements inherit the setting from their ancestor elements. This is a powerful mechanism that allows you to specify properties only once for a given branch of the DOM element tree. _In general, try to set these properties on the highest-level element you can, and let the child elements inherit the setting from their ancestor._
 
 ### Rule Specificity {-}
-**Important!** Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files to the same page, the files are processed in order they are linked in the HTML. The browser selects elements that match the rule and applies the rule's property. If a later rule selects the same element and applies a different value to that property, the previous value is _overridden_. So in general, all things being equal, **the last rule on the page wins**.
+**Important!** Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files from the same HTML page, the files are processed _in order_ as they are linked in the HTML. In processing a CSS file, the browser selects elements that match the rule and applies the rule's property. If a later rule selects the same element and applies a different value to that property, the previous value is _overridden_. So in general, all things being equal, **the last rule on the page wins**.
 
 ```css
-/* two rules, both alike in specificity */
+/* Two rules, both alike in specificity */
 p { color: red; }
 p { color: blue; }
 ```
@@ -283,6 +283,8 @@ p { color: blue; }
 ```
 
 However, there are some exceptions when CSS treats rules as _not_ equal and favors earlier rules over later ones. This is called [Selector Specificity](https://css-tricks.com/specifics-on-css-specificity/). In general, more specific selectors (`#id`) take precedence over less specific ones (`.class`, which is more specific than `tag`). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser's [developer tools](https://developer.chrome.com/devtools) to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity:
+
+<!-- add example image of overriden rules -->
 
 ```css
 /* css */
@@ -296,7 +298,7 @@ div { color: blue; }
 because the `.alert` selector has higher specificity so is not overridden.</div>
 ```
 
-<p class="alert alert-warning">Precedence rules are **not** a reason to prefer `#id` selectors over `.class` selectors! Instead, you can utilize the more complex selectors described in [Chapter 6](#more-css) to be able to create reusable rules an avoid duplicating property declarations.</p>
+<p class="alert alert-warning">Precedence rules are **not** a reason to prefer `#id` selectors over `.class` selectors! Instead, you can utilize the [compound selectors](#compound-selectors) described in Chapter 6 to be able to create reusable rules and avoid duplicating property declarations.</p>
 
 
 ## Resources {-}

@@ -2,7 +2,7 @@
 
 [Chapter 5](#css) explained the basic syntax and usage of CSS, enough to let you create and style your own web pages. This chapter provides more details about additional selectors and properties to use when defining CSS rules; the following chapter discusses particular properties that can be used to further style the layout of your page's content.
 
-## Compound Selectors
+## Compound Selectors {#compound-selectors}
 
 As described in the previous chapter, the core selectors used in CSS are the **element selector**, **class selector**, and **id selector**. However, CSS does offer ways to combine these selectors in order to specify rules only for particular elements or groups of elements.
 
@@ -233,7 +233,7 @@ In general, you should specify font sizes using _relative units_ (e.g., `em`)&md
 
 - Font-sizes should always be relative; layout dimensions may be absolute (but relative units are best).
 
-### Colors {-}
+### Colors {#css-colors .unnumbered}
 Colors of CSS properties can be specified in a few different ways.
 
 You can use one of a list of 140 [predefined color names](http://www.w3schools.com/cssref/css_colornames.asp):

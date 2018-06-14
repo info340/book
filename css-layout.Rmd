@@ -52,7 +52,7 @@ There are several other more specific settings, the most useful of which is `inl
 ![An example of an element with `display:inline-block`.](img/css/inline-block-example.png)
 
 
-## The Box Model
+## The Box Model {#box-model}
 The [**CSS Box Model**](https://www.w3.org/TR/CSS2/box.html) is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually laid out on the page.
 
 All HTML elements (_including text!_) include an imaginary **box** around their content. Elements are laid out with their boxes next to each other (side by side for `inline`, stacked on top for `block`). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.
@@ -133,7 +133,7 @@ Then the element will take up 120px on the screen: the width plus the left and r
 
 However, when specifying more complex or responsive layouts, it's often useful to have `width` represent the entire width of the box, and not need to account for the border and padding separately in calculations. You can do this using the [`box-sizing`](https://css-tricks.com/box-sizing/) property&mdash;a value of `border-box` will indicate that specified _size_ of the box (e.g., the `width`) should include the size of the padding and border when determining the content area.
 
-It's common to want to apply this property to **all** of the elements on the page, which you can do with the **`*`** selector (like a wildcard from the command-line!):
+It's common to want to apply this property to **all** of the elements on the page, which you can do with the **`*`** selector (like a wildcard from the command line!):
 
 ```css
 * {

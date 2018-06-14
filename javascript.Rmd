@@ -13,7 +13,7 @@ Indeed, JavaScript is an **interpreted language**, in that the computer (specifi
 
     Many JavaScript editors do this kind of error checking&mdash;for example, VS Code provides syntax error checking out of the box, with more [detailed linting](https://code.visualstudio.com/docs/languages/javascript#_linters) available through extensions. See [this article](https://code.visualstudio.com/docs/languages/javascript) for more code features that support programming in JavaScript, including IntelliSense and type checking.
 
-Although JavaScript was designed for and is most commonly used within web browsers (which contain their own JavaScript Interpreters), it can also be executed on the command-line by using [Node.js](https://nodejs.org/en/), allowing JavaScript to be a fully general language. Both techniques are described in this chapter.
+Although JavaScript was designed for and is most commonly used within web browsers (which contain their own JavaScript Interpreters), it can also be executed on the command line by using [Node.js](https://nodejs.org/en/), allowing JavaScript to be a fully general language. Both techniques are described in this chapter.
 
 
 ### History and Versions {-}
@@ -72,7 +72,7 @@ While JavaScript most commonly is used to manipulate the web page content and is
 
 
 ### On the Command-line with Node.js {-}
-It is also possible to execute JavaScript code on the command-line using [Node.js](https://nodejs.org/en/). Node is a **command-line runtime environment**&mdash;that is, a JavaScript interpreter that can be run on the command-line.
+It is also possible to execute JavaScript code on the command line using [Node.js](https://nodejs.org/en/). Node is a **command line runtime environment**&mdash;that is, a JavaScript interpreter that can be run on the command line.
 
 With Node installed on your machine, you can use the **`node`** terminal command to start an _interactive Node session_. This will allow you to type JavaScript code directly in the terminal, and your computer will interpret and execute each line of code:
 
@@ -84,13 +84,13 @@ You can enter one line of code at a time at the prompt (`>`). This is a nice way
 
 - Note that the JavaScript console in the Chrome Developer tools provides the same interactive functionality.
 
-It is also possible to run entire scripts (`.js` files) from the command-line by using the `Node` command and specifying the script file you wish to execute:
+It is also possible to run entire scripts (`.js` files) from the command line by using the `Node` command and specifying the script file you wish to execute:
 
 ```bash
 node my-script.js
 ```
 
-This allows you author entire programs in JavaScript (e.g., writing the code using VS Code), and then executing them from the command-line. This process is more common when doing _server-side_ web development (such as implementing a web server using Node), but we will still use it for practice and testing.
+This allows you author entire programs in JavaScript (e.g., writing the code using VS Code), and then executing them from the command line. This process is more common when doing _server-side_ web development (such as implementing a web server using Node), but we will still use it for practice and testing.
 
 
 ## Writing Scripts

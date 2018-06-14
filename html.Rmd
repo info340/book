@@ -4,12 +4,12 @@ A webpage on the internet is simply a set of files that the browser _renders_ (s
 
 **HTML** (**H**yper**T**ext **M**arkup **L**anguage) is a language that is used to give meaning to otherwise plain text, which the browser can then use to determine how to display that text. HTML is not a programming language but rather a _markup language_: it adds additional details to information (like notes in the margin of a book), but doesn't contain any logic. HTML is a "hypertext" markup language because it was [originally intended](https://en.wikipedia.org/wiki/HTML#Development) to mark up a document with [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink), or links to other documents. In modern usage, HTML describes the **semantic meaning** of content: it marks what content is a _heading_, what content is a _paragraph_, what content is a _definition_, what content is an _image_, what content is a _hyperlink_, and so forth.
 
-- HTML serves a similar function to [Markdown](https://info201.github.io/markdown.html), but is much more expressive and powerful.
+- HTML serves a similar function to the [Markdown](https://info201.github.io/markdown.html) markup language, but is much more expressive and powerful.
 
-This chapter provides an overview and explanation of HTML's syntax (how to use it to annotate content). HTML's syntax is very simple, and generally only takes someone a few days to learn&mdash;though using it effectively can require more practice.
+This chapter provides an overview and explanation of HTML's syntax (how to use it to annotate content). HTML's syntax is very simple, and generally fast to learn&mdash;though using it effectively can require more practice.
 
 ## HTML Elements
-HTML content is normally written in `.html` files. By using the `.html` extension, your editor, computer, and browser should automatically know that this file will contain content marked up in HTML.
+HTML content is normally written in `.html` files. By using the `.html` extension, your editor, computer, and browser should automatically understand that this file will contain content marked up in HTML.
 
 <p class="alert alert-info">As mentioned in Chapter 2, most web servers will by default serve a file named **`index.html`**, and so that filename is traditionally used for a website's home page.</p>
 
@@ -19,13 +19,13 @@ HTML files contain the **content** of your web page: the text that you want to s
 
 ![Basic syntax for an HTML element.](img/html/element-diagram.png)
 
-The **opening/start tag** comes before the content and tell the computer "I'm about to give you content with some meaning", while the **closing/end tag** comes after the content to tell the computer "I'm done giving content with that meaning." For example, the ```<h1>``` tag represents a [top-level heading](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) (equivalent to one `#` in Markdown), and so the open tag says "here's the start of the heading" and the closing tag says "that's the end of the heading".
+The **opening/start tag** comes before the content and tell the computer "I'm about to give you content with some meaning", while the **closing/end tag** comes after the content to tell the computer "I'm done giving content with that meaning." For example, the `<h1>` tag represents a [top-level heading](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements) (equivalent to one `#` in Markdown), and so the open tag says "here's the start of the heading" and the closing tag says "that's the end of the heading".
 
 Tags are written with a less-than symbol **```<```**, then the name of the tag (often a single letter), then a greater-than symbol **```>```**. An _end tag_ is written just like a _start tag_, but includes a forward slash `/` immediately after the less-than symbol&mdash;this indicates that the tag is closing the annotation.
 
 - HTML tag names are not case sensitive, but you should always write them in all lowercase.
 
-- Line breaks and white space around tags (including indentation) is ignored. Tags may thus be written on their own line, or _inline_ with the content. These two uses of the `<p>` tag (which marks a _paragraph_ of content) are equivalent:
+- Line breaks and white space around tags (including indentation) are ignored. Tags may thus be written on their own line, or _inline_ with the content. These two uses of the `<p>` tag (which marks a _paragraph_ of content) are equivalent:
 
     ```html
     <p>
@@ -35,9 +35,11 @@ Tags are written with a less-than symbol **```<```**, then the name of the tag (
     <p>The itsy bitsy spider went up the water spout.</p>
     ```
 
+    Nevertheless, when writing HTML code, use line breaks and spacing for readability (to make it clear what content is part of what element). 
+
 Taken together, the tags and the content they _contain_ are called an **HTML Element**. A website is made of a bunch of these elements.
 
-### Some Example Tags {-}
+### Some Example Elements {-}
 The HTML standard defines [lots of different elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element), each of which marks a different meaning for the content. Common elements include:
 
 <div class="list-condensed">
@@ -55,8 +57,8 @@ The HTML standard defines [lots of different elements](https://developer.mozilla
 - `<form>`: a form for the user to fill out
 - `<svg>`: a [Scalable Vector Graphic](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics) (a "coded" image)
 - `<circle>`: a circle (in an `<svg>` element)
-- `<div>`: a division (section) of content. Also acts as an empty _block_ element (followed by a line break)
-- `<span>`: a span (section) of content. Also acts as an empty _inline_ element (not followed by a line break)
+- `<div>`: a division (section) of content. Also acts as an empty _block_ element (one followed by a line break)
+- `<span>`: a span (section) of content. Also acts as an empty _inline_ element (one not followed by a line break)
 </div>
 
 ### Comments {-}
@@ -67,12 +69,14 @@ As with every programming language, HTML includes a way to add comments to your 
 <p>this is is not a comment</p>
 ```
 
-Because that syntax is somewhat awkward to type, most source-code editors will let you comment-out the currently highlighted text by pressing `cmd + /` (or `ctrl + /` on Windows). If you're using a code editor, try placing your cursor on a line and using that keyboard command to comment and un-comment the line.
+The contents of the comment tag can span multiple lines, so you can comment multiple lines by surrounding them all with a single `<!--` and `-->`.
 
-Comments can appear anywhere in the file. Just as in other languages, they are ignored by any program reading the file (with a few interesting exceptions), but they do remain in the page and are visible when you [view the page source](http://webdesign.about.com/od/chrome/a/view-source-chrome.htm).
+Because the comment syntax is somewhat awkward to type, most source-code editors will let you comment-out the currently highlighted text by pressing `cmd + /` (or `ctrl + /` on Windows). If you're using a code editor, try placing your cursor on a line and using that keyboard command to comment and un-comment the line.
+
+Comments can appear anywhere in the file. Just as in other languages, they are ignored by any program reading the file, but they do remain in the page and are visible when you [view the page source](http://webdesign.about.com/od/chrome/a/view-source-chrome.htm).
 
 ### Attributes {-}
-The start tag of an element may also contain one or more **attributes**. These are similar to attributes in object-oriented programming: they specify _properties_, options, or otherwise add additional meaning to an element. Like named parameters in R or HTTP query parameters, attributes are written in the format `attributeName=value` (no spaces are allowed around the `=`); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:
+The start tag of an element may also contain one or more **attributes**. These are similar to attributes in object-oriented programming: they specify _properties_, options, or otherwise add additional meaning to an element. Like named parameters in `R` or HTTP query parameters, attributes are written in the format `attributeName=value` (no spaces are allowed around the `=`); values of attributes are almost always strings, and so are written in quotes. Multiple attributes are separated by spaces:
 
 ```html
 <tag attributeA="value" attributeB="value">
@@ -92,7 +96,7 @@ For example, a hyperlink anchor (`<a>`) uses a `href` ("**h**ypertext **ref**ere
     [iSchool homepage](https://ischool.uw.edu)
     ```
 
-Similarly, an image (`<img>`) uses the `src` (**s**ou**rc**e) attribute to specify what picture it is showing. The `alt` attribute contains alternate text to use if the browser can't show images&mdash;such as with screen readers (for the visible impaired) and search engine indexers.
+Similarly, an image (`<img>`) uses the `src` (**s**ou**rc**e) attribute to specify what picture it is showing. The `alt` attribute contains alternate text to use if the browser can't show images&mdash;such as with screen readers (for the visibility impaired) and search engine indexers.
 
 ```html
 <img src="baby_picture.jpg" alt="a cute baby">
@@ -102,7 +106,7 @@ Similarly, an image (`<img>`) uses the `src` (**s**ou**rc**e) attribute to speci
 
 There are also a number of [global attributes](http://www.w3schools.com/tags/ref_standardattributes.asp) that can be used on any element. For example:
 
-- Every HTML element can include an **`id`** attribute, which is used to give them a unique identifier so that we can refer to them later (e.g., from CSS or JavaScript). `id` attributes are named like variable names, and must be **unique** on the page.
+- Every HTML element can include an **`id`** attribute, which is used to give it a unique identifier so that you can refer to it later (e.g., from CSS or JavaScript). `id` attributes are named like variable names, and must be **unique** on the page.
 
     ```html
     <h1 id="title">My Web Page</h1>
@@ -115,7 +119,7 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
     <a href="#title">Link to element on current page with `id="title"`</a>
     ```
 
-    Note that, when specifying an id (i.e., `<h1 id="title">`) you do not include the `#` symbol. However, to _link_ to an element with id `title`, you include the `#` symbole before the id (i.e., `<a href="#title">`)
+    Note that, when specifying an id (i.e., `<h1 id="title">`) you do not include the `#` symbol. However, to _link_ to an element with id `title`, you include the `#` symbol before the id (i.e., `<a href="#title">`)
 
 - The `lang` attribute is used to indicate the language in which the element's content is written. Programs reading this file might use that to properly index the content, correctly pronounce it via a screen reader, or even translate it into another language:
 
@@ -130,13 +134,13 @@ There are also a number of [global attributes](http://www.w3schools.com/tags/ref
     ```
 
 ### Empty Elements {-}
-A few HTML elements don't require a closing tag because they _can't_ contain any content. These tags are often used for inserting media into a web page, such as with the `<img>` tag. With an `<img>` tag, you can specify the path to the image file in the `src` attribute, but the image element itself can't contain additional text or other content. Since it can't contain any content, we leave off the end tag entirely:
+A few HTML elements don't require a closing tag because they _can't_ contain any content. These tags are often used for inserting media into a web page, such as with the `<img>` tag. With an `<img>` tag, you can specify the path to the image file in the `src` attribute, but the image element itself can't contain additional text or other content. Since it can't contain any content, you leave off the end tag entirely:
 
 ```html
 <img src="picture.png" alt="description of image for screen readers and indexers">
 ```
 
-Older versions of HTML (and current related languages like [XML](https://en.wikipedia.org/wiki/XML)) required you to include forward slash `/` just before the greater-than symbol. This "end" slash indicated that the element was complete and expected no further content:
+Older versions of HTML (and current related languages like [XML](https://en.wikipedia.org/wiki/XML)) required you to include a forward slash `/` just before the ending greater-than symbol. This "closing" slash indicated that the element was complete and expected no further content:
 
 ```html
 <img src="picture.png" alt="description of image for screen readers and indexers" />
@@ -171,6 +175,11 @@ This model of HTML as a tree of "nodes"&mdash;along with an API (programming int
 
 <p class="alert alert-warning">**Caution!** HTML elements have to be "closed" correctly, or the semantic meaning may be incorrect! If you forget to close the `<h1>` tag, then _all_ of the following content will be considered part of the heading! Remember to close your inner tags _before_ you close the outer ones. [Validating](http://validator.w3.org/) your HTML can help with this.</p>
 
+<!-- 
+Should probably have a more complex example here of nesting divs or such... maybe using header and main (but I like sectioning elsewhere)
+Or maybe an example with table/tr/td?
+-->
+
 ### Block vs. Inline Elements {-}
 All HTML elements fall into one of two categories:
 
@@ -182,6 +191,8 @@ All HTML elements fall into one of two categories:
     ```
 
     ![Two block elements rendered on a page.](img/html/block-element.png)
+    
+    A `<div>` ("division") is the most basic block element: it represents a block of content but provides no other semantic meaning.
 
 - **Inline elements** are contained "in the line" of content. These will _not_ have a line break after them. Inline elements are used to modify the content rather than set it apart, such as giving it emphasis (`<em>`) or declaring that it to be a hyperlink (`<a>`).
 
@@ -192,11 +203,13 @@ All HTML elements fall into one of two categories:
 
     ![Two inline elements rendered on a page.](img/html/inline-element.png)
 
-Inline elements go inside of block elements, and it's common to put block elements inside of the other block elements (e.g., an `<li>` inside of a `<ul>`, or a `<p>` inside of a `<div>`). However, it is invalid to to nest a block element inside of an inline element---the content won't make sense, and probably won't look right.
+    A `<span>` is the most basic inline element: it represents an inline span of content but provides no other semantic meaning.
 
-<p class="alert alert-warning">Some elements have further restrictions on nesting. For example, a `<ul>` (unordered list) is _only_ allowed to contain `<li>` elements&mdash;anything else is invalid markup.</p>
+Inline elements go inside of block elements, and it's common to put block elements inside of the other block elements (e.g., an `<li>` inside of a `<ul>`, or a `<p>` inside of a `<div>`). However, it is invalid to to nest a block element inside of an inline element&mdash;the content won't make sense, and probably won't look right.
 
-Note, while different element types have different default displays (`block` v.s. `inline`), we can change how an element is displayed using CSS (more on this later).
+<p class="alert alert-warning">Some elements have further restrictions on nesting. For example, a `<ul>` (unordered list) is _only_ allowed to contain `<li>` elements&mdash;anything else is considered invalid markup.</p>
+
+Each element has a different default display type (e.g., `block` or `inline`, but it is also possible to change how an element is displayed using CSS. See [Chapter 7](#display).
 
 ## Web Page Structure
 Now that you understand how to specify HTML elements, you can begin making real web pages! However, there are a few more tags you need to know and include for a valid, modern web page.
@@ -211,7 +224,7 @@ All HTML files start with a [document type declaration](https://en.wikipedia.org
 </html>
 ```
 
-`<!DOCTYPE>` isn't technically an HTML tag (it's actually XML). While modern browsers will perform a "best guess" as to the Doctype, it is best practice to specify it explicitly. Always include the DOCTYPE at the start of your HTML files!
+`<!DOCTYPE>` isn't technically an HTML tag (it's actually XML). While modern browsers will perform a "best guess" as to the Doctype, it is best practice to specify it explicitly. Always include the Doctype at the start of your HTML files!
 
 ### The `<head>` Section {-}
 In addition to the `<body>` element that defines the displayed content, you should also include a `<head>` element that acts as the document "header" (the `<head>` is nested inside the `<html>` at the same level as the `<body>`). The content of the `<head>` element is _not_ shown on the web page&mdash;instead it provides extra (meta) information _about_ the document being rendered.
@@ -224,7 +237,7 @@ There are a couple of common elements you should include in the `<head>`:
     <title>My Page Title</title>
     ```
 
-    Browsers will show the page title in the tab at the top of the browser window, and use that as the default bookmark name if you bookmark the page. But the title is _also_ used by search indexers and screen readers for the blind, since it often provides a strong signal about what the page's subject. Thus your title should be informative and reflective of the content.
+    Browsers will show the page title in the tab at the top of the browser window, and use that as the default bookmark name if you bookmark the page. But the title is _also_ used by search indexers and screen readers for the blind, since it often provides a strong signal about what is the page's subject. Thus your title should be informative and reflective of the content.
 
 - A `<meta>` tag that specifies the character encoding of the page:
 
@@ -248,52 +261,8 @@ There are a couple of common elements you should include in the `<head>`:
 
     - _At the very least, always include author information for the pages you create!_
 
-- We will discuss additional elements for the `<head>` section throughout the text, such as using `<link>` to include CSS and using `<script>` to include JavaScript.
+We will discuss additional elements for the `<head>` section throughout the text, such as using `<link>` to include CSS and using `<script>` to include JavaScript.
 
-### The `<body>` Section {-}
-The `<body>` section of your page contains all elements that you want to render for your user. The content in your `<body>` section should be organized into a variety of _**semantically meaning**_ sections (more on this in [this chapter](standards-and-accessibility.html)). These descriptive containers aren't explicitly visible to your user, but allow you to organize your content into meaningful sections, allowing screen readers to process the information, and making your code _much_ more interpretable:
-
-- `header`: The top of your page, which may contain an image, description of your page, and navigational elements
-- `nav`: The navigation section (typically in the `header`), which allows users to link to different sections of your page
-- `main`: The main component of you page, which is comprised of multiple `sections`
-- `section`: A distinct section of content on your page, containing text, images, links, headers, etc.
-- `footer`: The section at the bottom of your page, which contains copyright information and additional links.
-
-While you can make a page _appear_ the same without these organizational elements, it is crucial for screen readers to be able to navigate between these sections. It will also help you keep your page well organized. A typical page body may have this structure
-
-```html
-<!doctype html>
-<html lang="en">
-    <head>
-        <!-- Declare meta information about your page as described above-->
-    </head>
-    <body>
-        <!-- Page header -->
-        <header>            
-            <nav>
-                <!-- navigation links in here -->
-            </nav>
-        </header>
-
-        <!-- Main section of content -->
-        <main>
-            <section>
-                <p>Page content in here...</p>
-            </section>
-            <section>
-                <p>More page content here</p>
-            </section>
-        </main>
-
-        <!-- Footer at bottom of page -->
-        <footer>
-            <!-- copyright information here -->
-        </footer>
-    </body>
-</html>
-```
-
-You'll populate the sections above (i.e., `<header>`, `<main>`, `<footer>`) with your desired content using desired HTML tags. 
 
 ## Web Page Template
 Putting this all together produces the following "template" for making a web page:
@@ -302,20 +271,22 @@ Putting this all together produces the following "template" for making a web pag
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8">
-   <meta name="author" content="your name">
-   <meta name="description" content="description of your page">
-   <title>My Page Title</title>
+    <meta charset="utf-8">
+    <meta name="author" content="your name">
+    <meta name="description" content="description of your page">
+    <title>My Page Title</title>
 </head>
 <body>
-   ...
-   Content goes here!
-   ...
+    ...
+    Content goes here!
+    ...
 </body>
 </html>
 ```
 
-You can use this to start off every web page you ever create from now on! Alternatively, you can use the Visual Studio Code shortcut of writing an exclamation point (`!`) then hitting the `tab` key in a `.html` file to create this skeleton.
+You can use this to start off every web page you ever create from now on! 
+
+- Alternatively, you can use the VS Code shortcut of writing an exclamation point (`!`) then hitting the `tab` key in a `.html` file to create a similar page skeleton.
 
 
 ## Resources {-}

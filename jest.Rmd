@@ -23,7 +23,7 @@ In JavaScript, the most popular testing frameworks are [Jasmine](https://jasmine
 
 
 ## Testing with Jest
-Jest is a command-line program so you will need to have it installed on your machine. It can be installed _globally_ through `npm`:
+Jest is a command line program so you will need to have it installed on your machine. It can be installed _globally_ through `npm`:
 
 ```bash
 npm install -g jest
@@ -123,14 +123,14 @@ It is also possible to run particular blocks of code _before_ groups of tests ar
 
 
 ### Running the Tests {-}
-You can **run** the test (have the computer perform the testing work) by using the `jest` command-line program, passing it the name of the text script (without the extension) that you wish to run:
+You can **run** the test (have the computer perform the testing work) by using the `jest` command line program, passing it the name of the text script (without the extension) that you wish to run:
 
 ```bash
 # test the app.spec.js file
 jest app
 ```
 
-The command-line will print out the results of this test script:
+The command line will print out the results of this test script:
 
 ![An example passing script](img/pass.png)
 

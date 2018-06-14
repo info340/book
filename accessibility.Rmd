@@ -2,7 +2,7 @@
 
 # Standards and Accessibility
 
-This chapter details considerations and techniques to ensure that your web pages and applications can be used by ___everyone___, regardless of their choice of web browser or their own physical abilities. It will provide detailed information on the following strategies for buiding accessible pages:
+This chapter details considerations and techniques to ensure that your web pages and applications can be used by ___everyone___, regardless of their choice of web browser or their own physical abilities. It will provide detailed information on the following strategies for building accessible pages:
 
 - Using **semantically meaningful** HTML tags
 - Providing **alternate text** for visual features (i.e., images)
@@ -26,9 +26,9 @@ Modern web standards are created and maintained by a huge group of stakeholders 
 
 Getting so many people to agree on a standard of communication takes time; thus web standards change relatively slowly: the HTML 4 standard was adopted in 1997, but the **HTML 5** standard (that this course teaches) wasn't finalized [until 2014](https://en.wikipedia.org/wiki/HTML#History). The **CSS 3** standard is broken up into more than 50 different _modules_ that are developed and introduced independently, and so is continuously being adopted piece-wise.
 
-<p class="alert alert-info"> When introducing new or experimental CSS properties, browsers historically utilized [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in naming the properties. As standards are being decided upon, each browser may treat that property in a slightly different way, thus forcing developers who want to use the "latest and greatest" to provide a different definition or value for each vendor. Prefixes are a naming convention that will cause the property to only be understood and applied by a particular browser; e.g., <span style="white-space: nowrap">`-webkit-hyphens`</span> would use the [Webkit](https://en.wikipedia.org/wiki/WebKit) version of `hyphens` property (for controlling word breaks), while <span style="white-space: nowrap">`-ms-hyphens`</span> would use the IE version. This practice is currently discouraged and being phased out, though prefixes may be required when supporting older browsers. Tools such as [Autoprefixer](https://github.com/postcss/autoprefixer) can help automatically manage prefixes.</p>
+<p class="alert alert-info"> When introducing new or experimental CSS properties, browsers historically utilized [vendor prefixes](https://developer.mozilla.org/en-US/docs/Glossary/Vendor_Prefix) in naming the properties. As standards are being decided upon, each browser may treat that property in a slightly different way, thus forcing developers who want to use the "latest and greatest" to provide a different definition or value for each vendor. Prefixes are a naming convention that will cause the property to only be understood and applied by a particular browser; e.g., <span style="white-space: nowrap">`-webkit-hyphens`</span> would use the [Webkit](https://en.wikipedia.org/wiki/WebKit) version of the `hyphens` property (for controlling word breaks), while <span style="white-space: nowrap">`-ms-hyphens`</span> would use the IE version. This practice is currently discouraged and being phased out, though prefixes may be required when supporting older browsers. Tools such as [Autoprefixer](https://github.com/postcss/autoprefixer) can help automatically manage prefixes.</p>
 
-In general, as long as you program webpages that conform to web standards, they will work on all "_modern browsers_"&mdash;though there may still be a few cross-browser compatibility concerns to notice. You should thus test and **validate** your code against the standards. Luckily, there the W3C provides online tools that can help validate code:
+In general, as long as you program webpages that conform to web standards, they will work on all "_modern browsers_"&mdash;though there may still be a few cross-browser compatibility concerns to notice. You should thus test and **validate** your code against the standards (and so don't ned to test it on every possible browser!). Luckily, the W3C provides online tools that can help validate code:
 
 <div class="list-condensed">
 - [W3C HTML Validation Service](https://validator.w3.org/nu/)
@@ -36,7 +36,7 @@ In general, as long as you program webpages that conform to web standards, they 
 - [W3C Developer Tools](http://w3c.github.io/developers/tools/) for a complete list of validators
 </div>
 
-To use these services, simply enter your web pages URL (or copy and paste the contents of your `.html` or `.css` files), and then run the validation. You will definitely want to fix any _errors_ you get. _Warnings_ should be considered; however, it is possible to get false positives. Be sure and read the warning carefully and consider whether or not it is actually a "bug" in your code!
+To use these services, simply enter your web page's URL (or copy and paste the contents of your `.html` or `.css` files), and then run the validation. You will definitely want to fix any _errors_ you get. _Warnings_ should be considered; however, it is possible to get false positives. Be sure and read the warning carefully and consider whether or not it is actually a "bug" in your code!
 
 Supporting _really_ old browsers that are not standards compliant is left as an exercise to the reader.
 
@@ -46,17 +46,17 @@ Supporting _really_ old browsers that are not standards compliant is left as an 
 ## Why Accessibility
 Consider the following hypothetical webpage user:
 
-> Tracy is a 19-year-old college student and was born blind. In high school she did well as she could rely on audio tapes and books and the support of tutors, so she never bothered to really learn Braille. She is interested in English literature and is very fond of short stories; her dream is to become an audiobook author.
+> Tracy is a 19-year-old college student and was born blind. Through high school she did well as she could relying on audio tapes and books and the support of tutors, so she never bothered to really learn Braille. She is interested in English literature and is very fond of short stories; her dream is to become an audiobook author.
 Tracy uses the Internet to share her writing and to connect with other writers through social networks. She owns a laptops and uses a screen reader called [JAWS](http://www.freedomscientific.com/Products/Blindness/JAWS): a computer program which reads her screen out loud to her in an artificial voice.
 <cite><small>(Adapted from [here](http://scidok.sulb.uni-saarland.de/volltexte/2007/1098/pdf/personas_access.pdf))</small></i>
 
 One of the most commonly overlooked limitations on a website's usability is whether or not it can be used by people with some form of disability. There are many different forms of disabilities or impairments that may affect whether or not a person can access a web page, including:
 
 - _Vision Impairments_: About 2% of the population is blind, so use alternate mediums for reading web pages. Farsightedness and other vision problems are also very common (particularly among older adults), requiring larger and clearer text. Additionally, about 4.5% the population is color-blind.
-- _Motor Impairments_: Arthritis occurs in about 1% of the population, and can restrict people's ease at using a mouse, keyboard or touch screen. Other impairments such as tremors, motor neuron conditions, and paralysis may further impact people's access.
+- _Motor Impairments_: Arthritis occurs in about 1% of the population, and can restrict people's ease at using a mouse, keyboard or touch screen. Other impairments such as tremors, motor-neuron conditions, and paralysis may further impact people's access.
 - _Cognitive Impairments_: Autism, dyslexia, and language barriers may cause people to be excluded from utilizing your website.
 
-If you fail to make your website accessible, you are locking out 2% or more of users, reducing the availability and use of your website. Indeed, companies are finally seeing this population as an important but excluded market; for example, Facebook has an [entire team](https://www.facebook.com/accessibility) devoted to accessibility and supporting users with disabilities. "_Accessibility Engineers_" have good job prospects.
+If you fail to make your website accessible, you are locking out 2% or more of users, reducing the availability and use of your site. Indeed, even web companies with their capitalist world-view are finally seeing this population as an important but excluded market; for example, Facebook has an [entire team](https://www.facebook.com/accessibility) devoted to accessibility and supporting users with disabilities. _"Accessibility Engineers"_ have good job prospects.
 
 Supporting users with disabilities is not just the morally correct thing to do, it's also _the law_. US Courts have [ruled](https://www.forbes.com/sites/legalnewsline/2017/06/13/first-of-its-kind-trial-goes-plaintiffs-way-winn-dixie-must-update-website-for-the-blind/#c4b8ce61b38a) that public websites are subject to [Title III of the Americans with Disabilities Act (ADA)](https://www.ada.gov/ada_title_III.htm), meaning that is a possible and not uncommon occurrence for large organizations to be sued for discrimination if their websites are not accessible. So far, "accessibility" has legally meant complying with the W3C's [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag) (see below), a standard that is not overly arduous to follow if you consider accessibility from the get-go.
 
@@ -72,10 +72,10 @@ If you make sure that your web page is well-structured and navigable by those wi
 
 Thus supporting accessibility in client-side web development is important both for helping a population that is often overlooked (a form of social justice), as well as for supporting new technologies and systems. This fact is [increasingly being acknowledged](http://www.fastcodesign.com/3054927/the-big-idea/microsofts-inspiring-bet-on-a-radical-new-type-of-design-thinking) by companies as key to usability, and thus it is important that you apply it to your own design work.
 
-<p class="alert alert-info">In addition to individual capabilities, people are also reliant on a large amount of existing _infrastructure_ to ensure that they have an internet connection and their requests can reach your web server. The lack of such access is often tied to economic or social inequalities, forming what is called the [_digital divide_](https://en.wikipedia.org/wiki/Digital_divide). Considering the availability of network access and other infrastructural needs is vitally important when developing information technologies, but is difficult to manage through client-side development (though see [Responsive Design](#responsive-css) for some things you can do).</p>
+<p class="alert alert-info">In addition to individual capabilities, people are also reliant on a large amount of existing **infrastructure** to ensure that they have an internet connection and their requests can reach your web server. The lack of such access is often tied to economic or social inequalities, forming what is called the [**digital divide**](https://en.wikipedia.org/wiki/Digital_divide). Considering the availability of network access and other infrastructural needs is vitally important when developing information technologies, but is difficult to manage through client-side development (though see [Responsive Design](#responsive-css) for some things you can do).</p>
 
 ## Supporting Accessibility
-In this course, we will primarily aim to support accessibility for users with visual impairments such as those using screen readers. A [**screen reader**](https://en.wikipedia.org/wiki/Screen_reader) is a piece of software that is able to synthesize and "read" content on a computer's screen out loud through the speakers, so that users are able to navigate and control the computer without needing to see the screen. Screen readers are often combined with _keyboard controls_, so that users use just the keyboard to control the computer and not the mouse (almost like a command-line interface!).
+In this course, we will primarily aim to support accessibility for users with visual impairments such as those using screen readers. A [**screen reader**](https://en.wikipedia.org/wiki/Screen_reader) is a piece of software that is able to synthesize and "read" content on a computer's screen out loud through the speakers, so that users are able to navigate and control the computer without needing to see the screen. Screen readers are often combined with _keyboard controls_, so that users use just the keyboard to control the computer and not the mouse (almost like a command line interface!).
 
 There are a number of different screen reader software packages available:
 
@@ -84,16 +84,16 @@ There are a number of different screen reader software packages available:
 
 <p class="alert alert-success">You should try out this software! Follow the above links to learn how to turn on the screen reader for your computer, and then try using it to browse the internet _without looking at the screen_. This will give you a feel for what it is like using a computer while blind.</p>
 
-Screen readers are just software that interpret the HTML of a website in order to allow the user to hear and navigate the content&mdash;they are basically _non-visual web browsers_. As such, supporting screen readers just means implementing your web site so it works with this browser. In particular, this means making sure your page conforms to the [Web Accessibility Content Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag). This is a [list of principles and techniques](https://www.w3.org/WAI/WCAG20/quickref/) that you should utilize when authoring HTML document in order to make sure that they are accessible. The guidelines are driven by 4 main principles:
+Screen readers are just software that interpret the HTML of a website in order to allow the user to hear and navigate the content&mdash;they are basically _non-visual web browsers_. As such, supporting screen readers just means implementing your web site so it works with this browser. In particular, this means making sure your page conforms to the [Web Accessibility Content Guidelines (WCAG)](https://www.w3.org/WAI/intro/wcag). This is a [list of principles and techniques](https://www.w3.org/WAI/WCAG20/quickref/) that you should utilize when authoring HTML documents in order to make sure that they are accessible. The guidelines are driven by 4 main principles:
 
 1. **Perceivable**: Information and user interface components must be presentable to users in ways they can perceive.
 2. **Operable**: User interface components and navigation must be operable.
-3. **Understandable**: Information and the operation of user interface must be understandable.
+3. **Understandable**: Information and the operation of user interfaces must be understandable.
 4. **Robust**: Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.
 
-More concretely, accessible web pages are those that can be **navigated** by screen readers (so people can easily get to the information they care about), and have content can be **perceived** by screen readers (so is not just presented visually).
+More concretely, accessible web pages are those that can be **navigated** by screen readers (so people can easily get to the information they care about), and have content that can be **perceived** by screen readers (so is not just presented visually).
 
-Don't worry; there are simple, specific implementation steps you can to follow these principles, the most common of which are described below.
+Don't worry: there are simple, specific implementation steps you can use to follow these principles, the most common of which are described below.
 
 
 ### Semantic HTML {-}
@@ -146,7 +146,7 @@ Be sure and check the documentation for each of these elements to determine when
 
 
 ### ARIA {-}
-The WCAG is developed by the [Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/), who _also_ have authored an additional **web standard** for supporting accessibility. This standard is called the [Accessible Rich Internet Applications Suite](https://www.w3.org/TR/wai-aria/), or **ARIA**. ARIA specifies an _extension_ to HTML, defining additional HTML _attributes_ that can be included in elements in order to provide additional support for screen readers. For example, ARIA provides additional support to help screen readers navigate through a page (for people who can't just visually scroll), as well as providing a mechanism by which "rich" interactive web apps (such as those you will create with JavaScript) can communicate their behavior to screen readers.
+The WCAG is developed by the [Web Accessibility Initiative (WAI)](https://www.w3.org/WAI/), who _also_ have authored an additional **web standard** for supporting accessibility. This standard is called the [**A**ccessible **R**ich **I**nternet **A**pplications Suite](https://www.w3.org/TR/wai-aria/), or **ARIA**. ARIA specifies an _extension_ to HTML, defining additional HTML _attributes_ that can be included in elements in order to provide additional support for screen readers. For example, ARIA provides additional support to help screen readers navigate through a page (for people who can't just visually scroll), as well as providing a mechanism by which "rich" interactive web apps (such as those you will create with JavaScript) can communicate their behavior to screen readers.
 
 In short, where the HTML standard falls short in supporting accessibility, ARIA steps in.
 
@@ -156,7 +156,7 @@ For example, the ARIA specification defines a [**`role`**](https://www.w3.org/TR
 <div class="btn" role="button">Submit</div>
 ```
 
-would define a unsemantic `div` element that is _styled_ (via a developer-defined CSS class) to look like a button. But in order to tell the screen reader that this element can be clicked like a button, it is given the `role` of `"button"`. There are a [large number](https://www.w3.org/TR/wai-aria/roles#roles_categorization_header) of different roles (following a potentially complex classification scheme), and include [roles for interactive widgets](https://www.w3.org/TR/wai-aria/roles#widget_rolls) such as a popup `dialog`, a `progressbar`, or a `menu`. These are important when making complex interactions, though for most simpler pages you can stick with the standard semantic elements (e.g., a `<button>` instead of a custom `<div>`).
+would define a unsemantic `div` element that is _styled_ (via a developer-defined CSS class) to look like a button. But in order to tell the screen reader that this element can be clicked like a button, it is given the `role` of `"button"`. There are a [large number](https://www.w3.org/TR/wai-aria/roles#roles_categorization_header) of different roles (following a potentially complex classification scheme), and include [roles for interactive widgets](https://www.w3.org/TR/wai-aria/roles#widget_rolls) such as a popup `dialog`, a `progressbar`, or a `menu`. These are important when making complex interactions, though for most simpler pages you can stick with the standard semantic elements (that is: use a `<button>` instead of a custom `<div>`).
 
 The other important type of ARIA `role` are [landmark roles](https://www.w3.org/TR/wai-aria/roles#landmark_role_header). These are roles that are used to indicate specific locations in the document, to allow the screen reader to easily "jump" to different sections of the content (thus making the page _navigable_). Landmark roles include:
 
@@ -169,17 +169,17 @@ The other important type of ARIA `role` are [landmark roles](https://www.w3.org/
 
 
 ### Page Structure (Navigable) {-}
-Because screen readers cannot take in a web page's content "at a glance", accessible pages need to be explicitly structured so that they their content can be easily navigated&mdash;e.g., so that the user can quickly "scroll" to a particular blog post.
+Because screen readers cannot take in a web page's content "at a glance", accessible pages need to be explicitly structured so that their content can be easily navigated&mdash;e.g., so that the user can quickly "scroll" to a particular blog post.
 
-The most important way to provide this structure is by the considered use of **heading** elements (`<h1>`, `<h2>`, etc). Screen readers automatically generate a "table of contents" based on these headings, allowing users to easily move through large amounts of content. In order to be sure that the headings are useful, they need to be **meaningful** (actually marking section headings) and **hierarchical** (they don't skip levels: every `<h3>` has an `<h2>` above it). The former is just good HTML usage that you will be doing anyway; the later may take some consideration.
+The most important way to provide this structure is by the considered use of **heading** elements (`<h1>`, `<h2>`, etc). Screen readers automatically generate a "table of contents" based on these headings, allowing users to easily move through large amounts of content. In order to ensure that the headings are useful, they need to be **meaningful** (actually marking section headings) and **hierarchical** (they don't skip levels: every `<h3>` has an `<h2>` above it). The former is just good HTML usage that you will be doing anyway; the later may take some consideration.
 
 The `<h#>` heading elements are part of the original HTML specification, and so will be supported by _all_ screen reader systems. However, HTML 5 introduced additional elements that can be used to help organize web page content in order to make its structure more explicit. These are often referred to as [semantic elements](https://www.w3schools.com/html/html5_semantic_elements.asp) or "sectioning elements". These are all **block-level** elements that produce no visual effects on their own, but provide semantic structuring to web content. You can think of them as specialized `<div>` elements.
 
-<p class="alert alert-info">One metaphor is that nested HTML elements into a `<div>` is like putting that content into a envelope to "group" it together (e.g., for styling purposes). In that case, a semantic element such as `<header>` is just an envelope with a unique color that makes it easier to find in the filing cabinet.</p>
+<p class="alert alert-info">One metaphor is that nesting HTML elements into a `<div>` is like putting that content into a envelope to "group" it together (e.g., for styling purposes). In that case, a semantic element such as `<header>` is just an envelope with a unique color that makes it easier to find in the filing cabinet.</p>
 
 - [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) represents the "header" or introduction part of the page, such as the title or banner image. It may also include common page elements such as navigation or search bars. This corresponds to the `role="banner"` landmark role; you do not need to include that role if you use this element.
 
-    Note that a `<header>` is different from a head**ing** (`<h1>`) which is different from the `<head>`! An _head**ing**_ is element (e.g., `<h1>`) that includes a title or subtitle. The _<code>&lt;head**er**&gt;</code>_ is a "grouping" element that can contain multiple elements, and usually has banner/logo information. The `<head>` is an element that is NOT part of the `<body>` (so is not shown in the web page), and contains _metadata_ about that page.
+    Note that a `<header>` is different from a head**ing** (`<h1>`) which is different from the `<head>`! A _head**ing**_ is element (e.g., `<h1>`) that includes a title or subtitle. A _<code>&lt;head**er**&gt;</code>_ is a "grouping" element that can contain multiple elements, and usually has banner/logo information. The `<head>` is an element that is NOT part of the `<body>` (so is not shown in the web page), and contains _metadata_ about that page.
 
 - [`<nav>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) contains navigation links, usually for navigating around the site (think like a navigation bar). Not all links need to be in a `<nav>`; this is for "sections" of the webpage that are purely navigational. This element corresponds to the `role="navigation"` landmark role.
 - [`<main>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) represents the "main" content of the document. This usually comes _after_ the `<header>` (but not inside&mdash;in fact, `<main>` _cannot_ be a descendant of `<header>`). Note that a web page can only have a single `<main>` element. This element corresponds to the `role="main"` landmark role.
@@ -188,12 +188,41 @@ The `<h#>` heading elements are part of the original HTML specification, and so 
 
     Similarly, an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/article) element also represents standalone content, but content that might be published independently (such as a news article or a blog post). Note that a `<section>` may group together multiple `<article>` elements (such as a blog roll), and an `<article>` might potentially contain more than one `<section>`. Think about how a newspaper is structured (with a "Sports Section" that contains articles, which may themselves have different sections).
 
+A typical web page body may thus have a structure similar to:
+
+```html
+<!-- Starting from the body tag -->
+<body>
+    <!-- Page header -->
+    <header>            
+        <nav>
+            navigation links in here
+        </nav>
+    </header>
+
+    <!-- Main page content -->
+    <main>
+        <section>
+            content...
+        </section>
+        <section>
+            content...
+        </section>
+    </main>
+
+    <!-- Page footer -->
+    <footer>
+        copyright information here
+    </footer>
+</body>
+```
+
 Overall, utilizing these semantic sectioning elements will help organize your content for screen readers (so visually impaired users can easily navigate the page), as well as making your content more clearly structured.
 
 <!-- info on tabIndex and skiplinks here?? -->
 
 ### Visual Information (Perceivable) {-}
-Webpages often contain a significant amount of _primarily visual_ information. In addition to obvious media such as images or video, interactive elements may be labeled visually (e.g., a search button that shows a magnifying glass). In order to make web pages accessible, screen readers need a way to **perceive** and correctly interpret such content.
+Webpages often contain a significant amount of _primarily visual_ information. In addition to obvious media such as images or video, interactive elements may be labeled visually (e.g., a search button that with a magnifying glass icon). In order to make web pages accessible, screen readers need a way to **perceive** and correctly interpret such content.
 
 The most common form of visual information are images (created with the `<img>` element). In order to make images accessible, you should always include an `alt` attribute that gives **alt**ernate text for when the images cannot be displayed (e.g., on screen readers, but also if the image fails to load):
 
@@ -231,17 +260,17 @@ On the other hand, some images (or other elements) are purely decorative: compan
 
 ```html
 <!-- a search button with an icon -->
-<!-- the icon will not be read, but the button text will be -->
+<!-- the icon img will not be read, but the button text will be -->
 <button><img src="search_icon.png" aria-hidden="true">Search</button>
 ```
 
-It is also possible to use ARIA attribute to provide an equivalent to an `alt` tag for elements other than `<img>`, such as a `<div>` that may be styled in a purely visual way (perhaps with a background image). The **`aria-label`** acts like the alt attribute for any element, specifying what text should be read _in place of the normal content_.
+It is also possible to use an ARIA attribute to provide an equivalent to an `alt` attribute for elements other than `<img>`, such as a `<div>` that may be styled in a purely visual way (perhaps with a background image). The **`aria-label`** acts like the `alt` attribute for any element, specifying what text should be read _in place of the normal content_.
 
 ```html
 <div class="green-rect" aria-label="a giant green rectangle"></div>
 ```
 
-For longer descriptions, use the **`aria-describedby`** attribute to include a reference to  the `id` of a different element _on the same page_ that contains the textual description. `aria-describedby` takes as a value a fragment reference (similar to a bookmark hyperlink) to the element containing the description.
+For longer descriptions, use the **`aria-describedby`** attribute to include a reference to the `id` of a different element _on the same page_ that contains the textual description. `aria-describedby` takes as a value a fragment reference (similar to a bookmark hyperlink) to the element containing the description.
 
 ```html
 <div class="green-rect" aria-describedby="#rectDetail"></div>

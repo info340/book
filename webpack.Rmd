@@ -5,7 +5,7 @@ This lab is intended to walk you through the basics of the [**Webpack**](https:/
 _This tutorial is adapted from one by [Tyler McGinnis](https://tylermcginnis.com/react-js-tutorial-1-5-utilizing-webpack-and-babel-to-build-a-react-js-app-5f804d729d3b#.3v5n4cd1z)._
 
 ## What is Webpack?
-Webpack is a **build tool**. That is, it is a (command-line) application that is used to automatically take the source code you write and prepare that code to be run/executed, whether for development or deployment. There are numerous such build tools in existence: [Gulp](http://gulpjs.com/) is the major competitor to Webpack, and most IDEs (like jGrasp or IntelliJ) provide them. However, Webpack is favored by React developers because of how easily and speedily it transpiles JSX.
+Webpack is a **build tool**. That is, it is a (command line) application that is used to automatically take the source code you write and prepare that code to be run/executed, whether for development or deployment. There are numerous such build tools in existence: [Gulp](http://gulpjs.com/) is the major competitor to Webpack, and most IDEs (like jGrasp or IntelliJ) provide them. However, Webpack is favored by React developers because of how easily and speedily it transpiles JSX.
 
 At its core, Webpack is a module loader: it takes source files like JavaScript **modules** and bundles them into a few simplified files that can be part of your webpage. It takes your complicated source code structure (lots of files) and transforms it into a brand-new, "simplified" version (few files).
 
@@ -30,14 +30,14 @@ Once you're finished, you will be asked to confirm your choices (type `yes`), an
 > :bulb: If you just want a blank `package.json` file, use `npm init -y` to skip the prompts!
 
 
-2. Locally install the `webpack` program. This will allow you to run the program from the command-line and bundle your app. Using the `--save-dev` flag saves the module to your `devDependencies`, which will _*not*_ be bundled in the bundled version of your app.
+2. Locally install the `webpack` program. This will allow you to run the program from the command line and bundle your app. Using the `--save-dev` flag saves the module to your `devDependencies`, which will _*not*_ be bundled in the bundled version of your app.
 
     ```
     npm install --save-dev webpack
     ```
 
 ## <code>webpack.config.js</code>
-While Webpack can be used to do simple bundling from the command-line (see [the official tutorial](https://webpack.js.org/guides/getting-started//) for an example), it's most common to write down all of your bundling options inside a **configuration file**. This file is basically just a JavaScript file that defines a variable that represents all of the different options you'd want to pass to the `webpack` program. If you name this file **`webpack.config.js`**, Webpack will read in that configuration automatically. Thus "using Webpack" really involves creating this file.
+While Webpack can be used to do simple bundling from the command line (see [the official tutorial](https://webpack.js.org/guides/getting-started//) for an example), it's most common to write down all of your bundling options inside a **configuration file**. This file is basically just a JavaScript file that defines a variable that represents all of the different options you'd want to pass to the `webpack` program. If you name this file **`webpack.config.js`**, Webpack will read in that configuration automatically. Thus "using Webpack" really involves creating this file.
 
 1. Create a new file called **`webpack.config.js`** and open it up in your favorite editor (e.g., VS Code).
 

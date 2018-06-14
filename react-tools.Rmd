@@ -123,7 +123,7 @@ So, the folks over at React built an amazing tool called [create-react-app](http
 
 
 ```bash
-# Globally install the create-react-app command-line utility: only do this once!
+# Globally install the create-react-app command line utility: only do this once!
 # Depending on your permissions on your machine, you might need to `sudo npm install....`
 npm install -g create-react-app
 
