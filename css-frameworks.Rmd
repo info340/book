@@ -13,7 +13,7 @@ There are many different CSS frameworks to choose from. Some popular ones includ
 
 - [**Bootstrap**](http://getbootstrap.com/) is the most commonly used CSS framework on the web. Sometimes called "Twitter Bootstrap", it was originally created at Twitter to enforce some consistency among their internal tools, but was released as an open-source project in 2011. Its popularity has benefits and drawbacks: it's very well tested, documented, and supported, but it's also so prevalent that it's default look has become [cliché](http://adventurega.me/bootstrap/#).
 
-    The latest release of Bootstrap, v4, is currently in beta. This version includes an update look and feel, and makes it relatively easy to create your own customized version. Bootstrap 4 also uses Flexbox as a foundation for its grid system, offering some better performance. For this and other reasons, Bootstrap 4 does **not support** IE 9 or earlier browsers. For older browsers, you'd want to use Bootstrap 3.
+    The latest release of Bootstrap, v4 was released in 2017. This version includes an update look and feel, and makes it relatively easy to create your own customized version. Bootstrap 4 also uses Flexbox as a foundation for its grid system, offering some better performance. For this and other reasons, Bootstrap 4 does **not support** IE 9 or earlier browsers. For older browsers, you'd want to use Bootstrap 3.
 
     <p class="alert alert-warning">This text discusses Bootstrap 4 as an example. Be careful that you are looking at information about the right version if you seek out documentation or help online!</p>
 
@@ -42,7 +42,7 @@ Because a CSS framework is _just a CSS file_, you include one in your page using
   <!--... other elements here...-->
 
   <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.css">
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.css">
   <link rel="stylesheet" href="css/my-style.css">
 </head>
 ```
@@ -93,10 +93,10 @@ Recall that you can install a package using `npm`, saving the dependency into yo
 
 ```bash
 # install bootstrap
-npm install --save bootstrap@4.0.0-beta
+npm install --save bootstrap@4
 ```
 
-(This explicitly loads the beta of Bootstrap 4. See below for details).
+(This explicitly loads Bootstrap 4. See below for details).
 
 This will install the library's source code into your project's `node_modules/` folder. You will then need to dig around inside that source folder for the `.css` file you wish to link (it is in no way consistent for all frameworks)
 
@@ -116,9 +116,9 @@ This section discusses _some_ of the features and uses of the Bootstrap CSS fram
 You include the Bootstrap framework by linking its `.css` file to your page (whether from a CDN or a local file). You can get the link for the latest version from the [Bootstrap Home Page](https://getbootstrap.com/).
 
 ```html
-<link rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
-      integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+<link rel="stylesheet" 
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" 
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" 
       crossorigin="anonymous">
 ```
 
@@ -281,12 +281,15 @@ CSS is not capable of adding this level of interactivity&mdash;that requires **J
 
 ```html
 <!-- dependency: jQuery -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<!-- dependency: popper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+
 <!-- the Bootstrap JavaScript library -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 ```
 
-See See the chapter on [JavaScript](#javascript) for more details on including JavaScript libraries. Note that not all components or utilities require JavaScript.
+See the chapter on [JavaScript](#javascript) for more details on including JavaScript libraries. Note that not all components or utilities require JavaScript.
 
 However, with most Bootstrap components, you don't actually need to write any JavaScript code. Instead, you just need to provide some particular `data-` HTML attributes, and the library will take care of everything else.
 
