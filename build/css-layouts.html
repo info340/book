@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-06-14">
+<meta name="date" content="2018-06-20">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -582,7 +582,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra space each item has after the text content." />
 <p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
 </div>
-<p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values).</p>
+<p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified, the <code>flex-basis</code> property will be set to <code>0</code>, rather than the <code>auto</code> value it has if unspecified.</p>
 <p>The Flexbox framework also provides a number of additional properties that you can specify on the <strong>container</strong> to customize how items of different sizes are organized on the screen:</p>
 <ul>
 <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-6"><code>justify-content</code></a> specifies how the items should be spread out across the container. Note that items that have <code>flex-grow:1</code> will use up the extra space, making this less relevant.</li>

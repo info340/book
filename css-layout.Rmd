@@ -262,7 +262,7 @@ Any _immediate child_ of the flexbox container can use additional properties to 
 
 ![Top: visual example of `flex-grow`. Bottom: visual example of `flex-shrink`. Notice how much extra "space" each item has after the text content.](img/css/flex-grow-shrink-vert.png)
 
-There is also a _shortcut property_ `flex` that allows you to specify all three values at once: give the `flex-grow`, `flex-shrink`, and `flex-basis` values separated by spaces (the second two being optional if you want to use the default values).
+There is also a _shortcut property_ `flex` that allows you to specify all three values at once: give the `flex-grow`, `flex-shrink`, and `flex-basis` values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified, the `flex-basis` property will be set to `0`, rather than the `auto` value it has if unspecified.
 
 The Flexbox framework also provides a number of additional properties that you can specify on the **container** to customize how items of different sizes are organized on the screen:
 
