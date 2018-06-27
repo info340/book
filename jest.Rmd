@@ -1,8 +1,11 @@
-# Lab: Testing with Jest {#lab-jest}
+# Testing with Jest {#jest}
 
 > People just aren't as repeatable as computers are. Nor should we expect them to be. A shell script or batch file will execute the same instructions, in the same order, time after time. It can be put under source control, so you can examine changes to the procedure over time as well ("but it used to work..."). - [The Pragmatic Programmer](http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X)
 
-This lab introduces **automated testing** using the [Jest](https://facebook.github.io/jest/) framework. By completing this tutorial, you will learn how to write and execute simple unit tests on JavaScript functions and DOM manipulating code.
+This chapter introduces **automated testing** using the [Jest](https://facebook.github.io/jest/) framework. By following this tutorial, you will learn how to write and execute simple unit tests on JavaScript functions and DOM manipulating code.
+
+<p class="alert alert-info">This tutorial references code found at <https://github.com/info343/jest-tutorial>.</p>
+
 
 ## Testing
 One of the most important goals when developing computer programs is to make sure that the code you write actually _works_. You can determine if a program works by considering three things:
@@ -36,7 +39,7 @@ Additionally, you will need to install the dependencies listed in this repositor
 npm install
 ```
 
-With Jest, you define "tests", which are just JavaScript code that is used to perform the _action_ and compare the _received_ and _expected_ results. These tests can either be placed in a file whose name ends wth `.test.js` (indicating it is a test script), `.spec.js` (for "specification"), or a plain `.js` file inside the `__tests__` folder in your program. In either case, a test script is _just a JavaScript file_, so you include any JavaScript code/variables/functions/etc. you want.
+With Jest, you define "tests", which are just JavaScript code that is used to perform the _action_ and compare the _received_ and _expected_ results. These tests can either be placed in a file whose name ends with `.test.js` (indicating it is a test script), `.spec.js` (for "specification"), or a plain `.js` file inside the `__tests__` folder in your program. In either case, a test script is _just a JavaScript file_, so you include any JavaScript code/variables/functions/etc. you want.
 
 ## Writing a Test
 We define a "test" (a check if a particular piece of functionality works) by calling the [**`test()`**](https://facebook.github.io/jest/docs/en/api.html#testname-fn) function&mdash;a predefined function provided by the Jest framework. This functions take two arguments: a _string_ describing what the test is checking, and a _callback function_ that will contain the code to run which does the action and compares the results.
@@ -49,7 +52,7 @@ test('should do something...', function() {
 
 - Test descriptions (the string parameter) are written in _present tense_, and state in plain English what behavior SHOULD happen. Starting the description with the word "should" is a good approach!
 
-- Jest also provides a function `it()` that is an alias for `test()`, but lets the code read like badly punctuated English:
+- Jest also provides a function `it()` that is an alias for `test()`, and lets the code read like badly punctuated English:
 
     ```js
     it('should do something', function() { ... });
@@ -137,7 +140,7 @@ The command line will print out the results of this test script:
 This will tell you what tests were run, which "passed" (were green for good to _go_!) and which "failed" (were red). Failed tests will also report which assertion failed, and what the expected and received values were that didn't match.
 
 ### Practice {-}
-This repo's `app.js` file contains a function `invertCase()`. Create a `describe()` block to contains tests for the function, and write unit tests to check it for bugs (by giving it specific inputs and checking the _received_ vs. the _expected_ result). If you find any bugs, fix them and then re-run your tests!
+This repo's `app.js` file contains a function `invertCase()`. In the provides `app.spec.js` file, implement a `describe()` block to contains tests for the function, and write unit tests to check it for bugs (by giving it specific inputs and checking the _received_ vs. the _expected_ result). If you find any bugs, fix them and then re-run your tests!
 
 ## Testing Web Apps with Jest
 It is also possible to use Jest to JavaScript code that is used to manipulate the DOM. You can do this because Jest creates a **virtual DOM** that you can interact with. That is, jest provides a global `document` object that you can access and call methods on (e.g., `document.querySelector()`). This isn't a full browser: it won't load external CSS files or allow you to navigate to pages, but it does provide a tree of HTML elements you can modify and inspect. allowing you to test your DOM manipulation.
@@ -186,7 +189,7 @@ And with that, you can automatically test if your page's interactivity works as 
 - You should still test your page inside the browser, just to catch any platform differences between Jest's virtual DOM and actual web browsers.
 
 ### Practice {-}
-Add functionality to the `index.js` file so that when the "Panic" button is pressed, the HTML's `.alert` element is displayed. Then write a test in `index.spec.js` to confirm that this behavior works.
+Write a test in the provided `index.spec.js` file to confirm that when the "Panic" button is pressed, the HTML's `.alert` element is displayed.
 
 
 <!-- ## Testing React with Enzyme

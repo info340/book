@@ -42,5 +42,5 @@ rmd_files:
   - react-native.Rmd
 
   ## Additional Topics (labs)
-  # jest.Rmd
+  - jest.Rmd
   # webpack.Rmd

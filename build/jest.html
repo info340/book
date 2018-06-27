@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="index.html">
-<link rel="next" href="client-side-development.html">
+<link rel="prev" href="react-native.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -386,201 +386,160 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="machine-setup" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Getting Setup</h1>
-<p>This course will cover a wide variety of tools and techniques used in modern web development, including different software programs that are used to write, manage, and execute the code for your web application. This chapter explains how to install and use some of the software you will need to utilize.</p>
+<div id="jest" class="section level1">
+<h1><span class="header-section-number">Chapter 24</span> Testing with Jest</h1>
+<blockquote>
+<p>People just aren’t as repeatable as computers are. Nor should we expect them to be. A shell script or batch file will execute the same instructions, in the same order, time after time. It can be put under source control, so you can examine changes to the procedure over time as well (“but it used to work…”). - <a href="http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X">The Pragmatic Programmer</a></p>
+</blockquote>
+<p>This chapter introduces <strong>automated testing</strong> using the <a href="https://facebook.github.io/jest/">Jest</a> framework. By following this tutorial, you will learn how to write and execute simple unit tests on JavaScript functions and DOM manipulating code.</p>
 <p class="alert alert-info">
-Note that iSchool lab machines should have all appropriate software already installed and ready to use.
+This tutorial references code found at <a href="https://github.com/info343/jest-tutorial" class="uri">https://github.com/info343/jest-tutorial</a>.
 </p>
-<p>In summary, you’ll need to install and set up the following software on your machine (more information below on each of these). Feel free to use alternative software, but these are the suggested programs for the course (i.e., the ones which we will provide support for):</p>
-<ul>
-<li><a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Google Chrome</strong></a> as your web browser</li>
-<li><a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a> as your code editor</li>
-<li><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> as a JavaScript engine</li>
-<li><a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a> as a JavaScript package manager (comes with Node.js)</li>
-<li><a href="https://git-scm.com/downloads"><strong><code>git</code></strong></a> as a version control system (for Windows users; already installed on Macs)</li>
-<li>A Bash terminal (e.g., <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> for Windows, or the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide"><strong>subsystem for Linux</strong></a>; Terminal is already installed on Macs)</li>
-<li><a href="https://www.npmjs.com/package/live-server"><strong><code>live-server</code></strong></a> as a local development server (simply run <code>npm install live-server</code>)</li>
-</ul>
-<div id="web-browser" class="section level2">
-<h2><span class="header-section-number">1.1</span> Web Browser</h2>
-<p>The first thing you’ll need is a web browser for viewing the web pages you make! We recommend you install and utilize <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class.</p>
-<ul>
-<li>You can access the Chrome Developer tools by selecting <strong>View &gt; Developer &gt; Developer Tools</strong> from Chrome’s main menu (<code>cmd + option + i</code> on a Mac, <code>ctrl + shift + i</code> on Windows). You will pretty much always want to have these tools open when doing web development, especially when including interactivity via JavaScript.</li>
-</ul>
-<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.</p>
-</div>
-<div id="code-editors" class="section level2">
-<h2><span class="header-section-number">1.2</span> Code Editors</h2>
-<p>In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features. You only need to download and use one of the following programs (we recommend <strong>Visual Studio Code</strong> as a default), but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)</p>
-<div id="visual-studio-code" class="section level3 unnumbered">
-<h3>Visual Studio Code</h3>
-<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. Although fairly new, it is updated regularly and has has become one of our main editors for programming. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
-<p>To install VS Code, follow the above link and Click the “Download” button to download the installer (e.g, <code>.exe</code>) file, then double-click on that to install the application.</p>
-<p>Once you’ve installed VS Code, the trick to using it effectively is to get comfortable with the <a href="https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette">Command Palette</a>. If you hit <code>cmd + shift + p</code>, VS Code will open a small dialog where you can search for whatever you want the editor to do. For example, if you type in <code>markdown</code> you can get list of commands related to Markdown files (including the ability to open up a preview). The <code>Format Code</code> option is particularly useful.</p>
-<p>For more information about using VS Code, see <a href="https://code.visualstudio.com/docs">the documentation</a>, which includes <a href="https://code.visualstudio.com/docs/getstarted/introvideos">videos</a> if you find them useful. The documentation for programming in <a href="https://code.visualstudio.com/docs/languages/html">HTML</a>, <a href="https://code.visualstudio.com/docs/languages/css">CSS</a>, and especially <a href="https://code.visualstudio.com/docs/languages/javascript">JavaScript</a> also contain lots of tips and tricks.</p>
-<!-- #### Recommended Extensions
-We suggest you install the following extensions to help you write well formatted code:
-
-- [JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint) for catching JavaScript errors
-
-In order to get the linter set up, you'll also need to global install `jshint` with this command on the terminal (more info on using `npm` below):
-
-```bash
-npm install -g jshint
-```
-
-Furthermore, we suggest the following user-settings to make using your text editor even easier (hit `cmd + ,` to get to your user settings):
-
-```json
-// Remove this comment and the comments at the end of each line -- these are for informational purposes, but will not work in your settings
-{
-  "editor.formatOnSave": true,        // have the text editor auto-format your code when you save 
-  "editor.tabSize": 4,                // set the tab size to 4 spaces
-  "editor.detectIndentation": false,  // don't have the text editor detect tabs v.s. spaces 
-  "jshint.enable": true,              // enable the jshint linter
-    "jshint.options": {
-        "strict": "global",           // require JavaScript files to declare "use strict";
-        "esversion": 6,               // set es version to 6
-        "devel": true,                // enable debugging commands like "console.log"
-        "browser": true               // enable browser variables like "document"
-    }
-}
-``` -->
-<p>While we suggest using VSCode for this course, other editors are also acceptable and may be of interest to you.</p>
-</div>
-<div id="atom" class="section level3 unnumbered">
-<h3>Atom</h3>
-<p><a href="https://atom.io/">Atom</a> is a text editor built by the folks at GitHub and has been gaining in popularity. It is very similar to VS Code in terms of features, but has a somewhat different interface and community. It has a similar <em>command-palette</em> to VS Code. The document you are reading was authored in Atom.</p>
-</div>
-<div id="brackets" class="section level3 unnumbered">
-<h3>Brackets</h3>
-<p><a href="http://brackets.io/">Brackets</a> is a coding editor created by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list.</p>
-</div>
-<div id="sublime-text" class="section level3 unnumbered">
-<h3>Sublime Text</h3>
-<p><a href="https://www.sublimetext.com/3">Sublime Text</a> is a very popular text editor with excellent defaults and a variety of available extensions (though you’ll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is a great option to write a plain text file.</p>
-</div>
-</div>
-<div id="bash-command-line" class="section level2">
-<h2><span class="header-section-number">1.3</span> Bash (Command Line)</h2>
-<p>Many of the software tools used in professional web development are used on the <strong>command line</strong>: a text-based interface for controlling your computer. While the command line is harder to learn and figure out, it is particularly effective for doing web development. Command line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command line in order to utilize the software for this course.</p>
-<p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course is based on the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.</p>
-<p>On a Mac you’ll want to use the built-in app called <strong>Terminal</strong>. You can open it by searching via Spotlight (hit Cmd (<code>⌘</code>) and Spacebar together, type in “terminal”, then select the app to open it), or by finding it in the Applications/Utilities folder.</p>
-<p>On Windows, we recommend using <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a>, which you should install along with <code>git</code> (see below). Open this program to open the command-shell. <em>Alternatively</em>, the 64-bit Windows 10 Anniversary update (August 2016) does include a version of an integrated Bash shell. You can access this by enabling the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide"><strong>subsystem for Linux</strong></a> and then running <code>bash</code> in the command prompt.</p>
-<ul>
-<li>Note that Windows does come with its own command-prompt, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</li>
-</ul>
-<p class="alert alert-danger">
-This course expects you to already be familiar with basic command line usage. For review, see <a href="https://info201.github.io/command-line.html">The Command Line</a> in the <em>INFO 201</em> course reader.
-</p>
-</div>
-<div id="git-and-github" class="section level2">
-<h2><span class="header-section-number">1.4</span> Git and GitHub</h2>
-<p>Professional web development involves many different people working on many different files. <strong><code>git</code></strong> is a collaborative version control system that provides a set of commands that allow you to manage changes to written code, particularly when collaborating with other programmers.</p>
-<p>You will need to <a href="https://git-scm.com/downloads">download</a> and install the software. If you are on a Mac, <code>git</code> should already be installed. If you are using a Windows machine, then installing <code>git</code> will also install the Git Bash command shell.</p>
-<p>Note that <code>git</code> is a command line application: you can test that it is installed by running the command:</p>
-<pre class="language-bash"><code><span class="token function">git</span> --version</code></pre>
-<p>While <code>git</code> is the software used to manage versions of code, <a href="https://github.com/"><strong>GitHub</strong></a> is a website that is used to store copies of computer code that are being managed with <code>git</code> (think “Imgur for code”).</p>
-<p>In order to use GitHub, you’ll need to <a href="https://github.com/join">create a free GitHub account</a>, if you don’t already have one. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to figure out who ‘LeetDesigner2099’ is. This can be the start of a professional account you may use for the rest of your career!</p>
-<ul>
-<li>Note that you can have <code>git</code> save your GitHub password on your local machine so you don’t have to type it repeatedly. See <a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git"><em>Authenticating with GitHub from Git</em></a>.</li>
-</ul>
-<p class="alert alert-danger">
-This course expects you to already be familiar with utilizing Git and GitHub. For review, see <a href="https://info201.github.io/git-basics.html">Git and GitHub</a>, <a href="https://info201.github.io/git-branches.html">Git Branches</a>, and <a href="https://info201.github.io/git-collaboration.html">Git Collaboration</a> in the <em>INFO 201</em> course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.
-</p>
-</div>
-<div id="node-and-npm" class="section level2">
-<h2><span class="header-section-number">1.5</span> Node and <code>npm</code></h2>
-<p><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> (commonly just “Node”) is a a command line runtime environment for the JavaScript programming language—that is, a program that is used to <em>interpret</em> and <em>execute</em> programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see <a href="#JavaScript">Chapter: JavaScript</a>), Node provides a platform for installing and running a wide variety of “helper” programs that are frequently used in web development.</p>
-<p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will need <em>at least</em> the current Long Term Support (LTS) version <strong>8.11</strong>, so you should update Node if you installed it previously (e.g., by downloading and reinstalling it). Node is a command line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
-<pre class="language-bash"><code>node --version</code></pre>
-<p>Be sure and check that you have a recent enough version!</p>
-<p>Installing Node also installs an additional command line program called <a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a>. <code>npm</code> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command line “app store” for developer tools and libraries. <code>npm</code> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <code>npm</code> “registry” lists around 725,000 different packages.</p>
-<p class="alert alert-warning">
-If you have an older version of Node and <code>npm</code> (before Node 8.11 or <code>npm</code> 5.6), you will need to update them. You can re-install the latest version of Node, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
-</p>
-<div id="managing-packages-with-npm" class="section level3 unnumbered">
-<h3>Managing packages with npm</h3>
-<p>You can use the <code>npm</code> program to download and install command line programs by name:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g PACKAGE-NAME</code></pre>
-<p>For example, you can install the <a href="https://github.com/tapio/live-server"><em>live-server</em></a> utility (a simple program that runs a local web server and will automatically “refresh” the browser when your code changes) using:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g live-server</code></pre>
-<ul>
-<li>Once the program is done installing, you can run it from the command line by using the command <code>live-server</code>. This program will serve all of the content from the current directory. See <a href="#web-servers">Chapter 2</a> for details.</li>
-</ul>
-<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line utility like <em>live-server</em> from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
-<p>It is also possible to omit that option and install a package <em>locally</em>. For example:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> lodash</code></pre>
-<p>Will download the <a href="https://lodash.com/"><code>lodash</code></a> code library (a set of useful JavaScript functions). This package will be placed into a new folder <em>in the current project directory</em> called <code>node_modules/</code>, and can be imported and used in the current directory’s code. (It’s called a local install because the package is only available to the “local” project). You will of course need to install local packages once per project.</p>
-<p class="alert alert-warning">
-Because node packages can be very large, and projects can have lots of them, you want to be sure to <strong>not</strong> commit the <code>node_modules/</code> folder to version control. Make sure that the folder is listed in your <code>.gitignore</code> file!
-</p>
-</div>
-<div id="package.json" class="section level3 unnumbered">
-<h3><code>package.json</code></h3>
-<p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <code>npm</code> is able to keep track of these dependencies by recording them in a specialized file called <code>package.json</code> that can be placed inside the project directory. A <code>package.json</code> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
-<pre class="language-json"><code><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"example"</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"A project with an example package.json"</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Joel Ross"</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><span class="token punctuation">,</span>
-  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"lodash"</span><span class="token operator">:</span> <span class="token string">"^4.17.4"</span><span class="token punctuation">,</span>
-    <span class="token property">"moment"</span><span class="token operator">:</span> <span class="token string">"^2.18.1"</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"html-validator"</span><span class="token operator">:</span> <span class="token string">"^2.2.2"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>(You can create one of these files by using the command <code>npm init</code> in the current project directory, and then following the instructions to fill in the fields).</p>
-<p>Notice that there are two packages listed under <code>&quot;dependencies&quot;</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>). You can use <code>npm</code> to automatically install all of the packages listed under <code>&quot;dependencies&quot;</code> (as well as under <code>&quot;devDependencies&quot;</code>) using the command:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span></code></pre>
-<p>Thus using <code>npm install</code> without any arguments means “install all of the requirements that have been listed for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub.</p>
-<p>When installing specific packages, you can have <code>npm</code> automatically add them to the dependencies list by using the <code>--save</code> option:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save lodash</code></pre>
-<p>will install <code>lodash</code> locally, and add it to the <code>package.json</code> file as a dependency.</p>
-<p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
-<p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for the project:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">link</span> lodash</code></pre>
-<p>Be sure to <code>link</code> any global packages <em>before</em> you run <code>npm install</code> so you don’t download any packages from <code>package.json</code> that you already have!</p>
-<p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
-<p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
+<div id="testing" class="section level2">
+<h2><span class="header-section-number">24.1</span> Testing</h2>
+<p>One of the most important goals when developing computer programs is to make sure that the code you write actually <em>works</em>. You can determine if a program works by considering three things:</p>
 <ol style="list-style-type: decimal">
-<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command line programs.</li>
-<li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out.</li>
-<li><code>npm install --save PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
+<li><p>What <strong>input</strong> was given to the program? From a user perspective, this is what <em>actions</em> that user took (e.g., “I pressed a button”). From a code perspective, this is often what value was passed to a method.</p></li>
+<li><p>Running the program with a particular <em>input</em> will lead to a <strong>received result</strong>: something will happen because of the input. From a user perspective, this would be this would be like the changes to a web page caused by the button press. From a code perspective, this could be the value <em>returned</em> by that function (or potentially a new value for a <em>state</em> variable).</p></li>
+<li><p>To know if a program worked though, you need to know the <strong>expected result</strong> of that program: what was <em>supposed</em> to happen because of the input? If you don’t know what the program was supposed to do, then you’ll have no way of knowing if it worked or not!</p></li>
 </ol>
-<p class="alert alert-info">
-While <code>npm</code> is the most popular package manager (and the one utilized in this course), there are others as well. For example, <a href="https://yarnpkg.com/en/"><strong>Yarn</strong></a> is a package manager created by Facebook that is <a href="https://yarnpkg.com/en/docs/migrating-from-npm">compatible</a> with <code>npm</code> and is quickly growing in popularity. Note that you will generally need to use one package manager or other; don’t try to mix them in a single project!
-</p>
+<p>You can test a program by providing the <em>input</em> and then comparing the <em>received result</em>. If the <em>received result</em> matches the <em>expected result</em>, then you know that the program worked! <strong>Testing</strong> is simply the process of providing the inputs and comparing the <em>received</em> and <em>expected</em> results</p>
+<p>Providing the input and then comparing the received and expected results can get tedious, particularly if you have lots of possible inputs or they require multiple steps (like clicking on multiple buttons). For that reason, it’s helpful to use <strong>automation</strong> to let a computer perform the testing for you. You define the expected result of some action, and the computer will check if the received result matches.</p>
+<p>Because automated testing is so useful and comment, there are a wide variety of <strong>testing frameworks</strong>: external scripts that provide the code to let you easily compare received and expected results.</p>
+<p>In JavaScript, the most popular testing frameworks are <a href="https://jasmine.github.io/">Jasmine</a>, <a href="https://mochajs.org/">Mocha</a> (which is just the framework, it uses <a href="http://chaijs.com/">Chai</a> to actually compare received and expected results—hot beverages are a theme), and <a href="https://facebook.github.io/jest/">Jest</a>. The later was developed by Facebook specifically to support testing React applications, and is the framework introduced and used in this course (though its API is almost identical to Jasmine and Mocha/Chai).</p>
 </div>
+<div id="testing-with-jest" class="section level2">
+<h2><span class="header-section-number">24.2</span> Testing with Jest</h2>
+<p>Jest is a command line program so you will need to have it installed on your machine. It can be installed <em>globally</em> through <code>npm</code>:</p>
+<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g jest</code></pre>
+<p>Additionally, you will need to install the dependencies listed in this repository’s <code>package.json</code> file, which will allow tests to use ES6 module syntax to access the functions in a separate file to test (as well as auto-complete definitions for Jest!)</p>
+<pre class="language-bash"><code><span class="token comment"># install all dependencies</span>
+<span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<p>With Jest, you define “tests”, which are just JavaScript code that is used to perform the <em>action</em> and compare the <em>received</em> and <em>expected</em> results. These tests can either be placed in a file whose name ends with <code>.test.js</code> (indicating it is a test script), <code>.spec.js</code> (for “specification”), or a plain <code>.js</code> file inside the <code>__tests__</code> folder in your program. In either case, a test script is <em>just a JavaScript file</em>, so you include any JavaScript code/variables/functions/etc. you want.</p>
 </div>
-<div id="resources" class="section level2 unnumbered">
-<h2>Resources</h2>
-<p>Links to the recommended software are collected here for easy access:</p>
-<div class="list-condensed">
+<div id="writing-a-test" class="section level2">
+<h2><span class="header-section-number">24.3</span> Writing a Test</h2>
+<p>We define a “test” (a check if a particular piece of functionality works) by calling the <a href="https://facebook.github.io/jest/docs/en/api.html#testname-fn"><strong><code>test()</code></strong></a> function—a predefined function provided by the Jest framework. This functions take two arguments: a <em>string</em> describing what the test is checking, and a <em>callback function</em> that will contain the code to run which does the action and compares the results.</p>
+<pre class="language-js"><code><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should do something...'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//regular old Javascript code that will perform the test goes here</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
-<li><a href="https://www.google.com/chrome/browser/desktop/index.html">Chrome</a></li>
-<li><a href="https://git-scm.com/downloads">git (and Git Bash)</a>
-<ul>
-<li><a href="https://github.com/join">GitHub</a> (sign up)</li>
-<li>optional: <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide">Bash on Windows</a></li>
-</ul></li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-<li><a href="https://nodejs.org/">Node.js (and npm)</a>
-<ul>
-<li><a href="https://docs.npmjs.com/getting-started/what-is-npm">npm documentation</a></li>
-</ul></li>
+<li><p>Test descriptions (the string parameter) are written in <em>present tense</em>, and state in plain English what behavior SHOULD happen. Starting the description with the word “should” is a good approach!</p></li>
+<li><p>Jest also provides a function <code>it()</code> that is an alias for <code>test()</code>, and lets the code read like badly punctuated English:</p>
+<pre class="language-js"><code><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should do something'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
-</div>
+<div id="assertions-and-matchers" class="section level3 unnumbered">
+<h3>Assertions and Matchers</h3>
+<p>We check that the program actually does what we’re testing by writing an <strong>assertion</strong>. An assertion is a <em>proposition</em> that some fact is true. In this case, we are going to <em>assert</em> that the expected result and the actual result are the same. If that proposition is shown to be valid (our claim that the results matched is true), then we know that our claim that the program works must hold and thus we “pass” the test!</p>
+<ul>
+<li><p>You can think of an <em>assertion</em> as a bit like doing the work of an if-else statement:</p>
+<pre><code>if(received value == expected value){
+    test passes
+} else {
+    test fails
+}</code></pre></li>
+</ul>
+<p>In Jest, we put forth an assertion by calling the <a href="https://facebook.github.io/jest/docs/en/expect.html#expectvalue"><strong><code>expect()</code></strong></a> function with an appropriate <a href="https://facebook.github.io/jest/docs/en/using-matchers.html"><strong>matcher</strong></a>. The <code>expect()</code> function takes a single parameter, which is the <em>received result</em> (produced by doing the action; e.g., calling the function with a particular input). A matcher is <em>another function</em> that is called directly on the returned value of <code>expect()</code>, and takes as an argument the <em>expected result</em> that we want to compare. The matcher does the work of actually comparing the values, and then reporting the validity of our claim back to Jest:</p>
+<pre class="language-js"><code><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should add numbers correctly'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li><p>In this case, <code>.toEqual()</code> is the “matcher” which compare the <em>received</em> and <em>expected</em> values to see if they are equal.</p></li>
+<li><p>Be careful about your parentheses! The <code>expect()</code> function should take a single expression (even if that expression includes a function call), and the matcher is called <em>after</em> the <code>expect()</code> function. Using local variables can help with readability.</p></li>
+</ul>
+<p>Jest supports a wide variety of matchers. For example:</p>
+<pre class="language-js"><code><span class="token comment">//can do numerical comparison</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>receivedNumber<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeGreaterThan</span><span class="token punctuation">(</span>expectedNumber<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+<span class="token comment">//compare against undefined</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>receivedValue<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeDefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//check if defined!</span>
+
+<span class="token comment">//find receivedValue in an array</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>receivedArray<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toContain</span><span class="token punctuation">(</span>expectedValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//can negate ANY matcher with a .not property</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>receivedValue<span class="token punctuation">)</span><span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span>expectedValue<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li>See <a href="https://facebook.github.io/jest/docs/en/expect.html">the documentation</a> for a complete list.</li>
+</ul>
+<p>Note that a single <code>test()</code> can include multiple assertions!</p>
+</div>
+<div id="organizing-tests" class="section level3 unnumbered">
+<h3>Organizing Tests</h3>
+<p>You can “group” tests together by using the <a href="https://facebook.github.io/jest/docs/en/api.html#describename-fn"><code>describe()</code></a> function. This function takes two parameters: a <em>string</em> that describes what <strong>feature</strong> is being tested, and a <em>callback function</em> that contains the code for the tests:</p>
+<pre class="language-js"><code><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Basic math'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should add numbers correctly'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<ul>
+<li><p>You should name your feature and test features so that they read as:</p>
+<blockquote>
+<p>{Feature name} should {do something specific}</p>
+</blockquote>
+<p>This will allow the test results to be communicated very clearly, even to non-developers (e.g., to your boss or client).</p></li>
+<li><p><code>describe()</code> blocks can contain multiple <code>tests()</code>, and even other <code>describe()</code> blocks if you want to separate subfeatures.</p></li>
+</ul>
+<p>It is also possible to run particular blocks of code <em>before</em> groups of tests are run by using the <code>beforeEach()</code> and <code>beforeAll()</code> functions. See <a href="https://facebook.github.io/jest/docs/en/setup-teardown.html">Setup and Teardown</a> for details.</p>
+</div>
+<div id="running-the-tests" class="section level3 unnumbered">
+<h3>Running the Tests</h3>
+<p>You can <strong>run</strong> the test (have the computer perform the testing work) by using the <code>jest</code> command line program, passing it the name of the text script (without the extension) that you wish to run:</p>
+<pre class="language-bash"><code><span class="token comment"># test the app.spec.js file</span>
+jest app</code></pre>
+<p>The command line will print out the results of this test script:</p>
+<div class="figure">
+<img src="img/pass.png" alt="An example passing script" />
+<p class="caption">An example passing script</p>
+</div>
+<p>This will tell you what tests were run, which “passed” (were green for good to <em>go</em>!) and which “failed” (were red). Failed tests will also report which assertion failed, and what the expected and received values were that didn’t match.</p>
+</div>
+<div id="practice" class="section level3 unnumbered">
+<h3>Practice</h3>
+<p>This repo’s <code>app.js</code> file contains a function <code>invertCase()</code>. In the provides <code>app.spec.js</code> file, implement a <code>describe()</code> block to contains tests for the function, and write unit tests to check it for bugs (by giving it specific inputs and checking the <em>received</em> vs. the <em>expected</em> result). If you find any bugs, fix them and then re-run your tests!</p>
+</div>
+</div>
+<div id="testing-web-apps-with-jest" class="section level2">
+<h2><span class="header-section-number">24.4</span> Testing Web Apps with Jest</h2>
+<p>It is also possible to use Jest to JavaScript code that is used to manipulate the DOM. You can do this because Jest creates a <strong>virtual DOM</strong> that you can interact with. That is, jest provides a global <code>document</code> object that you can access and call methods on (e.g., <code>document.querySelector()</code>). This isn’t a full browser: it won’t load external CSS files or allow you to navigate to pages, but it does provide a tree of HTML elements you can modify and inspect. allowing you to test your DOM manipulation.</p>
+<p>There are a few steps to being able to work effectively with the <code>document</code> provided by Jest:</p>
+<ol style="list-style-type: decimal">
+<li><p>First, you will want to make sure the content of the DOM includes the HTML elements you wish to test with. This is called <strong>mounting</strong> the content. You can mount some HTML content by assigning it to the <code>innerHTML</code> of the DOM’s <em>root element</em>—not the <code>&lt;html&gt;</code> element, but a virtual element that acts as the ultimate parent of the DOM (similar to the root <code>/</code> folder on an operating system). This node can be accessed via the <code>document.documentElement</code> property:</p>
+<pre class="language-js"><code><span class="token comment">//assign a given HTML content (e.g., as string) to the virtual DOM</span>
+document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"&lt;html>&lt;head>&lt;/head>&lt;body>...&lt;/body>&lt;/html>"</span><span class="token punctuation">;</span></code></pre>
+<p>Often, this HTML content is read directly from the file, using Node’s <code>fs</code> (file system) library.</p></li>
+<li><p>Because the <code>document</code> object only represents the DOM tree (the rendered HTML), it won’t apply any embedded <code>&lt;script&gt;</code> tags. So in order to run your script on the DOM and modify it, you will need to <em>manually</em> apply those scripts. But since Jest has already defined you a <code>document</code> object to modify, you can simply tell Jest to load and run your script! Your code will do the exact same thing it does in the browser, just querying and modifying Jest’s virtual DOM (<code>document</code>) rather than the browser’s DOM.</p>
+<p>You load an external script in Jest by using Node’s <code>require()</code> function, passing it the <em>relative path</em> to the script file you wish to load (this script must be saved locally):</p>
+<pre class="language-js"><code><span class="token comment">//load the `index.js` file</span>
+<span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'../js/index.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Note that this path is <em>relative</em> to the location of the test script, not relative to the location of the <code>.html</code> file (since Jest doesn’t use the HTML). If the script file is in the same directory as the spec file, you will need to put a <code>./</code> in front of the filename path to indicate that you’re giving a path rather than naming a module.</p>
+<p>You will need to also explicitly have Jest load any external libraries (such as jQuery) you wish to use. These libraries will need to be loaded from a local file (Jest can’t access a CDN), but they can usually be installed via <code>npm</code>. For example, you would load jQuery with:</p>
+<pre class="language-js"><code>$ <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'jquery'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//load the jQuery module (installed from npm)</span>
+window<span class="token punctuation">.</span>$ <span class="token operator">=</span> $<span class="token punctuation">;</span> <span class="token comment">//assign make the jQuery library into a DOM global</span></code></pre>
+<p><em>Remember to load any external scripts <strong>before</strong> your own!</em></p></li>
+<li><p>Finally, you can use DOM methods (or jQuery helpers!) to trigger <em>events</em> (like button clicks). You can then inspect the DOM with <code>document.querySelector()</code> and run assertions about the state of DOM after that user action.</p>
+<pre class="language-js"><code><span class="token comment">//for example</span>
+<span class="token keyword">let</span> h1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">expert</span><span class="token punctuation">(</span>h1<span class="token punctuation">.</span>textContent<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
+</ol>
+<p>And with that, you can automatically test if your page’s interactivity works as expected without needing to repeatedly click on a button. In particular, these automatic tests can help you make sure that future changes don’t <em>break</em> your code (e.g., don’t cause the tests to fail), performing what is called <a href="https://en.wikipedia.org/wiki/Regression_testing"><strong>regression testing</strong></a>.</p>
+<ul>
+<li>You should still test your page inside the browser, just to catch any platform differences between Jest’s virtual DOM and actual web browsers.</li>
+</ul>
+<div id="practice-1" class="section level3 unnumbered">
+<h3>Practice</h3>
+<p>Write a test in the provided <code>index.spec.js</code> file to confirm that when the “Panic” button is pressed, the HTML’s <code>.alert</code> element is displayed.</p>
+<!-- ## Testing React with Enzyme
+
+React Jest
+- enzyme mounting
+- inspecting content
+- assert .text(), .length, etc
+- automating interaction (simulate)
+- test specific props/state (can adjust them as well!)
+- bonus: function mock/spy -->
+
+</div>
 </div>
 </div>
             </section>
@@ -588,8 +547,8 @@ While <code>npm</code> is the most popular package manager (and the one utilized
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="client-side-development.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="react-native.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -618,7 +577,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info343/book/edit/master/setup.Rmd",
+"link": "https://github.com/info343/book/edit/master/jest.Rmd",
 "text": "Edit"
 },
 "download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
