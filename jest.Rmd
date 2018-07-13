@@ -135,7 +135,7 @@ jest app
 
 The command line will print out the results of this test script:
 
-![An example passing script](img/pass.png)
+![An example passing script](img/jest/pass.png)
 
 This will tell you what tests were run, which "passed" (were green for good to _go_!) and which "failed" (were red). Failed tests will also report which assertion failed, and what the expected and received values were that didn't match.
 
