@@ -113,4 +113,12 @@ small { /* css fix */
     display:none;
   }
 
-/* Overwriting highlight colors */
+/* For deprecation alerts */
+.deprecate-msg {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1000;
+    text-align: center;
+}
