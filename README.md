@@ -1,6 +1,6 @@
-# INFO 343: Client-Side Web Development
+# INFO 340: Client-Side Web Development
 
-This repository contains the source code for the **INFO 343: Client-Side Web Development** course book. The published book can be viewed at **https://info343.github.io/**.
+This repository contains the source code for the **INFO 340: Client-Side Web Development** course book. The published book can be viewed at **https://info340.github.io/**.
 
 Note that **all** edited source files (including images and other assets) should be edited within the **root** folder; files in the `build` directory may be overwritten.
 
@@ -35,4 +35,4 @@ You can use the included [`Makefile`](https://en.wikipedia.org/wiki/Makefile) to
 
 - **`make serve`** to serve a local copy of the book for development (with auto-refreshing browser).
 
-- **`make deploy`** to publish the built book to `https://info343.github.io`.
+- **`make deploy`** to publish the built book to `https://info340.github.io`.

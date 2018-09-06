@@ -3,9 +3,9 @@ lang: en
 title: 'Client-Side Web Development'
 author: "[Joel Ross](http://faculty.washington.edu/joelross/) and [Mike Freeman](http://mfviz.com/#/)"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
-description: 'The course reader for INFO 343: Client-Side Web Development.'
-github-repo: info343/book
-url: 'https\://info343.github.io/'
+description: 'The course reader for INFO 340: Client-Side Web Development.'
+github-repo: info340/book
+url: 'https\://info340.github.io/'
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 monofont: "Source Code Pro"
@@ -24,7 +24,7 @@ favicon: img/busy-spider-icon.png
 
 
 <h3>About the Book</h3>
-This book covers the the skills and techniques necessary for creating sophisticated and accessible interactive web applications. It focuses on the client-side languages, tools, and libraries that professionals use to build the web sites you use every day. It assumes a basic background in computer programming (e.g., one [course](https://www.cs.washington.edu/142/) in Java, and some concepts from the [technical foundations of informatics](https://info201.github.io)). These materials were developed for the **INFO 343: Client-Side Web Development** course taught at the [University of Washington Information School](https://ischool.uw.edu/); however they have been structured to be an online resource for anyone who wishes to learn modern web programming techniques.
+This book covers the the skills and techniques necessary for creating sophisticated and accessible interactive web applications. It focuses on the client-side languages, tools, and libraries that professionals use to build the web sites you use every day. It assumes a basic background in computer programming (e.g., one [course](https://www.cs.washington.edu/142/) in Java, and some concepts from the [technical foundations of informatics](https://info201.github.io)). These materials were developed for the **INFO 340: Client-Side Web Development** course taught at the [University of Washington Information School](https://ischool.uw.edu/); however they have been structured to be an online resource for anyone who wishes to learn modern web programming techniques.
 
 <!-- TODO: Include previous course offerings? -->
 

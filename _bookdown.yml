@@ -3,7 +3,7 @@ output_dir: build
 language:
   ui:
     chapter_name: ["Chapter "]
-edit: https://github.com/info343/book/edit/master/%s
+edit: https://github.com/info340/book/edit/master/%s
 rmd_files:
   - index.Rmd
 
