@@ -1,4 +1,4 @@
-# Special Topics: React Native {#react-native}
+# React Native {#react-native}
 
 As a special topic, this chapter provides a brief introduction to [**React Native**](https://facebook.github.io/react-native/), a framework for using React to build mobile applications (e.g., apps for Android or iOS). The React Native framework provides a set of build tools that allow you to _compile_ React code (written in JavaScript) into _native_ mobile code (Java for Android; Objective-C for iOS). This allows you to utilize your existing knowledge of client-side web development to also create mobile apps as if you had written them in their normal development language! Moreover, the same React code can be converted into apps for both iOS and Android (as well as for the web), with you only needing to adjust any platform-specific features. Three platforms for the price of one!
 
