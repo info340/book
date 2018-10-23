@@ -280,7 +280,7 @@ function onClickCallback() {
 }
 
 //get a reference to the element we want to "listen" to
-let button = document.querySelect.select('button');
+let button = document.querySelector('button');
 
 //register a listener for 'click' events
 button.addEventListener('click', onClickCallback);

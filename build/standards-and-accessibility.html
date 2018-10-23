@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -432,9 +432,7 @@ When introducing new or experimental CSS properties, browsers historically utili
 <h2><span class="header-section-number">4.2</span> Why Accessibility</h2>
 <p>Consider the following hypothetical webpage user:</p>
 <blockquote>
-<p>Tracy is a 19-year-old college student and was born blind. Through high school she did well as she could relying on audio tapes and books and the support of tutors, so she never bothered to really learn Braille. She is interested in English literature and is very fond of short stories; her dream is to become an audiobook author.
-Tracy uses the Internet to share her writing and to connect with other writers through social networks. She owns a laptops and uses a screen reader called <a href="http://www.freedomscientific.com/Products/Blindness/JAWS">JAWS</a>: a computer program which reads her screen out loud to her in an artificial voice.
-<cite><small>(Adapted from <a href="http://scidok.sulb.uni-saarland.de/volltexte/2007/1098/pdf/personas_access.pdf">here</a>)</small></i></p>
+<p>Tracy is a 19-year-old college student and was born blind. Through high school she did well as she could relying on audio tapes and books and the support of tutors, so she never bothered to really learn Braille. She is interested in English literature and is very fond of short stories; her dream is to become an audiobook author. Tracy uses the Internet to share her writing and to connect with other writers through social networks. She owns a laptops and uses a screen reader called <a href="http://www.freedomscientific.com/Products/Blindness/JAWS">JAWS</a>: a computer program which reads her screen out loud to her in an artificial voice. <cite><small>(Adapted from <a href="http://scidok.sulb.uni-saarland.de/volltexte/2007/1098/pdf/personas_access.pdf">here</a>)</small></i></p>
 </blockquote>
 <p>One of the most commonly overlooked limitations on a website’s usability is whether or not it can be used by people with some form of disability. There are many different forms of disabilities or impairments that may affect whether or not a person can access a web page, including:</p>
 <ul>
@@ -506,17 +504,7 @@ You should try out this software! Follow the above links to learn how to turn on
 HTML is just for semantics. CSS is for appearance.
 </p>
 <p>This is the same reason that you should never use the <code>&lt;i&gt;</code> tag to make elements <em>italic</em>. The <code>&lt;i&gt;</code> tag has no valuable semantic meaning (it just means “italic”, or “different”); instead you want to use a more meaningful semantic tag. Usually this means <code>&lt;em&gt;</code>, since italic text is usually being <em>emphasized</em>.</p>
-<p>In fact, HTML 5 includes a large number of <a href="https://www.w3schools.com/tags/ref_byfunc.asp">semantic elements</a> that can be used to indicate “formatted” text that has a particular meaning, including ones such as:
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr"><code>&lt;abbr&gt;</code></a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address"><code>&lt;address&gt;</code></a>,
-<!-- [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code), -->
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite"><code>&lt;cite&gt;</code></a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del"><code>&lt;del&gt;</code></a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn"><code>&lt;dfn&gt;</code></a>,
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark"><code>&lt;mark&gt;</code></a>,
-and
-<a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time"><code>&lt;time&gt;</code></a>.
-Be sure and check the documentation for each of these elements to determine when they are supposed to be used (as well as what additional attributes they may support).</p>
+<p>In fact, HTML 5 includes a large number of <a href="https://www.w3schools.com/tags/ref_byfunc.asp">semantic elements</a> that can be used to indicate “formatted” text that has a particular meaning, including ones such as: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr"><code>&lt;abbr&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address"><code>&lt;address&gt;</code></a>, <!-- [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/code), --> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/cite"><code>&lt;cite&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/del"><code>&lt;del&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn"><code>&lt;dfn&gt;</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark"><code>&lt;mark&gt;</code></a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time"><code>&lt;time&gt;</code></a>. Be sure and check the documentation for each of these elements to determine when they are supposed to be used (as well as what additional attributes they may support).</p>
 <p class="alert alert-warning">
 Never use the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a> tag to structure documents and position content. The <code>&lt;table&gt;</code> tag should <strong>only</strong> be used for content that is semantically a table (e.g., a data table). If you want to lay out content in a grid, use a CSS system such as Flexbox (see <a href="css-layouts.html#flexbox">Chapter 7</a>).
 </p>
@@ -665,7 +653,6 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -694,11 +681,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
 
   <meta property="og:title" content="Client-Side Web Development" />
   <meta property="og:type" content="book" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -421,8 +421,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ul>
 <li>JavaScript even uses the <code>this</code> keyword to refer to <em>which</em> object that function being called on, just like Java! See <a href="es6.html#working-with-this">below</a> for more on the <code>this</code> keyword and its quirks.</li>
 </ul>
-<p>A <strong>Class</strong> (<em>class</em>ification) acts as
-<em>template/recipe/blueprint</em> for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an “instance of” (example of) a class: we <strong>instantiate</strong> an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a> provide a syntax by which these “templates” can be defined.</p>
+<p>A <strong>Class</strong> (<em>class</em>ification) acts as <em>template/recipe/blueprint</em> for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an “instance of” (example of) a class: we <strong>instantiate</strong> an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a> provide a syntax by which these “templates” can be defined.</p>
 </div>
 <div id="review-classes-in-java" class="section level3 unnumbered">
 <h3>Review: Classes in Java</h3>
@@ -684,8 +683,7 @@ array<span class="token punctuation">.</span><span class="token function">map</s
 <span class="token comment">//concise body</span>
 array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>num <span class="token operator">=></span> num<span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p class="alert alert-info">
-Arrow functions are great and you should always use them for anonymous callback functions (if your target platform suppo
-them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
+Arrow functions are great and you should always use them for anonymous callback functions (if your target platform suppo them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.
 </p>
 <div id="working-with-this" class="section level3 unnumbered">
 <h3>Working with <code>this</code></h3>
@@ -830,23 +828,23 @@ theModule<span class="token punctuation">.</span><span class="token function">ba
 <li><p>You can use the <strong><code>as</code></strong> keyword to “alias” a variable either when it is exported (so it is shared with a different name) or when it is imported (so it is loaded and assigned a different name). This is particularly useful when trying to produce a clean API for a module (so you <code>export</code> values with consistent names, even if you don’t use those internally), or when you want to <code>import</code> a variable with a very long name.</p></li>
 <li><p>It is possible to just <code>import</code> <em>everything</em> that was exported by a module using the <strong><code>import * as</code></strong> syntax. You specify an object name that will represent the values exported module (e.g., <code>theModule</code> in the example), and each exported variable will be a <em>property</em> of that object. This is particularly useful when you may be adding extra <code>exports</code> to a module during development, but don’t want to keep adjusting the <code>import</code> statement.</p></li>
 <li><p>Note also that <em>only</em> the variables you <code>export</code> are made available to other modules! This allows you to make variables and functions that are “private” to a module!</p>
-<p><!-- ```js
-  /*** my-module.js ***/
-  let secretPassword = 12345;
+<!-- ```js
+/*** my-module.js ***/
+let secretPassword = 12345;
 
-  export function checkPassword(password) {
-      return password == secretPassword; //check if they are the same
-  }
-  ```
+export function checkPassword(password) {
+    return password == secretPassword; //check if they are the same
+}
+```
 
-  ```js
-  /*** index.js ***/
-  import * as module from './my-module';
+```js
+/*** index.js ***/
+import * as module from './my-module';
 
-  console.log(module.secretPassword); //undefined, variable was not exported
+console.log(module.secretPassword); //undefined, variable was not exported
 
-  module.checkPassword('password'); //false, passwords don't match
-  ``` --></p></li>
+module.checkPassword('password'); //false, passwords don't match
+``` --></li>
 </ul>
 <p>Finally, each module can also <code>export</code> a <em>single</em> (just one!) <strong>default</strong> variable, which provides a slight shortcut when importing the variable from that module. You specify the <em>default export</em> by including the <strong><code>default</code></strong> keyword immediately after <code>export</code>:</p>
 <pre class="language-js"><code><span class="token comment">/*** my-module.js ***/</span>
@@ -997,7 +995,6 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
-"linkedin": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
@@ -1026,11 +1023,9 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
-    script.src = src;
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
