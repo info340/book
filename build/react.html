@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -449,9 +449,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Bio</span><span class="token punctuation">></span></span><span class="token punctuation">,</span>
   document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>A few things to note:
-- Our class (<code>Bio</code>) must begin with a <strong>capital letter</strong>
-- Our <code>render</code> statement can only return <strong>one HTML element</strong> (though it can <em>contain</em> as many HTML elements as you want)</p>
+<p>A few things to note: - Our class (<code>Bio</code>) must begin with a <strong>capital letter</strong> - Our <code>render</code> statement can only return <strong>one HTML element</strong> (though it can <em>contain</em> as many HTML elements as you want)</p>
 <p>These Components are powerful because you can pass <em>properties</em> to them (just as you would set the <em>attributes</em> to HTML elements).</p>
 </div>
 <div id="properties" class="section level2">
@@ -588,7 +586,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

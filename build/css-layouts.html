@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -389,10 +389,7 @@
             <section class="normal" id="section-">
 <div id="css-layouts" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> CSS Layouts</h1>
-<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts:
-- <strong>Display</strong>: determines how elements share horizontal space
-- <strong>Position</strong>: allows you to adjust the location of the natural flow of elements
-- <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
+<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts: - <strong>Display</strong>: determines how elements share horizontal space - <strong>Position</strong>: allows you to adjust the location of the natural flow of elements - <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
 <div id="display" class="section level2">
 <h2><span class="header-section-number">7.1</span> Display</h2>
 <p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
@@ -596,7 +593,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <p>In practice, using percentages for the <code>flex-basis</code> will let you easily size the columns of your layout.</p></li>
 </ul>
 <div class="figure">
-<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra “space” each item has after the text content." />
+<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra space each item has after the text content." />
 <p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
 </div>
 <p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified, the <code>flex-basis</code> property will be set to <code>0</code>, rather than the <code>auto</code> value it has if unspecified.</p>
@@ -674,7 +671,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

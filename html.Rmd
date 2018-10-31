@@ -167,7 +167,7 @@ In an HTML document, the "root" element of the tree is always an **`<html>`** el
   <body>
     <h1>Hello world!</h1>
     <p>This is <em>conteeeeent</em>!</p>
-  <body>
+  </body>
 </html>
 ```
 

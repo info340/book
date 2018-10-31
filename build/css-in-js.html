@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -389,8 +389,7 @@
             <section class="normal" id="section-">
 <div id="css-in-js" class="section level1">
 <h1><span class="header-section-number">A</span> CSS in JS</h1>
-<p>This chapter discusses writing <strong>CSS in JS</strong>, a technique by which CSS styles and classes are defined in <em>JavaScript</em> rather than in separate CSS files. This technique is particularly common and useful in React, and solves a number of problems found in managing the styling of large web projects.
-<!-- CSS in JS is supported [directly by React](https://reactjs.org/docs/dom-elements.html#style) or through  [one of _many_](https://github.com/MicheleBertoli/css-in-js) external libraries; representative examples are presented below. --></p>
+<p>This chapter discusses writing <strong>CSS in JS</strong>, a technique by which CSS styles and classes are defined in <em>JavaScript</em> rather than in separate CSS files. This technique is particularly common and useful in React, and solves a number of problems found in managing the styling of large web projects. <!-- CSS in JS is supported [directly by React](https://reactjs.org/docs/dom-elements.html#style) or through  [one of _many_](https://github.com/MicheleBertoli/css-in-js) external libraries; representative examples are presented below. --></p>
 <div id="why-css-in-js" class="section level2">
 <h2><span class="header-section-number">A.1</span> Why CSS in JS?</h2>
 <p>In November 2014, Facebook’s Christopher Chedeau gave a <a href="https://speakerdeck.com/vjeux/react-css-in-js"><strong>talk</strong></a> outlining many of the issues that occur when trying to develop CSS for a large application:</p>
@@ -724,7 +723,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

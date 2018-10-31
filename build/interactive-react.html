@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -394,8 +394,7 @@
 <h2><span class="header-section-number">18.1</span> State</h2>
 <p>So far, we’ve been discussing how components can receive <em>properties</em> to determine their visual rendering. It’s put nicely in <a href="https://github.com/uberVU/react-guide/blob/master/props-vs-state.md">this write-up</a>:</p>
 <blockquote>
-<p><em>props</em> (short for properties) are a Component’s configuration, its options if you may. They are received from above and immutable as far as the Component receiving them is concerned.
-A Component <strong>cannot change its props</strong>, but it is responsible for putting together the props of its child Components.</p>
+<p><em>props</em> (short for properties) are a Component’s configuration, its options if you may. They are received from above and immutable as far as the Component receiving them is concerned. A Component <strong>cannot change its props</strong>, but it is responsible for putting together the props of its child Components.</p>
 </blockquote>
 <p>So, we use <strong>props</strong> to pass data into components which render that data. However, if we want to begin building dynamic applications, we’ll need to use <strong>component state</strong> to track change in the <em>state</em> of the application (usually driven by a user).</p>
 <p>A really nice overview of the difference between props and state is in <a href="https://facebook.github.io/react/docs/thinking-in-react.html">this article</a>, which points out a few key ideas:</p>
@@ -617,7 +616,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

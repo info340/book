@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -450,14 +450,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-js"><code><span class="token comment">//these produce the same function</span>
 <span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token keyword">let</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
-<p>The only difference between these two constructions is one of <em>ordering</em>. When the JavaScript interpreter is initially reading and parsing the script file, it will put variable and function declarations into memory before it executes any of the file. In effect, JavaScript will seem to “move” variable and function declarations to the top of the file! This process is called <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"><strong>hoisting</strong></a> (declarations are “hoisted” to the top of the script).
-<!-- ```js
+<p>The only difference between these two constructions is one of <em>ordering</em>. When the JavaScript interpreter is initially reading and parsing the script file, it will put variable and function declarations into memory before it executes any of the file. In effect, JavaScript will seem to “move” variable and function declarations to the top of the file! This process is called <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"><strong>hoisting</strong></a> (declarations are “hoisted” to the top of the script). <!-- ```js
 //this will work even though the function is declared after it is called!
 sayHello("world");
 
 function sayHello(name) { console.log("Hello, "+name); }
-``` -->
-Hoisting <em>only</em> works for named function declarations: assigning an anonymous function to a variable will not hoist that function’s definition:</p>
+``` --> Hoisting <em>only</em> works for named function declarations: assigning an anonymous function to a variable will not hoist that function’s definition:</p>
 <!-- ```js
 sayHello("world"); //ReferenceError: sayHello is not defined
 
@@ -891,7 +889,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');

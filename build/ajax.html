@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-09-13">
+<meta name="date" content="2018-10-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -255,7 +255,7 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
@@ -394,7 +394,7 @@
 <p class="alert alert-info">
 Note that this lecture assumes that you have a basic familiarity with RESTful Web APIS, including how to read and access their endpoints. For a review of some of the terminology used in APIS and RESTful requests, see the <a href="https://info201.github.io/apis.html#restful-requests">INFO 201 course reader</a>.
 </p>
-<div id="ajax-1" class="section level2">
+<div id="ajax" class="section level2">
 <h2><span class="header-section-number">14.1</span> AJAX</h2>
 <p>As discussed in <a href="client-side-development.html#http-requests-and-servers">Chapter 2</a>, you download data from the Internet by sending an <strong>HTTP Request</strong> and then processing the <strong>response</strong>. In everyday usage, HTTP Requests are normally sent by the <em>browser</em> when the user enters a URL or clicks on a link. By default, if you wanted to download new data, you’d need to have the browser send a new request, loading a new page (or reloading the current page) in order to show that result.</p>
 <p>To make modern dynamic web pages that display new data without needing to refresh the browser, we use a technique to send HTTP Requests <em>from JavaScript code</em> rather than from the browser. This allows us to “by-pass” the browser and get new data (and change the webpage) without reloading it! This technique is referred to as <strong>AJAX</strong> (<strong>A</strong>synchronous <strong>J</strong>avaScript <strong>A</strong>nd <strong>X</strong>ML)—we write code that sends an “request with AJAX” or an “AJAX request”.</p>
@@ -460,8 +460,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div id="fetching-data" class="section level2">
 <h2><span class="header-section-number">14.2</span> Fetching Data</h2>
 <p>AJAX support is built into browsers through the included <code>XMLHttpRequest</code> global variable (the “xml http thing”). This object provides functions that allow you to send an HTTP request to the server, but the object’s API is <strong>really complex to use</strong>:</p>
-<details>
-<p><summary>An example <code>XMLHTTPRequest</code></summary></p>
+<p><details> <summary>An example <code>XMLHTTPRequest</code></summary></p>
 <pre class="language-js"><code><span class="token comment">//create a new XMLHttpRequest object</span>
 <span class="token keyword">let</span> request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XMLHttpRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -483,7 +482,7 @@ request<span class="token punctuation">.</span><span class="token function">addE
 
 <span class="token comment">//finally, send the request to the server!</span>
 request<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</details>
+<p></details></p>
 <p>Instead of needing to understand all that code, developers tended to use functions from external libraries such as jQuery’s <a href="http://api.jquery.com/jQuery.getJSON/"><code>$.getJSON()</code></a> or <a href="http://api.jquery.com/jQuery.ajax/"><code>$.ajax()</code></a>:</p>
 <pre class="language-js"><code>$<span class="token punctuation">.</span><span class="token function">getJSON</span><span class="token punctuation">(</span><span class="token string">'https://domain.com/data'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">//`data` is the already-parsed JSON data</span>
@@ -707,7 +706,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    var src = "true";
+    var src = "";
     if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(src))
       src = src.replace(/^https?:/, '');
