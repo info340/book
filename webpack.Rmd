@@ -1,4 +1,4 @@
-# Webpack
+# Lab: Webpack {#webpack}
 
 This lab is intended to walk you through the basics of the [**Webpack**](https://webpack.js.org/concepts/) module bundling system. Webpack is the tool most commonly used in the React & Javascript community to _transpile_ and _bundle_ components, and is what is used under the hood by [create-react-app](https://github.com/facebookincubator/create-react-app) (we'll be using this next week!). While that scaffolding tool means you don't need to know how to set up Webpack, it is good to be at least somewhat familiar with the concept (and this exercise will give you further practice working with `npm` modules).
 
@@ -90,7 +90,8 @@ The `output` property is itself an object with more details about the output (ra
 Since we don't have webpack installed globally (which you're welcome to do if you wish `npm install -g webpack`), we'll need to add to our `package.json` file, to tell `npm` what to do with our local files!
 
 Adding to your `package.json` file, we'll need to update the `scripts` key:
-```
+
+```json
 ...
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
@@ -104,7 +105,7 @@ Now, if you run `npm run build`, the project will build! Similar to `npm install
 Here is roughly the output you should see:
 
 ```
-> webpack-demo@1.0.0 build /Users/evanfrawley/Github/webpack-demo
+> webpack-demo@1.0.0 build /Users/joelross/Desktop/webpack-demo
 > webpack
 
 Hash: fc5c075a9cfa7ee938c0

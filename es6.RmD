@@ -5,7 +5,7 @@ This chapter introduces some of the most notable and useful features introduced 
 
 <p class="alert alert-warning">ES6 is [mostly supported by modern browsers](http://kangax.github.io/compat-table/es6/), with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won't be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the [Babel](https://babeljs.io/) compiler, which will "_transpile_" JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it's automatically performed by provided build tools), but it is also possible to [install](https://babeljs.io/docs/setup/#installation) and utilize the Babel compiler yourself.</p>
 
-## Classes
+## Classes {#es6-classes}
 While JavaScript is primarily a _scripting_ and functional language, it does support a form of **Object Oriented Programming** like that used in the Java language. That is, we are able to define **classes** of data and methods that act on that data, and then **instantiate** those classes into **objects** that can be manipulated. ES6 introduces a new `class` syntax so that creating classes in JavaScript even _looks_ like how you make classes in Java!
 
 ### Why Classes? {-}
@@ -13,7 +13,7 @@ The whole point of using classes in programming&mdash;whether Java or JavaScript
 
 In particular, classes _encapsulate_ two things:
 
-1. The **data** (variables) that describe the thing. These are known as _attributes_, _fields_ or _instance variables_ (variables that below to a particular _instance_, or example, of the class). For example, we might talk about a `Person` object's `name` (a String), `age` (a Number), and Halloween haul (an array of candy).
+1. The **data** (variables) that describe the thing. These are known as _attributes_, _fields_ or _instance variables_ (variables that belong to a particular _instance_, or example, of the class). For example, we might talk about a `Person` object's `name` (a String), `age` (a Number), and Halloween haul (an array of candy).
 
 2. The **behaviors** (functions) that operate on, utilize, or change that data. These are known as _methods_ (technically _instance methods_, since they operate on a particular instance of the class). For example, a `Person` may be able to `sayHello()`, `trickOrTreat()`, or `eatCandy()`.
 

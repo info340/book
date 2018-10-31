@@ -24,7 +24,7 @@ rmd_files:
   - javascript.Rmd
   - functional-programming.Rmd
   - dom.Rmd
-  - libraries.RmD # inc jQuery
+  - libraries.Rmd # inc jQuery
   - ajax.Rmd
   - es6.Rmd
 
@@ -37,8 +37,8 @@ rmd_files:
 
   ## Special Topics
   - appendix.Rmd
-  - css-in-js.Rmd
   - jest.Rmd
+  - webpack.Rmd
+  - css-in-js.Rmd
   - redux.Rmd
   - react-native.Rmd
-
