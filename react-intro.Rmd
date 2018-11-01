@@ -7,7 +7,7 @@ React is currently the most popular "framework" for building large-scale web app
 <p class="alert alert-warning">React has gone through a couple of different major versions in its short life. Moreover, the "style" in which React is written has also evolved over time as new features are added to both the React library and the JavaScript language. This book introduces and emphasizes an approach that prioritizes clarity of concepts and readability of code, rather than conciseness of syntax or use of advanced options.</p>
 
 
-## Getting Set Up: Create React App {-}
+## Getting Set Up: Create React App
 React is a JavaScript library similar to those discussed in previous chapters&mdash;you load the library and then can call upon its methods. However, React makes use of a significant amount of advanced and custom JavaScript syntax (described below), including extensive use of [ES6 Modules](#modules). Thus in practice, using developing React apps requires using a large number of different development tools&mdash;just getting setup and started is one of major hurdles in learning React!
 
 Luckily, Facebook does provide an amazing application which combines many of these these different development tools together. [**Create React App (CRA)**](https://github.com/facebook/create-react-app) is a _command line_ application that generates scaffolding ("starter code") for a React application, as well as provides built-in scripts to run, test, and deploy your code.
@@ -251,7 +251,7 @@ The above sample would produce the HTML (formatted for readability):
 </ul>
 ```
 
-This is particularly useful when using a variable number of elements, or generating elements directly from data (see the [_Props_](#props) section below).
+This is particularly useful when using a variable number of elements, or generating elements directly from data (see the [_Props and Composition_](#props-and-composition) section below).
 
 As a final note: you _cannot_ include HTML comments (`<!-- -->`) inside of JSX, as this isn't actually an element type. You also can't use inline JavaScript comments (`//`), because even multi-line JSX is still a single expression (that's why the `<header>` example above is written in parentheses). Thus in order to include a comment in JSX, you can use a _JavaScript block comment_ (`/* */`) inside of an inline expression:
 
@@ -474,7 +474,7 @@ Note that a module such as `Alerts.js` might define a number of different "Alert
 Note that it is not necessary to put each different component in a separate module; think about what kind of file organize will make it easy to find your code and help others to understand how your code is structured!
 
 
-## Props
+## Properties (`Props`) {#props}
 One of the main goals of using a library such as React is to support _data-driven views_&mdash;that is, the content that is rendered on the page can be based on some underlying data, providing a visual representation of that data. And if that underlying data changes, React can automatically and efficiently "re-render" the view, making the page dynamic.
 
 We can specify the underlying data that a React component will be representing by specifying [**properties**](https://reactjs.org/docs/components-and-props.html#function-and-class-components) (usually just called **props**) for that component. Props are the "input parameters" to a component&mdash;they are the details you _pass_ to it so that it knows what and how to render its content.
@@ -483,115 +483,216 @@ You pass a prop to a component when you instantiate it by specifying them as XML
 
 ```jsx
 //TODO: EDIT THIS!!
-//Include a prop called `message` with value "Hello property"
+//Passing a prop called `message` with value "Hello property"
 let messageA = <MessageItem message="Hello property!" />;
 
-//Specify property using an inline expression
+//Passing a prop using an inline expression
 let secret = "Shave and a haircut";
 let messageB = <MessageItem message={secret} />;
+
+//A component can accept multiple props
+//This component takes in a `userName` property as well as a `descriptor` property
+let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
 ```
 
+- Prop names must be valid JavaScript identifiers, and so should be written in camelCase (like variable names).
+
+<p class="alert alert-info">Components are usually defined so that they expect a certain set of props&mdash;similar to how a function is defined to expect a certain set of arguments. It is possible to pass "extra" props to the Component (by specifying additional XML attributes), but if the component doesn't expect those props it won't do anything with them. Similarly, failing to pass an expected prop will likely result in errors&mdash;just like if you didn't pass a function an expected argument!</p>  
 
 
-<!-- 
-When you create a React component, you can **pass it properties** in the same way that you would specify HTML attributes. _Properties_ (or _props_) are pieces of data that your component can use to display data that it is passed, making it a flexible templating system. The values passed to a component are accessible within the component as `this.props`. This will allow us to dynamically show information that is passed to the component:
-
-
-
-
-
-
-
-
-
-
-
-## Properties
-When you create a React component, you can **pass it properties** in the same way that you would specify HTML attributes. _Properties_ (or _props_) are pieces of data that your component can use to display data that it is passed, making it a flexible templating system. The values passed to a component are accessible within the component as `this.props`. This will allow us to dynamically show information that is passed to the component:
+Inside of a Component class definition, all of the passed in props are automatically assigned to the `props` instance variable, accessible as **`this.props`**. The `this.props` variable contains an regular JavaScript _object_ whose keys are the props' "names":
 
 ```jsx
-// Define the class Bio to take in `name` and `description` properties
-class Bio extends React.Component {
+//Define a component representing information about a user
+class UserInfo extends Component {
     render() {
-        return(
+        //access the individual props from inside the `this.props` object
+        let userName = this.props.userName;
+        let descriptor = this.props.descriptor;
+
+        //can use props or logic or processing
+        let userNameUpper = this.props.userName.toUpperCase();
+
+        return (
             <div>
-                <h1>{this.props.name}</h1>
-                <p>{this.props.description}</p>
+                <h1>{userNameUpper}</h1>
+                <p>Hello, my name is {name} and I am a {descriptor}</p>
             </div>
-        )
+        )        
     }
 }
 
-// Render our new Bio component:
-ReactDOM.render(
-  <Bio name="Arthur" description="Hello, my name is Arthur and I am an Aardvark">,
-  document.getElementById('root')
-);
+let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
 ```
-We are now able to pass in our data of interest as properties. The components that you create have **lifecycle** methods that help keep the DOM up to date as your data changes. For an overview of these methods, you can see the [documentation](https://facebook.github.io/react/docs/react-component.html). For now, it's important to note that a number of functions are invoked **by default** when you change your `props` or your `state` (more on this below). **When your `props` change, your `render` method will be called** (as will a number of other functions to allow you to control the flow of information).
 
-## Nesting Components
-Once we've created components, we can render them inside of other components, just like regular HTML elements! This is a core idea to React, as it uses a **one-directional data flow** where _parent_ components pass data to child components.
+Again, _all_ props are stored in the `this.props` object&mdash;you have to access them through that instance variable.
 
-Let's imagine that we want to create a list (pretty simple, right?). For each list item (`<li>`) that we want to create, we could render a React component (`ListItem`).
+Note that the `this.props` object is **read only**&mdash;meaning that you cannot assign new values to it, nor modify its props directly:
 
-Let's start by creating a ListItem component:
-```javascript
-// Simple ListItem component for showing an <li>
-class ListItem exteds React.Component{
+```jsx
+//Defines a component representing a message. Contains an error!
+class Message extends Component {
     render() {
-        return(<li className={this.props.status}>{this.props.text}</li>)
+        this.props.message = "I've changed your message!"; //TypeError!
+        return <p>{this.props.message}</p>
     }
-});
+}
 ```
-The above section is written to accept two properties: `status` and `text`. Note, we again **have to use `className`** to assign a class.
 
-Now we can create a `List` component to render all of our `ListItem` components.
+You should just think of props as immutable data that is coming in from outside of the component (again, similar to function arguments). A component doesn't create or change is own props, it just uses those to determine how to render its content.
 
-```javascript
-// Data to pass to our List element
-let items = [
-    {text:"Go to the store", status:"complete"},
-    {text:"Go to class", status:'incomplete'}
+Importantly, props can be **any** kind of value! This includes basic types such as Numbers or Strings, data structures such as Arrays or Objects, or even functions or other Components!
+
+```jsx
+//Props can be of any data type!
+
+//Pass an array as a prop!
+let array = [1,2,3,4,5];
+let suitcase = <Suitcase luggageCombo={array} />;
+
+//Pass a function as a prop (like a callback)!
+function sayHello() { 
+  console.log('Hello world!');
+}
+let greeting = <Greeting callback={sayHello} />;
+
+//Pass another Component as a prop (not common)!
+let card = <HolidayCard message="Greetings world!" />
+let gift = <Gift toMsg="Ethel", fromMsg={card} />
+```
+
+Indeed, passing _callback functions_ as props to other components is a major step in designing interactive React applications. See the next chapter for more details and examples.
+
+
+### Props and Composition
+
+<!-- > "props are a Component's configuration, its options if you may. They are received from above and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components." - [props vs. state](https://github.com/uberVU/react-guide/blob/master/props-vs-state.md) -->
+
+Recall that React components are usually _composed_, with one Component's `render()` function instantiating other components (as in the `MessageList` example above). Since props are specified when a Component is instantiated, this means that a "parent" component will need to specify the props for its children ("passing the props"). Commonly, the props for the child components will be derived from the props of the parent component:
+
+```jsx
+//Defines a component representing a message in a list
+class MessageItem extends Component {
+  render() {
+    return <li>{this.props.message}</li>
+  }
+}
+
+//A component that renders a trio of messages
+class MessageListTrio extends Component {
+  render() {
+     return (
+       <div>
+         <h1>Messages for you</h1>
+         <ul>
+            {/* instantiate child components, passing data from own props */}
+            <MessageItem message={messages[0]} /> 
+            <MessageItem message={messages[1]} />
+            <MessageItem message={messages[2]} />
+         </ul>
+       </div>
+     );
+  }
+}
+
+//Define and pass a prop to the parent comment when rendering it
+let messagesArray = ["Hello world", "No borders", "Go huskies!"];
+ReactDOM.render(<MessageListTrio messages={messagesArray} />, 
+                document.getElementById('root'));
+```
+
+This creates a _one-directional data flow_&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa). 
+
+The Component organization in the previous example is [particularly common](https://reactjs.org/docs/lists-and-keys.html) in React. In order to effectively render a list (array) of data, you should define a Component that declares how to render a _single_ element of that list (e.g., `MessageItem`). This allows you to focus on only a single problem, developing a re-usable solution. Then you define another component that represents how to render a whole list of elements (e.g., `MessageList`). This component will render a child item component for each element&mdash;it just needs to set up the list, without worrying about what each item looks like! 
+
+The data set can be passed into the parent (List) component as a prop, and each individual element from that data set will be passed into an instance of the child (Item) component. In effect, the List component is tasked with with taking the data set (an array of data values) and producing a set Item components (an array of Components). This kind of transformation is a _mapping_ operation (each data value is mapped to a Component), and so can easily be done with the **`map()`** method:
+
+```jsx
+//Map an array of message strings to an array of components
+let msgItems = this.props.messages.map((msgString) => {
+    let component = <MessageItem message={msgString} />; //pass prop down!
+    return component; //add this new component to resulting array
+})
+```
+
+And because including an _array of Components_ as an inline expression in JSX will render those elements as siblings, it's easy to render this list from within the parent:
+
+```jsx
+class MessageList extends Component {
+  render() {
+     let msgItems = this.props.messages.map((msgString) => {
+        let component = <MessageItem message={msgString} />; //pass prop down!
+        return component; //add this new component to resulting array
+     })
+      
+     return (
+       <div>
+         <h1>Messages for you</h1>
+         <ul>
+            {/* render the array of MessageList components */}
+            {msgItems}
+         </ul>
+       </div>
+     );
+  }
+}
+
+//Define and pass a prop to the parent comment when rendering it
+let messagesArray = ["Hello world", "No borders", "Go huskies!"];
+ReactDOM.render(<MessageList messages={messagesArray} />, 
+                document.getElementById('root'));
+```
+
+Note that the above example will issue a warning. This is because React requires you to specify an additional prop called [**`key`**](https://reactjs.org/docs/lists-and-keys.html#keys) for each element in an array of components. The `key` should be a _unique string_ for each element in the list, and acts as an identifier for that element (think: what you might give it as an `id` attribute). React will use the `key` to keep track of those elements, so if they change over time (i.e., elements are added or removed from the array) React will be able to more efficiently modify the DOM. 
+
+If unspecified, the `key` will default to the element's index in the array, but this is considered unstable (since it will change as items are added or removed). Thus a better approach is to determine a unique value based on the data&mdash;which means that data items will need to be uniquely identifiable. The below improved version of the code changes each message from a basic String to an Object that has `content` and `id` properties, allowing each data value to be uniquely identified. Note that the `MessageItem` component need not be changed; it still renders an `<li>` showing the given `message` prop!
+
+```jsx
+let messageObjArray = [
+    {content: "Hello world", id=1}
+    {content: "No borders", id=2}
+    {content: "Go huskies!", id=3}
 ];
 
-// A component for creating an entire list
-class List extends React.Component {
-    render() {
-        return(
-            <div>
-                { // Iterate through items + return a ListItem
-                this.props.items.map((item, index) => {
-                    return <ListItem key={'item-' + index} status={item.status} text={item.text} />
-                })
-                }
-            </div>
-        )
-    }
+class MessageList extends Component {
+  render() {
+     let msgItems = this.props.messages.map((msgObject) => {
+         //return a new MessageItem for each message object
+         return <MessageItem 
+                    message={msgObject.content} 
+                    key={msgObject.id.toString()}
+                    />;
+     })
+      
+     return (
+       <div>
+         <h1>Messages for you</h1>
+         <ul>
+            {msgItems}
+         </ul>
+       </div>
+     );
+  }
 }
 
-```
-In the above section, we open up a JavaScript section _inside_ of the `<div>` element that we're going to return. We can then access the items via `this.props.items` and iterate through them with the `.map` function. Each iteration will _return_ a `ListItem`.
-
-- Note: React will issue a warning if you don't assign each element a unique **key** to help it identify changes in the DOM.
-
-Finally, we'll pass our `items` data to our `List` component and render it:
-
-```javascript
-// Render your component in the `main` section
-ReactDOM.render(<List items={items}/>,
-    document.querySelector('main')
-);
+//Define and pass a prop to the parent comment when rendering it
+ReactDOM.render(<MessageList messages={messageObjArray} />, 
+                document.getElementById('root'));
 ```
 
-You should now be able to create simple React components and specify their _properties_. The power of configuring applications using these properties is discussed more in the following chapters.
+This kind of pattern enables you to effectively define your web page's content in terms of individual components that can be composed together, allowing you to quickly render large amounts of data (without needing spend a lot of time thinking about loops!).
 
-## Resources
 
-- [Simple React Examples](http://tutorialzine.com/2014/07/5-practical-examples-for-learning-facebooks-react-framework/)
+## Resources {-}
+
+As mentioned above, there are a large number of different resources for learning React. Below are links to key parts of the official documentation.
+
+<div class="list-condensed">
+- [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
 - [Facebook's React Tutorial](https://facebook.github.io/react/tutorial/tutorial.html)
 - [React Documentation](https://facebook.github.io/react/docs/hello-world.html)
 - [JSX Documentation](https://facebook.github.io/react/docs/introducing-jsx.html)
-- [React if you know jQuery](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)
-- [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
-- [React Component Lifecycle](https://facebook.github.io/react/docs/react-component.html) -->
+- [Components and Props](https://reactjs.org/docs/components-and-props.html)
+- [React API References](https://reactjs.org/docs/react-api.html)
+- [Create React App Docs](https://facebook.github.io/create-react-app/docs/getting-started)
+</div>
