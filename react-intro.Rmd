@@ -482,7 +482,6 @@ We can specify the underlying data that a React component will be representing b
 You pass a prop to a component when you instantiate it by specifying them as XML attributes (using `name=value` syntax)&mdash;the props are the "attributes" of the component!
 
 ```jsx
-//TODO: EDIT THIS!!
 //Passing a prop called `message` with value "Hello property"
 let messageA = <MessageItem message="Hello property!" />;
 

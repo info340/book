@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-11-01">
+<meta name="date" content="2018-11-06">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -779,8 +779,7 @@ index.js</code></pre>
 <p>One of the main goals of using a library such as React is to support <em>data-driven views</em>—that is, the content that is rendered on the page can be based on some underlying data, providing a visual representation of that data. And if that underlying data changes, React can automatically and efficiently “re-render” the view, making the page dynamic.</p>
 <p>We can specify the underlying data that a React component will be representing by specifying <a href="https://reactjs.org/docs/components-and-props.html#function-and-class-components"><strong>properties</strong></a> (usually just called <strong>props</strong>) for that component. Props are the “input parameters” to a component—they are the details you <em>pass</em> to it so that it knows what and how to render its content.</p>
 <p>You pass a prop to a component when you instantiate it by specifying them as XML attributes (using <code>name=value</code> syntax)—the props are the “attributes” of the component!</p>
-<pre class="language-jsx"><code><span class="token comment">//TODO: EDIT THIS!!</span>
-<span class="token comment">//Passing a prop called `message` with value "Hello property"</span>
+<pre class="language-jsx"><code><span class="token comment">//Passing a prop called `message` with value "Hello property"</span>
 <span class="token keyword">let</span> messageA <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MessageItem</span> <span class="token attr-name">message</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Hello property!<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
 
 <span class="token comment">//Passing a prop using an inline expression</span>
