@@ -600,7 +600,7 @@ ReactDOM.render(<MessageListTrio messages={messagesArray} />,
                 document.getElementById('root'));
 ```
 
-This creates a _one-directional data flow_&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa). 
+This creates a **one-directional data flow**&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa). 
 
 The Component organization in the previous example is [particularly common](https://reactjs.org/docs/lists-and-keys.html) in React. In order to effectively render a list (array) of data, you should define a Component that declares how to render a _single_ element of that list (e.g., `MessageItem`). This allows you to focus on only a single problem, developing a re-usable solution. Then you define another component that represents how to render a whole list of elements (e.g., `MessageList`). This component will render a child item component for each element&mdash;it just needs to set up the list, without worrying about what each item looks like! 
 

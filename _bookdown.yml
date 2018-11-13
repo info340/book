@@ -34,6 +34,7 @@ rmd_files:
   - react-interactive.Rmd
   - router.Rmd
   - firebase.Rmd
+  - react-interactive-v2.Rmd
 
   ## Special Topics
   - appendix.Rmd
