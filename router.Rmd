@@ -87,7 +87,7 @@ The [**`path`**](https://reacttraining.com/react-router/web/api/Route/path-strin
 
 - Note that by default the `path` will "match" even if it is contained in only part of the URL. For example, `<Route path='/about' />` will match a URL of `/about` _OR_ `/about/me`. A path of `/` will match _any_ URL! You can customize what how strict the matching is by specifying the [`exact`](https://reacttraining.com/react-router/web/api/Route/exact-bool) prop (indicating that the path has to match entirely) and/or the [`strict`](https://reacttraining.com/react-router/web/api/Route/strict-bool) prop, which will cause the router to respect any trailing `/` you include.
 
-- Importantly, each `<Route>` determines whether it should render its component _independently_ from each other: they are each `if` statement, not `if else` statements! Thus it is possible for more than one `<Route>` to match the current URL and render its component (and you may actually want to do this sometimes, if a Component is only a part of a "page"). However, it is very common to have each "route" be mutually exclusive so that only one "page" is shown at a time. You can enforce this by nesting the `<Route>` elements inside of a [`<Switch>`](https://reacttraining.com/react-router/web/api/Switch) element:
+- Importantly, each `<Route>` determines whether it should render its component _independently_ from each other: they are each `if` statements, not `if else` statements! Thus it is possible for more than one `<Route>` to match the current URL and render its component (and you may actually want to do this sometimes, if a Component is only a part of a "page"). However, it is very common to have each "route" be mutually exclusive so that only one "page" is shown at a time. You can enforce this by nesting the `<Route>` elements inside of a [`<Switch>`](https://reacttraining.com/react-router/web/api/Switch) element:
 
     ```jsx
     <BrowserRouter>
@@ -176,7 +176,7 @@ class HomePage extends Component {
       <div>
         <h2>Home Page</h2>
         {/* if route includes /blog, show the blog */}
-        <Route path={match.url + '/blog'} component={BlogPartial} />
+        <Route path={this.props.match.url + '/blog'} component={BlogPartial} />
       </div>
     );
   }
@@ -200,7 +200,7 @@ Instead, React Router provides a [**`<Link>`**](https://reacttraining.com/react-
 
 Finally, React Router provides a [**`<Redirect>`**](https://reacttraining.com/react-router/web/api/Redirect) component that, when rendered, will navigate the browser to the given route. This will allow you to "programmatically" navigate the user to a different route (without requiring the user to click on a link)&mdash;you just need to render the `<Redirect>` and the page will change.
 
-- Note that in order for the `<Redirect>` to work, you need to _render_ it (e.g., return it from a Component's `render()` function). This a good way to programmatically redirect is to specify a `state` variable (e.g., `shouldRedirect`), and then conditionally render the `<Redirect>` if that state variable becomes true:
+- Note that in order for the `<Redirect>` to work, you need to _render_ it (e.g., return it from a Component's `render()` function). Thus a good way to programmatically redirect is to specify a `state` variable (e.g., `shouldRedirect`), and then conditionally render the `<Redirect>` if that state variable becomes true:
 
 ```jsx
 class LoginPage extends Component {
