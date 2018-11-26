@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2018-11-19">
+<meta name="date" content="2018-11-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -462,7 +462,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <ol style="list-style-type: decimal">
 <li><p>First, install and <a href="https://www.npmjs.com/package/firebase">Firebase library</a> using <code>npm</code>:</p>
 <pre class="language-bash"><code><span class="token comment"># in your app repo</span>
-<span class="token function">npm</span> <span class="token function">install</span> --save firebase</code></pre></li>
+<span class="token function">npm</span> <span class="token function">install</span> firebase</code></pre></li>
 <li><p><code>import</code> the Firebase library into your <code>index.js</code> file. To only load the core firebase functionality, you can just import the <code>'firebase/app'</code> module.</p>
 <pre class="language-js"><code><span class="token keyword">import</span> firebase <span class="token keyword">from</span> <span class="token string">'firebase/app'</span><span class="token punctuation">;</span></code></pre>
 <p>You can also <code>import</code> modules with the specific pieces of functionality you need, such as user authentication and the real-time database.</p>
@@ -490,8 +490,9 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <h3>Creating Users</h3>
 <p>In order to create a user programmatically (e.g., from JavaScript when the user submits a sign-up form), you can use a function provided by the <code>firebase</code> module. Specifically, you’ll call the wordily-named function <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword"><code>firebase.auth().createUserWithEmailAndPassword</code></a> passing it the email and password the user is signing up with. This will create a new user account in Firebase (you can view it in the Firebase Web Console), <em>as well as</em> log in the user.</p>
 <pre class="language-js"><code>firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createUserWithEmailAndPassword</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>firebaseUser<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'User created: '</span><span class="token operator">+</span>firebaseUser<span class="token punctuation">.</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>userCredentials<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> user <span class="token operator">=</span> userCredentials<span class="token punctuation">.</span>user<span class="token punctuation">;</span> <span class="token comment">//access the newly created user</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'User created: '</span><span class="token operator">+</span>user<span class="token punctuation">.</span>uid<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token comment">//...</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token comment">//report any errors</span>
@@ -500,7 +501,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <ul>
 <li><p>Remember to <code>import firebase from 'firebase/app'</code> in any module that you need to access the <code>firebase</code> global variable!</p></li>
 <li><p>The <code>createUser...</code> method is called on <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth"><code>firebase.auth()</code></a>. The <code>auth()</code> function returns an “authenticator” object that can manage user login which gets an “authenticator” object that is connected to the web service and can manage user login information.</p></li>
-<li><p>The <code>createUser...</code> method returns a <em>Promise</em>, so you can use the <code>.then()</code> method to do further work after the user is created (e.g., logging out that they have been created). The Promise callback is passed a <a href="https://firebase.google.com/docs/reference/js/firebase.User">“Firebase User”</a> object, which contains data about the user who has just been created and signed in. For example, this object contains a <code>uid</code> property, which is the <em>unique id</em> of that user generated by Firebase. This is like the “internal codename” for users that you can use to identify them.</p></li>
+<li><p>The <code>createUser...</code> method returns a <em>Promise</em>, so you can use the <code>.then()</code> method to do further work after the user is created (e.g., logging out that they have been created). The Promise callback is passed a <a href="https://firebase.google.com/docs/reference/js/firebase.auth#.UserCredential">“UserCredential”</a> object, which contains data about the sign up that just occurred. Most usefully, this object contains a <code>user</code> property that is a <a href="https://firebase.google.com/docs/reference/js/firebase.User">“Firebase User”</a> object, which contains data about the user who has just been created and signed in. For example, the Firebase User object contains a <code>uid</code> property, which is the <em>unique id</em> of that user generated by Firebase. This is like the “internal codename” for users that you can use to identify them.</p></li>
 </ul>
 <p class="alert alert-info">
 **Pro-<a href="tip:**" class="uri">tip:**</a> You don’t need to come up with real email addresses for testing. Try using <code>a@a.com</code>, <code>b@a.com</code>, <code>c@a.com</code>, etc. Similarly, <code>password</code> works fine for testing passwords (though you should never do that in real life!)
@@ -516,7 +517,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
     photoURL<span class="token punctuation">:</span> <span class="token string">"http://domain.com/picture.png"</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <ul>
-<li>This method <em>also</em> returns a Promise, so you can use <code>.then()</code> to do something after the profile is updated, or <code>.catch()</code> to handle any errors. Note that a good practice is to call this method from inside the <code>createUserWithEmailAndPassword()</code> callback (on the passed in Firebase User), and then return the resulting promise for handling, thereby “chaining” the user creation and profile specification.</li>
+<li>This method <em>also</em> returns a Promise, so you can use <code>.then()</code> to do something after the profile is updated, or <code>.catch()</code> to handle any errors. Note that a good practice is to call this method from inside the <code>createUserWithEmailAndPassword()</code> callback (on the Firebase User found in the User Credentials), and then return the resulting promise for handling, thereby “chaining” the user creation and profile specification.</li>
 </ul>
 <p class="alert alert-warning">
 You <strong>cannot</strong> assign values directly to any Firebase variables (including Firebase Users), since that data needs to be uploaded to the web (via an AJAX request). Instead, you will need to call a method to update these objects.
@@ -754,7 +755,7 @@ gitbook.start({
 "link": "https://github.com/info340/book/edit/master/firebase.Rmd",
 "text": "Edit"
 },
-"download": null,
+"download": ["client-side-web-development.pdf", "client-side-web-development.epub"],
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
