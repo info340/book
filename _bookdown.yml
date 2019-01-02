@@ -30,11 +30,10 @@ rmd_files:
 
   ## React
   - react-intro.Rmd
-  - react-tools.Rmd
+  # - react-tools.Rmd
   - react-interactive.Rmd
   - router.Rmd
   - firebase.Rmd
-  - react-interactive-v2.Rmd
 
   ## Special Topics
   - appendix.Rmd
