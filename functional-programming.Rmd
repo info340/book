@@ -141,7 +141,7 @@ console.log('***This is Fido barking:***');
 fido.bark(); //=> "Fido woofs". Note, `this` will refer to the `fido` object. 
 
 console.log('***This is Spot barking***');
-spot.bark()); //=> "Spot yips". Note, `this` will refer to the `fido` object. 
+spot.bark(); //=> "Spot yips". Note, `this` will refer to the `spot` object. 
 ```
 
 
