@@ -149,13 +149,13 @@ Specifying the `display` style and **box** properties will adjust the layout of 
 
 However, it is possible to position elements outside of the normal flow by specifying the `position` property. Depending on the `position` property, you can shift the location of elements using the `top`, `bottom`, `left`, and `right` properties.There are four values that the `position` property can be set to:
 
->**Static**: By default, elements are positioned statically. This is their natural layout, and elements _will not_ be shifted by the `top`, `bottom`, `left`, or `right` properties.
+- **`static`**: By default, elements are positioned statically. This is their natural layout, and elements _will not_ be shifted by the `top`, `bottom`, `left`, or `right` properties.
 
->**Relative**: Allows you to shift the element _relative_ to it's natural position on the page. This enables you to move the element using the `top`, `bottom`, `left`, and `right` properties.
+- **`relative`**: Allows you to shift the element _relative_ to it's natural position on the page. This enables you to move the element using the `top`, `bottom`, `left`, and `right` properties.
 
->**Fixed**: The _fixed_ position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to _always_ be 50px from the bottom, you could set the properties: `position:fixed;` and `bottom:50px;`.
+- **`fixed`**: The _fixed_ position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to _always_ be 50px from the bottom, you could set the properties: `position:fixed;` and `bottom:50px;`.
 
->**Absolute**: The _absolute_ position allows you to place an element a specific number of pixels from it's (first non-static) parent element. This allows you to specify where _within a parent element_ you want an element to be positioned. 
+ - **`absolute`**: The _absolute_ position allows you to place an element a specific number of pixels from it's (first non-static) parent element. This allows you to specify where _within a parent element_ you want an element to be positioned. 
 
 Note, in order to get `position:absolute;` to work _"as expected"_, you'll need to specify that the _parent element_ is `position:relative;`. See [this post](https://css-tricks.com/absolute-positioning-inside-relative-positioning/) for more information.
 

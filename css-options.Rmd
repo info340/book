@@ -328,7 +328,7 @@ If you don't include the different set of glyphs for the bolded font, then setti
 
 You can also use external font styles to easily add **icons** (symbols) to your web page by using an _dingbat (icon) font_. These are similar in concept to the infamous [Wingdings](https://en.wikipedia.org/wiki/Wingdings) font: they are fonts where instead of the letter "A" looking like two bent lines with a bar between, it instead looks like a heart or a face or some other symbol. By including such a font, you get access to a large number of symbols that can easily be styled (read: colored and sized) to suit your needs.
 
-<p class="alert alert-info">[Emoji](https://en.wikipedia.org/wiki/Emoji) are defined using a different set of [Unicode](https://en.wikipedia.org/wiki/Unicode) values, and are browser and operating-system instead of being available through a font.</p>
+<p class="alert alert-info">[Emoji](https://en.wikipedia.org/wiki/Emoji) are defined using a different set of [Unicode](https://en.wikipedia.org/wiki/Unicode) values, and are browser and operating-system dependent instead of being available through a font.</p>
 
 The most popular icon set is called [Font Awesome](http://fontawesome.io/). You can include the Font Awesome font by linking to it as any other stylesheet:
 

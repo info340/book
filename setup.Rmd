@@ -11,7 +11,7 @@ In summary, you'll need to install and set up the following software on your mac
 - [**Node.js**](https://nodejs.org/en/) as a JavaScript engine
 - [**`npm`**](https://www.npmjs.com/) as a JavaScript package manager (comes with Node.js)
 - [**`git`**](https://git-scm.com/downloads) as a version control system (for Windows users; already installed on Macs)
-- A Bash terminal (e.g., [**Git Bash**](https://git-scm.com/downloads) for Windows, or the [**subsystem for Linux**](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide); Terminal is already installed on Macs)
+- A Bash terminal (e.g., the [**subsystem for Linux**](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) or [**Git Bash**](https://git-scm.com/downloads) for Windows; Terminal is already installed on Macs)
 - [**`live-server`**](https://www.npmjs.com/package/live-server) as a local development server (simply run `npm install live-server`)
 
 ## Web Browser
@@ -82,9 +82,13 @@ While there are multiple different **command shells** (command line interfaces),
 
 On a Mac you'll want to use the built-in app called **Terminal**. You can open it by searching via Spotlight (hit Cmd (`⌘`) and Spacebar together, type in "terminal", then select the app to open it), or by finding it in the Applications/Utilities folder.
 
-On Windows, we recommend using [**Git Bash**](https://git-scm.com/downloads), which you should install along with `git` (see below). Open this program to open the command-shell. _Alternatively_, the 64-bit Windows 10 Anniversary update (August 2016) does include a version of an integrated Bash shell. You can access this by enabling the [**subsystem for Linux**](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) and then running `bash` in the command prompt.
+On Windows, we recommend setting up the [**Windows Subsystem for Linux (WSL)**](https://docs.microsoft.com/en-us/windows/wsl/install-win10). This will let you turn the Windows command prompt into a full-blown Bash shell just by typing the command **`bash`**. (Technically you're running a small copy of the Linux operating system inside of your Windows install, but we're just going to need the Bash shell).
+
+- Follow the instructions linked above to install the WSL. You will need to download a Linux distribution (e.g., from the Windows store); just using the default Ubuntu version is fine.
 
 - Note that Windows does come with its own command-prompt, called the _Command Prompt_ (previously the _DOS Prompt_), but it has a different set of commands and features. _Powershell_ is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we'll be doing, and so we will be focusing on that set of commands.
+
+Alternatively, on windows you can use the [**Git Bash**](https://git-scm.com/downloads) shell, which you should install along with `git` (see below). Open this program to open the command-shell.
 
 <p class="alert alert-danger">This course expects you to already be familiar with basic command line usage. For review, see [The Command Line](https://info201.github.io/command-line.html) in the _INFO 201_ course reader.</p>
 
@@ -114,17 +118,32 @@ in the _INFO 201_ course reader. Note that students in the INFO 343 course will 
 ## Node and `npm`
 [**Node.js**](https://nodejs.org/en/) (commonly just "Node") is a a command line runtime environment for the JavaScript programming language&mdash;that is, a program that is used to _interpret_ and _execute_ programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see [Chapter: JavaScript](#JavaScript)), Node provides a platform for installing and running a wide variety of "helper" programs that are frequently used in web development.
 
-To install Node, visit the [download page](https://nodejs.org/en/download/) and select the installer for your operating system (you probably want the `.msi` for Windows and the `.pkg` for Mac). For this course you will need _at least_ the current Long Term Support (LTS) version **8.11**, so you should update Node if you installed it previously (e.g., by downloading and reinstalling it). Node is a command line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:
+The best way to install Node is to use [**`nvm`**](https://github.com/nvm-sh/nvm), the Node Version Manager. This is a command line program that manages installing the Node command line program, but also makes it easy to update or adjust your Node installation. (It also installs the same way on Mac or Windows WSL). You can install `nvm` and Node with the following Bash commands:
+
+```bash
+## Run from your home directory:
+
+touch ~/.bashrc
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+## Restart the command shell
+
+nvm install node
+nvm use node
+nvm alias default node
+```
+
+You can then test that node is installed and working with
 
 ```bash
 node --version
 ```
 
-Be sure and check that you have a recent enough version!
+Be sure and check that you have a recent enough version! At time of this writing, you need Node v10.16 or later.
 
 Installing Node also installs an additional command line program called [**`npm`**](https://www.npmjs.com/). `npm` is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command line "app store" for developer tools and libraries. `npm` is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the `npm` "registry" lists around 725,000 different packages.
 
-<p class="alert alert-warning">If you have an older version of Node and `npm` (before Node 8.11 or `npm` 5.6), you will need to update them. You can re-install the latest version of Node, or just upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.</p>
+<p class="alert alert-warning">If you have an older version of Node and `npm` (before Node 10.16 or `npm` 5.6), you will need to update them. You can re-install the latest version of Node as above, or just upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.</p>
 
 ### Managing packages with npm {-}
 You can use the `npm` program to download and install command line programs by name:
@@ -188,13 +207,12 @@ npm install
 
 Thus using `npm install` without any arguments means "install all of the requirements that have been listed for this project". This is a good first step _any time_ you download a project or checkout a repository from GitHub.
 
-When installing specific packages, you can have `npm` automatically add them to the dependencies list by using the `--save` option:
+When installing specific packages, `npm` automatically adds them to the dependencies list in the `package.json`, though you can make this explicit with the `--save` option:
 
 ```bash
+# explicitly save dependency in package.json
 npm install --save lodash
 ```
-
-will install `lodash` locally, and add it to the `package.json` file as a dependency.
 
 Similarly, the `--save-dev` option will instead save the package in the `"devDependencies"` list, which are dependencies needed only for development (writing the program's code) and not for execution (running the program).
 
@@ -212,7 +230,7 @@ To sum up, you will use three commands with `npm` to install packages:
 
 1. `npm install -g PACKAGE-NAME` to _globally_ install command line programs.
 2. `npm install` to _locally_ install all of the dependencies for a project you check out.
-3. `npm install --save PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
+3. `npm install PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
 
 <p class="alert alert-info">While `npm` is the most popular package manager (and the one utilized in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with `npm` and is quickly growing in popularity. Note that you will generally need to use one package manager or other; don't try to mix them in a single project!</p>
 

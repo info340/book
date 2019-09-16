@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Client-Side Web Development</title>
+  <title>Chapter 3 HTML Fundamentals | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 3 HTML Fundamentals | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 3 HTML Fundamentals | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-01-30">
+<meta name="date" content="2019-09-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="standards-and-accessibility.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -255,13 +256,14 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
 <li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -666,8 +668,9 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["github", "facebook", "twitter", "google"]
 },
@@ -679,6 +682,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/info340/book/edit/master/html.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -694,9 +701,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Client-Side Web Development</title>
+  <title>Chapter 1 Getting Setup | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 1 Getting Setup | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 1 Getting Setup | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-01-30">
+<meta name="date" content="2019-09-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="client-side-development.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -255,13 +256,14 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
 <li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -419,7 +421,7 @@ Note that iSchool lab machines should have all appropriate software already inst
 <li><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> as a JavaScript engine</li>
 <li><a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a> as a JavaScript package manager (comes with Node.js)</li>
 <li><a href="https://git-scm.com/downloads"><strong><code>git</code></strong></a> as a version control system (for Windows users; already installed on Macs)</li>
-<li>A Bash terminal (e.g., <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> for Windows, or the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide"><strong>subsystem for Linux</strong></a>; Terminal is already installed on Macs)</li>
+<li>A Bash terminal (e.g., the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide"><strong>subsystem for Linux</strong></a> or <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> for Windows; Terminal is already installed on Macs)</li>
 <li><a href="https://www.npmjs.com/package/live-server"><strong><code>live-server</code></strong></a> as a local development server (simply run <code>npm install live-server</code>)</li>
 </ul>
 <div id="web-browser" class="section level2">
@@ -487,10 +489,12 @@ Furthermore, we suggest the following user-settings to make using your text edit
 <p>Many of the software tools used in professional web development are used on the <strong>command line</strong>: a text-based interface for controlling your computer. While the command line is harder to learn and figure out, it is particularly effective for doing web development. Command line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command line in order to utilize the software for this course.</p>
 <p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course is based on the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.</p>
 <p>On a Mac you’ll want to use the built-in app called <strong>Terminal</strong>. You can open it by searching via Spotlight (hit Cmd (<code>⌘</code>) and Spacebar together, type in “terminal”, then select the app to open it), or by finding it in the Applications/Utilities folder.</p>
-<p>On Windows, we recommend using <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a>, which you should install along with <code>git</code> (see below). Open this program to open the command-shell. <em>Alternatively</em>, the 64-bit Windows 10 Anniversary update (August 2016) does include a version of an integrated Bash shell. You can access this by enabling the <a href="https://msdn.microsoft.com/en-us/commandline/wsl/install_guide"><strong>subsystem for Linux</strong></a> and then running <code>bash</code> in the command prompt.</p>
+<p>On Windows, we recommend setting up the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"><strong>Windows Subsystem for Linux (WSL)</strong></a>. This will let you turn the Windows command prompt into a full-blown Bash shell just by typing the command <strong><code>bash</code></strong>. (Technically you’re running a small copy of the Linux operating system inside of your Windows install, but we’re just going to need the Bash shell).</p>
 <ul>
-<li>Note that Windows does come with its own command-prompt, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</li>
+<li><p>Follow the instructions linked above to install the WSL. You will need to download a Linux distribution (e.g., from the Windows store); just using the default Ubuntu version is fine.</p></li>
+<li><p>Note that Windows does come with its own command-prompt, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</p></li>
 </ul>
+<p>Alternatively, on windows you can use the <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> shell, which you should install along with <code>git</code> (see below). Open this program to open the command-shell.</p>
 <p class="alert alert-danger">
 This course expects you to already be familiar with basic command line usage. For review, see <a href="https://info201.github.io/command-line.html">The Command Line</a> in the <em>INFO 201</em> course reader.
 </p>
@@ -507,18 +511,31 @@ This course expects you to already be familiar with basic command line usage. Fo
 <li>Note that you can have <code>git</code> save your GitHub password on your local machine so you don’t have to type it repeatedly. See <a href="https://help.github.com/articles/set-up-git/#next-steps-authenticating-with-github-from-git"><em>Authenticating with GitHub from Git</em></a>.</li>
 </ul>
 <p class="alert alert-danger">
-This course expects you to already be familiar with utilizing Git and GitHub. For review, see <a href="https://info201.github.io/git-basics.html">Git and GitHub</a>, <a href="https://info201.github.io/git-branches.html">Git Branches</a>, and <a href="https://info201.github.io/git-collaboration.html">Git Collaboration</a> in the <em>INFO 201</em> course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.
+This course expects you to already be familiar with utilizing Git and GitHub. For review, see
+<a href="https://info201.github.io/git-basics.html">Git and GitHub</a>, <a href="https://info201.github.io/git-branches.html">Git Branches</a>, and <a href="https://info201.github.io/git-collaboration.html">Git Collaboration</a>
+in the <em>INFO 201</em> course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.
 </p>
 </div>
 <div id="node-and-npm" class="section level2">
 <h2><span class="header-section-number">1.5</span> Node and <code>npm</code></h2>
 <p><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> (commonly just “Node”) is a a command line runtime environment for the JavaScript programming language—that is, a program that is used to <em>interpret</em> and <em>execute</em> programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see <a href="#JavaScript">Chapter: JavaScript</a>), Node provides a platform for installing and running a wide variety of “helper” programs that are frequently used in web development.</p>
-<p>To install Node, visit the <a href="https://nodejs.org/en/download/">download page</a> and select the installer for your operating system (you probably want the <code>.msi</code> for Windows and the <code>.pkg</code> for Mac). For this course you will need <em>at least</em> the current Long Term Support (LTS) version <strong>8.11</strong>, so you should update Node if you installed it previously (e.g., by downloading and reinstalling it). Node is a command line application, so you can test that it is installed and available to your command shell (e.g., Terminal or Git Bash) with:</p>
+<p>The best way to install Node is to use <a href="https://github.com/nvm-sh/nvm"><strong><code>nvm</code></strong></a>, the Node Version Manager. This is a command line program that manages installing the Node command line program, but also makes it easy to update or adjust your Node installation. (It also installs the same way on Mac or Windows WSL). You can install <code>nvm</code> and Node with the following Bash commands:</p>
+<pre class="language-bash"><code><span class="token comment">## Run from your home directory:</span>
+
+<span class="token function">touch</span> ~/.bashrc
+<span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+
+<span class="token comment">## Restart the command shell</span>
+
+nvm <span class="token function">install</span> node
+nvm use node
+nvm <span class="token function">alias</span> default node</code></pre>
+<p>You can then test that node is installed and working with</p>
 <pre class="language-bash"><code>node --version</code></pre>
-<p>Be sure and check that you have a recent enough version!</p>
+<p>Be sure and check that you have a recent enough version! At time of this writing, you need Node v10.16 or later.</p>
 <p>Installing Node also installs an additional command line program called <a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a>. <code>npm</code> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command line “app store” for developer tools and libraries. <code>npm</code> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <code>npm</code> “registry” lists around 725,000 different packages.</p>
 <p class="alert alert-warning">
-If you have an older version of Node and <code>npm</code> (before Node 8.11 or <code>npm</code> 5.6), you will need to update them. You can re-install the latest version of Node, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
+If you have an older version of Node and <code>npm</code> (before Node 10.16 or <code>npm</code> 5.6), you will need to update them. You can re-install the latest version of Node as above, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
 </p>
 <div id="managing-packages-with-npm" class="section level3 unnumbered">
 <h3>Managing packages with npm</h3>
@@ -563,9 +580,9 @@ Because node packages can be very large, and projects can have lots of them, you
 <p>Notice that there are two packages listed under <code>&quot;dependencies&quot;</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>). You can use <code>npm</code> to automatically install all of the packages listed under <code>&quot;dependencies&quot;</code> (as well as under <code>&quot;devDependencies&quot;</code>) using the command:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span></code></pre>
 <p>Thus using <code>npm install</code> without any arguments means “install all of the requirements that have been listed for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub.</p>
-<p>When installing specific packages, you can have <code>npm</code> automatically add them to the dependencies list by using the <code>--save</code> option:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> --save lodash</code></pre>
-<p>will install <code>lodash</code> locally, and add it to the <code>package.json</code> file as a dependency.</p>
+<p>When installing specific packages, <code>npm</code> automatically adds them to the dependencies list in the <code>package.json</code>, though you can make this explicit with the <code>--save</code> option:</p>
+<pre class="language-bash"><code><span class="token comment"># explicitly save dependency in package.json</span>
+<span class="token function">npm</span> <span class="token function">install</span> --save lodash</code></pre>
 <p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
 <p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for the project:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">link</span> lodash</code></pre>
@@ -575,7 +592,7 @@ Because node packages can be very large, and projects can have lots of them, you
 <ol style="list-style-type: decimal">
 <li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command line programs.</li>
 <li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out.</li>
-<li><code>npm install --save PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
+<li><code>npm install PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
 </ol>
 <p class="alert alert-info">
 While <code>npm</code> is the most popular package manager (and the one utilized in this course), there are others as well. For example, <a href="https://yarnpkg.com/en/"><strong>Yarn</strong></a> is a package manager created by Facebook that is <a href="https://yarnpkg.com/en/docs/migrating-from-npm">compatible</a> with <code>npm</code> and is quickly growing in popularity. Note that you will generally need to use one package manager or other; don’t try to mix them in a single project!
@@ -627,8 +644,9 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["github", "facebook", "twitter", "google"]
 },
@@ -640,6 +658,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/info340/book/edit/master/setup.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -655,9 +677,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

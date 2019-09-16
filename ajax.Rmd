@@ -312,6 +312,52 @@ https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away
     //preventing default
 -->
 
+### Other Data Formats {-}
+The above usage of `fetch()` works well for data formatted in JSON (which is the most common format for web-accessible data). However, you may wish to dynamically load data that is presented in a different format, such as plain text or as comma-separated values (CSV). There are a few ways to support this:
+
+For downloading **plain text** formatted data, you can use the `fetch()` method as above, but instead of calling `.json()` on the response to encode it as a JavaScript object, you can call the `.text()` method to encode it as a basic string:
+
+```js
+fetch(url)  //start the download
+    .then(function(response) {  //when done downloading
+        let dataPromise = response.text();  //start encoding into a String
+        return dataPromise;  //hand this Promise up
+    })
+    .then(function(text) {  //when done encoding
+        //do something with the text data!!
+        console.log(text); //will now be encoded as a JavaScript string!
+    });
+```
+
+Encoding as text will support _any_ plaintext formated data&mdash;whether from a `.txt` file, a `.csv` file, or even a `.json` or `.js` file! In fact, if you encode JSON data as plain text using the `.text()` method, you could then explicitly parse that into a JavaScript Object by using the built-in [`JSON.parse()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse) function described above!
+
+While the `.text()` method will you encode data into a JavaScript String, that String will often have a particular format that needs to be **parsed** (interpreted) in order to make the data useful. For example, a String in CSV format is not very useful on its own; you would need to parse it into an array of objects (where each object represents a row) to analyze the data.
+
+It is possible ([but complex](https://stackoverflow.com/a/8497474)) to do this parsing using built-in String functions (assuming your CSV data matches official standards), but in general it's easier and more effective to use an external library to do this parsing. One of the best libraries for doing this work is [**`d3.dsv()`**](https://github.com/d3/d3-fetch), a component of the [d3](https://d3js.org/) visualization library. `d3.fetch()` provides convenience wrapper functions for `fetch()` that also perform effective data parsing.
+
+In order to use `d3.fetch()`, you will need to load it as an external library:
+
+```html
+<script src="https://d3js.org/d3-dsv.v1.min.js"></script>
+<script src="https://d3js.org/d3-fetch.v1.min.js"></script>
+```
+
+(More details coming soon...)
+<!-- (the `d3-fetch` )
+
+
+
+```
+'{"name":"Ada Smith", "age": }'
+```
+
+
+For formatted plain text (such as JSON or CSV data), you will need -->
+
+
+
+
+
 
 ## Resources {-}
 <div class="list-condensed">

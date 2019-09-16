@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Client-Side Web Development</title>
+  <title>Chapter 17 Interactive React | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 17 Interactive React | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 17 Interactive React | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-01-30">
+<meta name="date" content="2019-09-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="client-side-routing.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -255,13 +256,14 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
 <li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -503,7 +505,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 <div id="state" class="section level2">
 <h2><span class="header-section-number">17.2</span> State</h2>
-<p>The previous section describes how to respond to user-generated events, but in order for the page to be interactive you need to be able to manipulate its rendered content when that event occurs. For example, you could click on a button and show many times it was pressed, select a table column to sort the data by that feature, or select a component in order to show an entirely different “page” of content (see <a href="client-side-routing.html#client-side-routing">Chapter 19</a>).</p>
+<p>The previous section describes how to respond to user-generated events, but in order for the page to be interactive you need to be able to manipulate its rendered content when that event occurs.
+For example, you could click on a button and show many times it was pressed, select a table column to sort the data by that feature, or select a component in order to show an entirely different “page” of content (see <a href="client-side-routing.html#client-side-routing">Chapter 19</a>).</p>
 <p>To achieve these effects, a Component will need to keep track of its state or situation—the number on the counter, how the table is sorted, or which “page” to show. In React, a Component’s <strong>state</strong> represents internal, dynamic information about how that Component should be rendered. The state contains data that <em>changes over time</em> (and <em>only</em> such information—if the value won’t change for that instance of a Component, it shouldn’t be part of the state!).</p>
 <p>React Components must store their state in the <code>state</code> instance variable (accessed as <strong><code>this.state</code></strong>). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component’s <em>constructor</em>:</p>
 <pre class="language-jsx"><code><span class="token comment">//A button that tracks how many times it was clicked</span>
@@ -671,7 +674,7 @@ Never call <code>setState()</code> directly from inside of <code>render()</code>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>App</span><span class="token punctuation">></span></span></code></pre>
 <p>When confronted with this problem, the best practice in React is to <strong>lift the state up</strong> to the the <em>closest common ancestor</em>. This means that instead of having the data be stored in the state of one of the children, you instead store the data in the state of the <em>parent</em>. The parent can then pass that information down to the children (as props) for them to use. This way the data always flows “down” the tree.</p>
 <div class="figure">
-<img src="img/react/lift-up.gif" alt="Lift up the state to the closest common ancestor to share data between sibling elements" />
+<img src="img/react/lift-up.gif" alt="“Lift up” the state to the closest common ancestor to share data between sibling elements" />
 <p class="caption">“Lift up” the state to the closest common ancestor to share data between sibling elements</p>
 </div>
 <p>But with the state stored in the parent, the children elements (e.g., the <code>SearchForm</code>) may still need a way to interact with that parent and tell it to change its state. To do this, you can have the parent define a function that changes its state, and then pass the child that <em>callback function</em> as a <code>prop</code>. The child will then be able to execute that callback prop, thereby telling the parent to do something (such as update its state!)</p>
@@ -791,7 +794,8 @@ textInput<span class="token punctuation">.</span><span class="token function">ad
 </div>
 <div id="the-component-lifecycle" class="section level2">
 <h2><span class="header-section-number">17.3</span> The Component Lifecycle</h2>
-<p>A react component’s state is initialized in the constructor (when the component is first instantiated), and then usually modified in response to user events (by calling the <code>setState()</code> method). But there are a number of other “events” that occur during the life of a Component—such as the “events” of when the Component is added to the DOM (“mounted”) or removed from the DOM (“unmounted”). For example, you should only download data when there is a Component on the screen to display that data (after the Component has been added to the DOM), and to “clean up” any listeners or timers when the Component is removed. It is possible to define functions will execute at such these events, allowing you to perform specific actions as the React framework manipulates the DOM. These functions are called <a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class"><strong>lifecycle methods</strong></a>—they are methods that are executed at different stages of the Component’s “lifecycle”. You <em>override</em> these lifecycle methods in order to specify what code you want to run at those events. Lifecycle methods will be <em>automatically executed by the React framework</em>; you never directly call these methods (the same way you never directly call <code>render()</code>—which is itself a lifecycle method!)</p>
+<p>A react component’s state is initialized in the constructor (when the component is first instantiated), and then usually modified in response to user events (by calling the <code>setState()</code> method). But there are a number of other “events” that occur during the life of a Component—such as the “events” of when the Component is added to the DOM (“mounted”) or removed from the DOM (“unmounted”). For example, you should only download data when there is a Component on the screen to display that data (after the Component has been added to the DOM), and to “clean up” any listeners or timers when the Component is removed.
+It is possible to define functions will execute at such these events, allowing you to perform specific actions as the React framework manipulates the DOM. These functions are called <a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class"><strong>lifecycle methods</strong></a>—they are methods that are executed at different stages of the Component’s “lifecycle”. You <em>override</em> these lifecycle methods in order to specify what code you want to run at those events. Lifecycle methods will be <em>automatically executed by the React framework</em>; you never directly call these methods (the same way you never directly call <code>render()</code>—which is itself a lifecycle method!)</p>
 <p>React components have a number of different lifecycle methods, the most common of which are illustrated below:</p>
 <pre class="language-jsx"><code><span class="token comment">//A generic component</span>
 <span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -908,8 +912,9 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["github", "facebook", "twitter", "google"]
 },
@@ -921,6 +926,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/info340/book/edit/master/react-interactive.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -936,9 +945,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>

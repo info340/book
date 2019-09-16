@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Client-Side Web Development</title>
+  <title>Chapter 7 CSS Layouts | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown 0.5 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 7 CSS Layouts | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 7 CSS Layouts | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-01-30">
+<meta name="date" content="2019-09-16">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -36,6 +36,7 @@
 <link rel="next" href="responsive-css.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -255,13 +256,14 @@
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
-<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
 </ul></li>
 <li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
 <li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -408,7 +410,10 @@
             <section class="normal" id="section-">
 <div id="css-layouts" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> CSS Layouts</h1>
-<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts: - <strong>Display</strong>: determines how elements share horizontal space - <strong>Position</strong>: allows you to adjust the location of the natural flow of elements - <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
+<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts:
+- <strong>Display</strong>: determines how elements share horizontal space
+- <strong>Position</strong>: allows you to adjust the location of the natural flow of elements
+- <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
 <div id="display" class="section level2">
 <h2><span class="header-section-number">7.1</span> Display</h2>
 <p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
@@ -527,18 +532,12 @@
 <h2><span class="header-section-number">7.3</span> Position</h2>
 <p>Specifying the <code>display</code> style and <strong>box</strong> properties will adjust the layout of HTML elements, but they are still following the browser’s default <em>flow</em>. The layout rules will still apply, and elements are influenced by the amount of content and the size of the browser (e.g., for when inline elements “wrap”).</p>
 <p>However, it is possible to position elements outside of the normal flow by specifying the <code>position</code> property. Depending on the <code>position</code> property, you can shift the location of elements using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.There are four values that the <code>position</code> property can be set to:</p>
-<blockquote>
-<p><strong>Static</strong>: By default, elements are positioned statically. This is their natural layout, and elements <em>will not</em> be shifted by the <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code> properties.</p>
-</blockquote>
-<blockquote>
-<p><strong>Relative</strong>: Allows you to shift the element <em>relative</em> to it’s natural position on the page. This enables you to move the element using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</p>
-</blockquote>
-<blockquote>
-<p><strong>Fixed</strong>: The <em>fixed</em> position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to <em>always</em> be 50px from the bottom, you could set the properties: <code>position:fixed;</code> and <code>bottom:50px;</code>.</p>
-</blockquote>
-<blockquote>
-<p><strong>Absolute</strong>: The <em>absolute</em> position allows you to place an element a specific number of pixels from it’s (first non-static) parent element. This allows you to specify where <em>within a parent element</em> you want an element to be positioned.</p>
-</blockquote>
+<ul>
+<li><p><strong><code>static</code></strong>: By default, elements are positioned statically. This is their natural layout, and elements <em>will not</em> be shifted by the <code>top</code>, <code>bottom</code>, <code>left</code>, or <code>right</code> properties.</p></li>
+<li><p><strong><code>relative</code></strong>: Allows you to shift the element <em>relative</em> to it’s natural position on the page. This enables you to move the element using the <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> properties.</p></li>
+<li><p><strong><code>fixed</code></strong>: The <em>fixed</em> position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to <em>always</em> be 50px from the bottom, you could set the properties: <code>position:fixed;</code> and <code>bottom:50px;</code>.</p></li>
+<li><p><strong><code>absolute</code></strong>: The <em>absolute</em> position allows you to place an element a specific number of pixels from it’s (first non-static) parent element. This allows you to specify where <em>within a parent element</em> you want an element to be positioned.</p></li>
+</ul>
 <p>Note, in order to get <code>position:absolute;</code> to work <em>“as expected”</em>, you’ll need to specify that the <em>parent element</em> is <code>position:relative;</code>. See <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/">this post</a> for more information.</p>
 <p>As an example, giving an element a <strong><code>position:fixed</code></strong> property will specify a “fixed” position of the element <em>relative to the browser window</em>. It will no move no matter where it appears in the HTML or where the browser scrolls. See <a href="http://codepen.io/joelross/pen/NRdzLZ?editors=1100#0">this Code Pen</a> for an example.</p>
 <ul>
@@ -612,7 +611,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <p>In practice, using percentages for the <code>flex-basis</code> will let you easily size the columns of your layout.</p></li>
 </ul>
 <div class="figure">
-<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra space each item has after the text content." />
+<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra “space” each item has after the text content." />
 <p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
 </div>
 <p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified, the <code>flex-basis</code> property will be set to <code>0</code>, rather than the <code>auto</code> value it has if unspecified.</p>
@@ -661,8 +660,9 @@ gitbook.start({
 "facebook": false,
 "twitter": false,
 "google": false,
+"linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["github", "facebook", "twitter", "google"]
 },
@@ -674,6 +674,10 @@ gitbook.start({
 "edit": {
 "link": "https://github.com/info340/book/edit/master/css-layout.Rmd",
 "text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
 },
 "download": null,
 "toc": {
@@ -689,9 +693,11 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(script.src))
-      script.src  = script.src.replace(/^https?:/, '');
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
 </script>
