@@ -11,7 +11,7 @@ CSS frameworks are thus designed to make your life easier and your development m
 <!-- ### Popular Frameworks {-} -->
 There are many different CSS frameworks to choose from. Some popular ones include:
 
-- [**Bootstrap**](http://getbootstrap.com/) is the most commonly used CSS framework on the web. Sometimes called "Twitter Bootstrap", it was originally created at Twitter to enforce some consistency among their internal tools, but was released as an open-source project in 2011. Its popularity has benefits and drawbacks: it's very well tested, documented, and supported, but it's also so prevalent that it's default look has become [cliché](http://adventurega.me/bootstrap/#).
+- [**Bootstrap**](http://getbootstrap.com/) is the most commonly used CSS framework on the web. Sometimes called "Twitter Bootstrap", it was originally created at Twitter to enforce some consistency among their internal tools, but was released as an open-source project in 2011. Its popularity has benefits and drawbacks: it's very well tested, documented, and supported, but it's also so prevalent that it's default look has become cliché.
 
     The latest release of Bootstrap, v4 was released in 2017. This version includes an update look and feel, and makes it relatively easy to create your own customized version. Bootstrap 4 also uses Flexbox as a foundation for its grid system, offering some better performance. For this and other reasons, Bootstrap 4 does **not support** IE 9 or earlier browsers. For older browsers, you'd want to use Bootstrap 3.
 
