@@ -210,7 +210,7 @@ let originalPromise = getAsyncString(myDataSource);
 
 //when the original promise is fulfilled, call `makeQuestion` on it
 //`questionPromise` will be a placeholder for that transformed data
-let questionPromise = originalPromise.then(makeUpperCase);
+let questionPromise = originalPromise.then(makeQuestion);
 
 //when the `questionPromise` is fulfilled, call an anonymous callback on it
 //the callback will be passed the transformed ("question") data

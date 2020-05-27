@@ -582,7 +582,7 @@ promise<span class="token punctuation">.</span><span class="token function">then
 
 <span class="token comment">//when the original promise is fulfilled, call `makeQuestion` on it</span>
 <span class="token comment">//`questionPromise` will be a placeholder for that transformed data</span>
-<span class="token keyword">let</span> questionPromise <span class="token operator">=</span> originalPromise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>makeUpperCase<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> questionPromise <span class="token operator">=</span> originalPromise<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>makeQuestion<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">//when the `questionPromise` is fulfilled, call an anonymous callback on it</span>
 <span class="token comment">//the callback will be passed the transformed ("question") data</span>
