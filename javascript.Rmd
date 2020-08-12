@@ -241,8 +241,8 @@ let empty = [];
 console.log( names[1] );  // "Paul"
 console.log( things[3][2] );  // 3
 
-numbers[0] = '343';  //assign new value at index 0
-console.log( numbers );  // [343, 2, 2, 3, 5, 8]
+numbers[0] = '340';  //assign new value at index 0
+console.log( numbers );  // [340, 2, 2, 3, 5, 8]
 ```
 
 Note that it is possible to assign a value to _any_ index in the array, even if that index is "out of bounds". This will _grow_ the array (increase its length) to include that index&mdash;intermediate indices will be given values of `undefined`. The _length_ of the array (accessed via the `.length` attribute) will always be the index of the "last" element + 1, even if there are fewer defined values within the array.
@@ -263,19 +263,19 @@ Arrays also support a variety of [methods](https://www.w3schools.com/jsref/jsref
 let array = ['i','n','f','o'];
 
 //add item to end of the array
-array.push('343');
-console.log(array); //=> ['i','n','f','o','343']
+array.push('340');
+console.log(array); //=> ['i','n','f','o','340']
 
 //combine elements into a string
 let str = array.join('-');
-console.log(str); //=> "i-n-f-o-343"
+console.log(str); //=> "i-n-f-o-340"
 
 //get index of an element (first occurrence)
 let oIndex = array.indexOf('o'); //=> 3
 
 //remove 1 element starting at oIndex
 array.splice(oIndex, 1);
-console.log(array); //=> ['i','n','f','343']
+console.log(array); //=> ['i','n','f','340']
 ```
 
 ### Objects {-}

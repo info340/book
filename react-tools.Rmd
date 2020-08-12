@@ -98,7 +98,8 @@ import feetToMeters from './Utility.js'
 You'll use this syntax to import // export your own functions, and you'll also use them to import functions from **external libraries**.
 
 ## Installing with NPM
-We introduced the use of NPM in an [earlier chapter](https://info343.github.io/machine-setup.html#node-and-npm), largely to install packages that were described in the `package.json` file. As we move forward, we'll use NPM to **install additional packages** and **deploy our code**.
+
+We introduced the use of NPM in an [earlier chapter](machine-setup.html#node-and-npm), largely to install packages that were described in the `package.json` file. As we move forward, we'll use NPM to **install additional packages** and **deploy our code**.
 
 It's a common occurrence that, part way through a project, you identify **additional libraries** that you would like to use in your project. You can use NPM to install a package and **add it to your list of packages** if you use the `--save` option:
 
@@ -177,14 +178,14 @@ export default App;
 ```
 
 ### Building
-In order to build your app for deployment, you will use the `npm run build` command (you can see what function this does by looking at the `package.json` file). This will appropriately compile your files (including JavaScript, CSS, images, etc.) into an optimized format. The only tricky thing is if you're trying to host your build at a particular location, you'll need to **specify that location** in your `package.json` file. For example, imagine you're going to host your site at `http://students.washington.edu/YOUR-NAME/info-343/project-name`. Create React App assumes that you'll be hosting your project in the **root of your server**. In other words, when it builds, it will construct relative paths that assume resources are at the root. To adjust this, you'll need to edit your `package.json` file:
+In order to build your app for deployment, you will use the `npm run build` command (you can see what function this does by looking at the `package.json` file). This will appropriately compile your files (including JavaScript, CSS, images, etc.) into an optimized format. The only tricky thing is if you're trying to host your build at a particular location, you'll need to **specify that location** in your `package.json` file. For example, imagine you're going to host your site at `http://students.washington.edu/YOUR-NAME/info-340/project-name`. Create React App assumes that you'll be hosting your project in the **root of your server**. In other words, when it builds, it will construct relative paths that assume resources are at the root. To adjust this, you'll need to edit your `package.json` file:
 
 ```javascript
 {
   "name": "project-name",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://students.washington.edu/YOUR-NAME/info-343/project-name",
+  "homepage": "http://students.washington.edu/YOUR-NAME/info-340/project-name",
   .....
 }
 
