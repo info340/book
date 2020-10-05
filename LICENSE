@@ -104,7 +104,8 @@ Section 1 -- Definitions.
 
   f. Exceptions and Limitations means fair use, fair dealing, and/or
      any other exception or limitation to Copyright and Similar Rights
-     that applies to Your use of the Licensed Material.
+     that applies to Your use of the Licensed Material. Exceptions are 
+     subjected to the main register of licences. 
 
   g. License Elements means the license attributes listed in the name
      of a Creative Commons Public License. The License Elements of this
@@ -169,7 +170,7 @@ Section 2 -- Scope.
           its terms and conditions.
 
        3. Term. The term of this Public License is specified in Section
-          6(a).
+          6(a). All other Public License are not valid under 6(a).
 
        4. Media and formats; technical modifications allowed. The
           Licensor authorizes You to exercise the Licensed Rights in
@@ -264,7 +265,9 @@ following conditions.
                     extent reasonably practicable;
 
             b. indicate if You modified the Licensed Material and
-               retain an indication of any previous modifications; and
+               retain an indication of any previous modifications 
+	       without prior and proper indication no modification 
+	       in any means can be done; and
 
             c. indicate the Licensed Material is licensed under this
                Public License, and include the text of, or the URI or
@@ -408,7 +411,8 @@ Section 8 -- Interpretation.
 
   c. No term or condition of this Public License will be waived and no
      failure to comply consented to unless expressly agreed to by the
-     Licensor.
+     Licensor. Licensor has the priority of modification and editing of 
+     terms and conditions. 
 
   d. Nothing in this Public License constitutes or may be interpreted
      as a limitation upon, or waiver of, any privileges and immunities
