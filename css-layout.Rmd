@@ -1,8 +1,11 @@
 # CSS Layouts
 
-The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the **top left corner** of the page, and are arranged based on three related (but distinct) concepts:
+The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page! Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the **top left corner** of the page, and are arranged based on three related (but distinct) concepts:
+
 - **Display**: determines how elements share horizontal space
+
 - **Position**: allows you to adjust the location of the natural flow of elements
+
 - **Box-model**: describes the amount of 2D space taken up by an element, and how much space is between elements
 
 ## Display
