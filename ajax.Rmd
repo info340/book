@@ -120,7 +120,7 @@ $.getJSON('https://domain.com/data', function(data) {
 But this requires including the jQuery library in your page, and [since the need for jQuery is rapidly going away](http://youmightnotneedjquery.com/), other options are now _built in_ to modern browsers. In particular, we will utilize the [**`fetch()`**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API to easily send AJAX requests for data!
 
 <div class="alert alert-warning">
-`fetch()` is an recent standard&mdash;so recent that it is not supported by [IE (any) or Safari 10](http://caniuse.com/#feat=fetch). However, we can still use `fetch()` with these browsers by including a [**polyfill**](https://en.wikipedia.org/wiki/Polyfill)&mdash;an external library that replicates an existing API in platforms that don't support it! The [`fetch()` polyfill](https://github.com/github/fetch) will provide a `fetch()` function to browsers that don't provide it (leaving other browsers unchanged) that uses the existing `XMLHttpRequest` without you needing to interact with that object.</p>
+`fetch()` is an recent standard, so that it is not supported by older browsers (e.g., [Internet Explorer](http://caniuse.com/#feat=fetch). However, we can still use `fetch()` with these browsers by including a [**polyfill**](https://en.wikipedia.org/wiki/Polyfill)&mdash;an external library that replicates an existing API in platforms that don't support it! The [`fetch()` polyfill](https://github.com/github/fetch) will provide a `fetch()` function to browsers that don't provide it (leaving other browsers unchanged) that uses the existing `XMLHttpRequest` without you needing to interact with that object.</p>
 
 It's easiest to just load the polyfill from a [CDN](https://cdnjs.com/libraries/fetch):
 
@@ -210,7 +210,7 @@ let originalPromise = getAsyncString(myDataSource);
 
 //when the original promise is fulfilled, call `makeQuestion` on it
 //`questionPromise` will be a placeholder for that transformed data
-let questionPromise = originalPromise.then(makeUpperCase);
+let questionPromise = originalPromise.then(makeQuestion);
 
 //when the `questionPromise` is fulfilled, call an anonymous callback on it
 //the callback will be passed the transformed ("question") data

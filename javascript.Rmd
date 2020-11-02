@@ -134,7 +134,7 @@ You declare that a script or function should be executed in strict mode by putti
 
 
 ## Variables
-Variables in JavaScript are **dynamically typed**. This means that variables are not _not_ declared as a particular type (e.g., `int` or `String`), but instead take on the data type (`Number`, `String`, etc.) of the _value_ currently assigned to that variable. As we don't specify the data type, JavaScript variables are declared using the `let` keyword:
+Variables in JavaScript are **dynamically typed**. This means that variables are _not_ declared as a particular type (e.g., `int` or `String`), but instead take on the data type (`Number`, `String`, etc.) of the _value_ currently assigned to that variable. As we don't specify the data type, JavaScript variables are declared using the `let` keyword:
 
 ```js
 let message = 'Hello World';  //a String
