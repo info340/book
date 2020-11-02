@@ -31,7 +31,7 @@ This book covers the the skills and techniques necessary for creating sophistica
 <!-- TODO: Include author contact info? -->
 Some content has been adapted from [tutorials](https://drstearns.github.io/tutorials/) by [David Stearns](https://ischool.uw.edu/people/faculty/dlsinfo).
 
-<p class="alert alert-warning">This book is currently in **alpha** status. Visit us on [GitHub](https://github.com/info343/book) to contribute improvements.</p>
+<p class="alert alert-warning">This book is currently in **alpha** status. Visit us on [GitHub](https://github.com/info340/book) to contribute improvements.</p>
 
 ![Creative Commons License](img/index/by-nc-sa.png)
 This book is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).

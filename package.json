@@ -1,10 +1,10 @@
 {
-  "name": "info343-book",
-  "version": "1.1.0",
+  "name": "info340-book",
+  "version": "1.1.1",
   "description": "This repository contains the source code for the **INFO 340: Client-Side Web Development** course book. The published book can be viewed at **https://info340.github.io/**.",
   "devDependencies": {
-    "pandoc-filter": "^0.1.8",
-    "prismjs": "^1.15.0"
+    "pandoc-filter": "^2.0.0",
+    "prismjs": "^1.21.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/info340/book.git"
   },
   "author": "Joel Ross and Mike Freeman",
-  "license": "cc-by-nc-sa-4.0",
+  "license": "CC-BY-NC-SA-4.0",
   "bugs": {
     "url": "https://github.com/info340/book/issues"
   },
