@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -447,9 +447,9 @@ A slide from Chedeau’s talk. Click the image to view the entire deck.
 <div class="column col2">
 <pre class="language-js"><code><span class="token comment">/* JavaScript version */</span>
 <span class="token keyword">const</span> h1Style <span class="token operator">=</span> <span class="token punctuation">{</span>
-  fontFamily<span class="token punctuation">:</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span>
-  color<span class="token punctuation">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
-  backgroundColor<span class="token punctuation">:</span> <span class="token string">'#333'</span>
+  fontFamily<span class="token operator">:</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span>
+  color<span class="token operator">:</span> <span class="token string">'white'</span><span class="token punctuation">,</span>
+  backgroundColor<span class="token operator">:</span> <span class="token string">'#333'</span>
 <span class="token punctuation">}</span></code></pre>
 </div>
 </div>
@@ -462,13 +462,13 @@ Normally, in non-React contexts, inline styling (specifying CSS properties in an
 </p>
 <p>You can even use JavaScript objects to <em>namespace</em> particular “style” objects, allowing you to produce something akin to CSS classes (where you can organize and apply lots of properties at once):</p>
 <pre class="language-jsx"><code><span class="token keyword">const</span> styles <span class="token operator">=</span> <span class="token punctuation">{</span>
-   success<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      backgroundColor<span class="token punctuation">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span>
-      color<span class="token punctuation">:</span> <span class="token string">'white'</span>
+   success<span class="token operator">:</span> <span class="token punctuation">{</span>
+      backgroundColor<span class="token operator">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span>
+      color<span class="token operator">:</span> <span class="token string">'white'</span>
    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-   failure<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      backgroundColor<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
-      color<span class="token punctuation">:</span> <span class="token string">'white'</span>
+   failure<span class="token operator">:</span> <span class="token punctuation">{</span>
+      backgroundColor<span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+      color<span class="token operator">:</span> <span class="token string">'white'</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
@@ -485,13 +485,13 @@ Normally, in non-React contexts, inline styling (specifying CSS properties in an
 <pre class="language-jsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> StyleSheet<span class="token punctuation">,</span> css <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'aphrodite'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    success<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-       backgroundColor<span class="token punctuation">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span>
-       color<span class="token punctuation">:</span> <span class="token string">'white'</span>
+    success<span class="token operator">:</span> <span class="token punctuation">{</span>
+       backgroundColor<span class="token operator">:</span> <span class="token string">'green'</span><span class="token punctuation">,</span>
+       color<span class="token operator">:</span> <span class="token string">'white'</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    failure<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-       backgroundColor<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
-       color<span class="token punctuation">:</span> <span class="token string">'white'</span>
+    failure<span class="token operator">:</span> <span class="token punctuation">{</span>
+       backgroundColor<span class="token operator">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
+       color<span class="token operator">:</span> <span class="token string">'white'</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -503,20 +503,20 @@ Normally, in non-React contexts, inline styling (specifying CSS properties in an
 <li>Note that classes are still name-spaced (e.g., <code>styles.success</code>, not just <code>success</code>), you you pass the result of the <code>css()</code> function to the <code>className</code> property.</li>
 </ul>
 <p>The Aphrodite library will take this <code>StyleSheet</code> you have defined and use it to <strong>automatically generate CSS class rules</strong> which are <em>injected</em> into the page, just as if you had to written them inside of a <code>.css</code> file! The above JSX code will produce DOM elements:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>success_c72tod<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>failure_cioc8l<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You lose.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success_c72tod<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>failure_cioc8l<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You lose.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>Note that the class names start with the name you gave it, but have a number of additional characters at the end (the <code>_c72tod</code> after <code>success</code>). These characters are a <a href="https://en.wikipedia.org/wiki/MurmurHash">hash</a> of the CSS properties contained within that classname, and are used to distinguish between different classes after they have been injected into the page and thus have become “global” variables. In effect, this library will <em>automatically</em> produce “unique names” for each CSS class you define (differentiated by a deterministic hash at the end), so you don’t need to worry about the <code>success</code> class in one Component interfering with the <code>success</code> class in another.</p>
 <p>Aphrodite will also let you specify pseudo-selectors and media queries. These are specified as <em>properties</em> of the classes they should apply to; the name of that property is (<em>a string of</em>) the pseudo-selector or media query, and the value of that property is another object containing the CSS properties to apply:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment">//...</span>
-    hover<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">':hover'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            backgroundColor<span class="token punctuation">:</span><span class="token string">'gray'</span>
+    hover<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">':hover'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            backgroundColor<span class="token operator">:</span><span class="token string">'gray'</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    responsive<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'@media (min-width:598px)'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            fontSize<span class="token punctuation">:</span><span class="token string">'2rem'</span>
+    responsive<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'@media (min-width:598px)'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            fontSize<span class="token operator">:</span><span class="token string">'2rem'</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
@@ -527,7 +527,7 @@ Normally, in non-React contexts, inline styling (specifying CSS properties in an
 <pre class="language-jsx"><code><span class="token comment">//pass multiple styles into `css()`</span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token function">css</span><span class="token punctuation">(</span>styles<span class="token punctuation">.</span>success<span class="token punctuation">,</span> styles<span class="token punctuation">.</span>hover<span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">/></span></span>You win<span class="token operator">!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>This will render an element with the DOM:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>success_c72tod-o_O-hover_2nsohz<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>success_c72tod-o_O-hover_2nsohz<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>Note here that the <code>success</code> and <code>hover</code> classes have been concatenated into <em>a single class</em> (using <code>-o_O-</code> as a separator); this is to avoid any <a href="https://github.com/Khan/aphrodite#overriding-styles">“ordering” issues</a>—ensuring that the <code>hover</code> options are always applied <em>after</em> the <code>success</code> options.</p>
 <p>Aphrodite supports a few other features and edge cases, see the <a href="https://github.com/Khan/aphrodite">documentation</a> for details.</p>
 <p class="alert alert-info">
@@ -554,8 +554,8 @@ Aphrodite is just one of many different CSS-in-JS libraries, all of which have t
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>success<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>You win<span class="token operator">!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">className</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>failure<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>You lose<span class="token punctuation">.</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>This will render DOM elements with unique, locally-scoped class names (similar to what Aphrodite does):</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src-___App__success___1t37A<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src-___App__failure___2BnXi<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You lose.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>src-___App__success___1t37A<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>src-___App__failure___2BnXi<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You lose.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>Overall, CSS Modules has the advantages of letting you write styles in <code>.css</code> files as usual (it’s clear where your CSS is located), can run slightly faster (since in the end, it’s just a CSS file loaded as normal), and include a few extra features that supports easy <strong>composition</strong> of classes (similar to that provided by SASS).</p>
 <div id="ejecting-from-create-react-app" class="section level3 unnumbered">
 <h3>Ejecting from Create React App</h3>
@@ -565,7 +565,7 @@ Aphrodite is just one of many different CSS-in-JS libraries, all of which have t
 Ejecting is a one-way operation! Once you have “extracted” the build configurations, it’s impossible to put them back (short of creating a new app and copying the files over). Be sure you want to do this! Note that if you <em>really</em> don’t want to eject, there are other, more fragile <a href="https://medium.com/@kitze/configure-create-react-app-without-ejecting-d8450e96196a">solutions</a>.
 </p>
 <p>In order to <em>eject</em> your configuration information, run the following command:</p>
-<pre class="language-bash"><code><span class="token function">cd</span> path/to/app  <span class="token comment"># from the app folder</span>
+<pre class="language-bash"><code><span class="token builtin class-name">cd</span> path/to/app  <span class="token comment"># from the app folder</span>
 <span class="token function">npm</span> run <span class="token function">eject</span></code></pre>
 <p>This will create two new folders in your project: <code>scripts</code> (which contains the <code>build</code> and <code>start</code> scripts, e.g., what happens when you run <code>npm start</code>), and <code>config/</code> (which contains the build configuration files).</p>
 <ul>
@@ -573,16 +573,16 @@ Ejecting is a one-way operation! Once you have “extracted” the build configu
 </ul>
 <p>You will need to make a simple change to the Webpack configuration files to support CSS Modules. In the <code>webpack.config.dev.js</code> file, at around line 160 (as of this writing), you will find a “rule” object with the property <strong><code>test: /\.css$/</code></strong>; this specifies what processing should be applied to <code>.css</code> files. Modify this property:</p>
 <pre class="language-js"><code><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
-  use<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  use<span class="token operator">:</span> <span class="token punctuation">[</span>
     require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'style-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      loader<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'css-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-      options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        importLoaders<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      loader<span class="token operator">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'css-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+      options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        importLoaders<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
         <span class="token comment">//ADD THE BELOW TWO PROPERTIES!!</span>
-        modules<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-        localIdentName<span class="token punctuation">:</span> <span class="token string">'[path]___[name]__[local]___[hash:base64:5]'</span><span class="token punctuation">,</span>
+        modules<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        localIdentName<span class="token operator">:</span> <span class="token string">'[path]___[name]__[local]___[hash:base64:5]'</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     <span class="token comment">//...</span>
@@ -619,13 +619,13 @@ Ejecting is a one-way operation! Once you have “extracted” the build configu
 <ul>
 <li><p>In order to support <code>babel-plugin-react-css-modules</code>, install the library with <code>npm</code> and modify the Webpack config file. Modify the “rule” object with the property <strong><code>test: /\.(js|jsx|mjs)$/</code></strong> (which applies to <code>.js</code> files):</p>
 <pre class="language-js"><code><span class="token punctuation">{</span>
-  test<span class="token punctuation">:</span> <span class="token regex">/\.(js|jsx|mjs)$/</span><span class="token punctuation">,</span>
-  include<span class="token punctuation">:</span> paths<span class="token punctuation">.</span>appSrc<span class="token punctuation">,</span>
-  loader<span class="token punctuation">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'babel-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  options<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    cacheDirectory<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|jsx|mjs)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+  include<span class="token operator">:</span> paths<span class="token punctuation">.</span>appSrc<span class="token punctuation">,</span>
+  loader<span class="token operator">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'babel-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  options<span class="token operator">:</span> <span class="token punctuation">{</span>
+    cacheDirectory<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token comment">//ADD THE BELOW PROPERTY!!</span>
-    plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span> <span class="token string">'react-css-modules'</span> <span class="token punctuation">]</span>
+    plugins<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'react-css-modules'</span> <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre>
 <p>This will apply the plugin whenever the JavaScript files are transpiled, allowing you to utilize the <code>styleName</code> without explicitly using the <code>react-css-modules</code> library.</p></li>
@@ -650,10 +650,10 @@ Ejecting is a one-way operation! Once you have “extracted” the build configu
   <span class="token property">background-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token comment">/* additional properties only for .failure */</span>
 <span class="token punctuation">}</span></code></pre>
 <p>When applied to the previous example (the two <code>&lt;button&gt;</code> elements), this will render as <em>two separate CSS classes</em>:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src-___App__success___1t37A src-___App__base___LeFt5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>src-___App__failure___2BnXi src-___App__base___LeFt5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>src-___App__success___1t37A src-___App__base___LeFt5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>src-___App__failure___2BnXi src-___App__base___LeFt5<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>You win!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span></code></pre>
 <p>While you can still specify just a single class in your JavaScript (e.g., <code>className={style.success}</code>), CSS Modules will automatically apply all of the “dependent” styles to your element!</p>
-<p>Moreover, you can also compose CSS classes <strong>across separate files</strong> by specifying the value as coming <code>from &quot;filename&quot;</code>:</p>
+<p>Moreover, you can also compose CSS classes <strong>across separate files</strong> by specifying the value as coming <code>from "filename"</code>:</p>
 <pre class="language-css"><code><span class="token comment">/* colors.css */</span>
 <span class="token selector">.success</span> <span class="token punctuation">{</span>
     <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>

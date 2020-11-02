@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -410,10 +410,12 @@
             <section class="normal" id="section-">
 <div id="css-layouts" class="section level1">
 <h1><span class="header-section-number">Chapter 7</span> CSS Layouts</h1>
-<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts:
-- <strong>Display</strong>: determines how elements share horizontal space
-- <strong>Position</strong>: allows you to adjust the location of the natural flow of elements
-- <strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</p>
+<p>The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should <em>appear</em> on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the <strong>top left corner</strong> of the page, and are arranged based on three related (but distinct) concepts:</p>
+<ul>
+<li><strong>Display</strong>: determines how elements share horizontal space</li>
+<li><strong>Position</strong>: allows you to adjust the location of the natural flow of elements</li>
+<li><strong>Box-model</strong>: describes the amount of 2D space taken up by an element, and how much space is between elements</li>
+</ul>
 <div id="display" class="section level2">
 <h2><span class="header-section-number">7.1</span> Display</h2>
 <p>Without any CSS, html elements follow a default <strong>flow</strong> on the page based on the order they appear in the HTML. Layout is based on whether the element is a <em>block element</em> or an <em>inline element</em>.</p>
@@ -421,13 +423,13 @@
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <div class="figure">
-<img src="img/css/block-element.png" alt="Example of block elements, placed on top of each other." />
+<img src="img/css/block-element.png" alt="" />
 <p class="caption">Example of block elements, placed on top of each other.</p>
 </div>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
 <div class="figure">
-<img src="img/css/inline-element.png" alt="Example of inline elements, next to each other (even if the code is on separate lines)." />
+<img src="img/css/inline-element.png" alt="" />
 <p class="caption">Example of inline elements, next to each other (even if the code is on separate lines).</p>
 </div>
 <p><em>However</em>, you can force an element to be either <code>block</code> or <code>inline</code> by declaring the <strong><code>display</code></strong> CSS property:</p>
@@ -435,8 +437,8 @@
   <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <pre class="language-html"><code><span class="token comment">&lt;!-- this will produce the same result as using &lt;span> elements --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <p>The <code>display</code> property also allows you to remove elements from the page flow entirely:</p>
 <pre class="language-css"><code><span class="token selector">.hidden</span> <span class="token punctuation">{</span>
   <span class="token comment">/* do not show element at all */</span>
@@ -444,7 +446,7 @@
 <span class="token punctuation">}</span></code></pre>
 <p>There are several other more specific settings, the most useful of which is <code>inline-block</code>. This lets you treat an element as <code>inline</code> (no line break after), but also gives you the ability to specify its <code>width</code>, <code>height</code>, and other properties only adjustable on <code>block</code> elements. This is particularly useful for making things like lists (<code>&lt;ul&gt;</code>) appear “inline”.</p>
 <div class="figure">
-<img src="img/css/inline-block-example.png" alt="An example of an element with display:inline-block." />
+<img src="img/css/inline-block-example.png" alt="" />
 <p class="caption">An example of an element with <code>display:inline-block</code>.</p>
 </div>
 </div>
@@ -455,14 +457,14 @@
 <p>First off, you can set the <strong><code>width</code></strong> and <strong><code>height</code></strong> of elements explicitly, though be careful when you do this. If your <code>width</code> and <code>height</code> are too small, the element’s content will be clipped by default (a behavior controlled by the <code>overflow</code> property). It’s generally best to set only the width <strong>or</strong> the height, but not both. You can also specify a <code>min-width</code> or <code>min-height</code> to ensure that the width or height is at least a particular size. Conversely, you can use <code>max-width</code> and <code>max-height</code> to constrain the size of the element.</p>
 <p>In order to adjust the spacing between boxes, you can manipulate one of 3 properties:</p>
 <div class="figure">
-<img src="img/css/box-model.png" alt="A diagram of the box model properties" />
+<img src="img/css/box-model.png" alt="" />
 <p class="caption">A diagram of the box model properties</p>
 </div>
 <div id="padding" class="section level3 unnumbered">
 <h3>Padding</h3>
 <p>The <strong>padding</strong> is the space between the content and the border (e.g., the edge of the box).</p>
 <div class="figure">
-<img src="img/css/box-padding.png" alt="An element’s padding." />
+<img src="img/css/box-padding.png" alt="" />
 <p class="caption">An element’s padding.</p>
 </div>
 <p>It is possible to specify the padding of each side of the box individually, or a uniform padding for the entire element:</p>
@@ -507,7 +509,7 @@
 <h3>Margin</h3>
 <p>Finally, the <strong>margin</strong> specifies the space <em>between</em> this box and other nearby boxes. <code>margin</code> is declared in an equivalent manner to <code>padding</code>.</p>
 <div class="figure">
-<img src="img/css/box-margin.png" alt="An element’s margins." />
+<img src="img/css/box-margin.png" alt="" />
 <p class="caption">An element’s margins.</p>
 </div>
 <p>Note that browsers typically <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">collapse</a> (overlap) the margins of adjacent elements. For example, if you have two paragraphs on top of one another, and you set <code>margin-bottom</code> on the first and <code>margin-top</code> on the second, most browsers will overlap those margins and just use the larger of the two values to determine the spacing.</p>
@@ -577,13 +579,13 @@ Flexbox is a new standard that is now supported by <a href="http://caniuse.com/#
 Despite it’s capabilities, Flexbox still is designed primarily for one-directional flows (e.g., having one row of columns). To handle true grid-like layouts, browsers are adopting <em>another</em> emerging standard called <a href="https://css-tricks.com/snippets/css/complete-guide-grid/"><strong>Grid</strong></a>. The Grid framework shares some conceptual similarities to Flexbox (configuring child elements inside of a parent container), but utilizes a different set of properties. Learning one should make it easy to pick up the other. Note that the grid framework is <a href="http://caniuse.com/#search=CSS%20grid">less well supported</a> than even Flexbox (it is not supported by IE, Edge, or common older Android devices), so should be used with caution.
 </p>
 <p>To use a Flexbox layout, you need to style <em>two</em> different classes of elements: a <strong>container</strong> (or <strong>parent</strong>) element that acts as a holder for the <strong>item</strong> (or <strong>child</strong>) elements—the child elements are <em>nested</em> inside of the parent:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- Parent --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- Parent --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
 <div class="figure">
-<img src="img/css/flex-nesting.png" alt="An example of a simple Flexbox layout." />
+<img src="img/css/flex-nesting.png" alt="" />
 <p class="caption">An example of a simple Flexbox layout.</p>
 </div>
 <p>Note that the “outer” parent element has one class (e.g., <code>flex-container</code>, but you can call it whatever you want), and the “inner” child elements share another (e.g., <code>flex-item</code>). Creating an effective Flexbox layout requires you to specify properties for <em>both</em> of these classes. You most often use <code>&lt;div&gt;</code> elements for the parent and child elements (and the child of course can have further content, including more divs, nested within it).</p>
@@ -611,7 +613,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <p>In practice, using percentages for the <code>flex-basis</code> will let you easily size the columns of your layout.</p></li>
 </ul>
 <div class="figure">
-<img src="img/css/flex-grow-shrink-vert.png" alt="Top: visual example of flex-grow. Bottom: visual example of flex-shrink. Notice how much extra “space” each item has after the text content." />
+<img src="img/css/flex-grow-shrink-vert.png" alt="" />
 <p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
 </div>
 <p>There is also a <em>shortcut property</em> <code>flex</code> that allows you to specify all three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified, the <code>flex-basis</code> property will be set to <code>0</code>, rather than the <code>auto</code> value it has if unspecified.</p>

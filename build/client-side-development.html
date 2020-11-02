@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -413,7 +413,7 @@
 <p>Web development is the process of implementing (programming) web sites and applications that users can access over the internet. However, the internet is a network involving <em>many</em> different computers all communicating with one another. These computers can be divided into two different groups: <strong>servers</strong> store (“host”) content and provide (“serve”) it to other computers, while <strong>clients</strong> request that content and then present it to the human users.</p>
 <p>Consider the process of viewing a basic web page, such as <a href="https://en.wikipedia.org/wiki/Informatics">the Wikipedia entry on Informatics</a>. In order to visit this page, the user types the web address (<code>https://en.wikipedia.org/wiki/Informatics</code>) into the URL bar, or clicks on a link to go to the page. In either case, the user’s computer is the <strong>client</strong>, and their browser takes that address or link and uses it to create an <strong>HTTP Request</strong>—a <em>request</em> for data sent following the <em><strong>H</strong>yper<strong>T</strong>ext <strong>T</strong>ransfer <strong>P</strong>rotocol</em>. This request is like a letter asking for information, and is sent to a different computer: the <strong>web server</strong> that contains that information.</p>
 <div class="figure">
-<img src="img/client-side/client-server-comm.png" alt="A diagram of client/server communication." />
+<img src="img/client-side/client-server-comm.png" alt="" />
 <p class="caption">A diagram of client/server communication.</p>
 </div>
 <p>The web server will receive this request, and based on its content (e.g., the parameters of the URL) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.</p>
@@ -434,7 +434,7 @@
 <h2><span class="header-section-number">2.2</span> HTTP Requests and Servers</h2>
 <p>Modern web browsers are able to <em>render</em> (interpret and display) all of these types of files, combining them together into the modern, interactive web pages you use every day. In fact, you can open up almost any file inside a web browser, such as by right-clicking on the file and selecting “Open With”, or dragging the file into the browser program. HTML files act as the basis for web pages, so you can open a <code>.html</code> file inside your web browser by double-clicking on it (the same way you would open a <code>.docx</code> file in MS Word):</p>
 <div class="figure">
-<img src="img/client-side/plain-site.png" alt="An very simple HTML file. See Chapter 3 for source code." />
+<img src="img/client-side/plain-site.png" alt="" />
 <p class="caption">An very simple HTML file. See Chapter 3 for source code.</p>
 </div>
 <!-- this is borrowed from the 201 book; keep in sync with that -->
@@ -444,7 +444,7 @@
 </ul>
 <p>Like postal letter addresses, URIs have a very specific format used to direct the request to the right resource.</p>
 <div class="figure">
-<img src="img/client-side/uri-schema.png" title="URI schema" alt="The format (schema) of a URI." />
+<img src="img/client-side/uri-schema.png" title="URI schema" alt="" />
 <p class="caption">The format (schema) of a URI.</p>
 </div>
 <p>The parts of this URI format include:</p>
@@ -458,9 +458,9 @@
 <li><p><strong><code>path</code></strong>: which resource on that web server you wish to access. For the <code>file</code> protocol, this is the <em>absolute path</em> to the file on your computer. But even when using <code>https</code>, for many web servers, this will be the <em>relative path</em> to the file, starting from the “root” folder of that server (which may not be the computer’s root folder). For example, if a server used <code>/Users/joelross/</code> as its root, then the <em>path</em> to the above HTML file would be <code>Desktop/index.html</code> (e.g., <code>https://domain/Desktop/index.html</code>).</p>
 <p><strong>Important!</strong> If you specify a path to a folder rather than a file (including <code>/</code> as the “root” folder), most web servers will serve the file named <code>index.html</code> from that folder (i.e., the path “defaults” to <code>index.html</code>). As such, this is the traditional name for the HTML file containing a website’s home page.</p>
 <p class="alert alert-warning">
-As in any program, you should always use <strong>relative</strong> paths in web programming, and these paths are frequently (but not always!) relative to the web server’s <em>root folder</em>.
+<p>As in any program, you should always use <strong>relative</strong> paths in web programming, and these paths are frequently (but not always!) relative to the web server’s <em>root folder</em>.</p>
 </p></li>
-<li><strong><code>query</code></strong> (<em>optional</em>): extra <strong>parameters</strong> (arguments) included in the request about what resource to access. The leading <code>?</code> is part of the query.</li>
+<li><p><strong><code>query</code></strong> (<em>optional</em>): extra <strong>parameters</strong> (arguments) included in the request about what resource to access. The leading <code>?</code> is part of the query.</p></li>
 <li><p><strong><code>fragment</code></strong> (<em>optional</em>): indicates which part (“fragment”) of the resource to access. This is used for example to let the user “jump” to the middle of a web page. The leading <code>#</code> is part of the fragment.</p></li>
 </ul>
 <div id="development-servers" class="section level3 unnumbered">

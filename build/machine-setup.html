@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -416,7 +416,7 @@ Note that iSchool lab machines should have all appropriate software already inst
 </p>
 <p>In summary, you’ll need to install and set up the following software on your machine (more information below on each of these). Feel free to use alternative software, but these are the suggested programs for the course (i.e., the ones which we will provide support for):</p>
 <ul>
-<li><a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Google Chrome</strong></a> as your web browser</li>
+<li>A modern web browser such as <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Google Chrome</strong></a></li>
 <li><a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a> as your code editor</li>
 <li><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> as a JavaScript engine</li>
 <li><a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a> as a JavaScript package manager (comes with Node.js)</li>
@@ -426,11 +426,12 @@ Note that iSchool lab machines should have all appropriate software already inst
 </ul>
 <div id="web-browser" class="section level2">
 <h2><span class="header-section-number">1.1</span> Web Browser</h2>
-<p>The first thing you’ll need is a web browser for viewing the web pages you make! We recommend you install and utilize <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class.</p>
+<p>The first thing you’ll need is a web browser for viewing the web pages you make! We recommend you install and utilize <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class. We recommend Chrome primarily for historical reasons (and because it is the browser used by the authors—and we had to pick one!)</p>
 <ul>
 <li>You can access the Chrome Developer tools by selecting <strong>View &gt; Developer &gt; Developer Tools</strong> from Chrome’s main menu (<code>cmd + option + i</code> on a Mac, <code>ctrl + shift + i</code> on Windows). You will pretty much always want to have these tools open when doing web development, especially when including interactivity via JavaScript.</li>
 </ul>
-<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.</p>
+<p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function perfectly well in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.</p>
+<p>We strongly suggest that you don’t use Safari, as it has a number of user interface and rendering issues that make it difficult to develop with for this course.</p>
 </div>
 <div id="code-editors" class="section level2">
 <h2><span class="header-section-number">1.2</span> Code Editors</h2>
@@ -513,7 +514,7 @@ This course expects you to already be familiar with basic command line usage. Fo
 <p class="alert alert-danger">
 This course expects you to already be familiar with utilizing Git and GitHub. For review, see
 <a href="https://info201.github.io/git-basics.html">Git and GitHub</a>, <a href="https://info201.github.io/git-branches.html">Git Branches</a>, and <a href="https://info201.github.io/git-collaboration.html">Git Collaboration</a>
-in the <em>INFO 201</em> course reader. Note that students in the INFO 343 course will be using GitHub and Pull Requests to turn in programming assignments.
+in the <em>INFO 201</em> course reader. Note that students in the INFO 340 course will be using GitHub and Pull Requests to turn in programming assignments.
 </p>
 </div>
 <div id="node-and-npm" class="section level2">
@@ -523,13 +524,13 @@ in the <em>INFO 201</em> course reader. Note that students in the INFO 343 cours
 <pre class="language-bash"><code><span class="token comment">## Run from your home directory:</span>
 
 <span class="token function">touch</span> ~/.bash_profile
-<span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
+<span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
 
 <span class="token comment">## Restart the command shell</span>
 
 nvm <span class="token function">install</span> node
 nvm use node
-nvm <span class="token function">alias</span> default node</code></pre>
+nvm <span class="token builtin class-name">alias</span> default node</code></pre>
 <p>You can then test that node is installed and working with</p>
 <pre class="language-bash"><code>node --version</code></pre>
 <p>Be sure and check that you have a recent enough version! At time of this writing, you need Node v10.16 or later.</p>
@@ -577,13 +578,13 @@ Because node packages can be very large, and projects can have lots of them, you
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>(You can create one of these files by using the command <code>npm init</code> in the current project directory, and then following the instructions to fill in the fields).</p>
-<p>Notice that there are two packages listed under <code>&quot;dependencies&quot;</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>). You can use <code>npm</code> to automatically install all of the packages listed under <code>&quot;dependencies&quot;</code> (as well as under <code>&quot;devDependencies&quot;</code>) using the command:</p>
+<p>Notice that there are two packages listed under <code>"dependencies"</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>). You can use <code>npm</code> to automatically install all of the packages listed under <code>"dependencies"</code> (as well as under <code>"devDependencies"</code>) using the command:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span></code></pre>
 <p>Thus using <code>npm install</code> without any arguments means “install all of the requirements that have been listed for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub.</p>
 <p>When installing specific packages, <code>npm</code> automatically adds them to the dependencies list in the <code>package.json</code>, though you can make this explicit with the <code>--save</code> option:</p>
 <pre class="language-bash"><code><span class="token comment"># explicitly save dependency in package.json</span>
 <span class="token function">npm</span> <span class="token function">install</span> --save lodash</code></pre>
-<p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>&quot;devDependencies&quot;</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
+<p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>"devDependencies"</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
 <p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for the project:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">link</span> lodash</code></pre>
 <p>Be sure to <code>link</code> any global packages <em>before</em> you run <code>npm install</code> so you don’t download any packages from <code>package.json</code> that you already have!</p>

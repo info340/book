@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -416,20 +416,20 @@
 <p>Normally you’ve considered functions as “named sequences of instructions”, or groupings of lines of code that are given a name. But in a functional programming paradigm, functions are <a href="https://en.wikipedia.org/wiki/First-class_function">first-class citizens</a>—that is, they are “things” (values) that can be organized and manipulated <em>just like variables</em>.</p>
 <p>In JavaScript, <strong>functions ARE variables</strong>:</p>
 <pre class="language-js"><code><span class="token comment">//create a function called `sayHello`</span>
-<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//what kind of thing is `sayHello` ?</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> sayHello<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> 'function'</span></code></pre>
-<p>Just like <code>let x = 3</code> defines a variable for a value of type <code>number</code>, or <code>let msg = &quot;hello&quot;</code> defines a variable for a value of type <code>string</code>, the above <code>sayHello</code> function is actually a variable for a <em>value</em> of type <code>function</code>!</p>
+<p>Just like <code>let x = 3</code> defines a variable for a value of type <code>number</code>, or <code>let msg = "hello"</code> defines a variable for a value of type <code>string</code>, the above <code>sayHello</code> function is actually a variable for a <em>value</em> of type <code>function</code>!</p>
 <p class="alert alert-warning">
 <strong>Important</strong>: we refer to a function by it’s name <em>without</em> the parentheses!
 </p>
 <p>The fact that functions <strong>are</strong> variables is the core realization to make when programming in a functional style. You need to be able to think about functions as <strong>things</strong> (nouns), rather than as <strong>behaviors</strong> (verbs). If you imagine that functions are “recipes”, then you need to think about them as <em>pages from the cookbook</em> (that can be bound together or handed to a friend), rather than just the sequence of actions that they tell you to perform.</p>
 <p>And because functions are just another type of variable, they can be used <strong>anywhere</strong> that a “regular” variable can be used. For example, functions are values, so they can be assigned to other variables!</p>
 <pre class="language-js"><code><span class="token comment">//create a function called `sayHello`</span>
-<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -448,20 +448,20 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//pass in named var</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//pass in anonymous value</span></code></pre>
 <pre class="language-js"><code><span class="token comment">//named function (normal)</span>
-<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token parameter">person</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//an anonymous function (with no name!)</span>
 <span class="token comment">//(We can't reference this without a name, so writing an anonymous function is</span>
 <span class="token comment">//not a valid statement)</span>
-<span class="token keyword">function</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">person</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//anonymous function (value) assigned to variable</span>
 <span class="token comment">//equivalent to the version in the previous example</span>
-<span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">person</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>person<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <ul>
@@ -469,8 +469,8 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>Thus you can define named functions in one of to ways: either by making an explicitly named function or by assigning an anonymous function to a variable:</p>
 <pre class="language-js"><code><span class="token comment">//these produce the same function</span>
-<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token keyword">let</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>bar<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<span class="token keyword">function</span> <span class="token function">foo</span><span class="token punctuation">(</span><span class="token parameter">bar</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">let</span> <span class="token function-variable function">foo</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">bar</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
 <p>The only difference between these two constructions is one of <em>ordering</em>. When the JavaScript interpreter is initially reading and parsing the script file, it will put variable and function declarations into memory before it executes any of the file. In effect, JavaScript will seem to “move” variable and function declarations to the top of the file! This process is called <a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting"><strong>hoisting</strong></a> (declarations are “hoisted” to the top of the script).
 <!-- ```js
 //this will work even though the function is declared after it is called!
@@ -492,8 +492,8 @@ let sayHello = function(name) { console.log("Hello, "+name); }
 <p>Moreover, functions are values, so they can be assigned as values of <em>object properties</em> (since object properties are like name-spaced variables):</p>
 <pre class="language-js"><code><span class="token comment">//an object representing a dog</span>
 <span class="token keyword">let</span> dog <span class="token operator">=</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'Sparky'</span>
-    breed<span class="token punctuation">:</span> <span class="token string">'mutt'</span>
+    name<span class="token operator">:</span> <span class="token string">'Sparky'</span>
+    breed<span class="token operator">:</span> <span class="token string">'mutt'</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//assign an anonymous function to the `bark` property</span>
@@ -512,14 +512,14 @@ dog<span class="token punctuation">.</span><span class="token function">bark</sp
 </ul>
 <pre class="language-js"><code><span class="token comment">// An object representing a Dog</span>
 <span class="token keyword">let</span> fido <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token punctuation">:</span> <span class="token string">"Fido"</span><span class="token punctuation">,</span>
-  bark<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">"woofs"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  name<span class="token operator">:</span> <span class="token string">"Fido"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">bark</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">"woofs"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">// An object representing another Dog</span>
 <span class="token keyword">let</span> spot <span class="token operator">=</span> <span class="token punctuation">{</span>
-  name<span class="token punctuation">:</span> <span class="token string">"Spot"</span><span class="token punctuation">,</span>
-  bark<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">"yips"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+  name<span class="token operator">:</span> <span class="token string">"Spot"</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">bark</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">"yips"</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'***This is Fido barking:***'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -532,19 +532,19 @@ spot<span class="token punctuation">.</span><span class="token function">bark</s
 <h2><span class="header-section-number">11.3</span> Callback Functions</h2>
 <p>Finally, functions are values, so they can be <em>passed as parameters to other functions</em>!</p>
 <pre class="language-js"><code><span class="token comment">//create a function `sayHello`</span>
-<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">//a function that takes ANOTHER FUNCTION as an argument</span>
 <span class="token comment">//this function will call the argument function, passing it "world"</span>
-<span class="token keyword">function</span> <span class="token function">doWithWorld</span><span class="token punctuation">(</span>funcToCall<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">doWithWorld</span><span class="token punctuation">(</span><span class="token parameter">funcToCall</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">//call the given function with an argument of "world"</span>
     <span class="token function">funcToCall</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token function">doWithWorld</span><span class="token punctuation">(</span>sayHello<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//logs "Hello world";</span></code></pre>
-<p>In this case, the <code>doWithWorld</code> function will <em>execute</em> whatever function it is given, passing in a value of <code>&quot;world&quot;</code>.</p>
+<p>In this case, the <code>doWithWorld</code> function will <em>execute</em> whatever function it is given, passing in a value of <code>"world"</code>.</p>
 <ul>
 <li><p><strong>Important note</strong>: when we pass <code>sayHello</code> as an argument, we don’t put any parentheses after it! Putting the parentheses after the function name <em>executes</em> the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to <em>resolve</em> to its returned value, rather than being the function value itself. It’s like passing in the baked cake rather than the recipe page.</p>
 <pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment">//version with no args for clarity</span>
@@ -557,7 +557,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//logs "Hello", which is what `sayHello()` resolves to</span></code></pre></li>
 </ul>
 <p>A function that is passed into another is commonly referred to as a <strong>callback function</strong>: it is an argument that the other function will “call back to” and execute when needed.</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">doLater</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">doLater</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"I'm waiting a bit..."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Okay, time to work!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//"call back" and execute that function</span>
@@ -569,7 +569,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token function">doLater</span><span class="token punctuation">(</span>doHomework<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Functions can take more than one callback function as arguments, which can be a useful way of <em>composing</em> behaviors.</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">doTogether</span><span class="token punctuation">(</span>firstCallback<span class="token punctuation">,</span> secondCallback<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">doTogether</span><span class="token punctuation">(</span><span class="token parameter">firstCallback<span class="token punctuation">,</span> secondCallback</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token function">firstCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//execute the first function</span>
     <span class="token function">secondCallback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//execute the second function</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'at the same time!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -588,11 +588,11 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>This idea of <em>passing functions are arguments to other functions</em> is at the heart of functional programming, and is what gives it expressive power: we can define program behavior primarily in terms of the behaviors that are run, and less in terms of the data variables used. Moreover, callback functions are vital for supporting <strong>interactivity</strong>: many built-in JavaScript functions take in a callback function that specifies what should occur at some specific time (e.g., when the user clicks a button).</p>
 <p>Often a callback function will be defined just to be passed into a single other function. This makes naming the callback somewhat redundant, and so it is more common to utilize <strong>anonymous callback functions</strong>:</p>
 <pre class="language-js"><code><span class="token comment">//name anonymous function by assigning to variable</span>
-<span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">let</span> <span class="token function-variable function">sayHello</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">doWithWorld</span><span class="token punctuation">(</span>funcToCall<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">doWithWorld</span><span class="token punctuation">(</span><span class="token parameter">funcToCall</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token function">funcToCall</span><span class="token punctuation">(</span><span class="token string">"world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -600,7 +600,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token function">doWithWorld</span><span class="token punctuation">(</span>sayHello<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">//pass in anonymous version of the function</span>
-<span class="token function">doWithWorld</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token function">doWithWorld</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello, "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <ul>
@@ -616,13 +616,13 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <!-- https://slides.com/joelross/arch-w17-typescript/edit #26-->
 <pre class="language-js"><code><span class="token comment">//This function produces ANOTHER FUNCTION</span>
 <span class="token comment">//which greets a person with a given greeting</span>
-<span class="token keyword">function</span> <span class="token function">makeGreeterFunc</span><span class="token punctuation">(</span>greeting<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">makeGreeterFunc</span><span class="token punctuation">(</span><span class="token parameter">greeting</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">//explicitly store the param as a local variable (for clarity)</span>
     <span class="token keyword">let</span> localGreeting <span class="token operator">=</span> greeting<span class="token punctuation">;</span>
 
     <span class="token comment">//A new function that uses the `greeting` param</span>
     <span class="token comment">//this is just a value!</span>
-    <span class="token keyword">let</span> <span class="token function-variable function">aGreeterFunc</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> <span class="token function-variable function">aGreeterFunc</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>localGreeting<span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 
@@ -663,7 +663,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-js"><code><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
 <span class="token comment">//function for what to do with each item</span>
-<span class="token keyword">function</span> <span class="token function">printItem</span><span class="token punctuation">(</span>currentItem<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">printItem</span><span class="token punctuation">(</span><span class="token parameter">currentItem</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>currentItem<span class="token punctuation">;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -672,7 +672,7 @@ array<span class="token punctuation">.</span><span class="token function">forEac
 <p>The <code>forEach()</code> method goes through each item in the array and executes the given <em>callback function</em>, passing that item as a parameter to the callback. In effect, it lets you specify “what to do with each element” in the array as a separate function, and then “apply” that function to each elements.</p>
 <ul>
 <li><p><code>forEach()</code> is a <em>built-in</em> method for Arrays—similar to <code>push()</code> or <code>indexOf()</code>. For reference, the “implementation” of the <code>forEach()</code> function looks something like:</p>
-<pre class="language-js"><code>Array<span class="token punctuation">.</span><span class="token function-variable function">forEach</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>callback<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//define the Array's forEach method</span>
+<pre class="language-js"><code>Array<span class="token punctuation">.</span><span class="token function-variable function">forEach</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//define the Array's forEach method</span>
     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token function">callback</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
@@ -682,7 +682,7 @@ array<span class="token punctuation">.</span><span class="token function">forEac
 </ul>
 <p>While it is possible to make a named callback function for <code>forEach()</code>, it is <em>much</em> more common to use an <strong>anonymous callback function</strong>:</p>
 <pre class="language-js"><code><span class="token comment">//print each item in the array</span>
-array<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+array<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <ul>
@@ -692,7 +692,7 @@ array<span class="token punctuation">.</span><span class="token function">forEac
 <div id="map" class="section level3 unnumbered">
 <h3>Map</h3>
 <p>JavaScript provides a number of other functional loop methods. For example, consider the following “regular” loop:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that squares a number</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that squares a number</span>
     <span class="token keyword">return</span> n<span class="token operator">*</span>n<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -706,7 +706,7 @@ array<span class="token punctuation">.</span><span class="token function">forEac
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>squares<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// [1, 4, 9, 16, 25]</span></code></pre>
 <p>This loop represents a <strong>mapping</strong> operation: it takes an original array (e.g., of numbers 1 to 5) and produces a <em>new</em> array with each of the original elements transformed in a certain way (e.g., squared). This is a common operation to apply: maybe you want to “transform” an array so that all the values are rounded or lowercase, or you want to <em>map</em> an array of words to an array of their lengths, or you want to <em>map</em> an array of values to an array of <code>&lt;li&gt;</code> HTML strings. It is possible to make all these changes using the above code pattern: create a new empty array, then loop through the original array and <code>push</code> the transformed values onto that new array.</p>
 <p>However, JavaScript also provides a <em>built-in array method</em> called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><strong><code>map()</code></strong></a> that directly performs this kind of mapping operation on an array without needing to use a loop:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that squares a number</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that squares a number</span>
     <span class="token keyword">return</span> n<span class="token operator">*</span>n<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -722,7 +722,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>And again, the <code>map()</code> callback function (e.g., <code>square()</code> in the above example) is more commonly written as an anonymous callback function:</p>
 <pre class="language-js"><code><span class="token keyword">let</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//an initial array</span>
-<span class="token keyword">let</span> squares <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">let</span> squares <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> n<span class="token operator">*</span>n<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p><strong>Note</strong>: the major difference between the <code>.forEach</code> method and the <code>.map</code> method is that the <code>.map</code> method will <strong>return</strong> each element. If you need to create a new array, you should use <code>.map</code>. If you simply need to <em>do something</em> for each element in an array, use <code>.forEach</code>.</p>
@@ -730,7 +730,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div id="filter" class="section level3 unnumbered">
 <h3>Filter</h3>
 <p>A second common operation is to <strong>filter</strong> a list of elements, removing elements that we don’t want (or more accurately: only keeping elements that we <em>DO</em> want). For example, consider the following loop:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isEven</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that determines if a number is even</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isEven</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that determines if a number is even</span>
     <span class="token keyword">let</span> remainder <span class="token operator">=</span> n <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">//get remainder when dividing by 2 (modulo operator)</span>
     <span class="token keyword">return</span> remainder <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//true if no remainder, false otherwise</span>
 <span class="token punctuation">}</span>
@@ -746,7 +746,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>evens<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//[2, 8]</span></code></pre>
 <p>With this <strong>filtering</strong> loop, we are <em>keeping</em> the values for which the <code>isEven()</code> function returns <code>true</code> (the function determines “what to let in” not “what to keep out”; a <a href="https://www.schneier.com/blog/archives/2011/01/whitelisting_vs.html">whitelist</a>), which we do by appending the “good” values to a new array.</p>
 <p>Similar to <code>map()</code>, JavaScript arrays include a <em>built-in method</em> called <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter"><strong><code>filter()</code></strong></a> that will directly perform this filtering:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isEven</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that determines if a number is even</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">isEven</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that determines if a number is even</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//true if no remainder, false otherwise</span>
 <span class="token punctuation">}</span>
 
@@ -759,7 +759,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <ul>
 <li><p>And again, we usually use <em>anonymous callback functions</em> for <code>filter()</code>:</p>
 <pre class="language-js"><code><span class="token keyword">let</span> numbers <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">//an initial array</span>
-<span class="token keyword">let</span> evens <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>n<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//one-liner!</span></code></pre>
+<span class="token keyword">let</span> evens <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token keyword">return</span> <span class="token punctuation">(</span>n<span class="token operator">%</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//one-liner!</span></code></pre>
 <p>(Since JavaScript ignores whitespace, we can compact simple callbacks onto a single line. <a href="es6.html#es6">ES6 and Beyond</a> describes an even more compact syntax for such functions).</p></li>
 </ul>
 <p>Because <code>map()</code> and <code>filter()</code> are both called on and produce arrays, it is possible <strong>chain</strong> them together, calling subsequent methods on each returned value:</p>
@@ -784,7 +784,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>You can think of <code>reduce()</code> as a <em>generalization</em> of the <code>sum()</code> function found in many other languages—but rather than just adding (<code>+</code>) the values together, <code>reduce()</code> allows you to specify what operation to perform when aggregating (e.g., <a href="https://en.wikipedia.org/wiki/Factorial">multiplication</a>).</li>
 </ul>
 <p>To understand how a <em>reduce</em> operation works, consider the following basic loop:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that adds two numbers</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that adds two numbers</span>
     <span class="token keyword">return</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -797,7 +797,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>runningTotal<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//15</span></code></pre>
 <p>This loop <strong>reduces</strong> the array into an “accumulated” sum of all the numbers in the list. Inside the loop, the <code>add()</code> function is called and passed the “current total” and the “new value” to be combined into the aggregate (<em>in that order</em>). The resulting total is then reassigned as the “current total” for the next iteration.</p>
 <p>The <em>built-in array method</em> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce"><strong><code>reduce()</code></strong></a> does exactly this work: it takes as an argument <em>a callback function</em> used to combine the current running total with the new value, and returns the aggregated total. Whereas the <code>map()</code> and <code>filter()</code> callback functions each usually took 1 argument (with 2 others optional), the <code>reduce()</code> callback function requires <strong>2</strong> arguments (with 2 others optional): the first will be the “running total” (called the <strong>accumulator</strong>), and the second will be the “new value” to mix into the aggregate. (While this ordering doesn’t influence the summation example, it is relevant for other operations):</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that adds two numbers</span>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//a function that adds two numbers</span>
     <span class="token keyword">return</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -810,14 +810,14 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">let</span> sum <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>add<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Note that the syntax can be a little hard to parse if you use an anonymous callback function:</p>
 <pre class="language-js"><code><span class="token comment">//sum starting from 10</span>
-numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">{</span>
+numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token keyword">return</span> x<span class="token operator">+</span>y<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//the starting value comes AFTER the callback!</span></code></pre>
 <p>The <em>accumulator</em> value can be any type you want! For example, you can have the starting value be an empty object <code>{}</code> instead of a number, and have the accumulator use the current value to “update” that object (which is “accumulating” information).</p>
 <p>To summarize, the <code>map()</code>, <code>filter()</code>, and <code>reduce()</code> operations work as follows:</p>
 <!-- should use JS specific version? Just code as text?? -->
 <div class="figure">
-<img src="img/javascript/map-filter-reduce-in-emoji.png" alt="Map, filter, reduce explained with emoji. Not valid JavaScript syntax." />
+<img src="img/javascript/map-filter-reduce-in-emoji.png" alt="" />
 <p class="caption">Map, filter, reduce explained with emoji. Not valid JavaScript syntax.</p>
 </div>
 <p>All together, the <strong>map</strong>, <strong>filter</strong>, and <strong>reduce</strong> operations form the basic platform for a functional consideration of a program. Indeed, these kinds of operations are very common when discussing data manipulations: for example, the famous <a href="https://en.wikipedia.org/wiki/MapReduce">MapReduce</a> model involves “mapping” each element through a complex function (on a different computer no less!), and then “reducing” the results into a single answer.</p>

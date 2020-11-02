@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2019-10-09">
+<meta name="date" content="2020-11-02">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -109,7 +109,7 @@
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
@@ -306,7 +306,7 @@
 <li class="chapter" data-level="17.1.1" data-path="interactive-react.html"><a href="interactive-react.html#accessing-this-component-from-events"><i class="fa fa-check"></i><b>17.1.1</b> Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
 <li class="chapter" data-level="17.2" data-path="react.html"><a href="react.html#state"><i class="fa fa-check"></i><b>17.2</b> State</a><ul>
-<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
+<li class="chapter" data-level="17.2.1" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i><b>17.2.1</b> State vs. Props</a></li>
 <li class="chapter" data-level="17.2.2" data-path="interactive-react.html"><a href="interactive-react.html#changing-the-state"><i class="fa fa-check"></i><b>17.2.2</b> Changing the State</a></li>
 <li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
 <li class="chapter" data-level="17.2.3" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i><b>17.2.3</b> Working with Forms</a></li>
@@ -422,7 +422,7 @@
 <p>There are two things you need to do to get started:</p>
 <ol style="list-style-type: decimal">
 <li><p>First, we need to create the <code>package.json</code> file to store information about the app you’re building, including dependencies that Webpack will use. You can do this with the following command:</p>
-<pre class="language-bash"><code><span class="token function">cd</span> path/to/project
+<pre class="language-bash"><code><span class="token builtin class-name">cd</span> path/to/project
 <span class="token function">npm</span> init</code></pre></li>
 </ol>
 <p>You will be prompted for a bunch of information to provide about your app. Give it the following details (<strong>just hit <code>&lt;enter&gt;</code> to accept the details on any other prompts</strong>)</p>
@@ -462,19 +462,19 @@
 <p>We specify the first piece (what files to transform) by giving the exported object an <code>entry</code> property:</p>
 <pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token comment">//list of entry points</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">[</span>
     __dirname <span class="token operator">+</span> <span class="token string">'/src/index.js'</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre>
 <p>This indicates which file (relative to the <em>folder you are currently in</em>) is the “start” or “entry point” into your program—in a way, which file has “main” in it. In our case, <code>src/index.js</code> (the <code>__dirname</code> is a Node constant referring to the current working directory). Note that the <code>entry</code> property is actually an <em>array</em>, since it’s possible to support multiple entry points.</p>
 <p>We’ll skip step 2 for a moment and also specify where to save the transformed files. This is specified as the <code>output</code> property of the config object:</p>
 <pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">[</span>
     __dirname <span class="token operator">+</span> <span class="token string">'/src/index.js'</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    filename<span class="token punctuation">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
-    path<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">'/dist'</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> __dirname <span class="token operator">+</span> <span class="token string">'/dist'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre>
 <p>The <code>output</code> property is itself an object with more details about the output (rather than an array of possible outputs). The above example says that we should output into the <code>dist</code> folder (in the current directory), combining the code into a file called <code>bundle.js</code>.</p>
@@ -507,18 +507,18 @@ bundle.js  3 kB       0  [emitted]  main
 <p>To do this, we use what are called <strong>loaders</strong>. A loader is basically a plugin that is used to perform a particular transformation (e.g., transpiling JSX or even ES 6 syntax!). Webpack’s strength is its set of loaders that enable it to handle pretty much any kind of file and transformation. (It’s of course possible to write your own, but that’s well beyond the scope of this tutorial).</p>
 <p>The <code>module</code> property is used to specify the list of <code>loaders</code>:</p>
 <pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  entry<span class="token operator">:</span> <span class="token punctuation">[</span>
     __dirname <span class="token operator">+</span> <span class="token string">'/src/index.js'</span>
   <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    filename<span class="token punctuation">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
-    path<span class="token punctuation">:</span> __dirname <span class="token operator">+</span> <span class="token string">'/dist'</span>
+  output<span class="token operator">:</span> <span class="token punctuation">{</span>
+    filename<span class="token operator">:</span> <span class="token string">"bundle.js"</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> __dirname <span class="token operator">+</span> <span class="token string">'/dist'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  module<span class="token operator">:</span> <span class="token punctuation">{</span>
+    loaders<span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.jsx?$/</span><span class="token punctuation">,</span>
-        loaders<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"babel-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.jsx?$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+        loaders<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"babel-loader"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -527,12 +527,12 @@ bundle.js  3 kB       0  [emitted]  main
 <ul>
 <li><p>The <code>test</code> property indicates which file types we want the loader to transform. This may look scary and confusion, but that’s because it’s using a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">Regular Expression</a> (similar to how you split words in the JavaScript Challenge) to specify the <em>file extension</em> that we want to consider. This particular expression indicates files that <strong>end in</strong> <code>.js</code> <strong>or</strong> <code>.jsx</code> (the later is often used for JSX React components). How to make sense of this expression and its crazy punctuation:</p>
 <ul>
-<li>Regular expressions are like Strings, but surrounded by <code>/ /</code> instead of <code>&quot; &quot;</code></li>
+<li>Regular expressions are like Strings, but surrounded by <code>/ /</code> instead of <code>" "</code></li>
 <li>The <code>.</code> in <code>.js</code> needs to be <em>escaped</em>, so has a <code>\</code> in front of it. Like <code>\n</code> for newlines.</li>
 <li>The <code>x</code> in <code>.jsx</code> is <em>op tional</em> (without it we have <code>.js</code>, which is fine), so is written with a <code>?</code> after it to indicate that it can be present or not.</li>
 <li>The last <code>$</code> indicates the “end of the line”, so means we’ll only talk about files that <em>end</em> in <code>.js</code> (e.g., <code>libray.js.css</code> wouldn’t get transformed).</li>
 </ul></li>
-<li><p>the <code>loaders</code> property is a list of which loaders we want to apply to files whose names match the “test”. In our case, we use <a href="http://babeljs.io/docs/setup/#installation">Babel</a> to transform our JSX, so we’ll be using <code>&quot;babel&quot;</code> as our loader.</p></li>
+<li><p>the <code>loaders</code> property is a list of which loaders we want to apply to files whose names match the “test”. In our case, we use <a href="http://babeljs.io/docs/setup/#installation">Babel</a> to transform our JSX, so we’ll be using <code>"babel"</code> as our loader.</p></li>
 </ul>
 <div id="babel-loader" class="section level3 unnumbered">
 <h3>Babel Loader</h3>
@@ -580,7 +580,7 @@ bundle.js  3 kB       0  [emitted]  main
 <li><p>Add another element to the <code>module.loaders</code> array in the <code>webpack.config.js</code> file to specify the <code>style-loader</code> transformation.</p>
 <ul>
 <li>The <code>test</code> should be a regular expression for files ending in <strong><code>.css</code></strong></li>
-<li>The <code>loader</code> itself should be <code>&quot;style-loader!css-loader&quot;</code>, which refers to the “css loader” module for the style-loader plugin.</li>
+<li>The <code>loader</code> itself should be <code>"style-loader!css-loader"</code>, which refers to the “css loader” module for the style-loader plugin.</li>
 </ul></li>
 <li><p>Re-build your application using <code>webpack</code>. If you reload the page, you should now see it has a gray background!</p></li>
 </ol>

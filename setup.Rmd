@@ -6,7 +6,7 @@ This course will cover a wide variety of tools and techniques used in modern web
 
 In summary, you'll need to install and set up the following software on your machine (more information below on each of these). Feel free to use alternative software, but these are the suggested programs for the course (i.e., the ones which we will provide support for):
 
-- [**Google Chrome**](https://www.google.com/chrome/browser/desktop/index.html) as your web browser
+- A modern web browser such as [**Google Chrome**](https://www.google.com/chrome/browser/desktop/index.html)
 - [**Visual Studio Code**](https://code.visualstudio.com/) as your code editor
 - [**Node.js**](https://nodejs.org/en/) as a JavaScript engine
 - [**`npm`**](https://www.npmjs.com/) as a JavaScript package manager (comes with Node.js)
@@ -16,11 +16,13 @@ In summary, you'll need to install and set up the following software on your mac
 
 ## Web Browser
 
-The first thing you'll need is a web browser for viewing the web pages you make! We recommend you install and utilize [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class.
+The first thing you'll need is a web browser for viewing the web pages you make! We recommend you install and utilize [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class. We recommend Chrome primarily for historical reasons (and because it is the browser used by the authors&mdash;and we had to pick one!)
 
 - You can access the Chrome Developer tools by selecting **View > Developer > Developer Tools** from Chrome's main menu (`cmd + option + i` on a Mac, `ctrl + shift + i` on Windows). You will pretty much always want to have these tools open when doing web development, especially when including interactivity via JavaScript.
 
-Other modern browsers such as [**Firefox**](https://www.mozilla.org/en-US/firefox/new/) or [**Microsoft Edge**](https://www.microsoft.com/en-us/windows/microsoft-edge) will also function in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.
+Other modern browsers such as [**Firefox**](https://www.mozilla.org/en-US/firefox/new/) or [**Microsoft Edge**](https://www.microsoft.com/en-us/windows/microsoft-edge) will also function perfectly well in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.
+
+We strongly suggest that you don't use Safari, as it has a number of user interface and rendering issues that make it difficult to develop with for this course.
 
 ## Code Editors
 
@@ -150,7 +152,9 @@ Installing Node also installs an additional command line program called [**`npm`
 
 <p class="alert alert-warning">If you have an older version of Node and `npm` (before Node 10.16 or `npm` 5.6), you will need to update them. You can re-install the latest version of Node as above, or just upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.</p>
 
+
 ### Managing packages with npm {-}
+
 
 You can use the `npm` program to download and install command line programs by name:
 
