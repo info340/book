@@ -300,6 +300,8 @@ React enables you to _implement_ your page in terms of [explicit components](htt
 </div>
 </div>
 
+<!-- TODO: replace this with "pure functions" approach; note that the class is what's happening in the background -->
+
 As a component represents a "type" of content, you define a component by defining a **class** (using [ES6 Class syntax](#es6-classes)) that acts as a template or blueprint for that content. In particular, you define a class that _inherits_ from the [**`React.Component`**](https://reactjs.org/docs/react-component.html) class&mdash;this inheritance means that the class you define _IS A_ React Component!
 
 ```jsx

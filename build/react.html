@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2020-11-02">
+<meta name="date" content="2020-11-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -267,7 +267,7 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 Features</a><ul>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6+ Features</a><ul>
 <li class="chapter" data-level="15.1" data-path="es6.html"><a href="es6.html#es6-classes"><i class="fa fa-check"></i><b>15.1</b> Classes</a><ul>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
@@ -277,10 +277,12 @@
 <li class="chapter" data-level="15.2" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i><b>15.2</b> Arrow Functions</a><ul>
 <li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.3</b> Modules</a></li>
-<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.4</b> Other Features</a><ul>
+<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#destructuring-and-spreading"><i class="fa fa-check"></i><b>15.3</b> Destructuring and Spreading</a></li>
+<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.4</b> Modules</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#module-syntax"><i class="fa fa-check"></i>Module Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.5</b> Other Features</a><ul>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
-<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#destructuring-and-spreading"><i class="fa fa-check"></i>Destructuring and Spreading</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -635,6 +637,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>App</span><span class="token punctuation">></span></span></code></pre>
 </div>
 </div>
+<!-- TODO: replace this with "pure functions" approach; note that the class is what's happening in the background -->
 <p>As a component represents a “type” of content, you define a component by defining a <strong>class</strong> (using <a href="es6.html#es6-classes">ES6 Class syntax</a>) that acts as a template or blueprint for that content. In particular, you define a class that <em>inherits</em> from the <a href="https://reactjs.org/docs/react-component.html"><strong><code>React.Component</code></strong></a> class—this inheritance means that the class you define <em>IS A</em> React Component!</p>
 <pre class="language-jsx"><code><span class="token comment">//Define a component representing information about a user</span>
 <span class="token keyword">class</span> <span class="token class-name">UserInfo</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 15 ES6 Features | Client-Side Web Development</title>
+  <title>Chapter 15 ES6+ Features | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 15 ES6 Features | Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 15 ES6+ Features | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 15 ES6 Features | Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 15 ES6+ Features | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2020-11-02">
+<meta name="date" content="2020-11-03">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -267,7 +267,7 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6 Features</a><ul>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6+ Features</a><ul>
 <li class="chapter" data-level="15.1" data-path="es6.html"><a href="es6.html#es6-classes"><i class="fa fa-check"></i><b>15.1</b> Classes</a><ul>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
@@ -277,10 +277,12 @@
 <li class="chapter" data-level="15.2" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i><b>15.2</b> Arrow Functions</a><ul>
 <li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
 </ul></li>
-<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.3</b> Modules</a></li>
-<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.4</b> Other Features</a><ul>
+<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#destructuring-and-spreading"><i class="fa fa-check"></i><b>15.3</b> Destructuring and Spreading</a></li>
+<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.4</b> Modules</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#module-syntax"><i class="fa fa-check"></i>Module Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.5</b> Other Features</a><ul>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
-<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#destructuring-and-spreading"><i class="fa fa-check"></i>Destructuring and Spreading</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -409,9 +411,9 @@
 
             <section class="normal" id="section-">
 <div id="es6" class="section level1">
-<h1><span class="header-section-number">Chapter 15</span> ES6 Features</h1>
+<h1><span class="header-section-number">Chapter 15</span> ES6+ Features</h1>
 <p>As discussed in <a href="javascript.html#history-and-versions">Chapter 10</a>, the ECMAScript specification for the JavaScript language has gone through several different versions, each of which adds new syntax and features to try and make the language more powerful or easier to work with. In 2015, a new version of the language was released—officially called “ECMAScript 2015”, most developers refer to it by the working name <strong>“ES6”</strong> (e.g., version 6 of the language).</p>
-<p>This chapter introduces some of the most notable and useful features introduced in ES6—particularly those that will be utilized by the React framework (discussed in the following chapters).</p>
+<p>This chapter introduces some of the most notable and useful features introduced in ES6 and later versions of JavaScript—particularly those that will be utilized by the React framework (discussed in the following chapters).</p>
 <p class="alert alert-warning">
 ES6 is <a href="http://kangax.github.io/compat-table/es6/">mostly supported by modern browsers</a>, with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won’t be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the <a href="https://babeljs.io/">Babel</a> compiler, which will “<em>transpile</em>” JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it’s automatically performed by provided build tools), but it is also possible to <a href="https://babeljs.io/docs/setup/#installation">install</a> and utilize the Babel compiler yourself.
 </p>
@@ -444,6 +446,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p>A <strong>Class</strong> (<em>class</em>ification) acts as
 <em>template/recipe/blueprint</em> for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an “instance of” (example of) a class: we <strong>instantiate</strong> an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a> provide a syntax by which these “templates” can be defined.</p>
+<p class="alert alert-info">
+React’s preferred styling no longer relies heavily on class syntax, but it’s still a good idea to be familiar with it to help with your understanding and in case you need to do more complex work.
+</p>
 </div>
 <div id="review-classes-in-java" class="section level3 unnumbered">
 <h3>Review: Classes in Java</h3>
@@ -777,29 +782,80 @@ doggy<span class="token punctuation">.</span><span class="token function">bark</
 myFunction <span class="token operator">=</span> <span class="token function">myFunction</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>thisValue<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.
 </div>
+<p class="alert">
+Arrow functions are not optional. <strong>Always use arrow functions for anonymous callbacks!</strong>
+</p>
 </div>
+</div>
+<div id="destructuring-and-spreading" class="section level2">
+<h2><span class="header-section-number">15.3</span> Destructuring and Spreading</h2>
+<p>ES6 also introduced <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"><strong>destructing assignments</strong></a>, which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. This is called “destructuring” because you are “unpacking” the values of an array into a bunch of different variables.</p>
+<p>To destructure an array in JavaScript, you write the variables you wish to assign values to inside of square brackets <strong><code>[]</code></strong> on the <em>left-hand side</em> of the assignment—almost like you are assigning to an array!</p>
+<pre class="language-js"><code><span class="token keyword">let</span> myArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">]</span> <span class="token operator">=</span> myArray<span class="token punctuation">;</span> <span class="token comment">//assign myArray elements to `x`, `y`, `z` respectively</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 1;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 2;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3;</span></code></pre>
+<p>It is also possible to destructure <em>objects</em> using a similar syntax:</p>
+<pre class="language-js"><code><span class="token keyword">let</span> myObject <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> c<span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">{</span>a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">}</span> <span class="token operator">=</span> myObject<span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 2;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3;</span></code></pre>
+<p>Note that when destructuring an object, the variables specified on the left side of the assignment are assigned the value from the matching <em>property</em> in the object. Thus in <code>let {a, b, c} = myObject</code>, the <code>a</code> is assigned <code>myObject.a</code>, the <code>b</code> is assigned <code>myObject.b</code>, etc. The order of the elements on eitehr side of the equation doesn’t matter. Any values on the left-hand side that don’t have a corresponding property in the object being destructured will not be assigned a value (will remain <code>undefined</code>). There is syntax to assign values to different variable names as well, see <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring">the documentation</a> for details.</p>
+<p>When destructuring, if the array or object contains more than the target number of elements, the extra elements will be ignored. However, you can capture them by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"><strong>spread operator</strong></a> (<strong><code>...</code></strong>), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:</p>
+<pre class="language-js"><code><span class="token keyword">let</span> dimensions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">]</span> <span class="token operator">=</span> dimensions
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> 10</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 20</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//=> [30, 40]; the rest of the values!</span></code></pre>
+<p>The <em>spread operator</em> is also commonly used to specify that a function can take an undefined number of arguments, and to gather all of these values into a single array:</p>
+<pre class="language-js"><code><span class="token comment">//a function that logs out all of the parameters</span>
+<span class="token keyword">function</span> <span class="token function">printArgs</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//all the parameters will be grouped into a single array `args`</span>
+    args<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">arg</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> <span class="token comment">//can log out all of them, no matter how many!</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">printArgs</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "a" "b" "c"</span>
+<span class="token function">printArgs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "1" "2" "3" "4" "5" "6"</span>
+
+<span class="token comment">//a function that adds up all the arguments (no matter how many!)</span>
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>numbers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//numbers is an array, so we can `reduce()` it!</span>
+    <span class="token keyword">let</span> total <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">runningTotal<span class="token punctuation">,</span> num</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> runningTotal <span class="token operator">+</span> num<span class="token punctuation">;</span> <span class="token comment">//new total</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//start at 0</span>
+
+    <span class="token keyword">return</span> total<span class="token punctuation">;</span>
+
+    <span class="token comment">//or as one line with a concise arrow function:</span>
+    <span class="token keyword">return</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">total<span class="token punctuation">,</span> n</span><span class="token punctuation">)</span> <span class="token operator">=></span> total<span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span> <span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 10</span>
+<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 100</span></code></pre>
 </div>
 <div id="modules" class="section level2">
-<h2><span class="header-section-number">15.3</span> Modules</h2>
+<h2><span class="header-section-number">15.4</span> Modules</h2>
 <p>So far, you’ve mostly be writing all of your JavaScript code in a single script (e.g., <code>index.js</code>), even if you’d included some other libraries via additional <code>&lt;script&gt;</code> tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug (“where <em>was</em> that function defied?”), can introduce problems with the shared global namespace (“did I already declare a <code>user</code> variable?”), and overall mixes code in a way that violates the <em>Separation of Concerns</em> principle.</p>
 <p>The solution to this problem is to split up your application’s code into separate <strong>modules</strong> (scripts), each of which is responsible for a separate piece of functionality. And rather than loading each module through a separate <code>&lt;script&gt;</code> tag (potentially leading to ordering and dependency issues while continuing to pollute the global namespace), you can define each module as a self-contained script that explicitly “imports” (loads) the functions and variables it needs from other modules. This allows you to better organize your program as it gets large.</p>
 <p>While separating code into modules is a common in the Node.js environment, ES6 adds syntax that allows you to treat individual <code>.js</code> files as modules that can communicate with one another. These are known as <a href="http://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules"><strong>ES6 Modules</strong></a>.</p>
-<div class="alert alert-warning">
-<p>
-<strong>Browsers do not yet support this syntax!</strong> However, modern applications are usually packaged using a <em>bundling</em> build tool such as <a href="https://webpack.github.io/">webpack</a>, which will do the work of “compiling” modules into a single script file (and that we will use with React).
-</p>
-<p>
-Note that the ECMAScript committee is currently <a href="https://whatwg.github.io/loader/">a specification for browser-native module loaders</a>. For example, it is possible to try out modules in the latest versions of Chrome (as of <strong>September 2017</strong>) and Safari (as of March 2017) by specifying the <code>type=module</code> attribute for a <code>&lt;script&gt;</code> tag (and loading the page via a web server). But the most common solution will be to use an external loading app like webpack.
-</p>
-</div>
+<p>In order to use modules inside of the browser, you’ll need to specify the <code>type="module"</code> attribute for your <code>&lt;script&gt;</code> tag (and loading the page via a web server):</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- load a script that can include other modules --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/script.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
+<p>However, most commonly you will <em>not</em> use modules directly inside of the browser. Instead you will load them through an external build tool like <a href="https://webpack.js.org/">webpack</a>. In these situations, you’ll be using the <em>module loader</em> provided by the Node JavaScript runtime. This loader does introduce some quirks in syntax, which are noted in the syntax explanation.</p>
+<div id="module-syntax" class="section level3 unnumbered">
+<h3>Module Syntax</h3>
 <p>As in Java, ES6 Modules are able to “load” external modules or libraries by using the <strong><code>import</code></strong> keyword:</p>
 <pre class="language-java"><code><span class="token comment">//Java example: import `Random` variable from `java.util` to use globally</span>
 <span class="token keyword">import</span> <span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Random</span></code></pre>
 <pre class="language-js"><code><span class="token comment">//JavaScript: import the `Random` variable from a `util.js` module</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Random <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./util'</span><span class="token punctuation">;</span></code></pre>
-<p>This is most common version of the ES6 <code>import</code> syntax: you write the keyword <code>import</code>, following by a set of braces <code>{ }</code> containing a comma-separated sequence of variables you wish to “import” from a particular module. This is followed by the <code>from</code> keyword, followed by a string containing the <strong>relative path</strong> to the module script to import. Note that including the extension of the module script is usually optional (by default, ES6 will look for files ending in <code>.js</code>).</p>
+<p>This is most common version of the ES6 <code>import</code> syntax: you write the keyword <code>import</code>, following by a set of braces <code>{ }</code> containing a comma-separated sequence of variables you wish to “import” from a particular module. This is followed by the <code>from</code> keyword, followed by a string containing the <strong>relative path</strong> to the module script to import. Note that in Node-based systems (such as the React build environment) including the extension of the module script is optional (by default, the module loader will look for files ending in <code>.js</code>).</p>
 <ul>
-<li><p>Be sure to include the <code>./</code> to indicate that you’re loading a file from a particular directory. If you leave that off, the module loader will look for a module installed on the <em>load path</em> (e.g., in <code>node_modules/</code>). That is how you load external files such as jQuery though:</p>
+<li><p>Be sure to include the <code>./</code> to indicate that you’re loading a file from a particular directory. If you leave that off, the Node module loader will look for a module installed on the <em>load path</em> (e.g., in <code>node_modules/</code>). That is how you load external files such as jQuery though:</p>
 <pre class="language-js"><code><span class="token comment">//with jquery installed in `node_modules/`</span>
 <span class="token comment">//import the `$` and `jQuery` variables</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>$<span class="token punctuation">,</span> jQuery<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'jquery'</span><span class="token punctuation">;</span></code></pre></li>
@@ -811,6 +867,7 @@ Note that the ECMAScript committee is currently <a href="https://whatwg.github.i
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">laugh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"hahaha"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
+<p>This is called a <strong>named export</strong> (in contrast to a <em>default export</em> described below).</p>
 <pre class="language-js"><code><span class="token comment">/*** index.js ***/</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> question<span class="token punctuation">,</span> answer<span class="token punctuation">,</span> laugh <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span>
 
@@ -871,11 +928,12 @@ theModule<span class="token punctuation">.</span><span class="token function">ba
 </ul>
 <p>Finally, each module can also <code>export</code> a <em>single</em> (just one!) <strong>default</strong> variable, which provides a slight shortcut when importing the variable from that module. You specify the <em>default export</em> by including the <strong><code>default</code></strong> keyword immediately after <code>export</code>:</p>
 <pre class="language-js"><code><span class="token comment">/*** my-module.js ***/</span>
+<span class="token comment">//this function is the "default" export</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token string">'Hello world!'</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <pre class="language-js"><code><span class="token comment">/*** index.js ***/</span>
-<span class="token keyword">import</span> greet <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> greet <span class="token keyword">from</span> <span class="token string">'./my-module'</span><span class="token punctuation">;</span> <span class="token comment">//import the default value</span>
 
 <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello world!"</span></code></pre>
 <ul>
@@ -884,13 +942,14 @@ theModule<span class="token punctuation">.</span><span class="token function">ba
 <pre class="language-js"><code><span class="token comment">/*** animals.js ***/</span>
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token string">'lion'</span><span class="token punctuation">,</span> <span class="token string">'tiger'</span><span class="token punctuation">,</span> <span class="token string">'bear'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//export anonymous array</span></code></pre></li>
 </ul>
-<p>The <code>default</code> export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single <code>class</code>. That single <code>class</code> can be made the <code>default</code> export, allowing other modules to import it quickly and easily as <code>import MyComponent from './MyComponent.js'</code>.</p>
+<p>The <code>default</code> export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single function or <code>class</code>. That single <code>class</code> can be made the <code>default</code> export, allowing other modules to import it quickly and easily as <code>import MyComponent from './MyComponent.js'</code>.</p>
 <div class="alert alert-info">
-This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js utilizes an alternate module loading system called <a href="https://nodejs.org/docs/latest/api/modules.html#modules_modules">CommonJS</a>. This uses the built-in method <code>require()</code> to load a module (which returns a single “exported” variable as a result). Values are exported from a module by assigning them to the <code>module.exports</code> global. This coure will exclusively utilize ES6 Modules, but it’s good to be aware of the alternate CommonJS approach when searching for help.
+This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js by default uses an alternate module loading system called <a href="https://nodejs.org/docs/latest/api/modules.html#modules_modules">CommonJS</a>. This uses the built-in method <code>require()</code> to load a module (which returns a single “exported” variable as a result). Values are exported from a module by assigning them to the <code>module.exports</code> global. This course will exclusively utilize ES6 Modules, but it’s good to be aware of the alternate CommonJS approach when searching for help.
 </p>
 </div>
+</div>
 <div id="other-features" class="section level2">
-<h2><span class="header-section-number">15.4</span> Other Features</h2>
+<h2><span class="header-section-number">15.5</span> Other Features</h2>
 <blockquote>
 <p>Syntactic Sugar causes cancer of the semicolon - <a href="http://www.cs.yale.edu/homes/perlis-alan/quotes.html">Alan Perlis</a></p>
 </blockquote>
@@ -933,52 +992,7 @@ A Student`;
 
 excuse('Joel', 'Lemur', 'Smell');
 ``` -->
-</div>
-<div id="destructuring-and-spreading" class="section level3 unnumbered">
-<h3>Destructuring and Spreading</h3>
-<p>ES6 also introduced <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment"><strong>destructing assignments</strong></a>, which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. You do this by writing the variables you wish to assign to inside of <strong><code>[]</code></strong> on the <em>left-hand side</em> of the assignment—almost like you are assigning to an array!</p>
-<pre class="language-js"><code><span class="token keyword">let</span> array <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
-<span class="token keyword">let</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">]</span> <span class="token operator">=</span> array<span class="token punctuation">;</span> <span class="token comment">//assign array elements to `x`, `y`, `z` respectively</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 1;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 2;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>z<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 3;</span></code></pre>
-<p>If the array contains more than the target number of elements the extra elements will be ignored. However, you can capture them by using the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator"><strong>spread operator</strong></a> (<strong><code>...</code></strong>), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:</p>
-<pre class="language-js"><code><span class="token keyword">let</span> dimensions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> <span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> <span class="token punctuation">[</span>width<span class="token punctuation">,</span> height<span class="token punctuation">,</span> <span class="token operator">...</span>rest<span class="token punctuation">]</span> <span class="token operator">=</span> dimensions
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//=> 10</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>height<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> 20</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>rest<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//=> [30, 40];</span></code></pre>
-<p>More commonly, the <em>spread operator</em> is used to specify that a function can take an undefined number of arguments, and to gather all of these objects into a single array:</p>
-<pre class="language-js"><code><span class="token comment">//a function that logs out all of the parameters</span>
-<span class="token keyword">function</span> <span class="token function">gather</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">//all the parameters will be grouped into a single array `args`</span>
-    args<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">arg</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span> <span class="token comment">//can log out all of them, no matter how many!</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">gather</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "a" "b" "c"</span>
-<span class="token function">gather</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "1" "2" "3" "4" "5" "6"</span>
-
-<span class="token comment">//a function that adds up all the arguments (no matter how many)</span>
-<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>numbers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token comment">//number is an array, so we can `reduce()` it!</span>
-    <span class="token keyword">let</span> total <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">runningTotal<span class="token punctuation">,</span> num</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> runningTotal <span class="token operator">+</span> num<span class="token punctuation">;</span> <span class="token comment">//new total</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//start at 0</span>
-
-    <span class="token keyword">return</span> total<span class="token punctuation">;</span>
-
-    <span class="token comment">//or as one line with a concise arrow function:</span>
-    <span class="token keyword">return</span> numbers<span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">total<span class="token punctuation">,</span> n</span><span class="token punctuation">)</span> <span class="token operator">=></span> total<span class="token operator">+</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 10</span>
-<span class="token function">sum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// => 100</span></code></pre>
 <p>These are a few of the more common and potentially useful ES6 features. However, remember that most of these are just “syntactic shortcuts” for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don’t need to utilize these features in your code (though they can be helpful), and they will often show up in how we utilize libraries such as React.</p>
-<p class="alert">
-Arrow functions are not optional. <strong>Always use arrow functions for anonymous callbacks!</strong>
-</p>
 </div>
 </div>
 <div id="resources-13" class="section level2 unnumbered">

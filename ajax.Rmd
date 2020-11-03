@@ -294,7 +294,7 @@ fetch(url)
 As such, you will want to make sure to handle things like bad responses or unexpected response bodies, both in testing your application (to make sure the request is sent to the correct URL) and when handling any user input.
 
 
-<!--
+<!-- TODO
 ## async/await
 //this lets you write asynchronous code in a more "synchronous" style, by specifying lines of code that will only execute after the promise is resolved (fulfilled or rejected).
 

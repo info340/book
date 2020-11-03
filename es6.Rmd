@@ -1,7 +1,7 @@
-# ES6 Features {#es6}
+# ES6+ Features {#es6}
 As discussed in [Chapter 10](#history-and-versions), the ECMAScript specification for the JavaScript language has gone through several different versions, each of which adds new syntax and features to try and make the language more powerful or easier to work with. In 2015, a new version of the language was released&mdash;officially called "ECMAScript 2015", most developers refer to it by the working name **"ES6"** (e.g., version 6 of the language).
 
-This chapter introduces some of the most notable and useful features introduced in ES6&mdash;particularly those that will be utilized by the React framework (discussed in the following chapters).
+This chapter introduces some of the most notable and useful features introduced in ES6 and later versions of JavaScript&mdash;particularly those that will be utilized by the React framework (discussed in the following chapters).
 
 <p class="alert alert-warning">ES6 is [mostly supported by modern browsers](http://kangax.github.io/compat-table/es6/), with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won't be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the [Babel](https://babeljs.io/) compiler, which will "_transpile_" JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it's automatically performed by provided build tools), but it is also possible to [install](https://babeljs.io/docs/setup/#installation) and utilize the Babel compiler yourself.</p>
 
@@ -39,6 +39,8 @@ This Object represents a thing with `name`, `age` and `costume` attributes (but 
 
 A **Class** (*class*ification) acts as
 _template/recipe/blueprint_ for individual objects. It defines what data (attributes) and behaviors (methods) they have. An object is an "instance of" (example of) a class: we **instantiate** an object from a class. This lets you easily create multiple objects, each of which can track and modify its own data. [ES6 classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes) provide a syntax by which these "templates" can be defined.
+
+<p class="alert alert-info">React's preferred styling no longer relies heavily on class syntax, but it's still a good idea to be familiar with it to help with your understanding and in case you need to do more complex work.</p>
 
 ### Review: Classes in Java {-}
 First, consider the following simple class defined in _Java_ (which should be review from earlier programming courses):
@@ -430,6 +432,73 @@ myFunction = myFunction.bind(thisValue);
 
 This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.</div>
 
+<p class="alert">Arrow functions are not optional. **Always use arrow functions for anonymous callbacks!**</p>
+
+## Destructuring and Spreading
+ES6 also introduced [**destructing assignments**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. This is called "destructuring" because you are "unpacking" the values of an array into a bunch of different variables.
+
+To destructure an array in JavaScript, you write the variables you wish to assign values to inside of square brackets **`[]`** on the _left-hand side_ of the assignment&mdash;almost like you are assigning to an array!
+
+```js
+let myArray = [1, 2, 3];
+let [x, y, z] = myArray; //assign myArray elements to `x`, `y`, `z` respectively
+console.log(x); //=> 1;
+console.log(y); //=> 2;
+console.log(z); //=> 3;
+```
+
+It is also possible to destructure _objects_ using a similar syntax:
+
+```js
+let myObject = {a: 1, b: 2, c: 3};
+let {a, b, c} = myObject;
+console.log(a); //=> 1
+console.log(b); //=> 2;
+console.log(c); //=> 3;
+```
+
+Note that when destructuring an object, the variables specified on the left side of the assignment are assigned the value from the matching _property_ in the object. Thus in `let {a, b, c} = myObject`, the `a` is assigned `myObject.a`, the `b` is assigned `myObject.b`, etc. The order of the elements on eitehr side of the equation doesn't matter. Any values on the left-hand side that don't have a corresponding property in the object being destructured will not be assigned a value (will remain `undefined`). There is syntax to assign values to different variable names as well, see [the documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) for details.
+
+When destructuring, if the array or object contains more than the target number of elements, the extra elements will be ignored. However, you can capture them by using the [**spread operator**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) (**`...`**), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:
+
+```js
+let dimensions = [10, 20, 30, 40];
+let [width, height, ...rest] = dimensions
+console.log(width);  //=> 10
+console.log(height); //=> 20
+console.log(rest);   //=> [30, 40]; the rest of the values!
+```
+
+The _spread operator_ is also commonly used to specify that a function can take an undefined number of arguments, and to gather all of these values into a single array:
+
+```js
+//a function that logs out all of the parameters
+function printArgs(...args){
+    //all the parameters will be grouped into a single array `args`
+    args.forEach((arg) => {
+        console.log(arg) //can log out all of them, no matter how many!
+    });
+}
+
+printArgs('a', 'b', 'c'); //=> "a" "b" "c"
+printArgs(1,2,3,4,5,6); //=> "1" "2" "3" "4" "5" "6"
+
+//a function that adds up all the arguments (no matter how many!)
+function sum(...numbers) {
+    //numbers is an array, so we can `reduce()` it!
+    let total = numbers.reduce((runningTotal, num) => {
+        return runningTotal + num; //new total
+    }, 0); //start at 0
+
+    return total;
+
+    //or as one line with a concise arrow function:
+    return numbers.reduce((total, n) => total+n);
+}
+
+sum(3 ,4, 3); // => 10
+sum(10, 20, 30, 40); // => 100
+```
 
 ## Modules
 So far, you've mostly be writing all of your JavaScript code in a single script (e.g., `index.js`), even if you'd included some other libraries via additional `<script>` tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug ("where _was_ that function defied?"), can introduce problems with the shared global namespace ("did I already declare a `user` variable?"), and overall mixes code in a way that violates the _Separation of Concerns_ principle.
@@ -438,11 +507,16 @@ The solution to this problem is to split up your application's code into separat
 
 While separating code into modules is a common in the Node.js environment, ES6 adds syntax that allows you to treat individual `.js` files as modules that can communicate with one another. These are known as [**ES6 Modules**](http://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules).
 
-<div class="alert alert-warning">
-<p>**Browsers do not yet support this syntax!** However, modern applications are usually packaged using a _bundling_ build tool such as [webpack](https://webpack.github.io/), which will do the work of "compiling" modules into a single script file (and that we will use with React).</p>
-<p>Note that the ECMAScript committee is currently [a specification for browser-native module loaders](https://whatwg.github.io/loader/). For example, it is possible to try out modules in the latest versions of Chrome (as of **September 2017**) and Safari (as of March 2017) by specifying the `type=module` attribute for a `<script>` tag (and loading the page via a web server). But the most common solution will be to use an external loading app like webpack.</p>
-</div>
+In order to use modules inside of the browser, you'll need to specify the `type="module"` attribute for your `<script>` tag (and loading the page via a web server):
 
+```html
+<!-- load a script that can include other modules -->
+<script type="module" src="path/to/script.js"></script>
+```
+
+However, most commonly you will _not_ use modules directly inside of the browser. Instead you will load them through an external build tool like [webpack](https://webpack.js.org/). In these situations, you'll be using the _module loader_ provided by the Node JavaScript runtime. This loader does introduce some quirks in syntax, which are noted in the syntax explanation.
+
+### Module Syntax {-}
 As in Java, ES6 Modules are able to "load" external modules or libraries by using the **`import`** keyword:
 
 ```java
@@ -455,9 +529,9 @@ import java.util.Random
 import { Random } from './util';
 ```
 
-This is most common version of the ES6 `import` syntax: you write the keyword `import`, following by a set of braces `{ }` containing a comma-separated sequence of variables you wish to "import" from a particular module. This is followed by the `from` keyword, followed by a string containing the **relative path** to the module script to import. Note that including the extension of the module script is usually optional (by default, ES6 will look for files ending in `.js`).
+This is most common version of the ES6 `import` syntax: you write the keyword `import`, following by a set of braces `{ }` containing a comma-separated sequence of variables you wish to "import" from a particular module. This is followed by the `from` keyword, followed by a string containing the **relative path** to the module script to import. Note that in Node-based systems (such as the React build environment) including the extension of the module script is optional (by default, the module loader will look for files ending in `.js`).
 
-- Be sure to include the `./` to indicate that you're loading a file from a particular directory. If you leave that off, the module loader will look for a module installed on the _load path_ (e.g., in `node_modules/`). That is how you load external files such as jQuery though:
+- Be sure to include the `./` to indicate that you're loading a file from a particular directory. If you leave that off, the Node module loader will look for a module installed on the _load path_ (e.g., in `node_modules/`). That is how you load external files such as jQuery though:
 
     ```js
     //with jquery installed in `node_modules/`
@@ -475,6 +549,8 @@ export function laugh() {
     console.log("hahaha");
 }
 ```
+
+This is called a **named export** (in contrast to a _default export_ described below).
 
 ```js
 /*** index.js ***/
@@ -550,6 +626,7 @@ Finally, each module can also `export` a _single_ (just one!) **default** variab
 
 ```js
 /*** my-module.js ***/
+//this function is the "default" export
 export default function sayHello() {
     return 'Hello world!';
 }
@@ -557,7 +634,7 @@ export default function sayHello() {
 
 ```js
 /*** index.js ***/
-import greet from './my-module';
+import greet from './my-module'; //import the default value
 
 greet(); //=> "Hello world!"
 ```
@@ -570,10 +647,10 @@ greet(); //=> "Hello world!"
     export default ['lion', 'tiger', 'bear']; //export anonymous array
     ```
 
-The `default` export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single `class`. That single `class` can be made the `default` export, allowing other modules to import it quickly and easily as `import MyComponent from './MyComponent.js'`.
+The `default` export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single function or `class`. That single `class` can be made the `default` export, allowing other modules to import it quickly and easily as `import MyComponent from './MyComponent.js'`.
 
 
-<div class="alert alert-info">This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js utilizes an alternate module loading system called [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules). This uses the built-in method `require()` to load a module (which returns a single "exported" variable as a result). Values are exported from a module by assigning them to the `module.exports` global. This coure will exclusively utilize ES6 Modules, but it's good to be aware of the alternate CommonJS approach when searching for help.</p>
+<div class="alert alert-info">This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js by default uses an alternate module loading system called [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules). This uses the built-in method `require()` to load a module (which returns a single "exported" variable as a result). Values are exported from a module by assigning them to the `module.exports` global. This course will exclusively utilize ES6 Modules, but it's good to be aware of the alternate CommonJS approach when searching for help.</p>
 
 
 ## Other Features
@@ -627,62 +704,8 @@ A Student`;
 excuse('Joel', 'Lemur', 'Smell');
 ``` -->
 
-### Destructuring and Spreading {-}
-ES6 also introduced [**destructing assignments**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. You do this by writing the variables you wish to assign to inside of **`[]`** on the _left-hand side_ of the assignment&mdash;almost like you are assigning to an array!
-
-
-```js
-let array = [1, 2, 3]
-let [x, y, z] = array; //assign array elements to `x`, `y`, `z` respectively
-console.log(x); //=> 1;
-console.log(y); //=> 2;
-console.log(z); //=> 3;
-```
-
-If the array contains more than the target number of elements the extra elements will be ignored. However, you can capture them by using the [**spread operator**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) (**`...`**), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:
-
-```js
-let dimensions = [10, 20, 30, 40];
-let [width, height, ...rest] = dimensions
-console.log(width);  //=> 10
-console.log(height); //=> 20
-console.log(rest);   //=> [30, 40];
-```
-
-More commonly, the _spread operator_ is used to specify that a function can take an undefined number of arguments, and to gather all of these objects into a single array:
-
-```js
-//a function that logs out all of the parameters
-function gather(...args){
-    //all the parameters will be grouped into a single array `args`
-    args.forEach((arg) => {
-        console.log(arg) //can log out all of them, no matter how many!
-    });
-}
-
-gather('a', 'b', 'c'); //=> "a" "b" "c"
-gather(1,2,3,4,5,6); //=> "1" "2" "3" "4" "5" "6"
-
-//a function that adds up all the arguments (no matter how many)
-function sum(...numbers) {
-    //number is an array, so we can `reduce()` it!
-    let total = numbers.reduce((runningTotal, num) => {
-        return runningTotal + num; //new total
-    }, 0); //start at 0
-
-    return total;
-
-    //or as one line with a concise arrow function:
-    return numbers.reduce((total, n) => total+n);
-}
-
-sum(3,4,3); // => 10
-sum(10,20,30,40); // => 100
-```
 
 These are a few of the more common and potentially useful ES6 features. However, remember that most of these are just "syntactic shortcuts" for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don't need to utilize these features in your code (though they can be helpful), and they will often show up in how we utilize libraries such as React.
-
-<p class="alert">Arrow functions are not optional. **Always use arrow functions for anonymous callbacks!**</p>
 
 
 ## Resources {-}
