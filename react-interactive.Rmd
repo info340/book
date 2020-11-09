@@ -55,7 +55,7 @@ To achieve these effects, a component will need to keep track of its state or si
 State can be specified for a function component by using a _state hook_. [**Hooks**](https://reactjs.org/docs/hooks-intro.html) are 
 functions provided by React that let you "hook into" the framework's rendering and displaying processes. The state hook in particular lets you hook into the state of a component, specifying what values should be "tracked" and should cause the component to rerender.
 
-- Hooks were introduced with React v16.8 (October 2018), and thus are the "new" current way of handling state. For details on older techniques (which require using _class components_), see _State in Class Components_ below. <!-- TODO: add internal link -->
+- Hooks were introduced with React v16.8 (October 2018), and thus are the "new" current way of handling state. For details on older techniques (which require using _class components_), see [_State in Class Components_](#state-in-class-components).
 
 - Fun fact: hooks are basically an example of [_mixins_](https://en.wikipedia.org/wiki/Mixin), which are an object-oriented technique for including/injecting data or behavior in a class without needing to inherit that behavior from a parent class.
 

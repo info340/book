@@ -159,7 +159,7 @@ As such, you will need to make sure to "retain" the `this` context when specifyi
     Although somewhat more tricky to read and interpret (particularly if the callback takes no parameters), this approach allows you to specify a bound function (which will have the correct value for `this`), while still being able to reference the function directly when registering the event listener&mdash;without having to wrap it in a separate arrow function. At the time of writing, this approach is the "cool" way that callback functions are specified in React.
 
 
-## State in Class Components
+## State in Class Components {#state-in-class-components}
 React Components store their state in the `state` instance variable (accessed as **`this.state`**). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component's _constructor_:
 
 ```jsx
