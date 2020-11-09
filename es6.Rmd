@@ -434,7 +434,7 @@ This is a common pattern in React (and has some minuscule performance benefits),
 
 <p class="alert">Arrow functions are not optional. **Always use arrow functions for anonymous callbacks!**</p>
 
-## Destructuring and Spreading
+## Destructuring and Spreading {#destructuring}
 ES6 also introduced [**destructing assignments**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. This is called "destructuring" because you are "unpacking" the values of an array into a bunch of different variables.
 
 To destructure an array in JavaScript, you write the variables you wish to assign values to inside of square brackets **`[]`** on the _left-hand side_ of the assignment&mdash;almost like you are assigning to an array!

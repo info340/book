@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>C React Class Components | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="C React Class Components | Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info340.github.io/" />
+  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="github-repo" content="info340/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="C React Class Components | Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+
+<meta name="author" content="Joel Ross and Mike Freeman">
+
+
+<meta name="date" content="2020-11-09">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
+<link rel="prev" href="webpack.html">
+<link rel="next" href="css-in-js.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the Book</a></li>
+<li class="chapter" data-level="1" data-path="machine-setup.html"><a href="machine-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a><ul>
+<li class="chapter" data-level="1.1" data-path="machine-setup.html"><a href="machine-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="machine-setup.html"><a href="machine-setup.html#code-editors"><i class="fa fa-check"></i><b>1.2</b> Code Editors</a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#atom"><i class="fa fa-check"></i>Atom</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#brackets"><i class="fa fa-check"></i>Brackets</a></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#sublime-text"><i class="fa fa-check"></i>Sublime Text</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="machine-setup.html"><a href="machine-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
+<li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and <code>npm</code></a><ul>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
+<li><a href="machine-setup.html#package.json"><code>package.json</code></a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a><ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i><b>2.1</b> Client-Side File Types</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#http-requests-and-servers"><i class="fa fa-check"></i><b>2.2</b> HTTP Requests and Servers</a><ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a><ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-elements"><i class="fa fa-check"></i>Some Example Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a><ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
+<li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html"><i class="fa fa-check"></i><b>4</b> Standards and Accessibility</a><ul>
+<li class="chapter" data-level="4.1" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#web-standards"><i class="fa fa-check"></i><b>4.1</b> Web Standards</a></li>
+<li class="chapter" data-level="4.2" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#why-accessibility"><i class="fa fa-check"></i><b>4.2</b> Why Accessibility</a></li>
+<li class="chapter" data-level="4.3" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#supporting-accessibility"><i class="fa fa-check"></i><b>4.3</b> Supporting Accessibility</a><ul>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#semantic-html"><i class="fa fa-check"></i>Semantic HTML</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#aria"><i class="fa fa-check"></i>ARIA</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#page-structure-navigable"><i class="fa fa-check"></i>Page Structure (Navigable)</a></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#visual-information-perceivable"><i class="fa fa-check"></i>Visual Information (Perceivable)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>5</b> CSS Fundamentals</a><ul>
+<li class="chapter" data-level="5.1" data-path="css.html"><a href="css.html#why-two-different-languages"><i class="fa fa-check"></i><b>5.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="5.2" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>5.2</b> CSS Rules</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="css.html"><a href="css.html#the-cascade"><i class="fa fa-check"></i><b>5.3</b> The Cascade</a><ul>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css.html"><a href="css.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="css-options.html"><a href="css-options.html"><i class="fa fa-check"></i><b>6</b> CSS Options</a><ul>
+<li class="chapter" data-level="6.1" data-path="css-options.html"><a href="css-options.html#compound-selectors"><i class="fa fa-check"></i><b>6.1</b> Compound Selectors</a><ul>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#group-selector"><i class="fa fa-check"></i>Group Selector</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#combined-selectors"><i class="fa fa-check"></i>Combined Selectors</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#attribute-selectors"><i class="fa fa-check"></i>Attribute Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="css-options.html"><a href="css-options.html#property-values"><i class="fa fa-check"></i><b>6.2</b> Property Values</a><ul>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#css-units"><i class="fa fa-check"></i>Units &amp; Sizes</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#css-colors"><i class="fa fa-check"></i>Colors</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#fonts-and-icons"><i class="fa fa-check"></i>Fonts and Icons</a></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="css-layouts.html"><a href="css-layouts.html"><i class="fa fa-check"></i><b>7</b> CSS Layouts</a><ul>
+<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#display"><i class="fa fa-check"></i><b>7.1</b> Display</a></li>
+<li class="chapter" data-level="7.2" data-path="css-layouts.html"><a href="css-layouts.html#box-model"><i class="fa fa-check"></i><b>7.2</b> The Box Model</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#position"><i class="fa fa-check"></i><b>7.3</b> Position</a><ul>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a><ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a><ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a><ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a><ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a><ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a><ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a><ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a><ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a><ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a><ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="javascript-libraries.html"><a href="javascript-libraries.html"><i class="fa fa-check"></i><b>13</b> JavaScript Libraries</a><ul>
+<li class="chapter" data-level="13.1" data-path="javascript-libraries.html"><a href="javascript-libraries.html#including-a-library"><i class="fa fa-check"></i><b>13.1</b> Including a Library</a></li>
+<li class="chapter" data-level="13.2" data-path="javascript-libraries.html"><a href="javascript-libraries.html#example-jquery"><i class="fa fa-check"></i><b>13.2</b> Example: jQuery</a><ul>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#maniputing-the-dom"><i class="fa fa-check"></i>Maniputing the DOM</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#handling-events"><i class="fa fa-check"></i>Handling Events</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#and-more"><i class="fa fa-check"></i>And more!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>14</b> AJAX Requests</a><ul>
+<li class="chapter" data-level="14.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>14.1</b> AJAX</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>14.2</b> Fetching Data</a></li>
+<li class="chapter" data-level="14.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>14.3</b> Asynchronous Programming</a><ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>15</b> ES6+ Features</a><ul>
+<li class="chapter" data-level="15.1" data-path="es6.html"><a href="es6.html#es6-classes"><i class="fa fa-check"></i><b>15.1</b> Classes</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#es6-class-syntax"><i class="fa fa-check"></i>ES6 Class Syntax</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#inheritance"><i class="fa fa-check"></i>Inheritance</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i><b>15.2</b> Arrow Functions</a><ul>
+<li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="es6.html"><a href="es6.html#destructuring"><i class="fa fa-check"></i><b>15.3</b> Destructuring and Spreading</a></li>
+<li class="chapter" data-level="15.4" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>15.4</b> Modules</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#module-syntax"><i class="fa fa-check"></i>Module Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="es6.html"><a href="es6.html#other-features"><i class="fa fa-check"></i><b>15.5</b> Other Features</a><ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>16</b> Introduction to React</a><ul>
+<li class="chapter" data-level="16.1" data-path="react.html"><a href="react.html#getting-set-up-create-react-app"><i class="fa fa-check"></i><b>16.1</b> Getting Set Up: Create React App</a><ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
+</ul></li>
+<li class="chapter" data-level="16.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>16.2</b> JSX</a><ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#inline-expressions"><i class="fa fa-check"></i>Inline Expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="react.html"><a href="react.html#react-components"><i class="fa fa-check"></i><b>16.3</b> React Components</a><ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternative-class-components"><i class="fa fa-check"></i>Alternative: Class Components</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#component-organization"><i class="fa fa-check"></i>Component Organization</a></li>
+</ul></li>
+<li class="chapter" data-level="16.4" data-path="react.html"><a href="react.html#props"><i class="fa fa-check"></i><b>16.4</b> Properties (<code>props</code>)</a><ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#props-and-composition"><i class="fa fa-check"></i>Props and Composition</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#resources-14"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="interactive-react.html"><a href="interactive-react.html"><i class="fa fa-check"></i><b>17</b> Interactive React</a><ul>
+<li class="chapter" data-level="17.1" data-path="interactive-react.html"><a href="interactive-react.html#handling-events-in-react"><i class="fa fa-check"></i><b>17.1</b> Handling Events in React</a></li>
+<li class="chapter" data-level="17.2" data-path="interactive-react.html"><a href="interactive-react.html#state-and-hooks"><i class="fa fa-check"></i><b>17.2</b> State and Hooks</a><ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#updating-state"><i class="fa fa-check"></i>Updating State</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i>State vs. Props</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="interactive-react.html"><a href="interactive-react.html#specific-interactions"><i class="fa fa-check"></i><b>17.3</b> Specific Interactions</a><ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i>Working with Forms</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#fetching-data-via-ajax"><i class="fa fa-check"></i>Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#resources-15"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="client-side-routing.html"><a href="client-side-routing.html"><i class="fa fa-check"></i><b>18</b> Client-Side Routing</a><ul>
+<li class="chapter" data-level="18.1" data-path="client-side-routing.html"><a href="client-side-routing.html#single-page-applications"><i class="fa fa-check"></i><b>18.1</b> Single-Page Applications</a></li>
+<li class="chapter" data-level="18.2" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router"><i class="fa fa-check"></i><b>18.2</b> React-Router</a><ul>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#routing"><i class="fa fa-check"></i>Routing</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#linking"><i class="fa fa-check"></i>Linking</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router-and-github-pages"><i class="fa fa-check"></i>React Router and Github Pages</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="firebase.html"><a href="firebase.html"><i class="fa fa-check"></i><b>19</b> Firebase</a><ul>
+<li class="chapter" data-level="19.1" data-path="firebase.html"><a href="firebase.html#setting-up-firebase"><i class="fa fa-check"></i><b>19.1</b> Setting up Firebase</a><ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#including-firebase-in-react"><i class="fa fa-check"></i>Including Firebase in React</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#user-authentication"><i class="fa fa-check"></i><b>19.2</b> User Authentication</a><ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-users"><i class="fa fa-check"></i>Creating Users</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#authentication-events"><i class="fa fa-check"></i>Authentication Events</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.3</b> Realtime Database</a><ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#security-rules"><i class="fa fa-check"></i>Security Rules</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#reading-and-writing-data"><i class="fa fa-check"></i>Reading and Writing Data</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#listening-for-data-changes"><i class="fa fa-check"></i>Listening for Data Changes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a><ul>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a><ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a><ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a><ul>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a><ul>
+<li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a><ul>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a><ul>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a><ul>
+<li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
+</ul></li>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a><ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
+</ul></li>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a><ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a><ul>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a><ul>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a><ul>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a><ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a><ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#lists-and-data"><i class="fa fa-check"></i>Lists and Data</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="class-components" class="section level1">
+<h1><span class="header-section-number">C</span> React Class Components</h1>
+<p>As mentioned in <a href="react.html#react"><em>Introduction to React</em></a>, it’s also possible to define React Components using ES 6 class syntax:</p>
+<pre class="language-jsx"><code><span class="token comment">//Define a class component representing information about a user</span>
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
+    <span class="token comment">//Components MUST override the `render()` function, which must return a</span>
+    <span class="token comment">//DOM element</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//This is an everyday function; you can include any code you want here</span>
+        <span class="token keyword">let</span> name <span class="token operator">=</span> <span class="token string">"Ethel"</span><span class="token punctuation">;</span>
+        <span class="token keyword">let</span> descriptor <span class="token operator">=</span> <span class="token string">"Aardvark"</span><span class="token punctuation">;</span>
+
+        <span class="token comment">//Return a React element (JSX) that is how the component will appear</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>name<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello<span class="token punctuation">,</span> my name is <span class="token punctuation">{</span>name<span class="token punctuation">}</span> and <span class="token constant">I</span> am a <span class="token punctuation">{</span>descriptor<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">)</span>        
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This chapter contains further details on working with this style of <strong>Class Components</strong>, in particular how to manage manage <em>state</em> within such components. This chapter can thus be read as a mirror of [<em>Interactive React</em>], just using class components instead of function components.</p>
+<p class="alert alert-info">
+This chapter is taken from an earlier version of the text that emphasized class components instead of function components.
+</p>
+<div id="props-in-class-components" class="section level2">
+<h2><span class="header-section-number">C.1</span> Props in Class Components</h2>
+<p>When defining a Class component, all of the passed in props are automatically assigned to the <code>props</code> instance variable, accessible as <strong><code>this.props</code></strong>. The <code>this.props</code> variable contains the object that would be passed as an argument to a function version of the component.</p>
+<pre class="language-jsx"><code><span class="token comment">//Define a component representing information about a user</span>
+<span class="token keyword">class</span> <span class="token class-name">UserInfo</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">//access the individual props from inside the `this.props` object</span>
+        <span class="token keyword">let</span> userName <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>userName<span class="token punctuation">;</span>
+        <span class="token keyword">let</span> descriptor <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>descriptor<span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>userName<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello<span class="token punctuation">,</span> my name is <span class="token punctuation">{</span>name<span class="token punctuation">}</span> and <span class="token constant">I</span> am a <span class="token punctuation">{</span>descriptor<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token punctuation">)</span>        
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> userInfo <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span></span> <span class="token attr-name">userName</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Ethel<span class="token punctuation">"</span></span> <span class="token attr-name">descriptor</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Aardvark<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span></code></pre>
+<p>Note that the <code>this.props</code> object is <strong>read only</strong>—meaning that you cannot assign new values to it, nor modify its props directly. You should just think of props as immutable data that is coming in from outside of the component (again, similar to function arguments). A component doesn’t create or change is own props, it just uses those to determine how to render its content.</p>
+</div>
+<div id="handling-events-in-class-components" class="section level2">
+<h2><span class="header-section-number">C.2</span> Handling Events in Class Components</h2>
+<p>When using class components, events are handled in the same way as with function components (e.g., using the <code>onClick</code> prop). The main difference is that event handler callbacks are usually defined as separate <em>methods</em> of the class:</p>
+<pre class="language-jsx"><code><span class="token comment">//A component representing a button that logs a message when clicked</span>
+<span class="token keyword">class</span> <span class="token class-name">MyButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">//method to call when clicked. The name is conventional, but arbitrary</span>
+  <span class="token comment">//the callback function will be passed the DOM event</span>
+  <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'clicky clicky'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//make a button with an `onClick` attribute!</span>
+    <span class="token comment">//this "registers" the listener and sets the callback</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>Click me<span class="token operator">!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that when assigning the method to the <code>onClick</code> prop, the method is referenced using the <code>this</code> keyword (and no parentheses!), because the reference is to <em>this Component<strong>’s</strong></em> <code>handleClick()</code> method.</p>
+<div id="accessing-this-component-from-events" class="section level3 unnumbered">
+<h3>Accessing <code>this</code> Component from Events</h3>
+<p>It is very common to have a Component’s event callback functions need to reference the instance variables or methods of that component—such as to do something based with a prop (found in <code>this.props</code>) or to call an additional helper method (called as <code>this.otherMethod()</code>). In short—the event callback will need to have access to the <code>this</code> context.</p>
+<p>But as discussed in <a href="es6.html#working-with-this">Section 15.2</a>, callback functions are not called on any particular object, and thus do not have a value assigned to their <code>this</code> variable. In the example above, although you’re using the word <code>this</code> to <em>refer to</em> the method <code>this.handleClick</code> (to tell JavaScript where to find the function), that function is not actually being called on the class. As described in Section 15.2, just because the method was defined inside a class doesn’t mean it needs to be called on an instance of that class!</p>
+<pre class="language-jsx"><code><span class="token comment">//BUGGY CODE: A button that causes and error when clicked!</span>
+<span class="token keyword">class</span> <span class="token class-name">MyButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token comment">//Reference the object's `this.props` instance variable. But since `this`</span>
+     <span class="token comment">//is undefined when executed as a callback, it will cause a</span>
+     <span class="token comment">//TypeError: Cannot read property 'props' of undefined</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"You clicked on"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//Specifies function (which happens to be a class method) as a callback</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//Render the component, passing it a prop</span>
+ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MyButton</span></span> <span class="token attr-name">text</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Click me!<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>As such, you will need to make sure to “retain” the <code>this</code> context when specifying an event callback function. There are a few ways to do this.</p>
+<ul>
+<li><p>First, as described in Chapter 15, an <em>arrow function</em> will utilize the same lexical <code>this</code> as the context it is defined in. Thus you can “wrap” the event callback function in an arrow function in order to keep the <code>this</code>, calling that method on the <code>this</code> instance explicitly:</p>
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">MyButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">handleClick</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"You clicked on"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">)</span> <span class="token comment">//functions as expected!</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">evt</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleClick</span><span class="token punctuation">(</span>evt<span class="token punctuation">)</span> <span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
+            <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">}</span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this example, the <code>onClick</code> listener is passed an anonymous callback function (in the form of an arrow function), which does the work of calling the <code>handleClick()</code> method on the instance (<code>this</code>). In effect, you’re defining a “temporary” recipe to register with the event listener, whose one instruction is “follow this other recipe”. Notice that this approach also has the bonus feature of enabling you to pass additional arguments to the event callback!</p>
+<p>React does note that this approach can have a performance penalty—you are creating a new function (the arrow function) every time the component gets rendered, and components may be rendered <em>a lot</em> as you make React apps interactive! This won’t be noticeable as you are just getting started, but can begin to make a difference for large-scale applications.</p></li>
+<li><p>An alternative approach is to use a <a href="https://github.com/tc39/proposal-class-fields"><strong>public class field</strong></a> to define the method. This is an <em>experimental</em> JavaScript syntax—it is currently being considered for official inclusion in the JavaScript language. However, the Babel transpiler supports this syntax (transforming it into a bound class function), and that support is enabled in Create React App allowing you to use the syntax <em>for React apps</em>.</p>
+<p>A <em>public class field</em> is a field (instance variable) that is assigned at value the “top level” of a class, rather than explicitly assigning to a property of <code>this</code> in the constructor.</p>
+<pre class="language-js"><code><span class="token comment">//A class with a public class field</span>
+<span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token punctuation">{</span>
+    x <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//assign the value here, not in the constructor</span>
+
+    <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//can access the field as usual</span>
+    <span class="token punctuation">}</span>    
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> counter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//outputs 1    </span></code></pre>
+<p>But since you can assign any type of value to a field—including functions—you can use a public class field and define the event callback, using an arrow function to maintain the bound <code>this</code> context:</p>
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">MyButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">//define event callback as a public class field (using an arrow function)</span>
+  <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"You clicked on"</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">)</span> <span class="token comment">//functions as expected!</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Although somewhat more tricky to read and interpret (particularly if the callback takes no parameters), this approach allows you to specify a bound function (which will have the correct value for <code>this</code>), while still being able to reference the function directly when registering the event listener—without having to wrap it in a separate arrow function. At the time of writing, this approach is the “cool” way that callback functions are specified in React.</p></li>
+</ul>
+</div>
+</div>
+<div id="state-in-class-components" class="section level2">
+<h2><span class="header-section-number">C.3</span> State in Class Components</h2>
+<p>React Components store their state in the <code>state</code> instance variable (accessed as <strong><code>this.state</code></strong>). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component’s <em>constructor</em>:</p>
+<pre class="language-jsx"><code><span class="token comment">//A button that tracks how many times it was clicked</span>
+<span class="token keyword">class</span> <span class="token class-name">CountingButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//the constructor must take a `props` parameter</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>      <span class="token comment">//the constructor must call superclass constructor</span>
+
+     <span class="token comment">//initialize the Component's state</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+         count<span class="token operator">:</span> <span class="token number">0</span> <span class="token comment">//a value contained in the state</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//can _access_ values from the state in the `render()` function</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>You clicked me <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">}</span> times<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Because Components <em>inherit</em> (extend) the <code>React.Component</code> class, their constructors must do the same work as the parent class (so that they can function in the same way). In particular, the constructor must take in a single parameter (representing the props that are passed into the Component). It must then immediately call the parent’s version of the constructor (and pass in those props) using <code>super(props)</code>. This will cause the props to be setup correctly, so that you can use them as normal.</p>
+<p>Inside the constructor, you <em>initialize</em> the <code>this.state</code> value (and this is usually all you do in the constructor!). The <code>this.state</code> value must be a JavaScript Object which can store specific data—you can’t make the state a String or a Number, but an object that can contain Strings and/or Numbers (with keys to label them).</p>
+<p>You can access the values currently stored in the state through the <code>this.state</code> instance variable. You will usually do this in the <code>render()</code> (or in a helper method called by the <code>render()</code> function). If a value doesn’t get used for rendering, it probably doesn’t need to be part of the state!</p>
+<p>React Components must store their state in the <code>state</code> instance variable (accessed as <strong><code>this.state</code></strong>). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component’s <em>constructor</em>:</p>
+<pre class="language-jsx"><code><span class="token comment">//A button that tracks how many times it was clicked</span>
+<span class="token keyword">class</span> <span class="token class-name">CountingButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//the constructor must take a `props` parameter</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>      <span class="token comment">//the constructor must call superclass constructor</span>
+
+     <span class="token comment">//initialize the Component's state</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+         count<span class="token operator">:</span> <span class="token number">0</span> <span class="token comment">//a value contained in the state</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//can _access_ values from the state in the `render()` function</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span><span class="token punctuation">></span></span>You clicked me <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">}</span> times<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Because Components <em>inherit</em> (extend) the <code>React.Component</code> class, their constructors must do the same work as the parent class (so that they can function in the same way). In particular, the constructor must take in a single parameter (representing the props that are passed into the Component). It must then immediately call the parent’s version of the constructor (and pass in those props) using <code>super(props)</code>. This will cause the props to be setup correctly, so that you can use them as normal.</p>
+<p>Inside the constructor, you <em>initialize</em> the <code>this.state</code> value (and this is usually all you do in the constructor!). The <code>this.state</code> value must be a JavaScript Object which can store specific data—you can’t make the state a String or a Number, but an object that can contain Strings and/or Numbers (with keys to label them).</p>
+<p>You can access the values currently stored in the state through the <code>this.state</code> instance variable. You will usually do this in the <code>render()</code> (or in a helper method called by the <code>render()</code> function). If a value doesn’t get used for rendering, it probably doesn’t need to be part of the state!</p>
+<div id="changing-the-state" class="section level3 unnumbered">
+<h3>Changing the State</h3>
+<p>Data is stored in the state so that can be changed over time. You can modify a Component’s state by calling the <a href="https://reactjs.org/docs/react-component.html#setstate"><strong><code>setState()</code></strong></a> method on that Component. This method usually takes as a parameter an object that contains the new desired values for the state; this set of new values will be “merged” into the existing state, changing only the indicated values (other values will be left alone):</p>
+<pre class="language-jsx"><code><span class="token comment">//An element that displays the time when asked</span>
+<span class="token keyword">class</span> <span class="token class-name">Clock</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+         currentTime<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">//current time</span>
+         alarmSound<span class="token operator">:</span> <span class="token string">"annoying_buzz.mp3"</span> <span class="token comment">//changeable alarm sound</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//callback function for the button (public class field)</span>
+  <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     <span class="token keyword">let</span> stateChanges <span class="token operator">=</span> <span class="token punctuation">{</span> 
+          currentTime<span class="token operator">:</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//new value to save in the state</span>
+     <span class="token punctuation">}</span><span class="token punctuation">;</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span>stateChanges<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//apply the state changes and re-render!</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token punctuation">(</span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">onClick</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>handleClick<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>What time is it right now<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>The time is <span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>currentTime<span class="token punctuation">.</span><span class="token function">toLocaleTimeString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>setState()</code> method will <a href="https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged">“merge”</a> the values of its parameter into the Component’s <code>state</code> field; in the above example, the <code>alarmSound</code> value will not be modified when the button is pressed; only the value for <code>currentTime</code> will be changed. If you want to change multiple values at the same time, you can include multiple keys in the parameter to <code>setState()</code>. Also note that this merging is “shallow”—if you wanted to change a state value that was an array (e.g., <code>this.state = { comments:[...] }</code>), you would need to set a brand new version of that array (that could be a modified version of the previous state; see below).</p>
+<p>Importantly, you <em>must</em> use the <code>setState()</code> method to change the state; you <a href="https://reactjs.org/docs/state-and-lifecycle.html#do-not-modify-state-directly"><em>cannot</em></a> assign a new value to the <code>this.state</code> instance variable directly. This is because the React framework uses that method to not only adjust the instance variable, but also to cause the Component to “re-render”. When the state has finished being updated, React will re-render the Component (causing it’s <code>render()</code> method to be called again), and merging the updated rendering into the page’s DOM. React does this merging in a highly efficient manner, changing the elements that have actually updated—this is what makes React so effective for large scale systems.</p>
+<p class="alert alert-info">
+Remember: calling <code>setState()</code> will cause the <code>render()</code> method to be called again, and it will access the updated <code>this.state</code> values!
+</p>
+<p class="alert alert-danger">
+Never call <code>setState()</code> directly from inside of <code>render()</code>! That will cause an infinite recursive loop. The <code>render()</code> method must remain “pure” with no side effects.
+</p>
+<p>Moreover, the <code>setState()</code> method is <a href="https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous"><em>asynchronous</em></a>. Calling the method only sends a “request” to update the state; it doesn’t happen immediately. This is because React will “batch” multiple requests to update the state of Components (and so to rerender them) together—that way if your app needs to make lots of small changes at the same time, React only needs to regenerate the DOM once, providing a significant performance boost.</p>
+<pre class="language-jsx"><code><span class="token comment">//An Component with a callback that doesn't handle asynchronous state changes</span>
+<span class="token keyword">class</span> <span class="token class-name">CounterWithError</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+         count<span class="token operator">:</span> <span class="token number">3</span> <span class="token comment">//initial value</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>count<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//change `count` to 4</span>
+     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//will output "3"; state has not changed yet!</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this example, because <code>setState()</code> is asynchronous, you can’t immediately access the updated state after calling the function. If you want to use that updated value, you need to do so in the <code>render()</code> method, which will be called again once the state has finished being updated.</p>
+<p>Because <code>setState()</code> calls are asynchronous and may be batched, if you wish to update a state value based on the <em>current</em> state (e.g., to have a counter increase), you need to instead pass the <code>setState()</code> method a <a href="https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous"><em>callback function</em></a> as an argument (instead of an Object of new values). The callback function will be passed the “current” state (and props), and must <code>return</code> the Object that you wish to merge into the state:</p>
+<pre class="language-jsx"><code><span class="token comment">//An example button click callback</span>
+<span class="token keyword">class</span> <span class="token class-name">Counter</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span> <span class="token comment">//initial value</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+     <span class="token comment">//setState is passed an anonymous callback function</span>
+     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">currentState<span class="token punctuation">,</span> currentProps</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+         <span class="token comment">//return the Object to "merge" into the state</span>
+         <span class="token keyword">let</span> stateChanges <span class="token operator">=</span> <span class="token punctuation">{</span>count<span class="token operator">:</span> currentState<span class="token punctuation">.</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//increment count</span>
+         <span class="token keyword">return</span> stateChanges<span class="token punctuation">;</span>
+     <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> 
+   
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>While trying to use <code>this.state</code> directly in a call to <code>setState()</code> will <em>sometimes</em> work, best practice is to instead use a callback function as above when the new state value depends on the old.</p>
+</div>
+</div>
+<div id="the-component-lifecycle" class="section level2">
+<h2><span class="header-section-number">C.4</span> The Component Lifecycle</h2>
+<p>A react component’s state is initialized in the constructor (when the component is first instantiated), and then usually modified in response to user events (by calling the <code>setState()</code> method). But there are a number of other “events” that occur during the life of a Component—such as the “events” of when the Component is added to the DOM (“mounted”) or removed from the DOM (“unmounted”). For example, you should only download data when there is a Component on the screen to display that data (after the Component has been added to the DOM), and to “clean up” any listeners or timers when the Component is removed.
+It is possible to define functions will execute at such these events, allowing you to perform specific actions as the React framework manipulates the DOM. These functions are called <a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class"><strong>lifecycle methods</strong></a>—they are methods that are executed at different stages of the Component’s “lifecycle”. You <em>override</em> these lifecycle methods in order to specify what code you want to run at those events. Lifecycle methods will be <em>automatically executed by the React framework</em>; you never directly call these methods (the same way you never directly call <code>render()</code>—which is itself a lifecycle method!)</p>
+<p>React components have a number of different lifecycle methods, the most common of which are illustrated below:</p>
+<pre class="language-jsx"><code><span class="token comment">//A generic component</span>
+<span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
+  <span class="token comment">//The constructor is called when the Component is instantiated, but before_body</span>
+  <span class="token comment">//it is added to the DOM (on the screen)  </span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span>
+    <span class="token comment">//initialize state here!</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//This method is called when the Component has been added to the DOM (and</span>
+  <span class="token comment">//is visible on the screen). This occurs _after_ the first `render()` call.</span>
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//do (asynchronous) setup work, including AJAX requests, here!</span>
+  <span class="token punctuation">}</span>
+  
+  <span class="token comment">//This method is called when a Component is being "re-rendered" with a</span>
+  <span class="token comment">//new set of props. This is a less common method to override</span>
+  <span class="token function">componentDidUpdate</span><span class="token punctuation">(</span><span class="token parameter">prevProps<span class="token punctuation">,</span> prevState<span class="token punctuation">,</span> snapshot</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//do additional "re-setup" work (including updated AJAX requests) here!</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//This method is called when the Component is about to be removed from the DOM</span>
+  <span class="token comment">//(and thus will no longer be visible on the screen)</span>
+  <span class="token function">componentWillUnmount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//do (asynchronous) cleanup work here!</span>
+  <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span></code></pre>
+<p>For more details on the specific usages (and parameters!) of these methods, see the <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">official API documentation</a>.</p>
+<!-- Is there more to say about this? :/ -->
+<p>Note that you are not <em>required</em> to include these methods in a Component. However, they are required to correctly perform asynchronous functions such as AJAX requests, as described below.</p>
+<div id="lifecycle-example-fetching-data-via-ajax" class="section level3 unnumbered">
+<h3>Lifecycle Example: Fetching Data via AJAX</h3>
+<p>One of the most common use of lifecycle callback functions is when accessing data asynchronously, such as when fetching data via an AJAX request (such a described in <a href="ajax.html#ajax">Chapter 14</a>). This section provides details about how to asynchronously load data within a React class component.</p>
+<p>Remember that the <code>fetch()</code> function downloads data <em>asynchronously</em>. Thus if you want to download some data to display, it may take a while to arrive. You don’t want React to have to “wait” for the data (since React is designed to be <em>fast</em>). Thus the best practice is to send the <code>fetch()</code> request for data, and <code>then</code> when the data has been downloaded, call the <code>setState()</code> method to update the Component with the downloaded data. (The Component can initialize its state as an “empty array” of data).</p>
+<p>Because <code>fetch()</code> will eventually call the <code>setState()</code> method, you can’t send the AJAX from the Component’s constructor. That’s because <code>setState()</code> will eventually render the Component, which involves updating something that has been added to the DOM. In the constructor, the Component has been instantiated, but has not yet been added to the DOM—thus you can’t update its state yet! If the data ends up downloading before the Component is mounted, you will get an error that you cannot re-render an unmounted Component!</p>
+<p>Instead, you should always send your (initial) <code>fetch()</code> requests from the <code>componentDidMount()</code> lifecycle method. This way the data will only be downloaded once the Component has actually been added to the DOM, and so is available for re-rendering. This structure is shown in the example below:</p>
+<pre class="language-jsx"><code><span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">Componet</span> <span class="token punctuation">{</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>
+        data<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//initialize data as "empty"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+
+  <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    
+    <span class="token function">fetch</span><span class="token punctuation">(</span>dataUri<span class="token punctuation">)</span> <span class="token comment">//send AJAX request</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">let</span> processedData <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span> <span class="token comment">//do desired processing</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>data<span class="token operator">:</span> processedData<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">//change the state, and re-render</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//Map the data values into DOM elements</span>
+    <span class="token comment">//Note that this works even before data is loaded (when the array is empty!)</span>
+    <span class="token keyword">let</span> dataItems <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">key</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>id<span class="token punctuation">}</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span><span class="token punctuation">;</span> <span class="token comment">//return DOM version of datum</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token comment">//render the data items (e.g., as a list)</span>
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>dataItems<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">;</span> 
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In the above example, the <code>this.state.data</code> is initialized as an empty array; this will <code>render()</code> just fine (it produces an empty list). Once the Component is mounted, the data will be downloaded and processed, and then saved as an updated state value. Calling <code>setState()</code> will cause the Component to re-render, so that the data will be displayed as desired! While technically it means the Component is rendering twice, React can batch these requests together so that if the data downloads fast enough, the user will not notice.</p>
+</div>
+</div>
+<div id="resources-18" class="section level2 unnumbered">
+<h2>Resources</h2>
+<div class="list-condensed">
+<ul>
+<li><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">The Component Lifecycle</a></li>
+<li><a href="https://reactjs.org/docs/state-and-lifecycle.html">State and Lifecycle</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="webpack.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="css-in-js.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["github", "facebook", "twitter", "google"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info340/book/edit/master/react-class-components.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

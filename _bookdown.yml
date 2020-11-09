@@ -39,6 +39,7 @@ rmd_files:
   - appendix.Rmd
   - jest.Rmd
   - webpack.Rmd
+  - react-class-components.Rmd
   - css-in-js.Rmd
   - redux.Rmd
   - react-native.Rmd

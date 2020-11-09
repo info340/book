@@ -1,0 +1,396 @@
+# React Class Components {#class-components}
+
+As mentioned in [_Introduction to React_](#react), it's also possible to define React Components using ES 6 class syntax:
+
+```jsx
+//Define a class component representing information about a user
+class UserInfo extends React.Component {
+    //Components MUST override the `render()` function, which must return a
+    //DOM element
+    render() {
+        //This is an everyday function; you can include any code you want here
+        let name = "Ethel";
+        let descriptor = "Aardvark";
+
+        //Return a React element (JSX) that is how the component will appear
+        return (
+            <div>
+                <h1>{name}</h1>
+                <p>Hello, my name is {name} and I am a {descriptor}</p>
+            </div>
+        )        
+    }
+}
+```
+
+This chapter contains further details on working with this style of **Class Components**, in particular how to manage manage _state_ within such components. This chapter can thus be read as a mirror of [_Interactive React_], just using class components instead of function components.
+
+<p class="alert alert-info">This chapter is taken from an earlier version of the text that emphasized class components instead of function components.</p>
+
+## Props in Class Components 
+When defining a Class component, all of the passed in props are automatically assigned to the `props` instance variable, accessible as **`this.props`**. The `this.props` variable contains the object that would be passed as an argument to a function version of the component. 
+
+```jsx
+//Define a component representing information about a user
+class UserInfo extends Component {
+    render() {
+        //access the individual props from inside the `this.props` object
+        let userName = this.props.userName;
+        let descriptor = this.props.descriptor;
+
+        return (
+            <div>
+                <h1>{userName}</h1>
+                <p>Hello, my name is {name} and I am a {descriptor}</p>
+            </div>
+        )        
+    }
+}
+
+let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
+```
+
+Note that the `this.props` object is **read only**&mdash;meaning that you cannot assign new values to it, nor modify its props directly. You should just think of props as immutable data that is coming in from outside of the component (again, similar to function arguments). A component doesn't create or change is own props, it just uses those to determine how to render its content.
+
+## Handling Events in Class Components
+When using class components, events are handled in the same way as with function components (e.g., using the `onClick` prop). The main difference is that event handler callbacks are usually defined as separate _methods_ of the class:
+
+```jsx
+//A component representing a button that logs a message when clicked
+class MyButton extends Component {
+  //method to call when clicked. The name is conventional, but arbitrary
+  //the callback function will be passed the DOM event
+  handleClick(event) {
+     console.log('clicky clicky');
+  }
+  render() {
+    //make a button with an `onClick` attribute!
+    //this "registers" the listener and sets the callback
+    return <button onClick={this.handleClick}>Click me!</button>;
+  }
+}
+```
+
+Note that when assigning the method to the `onClick` prop, the method is referenced using the `this` keyword (and no parentheses!), because the reference is to _this Component**'s**_ `handleClick()` method.
+
+### Accessing `this` Component from Events {-}
+It is very common to have a Component's event callback functions need to reference the instance variables or methods of that component&mdash;such as to do something based with a prop (found in `this.props`) or to call an additional helper method (called as `this.otherMethod()`). In short&mdash;the event callback will need to have access to the `this` context. 
+
+But as discussed in [Section 15.2](#working-with-this), callback functions are not called on any particular object, and thus do not have a value assigned to their `this` variable. In the example above, although you're using the word `this` to _refer to_ the method `this.handleClick` (to tell JavaScript where to find the function), that function is not actually being called on the class. As described in Section 15.2, just because the method was defined inside a class doesn't mean it needs to be called on an instance of that class!
+
+```jsx
+//BUGGY CODE: A button that causes and error when clicked!
+class MyButton extends Component {
+  handleClick(event) {
+     //Reference the object's `this.props` instance variable. But since `this`
+     //is undefined when executed as a callback, it will cause a
+     //TypeError: Cannot read property 'props' of undefined
+     console.log("You clicked on", this.props.text)
+  }
+
+  render() {
+    //Specifies function (which happens to be a class method) as a callback
+    return <button onClick={this.handleClick}>{this.props.text}</button>;
+  }
+}
+
+//Render the component, passing it a prop
+ReactDOM.render(<MyButton text="Click me!"/>, document.getElementById('root'));
+```
+
+As such, you will need to make sure to "retain" the `this` context when specifying an event callback function. There are a few ways to do this. 
+
+- First, as described in Chapter 15, an _arrow function_ will utilize the same lexical `this` as the context it is defined in. Thus you can "wrap" the event callback function in an arrow function in order to keep the `this`, calling that method on the `this` instance explicitly:
+
+    ```jsx
+    class MyButton extends Component {
+      handleClick(event) {
+         console.log("You clicked on", this.props.text) //functions as expected!
+      }
+
+      render() {
+        return (
+            <button onClick={(evt) => this.handleClick(evt) }>
+                {this.props.text}
+            </button>
+        )
+      }
+    }
+    ```
+
+    In this example, the `onClick` listener is passed an anonymous callback function (in the form of an arrow function), which does the work of calling the `handleClick()` method on the instance (`this`). In effect, you're defining a "temporary" recipe to register with the event listener, whose one instruction is "follow this other recipe". Notice that this approach also has the bonus feature of enabling you to pass additional arguments to the event callback!
+
+    React does note that this approach can have a performance penalty&mdash;you are creating a new function (the arrow function) every time the component gets rendered, and components may be rendered _a lot_ as you make React apps interactive! This won't be noticeable as you are just getting started, but can begin to make a difference for large-scale applications.
+    
+- An alternative approach is to use a [**public class field**](https://github.com/tc39/proposal-class-fields) to define the method. This is an _experimental_ JavaScript syntax&mdash;it is currently being considered for official inclusion in the JavaScript language. However, the Babel transpiler supports this syntax (transforming it into a bound class function), and that support is enabled in Create React App allowing you to use the syntax _for React apps_.
+
+    A _public class field_ is a field (instance variable) that is assigned at value the "top level" of a class, rather than explicitly assigning to a property of `this` in the constructor.
+
+    ```js
+    //A class with a public class field
+    class Counter {
+        x = 0; //assign the value here, not in the constructor
+        
+        increment() {
+            this.x = this.x + 1; //can access the field as usual
+        }    
+    }
+    
+    let counter = new Counter();
+    counter.increment();
+    console.log(counter.x); //outputs 1    
+    ```
+
+    But since you can assign any type of value to a field&mdash;including functions&mdash;you can use a public class field and define the event callback, using an arrow function to maintain the bound `this` context:
+    
+    ```jsx
+    class MyButton extends Component {
+      //define event callback as a public class field (using an arrow function)
+      handleClick = (event) => {
+         console.log("You clicked on", this.props.text) //functions as expected!
+      }
+
+      render() {
+        return <button onClick={this.handleClick}>{this.props.text}</button>;
+      }
+    }
+    ```
+    
+    Although somewhat more tricky to read and interpret (particularly if the callback takes no parameters), this approach allows you to specify a bound function (which will have the correct value for `this`), while still being able to reference the function directly when registering the event listener&mdash;without having to wrap it in a separate arrow function. At the time of writing, this approach is the "cool" way that callback functions are specified in React.
+
+
+## State in Class Components
+React Components store their state in the `state` instance variable (accessed as **`this.state`**). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component's _constructor_:
+
+```jsx
+//A button that tracks how many times it was clicked
+class CountingButton extends Component {
+  constructor(props) { //the constructor must take a `props` parameter
+     super(props)      //the constructor must call superclass constructor
+
+     //initialize the Component's state
+     this.state = {
+         count: 0 //a value contained in the state
+     }
+  }
+
+  render() {
+    //can _access_ values from the state in the `render()` function
+    return <button>You clicked me {this.state.count} times</button>;
+  }
+}
+```
+
+Because Components _inherit_ (extend) the `React.Component` class, their constructors must do the same work as the parent class (so that they can function in the same way). In particular, the constructor must take in a single parameter (representing the props that are passed into the Component). It must then immediately call the parent's version of the constructor (and pass in those props) using `super(props)`. This will cause the props to be setup correctly, so that you can use them as normal.
+ 
+Inside the constructor, you _initialize_ the `this.state` value (and this is usually all you do in the constructor!). The `this.state` value must be a JavaScript Object which can store specific data&mdash;you can't make the state a String or a Number, but an object that can contain Strings and/or Numbers (with keys to label them).
+
+You can access the values currently stored in the state through the `this.state` instance variable. You will usually do this in the `render()` (or in a helper method called by the `render()` function). If a value doesn't get used for rendering, it probably doesn't need to be part of the state!
+
+React Components must store their state in the `state` instance variable (accessed as **`this.state`**). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component's _constructor_:
+
+```jsx
+//A button that tracks how many times it was clicked
+class CountingButton extends Component {
+  constructor(props) { //the constructor must take a `props` parameter
+     super(props)      //the constructor must call superclass constructor
+
+     //initialize the Component's state
+     this.state = {
+         count: 0 //a value contained in the state
+     }
+  }
+
+  render() {
+    //can _access_ values from the state in the `render()` function
+    return <button>You clicked me {this.state.count} times</button>;
+  }
+}
+```
+
+Because Components _inherit_ (extend) the `React.Component` class, their constructors must do the same work as the parent class (so that they can function in the same way). In particular, the constructor must take in a single parameter (representing the props that are passed into the Component). It must then immediately call the parent's version of the constructor (and pass in those props) using `super(props)`. This will cause the props to be setup correctly, so that you can use them as normal.
+ 
+Inside the constructor, you _initialize_ the `this.state` value (and this is usually all you do in the constructor!). The `this.state` value must be a JavaScript Object which can store specific data&mdash;you can't make the state a String or a Number, but an object that can contain Strings and/or Numbers (with keys to label them).
+
+You can access the values currently stored in the state through the `this.state` instance variable. You will usually do this in the `render()` (or in a helper method called by the `render()` function). If a value doesn't get used for rendering, it probably doesn't need to be part of the state!
+
+### Changing the State {-}
+Data is stored in the state so that can be changed over time. You can modify a Component's state by calling the [**`setState()`**](https://reactjs.org/docs/react-component.html#setstate) method on that Component. This method usually takes as a parameter an object that contains the new desired values for the state; this set of new values will be "merged" into the existing state, changing only the indicated values (other values will be left alone):
+
+```jsx
+//An element that displays the time when asked
+class Clock extends Component {
+  constructor(props) {
+     super(props)
+     this.state = {
+         currentTime: new Date(), //current time
+         alarmSound: "annoying_buzz.mp3" //changeable alarm sound
+     }
+  }
+
+  //callback function for the button (public class field)
+  handleClick = (props) => {
+     let stateChanges = { 
+          currentTime: new Date() //new value to save in the state
+     };
+     this.setState(stateChanges); //apply the state changes and re-render!
+  }
+  
+  render() {
+      return (
+          <div>
+            <button onClick={this.handleClick}>What time is it right now</button>
+            <p>The time is {this.state.currentTime.toLocaleTimeString()}</p>
+          </div>
+      );
+  }
+}
+```
+
+The `setState()` method will ["merge"](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-are-merged) the values of its parameter into the Component's `state` field; in the above example, the `alarmSound` value will not be modified when the button is pressed; only the value for `currentTime` will be changed. If you want to change multiple values at the same time, you can include multiple keys in the parameter to `setState()`. Also note that this merging is "shallow"&mdash;if you wanted to change a state value that was an array (e.g., `this.state = { comments:[...] }`), you would need to set a brand new version of that array (that could be a modified version of the previous state; see below).
+ 
+Importantly, you _must_ use the `setState()` method to change the state; you [_cannot_](https://reactjs.org/docs/state-and-lifecycle.html#do-not-modify-state-directly) assign a new value to the `this.state` instance variable directly. This is because the React framework uses that method to not only adjust the instance variable, but also to cause the Component to "re-render". When the state has finished being updated, React will re-render the Component (causing it's `render()` method to be called again), and merging the updated rendering into the page's DOM. React does this merging in a highly efficient manner, changing the elements that have actually updated&mdash;this is what makes React so effective for large scale systems.
+
+<p class="alert alert-info">Remember: calling `setState()` will cause the `render()` method to be called again, and it will access the updated `this.state` values!</p>
+
+<p class="alert alert-danger">Never call `setState()` directly from inside of `render()`! That will cause an infinite recursive loop. The `render()` method must remain "pure" with no side effects.</p>
+
+Moreover, the `setState()` method is [_asynchronous_](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous). Calling the method only sends a "request" to update the state; it doesn't happen immediately. This is because React will "batch" multiple requests to update the state of Components (and so to rerender them) together&mdash;that way if your app needs to make lots of small changes at the same time, React only needs to regenerate the DOM once, providing a significant performance boost.
+
+```jsx
+//An Component with a callback that doesn't handle asynchronous state changes
+class CounterWithError extends Component {
+  constructor(props) {
+     super(props)
+     this.state = {
+         count: 3 //initial value
+     }
+  }
+
+  handleClick = () => {
+     this.setState({count: 4}); //change `count` to 4
+     console.log(this.state.count); //will output "3"; state has not changed yet!
+  }
+  
+  //...
+}
+```
+
+In this example, because `setState()` is asynchronous, you can't immediately access the updated state after calling the function. If you want to use that updated value, you need to do so in the `render()` method, which will be called again once the state has finished being updated.
+
+Because `setState()` calls are asynchronous and may be batched, if you wish to update a state value based on the _current_ state (e.g., to have a counter increase), you need to instead pass the `setState()` method a [_callback function_](https://reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous) as an argument (instead of an Object of new values). The callback function will be passed the "current" state (and props), and must `return` the Object that you wish to merge into the state:
+
+```jsx
+//An example button click callback
+class Counter extends Component {
+  constructor(props) {
+     super(props)
+     this.state = { count: 0 } //initial value
+  }
+
+  handleClick = () => {
+     //setState is passed an anonymous callback function
+     this.setState((currentState, currentProps) => {
+         //return the Object to "merge" into the state
+         let stateChanges = {count: currentState.count + 1}; //increment count
+         return stateChanges;
+     })
+  } 
+   
+  //...
+}
+```
+
+While trying to use `this.state` directly in a call to `setState()` will _sometimes_ work, best practice is to instead use a callback function as above when the new state value depends on the old.
+
+## The Component Lifecycle
+A react component's state is initialized in the constructor (when the component is first instantiated), and then usually modified in response to user events (by calling the `setState()` method). But there are a number of other "events" that occur during the life of a Component&mdash;such as the "events" of when the Component is added to the DOM ("mounted") or removed from the DOM ("unmounted"). For example, you should only download data when there is a Component on the screen to display that data (after the Component has been added to the DOM), and to "clean up" any listeners or timers when the Component is removed.
+It is possible to define functions will execute at such these events, allowing you to perform specific actions as the React framework manipulates the DOM. These functions are called [**lifecycle methods**](https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class)&mdash;they are methods that are executed at different stages of the Component's "lifecycle". You _override_ these lifecycle methods in order to specify what code you want to run at those events. Lifecycle methods will be _automatically executed by the React framework_; you never directly call these methods (the same way you never directly call `render()`&mdash;which is itself a lifecycle method!)
+
+React components have a number of different lifecycle methods, the most common of which are illustrated below:
+
+```jsx
+//A generic component
+class MyComponent extends Component {
+  //The constructor is called when the Component is instantiated, but before_body
+  //it is added to the DOM (on the screen)  
+  constructor(props){
+    super(props)
+    //initialize state here!
+  }
+
+  //This method is called when the Component has been added to the DOM (and
+  //is visible on the screen). This occurs _after_ the first `render()` call.
+  componentDidMount() {
+    //do (asynchronous) setup work, including AJAX requests, here!
+  }
+  
+  //This method is called when a Component is being "re-rendered" with a
+  //new set of props. This is a less common method to override
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    //do additional "re-setup" work (including updated AJAX requests) here!
+  }
+
+  //This method is called when the Component is about to be removed from the DOM
+  //(and thus will no longer be visible on the screen)
+  componentWillUnmount() {
+    //do (asynchronous) cleanup work here!
+  }  
+}
+```
+
+For more details on the specific usages (and parameters!) of these methods, see the [official API documentation](https://reactjs.org/docs/react-component.html#the-component-lifecycle). 
+
+<!-- Is there more to say about this? :/ -->
+
+Note that you are not _required_ to include these methods in a Component. However, they are required to correctly perform asynchronous functions such as AJAX requests, as described below.
+
+
+### Lifecycle Example: Fetching Data via AJAX {-}
+One of the most common use of lifecycle callback functions is when accessing data asynchronously, such as when fetching data via an AJAX request (such a described in [Chapter 14](#ajax)). This section provides details about how to asynchronously load data within a React class component.
+
+Remember that the `fetch()` function downloads data _asynchronously_. Thus if you want to download some data to display, it may take a while to arrive. You don't want React to have to "wait" for the data (since React is designed to be _fast_). Thus the best practice is to send the `fetch()` request for data, and `then` when the data has been downloaded, call the `setState()` method to update the Component with the downloaded data. (The Component can initialize its state as an "empty array" of data).
+
+Because `fetch()` will eventually call the `setState()` method, you can't send the AJAX from the Component's constructor. That's because `setState()` will eventually render the Component, which involves updating something that has been added to the DOM. In the constructor, the Component has been instantiated, but has not yet been added to the DOM&mdash;thus you can't update its state yet! If the data ends up downloading before the Component is mounted, you will get an error that you cannot re-render an unmounted Component!
+
+Instead, you should always send your (initial) `fetch()` requests from the `componentDidMount()` lifecycle method. This way the data will only be downloaded once the Component has actually been added to the DOM, and so is available for re-rendering. This structure is shown in the example below:
+
+```jsx
+class MyComponent extends Componet {
+  constructor(props){
+    super(props);
+    this.state = {
+        data: [] //initialize data as "empty"
+    }; 
+  }
+
+  componentDidMount() {    
+    fetch(dataUri) //send AJAX request
+      .then((res) => res.json())
+      .then((data) => {
+        let processedData = data.filter(...).map(...) //do desired processing
+        this.setState({data: processedData}) //change the state, and re-render
+      })
+  }
+
+  render() {
+    //Map the data values into DOM elements
+    //Note that this works even before data is loaded (when the array is empty!)
+    let dataItems = this.state.data.map((item) => {
+      return <li key={item.id}>{item.value}</li>; //return DOM version of datum
+    })
+
+    //render the data items (e.g., as a list)
+    return <ul>{dataItems}</ul>; 
+  }
+}
+```
+
+In the above example, the `this.state.data` is initialized as an empty array; this will `render()` just fine (it produces an empty list). Once the Component is mounted, the data will be downloaded and processed, and then saved as an updated state value. Calling `setState()` will cause the Component to re-render, so that the data will be displayed as desired! While technically it means the Component is rendering twice, React can batch these requests together so that if the data downloads fast enough, the user will not notice.
+
+## Resources {-}
+
+<div class="list-condensed">
+- [The Component Lifecycle](https://reactjs.org/docs/react-component.html#the-component-lifecycle)
+- [State and Lifecycle](https://reactjs.org/docs/state-and-lifecycle.html)
+</div>

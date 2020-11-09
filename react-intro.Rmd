@@ -344,18 +344,18 @@ This function defines a new component (think: a new HTML element!) called `UserI
     - It's also possible for function components to be defined as anonymous arrow functions assigned to `const` variables:
 
         ```jsx
-        const = Example(props) => {
+        const Example = props => {
             return <div>...</div>
         }
         ```
         
-        This provides some benefits in terms of scoping (because of the arrow function), but otherwise makes components even harder to read. You should stick to defining compnent functions using the `function` keyword (and not arrow functions) for readability, but be aware of the alternate approach which is used in some lilbraries and examples. 
+        This provides some benefits in terms of scoping (because of the arrow function), but otherwise makes components even harder to read&mdash;its not as readily obviously that this is a function and a component. You should stick to defining component functions using the `function` keyword (and not arrow functions) for readability, but be aware of the alternate approach which is used in some libraries and examples. 
             
 2. Component functions take in a single argument representing the [props](#props) (discussed below), which is conventionally named as such. As with all JavaScript functions, if you don't to use the argument value you can omit giving it a name (e.g., `function UserInfo() { ... }`).
 
 3. A component function is a regular function like any other that you've written. That means that it can and often does do more than just return a single value! You can include additional code statements (variable declarations, if statements, loops, etc) in order to calculate the values you'd like to include in inline expressions in the returned JSX.
 
-    <p class="alert alert-warning">**Style requirement**: perform any complex logic&mdash;including functional looping such as with `map()` or `filter()`&mdash;outside of the `return` statement. Keep the `return` statement as simple as possible to it remains readable&mdash;and more importantly _debuggable_ (so you can use things like `console.log` statements to check intermediate values before they are returned). **NEVER** include an inline callback function so that you have a `return` statement inside of a `return` statement!</p>
+    <div class="alert alert-warning">**Style requirement**: perform any complex logic&mdash;including functional looping such as with `map()` or `filter()`&mdash;outside of the `return` statement. Keep the `return` statement as simple as possible to it remains readable&mdash;and more importantly _debuggable_ (so you can use things like `console.log` statements to check intermediate values before they are returned). **NEVER** include an inline callback function so that you have a `return` statement inside of a `return` statement!</div>
 
 4. A component function can only return a _single_ React element (you can't return more than one value at a time from a JavaScript function). However, that single React element can have as many children as you wish. It's very common to "wrap" all of the content you want a component to include in a single `<div>` to return, as in the above example.
 
@@ -444,7 +444,7 @@ This "class component" example is identical to the previous function component e
     }
     ```
 
-In general function components are sufficient for defining most React components; you only need to use classes when you want to specify and use any additional methods (and there are ways to do that when using function components as well).
+In general function components are sufficient for defining most React components; you only need to use classes when you want to specify and use any additional methods (and there are ways to do that when using function components as well). See [React Class Components](#class-components) for more details about working with class components (particularly for handling their _state_).
 
 
 <div class="alert alert-info">Additionally, older versions of React included a function `React.createClass()` that took in an _object_ whose properties were functions that would act as class methods (see [here](https://toddmotto.com/react-create-class-versus-component/) for details). Although this function has been removed, it's worth being aware of in case you come across older examples of React code that you need to interpret or adapt.</div>
@@ -566,29 +566,27 @@ let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
 
 Again, _all_ props are stored in the argument object&mdash;you have to access them through that value.
 
-When defining a Class component, all of the passed in props are automatically assigned to the `props` instance variable, accessible as **`this.props`**. The `this.props` variable contains the object that would be passed as an argument to a function version of the component. 
+- To avoid having to type `props.___` all the time, it's common to use [object destructuring](#destructuring) to assign all of the props to variables in a single line:
 
-```jsx
-//Define a component representing information about a user
-class UserInfo extends Component {
-    render() {
-        //access the individual props from inside the `this.props` object
-        let userName = this.props.userName;
-        let descriptor = this.props.descriptor;
-
-        return (
-            <div>
-                <h1>{userNameUpper}</h1>
-                <p>Hello, my name is {name} and I am a {descriptor}</p>
-            </div>
-        )        
+    ```jsx
+    function UserInfo(props) {
+        //assign the prop object properties to variables
+        const {userName, descriptor} = props;
+        
+        return <h1>{userName}</h1>;    
     }
-}
+    ```
+    
+    It's also possible to specify the object destructuring in the argument declaration!
+    
+    ```jsx
+    //The props object passed in will be destructured into two argument variables
+    function UserInfo({userName, descriptor}) {
+        return <h1>{userName}</h1>;            
+    }
+    ```
 
-let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
-```
-
-Note that the `this.props` object is **read only**&mdash;meaning that you cannot assign new values to it, nor modify its props directly. You should just think of props as immutable data that is coming in from outside of the component (again, similar to function arguments). A component doesn't create or change is own props, it just uses those to determine how to render its content.
+    This can help make it clear in the source code what props a component expects, though can make the code somewhat more difficult to parse (since there are so many parentheses and curly braces). However, to keep the idea of the `props` clear, all examples in this book will use a single, non-destructured `props` object.
 
 Importantly, props can be **any** kind of value! This includes basic types such as Numbers or Strings, data structures such as Arrays or Objects, or even functions or other component instances!
 
@@ -601,7 +599,7 @@ let suitcase = <Suitcase luggageCombo={array} />;
 
 //Pass a function as a prop (like a callback)!
 function sayHello() { 
-  console.log('Hello world!');
+    console.log('Hello world!');
 }
 let greeting = <Greeting callback={sayHello} />;
 
@@ -622,7 +620,7 @@ Recall that React components are usually _composed_, with one component's return
 ```jsx
 //Defines a component representing a message in a list
 function MessageItem(props) {
-    return <li>{this.props.message}</li>
+    return <li>{props.message}</li>
 }
 
 //A component that renders a trio of messages
@@ -664,7 +662,7 @@ And because including an _array of Components_ as an inline expression in JSX wi
 
 ```jsx
 function MessageList(props) {
-    let msgItems = this.props.messages.map((msgString) => {
+    let msgItems = props.messages.map((msgString) => {
         let component = <MessageItem message={msgString} />; //pass prop down!
         return component; //add this new component to resulting array
     })
@@ -698,7 +696,7 @@ let messageObjArray = [
 ];
 
 function MessageList(props) {
-    let msgItems = this.props.messages.map((msgObject) => {
+    let msgItems = props.messages.map((msgObject) => {
         //return a new MessageItem for each message object
         //attributes are listed on their own lines for readability
         return <MessageItem 
