@@ -527,6 +527,45 @@ Never call a set state function directly from inside of your component function;
     <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Learn Hooks'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>While it’s possible for a single state variable to contain complex values (objects and arrays, as in the <code>todos</code> variable above), it’s often cleaner to use multiple different state variables—that way React needs to change as little data as possible when you wish to update a variable.</p>
+<p>Importantly, you need to pass a <em>new value</em> into the set state function in order for it to actually update the state and rerender the component. Just changing a value inside of an existing object won’t work:</p>
+<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">TodoListWithError</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//a state value that is an array of objects</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Learn Hooks'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        todos<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"Fix bugs"</span><span class="token punctuation">;</span> <span class="token comment">//modify the object but don't make a new one</span>
+        <span class="token function">setTodos</span><span class="token punctuation">(</span>todos<span class="token punctuation">)</span> <span class="token comment">//This won't work!</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In the above example, changing a property of the <code>todos</code> array-of-objects doesn’t actually change the value. This when you call <code>setTodos(todos)</code>, React thinks that nothing has updated (it doesn’t do a deep inspection of the object) so doesn’t update anything. Instead, you’ll need to create a <em>new copy</em> of the array or object, and then pass that new value into the set state function:</p>
+<pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">TodoList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//a state value that is an array of objects</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>todos<span class="token punctuation">,</span> setTodos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">{</span> text<span class="token operator">:</span> <span class="token string">'Learn Hooks'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token comment">//create a copy of the array using the `map()` function</span>
+        <span class="token keyword">const</span> todosCopy <span class="token operator">=</span> todos<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">todoObject<span class="token punctuation">,</span> index</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>index <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//transform objects if needed</span>
+                todoObject<span class="token punctuation">.</span>text <span class="token operator">=</span> <span class="token string">"Fix bugs"</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">return</span> todoObject<span class="token punctuation">;</span> <span class="token comment">//return object to go into new array</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token function">setTodos</span><span class="token punctuation">(</span>todosCopy<span class="token punctuation">)</span> <span class="token comment">//This works!</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This is because React wants to encourage data to remain <strong>immutable</strong> (you don’t change it, you just make a altered copy) and for functions to avoid <strong>side effects</strong> (where they change something outside of themselves) in order to help maintain consistency of your data.</p>
+<ul>
+<li><p>The <code>.map()</code> function is usually the easiest way to copy an array, though other techniques exist as well. If you wish to copy an <em>object</em>, you can do this easily using the <em>spread operator</em> to create a new object using the properties of the first:</p>
+<pre class="language-js"><code><span class="token comment">//an original object</span>
+<span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token punctuation">{</span>a<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> b<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">//Create a copy, taking the property of `original` and assigning them into</span>
+<span class="token comment">//a fresh object</span>
+<span class="token keyword">const</span> copy <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>original <span class="token punctuation">}</span> <span class="token comment">//using the spread operator</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy<span class="token punctuation">)</span> <span class="token comment">//{a: 1, b: 2}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>copy <span class="token operator">==</span> original<span class="token punctuation">)</span> <span class="token comment">//false, different objects</span></code></pre>
+<p>(The <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign"><code>Object.assign()</code> function</a>) is also used to do a similar operation, but the spread operator is easier to read)</p></li>
+</ul>
 </div>
 <div id="state-vs.-props" class="section level3 unnumbered">
 <h3>State vs. Props</h3>
@@ -603,10 +642,10 @@ One of the most difficult parts of architecting a React application is figuring 
     <span class="token keyword">const</span> <span class="token function-variable function">handleCount</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">color</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>color <span class="token operator">+</span> <span class="token string">" got a vote!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        <span class="token keyword">const</span> newCounts <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> counts<span class="token punctuation">)</span> <span class="token comment">//make a duplicate of the object</span>
-        newCounts<span class="token punctuation">[</span>color<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//update the local state object</span>
+        <span class="token keyword">const</span> newCounts <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token operator">...</span>counts <span class="token punctuation">}</span> <span class="token comment">//make a duplicate of the object</span>
+        newCounts<span class="token punctuation">[</span>color<span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//update the local copy</span>
 
-        <span class="token function">setCounts</span><span class="token punctuation">(</span>newCounts<span class="token punctuation">)</span> <span class="token comment">//update the state    </span>
+        <span class="token function">setCounts</span><span class="token punctuation">(</span>newCounts<span class="token punctuation">)</span> <span class="token comment">//update the state with the changed copy</span>
     <span class="token punctuation">}</span>
 
     <span class="token comment">//render based on current state</span>

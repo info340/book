@@ -146,6 +146,57 @@ function ExampleWithManyStates() {
 
 While it's possible for a single state variable to contain complex values (objects and arrays, as in the `todos` variable above), it's often cleaner to use multiple different state variables&mdash;that way React needs to change as little data as possible when you wish to update a variable.
 
+Importantly, you need to pass a _new value_ into the set state function in order for it to actually update the state and rerender the component. Just changing a value inside of an existing object won't work:
+
+```js
+function TodoListWithError() {
+    //a state value that is an array of objects
+    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+
+    const handleClick = (event) => {
+        todos[0].text = "Fix bugs"; //modify the object but don't make a new one
+        setTodos(todos) //This won't work!
+    }
+}
+```
+
+In the above example, changing a property of the `todos` array-of-objects doesn't actually change the value. This when you call `setTodos(todos)`, React thinks that nothing has updated (it doesn't do a deep inspection of the object) so doesn't update anything. Instead, you'll need to create a _new copy_ of the array or object, and then pass that new value into the set state function:
+
+```jsx
+function TodoList() {
+    //a state value that is an array of objects
+    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+
+    const handleClick = (event) => {
+        //create a copy of the array using the `map()` function
+        const todosCopy = todos.map((todoObject, index) => {
+            if(index == 0) { //transform objects if needed
+                todoObject.text = "Fix bugs"
+            }
+            return todoObject; //return object to go into new array
+        })
+        setTodos(todosCopy) //This works!
+    }
+}
+```
+
+This is because React wants to encourage data to remain **immutable** (you don't change it, you just make a altered copy) and for functions to avoid **side effects** (where they change something outside of themselves) in order to help maintain consistency of your data.
+
+- The `.map()` function is usually the easiest way to copy an array, though other techniques exist as well. If you wish to copy an _object_, you can do this easily using the _spread operator_ to create a new object using the properties of the first:
+
+    ```js
+    //an original object
+    const original = {a: 1, b: 2};
+    
+    //Create a copy, taking the property of `original` and assigning them into
+    //a fresh object
+    const copy = { ...original } //using the spread operator
+    console.log(copy) //{a: 1, b: 2}
+    console.log(copy == original) //false, different objects
+    ```
+    
+    (The [`Object.assign()` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)) is also used to do a similar operation, but the spread operator is easier to read)
+    
 
 ### State vs. Props {-}
 Importantly, a Component's _state_ is different from its _props_. Although state and props make look similar, they have very different roles. Many developers get the two confused&mdash;to the point that React has an [FAQ](https://reactjs.org/docs/faq-state.html#what-is-the-difference-between-state-and-props) entry about the difference!
@@ -243,10 +294,10 @@ function VotingApp(props) {
     const handleCount = function(color) {
         console.log(color + " got a vote!");
 
-        const newCounts = Object.create({}, counts) //make a duplicate of the object
-        newCounts[color]++; //update the local state object
+        const newCounts = { ...counts } //make a duplicate of the object
+        newCounts[color]++; //update the local copy
 
-        setCounts(newCounts) //update the state    
+        setCounts(newCounts) //update the state with the changed copy
     }
 
     //render based on current state
