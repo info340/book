@@ -92,9 +92,9 @@ Calling the `useState()` function creates a "state variable"&mdash;a value that 
 - The `useState()` function returns an _array of two values_: the first is the current value of the state (e.g., what it was initialized as), and the second is a function used to modify that particular state variable (a "setter" or mutator). By convention, you use [array destructuring](#destructuring) to assign these two values to two separate variables in a single operation. Thus the above line calling `useState()` can be read as a shorthand for:
 
     ```js
-    const resultArray = useState(0); //the function returns an array of 2 values
-    const count = resultArray[0]; //assign the 1st elem (a value) to `count`
-    const setCount = resultArray[1]; //assign the 2nd elem (a function) to `setCount` 
+    const hookArray = useState(0); //the function returns an array of 2 values
+    const count = hookArray[0]; //assign the 1st elem (a value) to `count`
+    const setCount = hookArray[1]; //assign the 2nd elem (a function) to `setCount` 
     ```
     
     Importantly, there is nothing magical about the names of the variables that the `useState()` result is assigned to. It could just as well have been written:

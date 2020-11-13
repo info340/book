@@ -82,6 +82,8 @@ Note that exactly what global object is provided (and what functions it has) is 
 
 <p class="alert alert-info">**Pro-tip**: Visual Studio Code will [automatically download the type definitions](https://code.visualstudio.com/docs/editor/intellisense) for any library listed as a dependency in the project's `package.json`. For example, if you include Lodash as a dependency (by installing it with `npm install --save lodash`), then just typing the `_.` will cause VS Code to provide autocomplete options. This makes it a good idea to install JavaScript libraries via `npm`, even if you plan on loading the library from a CDN instead of from a local file.</p>
 
+<p class="alert alert-info">If you're using something a linter to check your coding style, you'll need to let the linter know about any global variables loaded in other scripts so that the linter doesn't think those variables are undefined. See [the documentation](https://eslint.org/docs/user-guide/configuring#specifying-globals) for details about how to do this in ESLint.</p>
+
 
 ## Example: jQuery
 As an extended example of a JavaScript library, the remainder of this chapter describes [**jQuery**](https://jquery.com/)&mdash;a popular JavaScript library that helps with DOM manipulation. jQuery was designed to provide easier, faster, and more reliable methods for manipulating the DOM in the ways described in the previous chapter. jQuery is one of the most popular libraries used in web development, and is used in around [70% of the most popular websites](https://trends.builtwith.com/javascript/jQuery).

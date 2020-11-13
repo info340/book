@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2020-11-09">
+<meta name="date" content="2020-11-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -489,9 +489,9 @@ functions provided by React that let you “hook into” the framework’s rende
 <ul>
 <li><p>The <code>useState()</code> function is passed the initial starting value for the state variable. In above example, the <code>count</code> state variable will be initialized as <code>0</code>.</p></li>
 <li><p>The <code>useState()</code> function returns an <em>array of two values</em>: the first is the current value of the state (e.g., what it was initialized as), and the second is a function used to modify that particular state variable (a “setter” or mutator). By convention, you use <a href="es6.html#destructuring">array destructuring</a> to assign these two values to two separate variables in a single operation. Thus the above line calling <code>useState()</code> can be read as a shorthand for:</p>
-<pre class="language-js"><code><span class="token keyword">const</span> resultArray <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//the function returns an array of 2 values</span>
-<span class="token keyword">const</span> count <span class="token operator">=</span> resultArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 1st elem (a value) to `count`</span>
-<span class="token keyword">const</span> setCount <span class="token operator">=</span> resultArray<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 2nd elem (a function) to `setCount` </span></code></pre>
+<pre class="language-js"><code><span class="token keyword">const</span> hookArray <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//the function returns an array of 2 values</span>
+<span class="token keyword">const</span> count <span class="token operator">=</span> hookArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 1st elem (a value) to `count`</span>
+<span class="token keyword">const</span> setCount <span class="token operator">=</span> hookArray<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 2nd elem (a function) to `setCount` </span></code></pre>
 <p>Importantly, there is nothing magical about the names of the variables that the <code>useState()</code> result is assigned to. It could just as well have been written:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">[</span>countVariable<span class="token punctuation">,</span> functionToUpdateCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>Because the function is a “setter” it’s usually named as such (<code>setVARIABLE</code>), but this is not required. It’s just a function; you can name it whatever you want.</p></li>

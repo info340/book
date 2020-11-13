@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2020-11-09">
+<meta name="date" content="2020-11-13">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -484,6 +484,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </ul>
 <p class="alert alert-info">
 <strong>Pro-tip</strong>: Visual Studio Code will <a href="https://code.visualstudio.com/docs/editor/intellisense">automatically download the type definitions</a> for any library listed as a dependency in the project’s <code>package.json</code>. For example, if you include Lodash as a dependency (by installing it with <code>npm install --save lodash</code>), then just typing the <code>_.</code> will cause VS Code to provide autocomplete options. This makes it a good idea to install JavaScript libraries via <code>npm</code>, even if you plan on loading the library from a CDN instead of from a local file.
+</p>
+<p class="alert alert-info">
+If you’re using something a linter to check your coding style, you’ll need to let the linter know about any global variables loaded in other scripts so that the linter doesn’t think those variables are undefined. See <a href="https://eslint.org/docs/user-guide/configuring#specifying-globals">the documentation</a> for details about how to do this in ESLint.
 </p>
 </div>
 <div id="example-jquery" class="section level2">
