@@ -75,6 +75,8 @@ Note that you will be able to use this page to see and manage users who have sig
 
 ![Firebase users.](img/firebase/firebase-users.png)
 
+<!-- TODO: Add Firebase-UI -->
+
 ### Creating Users {-}
 In order to create a user programmatically (e.g., from JavaScript when the user submits a sign-up form), you can use a function provided by the `firebase` module. Specifically, you'll call the wordily-named function [`firebase.auth().createUserWithEmailAndPassword`](https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword) passing it the email and password the user is signing up with. This will create a new user account in Firebase (you can view it in the Firebase Web Console), _as well as_ log in the user.
 
@@ -137,15 +139,13 @@ let authUnregFunc = firebase.auth().onAuthStateChanged((firebaseUser) => {
 });
 ```
 
-- Because this authentication involves connecting to the Firebase app, it my perform network access. Thus in a React application, this listener should be registered in the **`componentDidMount()`** lifecycle callback.
+- Because this authentication involves connecting to the Firebase app, it my perform network access. Thus in a React application, this listener should be registered in an **effect hook** (the `useEffect()` function).
 
 - The `onAuthStateChanged()` method takes a callback as a parameter, which will be handed a value representing the current Firebase User (or undefined if no one is logged in).
 
-    The most common practice is to then take this passed in object and assign it to a more global variable, such as a `state` variable in a React function (e.g., `this.setState({currentUser: firebaseUser})`).
+    The most common practice is to then take this passed in object and assign it to a more global variable, such as a state variable in a React function (e.g., `setCurrentUser(firebaseUser)`).
 
-- The `onAuthStateChanged()` method returns a _new function_ that can be used to "unregister" the listener when you want to stop responding to authentication changes. You can save this variable for later (e.g., as an instance variable).
-
-    In React applications, you will want to unregister the listener when the component is removed, in the **`componentWillUnmount`** lifecycle callback.
+- The `onAuthStateChanged()` method returns a _new function_ that can be used to "unregister" the listener when you want to stop responding to authentication changes. You should call this function in the "cleanup" function returned by your effect hook in order to unregister the listener.
 
 
 #### Signing In and Out {-}
@@ -162,7 +162,6 @@ firebase.auth().signOut()
 ```
 
 - Both of these methods return Promises, so you can `.catch()` and display any errors.
-
 
 
 ## Realtime Database
@@ -231,14 +230,14 @@ Once you've set up access rules for your database, you can begin reading and wri
 
 ```js
 //get reference to the "root" of the database: the containing JSON
-let rootRef = firebase.database().ref();
+const rootRef = firebase.database().ref();
 
 //refers to the 'people' value in the database
-let peopleRef = firebase.database().ref('people');
+const peopleRef = firebase.database().ref('people');
 
 //refers to the "sarah" value inside the "people" value in the database
 //similar to `database.people.sarah` using dot notation
-let sarahRef = firebase.database().ref('people/sarah');
+const sarahRef = firebase.database().ref('people/sarah');
 ```
 
 Indeed, every single value in the Firebase database can be accessed using a URI-style "path notation", where each nested key is indicated by a slash **`/`** (rather than the `.` in dot notation). Since this parameter is just a string, you can use string concatenation to construct the path to a particular value you wish to reference (e.g., if you only want to b working with the value for a particular person).
@@ -249,27 +248,27 @@ Alternatively, you can use the [`.child()`](https://firebase.google.com/docs/ref
 
 ```js
 //this is equivalent to the above
-let sarahRef = firebase.database().ref('people').child('sarah');
+const sarahRef = firebase.database().ref('people').child('sarah');
 ```
 
 Once you have a reference to a particular entry in the database, you can modify the value at that entry using the [**`.set()`**](https://firebase.google.com/docs/reference/js/firebase.database.Reference#set) method. This method takes as an argument an _object_ containing the keys and values you wish to assign to the that particular reference:
 
 ```js
-let sarahRef = firebase.database().ref('people').child('sarah');
+const sarahRef = firebase.database().ref('people').child('sarah');
 
 //change Sarah's age to 43 (happy birthday!)
 sarahRef.set( {age: 43} )
     .catch(err => console.log(err)); //log any errors for debugging
 ```
 
-- Similar to React's `setState()` method, the Firebase's `set()` method will _overwrite_ the values for any keys specified in its parameter, but leave other values unchanged. Any keys that did not previous exist will be added:
+- Firebase's `set()` method will _overwrite_ the values for any keys specified in its parameter, but leave other values unchanged. Any keys that did not previous exist will be added:
 
     ```js
     sarahRef.set( {favFood: "pizza"} ); //add a new key
 
     firebase.database().ref('people').set({ //add a new entry to `people`
-            ada: {age:27, petName:"Charles"} //27-year-old Ada has pet named "Charles"
-        });
+        ada: {age: 27, petName: "Charles"} //27-year-old Ada has pet named "Charles"
+    });
     ```
 
 
@@ -277,9 +276,9 @@ sarahRef.set( {age: 43} )
 Because Firebase is structured as _realtime_ database (that may change over time), you read data from it by registering an **event listener** to listen for changes to that database. Firebase provides a method [`.on()`](https://firebase.google.com/docs/reference/js/firebase.database.Reference#on) for registering such listeners. Similar to the DOM's `addEventListener()` function, Firebase's `on()` method takes two parameters: an event name (as a string) and a callback function that should be executed when the event occurs:
 
 ```js
-let amitRef = firebase.database().ref('people/amit');
+const amitRef = firebase.database().ref('people/amit');
 amitRef.on('value', (snapshot) => {
-    let amitValue = snapshot.val();
+    const amitValue = snapshot.val();
     console.log(amitValue); //=> { age: 35, petName: "Spot" }
     //can do something else with amitValue (e.g., assign with this.setState())
 });
@@ -289,7 +288,7 @@ amitRef.on('value', (snapshot) => {
 
 - The callback function will be passed a [data snapshot](https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot) as a parameter. This is a wrapper around the database JSON tree (allowing you to navigate it e.g., with `.child()`). More commonly, you will want to convert it into an actual JavaScript object by calling the `.val()` method on it.
 
-- Because this listener involves network access, in a React App you would want to register this listener in the `componentDidMount()` callback. You'll also need to "clean up" and remove the listener if the component gets removed (in the `componentWillUnmount()` callback) to avoid errors. You can remove a listener from a database reference by using the `.off()` method (to cancel the `.on()`):
+- Because this listener involves network access, in a React App you would want to register this listener in an _effect hook_. Your effect hook's "cleanup function" will also need to remove the listener by using the `.off()` method (to cancel the `.on()`):
 
     ```js
     amitRef.off();
@@ -308,7 +307,7 @@ The problem is that with an array, an index number doesn't always refer to the s
 To avoid this problem, Firebase treats all data structures as Objects, so that each value in the JSON tree has a _unique_ key. That way each client will always be modifying the value they expect. However, Firebase does offer a way that you can treat Objects as arrays: databases references support a [**`push()`**](https://firebase.google.com/docs/reference/js/firebase.database.Reference#push) method that will automatically add a value to an object with an **auto-generated key**.
 
 ```js
-let tasksRef = firebase.database().ref('tasks'); //an object of tasks
+const tasksRef = firebase.database().ref('tasks'); //an object of tasks
 tasksRef.push({description:'First things first'}) //add one task
 tasksRef.push({description:'Next things next'}) //add another task
 ```
@@ -336,12 +335,12 @@ Note that when looping through an "array", each element is treated handled separ
 
 ```js
 //assume `tasksSapshot` is a snapshot of the `tasks` "array"
-let tasksObject = tasksSnapshot.val(); //convert snapshot to value
-let taskKeys = Object.keys(tasksObject);
-let taskArray = taskKeys.map((key) => { //map array of keys into array of tasks
-    let task = tasksObject[key]; //access element at that key
-    task.key = key; //save the key for later referencing!
-    return task; //the transformed object to store in the array
+const tasksObject = tasksSnapshot.val(); //convert snapshot to value
+const taskKeys = Object.keys(tasksObject);
+const taskArray = taskKeys.map((key) => { //map array of keys into array of tasks
+    const taskCopy = {...tasksObject[key]}; //copy element at that key
+    taskCopy.key = key; //save the key for later referencing!
+    return taskCopy; //the transformed object to store in the array
 });
 ```
 
