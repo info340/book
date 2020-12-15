@@ -140,6 +140,8 @@ fetch('https://domain.com/data');
 
 <p class="alert alert-warning">In some browsers, you will not be able to send an AJAX request when the web page is loading via the `file://` protocol (e.g., by double-clicking on the `.html` file). This is a security feature to keep you from accidentally running an HTML file that contains malicious JavaScript that will download a virus onto your computer. Instead, you should run a local web server such as `live-server` for testing AJAX requests.</p>
 
+<p class="alert alert-success">Remember to always use a **relative path** when specifying what file or API you wish to fetch. Moreover, paths are always relative to the `.html` file that the user is currently viewing, not to the `.js` file that contains the `fetch()` call. So be careful if your JavaScript is in a different folder; the path needs to be relative to the HTML (which should be in the root of your project).</p> 
+
 ## Asynchronous Programming
 However, the `fetch()` function does **NOT** directly return the data you want to download! Downloading data off the internet can take a long time: the network connection may be slow and the amount of data to download may be quite large (metadata for the latest 100 tweets from Twitter involves almost 500k of JSON content). Because fetching data may take time, AJAX requests are made **asynchronously** (that's the "A" in AJAX)&mdash;the download will occur _at the same time_ that the rest of the code is being executed. Thus the download and the remaining script will _not_ be synchronized; they will be "asynchronous".
 
