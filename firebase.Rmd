@@ -131,7 +131,7 @@ The recommended way to [determine who is currently logged](https://firebase.goog
 let authUnregFunc = firebase.auth().onAuthStateChanged((firebaseUser) => {
     if(firebaseUser){ //firebaseUser defined: is logged in
         console.log('logged in');
-        //do something with firebaseUser (e.g. assign with this.setState())
+        //do something with firebaseUser (e.g. assign to a state variable)
     }
     else { //firebaseUser undefined: is not logged in
         console.log('logged out');
@@ -280,7 +280,7 @@ const amitRef = firebase.database().ref('people/amit');
 amitRef.on('value', (snapshot) => {
     const amitValue = snapshot.val();
     console.log(amitValue); //=> { age: 35, petName: "Spot" }
-    //can do something else with amitValue (e.g., assign with this.setState())
+    //can do something else with amitValue (e.g., assign to a state variable)
 });
 ```
 
@@ -335,13 +335,15 @@ Note that when looping through an "array", each element is treated handled separ
 
 ```js
 //assume `tasksSapshot` is a snapshot of the `tasks` "array"
-const tasksObject = tasksSnapshot.val(); //convert snapshot to value
-const taskKeys = Object.keys(tasksObject);
-const taskArray = taskKeys.map((key) => { //map array of keys into array of tasks
-    const taskCopy = {...tasksObject[key]}; //copy element at that key
-    taskCopy.key = key; //save the key for later referencing!
-    return taskCopy; //the transformed object to store in the array
+const allTasksObject = tasksSnapshot.val(); //convert snapshot to value
+const allTasksKeys = Object.keys(allTasksObject);
+const allTasksArray = allTasksKeys.map((key) => { //map array of keys into array of tasks
+    const singleTaskCopy = {...allTasksObject[key]}; //copy element at that key
+    singleTaskCopy.key = key; //save the key for later referencing!
+    return singleTaskCopy; //the transformed object to store in the array
 });
+
+allTasksArray.map((taskObject) => { ... })
 ```
 
 <p class="alert alert-warning">Don't lose your key!</p>
