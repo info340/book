@@ -65,17 +65,21 @@ The [**`<BrowserRouter>`**](https://reacttraining.com/react-router/web/api/Brows
 
 - Your app will only ever have a single `<BrowserRouter>` component in it--usually at the "top level" of your application (so it would contain `<App>` as a child). The below examples however show the `<BrowserRouter>` as a child of `<App>` for readability.
 
-Inside (as a child of) the `<BrowserRouter>`, you can specify route-based views using the [**`<Route>`**](https://reacttraining.com/react-router/web/api/Route) Component. This component will render some content (a `component`) only when the URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders the specified component (similar to in the pseudo-code example above). If the URL doesn't match the route, then the Component is not rendered. Both the `path` to match and the `component` to render are passed in as props:
+Inside (as a child of) the `<BrowserRouter>`, you can specify route-based views using the [**`<Route>`**](https://reacttraining.com/react-router/web/api/Route) Component. This component will render its content only when the URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders its content. If the URL doesn't match the route, then the content is not rendered. The `path` to match is passed in as prop:
 
 ```jsx
 function App() {
     return (
         <BrowserRouter>
-            {/* if currentUrl == "/home", render <HomePage> */}
-            <Route path="/home" component={HomePage} />
+            {/* if currentUrl == "/home" */}
+            <Route path="/home" >
+                <HomePage />
+            </Route>
 
-            {/* if currentUrl == "/about", render <AboutPage> */}
-            <Route path="/about" component={AboutPage} />
+            {/* if currentUrl == "/about" */}
+            <Route path="/about">
+                <AboutPage />
+            </Route>
         </BrowserRouter>
     );
 }
@@ -85,13 +89,13 @@ The [**`path`**](https://reacttraining.com/react-router/web/api/Route/path-strin
 
 - Note that by default the `path` will "match" even if it is contained in only part of the URL. For example, `<Route path="/about" />` will match a URL of `/about` _OR_ `/about/me`. A path of `/` will match _any_ URL! You can customize what how strict the matching is by specifying the [`exact`](https://reacttraining.com/react-router/web/api/Route/exact-bool) prop (indicating that the path has to match entirely) and/or the [`strict`](https://reacttraining.com/react-router/web/api/Route/strict-bool) prop, which will cause the router to respect any trailing `/` you include.
 
-- Importantly, each `<Route>` determines whether it should render its component _independently_ from each other: they are each `if` statements, not `if else` statements! Thus it is possible for more than one `<Route>` to match the current URL and render its component (and you may actually want to do this sometimes if a component is only a part of a "page"). However, it is very common to have each "route" be mutually exclusive so that only one "page" is shown at a time. You can enforce this by nesting the `<Route>` elements inside of a [`<Switch>`](https://reacttraining.com/react-router/web/api/Switch) element:
+- Importantly, each `<Route>` determines whether it should render its content _independently_ from each other: they are each `if` statements, not `if else` statements! Thus it is possible for more than one `<Route>` to match the current URL and render its content (and you may actually want to do this sometimes if the content is only a part of a "page"). However, it is very common to have each "route" be mutually exclusive so that only one "page" is shown at a time. You can enforce this by nesting the `<Route>` elements inside of a [`<Switch>`](https://reacttraining.com/react-router/web/api/Switch) element:
 
     ```jsx
     <BrowserRouter>
       <Switch>
-        <Route path="/home" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
+        <Route path="/home"> <HomePage /> </Route>
+        <Route path="/about"> <AboutPage /> </Route>
       </Switch>
     </BrowserRouter>
     ```
@@ -102,7 +106,7 @@ The [**`path`**](https://reacttraining.com/react-router/web/api/Route/path-strin
 
     Note that you can use the `useRouteMatch()` hook to get access to the current `path` and `url`; this can be useful for building [relative links](https://reactrouter.com/web/example/nesting).
 
-The [**`component`**](https://reacttraining.com/react-router/web/api/Route/component) prop is used to specify _which_ component should be rendered if the route matches. The component is specified by name as an inline JSX expression (so inside `{}`); you're actually passing a _reference to the function_ to the `<Router>`, so it can then call that function to instantiate the component!
+<!-- The [**`component`**](https://reacttraining.com/react-router/web/api/Route/component) prop is used to specify _which_ component should be rendered if the route matches. The component is specified by name as an inline JSX expression (so inside `{}`); you're actually passing a _reference to the function_ to the `<Router>`, so it can then call that function to instantiate the component!
 
 - The rendered component (e.g., `HomePage` or `AboutPage`) will be passed [a few different props](https://reacttraining.com/react-router/web/api/Route/Route-props) from the `<Router>` which give it some context about the current route match that caused it to be rendered. However, you may notice that there is nowhere in this syntax to specify a prop that _you_ may want to pass to the element (e.g., something from the `state` such as the current logged in user).
 
@@ -115,9 +119,8 @@ The [**`component`**](https://reacttraining.com/react-router/web/api/Route/compo
     )}
     ```
 
-    **In general**, you should utilize the `component` prop instead of `render` whenever possible. It is cleaner, and helps to keep the page components self-contained and "separated".
+    **In general**, you should utilize the `component` prop instead of `render` whenever possible. It is cleaner, and helps to keep the page components self-contained and "separated". -->
     
-
 
 #### URL Parameters {-}
 It is also possible to include _variables_ in the matched route using what are called [**URL Parameters**](https://reacttraining.com/react-router/web/example/url-params). As you may recall from [reading a RESTful API](https://info201.github.io/apis.html#uris), URI endpoints are often specified with "variables" written using **`:param`** syntax (a colon `:` followed by the parameter name). For example, the URI
@@ -131,7 +134,7 @@ from the [Github API](https://developer.github.com/v3/users/) refers to a partic
 React Router supports a similar syntax when specifying Route paths. For example:
 
 ```jsx
-<Route path='/post/:postId' component={BlogPost} />
+<Route path='/post/:postId'/>
 ```
 
 will match a path that starts with `/post/` and is followed by any other path segment (e.g., `/post/hello`, `/post/2017-10-31`, etc). The `:postId` (because it starts with the leading `:`) will be treated as a parameter which will be assigned whatever value is part of the URI in that spot&mdash;so `/post/hello` would have `'hello'` as the `postId`, and `/post/2017-10-31` would have `'2017-10-31'` as the `postId`.
@@ -166,8 +169,8 @@ function App() {
             <header>
                 <h1>Page Title</h1>
             </header>
-            <Route path="/home" component={HomePage} />
-            <Route path="/about" component={AboutPage} />
+            <Route path="/home"> <HomePage /> </Route>
+            <Route path="/about"> <AboutPage /> </Route>
         </BrowserRouter>
     );
 }
@@ -180,8 +183,10 @@ function HomePage() {
         <div>
             <h2>Home Page</h2>
             {/* if route includes /blog, show the blog */}
-            {/* Note the relative url! */}
-            <Route path={routeProps.url + '/blog'} component={BlogPartial} />
+            {/* Note use of a the relative url! */}
+            <Route path={routeProps.url + '/blog'}>
+                <BlogPartial />
+            </Route>
         </div>
     );
 }

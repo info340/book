@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2020-12-14">
+<meta name="date" content="2021-02-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -537,6 +537,9 @@ request<span class="token punctuation">.</span><span class="token function">send
 <!-- //same origin policy & live-server?? Necessary?? -->
 <p class="alert alert-warning">
 In some browsers, you will not be able to send an AJAX request when the web page is loading via the <code>file://</code> protocol (e.g., by double-clicking on the <code>.html</code> file). This is a security feature to keep you from accidentally running an HTML file that contains malicious JavaScript that will download a virus onto your computer. Instead, you should run a local web server such as <code>live-server</code> for testing AJAX requests.
+</p>
+<p class="alert alert-success">
+Remember to always use a <strong>relative path</strong> when specifying what file or API you wish to fetch. Moreover, paths are always relative to the <code>.html</code> file that the user is currently viewing, not to the <code>.js</code> file that contains the <code>fetch()</code> call. So be careful if your JavaScript is in a different folder; the path needs to be relative to the HTML (which should be in the root of your project).
 </p>
 </div>
 <div id="asynchronous-programming" class="section level2">
