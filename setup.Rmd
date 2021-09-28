@@ -11,8 +11,8 @@ In summary, you'll need to install and set up the following software on your mac
 - [**Node.js**](https://nodejs.org/en/) as a JavaScript engine
 - [**`npm`**](https://www.npmjs.com/) as a JavaScript package manager (comes with Node.js)
 - [**`git`**](https://git-scm.com/downloads) as a version control system (for Windows users; already installed on Macs)
-- A Bash terminal (e.g., the [**subsystem for Linux**](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) or [**Git Bash**](https://git-scm.com/downloads) for Windows; Terminal is already installed on Macs)
-- [**`live-server`**](https://www.npmjs.com/package/live-server) as a local development server (simply run `npm install live-server`)
+- A Bash terminal (e.g., the [**Git Bash**](https://git-scm.com/downloads) for Windows; **Terminal** is already installed on Macs)
+<!-- - [**`live-server`**](https://www.npmjs.com/package/live-server) as a local development server (simply run `npm install live-server`) -->
 
 ## Web Browser
 
