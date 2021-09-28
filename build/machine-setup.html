@@ -25,7 +25,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman">
 
 
-<meta name="date" content="2021-02-24">
+<meta name="date" content="2021-09-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -502,14 +502,16 @@ Furthermore, we suggest the following user-settings to make using your text edit
 <div id="bash-command-line" class="section level2">
 <h2><span class="header-section-number">1.3</span> Bash (Command Line)</h2>
 <p>Many of the software tools used in professional web development are used on the <strong>command line</strong>: a text-based interface for controlling your computer. While the command line is harder to learn and figure out, it is particularly effective for doing web development. Command line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command line in order to utilize the software for this course.</p>
-<p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course is based on the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.</p>
+<p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course uses the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines.</p>
 <p>On a Mac you’ll want to use the built-in app called <strong>Terminal</strong>. You can open it by searching via Spotlight (hit Cmd (<code>⌘</code>) and Spacebar together, type in “terminal”, then select the app to open it), or by finding it in the Applications/Utilities folder.</p>
-<p>On Windows, we recommend setting up the <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10"><strong>Windows Subsystem for Linux (WSL)</strong></a>. This will let you turn the Windows command prompt into a full-blown Bash shell just by typing the command <strong><code>bash</code></strong>. (Technically you’re running a small copy of the Linux operating system inside of your Windows install, but we’re just going to need the Bash shell).</p>
 <ul>
-<li><p>Follow the instructions linked above to install the WSL. You will need to download a Linux distribution (e.g., from the Windows store); just using the default Ubuntu version is fine.</p></li>
-<li><p>Note that Windows does come with its own command-prompt, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</p></li>
+<li>As of macOS Catalina, Macs use <strong>zsh</strong> as the default command shell with Terminal. This works mostly the same as bash (supporting generally the same command). It is also possible to <a href="https://www.howtogeek.com/444596/how-to-change-the-default-shell-to-bash-in-macos-catalina/">switch between the two shells</a> if needed.</li>
 </ul>
-<p>Alternatively, on windows you can use the <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> shell, which you should install along with <code>git</code> (see below). Open this program to open the command-shell.</p>
+<p>On Windows, you can use the <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> shell, which you should install along with <code>git</code> (see below). Open this program to open the command-shell.</p>
+<ul>
+<li><p>Note that Windows does come with its own command-prompt, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</p></li>
+<li><p>Alternatively, you can set up the <a href="https://docs.microsoft.com/en-us/windows/wsl/install"><strong>Windows Subsystem for Linux (WSL)</strong></a>. This will let you turn the Windows command prompt into a full-blown Bash shell just by typing the command <strong><code>bash</code></strong>. (Technically you’re running a small copy of the Linux operating system inside of your Windows install, but we’re just going to need the Bash shell). Follow the linked instructions for installing this system. Note that you’ll need to pay attention to <em>file paths</em> if you use WSL, as by default the current working directory is set to the Linux partition rather than your Windows partition.</p></li>
+</ul>
 <p class="alert alert-danger">
 This course expects you to already be familiar with basic command line usage. For review, see <a href="https://info201.github.io/command-line.html">The Command Line</a> in the <em>INFO 201</em> course reader.
 </p>
@@ -534,20 +536,13 @@ in the <em>INFO 201</em> course reader. Note that students in the INFO 340 cours
 <div id="node-and-npm" class="section level2">
 <h2><span class="header-section-number">1.5</span> Node and <code>npm</code></h2>
 <p><a href="https://nodejs.org/en/"><strong>Node.js</strong></a> (commonly just “Node”) is a a command line runtime environment for the JavaScript programming language—that is, a program that is used to <em>interpret</em> and <em>execute</em> programming instructions written in JavaScript. Although client-side development usually involves running JavaScript in the browser (see <a href="#JavaScript">Chapter: JavaScript</a>), Node provides a platform for installing and running a wide variety of “helper” programs that are frequently used in web development.</p>
-<p>The best way to install Node is to use <a href="https://github.com/nvm-sh/nvm"><strong><code>nvm</code></strong></a>, the Node Version Manager. This is a command line program that manages installing the Node command line program, but also makes it easy to update or adjust your Node installation. (It also installs the same way on Mac or Windows WSL). You can install <code>nvm</code> and Node with the following Bash commands:</p>
-<pre class="language-bash"><code><span class="token comment">## Run from your home directory:</span>
-
-<span class="token function">touch</span> ~/.bash_profile
-<span class="token function">curl</span> -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh <span class="token operator">|</span> <span class="token function">bash</span>
-
-<span class="token comment">## Restart the command shell</span>
-
-nvm <span class="token function">install</span> node
-nvm use node
-nvm <span class="token builtin class-name">alias</span> default node</code></pre>
-<p>You can then test that node is installed and working with</p>
+<p>The <em>easiest</em> way to install Node is to use the installer from <a href="https://nodejs.org/en/">Nodejs.org</a>. I recommend getting the latest version for this course. Download the installer and execute it to set up Node on your machine.</p>
+<ul>
+<li>If you want more control over your machine and Node versions, you can alternatively install Node using <a href="https://github.com/nvm-sh/nvm"><strong><code>nvm</code></strong></a>, the Node Version Manager. This is a command line program that manages installing the Node command line program, but also makes it easy to update or adjust your Node installation. (It also installs the same way on Mac or Windows WSL). See <a href="https://github.com/nvm-sh/nvm#installing-and-updating">the installation instructions</a> for details.</li>
+</ul>
+<p>You can test that Node is installed and working by opening your command shell and running</p>
 <pre class="language-bash"><code>node --version</code></pre>
-<p>Be sure and check that you have a recent enough version! At time of this writing, you need Node v10.16 or later.</p>
+<p>Be sure and check that you have a recent enough version! At time of this writing, you shuold have Node v16 or later.</p>
 <p>Installing Node also installs an additional command line program called <a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a>. <code>npm</code> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command line “app store” for developer tools and libraries. <code>npm</code> is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the <code>npm</code> “registry” lists around 725,000 different packages.</p>
 <p class="alert alert-warning">
 If you have an older version of Node and <code>npm</code> (before Node 10.16 or <code>npm</code> 5.6), you will need to update them. You can re-install the latest version of Node as above, or just upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.
@@ -555,14 +550,19 @@ If you have an older version of Node and <code>npm</code> (before Node 10.16 or 
 <div id="managing-packages-with-npm" class="section level3 unnumbered">
 <h3>Managing packages with npm</h3>
 <p>You can use the <code>npm</code> program to download and install command line programs by name:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g PACKAGE-NAME</code></pre>
-<p>For example, you can install the <a href="https://github.com/tapio/live-server"><em>live-server</em></a> utility (a simple program that runs a local web server and will automatically “refresh” the browser when your code changes) using:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g live-server</code></pre>
-<ul>
-<li>Once the program is done installing, you can run it from the command line by using the command <code>live-server</code>. This program will serve all of the content from the current directory. See <a href="#web-servers">Chapter 2</a> for details.</li>
-</ul>
-<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line utility like <em>live-server</em> from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
-<p>It is also possible to omit that option and install a package <em>locally</em>. For example:</p>
+<pre class="language-bash"><code><span class="token comment"># syntax to globally install package with npm</span>
+<span class="token function">npm</span> <span class="token function">install</span> -g PACKAGE-NAME</code></pre>
+<p>For example, you could install the <a href="https://jestjs.io/"><em>Jest</em></a> testing application (a program for running automated tests) used in this course using:</p>
+<pre class="language-bash"><code><span class="token comment"># globally install the Jest package</span>
+<span class="token function">npm</span> <span class="token function">install</span> -g jest</code></pre>
+<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like Jest from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
+<p>After an application is installed, you can run it from the command line by typing the name of that program followed by any arguments. For example, you can have the Jest program print it’s version:</p>
+<pre class="language-bash"><code><span class="token comment"># get the version of the installed Jest application</span>
+jest --version</code></pre>
+<p>The latest version of <code>npm</code> also comes with an additional program called <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b"><strong><code>npx</code></strong></a>. This application lets you “download and run” an application with installing it separately. For example, you could download and run Jest to see it’s version:</p>
+<pre class="language-bash"><code><span class="token comment"># download and run the Jest application without installing it separately</span>
+npx jest --version</code></pre>
+<p>It is also possible to install packages <em>locally</em> by omitting the <code>-g</code> argument. For example:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> lodash</code></pre>
 <p>Will download the <a href="https://lodash.com/"><code>lodash</code></a> code library (a set of useful JavaScript functions). This package will be placed into a new folder <em>in the current project directory</em> called <code>node_modules/</code>, and can be imported and used in the current directory’s code. (It’s called a local install because the package is only available to the “local” project). You will of course need to install local packages once per project.</p>
 <p class="alert alert-warning">
@@ -599,9 +599,13 @@ Because node packages can be very large, and projects can have lots of them, you
 <pre class="language-bash"><code><span class="token comment"># explicitly save dependency in package.json</span>
 <span class="token function">npm</span> <span class="token function">install</span> --save lodash</code></pre>
 <p>Similarly, the <code>--save-dev</code> option will instead save the package in the <code>"devDependencies"</code> list, which are dependencies needed only for development (writing the program’s code) and not for execution (running the program).</p>
-<p>If you want to use a <em>globally</em> installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use <code>npm link</code> to “include” the global package locally. For example, the below will allow you to use a globally installed version of <code>lodash</code> so you don’t have to download a copy for the project:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">link</span> lodash</code></pre>
-<p>Be sure to <code>link</code> any global packages <em>before</em> you run <code>npm install</code> so you don’t download any packages from <code>package.json</code> that you already have!</p>
+<!-- If you want to use a _globally_ installed package in your local project (e.g., have it be a dependency but not have to download and install it again), you can use `npm link` to "include" the global package locally. For example, the below will allow you to use a globally installed version of `lodash` so you don't have to download a copy for the project:
+
+```bash
+npm link lodash
+```
+
+Be sure to `link` any global packages _before_ you run `npm install` so you don't download any packages from `package.json` that you already have! -->
 <p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
 <p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
 <ol style="list-style-type: decimal">
