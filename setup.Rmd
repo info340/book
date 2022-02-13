@@ -54,9 +54,9 @@ Furthermore, we suggest the following user-settings to make using your text edit
 ```json
 // Remove this comment and the comments at the end of each line -- these are for informational purposes, but will not work in your settings
 {
-  "editor.formatOnSave": true,        // have the text editor auto-format your code when you save 
+  "editor.formatOnSave": true,        // have the text editor auto-format your code when you save
   "editor.tabSize": 4,                // set the tab size to 4 spaces
-  "editor.detectIndentation": false,  // don't have the text editor detect tabs v.s. spaces 
+  "editor.detectIndentation": false,  // don't have the text editor detect tabs v.s. spaces
   "jshint.enable": true,              // enable the jshint linter
     "jshint.options": {
         "strict": "global",           // require JavaScript files to declare "use strict";
@@ -135,7 +135,7 @@ You can test that Node is installed and working by opening your command shell an
 node --version
 ```
 
-Be sure and check that you have a recent enough version! At time of this writing, you shuold have Node v16 or later.
+Be sure and check that you have a recent enough version! At time of this writing, you should have Node v17 or later.
 
 Installing Node also installs an additional command line program called [**`npm`**](https://www.npmjs.com/). `npm` is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command line "app store" for developer tools and libraries. `npm` is the most common way of installing and running a large number of tools used in professional web development. At the time of writing, the `npm` "registry" lists around 725,000 different packages.
 

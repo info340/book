@@ -148,7 +148,7 @@ console.log(typeof shoeSize);  //=> 'number'
 
 - As in Java, JavaScript variables should be given descriptive names using [camelCase](https://en.wikipedia.org/wiki/Camel_case).
 
-    <p class="alert alert-info">**Pro Tip:** Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: `textString`, `wordsArray`, `totalNum`, `itemStr`, etc..</p>
+<p class="alert alert-info">**Pro Tip:** Even though variables in JavaScript loosely typed, the data type of a value is still important! In order to help keep track of the type of each variable in JavaScript, include the type in the variable name. For example: `textString`, `wordsArray`, `totalNum`, `itemStr`, etc..</p>
 
 Declared variables have a default value of `undefined`&mdash;a value representing that the variable has no value. This is somewhat similar to `null` in Java (though JavaScript _also_ as an `null` value that is not commonly used):
 

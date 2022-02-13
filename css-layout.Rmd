@@ -1,6 +1,6 @@
 # CSS Layouts
 
-The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page!Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the **top left corner** of the page, and are arranged based on three related (but distinct) concepts:
+The previous chapters have discussed how to use CSS to specify the appearance of individual html elements (e.g., text size, color, backgrounds, etc). This chapter details how to use CSS to declare where HTML elements should _appear_ on a web page! Placing elements exactly how you want them can be surprisingly difficult. Elements are arranged from the **top left corner** of the page, and are arranged based on three related (but distinct) concepts:
 
 - **Display**: determines how elements share horizontal space
 - **Position**: allows you to adjust the location of the natural flow of elements
@@ -148,7 +148,7 @@ This is a common enough change that you may wish to include it in _all_ of your 
 ## Position
 Specifying the `display` style and **box** properties will adjust the layout of HTML elements, but they are still following the browser's default _flow_. The layout rules will still apply, and elements are influenced by the amount of content and the size of the browser (e.g., for when inline elements "wrap").
 
-However, it is possible to position elements outside of the normal flow by specifying the `position` property. Depending on the `position` property, you can shift the location of elements using the `top`, `bottom`, `left`, and `right` properties.There are four values that the `position` property can be set to:
+However, it is possible to position elements outside of the normal flow by specifying the `position` property. Depending on the `position` property, you can shift the location of elements using the `top`, `bottom`, `left`, and `right` properties. There are four values that the `position` property can be set to:
 
 - **`static`**: By default, elements are positioned statically. This is their natural layout, and elements _will not_ be shifted by the `top`, `bottom`, `left`, or `right` properties.
 
@@ -156,7 +156,7 @@ However, it is possible to position elements outside of the normal flow by speci
 
 - **`fixed`**: The _fixed_ position allows you place an element in a consistent location within a browser window. For example, if you wanted a link to _always_ be 50px from the bottom, you could set the properties: `position:fixed;` and `bottom:50px;`.
 
- - **`absolute`**: The _absolute_ position allows you to place an element a specific number of pixels from it's (first non-static) parent element. This allows you to specify where _within a parent element_ you want an element to be positioned. 
+ - **`absolute`**: The _absolute_ position allows you to place an element a specific number of pixels from it's (first non-static) parent element. This allows you to specify where _within a parent element_ you want an element to be positioned.
 
 Note, in order to get `position:absolute;` to work _"as expected"_, you'll need to specify that the _parent element_ is `position:relative;`. See [this post](https://css-tricks.com/absolute-positioning-inside-relative-positioning/) for more information.
 

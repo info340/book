@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 8 Responsive CSS | Client-Side Web Development</title>
+  <title>(APPENDIX) Special Topics | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Chapter 8 Responsive CSS | Client-Side Web Development" />
+  <meta property="og:title" content="(APPENDIX) Special Topics | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Responsive CSS | Client-Side Web Development" />
+  <meta name="twitter:title" content="(APPENDIX) Special Topics | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="css-layouts.html">
-<link rel="next" href="css-frameworks.html">
+<link rel="prev" href="firebase.html">
+<link rel="next" href="jest.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -500,197 +500,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="responsive-css" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Responsive CSS</h1>
-<p>These days the <a href="http://gs.statcounter.com/platform-market-share/desktop-mobile-tablet">majority of people</a> accessing any web site you build will be using a device with a small screen, such as a mobile phone. But phones come in a wide range of sizes and resolutions, and many people will still access that same site from a laptop or desktop with a much larger monitor (as well as other capabilities, such as a mouse instead of a touchscreen). Different screens may require different visual appearances: for example, a three-column layout would be hard to read on a mobile phone! This poses and interesting <em>design</em> dilemma: how do you build one site that looks good and works well on both tiny phones and gigantic desktop monitors?</p>
-<p>The modern solution to this problem is <a href="https://en.wikipedia.org/wiki/Responsive_web_design"><strong>Responsive Web Design</strong></a>, which involves using CSS to specify <em>flexible</em> layouts that will adjust to the size of the display: content can be layed out one column on a small mobile screen, but three columns on a large desktop.</p>
-<div class="figure">
-<img src="img/responsive/Outdated-Browsers_gdwxre.jpg" alt="" />
-<p class="caption">Example of a responsive web site on multiple devices, with content and layout changing at each size. From <a href="https://responsivedesign.is/examples/outdated-browsers/">responsivedesign.is</a>.</p>
-</div>
-<p>This chapter discusses CSS techniques used to create <strong>responsive</strong> web sites. These techniques underlie popular CSS frameworks, so it is important to understand them even if you rely on such tools.</p>
-<div id="mobile-first-design" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Mobile-First Design</h2>
-<p>Responsive design is often framed as a technique to “make it <em>also</em> work on mobile”. This approach feels easy since websites are usually developed and tested on desktops, and follows from the software principle of <a href="https://en.wikipedia.org/wiki/Fault_tolerance"><em>graceful degradation</em></a> (systems should maintain functionality as portions break down, such as the “capability” of having screen real estate).</p>
-<p>But since websites are more likely to be visited on mobile devices, a better approach is to instead utilize <strong>mobile-first design</strong>. This is the idea that you should develop a website so it content and purpose is effectively presented on mobile devices (e.g., the most restricted in terms of screen size, capabilities, etc). Only once this base level of functionality is in place should you add features to make it <em>also</em> look good on larger devices such as desktops. This approach is also known as <a href="https://en.wikipedia.org/wiki/Progressive_enhancement"><em>progressive enhancement</em></a>: provide the core functionality, and then add “extra” features as more capabilities become available.</p>
-<p class="alert alert-info">
-Rather than viewing mobile devices as “losing” features, look at desktops as “gaining” features! This will help you to focus on better supporting more common mobile devices.
-</p>
-<p class="alert alert-warning">
-Remember: working on your personal machine doesn’t ensure that it will work on anyone else’s!
-</p>
-<p>A great way to test the responsiveness of your design is to click on the <strong>Toggle Device Toolbar</strong> icon in your element inspector:</p>
-<div class="figure">
-<img src="img/responsive/toggle-device.png" alt="" />
-<p class="caption">toggle device toolbar</p>
-</div>
-<p>This will allow you to specify a variety of different screensizes for specific devices of interest (i.e., an iPhone 5s, etc.).</p>
-<div id="mobile-first-design-principles" class="section level3 unnumbered">
-<h3 class="unnumbered">Mobile-First Design Principles</h3>
-<p>While there is no magic formula for designing websites to support mobile devices, there are a few general principles you should follow:</p>
-<ul>
-<li><p><strong>Layout</strong>: On mobile devices, blocks of content should stack on top of each other, rather than sitting side by side in columns—mobile devices want to only scroll on one axis. <code>fixed</code> content should be kept to a minimum, as it reduces the amount of scrollable screen real-estate.</p>
-<p>As you gain more screen space on desktops, you will <em>want</em> to break content up into columns or otherwise <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/max-width">constrain its width</a> so that it doesn’t stretch to ridiculous lengths; this helps with readability.</p></li>
-<li><p><strong>Media</strong>: Small screens don’t have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use <a href="https://tinypng.com/">compressed</a> or lower-resolution images on mobile, and consider using background colors or <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient">linear gradient fills</a> instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.</p>
-<p class="alert alert-info">
-<p><a href="http://idlewords.com/talks/website_obesity.htm">Page bloat</a> is a real problem. You don’t need huge images… or possibly any images at all!</p>
-</p></li>
-<li><p><strong>Fonts</strong>: Make sure to use a large enough font that it is readable on small screens… but don’t make headings or callout text <em>too</em> large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units">relative units</a> to accommodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!</p></li>
-<li><p><strong>Navigation</strong>: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Use small tab bars, or menu icons (e.g., the <a href="https://techcrunch.com/2014/05/24/before-the-hamburger-button-kills-you/">“hamburger icon”</a>) to show complex menus on command. Most CSS frameworks provide some kind of collapsible navigation for mobile devices.</p></li>
-<li><p><strong>Input and Interaction</strong>: Tap/click targets need to be large-enough on mobile to select using a finger, especially for people with poor eyesight or thick fingers. Tiny icons placed right next to one another, or one-word hyperlinks are difficult to select accurately. Specifying a data type on form fields (e.g., email address, phone number, date, integer) also generates optimized on-screen keyboards, making data entry much easier.</p></li>
-<li><p><strong>Content</strong>: For some sites, you may even want to adjust what content is shown to mobile users as opposed to desktop users. For example, a phone number might become a large telephone icon with a <code>tel:</code> hyperlink on mobile phones, but simply appear as a normal telephone number on desktop displays.</p></li>
-</ul>
-</div>
-<div id="specifying-viewport" class="section level3 unnumbered">
-<h3 class="unnumbered">Specifying Viewport</h3>
-<p>Mobile web browsers will do some work on their own to adjust the web page in response to screen size—primarily by “shrinking” the content to fit. This often produces the effect of the website being “zoomed out” and the user enlarging the web page to a readable size and then scrolling around the page to view the content. While it may “work” it is not an ideal user interaction—this behavior can also interfere with attempts to be explicit about how webpages should adjust to the size of the screen.</p>
-<p>To fix this, you need to specify the <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag">viewport size and scale</a> by including an appropriate <code>&lt;meta&gt;</code> element in your HTML:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- always need this --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1, shrink-to-fit=no<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<div id="appendix-special-topics" class="section level1 unnumbered">
+<h1 class="unnumbered">(APPENDIX) Special Topics</h1>
 
-  <span class="token comment">&lt;!-- more head elements, including &lt;link> ... --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
-<p>Including this element will keep the text size from adjusting to the browser’s width (though <em>very</em> narrow browsers may still shrink the text).</p>
-<p>While not technically part of any web standard, the <code>viewport</code> meta element was introduced by Safari and is supported by <a href="https://www.quirksmode.org/mobile/metaviewport/">most mobile browsers</a>. The <code>content</code> attribute for the above meta tag sets 3 <a href="https://css-tricks.com/snippets/html/responsive-meta-tag/">properties</a> for mobile browsers: <code>width</code> (how big the viewport should be, specified to be the size of the device screen), <code>initial-scale</code> (how much to initially “zoom” the page, specified to be 1x or no zoom), and <code>shrink-to-fit</code> (tells Safari 9.0+ <a href="https://bitsofco.de/ios-safari-and-shrink-to-fit/">not to shrink the content to fit</a>).</p>
-<p class="alert alert-success">
-You should include the <code>viewport</code> meta tag in all of your responsive pages. Make it part of your default HTML template!
-</p>
-</div>
-</div>
-<div id="media-queries" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Media Queries</h2>
-<p>In order to define a webpage with a responsive appearance, you need to be able to <em>conditionally</em> change the applied style rules depending on the size of the screen (or browser window). We can conditionally apply CSS rules by using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"><strong>media queries</strong></a>. A <em>media query</em> is a bit like an <code>if</code> statement in CSS: it specifies a <em>condition</em> and the rules (<em>selectors</em> and <em>properties</em>) that should apply when that condition is true.</p>
-<p>Media queries have syntax similar to the following:</p>
-<pre class="language-css"><code><span class="token comment">/* A normal CSS rule, will apply to all screen sizes */</span>
-<span class="token selector">body</span> <span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* A Media Query */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
-<span class="token punctuation">{</span>
-    <span class="token comment">/* these rules apply ONLY on screens 768px and wider */</span>
-
-    <span class="token comment">/* a normal CSS rule */</span>
-    <span class="token selector">body</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 18px<span class="token punctuation">;</span>
-        <span class="token property">background-color</span><span class="token punctuation">:</span> beige<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token comment">/* another CSS rule */</span>
-    <span class="token selector">.mobile-call-icon</span> <span class="token punctuation">{</span>
-        <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span> <span class="token comment">/* don't show on large displays */</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>A media query is structurally similar to a normal CSS rule. The “selector” is written as <strong><code>@media</code></strong>, indicating that this is a media query not a normal CSS rule. The <code>@media</code> is then followed by a <em>query expression</em>, somewhat similar to the boolean expressions used in <code>if</code> statements. Expressions are written in parentheses, with the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features">media feature</a> to check, followed by a colon (<strong><code>:</code></strong>), followed by the value to check against. There are no <em>relational operators</em> (no <code>&gt;</code> or <code>&lt;</code>) in media queries, so you use media features with names such as <code>min-width</code> and <code>max-width</code> (to represent <code>width &gt; x</code> and <code>width &lt; x</code> respectively).</p>
-<ul>
-<li><p>Media feature comparisons are not strict inequalities, so <code>min-width: 1000px</code> can be read as “width greater than or equal to 1000px”.</p></li>
-<li><p>It is also possible to use the <em>logical operators</em> <code>and</code> and <code>not</code> to combine media feature checks. You can produce an “or” operator using a group selector (a comma <strong><code>,</code></strong>).</p>
-<pre class="language-css"><code><span class="token comment">/* style rules for screens between 768px and 992px */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
-
-<span class="token comment">/* style rules for screens larger than 700px OR in landscape orientation */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 700px<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token property">orientation</span><span class="token punctuation">:</span> landscape<span class="token punctuation">)</span></span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre></li>
-</ul>
-<p>The <code>@media</code> rule is followed by a <strong><code>{}</code></strong> block, inside of which are listed <em>further regular CSS rules</em>. These rules will <em>only</em> be applied if the <code>@media</code> rule holds. If the <code>@media</code> rule does not apply, then these “inner” rules will be ignored. These “inner” rules can utilize all the selectors and properties value outside of media queries—think of them as mini “conditional” stylesheets!</p>
-<p class="alert alert-warning">
-You need to put <em>full rules</em> (including the selector!) inside of the media query’s body. You can’t just put a property, because the browser won’t know what elements to apply that property to.
-</p>
-<p>Media queries follow the same ordering behavior as other CSS rules: <strong>the last rule on the page wins</strong>. In practice, this means that media queries can be used to specify conditional rules that will <em>override</em> more “general rules”. So in the example above, the page is set to have a <code>font-size</code> of <code>14px</code> using a rule that will apply on any screens. However, on larger screens, the media query will also apply, overriding that property to instead make the default font size <code>18px</code>.</p>
-<p>Following a <strong>mobile-first approach</strong>, this means that your “normal” CSS should define the styling for a the page on a mobile device. Media queries can then be used to add successive sets of rules that will “replace” the mobile styling with properties specific to larger displays.</p>
-<pre class="language-css"><code><span class="token comment">/* on small mobile devices, the header has a purple background */</span>
-<span class="token selector">header</span> <span class="token punctuation">{</span>
-    <span class="token property">font-size</span><span class="token punctuation">:</span> 1.2rem<span class="token punctuation">;</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> mediumpurple<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* on 768px OR LARGER displays */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">header</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 1.5rem<span class="token punctuation">;</span> <span class="token comment">/* make the header larger font on larger displays */</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">/* on 992px OR LARGER displays */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">header</span> <span class="token punctuation">{</span>
-        <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../img/banner.png'</span><span class="token punctuation">)</span></span> <span class="token comment">/* use background image */</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<ul>
-<li>In this example, the <code>&lt;header&gt;</code> is given a simple purple background and default font size. When loaded on mobile devices, this is the only rule that applies (the media queries don’t apply to the given screensize), so that is all the styling that occurs.</li>
-<li>But on devices <code>768px</code> <em>or wider</em> (like a tablet), the first media query is activated. This will then run a second rule that applies to the <code>&lt;header&gt;</code>, overriding the font to be larger (<code>1.5rem</code>)—it’s as if we had listed those two <code>header</code> rules one after another, and the later one wins. But the first rule continues to apply, making the background purple.</li>
-<li>Finally, a device <code>992px</code> <em>or wider</em> (like a desktop computer), will cause <em>both</em> of the media queries to execute. (since a device whose width is greater than <code>992px</code> is ALSO greater than <code>768px</code>). Thus the <code>&lt;header&gt;</code> will be given a purple background and default font size, which will then be overridden to be a larger font by the first media query. The second media query will add an additional property (a banner image background), which will combine with the previous purple background (e.g., if the banner has any transparency). So on large displays, there will be a banner background on top of purple, with text in a larger (<code>1.5rem</code>) font.</li>
-</ul>
-<p>This structure (starting with “default” mobile rules and then using media queries with <em>increasingly larger</em> <code>min-width</code> values) produces an effective mobile-first approach and clean way of organizing how the appearance will change as the screen gets larger. Note that while you can define as many media queries as you want, most professionals define only a few that match the common breakpoints between phone, tablet, and desktop screen widths. Since the media queries need to come <strong>after</strong> the mobile rules, they are often included at the end of the stylesheet—give all the mobile rules first, then all the media queries that modify them. (You can and should put multiple rules in each media query).</p>
-<p>(Alternatively, it’s also reasonable to organize your stylesheets based on page “section”, with the mobile rules for that section given before the media queries for that section. E.g., after all your rules for creating the page header, put the media query with variations for desktop headers. Use whatever organization makes your code readable and maintainable, and leave plenty of comments to guide the reader!)</p>
-<div id="example-responsive-flexbox" class="section level3 unnumbered">
-<h3 class="unnumbered">Example: Responsive Flexbox</h3>
-<p>As another example of using media queries to produce a responsive website, consider how they can combine with <a href="css-layouts.html#flexbox">Flexbox</a> to produce a single-column layout on mobile devices, but a multi-column layout on larger displays. Because a Flexbox layout is just a property applied to existing elements, we can effectively “turn on” the <code>flex</code> layout by using media queries.</p>
-<p>Consider some simple HTML:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column ONE content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column TWO content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column THREE content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>column<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>column FOUR content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<p>By default (without any style rules applied to the <code>.row</code> or <code>.column</code> classes), the four inner <code>&lt;div&gt;</code> elements (as block elements) will stack on top of each other. This is the behavior you want on mobile narrow screens, so now additional CSS or Flexbox usage is needed.</p>
-<p>In order to turn these divs into columns on larger displays, introduce a media query that applies the <code>flex</code> layout to the <code>.row</code> (which acts as the <em>container</em>), thereby lining up the <code>.column</code> elements (which act as the <em>items</em>)</p>
-<pre class="language-css"><code><span class="token comment">/* on devices 768px OR WIDER */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
-<span class="token punctuation">{</span>
-    <span class="token selector">.row</span> <span class="token punctuation">{</span> <span class="token comment">/* row becomes a flexbox container */</span>
-        <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token selector">.column</span>  <span class="token punctuation">{</span> <span class="token comment">/* column becomes a flexbox item */</span>
-        <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span> <span class="token comment">/* make the columns grow equally to fill the row */</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>You can also add an additional media query at another breakpoint so that the layout starts out stacked, then switches to two columns on medium-sized displays (leading to a two-by-two grid), and <em>then</em> switches to four columns on large displays:</p>
-<pre class="language-css"><code><span class="token comment">/* on devices 768px OR WIDER */</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span>
-<span class="token punctuation">{</span>
-    <span class="token selector">.row</span> <span class="token punctuation">{</span> <span class="token comment">/* row is a flexbox container */</span>
-        <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
-        <span class="token property">flex-wrap</span><span class="token punctuation">:</span> wrap<span class="token punctuation">;</span> <span class="token comment">/* wrap extra items to the next "line" */</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token selector">.column</span>  <span class="token punctuation">{</span> <span class="token comment">/* column is a flexbox item */</span>
-        <span class="token property">flex-basis</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span> <span class="token comment">/* columns take up 50% of parent by default */</span>
-        <span class="token property">flex-grow</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-
-<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 1200px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">.column</span> <span class="token punctuation">{</span>
-        <span class="token property">flex-basis</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span> <span class="token comment">/* columns are automatically sized based on content */</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>In this case, the first media query (<code>768px +</code> or medium-sized displays) applies the <code>flex</code> layout and specifies that the items should <code>wrap</code> if they overflow the container… which they will, since each item has a default <code>flex-basis</code> size of <code>50%</code> of the container. This will cause each of the 4 items to take up 50% of the parent, wrapping around to the next line.</p>
-<p>Then when the screen is larger (<code>1200px +</code> or large-size displays), the second media query is applied and <em>overrides</em> the <code>flex-basis</code> so that it will automatically calculate based on the content size, rather than being <code>50%</code> of the parent. That way as long as the columns fit within the parent, they will all line up in a row (they have the <code>flex-grow</code> property to make them equally spread out).</p>
-<p>The best way to get a feel for how this works is to see it in action: see <a href="https://codepen.io/joelross/pen/YxvBzG"><strong>this CodePen</strong></a> for an example of the above behavior—resize the browser and watch the layout change!</p>
-<p>Media rules are a powerful and declarative way to create a single page that looks great on everything from a small mobile touchscreen to a large desktop monitor with a mouse, and form the foundation for responsive CSS frameworks that can help you easily create fantastic looking pages.</p>
-</div>
-</div>
-<div id="resources-6" class="section level2 unnumbered">
-<h2 class="unnumbered">Resources</h2>
-<div class="list-condensed">
-<ul>
-<li><a href="https://developers.google.com/web/fundamentals/design-and-ui/responsive/">Responsive Web Design Basics (Google)</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Using media queries (MDN)</a></li>
-</ul>
-</div>
-
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="css-layouts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="css-frameworks.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="firebase.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -720,7 +540,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info340/book/edit/master/responsive-css.Rmd",
+"link": "https://github.com/info340/book/edit/master/appendix.Rmd",
 "text": "Edit"
 },
 "history": {

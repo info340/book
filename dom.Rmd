@@ -1,6 +1,6 @@
 # Document Object Model (DOM) {#dom}
 
-The primary purpose of using JavaScript in a web page is to make that page **interactive**: the JavaScript language is used to program logical decisions that will effect what is shown on the page. It does this primarily by _changing the HTML rendered by the browser_. For example, JavaScript can be used to change the text inside a `<p>`, add addition `<li>` elements to a list, or to give a `<div>` a new CSS `class` attribute. The programmatic representation of the HTML elements currently being shown by the browser is known as the **Document Object Model (DOM)**. In web programming JavaScript code is used to modify the DOM (HTML elements) currently being shown by the browser in response to user input, thereby making the page interaction. This chapter introduces the Document Object Model and how to use JavaScript to manipulate it through user-driven interaction.
+The primary purpose of using JavaScript in a web page is to make that page **interactive**: the JavaScript language is used to program logical decisions that will effect what is shown on the page. It does this primarily by _changing the HTML rendered by the browser_. For example, JavaScript can be used to change the text inside a `<p>`, add addition `<li>` elements to a list, or to give a `<div>` a new CSS `class` attribute. The programmatic representation of the HTML elements currently being shown by the browser is known as the **Document Object Model (DOM)**. In web programming JavaScript code is used to modify the DOM (HTML elements currently being shown by the browser) in response to user input, thereby making the page interactive. This chapter introduces the Document Object Model and how to use JavaScript to manipulate it through user-driven interaction.
 
 
 ## The DOM API
@@ -142,7 +142,7 @@ let isThick = document.querySelector('svg rect')
 These methods will let you interact with attributes that are _not_ defined by the HTML spec, such as `data-` attribute. However, they _don't_ work with certain element attributes (such as the `value` attribute of an `<input>` element). Other elements may have their own special DOM properties: see the [DOM Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) for a list of [HTML interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces).
 
 #### Changing Element CSS
-It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with othe attributes, you instead access the **`className`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
+It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with other attributes, you instead access the **`className`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
 
 ```js
 //access list of classes
