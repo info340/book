@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<html  lang="en">
-
+<html lang="en" xml:lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 22 React Class Components | Client-Side Web Development</title>
-  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>C React Class Components | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 22 React Class Components | Client-Side Web Development" />
+  <meta property="og:title" content="C React Class Components | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
-  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
   <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 22 React Class Components | Client-Side Web Development" />
+  <meta name="twitter:title" content="C React Class Components | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
-  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman">
+<meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-13">
+<meta name="date" content="2022-02-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="webpack.html">
-<link rel="next" href="css-in-js.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="webpack.html"/>
+<link rel="next" href="css-in-js.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +63,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 
 
@@ -405,75 +411,75 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-special-topics.html"><a href="appendix-special-topics.html"><i class="fa fa-check"></i>(APPENDIX) Special Topics</a></li>
-<li class="chapter" data-level="20" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>20</b> Testing with Jest</a>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>20.1</b> Testing</a></li>
-<li class="chapter" data-level="20.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>20.2</b> Testing with Jest</a></li>
-<li class="chapter" data-level="20.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>20.3</b> Writing a Test</a>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>20.4</b> Testing Web Apps with Jest</a>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>21</b> Lab: Webpack</a>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>21.1</b> What is Webpack?</a></li>
-<li class="chapter" data-level="21.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>21.2</b> Getting Started</a></li>
-<li class="chapter" data-level="21.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>21.3</b> <code>webpack.config.js</code></a>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a>
 <ul>
 <li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>21.4</b> Loaders</a>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a>
 <ul>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>22</b> React Class Components</a>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>22.1</b> Props in Class Components</a></li>
-<li class="chapter" data-level="22.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>22.2</b> Handling Events in Class Components</a>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a>
 <ul>
 <li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
-<li class="chapter" data-level="22.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>22.3</b> State in Class Components</a>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>22.4</b> The Component Lifecycle</a>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>23</b> CSS in JS</a>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>23.1</b> Why CSS in JS?</a></li>
-<li class="chapter" data-level="23.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>23.2</b> React Inline Styles</a></li>
-<li class="chapter" data-level="23.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>23.3</b> Aphrodite</a></li>
-<li class="chapter" data-level="23.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>23.4</b> CSS Modules</a>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a>
 <ul>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>24</b> Redux</a></li>
-<li class="chapter" data-level="25" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>25</b> React Native</a>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>25.1</b> Getting Setup</a>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>25.2</b> React Native Apps</a>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
@@ -501,7 +507,7 @@
 
             <section class="normal" id="section-">
 <div id="class-components" class="section level1" number="22">
-<h1><span class="header-section-number">Chapter 22</span> React Class Components</h1>
+<h1><span class="header-section-number">C</span> React Class Components</h1>
 <p>As mentioned in <a href="react.html#react"><em>Introduction to React</em></a>, it’s also possible to define React Components using ES 6 class syntax:</p>
 <pre class="language-jsx"><code><span class="token comment">//Define a class component representing information about a user</span>
 <span class="token keyword">class</span> <span class="token class-name">UserInfo</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
@@ -526,7 +532,7 @@
 This chapter is taken from an earlier version of the text that emphasized class components instead of function components.
 </p>
 <div id="props-in-class-components" class="section level2" number="22.1">
-<h2><span class="header-section-number">22.1</span> Props in Class Components</h2>
+<h2><span class="header-section-number">C.1</span> Props in Class Components</h2>
 <p>When defining a Class component, all of the passed in props are automatically assigned to the <code>props</code> instance variable, accessible as <strong><code>this.props</code></strong>. The <code>this.props</code> variable contains the object that would be passed as an argument to a function version of the component.</p>
 <pre class="language-jsx"><code><span class="token comment">//Define a component representing information about a user</span>
 <span class="token keyword">class</span> <span class="token class-name">UserInfo</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -548,7 +554,7 @@ This chapter is taken from an earlier version of the text that emphasized class 
 <p>Note that the <code>this.props</code> object is <strong>read only</strong>—meaning that you cannot assign new values to it, nor modify its props directly. You should just think of props as immutable data that is coming in from outside of the component (again, similar to function arguments). A component doesn’t create or change is own props, it just uses those to determine how to render its content.</p>
 </div>
 <div id="handling-events-in-class-components" class="section level2" number="22.2">
-<h2><span class="header-section-number">22.2</span> Handling Events in Class Components</h2>
+<h2><span class="header-section-number">C.2</span> Handling Events in Class Components</h2>
 <p>When using class components, events are handled in the same way as with function components (e.g., using the <code>onClick</code> prop). The main difference is that event handler callbacks are usually defined as separate <em>methods</em> of the class:</p>
 <pre class="language-jsx"><code><span class="token comment">//A component representing a button that logs a message when clicked</span>
 <span class="token keyword">class</span> <span class="token class-name">MyButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -565,7 +571,7 @@ This chapter is taken from an earlier version of the text that emphasized class 
 <span class="token punctuation">}</span></code></pre>
 <p>Note that when assigning the method to the <code>onClick</code> prop, the method is referenced using the <code>this</code> keyword (and no parentheses!), because the reference is to <em>this Component<strong>’s</strong></em> <code>handleClick()</code> method.</p>
 <div id="accessing-this-component-from-events" class="section level3 unnumbered">
-<h3 class="unnumbered">Accessing <code>this</code> Component from Events</h3>
+<h3>Accessing <code>this</code> Component from Events</h3>
 <p>It is very common to have a Component’s event callback functions need to reference the instance variables or methods of that component—such as to do something based with a prop (found in <code>this.props</code>) or to call an additional helper method (called as <code>this.otherMethod()</code>). In short—the event callback will need to have access to the <code>this</code> context.</p>
 <p>But as discussed in <a href="es6.html#working-with-this">Section 15.2</a>, callback functions are not called on any particular object, and thus do not have a value assigned to their <code>this</code> variable. In the example above, although you’re using the word <code>this</code> to <em>refer to</em> the method <code>this.handleClick</code> (to tell JavaScript where to find the function), that function is not actually being called on the class. As described in Section 15.2, just because the method was defined inside a class doesn’t mean it needs to be called on an instance of that class!</p>
 <pre class="language-jsx"><code><span class="token comment">//BUGGY CODE: A button that causes and error when clicked!</span>
@@ -633,7 +639,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 </div>
 <div id="state-in-class-components" class="section level2" number="22.3">
-<h2><span class="header-section-number">22.3</span> State in Class Components</h2>
+<h2><span class="header-section-number">C.3</span> State in Class Components</h2>
 <p>React Components store their state in the <code>state</code> instance variable (accessed as <strong><code>this.state</code></strong>). Unlike props that are specified as inputs to the Component, the state must be initially assigned a value, which should be done in the Component’s <em>constructor</em>:</p>
 <pre class="language-jsx"><code><span class="token comment">//A button that tracks how many times it was clicked</span>
 <span class="token keyword">class</span> <span class="token class-name">CountingButton</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -675,7 +681,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>Inside the constructor, you <em>initialize</em> the <code>this.state</code> value (and this is usually all you do in the constructor!). The <code>this.state</code> value must be a JavaScript Object which can store specific data—you can’t make the state a String or a Number, but an object that can contain Strings and/or Numbers (with keys to label them).</p>
 <p>You can access the values currently stored in the state through the <code>this.state</code> instance variable. You will usually do this in the <code>render()</code> (or in a helper method called by the <code>render()</code> function). If a value doesn’t get used for rendering, it probably doesn’t need to be part of the state!</p>
 <div id="changing-the-state" class="section level3 unnumbered">
-<h3 class="unnumbered">Changing the State</h3>
+<h3>Changing the State</h3>
 <p>Data is stored in the state so that can be changed over time. You can modify a Component’s state by calling the <a href="https://reactjs.org/docs/react-component.html#setstate"><strong><code>setState()</code></strong></a> method on that Component. This method usually takes as a parameter an object that contains the new desired values for the state; this set of new values will be “merged” into the existing state, changing only the indicated values (other values will be left alone):</p>
 <pre class="language-jsx"><code><span class="token comment">//An element that displays the time when asked</span>
 <span class="token keyword">class</span> <span class="token class-name">Clock</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
@@ -753,7 +759,7 @@ Never call <code>setState()</code> directly from inside of <code>render()</code>
 </div>
 </div>
 <div id="the-component-lifecycle" class="section level2" number="22.4">
-<h2><span class="header-section-number">22.4</span> The Component Lifecycle</h2>
+<h2><span class="header-section-number">C.4</span> The Component Lifecycle</h2>
 <p>A react component’s state is initialized in the constructor (when the component is first instantiated), and then usually modified in response to user events (by calling the <code>setState()</code> method). But there are a number of other “events” that occur during the life of a Component—such as the “events” of when the Component is added to the DOM (“mounted”) or removed from the DOM (“unmounted”). For example, you should only download data when there is a Component on the screen to display that data (after the Component has been added to the DOM), and to “clean up” any listeners or timers when the Component is removed.
 It is possible to define functions will execute at such these events, allowing you to perform specific actions as the React framework manipulates the DOM. These functions are called <a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class"><strong>lifecycle methods</strong></a>—they are methods that are executed at different stages of the Component’s “lifecycle”. You <em>override</em> these lifecycle methods in order to specify what code you want to run at those events. Lifecycle methods will be <em>automatically executed by the React framework</em>; you never directly call these methods (the same way you never directly call <code>render()</code>—which is itself a lifecycle method!)</p>
 <p>React components have a number of different lifecycle methods, the most common of which are illustrated below:</p>
@@ -788,7 +794,7 @@ It is possible to define functions will execute at such these events, allowing y
 <!-- Is there more to say about this? :/ -->
 <p>Note that you are not <em>required</em> to include these methods in a Component. However, they are required to correctly perform asynchronous functions such as AJAX requests, as described below.</p>
 <div id="lifecycle-example-fetching-data-via-ajax" class="section level3 unnumbered">
-<h3 class="unnumbered">Lifecycle Example: Fetching Data via AJAX</h3>
+<h3>Lifecycle Example: Fetching Data via AJAX</h3>
 <p>One of the most common use of lifecycle callback functions is when accessing data asynchronously, such as when fetching data via an AJAX request (such a described in <a href="ajax.html#ajax">Chapter 14</a>). This section provides details about how to asynchronously load data within a React class component.</p>
 <p>Remember that the <code>fetch()</code> function downloads data <em>asynchronously</em>. Thus if you want to download some data to display, it may take a while to arrive. You don’t want React to have to “wait” for the data (since React is designed to be <em>fast</em>). Thus the best practice is to send the <code>fetch()</code> request for data, and <code>then</code> when the data has been downloaded, call the <code>setState()</code> method to update the Component with the downloaded data. (The Component can initialize its state as an “empty array” of data).</p>
 <p>Because <code>fetch()</code> will eventually call the <code>setState()</code> method, you can’t send the AJAX from the Component’s constructor. That’s because <code>setState()</code> will eventually render the Component, which involves updating something that has been added to the DOM. In the constructor, the Component has been instantiated, but has not yet been added to the DOM—thus you can’t update its state yet! If the data ends up downloading before the Component is mounted, you will get an error that you cannot re-render an unmounted Component!</p>
@@ -825,7 +831,7 @@ It is possible to define functions will execute at such these events, allowing y
 </div>
 </div>
 <div id="resources-18" class="section level2 unnumbered">
-<h2 class="unnumbered">Resources</h2>
+<h2>Resources</h2>
 <div class="list-condensed">
 <ul>
 <li><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">The Component Lifecycle</a></li>
@@ -845,12 +851,13 @@ It is possible to define functions will execute at such these events, allowing y
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -858,12 +865,13 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -878,7 +886,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -894,8 +910,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

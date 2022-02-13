@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<html  lang="en">
-
+<html lang="en" xml:lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 21 Lab: Webpack | Client-Side Web Development</title>
-  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>B Lab: Webpack | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 21 Lab: Webpack | Client-Side Web Development" />
+  <meta property="og:title" content="B Lab: Webpack | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
-  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
   <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 21 Lab: Webpack | Client-Side Web Development" />
+  <meta name="twitter:title" content="B Lab: Webpack | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
-  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman">
+<meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-13">
+<meta name="date" content="2022-02-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="jest.html">
-<link rel="next" href="class-components.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="jest.html"/>
+<link rel="next" href="class-components.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +63,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 
 
@@ -405,75 +411,75 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-special-topics.html"><a href="appendix-special-topics.html"><i class="fa fa-check"></i>(APPENDIX) Special Topics</a></li>
-<li class="chapter" data-level="20" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>20</b> Testing with Jest</a>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>20.1</b> Testing</a></li>
-<li class="chapter" data-level="20.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>20.2</b> Testing with Jest</a></li>
-<li class="chapter" data-level="20.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>20.3</b> Writing a Test</a>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>20.4</b> Testing Web Apps with Jest</a>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>21</b> Lab: Webpack</a>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>21.1</b> What is Webpack?</a></li>
-<li class="chapter" data-level="21.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>21.2</b> Getting Started</a></li>
-<li class="chapter" data-level="21.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>21.3</b> <code>webpack.config.js</code></a>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a>
 <ul>
 <li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>21.4</b> Loaders</a>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a>
 <ul>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>22</b> React Class Components</a>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>22.1</b> Props in Class Components</a></li>
-<li class="chapter" data-level="22.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>22.2</b> Handling Events in Class Components</a>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a>
 <ul>
 <li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
-<li class="chapter" data-level="22.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>22.3</b> State in Class Components</a>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>22.4</b> The Component Lifecycle</a>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>23</b> CSS in JS</a>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>23.1</b> Why CSS in JS?</a></li>
-<li class="chapter" data-level="23.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>23.2</b> React Inline Styles</a></li>
-<li class="chapter" data-level="23.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>23.3</b> Aphrodite</a></li>
-<li class="chapter" data-level="23.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>23.4</b> CSS Modules</a>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a>
 <ul>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>24</b> Redux</a></li>
-<li class="chapter" data-level="25" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>25</b> React Native</a>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>25.1</b> Getting Setup</a>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>25.2</b> React Native Apps</a>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
@@ -501,16 +507,16 @@
 
             <section class="normal" id="section-">
 <div id="webpack" class="section level1" number="21">
-<h1><span class="header-section-number">Chapter 21</span> Lab: Webpack</h1>
+<h1><span class="header-section-number">B</span> Lab: Webpack</h1>
 <p>This lab is intended to walk you through the basics of the <a href="https://webpack.js.org/concepts/"><strong>Webpack</strong></a> module bundling system. Webpack is the tool most commonly used in the React &amp; Javascript community to <em>transpile</em> and <em>bundle</em> components, and is what is used under the hood by <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> (we’ll be using this next week!). While that scaffolding tool means you don’t need to know how to set up Webpack, it is good to be at least somewhat familiar with the concept (and this exercise will give you further practice working with <code>npm</code> modules).</p>
 <p><em>This tutorial is adapted from one by <a href="https://tylermcginnis.com/react-js-tutorial-1-5-utilizing-webpack-and-babel-to-build-a-react-js-app-5f804d729d3b#.3v5n4cd1z">Tyler McGinnis</a>.</em></p>
 <div id="what-is-webpack" class="section level2" number="21.1">
-<h2><span class="header-section-number">21.1</span> What is Webpack?</h2>
+<h2><span class="header-section-number">B.1</span> What is Webpack?</h2>
 <p>Webpack is a <strong>build tool</strong>. That is, it is a (command line) application that is used to automatically take the source code you write and prepare that code to be run/executed, whether for development or deployment. There are numerous such build tools in existence: <a href="http://gulpjs.com/">Gulp</a> is the major competitor to Webpack, and most IDEs (like jGrasp or IntelliJ) provide them. However, Webpack is favored by React developers because of how easily and speedily it transpiles JSX.</p>
 <p>At its core, Webpack is a module loader: it takes source files like JavaScript <strong>modules</strong> and bundles them into a few simplified files that can be part of your webpage. It takes your complicated source code structure (lots of files) and transforms it into a brand-new, “simplified” version (few files).</p>
 </div>
 <div id="getting-started" class="section level2" number="21.2">
-<h2><span class="header-section-number">21.2</span> Getting Started</h2>
+<h2><span class="header-section-number">B.2</span> Getting Started</h2>
 <p>There are two things you need to do to get started:</p>
 <ol style="list-style-type: decimal">
 <li><p>First, we need to create the <code>package.json</code> file to store information about the app you’re building, including dependencies that Webpack will use. You can do this with the following command:</p>
@@ -532,7 +538,7 @@
 </ol>
 </div>
 <div id="webpack.config.js" class="section level2" number="21.3">
-<h2><span class="header-section-number">21.3</span> <code>webpack.config.js</code></h2>
+<h2><span class="header-section-number">B.3</span> <code>webpack.config.js</code></h2>
 <p>While Webpack can be used to do simple bundling from the command line (see <a href="https://webpack.js.org/guides/getting-started//">the official tutorial</a> for an example), it’s most common to write down all of your bundling options inside a <strong>configuration file</strong>. This file is basically just a JavaScript file that defines a variable that represents all of the different options you’d want to pass to the <code>webpack</code> program. If you name this file <strong><code>webpack.config.js</code></strong>, Webpack will read in that configuration automatically. Thus “using Webpack” really involves creating this file.</p>
 <ol style="list-style-type: decimal">
 <li><p>Create a new file called <strong><code>webpack.config.js</code></strong> and open it up in your favorite editor (e.g., VS Code).</p></li>
@@ -550,7 +556,7 @@
 <li>Where to save the transformed files</li>
 </ol>
 <div id="entry-and-output" class="section level3 unnumbered">
-<h3 class="unnumbered"><code>entry</code> and <code>output</code></h3>
+<h3><code>entry</code> and <code>output</code></h3>
 <p>We specify the first piece (what files to transform) by giving the exported object an <code>entry</code> property:</p>
 <pre class="language-javascript"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token comment">//list of entry points</span>
@@ -594,7 +600,7 @@ bundle.js  3 kB       0  [emitted]  main
 </div>
 </div>
 <div id="loaders" class="section level2" number="21.4">
-<h2><span class="header-section-number">21.4</span> Loaders</h2>
+<h2><span class="header-section-number">B.4</span> Loaders</h2>
 <p><a href="https://kangax.github.io/compat-table/es6/">Look at all this red!</a> This is the support that ES6 has among today’s modern browsers. What does this mean? While ES6 features are being adopted more and more, there isn’t great <em><em>uniform</em></em> support for it. So, we have to do a little trick called <em><em>transpiling</em></em> our code so that all browsers know what our Javascript is doing.</p>
 <p>To do this, we use what are called <strong>loaders</strong>. A loader is basically a plugin that is used to perform a particular transformation (e.g., transpiling JSX or even ES 6 syntax!). Webpack’s strength is its set of loaders that enable it to handle pretty much any kind of file and transformation. (It’s of course possible to write your own, but that’s well beyond the scope of this tutorial).</p>
 <p>The <code>module</code> property is used to specify the list of <code>loaders</code>:</p>
@@ -627,7 +633,7 @@ bundle.js  3 kB       0  [emitted]  main
 <li><p>the <code>loaders</code> property is a list of which loaders we want to apply to files whose names match the “test”. In our case, we use <a href="http://babeljs.io/docs/setup/#installation">Babel</a> to transform our JSX, so we’ll be using <code>"babel"</code> as our loader.</p></li>
 </ul>
 <div id="babel-loader" class="section level3 unnumbered">
-<h3 class="unnumbered">Babel Loader</h3>
+<h3>Babel Loader</h3>
 <p>Loaders such as Babel need to be installed individually using <code>npm</code> as if they were separate programs (since they are in fact separate libraries!). This we will need to install the <code>babel-loader</code> package to be able to apply Babel transformations:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> babel-loader --save-dev</code></pre>
 <ul>
@@ -652,7 +658,7 @@ bundle.js  3 kB       0  [emitted]  main
 </ul>
 </div>
 <div id="clean-up-bath" class="section level3 unnumbered">
-<h3 class="unnumbered">Clean up :bath:</h3>
+<h3>Clean up :bath:</h3>
 <p>Now that we’ve put in the hard work making webpack bundle our files, let’s actually convert our files to proper ES6 synxtax and use correct import statements, given that only Chrome supports importing natively with <a href="http://caniuse.com/#feat=imports">special exceptions</a>.</p>
 <ol style="list-style-type: decimal">
 <li>Be sure to export the functions from <code>src/sorter.js</code>, <code>src/looper.js</code> and <code>src/printer.js</code>!</li>
@@ -664,7 +670,7 @@ bundle.js  3 kB       0  [emitted]  main
 <p>With any luck, running <code>npm run build</code> one last time should give you a good output, and finally, opening <code>index.html</code> and looking at the console log should have your sorted user array!</p>
 </div>
 <div id="further-loader-practice" class="section level3 unnumbered">
-<h3 class="unnumbered">Further Loader Practice</h3>
+<h3>Further Loader Practice</h3>
 <p>The webpage doesn’t look great yet, because there is no styling (CSS) involved. To practice working with webpack loaders, add an <code>import</code> for <code>main.css</code> stylesheet to your <code>index.js</code>, and modify <code>webpack.config.js</code> so that it will bundle that file:</p>
 <ol style="list-style-type: decimal">
 <li><p>Add the import to your <code>index.js</code> file. The file path should be <em>relative</em> to the <code>index.js</code> file.</p></li>
@@ -692,12 +698,13 @@ bundle.js  3 kB       0  [emitted]  main
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -705,12 +712,13 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -725,7 +733,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -741,8 +757,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

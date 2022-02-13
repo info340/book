@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html  lang="en">
-
+<html lang="en" xml:lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 JavaScript Fundamentals | Client-Side Web Development</title>
-  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 JavaScript Fundamentals | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
-  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
   <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="github-repo" content="info340/book" />
 
@@ -20,27 +19,30 @@
   <meta name="twitter:title" content="Chapter 10 JavaScript Fundamentals | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
-  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman">
+<meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-13">
+<meta name="date" content="2022-02-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="css-frameworks.html">
-<link rel="next" href="functional-programming.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="css-frameworks.html"/>
+<link rel="next" href="functional-programming.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +63,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 
 
@@ -405,75 +411,75 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-special-topics.html"><a href="appendix-special-topics.html"><i class="fa fa-check"></i>(APPENDIX) Special Topics</a></li>
-<li class="chapter" data-level="20" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>20</b> Testing with Jest</a>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>20.1</b> Testing</a></li>
-<li class="chapter" data-level="20.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>20.2</b> Testing with Jest</a></li>
-<li class="chapter" data-level="20.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>20.3</b> Writing a Test</a>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>20.4</b> Testing Web Apps with Jest</a>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>21</b> Lab: Webpack</a>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>21.1</b> What is Webpack?</a></li>
-<li class="chapter" data-level="21.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>21.2</b> Getting Started</a></li>
-<li class="chapter" data-level="21.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>21.3</b> <code>webpack.config.js</code></a>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a>
 <ul>
 <li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>21.4</b> Loaders</a>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a>
 <ul>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>22</b> React Class Components</a>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>22.1</b> Props in Class Components</a></li>
-<li class="chapter" data-level="22.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>22.2</b> Handling Events in Class Components</a>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a>
 <ul>
 <li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
-<li class="chapter" data-level="22.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>22.3</b> State in Class Components</a>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>22.4</b> The Component Lifecycle</a>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>23</b> CSS in JS</a>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>23.1</b> Why CSS in JS?</a></li>
-<li class="chapter" data-level="23.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>23.2</b> React Inline Styles</a></li>
-<li class="chapter" data-level="23.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>23.3</b> Aphrodite</a></li>
-<li class="chapter" data-level="23.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>23.4</b> CSS Modules</a>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a>
 <ul>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>24</b> Redux</a></li>
-<li class="chapter" data-level="25" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>25</b> React Native</a>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>25.1</b> Getting Setup</a>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>25.2</b> React Native Apps</a>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
@@ -516,7 +522,7 @@ Note, this course assumes you already are already familiar with introductory pro
 </ul>
 <p>Although JavaScript was designed for and is most commonly used within web browsers (which contain their own JavaScript Interpreters), it can also be executed on the command line by using <a href="https://nodejs.org/en/">Node.js</a>, allowing JavaScript to be a fully general language. Both techniques are described in this chapter.</p>
 <div id="history-and-versions" class="section level3 unnumbered">
-<h3 class="unnumbered">History and Versions</h3>
+<h3>History and Versions</h3>
 <p>The JavaScript language was developed by <a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a> (the co-founder of Mozilla) in 1995 while he was working for Netscape. The original prototype of the language was created in 10 days… a fact which may help explain some of the quirks in the language.</p>
 <ul>
 <li><p>Despite the names, <em>JavaScript</em> and the <em>Java</em> language have nothing to do with one another (and are in fact totally separate programming languages used in drastically different contexts). JavaScript was named after Java as a marketing ploy to cash in on the popularity of the latter. It is the programming equivalent of the <a href="https://www.rottentomatoes.com/m/transmorphers_2007/">Transmorphers</a> movie.</p></li>
@@ -533,7 +539,7 @@ Note, this course assumes you already are already familiar with introductory pro
 <h2><span class="header-section-number">10.2</span> Running JavaScript</h2>
 <p>There are two primary ways of executing code written in JavaScript:</p>
 <div id="in-the-browser" class="section level3 unnumbered">
-<h3 class="unnumbered">In the Browser</h3>
+<h3>In the Browser</h3>
 <p>JavaScript scripts are most commonly executed in a web browser as part of the browser rendering a web page. Since browsers render HTML content (in <code>.html</code> files), JavaScript scripts are included in that HTML by using a <code>&lt;script&gt;</code> tag and specifying the <em>relative</em> path to the a file containing the code (usually a <strong><code>.js</code></strong> file) to execute. When the browser renders the HTML (reading top to bottom) and gets to that tag, it will download and execute the specified script file using the JavaScript interpreter:</p>
 <pre class="language-html"><code><span class="token comment">&lt;!-- execute the script.js file --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>path/to/my/script.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span></code></pre>
@@ -568,7 +574,7 @@ Note, this course assumes you already are already familiar with introductory pro
 </p>
 </div>
 <div id="on-the-command-line-with-node.js" class="section level3 unnumbered">
-<h3 class="unnumbered">On the Command-line with Node.js</h3>
+<h3>On the Command-line with Node.js</h3>
 <p>It is also possible to execute JavaScript code on the command line using <a href="https://nodejs.org/en/">Node.js</a>. Node is a <strong>command line runtime environment</strong>—that is, a JavaScript interpreter that can be run on the command line.</p>
 <p>With Node installed on your machine, you can use the <strong><code>node</code></strong> terminal command to start an <em>interactive Node session</em>. This will allow you to type JavaScript code directly in the terminal, and your computer will interpret and execute each line of code:</p>
 <div class="figure">
@@ -609,7 +615,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 <p>As in Java, each statement should end with a semicolon (<strong><code>;</code></strong>) marking the end of that statement. But unlike Java, JavaScript can be forgiving if you forget a semicolon. The JavaScript interpreter tries to be “helpful” and will often assume that statements end at the end of a line if the next line “looks like” a new statement. However, it occasionally screws up in horrible ways—and so best practice as a developer is to <strong>always include the semicolons</strong>.</p>
 <div id="strict-mode" class="section level3 unnumbered">
-<h3 class="unnumbered">Strict Mode</h3>
+<h3>Strict Mode</h3>
 <p><code>ES5</code> includes the ability for JavaScript to be interpreted in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode"><strong>strict mode</strong></a>. Strict mode is more “strict” about how the interpreter understands the syntax: it is less likely to assume that certain programmer mistakes were intentional (and so try to run the code anyway). For example, in <em>strict mode</em> the interpreter will produce an <em>Error</em> if you try and use a variable that has not yet been defined, while without strict mode the code will just use an <code>undefined</code> value. Thus working in strict mode can help catch a lot of silly mistakes.</p>
 <p>You declare that a script or function should be executed in strict mode by putting an <em>interpreter declaration</em> at the top:</p>
 <pre class="language-js"><code><span class="token string">'use strict'</span><span class="token punctuation">;</span></code></pre>
@@ -648,7 +654,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <pre class="language-js"><code><span class="token keyword">const</span> <span class="token constant">ISCHOOL_URL</span> <span class="token operator">=</span> <span class="token string">'https://ischool.uw.edu'</span><span class="token punctuation">;</span> <span class="token comment">//declare constant</span>
 <span class="token constant">ISCHOOL_URL</span> <span class="token operator">=</span> <span class="token string">'https://example.com'</span><span class="token punctuation">;</span> <span class="token comment">//TypeError: Assignment to constant variable.</span></code></pre>
 <div id="basic-data-types" class="section level3 unnumbered">
-<h3 class="unnumbered">Basic Data Types</h3>
+<h3>Basic Data Types</h3>
 <p>JavaScript supports many of the same basic data types as Java and other languages:</p>
 <ul>
 <li><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number"><strong>Numbers</strong></a> are used to represent numeric data (JavaScript does not distinguish between integers and floats). Numbers support the same <em>mathematical</em> and operators as Java. Common mathematical functions can be accessed through in the built-in <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math"><code>Math</code></a> global (similar to Java’s <code>Math</code> class).</p>
@@ -685,7 +691,7 @@ boolOne <span class="token operator">||</span> boolTwo
 </ul>
 </div>
 <div id="arrays" class="section level3 unnumbered">
-<h3 class="unnumbered">Arrays</h3>
+<h3>Arrays</h3>
 <p>JavaScript also supports <strong>arrays</strong>, which are <em>ordered, one-dimensional sequences of values</em>. As in Java, JavaScript Arrays are written as literals inside square brackets <strong><code>[]</code></strong>. Individual elements can be accessed by (0-based) <em>index</em> using <strong>bracket notation</strong>.</p>
 <pre class="language-js"><code><span class="token comment">//an array of names</span>
 <span class="token keyword">let</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token string">'Paul'</span><span class="token punctuation">,</span> <span class="token string">'George'</span><span class="token punctuation">,</span> <span class="token string">'Ringo'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -732,7 +738,7 @@ array<span class="token punctuation">.</span><span class="token function">splice
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>array<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> ['i','n','f','340']</span></code></pre>
 </div>
 <div id="objects" class="section level3 unnumbered">
-<h3 class="unnumbered">Objects</h3>
+<h3>Objects</h3>
 <p>The most generic and useful data type in JavaScript is the Object data type. An <strong>Object</strong> is a lot like an array in that it is in that it is a (one-dimensional) sequence of values that are all stored in a single variable. However, rather than using <em>integers</em> as the index for each element, an Object uses <em>Strings</em>. Thus Objects are <em>unordered</em> sequences of <strong>key-value pairs</strong>, where the keys (called <strong>“properties”</strong>) are arbitrary Strings and the values are any data type—each property can be used to <em>look up</em> (reference) the value associated with it.</p>
 <ul>
 <li><p>This is a lot like a real-world dictionary or encyclopedia, in which the words (keys) are used to look up the definitions (values). A phone book works the same way (the names are the keys, the phone numbers are the values). A JavaScript Object provides a <em>mapping</em> from properties to values.</p></li>
@@ -777,7 +783,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <div id="accessing-objects" class="section level4 unnumbered">
-<h4 class="unnumbered">Accessing Objects</h4>
+<h4>Accessing Objects</h4>
 <p>Similar to arrays, Object values can be access via <strong>bracket notation</strong>, specifying the <em>property name</em> as the index. If an object does not explicitly have a property value, accessing that key produces <code>undefined</code> (the property’s value is <code>undefined</code>).</p>
 <pre class="language-js"><code><span class="token keyword">let</span> favorites <span class="token operator">=</span> <span class="token punctuation">{</span>music<span class="token operator">:</span> <span class="token string">'jazz'</span><span class="token punctuation">,</span> food<span class="token operator">:</span> <span class="token string">'pizza'</span><span class="token punctuation">,</span> numbers<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">42</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
 
@@ -822,7 +828,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token keyword">let</span> keys <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>ages<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// [ 'sarah', 'amit', 'zhang' ]</span></code></pre>
 </div>
 <div id="arrays-of-objects" class="section level4 unnumbered">
-<h4 class="unnumbered">Arrays of Objects</h4>
+<h4>Arrays of Objects</h4>
 <p>As noted above, both arrays and objects can have values of any type—including other arrays or objects! The ability to nest objects inside of objects is incredibly powerful, and allows us to define arbitrarily complex information structurings (schemas). Indeed, most data in computer programs—as well as public information available on the web—is structured as a set of nested maps like this (though possibly with some level of abstraction).</p>
 <p>One of the most common forms of nesting you’ll see is to have an <strong>array of objects</strong> where each object has <em>the same properties</em> (but different values). For example:</p>
 <pre class="language-js"><code><span class="token comment">//an arbitrary list of people's names, heights, and weights</span>
@@ -842,7 +848,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 </div>
 </div>
 <div id="type-coercion" class="section level3 unnumbered">
-<h3 class="unnumbered">Type Coercion</h3>
+<h3>Type Coercion</h3>
 <p>As mentioned above, variables in JavaScript are <em>dynamically typed</em>, and thus have a data type of the value <strong>currently</strong> assigned to that variable. JavaScript variables are able to “change type” by having a different type of data assignment to them:</p>
 <pre class="language-js"><code><span class="token keyword">let</span> myVariable <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span> <span class="token comment">//value is a String</span>
 myVariable <span class="token operator">=</span> <span class="token number">42</span><span class="token punctuation">;</span> <span class="token comment">//value is now a Number</span></code></pre>
@@ -954,7 +960,7 @@ For more examples of the horror of JavaScript coercion, see <a href="https://www
 <p>In addition to this basic structure, JavaScript functions are frequently used for <em>functional programming</em>, as described in the next chapter.</p>
 </div>
 <div id="resources-8" class="section level2 unnumbered">
-<h2 class="unnumbered">Resources</h2>
+<h2>Resources</h2>
 <p>As the language used for web programming, JavaScript may have more freely available online learning resources than any other language! Some of my favorites include:</p>
 <div class="list-condensed">
 <ul>
@@ -979,12 +985,13 @@ For more examples of the horror of JavaScript coercion, see <a href="https://www
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -992,12 +999,13 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -1012,7 +1020,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -1028,8 +1044,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

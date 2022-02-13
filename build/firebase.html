@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-<html  lang="en">
-
+<html lang="en" xml:lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 19 Firebase | Client-Side Web Development</title>
-  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 19 Firebase | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
-  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
   <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="github-repo" content="info340/book" />
 
@@ -20,27 +19,30 @@
   <meta name="twitter:title" content="Chapter 19 Firebase | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
-  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman">
+<meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-13">
+<meta name="date" content="2022-02-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="client-side-routing.html">
-<link rel="next" href="appendix-special-topics.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="client-side-routing.html"/>
+<link rel="next" href="jest.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +63,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 
 
@@ -405,75 +411,75 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-special-topics.html"><a href="appendix-special-topics.html"><i class="fa fa-check"></i>(APPENDIX) Special Topics</a></li>
-<li class="chapter" data-level="20" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>20</b> Testing with Jest</a>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>20.1</b> Testing</a></li>
-<li class="chapter" data-level="20.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>20.2</b> Testing with Jest</a></li>
-<li class="chapter" data-level="20.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>20.3</b> Writing a Test</a>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>20.4</b> Testing Web Apps with Jest</a>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>21</b> Lab: Webpack</a>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>21.1</b> What is Webpack?</a></li>
-<li class="chapter" data-level="21.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>21.2</b> Getting Started</a></li>
-<li class="chapter" data-level="21.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>21.3</b> <code>webpack.config.js</code></a>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a>
 <ul>
 <li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>21.4</b> Loaders</a>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a>
 <ul>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>22</b> React Class Components</a>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>22.1</b> Props in Class Components</a></li>
-<li class="chapter" data-level="22.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>22.2</b> Handling Events in Class Components</a>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a>
 <ul>
 <li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
-<li class="chapter" data-level="22.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>22.3</b> State in Class Components</a>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>22.4</b> The Component Lifecycle</a>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>23</b> CSS in JS</a>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>23.1</b> Why CSS in JS?</a></li>
-<li class="chapter" data-level="23.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>23.2</b> React Inline Styles</a></li>
-<li class="chapter" data-level="23.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>23.3</b> Aphrodite</a></li>
-<li class="chapter" data-level="23.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>23.4</b> CSS Modules</a>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a>
 <ul>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>24</b> Redux</a></li>
-<li class="chapter" data-level="25" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>25</b> React Native</a>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>25.1</b> Getting Setup</a>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>25.2</b> React Native Apps</a>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
@@ -522,7 +528,7 @@
 When developing a Firebase app, you will want to keep the Web Console open so you can check on the user list and database.
 </p>
 <div id="creating-a-project" class="section level3 unnumbered">
-<h3 class="unnumbered">Creating a Project</h3>
+<h3>Creating a Project</h3>
 <p>In order to use Firebase in your web app, you will need to <em>sign up for the service</em>. Visit <strong><a href="https://firebase.google.com/" class="uri">https://firebase.google.com/</a></strong> and click the “Get Started” button to do so. You will need to sign in with a Google account (e.g., a UW account if you’ve set up Google integration). Signing up will direct to the Firebase Web Console.</p>
 <p>In the Web Console, you can manage all of your “projects”—one per application you’ve created. Each project will track its own set of users and have its own database of information.</p>
 <p>You can create a project by clicking the <em>“Add Project”</em> button. In the pop-up window that appears, you’ll need to give the app a <em>unique</em> name. Naming the project after your app is a good idea. This name is used internally by the Firebase system (it won’t necessarily be visible to your users).</p>
@@ -533,7 +539,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 </div>
 </div>
 <div id="including-firebase-in-react" class="section level3 unnumbered">
-<h3 class="unnumbered">Including Firebase in React</h3>
+<h3>Including Firebase in React</h3>
 <p>In order to use Firebase in a web app (including a React app), you will need to add the Firebase library to your web page, as well as some specify some configuration data to connect to the correct Firebase project.</p>
 <p>From the project’s Web Console page, click the <em>“Add Firebase to your web app”</em> button. This will produce a popup with some HTML code for loading the Firebase library, as well as an inline <code>&lt;script&gt;</code> that configures your app to use Firebase.</p>
 <p><strong>However</strong>, in a React app you should integrate Firebase directly into your source code instead of modifying the HTML. You can do this by modifying the <strong><code>index.js</code></strong> file:</p>
@@ -566,7 +572,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 </div>
 <!-- TODO: Add Firebase-UI -->
 <div id="creating-users" class="section level3 unnumbered">
-<h3 class="unnumbered">Creating Users</h3>
+<h3>Creating Users</h3>
 <p>In order to create a user programmatically (e.g., from JavaScript when the user submits a sign-up form), you can use a function provided by the <code>firebase</code> module. Specifically, you’ll call the wordily-named function <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword"><code>firebase.auth().createUserWithEmailAndPassword</code></a> passing it the email and password the user is signing up with. This will create a new user account in Firebase (you can view it in the Firebase Web Console), <em>as well as</em> log in the user.</p>
 <pre class="language-js"><code>firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">createUserWithEmailAndPassword</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">userCredentials</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -586,7 +592,7 @@ When developing a Firebase app, you will want to keep the Web Console open so yo
 <strong>Pro-tip:</strong> You don’t need to come up with real email addresses for testing. Try using <code>a@a.com</code>, <code>b@a.com</code>, <code>c@a.com</code>, etc. Similarly, <code>password</code> works fine for testing passwords (though you should never do that in real life!)
 </p>
 <div id="user-profiles" class="section level4 unnumbered">
-<h4 class="unnumbered">User Profiles</h4>
+<h4>User Profiles</h4>
 <p>It is also possible to store some additional information for each user in what is called the user’s <a href="https://firebase.google.com/docs/auth/web/manage-users#get_a_users_profile"><strong>profile</strong></a>. Specifically, each user can assigned a <code>displayName</code> (a username separate from an email address) and a <code>photoURL</code> (a link to a profile picture for that user).</p>
 <pre class="language-js"><code><span class="token keyword">let</span> name <span class="token operator">=</span> firebaseUser<span class="token punctuation">.</span>displayName<span class="token punctuation">;</span> <span class="token comment">//the user's name</span>
 <span class="token keyword">let</span> pic <span class="token operator">=</span> firebaseUser<span class="token punctuation">.</span>photoURL<span class="token punctuation">;</span> <span class="token comment">//the user's picture</span></code></pre>
@@ -604,7 +610,7 @@ You <strong>cannot</strong> assign values directly to any Firebase variables (in
 </div>
 </div>
 <div id="authentication-events" class="section level3 unnumbered">
-<h3 class="unnumbered">Authentication Events</h3>
+<h3>Authentication Events</h3>
 <p>The <code>firebase.auth()</code> variable will keep track of which Firebase User is currently logged in—and this information persists <a href="https://firebase.google.com/docs/auth/web/auth-state-persistence">even after the browser is closed</a>. This means that every time you reload the page, the <code>firebase.auth()</code> function will perform the authentication and “re-login” the user.</p>
 <p>The recommended way to <a href="https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user">determine who is currently logged</a> in is to register an <strong>event listener</strong> for to listen for events that occur with the “state” of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the “initial state” is set), or when a user logs out. You can register this listener by using the <a href="https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onAuthStateChanged"><code>onAuthStateChanged</code></a> method:</p>
 <pre class="language-js"><code><span class="token keyword">let</span> authUnregFunc <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">onAuthStateChanged</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">firebaseUser</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -623,7 +629,7 @@ You <strong>cannot</strong> assign values directly to any Firebase variables (in
 <li><p>The <code>onAuthStateChanged()</code> method returns a <em>new function</em> that can be used to “unregister” the listener when you want to stop responding to authentication changes. You should call this function in the “cleanup” function returned by your effect hook in order to unregister the listener.</p></li>
 </ul>
 <div id="signing-in-and-out" class="section level4 unnumbered">
-<h4 class="unnumbered">Signing In and Out</h4>
+<h4>Signing In and Out</h4>
 <p>You can sign a user in or out by using addition methods called on <code>firebase.auth()</code>, which do exactly what they suggest:</p>
 <pre class="language-js"><code><span class="token comment">//sign in a user</span>
 firebase<span class="token punctuation">.</span><span class="token function">auth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">signInWithEmailAndPassword</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span> password<span class="token punctuation">)</span>
@@ -671,7 +677,7 @@ firebase<span class="token punctuation">.</span><span class="token function">aut
 Although the JSON database can have many levels of nested objects, best practice is to try and keep the structure as “flat” as possible. This avoids you needing to download the nested “details” for a value if you only need to know e.g., the key names. See <a href="https://firebase.google.com/docs/database/web/structure-data">Structure Your Data</a> for more details and examples.
 </p>
 <div id="security-rules" class="section level3 unnumbered">
-<h3 class="unnumbered">Security Rules</h3>
+<h3>Security Rules</h3>
 <p>Because the Firebase database is just a giant JSON object in the cloud and is usable from a client-side system, technically <em>anyone</em> can access it. Each element of the JSON object is accessible via AJAX requests (which are sent via <code>firebase</code> functions).</p>
 <p>In order to restrict what clients and access this information (read or write to values in the JSON), Firebase lets you define <a href="https://firebase.google.com/docs/database/security/">security rules</a> that specify what users can access which elements. For example, you can make it so that only <em>authenticated users</em> can add new entries the database, or that only specific users can update specific entries (e.g., the comments they wrote on a blog).</p>
 <ul>
@@ -694,7 +700,7 @@ Although the JSON database can have many levels of nested objects, best practice
 </ul>
 </div>
 <div id="reading-and-writing-data" class="section level3 unnumbered">
-<h3 class="unnumbered">Reading and Writing Data</h3>
+<h3>Reading and Writing Data</h3>
 <p>Once you’ve set up access rules for your database, you can begin reading and writing data to it programmatically from your JavaScript. To do this, you will need to first get a <em>reference to the database</em>. This is done using the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference"><code>firebase.database().ref()</code></a> method. This method takes as a parameter the key-path of the element in the JSON you wish to access:</p>
 <pre class="language-js"><code><span class="token comment">//get reference to the "root" of the database: the containing JSON</span>
 <span class="token keyword">const</span> rootRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -728,7 +734,7 @@ firebase<span class="token punctuation">.</span><span class="token function">dat
 </ul>
 </div>
 <div id="listening-for-data-changes" class="section level3 unnumbered">
-<h3 class="unnumbered">Listening for Data Changes</h3>
+<h3>Listening for Data Changes</h3>
 <p>Because Firebase is structured as <em>realtime</em> database (that may change over time), you read data from it by registering an <strong>event listener</strong> to listen for changes to that database. Firebase provides a method <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#on"><code>.on()</code></a> for registering such listeners. Similar to the DOM’s <code>addEventListener()</code> function, Firebase’s <code>on()</code> method takes two parameters: an event name (as a string) and a callback function that should be executed when the event occurs:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> amitRef <span class="token operator">=</span> firebase<span class="token punctuation">.</span><span class="token function">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'people/amit'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 amitRef<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">snapshot</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -744,7 +750,7 @@ amitRef<span class="token punctuation">.</span><span class="token function">on</
 </ul>
 <p>Note that you can also read a single value once (without needing to register and unregister a listener) by using the <a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#once"><code>.once()</code></a> method, which will return a promise that will contain the read data (once it is downloaded).</p>
 <div id="firebase-arrays" class="section level4 unnumbered">
-<h4 class="unnumbered">Firebase Arrays</h4>
+<h4>Firebase Arrays</h4>
 <p>When working with and storing data in the cloud, we often want to organize that data into lists using <em>arrays</em>. However, Firebase <strong>does not</strong> directly support support arrays: the JSON object in the sky only contains objects, not arrays! This is because Firebase needs to support <strong>concurrent access</strong>: multiple people need to be able to access the data at the same time. But since arrays are accessed by <em>index</em>, this can cause problems if two people try to modify the array at the same time.</p>
 <p>The problem is that with an array, an index number doesn’t always refer to the same element! For example, if you have an array <code>['a', 'b' 'c']</code>, then index <code>1</code> may initially refer to the <code>'b'</code>. However, if you add an element onto the beginning of the array, then suddenly that <code>1</code> index refers to the <code>'a'</code>, and so if a user was trying to modify the <code>'b'</code> before their machine was aware of the change, they may end up editing the wrong value! This bug is an example of a <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, which can occur when two processes are modifying data <em>concurrently</em> (at the same time).</p>
 <!-- could put code version of example ?? -->
@@ -786,7 +792,7 @@ Don’t lose your key!
 </div>
 </div>
 <div id="resources-17" class="section level2 unnumbered">
-<h2 class="unnumbered">Resources</h2>
+<h2>Resources</h2>
 <div class="list-condensed">
 <ul>
 <li><a href="https://firebase.google.com/docs/web/setup">Firebase Web Guide</a></li>
@@ -797,22 +803,27 @@ Don’t lose your key!
 
 </div>
 </div>
+
+
+
+</div>
             </section>
 
           </div>
         </div>
       </div>
 <a href="client-side-routing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix-special-topics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="jest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -820,12 +831,13 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -840,7 +852,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -856,8 +876,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

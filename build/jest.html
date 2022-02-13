@@ -1,46 +1,48 @@
 <!DOCTYPE html>
-<html  lang="en">
-
+<html lang="en" xml:lang="en">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Chapter 20 Testing with Jest | Client-Side Web Development</title>
-  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>A Testing with Jest | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 20 Testing with Jest | Client-Side Web Development" />
+  <meta property="og:title" content="A Testing with Jest | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
-  <meta property="og:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
   <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 20 Testing with Jest | Client-Side Web Development" />
+  <meta name="twitter:title" content="A Testing with Jest | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
-  <meta name="twitter:image" content="https://info340.github.io/img/cover-img.png" />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman">
+<meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-13">
+<meta name="date" content="2022-02-13" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
-  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon">
-<link rel="prev" href="appendix-special-topics.html">
-<link rel="next" href="webpack.html">
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="firebase.html"/>
+<link rel="next" href="webpack.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -58,6 +63,7 @@
   ga('send', 'pageview');
 
 </script>
+
 
 
 
@@ -405,75 +411,75 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-special-topics.html"><a href="appendix-special-topics.html"><i class="fa fa-check"></i>(APPENDIX) Special Topics</a></li>
-<li class="chapter" data-level="20" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>20</b> Testing with Jest</a>
+<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>A</b> Testing with Jest</a>
 <ul>
-<li class="chapter" data-level="20.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>20.1</b> Testing</a></li>
-<li class="chapter" data-level="20.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>20.2</b> Testing with Jest</a></li>
-<li class="chapter" data-level="20.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>20.3</b> Writing a Test</a>
+<li class="chapter" data-level="A.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>A.1</b> Testing</a></li>
+<li class="chapter" data-level="A.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>A.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="A.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>A.3</b> Writing a Test</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
-<li class="chapter" data-level="20.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>20.4</b> Testing Web Apps with Jest</a>
+<li class="chapter" data-level="A.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>A.4</b> Testing Web Apps with Jest</a>
 <ul>
 <li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="21" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>21</b> Lab: Webpack</a>
+<li class="chapter" data-level="B" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>B</b> Lab: Webpack</a>
 <ul>
-<li class="chapter" data-level="21.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>21.1</b> What is Webpack?</a></li>
-<li class="chapter" data-level="21.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>21.2</b> Getting Started</a></li>
-<li class="chapter" data-level="21.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>21.3</b> <code>webpack.config.js</code></a>
+<li class="chapter" data-level="B.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>B.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="B.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>B.2</b> Getting Started</a></li>
+<li class="chapter" data-level="B.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>B.3</b> <code>webpack.config.js</code></a>
 <ul>
 <li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
 </ul></li>
-<li class="chapter" data-level="21.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>21.4</b> Loaders</a>
+<li class="chapter" data-level="B.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>B.4</b> Loaders</a>
 <ul>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
 <li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="22" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>22</b> React Class Components</a>
+<li class="chapter" data-level="C" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>C</b> React Class Components</a>
 <ul>
-<li class="chapter" data-level="22.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>22.1</b> Props in Class Components</a></li>
-<li class="chapter" data-level="22.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>22.2</b> Handling Events in Class Components</a>
+<li class="chapter" data-level="C.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>C.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="C.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>C.2</b> Handling Events in Class Components</a>
 <ul>
 <li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
 </ul></li>
-<li class="chapter" data-level="22.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>22.3</b> State in Class Components</a>
+<li class="chapter" data-level="C.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>C.3</b> State in Class Components</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
 </ul></li>
-<li class="chapter" data-level="22.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>22.4</b> The Component Lifecycle</a>
+<li class="chapter" data-level="C.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>C.4</b> The Component Lifecycle</a>
 <ul>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="23" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>23</b> CSS in JS</a>
+<li class="chapter" data-level="D" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>D</b> CSS in JS</a>
 <ul>
-<li class="chapter" data-level="23.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>23.1</b> Why CSS in JS?</a></li>
-<li class="chapter" data-level="23.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>23.2</b> React Inline Styles</a></li>
-<li class="chapter" data-level="23.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>23.3</b> Aphrodite</a></li>
-<li class="chapter" data-level="23.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>23.4</b> CSS Modules</a>
+<li class="chapter" data-level="D.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>D.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="D.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>D.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="D.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>D.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="D.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>D.4</b> CSS Modules</a>
 <ul>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-19"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="24" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>24</b> Redux</a></li>
-<li class="chapter" data-level="25" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>25</b> React Native</a>
+<li class="chapter" data-level="E" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>E</b> Redux</a></li>
+<li class="chapter" data-level="F" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>F</b> React Native</a>
 <ul>
-<li class="chapter" data-level="25.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>25.1</b> Getting Setup</a>
+<li class="chapter" data-level="F.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>F.1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
 </ul></li>
-<li class="chapter" data-level="25.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>25.2</b> React Native Apps</a>
+<li class="chapter" data-level="F.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>F.2</b> React Native Apps</a>
 <ul>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
 <li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
@@ -501,7 +507,7 @@
 
             <section class="normal" id="section-">
 <div id="jest" class="section level1" number="20">
-<h1><span class="header-section-number">Chapter 20</span> Testing with Jest</h1>
+<h1><span class="header-section-number">A</span> Testing with Jest</h1>
 <blockquote>
 <p>People just aren’t as repeatable as computers are. Nor should we expect them to be. A shell script or batch file will execute the same instructions, in the same order, time after time. It can be put under source control, so you can examine changes to the procedure over time as well (“but it used to work…”). - <a href="http://www.amazon.com/The-Pragmatic-Programmer-Journeyman-Master/dp/020161622X">The Pragmatic Programmer</a></p>
 </blockquote>
@@ -510,7 +516,7 @@
 This tutorial references code found at <a href="https://github.com/info343/jest-tutorial" class="uri">https://github.com/info343/jest-tutorial</a>.
 </p>
 <div id="testing" class="section level2" number="20.1">
-<h2><span class="header-section-number">20.1</span> Testing</h2>
+<h2><span class="header-section-number">A.1</span> Testing</h2>
 <p>One of the most important goals when developing computer programs is to make sure that the code you write actually <em>works</em>. You can determine if a program works by considering three things:</p>
 <ol style="list-style-type: decimal">
 <li><p>What <strong>input</strong> was given to the program? From a user perspective, this is what <em>actions</em> that user took (e.g., “I pressed a button”). From a code perspective, this is often what value was passed to a method.</p></li>
@@ -523,7 +529,7 @@ This tutorial references code found at <a href="https://github.com/info343/jest-
 <p>In JavaScript, the most popular testing frameworks are <a href="https://jasmine.github.io/">Jasmine</a>, <a href="https://mochajs.org/">Mocha</a> (which is just the framework, it uses <a href="http://chaijs.com/">Chai</a> to actually compare received and expected results—hot beverages are a theme), and <a href="https://facebook.github.io/jest/">Jest</a>. The later was developed by Facebook specifically to support testing React applications, and is the framework introduced and used in this course (though its API is almost identical to Jasmine and Mocha/Chai).</p>
 </div>
 <div id="testing-with-jest" class="section level2" number="20.2">
-<h2><span class="header-section-number">20.2</span> Testing with Jest</h2>
+<h2><span class="header-section-number">A.2</span> Testing with Jest</h2>
 <p>Jest is a command line program so you will need to have it installed on your machine. It can be installed <em>globally</em> through <code>npm</code>:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> -g jest</code></pre>
 <p>Additionally, you will need to install the dependencies listed in this repository’s <code>package.json</code> file, which will allow tests to use ES6 module syntax to access the functions in a separate file to test (as well as auto-complete definitions for Jest!)</p>
@@ -532,7 +538,7 @@ This tutorial references code found at <a href="https://github.com/info343/jest-
 <p>With Jest, you define “tests”, which are just JavaScript code that is used to perform the <em>action</em> and compare the <em>received</em> and <em>expected</em> results. These tests can either be placed in a file whose name ends with <code>.test.js</code> (indicating it is a test script), <code>.spec.js</code> (for “specification”), or a plain <code>.js</code> file inside the <code>__tests__</code> folder in your program. In either case, a test script is <em>just a JavaScript file</em>, so you include any JavaScript code/variables/functions/etc. you want.</p>
 </div>
 <div id="writing-a-test" class="section level2" number="20.3">
-<h2><span class="header-section-number">20.3</span> Writing a Test</h2>
+<h2><span class="header-section-number">A.3</span> Writing a Test</h2>
 <p>We define a “test” (a check if a particular piece of functionality works) by calling the <a href="https://facebook.github.io/jest/docs/en/api.html#testname-fn"><strong><code>test()</code></strong></a> function—a predefined function provided by the Jest framework. This functions take two arguments: a <em>string</em> describing what the test is checking, and a <em>callback function</em> that will contain the code to run which does the action and compares the results.</p>
 <pre class="language-js"><code><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'should do something...'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//regular old Javascript code that will perform the test goes here</span>
@@ -543,7 +549,7 @@ This tutorial references code found at <a href="https://github.com/info343/jest-
 <pre class="language-js"><code><span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should do something'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <div id="assertions-and-matchers" class="section level3 unnumbered">
-<h3 class="unnumbered">Assertions and Matchers</h3>
+<h3>Assertions and Matchers</h3>
 <p>We check that the program actually does what we’re testing by writing an <strong>assertion</strong>. An assertion is a <em>proposition</em> that some fact is true. In this case, we are going to <em>assert</em> that the expected result and the actual result are the same. If that proposition is shown to be valid (our claim that the results matched is true), then we know that our claim that the program works must hold and thus we “pass” the test!</p>
 <ul>
 <li><p>You can think of an <em>assertion</em> as a bit like doing the work of an if-else statement:</p>
@@ -579,7 +585,7 @@ This tutorial references code found at <a href="https://github.com/info343/jest-
 <p>Note that a single <code>test()</code> can include multiple assertions!</p>
 </div>
 <div id="organizing-tests" class="section level3 unnumbered">
-<h3 class="unnumbered">Organizing Tests</h3>
+<h3>Organizing Tests</h3>
 <p>You can “group” tests together by using the <a href="https://facebook.github.io/jest/docs/en/api.html#describename-fn"><code>describe()</code></a> function. This function takes two parameters: a <em>string</em> that describes what <strong>feature</strong> is being tested, and a <em>callback function</em> that contains the code for the tests:</p>
 <pre class="language-js"><code><span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'Basic math'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should add numbers correctly'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -597,7 +603,7 @@ This tutorial references code found at <a href="https://github.com/info343/jest-
 <p>It is also possible to run particular blocks of code <em>before</em> groups of tests are run by using the <code>beforeEach()</code> and <code>beforeAll()</code> functions. See <a href="https://facebook.github.io/jest/docs/en/setup-teardown.html">Setup and Teardown</a> for details.</p>
 </div>
 <div id="running-the-tests" class="section level3 unnumbered">
-<h3 class="unnumbered">Running the Tests</h3>
+<h3>Running the Tests</h3>
 <p>You can <strong>run</strong> the test (have the computer perform the testing work) by using the <code>jest</code> command line program, passing it the name of the text script (without the extension) that you wish to run:</p>
 <pre class="language-bash"><code><span class="token comment"># test the app.spec.js file</span>
 jest app</code></pre>
@@ -609,12 +615,12 @@ jest app</code></pre>
 <p>This will tell you what tests were run, which “passed” (were green for good to <em>go</em>!) and which “failed” (were red). Failed tests will also report which assertion failed, and what the expected and received values were that didn’t match.</p>
 </div>
 <div id="practice" class="section level3 unnumbered">
-<h3 class="unnumbered">Practice</h3>
+<h3>Practice</h3>
 <p>This repo’s <code>app.js</code> file contains a function <code>invertCase()</code>. In the provides <code>app.spec.js</code> file, implement a <code>describe()</code> block to contains tests for the function, and write unit tests to check it for bugs (by giving it specific inputs and checking the <em>received</em> vs. the <em>expected</em> result). If you find any bugs, fix them and then re-run your tests!</p>
 </div>
 </div>
 <div id="testing-web-apps-with-jest" class="section level2" number="20.4">
-<h2><span class="header-section-number">20.4</span> Testing Web Apps with Jest</h2>
+<h2><span class="header-section-number">A.4</span> Testing Web Apps with Jest</h2>
 <p>It is also possible to use Jest to JavaScript code that is used to manipulate the DOM. You can do this because Jest creates a <strong>virtual DOM</strong> that you can interact with. That is, jest provides a global <code>document</code> object that you can access and call methods on (e.g., <code>document.querySelector()</code>). This isn’t a full browser: it won’t load external CSS files or allow you to navigate to pages, but it does provide a tree of HTML elements you can modify and inspect. allowing you to test your DOM manipulation.</p>
 <p>There are a few steps to being able to work effectively with the <code>document</code> provided by Jest:</p>
 <ol style="list-style-type: decimal">
@@ -641,7 +647,7 @@ window<span class="token punctuation">.</span>$ <span class="token operator">=</
 <li>You should still test your page inside the browser, just to catch any platform differences between Jest’s virtual DOM and actual web browsers.</li>
 </ul>
 <div id="practice-1" class="section level3 unnumbered">
-<h3 class="unnumbered">Practice</h3>
+<h3>Practice</h3>
 <p>Write a test in the provided <code>index.spec.js</code> file to confirm that when the “Panic” button is pressed, the HTML’s <code>.alert</code> element is displayed.</p>
 <!-- ## Testing React with Enzyme
 
@@ -661,17 +667,18 @@ React Jest
           </div>
         </div>
       </div>
-<a href="appendix-special-topics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="firebase.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="webpack.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -679,12 +686,13 @@ gitbook.start({
 "github": true,
 "facebook": false,
 "twitter": false,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["github", "facebook", "twitter", "google"]
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
 },
 "fontsettings": {
 "theme": "white",
@@ -699,7 +707,15 @@ gitbook.start({
 "link": null,
 "text": null
 },
+"view": {
+"link": null,
+"text": null
+},
 "download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "section",
 "scroll_highlight": true
@@ -715,8 +731,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
