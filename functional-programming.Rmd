@@ -138,10 +138,10 @@ let spot = {
 }
 
 console.log('***This is Fido barking:***');
-fido.bark(); //=> "Fido woofs". Note, `this` will refer to the `fido` object. 
+fido.bark(); //=> "Fido woofs". Note, `this` will refer to the `fido` object.
 
 console.log('***This is Spot barking***');
-spot.bark(); //=> "Spot yips". Note, `this` will refer to the `spot` object. 
+spot.bark(); //=> "Spot yips". Note, `this` will refer to the `spot` object.
 ```
 
 
@@ -164,7 +164,7 @@ function doWithWorld(funcToCall){
 doWithWorld(sayHello);  //logs "Hello world";
 ```
 
-In this case, the `doWithWorld` function will _execute_ whatever function it is given, passing in a value of `"world"`. 
+In this case, the `doWithWorld` function will _execute_ whatever function it is given, passing in a value of `"world"`.
 
 - **Important note**: when we pass `sayHello` as an argument, we don't put any parentheses after it! Putting the parentheses after the function name _executes_ the function, causing it to perform the lines of code it defines. This will cause the expression containing the function to _resolve_ to its returned value, rather than being the function value itself. It's like passing in the baked cake rather than the recipe page.
 
@@ -391,7 +391,7 @@ And again, the `map()` callback function (e.g., `square()` in the above example)
 ```js
 let numbers = [1,2,3,4,5];  //an initial array
 let squares = numbers.map(function(item){
-    return n*n;
+    return item*item;
 });
 ```
 

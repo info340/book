@@ -25,7 +25,6 @@ rmd_files:
   - functional-programming.Rmd
   - dom.Rmd
   - libraries.Rmd # inc jQuery
-  - ajax.Rmd
   - es6.Rmd
 
   ## React
@@ -33,6 +32,9 @@ rmd_files:
   # - react-tools.Rmd
   - react-interactive.Rmd
   - router.Rmd
+
+  ## Data
+  - ajax.Rmd
   - firebase.Rmd
 
   ## Special Topics

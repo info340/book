@@ -55,10 +55,6 @@ listening-for-events
 javascript-libraries
 including-a-library
 example-jquery
-ajax
-ajax-1
-fetching-data
-asynchronous-programming
 es6
 es6-classes
 arrow-functions
@@ -77,6 +73,10 @@ specific-interactions
 client-side-routing
 single-page-applications
 react-router
+ajax
+ajax-1
+fetching-data
+asynchronous-programming
 firebase
 setting-up-firebase
 user-authentication

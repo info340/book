@@ -53,7 +53,7 @@ This will launch the webserver, and open up a new browser window showing the ren
 
 All these capabilities are provided by a tool called [**webpack**](https://webpack.js.org/). Webpack is at its core a _module bundler_: it takes your complicated source code structure (lots of files) and transforms it into a brand new, "simplified" version (a single file). In the process, can automatically process and change that code&mdash;from automatic formatting and styling, to compiling or transpiling from one language to another. Webpack is a fairly complex build tool; however, Create React App provides its own configuration to this program so that you don't have to do anything with it directly!
 
-<div class="alert warning">In order to stop the server, hit `ctrl-c` on the command line. 
+<div class="alert warning">In order to stop the server, hit `ctrl-c` on the command line.
 
 **Important**: There is an [issue](https://github.com/facebook/create-react-app/issues/932#issuecomment-433596579) with Create React App on Windows using Git Bash where hitting `ctrl-c` won't actually stop the server&mdash;if you try to run it again, you'll get an error about the port still being occupied. Current work-arounds are to use the Task Manager to end the `node` process, or to instead use the [Linux subsystem for Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
 </div>
@@ -70,14 +70,14 @@ A newly created React app will contain a number of different files, including th
 
     - The `reportWebVitals.js` and `setupTests.js` are provided by default to better support testing and performance measurements. This text doesn't cover these features; you can ignore or delete them for now.
 
-- The `src/index.css` and `src/App.css` are both CSS files used to style the entire page and the individual "App" component respectively. Notice that the CSS files are imported from _inside the JavaScript files_ (with e.g., `import './index.css'`). This is because the webpack build system that Create React App uses to run apps knows how to load CSS files, so you can "include" them through the JavaScript rather than needing to link them in the HTML. 
+- The `src/index.css` and `src/App.css` are both CSS files used to style the entire page and the individual "App" component respectively. Notice that the CSS files are imported from _inside the JavaScript files_ (with e.g., `import './index.css'`). This is because the webpack build system that Create React App uses to run apps knows how to load CSS files, so you can "include" them through the JavaScript rather than needing to link them in the HTML.
 
-    If you want to load an external stylesheet, such as Bootstrap or Font-Awesome, you can still do that by modifying the `public/index.html` file&mdash;but it's better to instal them as modules and import them through the JavaScript. See the documentation for [_Adding Bootstrap_](https://facebook.github.io/create-react-app/docs/adding-bootstrap) for an example.
+    If you want to load an external stylesheet, such as Bootstrap or Font-Awesome, you can still do that by modifying the `public/index.html` file&mdash;but it's better to install them as modules and import them through the JavaScript. See the documentation for [_Adding Bootstrap_](https://facebook.github.io/create-react-app/docs/adding-bootstrap) for an example.
 
     - Remember that all CSS is global&mdash;rules specified in any `.css` file will apply to the entire app (i.e., the `App.css` rules will apply to components other than those in `App.js`). The CSS is broken into multiple files to try and keep rules organized. You can instead put all your CSS rules into a single file, using naming schema or other techniques to keep them organized. If you are interested in ways to keep the CSS from being applied globally, look into using [CSS in JS](#css-in-js).
 
 - The `README.md` contains a copy of the [User Guide](https://facebook.github.io/create-react-app/docs/documentation-intro) (which can also be found online), focused on "how to perform common tasks". the user guide is _very_ thorough&mdash;if you want to do something within the CRA framework, try searching this first, as there is probably a guide and example code for you to use!
-    
+
 Overall, you'll primarily be working with the `.js` and `.css` files found in the `src/` folder as you develop a React app.
 
 ### Alternatives to Create React App {-}
@@ -121,10 +121,10 @@ let element = React.createElement(
    'h1',            //html tag
    {                //object of attributes
       id: 'hello',
-      className: 'my-class' 
+      className: 'my-class'
    }
    'Hello World!'   //content
-); 
+);
 
 //Show the element in the web page (inside #root)
 ReactDOM.render(element, document.getElementById('root'));
@@ -158,7 +158,7 @@ The value assigned to the `element` variable is _not_ a String (it has no quotes
         </header>
     );
     ```
-    
+
     It's very common to put elements on their own lines, intended as if you were writing HTML directly. If you do so, you'll need to surround the entire JSX expression in parentheses `()` to tell the interpreter that the line break shouldn't be read as implying a semicolon!
 
 - Note that similar to XML, JSX syntax requires that all elements be closed; thus you need to use a closing slash at the end of empty elements:
@@ -167,7 +167,7 @@ The value assigned to the `element` variable is _not_ a String (it has no quotes
     //JSX elements must be closed
     let picture = <img src="my_picture.png" alt="A picture" />
     ```
-    
+
 Since JSX is not actually valid JavaScript (you can't normally include bare HTML), you need to "translate" it into real JavaScript so that the browser can understand and execute it. This process is called **transpiling**, and is usually performed using a _compiler_ program called [**Babel**](https://babeljs.io/). Babel is yet _another_ piece of the toolchain used to create React applications; however, all the details about transpiling with Babel are automatically handled by the Create React App scaffolding. "Transpile with Babel" is one of the steps performed by webpack, which is included and run from the scripts provided by Create React App (whew!).
 
 - Yes, chaining tools together like this is [how modern web development works](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f).
@@ -187,7 +187,7 @@ When the element is rendered, the expression and the surrounding braces will be 
 You can put any arbitrary expression inside of the `{}`&mdash;that is, any JavaScript code that resolves to a single value. This can include math operations, function calls, [ternary expressions](https://en.wikipedia.org/wiki/%3F:), or even an anonymous function values (see the next chapter for examples):
 
 ```jsx
-//Including an inline expression in JSX. The expressions can be mixed directly 
+//Including an inline expression in JSX. The expressions can be mixed directly
 //into the HTML
 let element = <p>A leap year has {(365 + 1) * 24 * 60} minutes!</p>;
 ```
@@ -204,7 +204,7 @@ let pic = <img src={imgUrl} alt="A picture" />;
 //Define an object of element attributes
 let attributes = {
     src: 'path/to/other_picture.png',
-    alt: 'Another picture' 
+    alt: 'Another picture'
 };
 
 //A DOM element that includes those attributes, among others.
@@ -243,7 +243,7 @@ If you include an _array_ of React elements in an inline expression, those those
 //An array of React elements. Could also produce via a loop or function
 let listItems = [<li>lions</li>, <li>tigers</li>, <li>bears</li>];
 
-//Include the array as an inline expression; each `<li>` element will be 
+//Include the array as an inline expression; each `<li>` element will be
 //included as a child of the `<ul>`
 let list = <ul>{listItems}</ul>;
 ```
@@ -266,7 +266,7 @@ As a final note: you _cannot_ include HTML comments (`<!-- -->`) inside of JSX, 
 let main = (
     <main>
       { /* A comment: the main part of the page goes here... */ }
-    </main>    
+    </main>
 )
 ```
 
@@ -274,7 +274,7 @@ let main = (
 
 
 ## React Components
-When creating React applications, you use JSX to define the HTML content of your webpage directly in the JavaScript. However, writing all of the HTML out as one giant JSX expression doesn't provide much advantage over just putting that content in `.html` files in the first place. 
+When creating React applications, you use JSX to define the HTML content of your webpage directly in the JavaScript. However, writing all of the HTML out as one giant JSX expression doesn't provide much advantage over just putting that content in `.html` files in the first place.
 
 Instead, the React library encourages and enables you to describe your web page in terms of _components_, instead of just HTML elements. In this context, a **component** is a "piece" of a web page. For example, in a social media application, each "status post" on a timeline might be a different component, the "like" button may be its own component, the "what are you thinking about?" form would be a component, the page navigation would be a component, and so forth. Thus you can almost think of a component as a semantic abstraction of a `<div>` element&mdash;a "chunk" of the page. But like with `<div>`s, a component can be seen as made of of _other_ components&mdash;you might have a "Timeline" component that is made up of many "StatusPost" components, and each StatusPost component may include a "ReactionButton" component.
 
@@ -324,7 +324,7 @@ function UserInfo(props) {
             <h1>{name}</h1>
             <p>Hello, my name is {name} and I am a {descriptor}</p>
         </div>
-    )        
+    )
 }
 
 //Create a new value (a React element)
@@ -340,7 +340,7 @@ This function defines a new component (think: a new HTML element!) called `UserI
 1. A component function **must** be named starting with a Capital letter (and usually in CamelCase). This is to distinguish a custom component from a "normal" React element.
 
     - If you see a function with a Capitalized name, know that it's actually a defining a Component!
-    
+
     - It's also possible for function components to be defined as anonymous arrow functions assigned to `const` variables:
 
         ```jsx
@@ -348,9 +348,9 @@ This function defines a new component (think: a new HTML element!) called `UserI
             return <div>...</div>
         }
         ```
-        
-        This provides some benefits in terms of scoping (because of the arrow function), but otherwise makes components even harder to read&mdash;its not as readily obviously that this is a function and a component. You should stick to defining component functions using the `function` keyword (and not arrow functions) for readability, but be aware of the alternate approach which is used in some libraries and examples. 
-            
+
+        This provides some benefits in terms of scoping (because of the arrow function), but otherwise makes components even harder to read&mdash;its not as readily obviously that this is a function and a component. You should stick to defining component functions using the `function` keyword (and not arrow functions) for readability, but be aware of the alternate approach which is used in some libraries and examples.
+
 2. Component functions take in a single argument representing the [props](#props) (discussed below), which is conventionally named as such. As with all JavaScript functions, if you don't to use the argument value you can omit giving it a name (e.g., `function UserInfo() { ... }`).
 
 3. A component function is a regular function like any other that you've written. That means that it can and often does do more than just return a single value! You can include additional code statements (variable declarations, if statements, loops, etc) in order to calculate the values you'd like to include in inline expressions in the returned JSX.
@@ -419,7 +419,7 @@ class UserInfo extends React.Component {
                 <h1>{name}</h1>
                 <p>Hello, my name is {name} and I am a {descriptor}</p>
             </div>
-        )        
+        )
     }
 }
 
@@ -430,13 +430,13 @@ let infoElement = <UserInfo />;
 ReactDOM.render(infoElement, document.getElementById('root'));
 ```
 
-This "class component" example is identical to the previous function component example&mdash;it takes the "body" of the function component and moves that into a (required) `render()` method. 
+This "class component" example is identical to the previous function component example&mdash;it takes the "body" of the function component and moves that into a (required) `render()` method.
 
 - Note that the `React.Component` class is often imported as a _named import_, so that you can refer to it directly:
 
     ```jsx
     import {Component} from 'react';
-    
+
     class MyComponent extends Component {
         render() {
             //...
@@ -453,7 +453,7 @@ In general function components are sufficient for defining most React components
 ### Component Organization {-}
 React applications will often have dozen of components, quickly growing more complex than the basic starting examples in the previous section. If you tried to define all of these components in a single `index.js` file, your code would quickly become unmanageable.
 
-Thus individual components are usually defined inside of separate [**modules**](#modules) (files), and then _imported_ by the modules that need them&dmdash;other components or the root `index.js` file.
+Thus individual components are usually defined inside of separate [**modules**](#modules) (files), and then _imported_ by the modules that need them&mdash;other components or the root `index.js` file.
 
 Recall that in order to make a variable or function (e.g., a Component) available to other modules, you will need to `export` that component from its own module, and then `import` that value elsewhere:
 
@@ -558,7 +558,7 @@ function UserInfo(props) {
             <h1>{userNameUpper}</h1>
             <p>Hello, my name is {name} and I am a {descriptor}</p>
         </div>
-    )        
+    )
 }
 
 let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
@@ -572,17 +572,17 @@ Again, _all_ props are stored in the argument object&mdash;you have to access th
     function UserInfo(props) {
         //assign the prop object properties to variables
         const {userName, descriptor} = props;
-        
-        return <h1>{userName}</h1>;    
+
+        return <h1>{userName}</h1>;
     }
     ```
-    
+
     It's also possible to specify the object destructuring in the argument declaration!
-    
+
     ```jsx
     //The props object passed in will be destructured into two argument variables
     function UserInfo({userName, descriptor}) {
-        return <h1>{userName}</h1>;            
+        return <h1>{userName}</h1>;
     }
     ```
 
@@ -598,7 +598,7 @@ let array = [1,2,3,4,5];
 let suitcase = <Suitcase luggageCombo={array} />;
 
 //Pass a function as a prop (like a callback)!
-function sayHello() { 
+function sayHello() {
     console.log('Hello world!');
 }
 let greeting = <Greeting callback={sayHello} />;
@@ -630,7 +630,7 @@ function MessageListTrio(props) {
             <h1>Messages for you</h1>
             <ul>
                 {/* instantiate child components, passing data from own props */}
-                <MessageItem message={messages[0]} /> 
+                <MessageItem message={messages[0]} />
                 <MessageItem message={messages[1]} />
                 <MessageItem message={messages[2]} />
             </ul>
@@ -640,13 +640,13 @@ function MessageListTrio(props) {
 
 //Define and pass a prop to the parent comment when rendering it
 let messagesArray = ["Hello world", "No borders", "Go huskies!"];
-ReactDOM.render(<MessageListTrio messages={messagesArray} />, 
+ReactDOM.render(<MessageListTrio messages={messagesArray} />,
                 document.getElementById('root'));
 ```
 
-This creates a **one-directional data flow**&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa). 
+This creates a **one-directional data flow**&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa).
 
-The component organization in the previous example is [particularly common](https://reactjs.org/docs/lists-and-keys.html) in React. In order to effectively render a list (array) of data, you should define a Component that declares how to render a _single_ element of that list (e.g., `MessageItem`). This allows you to focus on only a single problem, developing a re-usable solution. Then you define another component that represents how to render a whole list of elements (e.g., `MessageList`). This component will render a child item component for each element&mdash;it just needs to set up the list, without worrying about what each item looks like! 
+The component organization in the previous example is [particularly common](https://reactjs.org/docs/lists-and-keys.html) in React. In order to effectively render a list (array) of data, you should define a Component that declares how to render a _single_ element of that list (e.g., `MessageItem`). This allows you to focus on only a single problem, developing a re-usable solution. Then you define another component that represents how to render a whole list of elements (e.g., `MessageList`). This component will render a child item component for each element&mdash;it just needs to set up the list, without worrying about what each item looks like!
 
 The data set can be passed into the parent (List) component as a prop, and each individual element from that data set will be passed into an instance of the child (Item) component. In effect, the List component is tasked with with taking the data set (an array of data values) and producing a set Item components (an array of Components). This kind of transformation is a _mapping_ operation (each data value is mapped to a Component), and so can be done effecttively with the **`map()`** method:
 
@@ -680,11 +680,11 @@ function MessageList(props) {
 
 //Define and pass a prop to the parent comment when rendering it
 let messagesArray = ["Hello world", "No borders", "Go huskies!"];
-ReactDOM.render(<MessageList messages={messagesArray} />, 
+ReactDOM.render(<MessageList messages={messagesArray} />,
                 document.getElementById('root'));
 ```
 
-Note that the above example will issue a warning in the developer console. This is because React requires you to specify an additional prop called [**`key`**](https://reactjs.org/docs/lists-and-keys.html#keys) for each element in an array of components. The `key` should be a _unique string_ for each element in the list, and acts as an identifier for that element (think: what you might give it as an `id` attribute). React will use the `key` to keep track of those elements, so if they change over time (i.e., elements are added or removed from the array) React will be able to more efficiently modify the DOM. 
+Note that the above example will issue a warning in the developer console. This is because React requires you to specify an additional prop called [**`key`**](https://reactjs.org/docs/lists-and-keys.html#keys) for each element in an array of components. The `key` should be a _unique string_ for each element in the list, and acts as an identifier for that element (think: what you might give it as an `id` attribute). React will use the `key` to keep track of those elements, so if they change over time (i.e., elements are added or removed from the array) React will be able to more efficiently modify the DOM.
 
 If unspecified, the `key` will default to the element's index in the array, but this is considered unstable (since it will change as items are added or removed). Thus a better approach is to determine a unique value based on the data&mdash;which means that data items will need to be uniquely identifiable. The below improved version of the code changes each message from a basic String to an Object that has `content` and `id` properties, allowing each data value to be uniquely identified. Note that the `MessageItem` component need not be changed; it still renders an `<li>` showing the given `message` prop!
 
@@ -699,12 +699,12 @@ function MessageList(props) {
     let msgItems = props.messages.map((msgObject) => {
         //return a new MessageItem for each message object
         //attributes are listed on their own lines for readability
-        return <MessageItem 
-                    message={msgObject.content} 
+        return <MessageItem
+                    message={msgObject.content}
                     key={msgObject.id.toString()} {/* pass in a key prop! */}
                     />;
     }) //end of .map()
-      
+
     return (
         <div>
             <h1>Messages for you</h1>
@@ -716,7 +716,7 @@ function MessageList(props) {
 }
 
 //Define and pass a prop to the parent comment when rendering it
-ReactDOM.render(<MessageList messages={messageObjArray} />, 
+ReactDOM.render(<MessageList messages={messageObjArray} />,
                 document.getElementById('root'));
 ```
 
