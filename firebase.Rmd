@@ -1,171 +1,64 @@
 # Firebase
-This chapter discusses how to integrate and utilize the [**Firebase**](https://firebase.google.com/) web service into a client-side application (using React). Firebase is a web service that provides tools and infrastructure for use in creating web and mobile apps that store data online in the cloud (a "web backend solution"). In effect, Firebase acts as a _server_ that can host information for us, so that you can just build client-side applications without needing to program a web server.
+This chapter discusses how to integrate and use the [**Firebase**](https://firebase.google.com/) web service in a client-side application (using React). Firebase is a web service that provides tools and infrastructure for use in creating web and mobile apps that store data online in the cloud (a "web backend solution"). In effect, Firebase acts as a _server_ that can host information for you, so that you can just build client-side applications without needing to program a web server.
 
 - Firebase is owned and maintained by Google, but will still work perfectly fine with Facebook's React framework.
 
 In particular, this chapter will discuss two features of Firebase:
 
-1. The Firebase service offers a client-side based system for performing [**user authentication**](https://firebase.google.com/docs/auth/), or allowing users to "sign in" to your application and have particular information associated with them. It's possible to have users sign up with an email and password, or even using an external service (e.g., "sign up with Facebook"). Firebase also provides a way to manage all those extra interactions associated with accounts, like being able to reset passwords or confirm email addresses. And this is all performed securely from the client-side, without the need to set up an additional server to perform OAuth work.
+1. The Firebase service also provide a number of "datbase" systems. This chapter describes how to use the [**realtime database**](https://firebase.google.com/docs/database/), which provides a simple [NoSql](https://en.wikipedia.org/wiki/NoSQL)-style database: you can think of it as a _single giant JSON object in the Cloud_. Firebase provides methods that can be used to refer to this object and its properties, make changes to the object. Most importantly, it provides the ability to "listen" for changes made by others so that the page can automatically update based on actions taken by other users. In effect you can create a **data binding** between clients and the server, so that if you update data on one machine, that change automatically appears on another.
 
-2. The Firebase service also provide a [**realtime database**](https://firebase.google.com/docs/database/), which provide a cloud-hosted database for persisting data between page visits. Firebase's database is a [NoSql](https://en.wikipedia.org/wiki/NoSQL)-style database: you can think of it as a _single giant JSON object in the Cloud_. Firebase provides methods that can be used to refer to this object and its properties, make changes to the object, and even "listen" for changes made by others so that the page can automatically update based on actions taken by other users. In effect you can create a **data binding** between clients and the server, so that if you update data on one machine, that change automatically appears on another.
+    Firebase also offers additional database structures. [Firestore](https://firebase.google.com/docs/firestore) is another NoSQL (document-based) database, but focused more on one-time data fetch queries rather than the continuous data binding provided by the realtime database. [Firebase Storgae](https://firebase.google.com/docs/storage) is used for storing larger data elements (anything that can't be defined in JSON), such as images or videos. This chapter focuses on the Realtime Database as an easier-to-learn system and to practice data binding.
+
+2. The Firebase service also offers a client-side based system for performing [**user authentication**](https://firebase.google.com/docs/auth/), or allowing users to "sign in" to your application and have particular information associated with them. It's possible to have users sign up with an email and password, or even using an external service (e.g., "sign in with Google"). Firebase also provides a way to manage all those extra interactions associated with accounts, like being able to reset passwords or confirm email addresses. And this is all performed securely from the client-side, without the need to set up an additional server to perform OAuth work.
 
 These features mean that Firebase can be a go-to back-end for producing a client-side app that involves persisted data (like user accounts). And its [free service tier](https://firebase.google.com/pricing/) is perfectly suited for any development app.
 
-<p class="alert alert-warning">_Important note_: Firebase updated to version 3.0 in **May 2016**. This was a massive revision to the API and how you should interact with the service. Watch out for out-dated "legacy" examples. when looking for help.</p>
+<p class="alert alert-warning">This chapter details how to use **version 9+** of the Firebase library, released in _August 2021_&mdash;and in particular it's [_modular API_](https://firebase.google.com/docs/web/modular-upgrade) (which allows for smaller and more efficient bundles when using webpack and React). Note that while this version is conceptually the same as previous versions, the module syntax for calling and importing functions is different. See the upgrade guide for details. Be careful when looking up examples and resources that they're use the same version as you!</p>
+
+Note that Firebase also provides [**Firebase Hosting**](https://firebase.google.com/docs/hosting) for hosting and serving web applications. This is particularly useful for hosting single-page-applications, such as those [built with React Router](#react-router-and-hosting). Hosting does not require any modifications to your source code, so is not discussed here.
+
 
 ## Setting up Firebase
 Because Firebase is a cloud service, you will need to set it up externally in order to use it in your web application. Firebase setup and configuration is handled on Firebase's website at <https://firebase.google.com/>, and in particular in the [Firebase Web Console](https://console.firebase.google.com) where you can manage individual projects.
 
-<p class="alert alert-success">When developing a Firebase app, you will want to keep the Web Console open so you can check on the user list and database.</p>
+<p class="alert alert-success">When developing a Firebase app, keep the Web Console open all the time so you can check on database, user list, etc!</p>
 
 ### Creating a Project {-}
-In order to use Firebase in your web app, you will need to _sign up for the service_. Visit **<https://firebase.google.com/>** and click the "Get Started" button to do so. You will need to sign in with a Google account (e.g., a UW account if you've set up Google integration). Signing up will direct to the Firebase Web Console.
+In order to use Firebase in your web app, you will need to _sign up for the service_. Visit **<https://firebase.google.com/>** and click the "Get Started" button to do so. You will need to sign in with a Google account (e.g., a UW account if you've set up Google integration). Signing up will direct you to the Firebase Web Console.
 
-In the Web Console, you can manage all of your "projects"&mdash;one per application you've created. Each project will track its own set of users and have its own database of information.
+In the Web Console, you can manage all of your "projects"&mdash;one per application you've created (think: per repository). Each project will track its own database of information, its own set of users, etc.
 
-You can create a project by clicking the _"Add Project"_ button. In the pop-up window that appears, you'll need to give the app a _unique_ name. Naming the project after your app is a good idea. This name is used internally by the Firebase system (it won't necessarily be visible to your users).
+You can create a project by clicking the _"Add Project"_ button. On the next screen, you'll need to give the app a _unique_ name. Naming the project after your app is a good idea. This name is used internally by the Firebase syste; it won't necessarily be visible to your users, though if you use [**Firebase Hosting**](https://firebase.google.com/docs/hosting) then the project name will be part of the default URL for the application.
 
-Once you've created the project, you will be taken to the **Web Console** for that project. This is a web page where you will be able to manage the configuration of the project, the users who have signed up, and any data in the database. In particular, note the navigation menu on the left-hand side: you will use this to access different parts of your project (_Authentication_ to manage users, and _Database_ to manage the database).
+- _Recommendation_: **do not** enable Google Analytics for your projects!
 
-![Firebase navigation menu.](img/firebase/firebase-nav.png)
+Once you've created the project, you will be taken to the **Web Console** for that project. This is a web page where you will be able to manage the configuration of the project, the users who have signed up, and any data in the database. In particular, note the navigation menu on the left-hand side: you will use this to access different parts of your project (_Realtime Database_ to manage the database, and _Authentication_ to manage users).
+
+![Firebase navigation menu](img/firebase/firebase-nav2.png)
 
 
 ### Including Firebase in React {-}
 In order to use Firebase in a web app (including a React app), you will need to add the Firebase library to your web page, as well as some specify some configuration data to connect to the correct Firebase project.
 
-From the project's Web Console page, click the _"Add Firebase to your web app"_ button. This will produce a popup with some HTML code for loading the Firebase library, as well as an inline `<script>` that configures your app to use Firebase.
+From the project's Web Console page, click the button (it look like a `</>` in the above image) to add Firebase to a web app. This will take you to a new page where you'll need to put in a nickname for the app and then present some JavaScript code for loading the Firebase library (make sure that "Use npm" is selected&mdash;you don't want to include a `<script>` element!).
 
-**However**, in a React app you should integrate Firebase directly into your source code instead of modifying the HTML. You can do this by modifying the **`index.js`** file:
+In a React app you you will integrate Firebase directly into your source code by modifying the **`index.js`** file:
 
 1. First, install and [Firebase library](https://www.npmjs.com/package/firebase) using `npm`:
 
     ```bash
-    # in your app repo
+    # Note: do this in your app's repo (the folder with the `package.json` file)
+
     npm install firebase
     ```
 
-2. `import` the Firebase library into your `index.js` file. To only load the core firebase functionality, you can just import the `'firebase/app'` module.
+2. Then, copy the provided `import` statement, `firebaseConfig` variable, and `initializeApp()` function call into your **`index.js`** file. This will specify _which_ Firebase project your web app should connect to whenver you call functions to access Firebase.
 
-    ```js
-    import firebase from 'firebase/app';
-    ```
-
-    You can also `import` modules with the specific pieces of functionality you need, such as user authentication and the real-time database.
-
-    ```js
-    import 'firebase/auth';
-    import 'firebase/database';
-    ```
-
-    (These modules don't export any need functions beyond modifications to the core Firebase app, so you don't need to assign a variable name to the resulting value).
-
-3. To configure your web app, **copy and paste** the contents of the `<script>` file shown on the Firebase Web Console (The `// Initialize Firebase ...` part). Do this _before_ the `ReactDOM.render()` call.
-
-    This will specify _which_ Firebase project your web app should connect to.
-
-
-## User Authentication
-Firebase provides the ability to **authenticate** users: to let people sign up for you application and then to check that they are who they say (e.g., have provided the right password). Firebase supports multiple different forms of authentication: users can sign up with an email and password, log in with a social media service such as Google or Facebook, or even authenticate "anonymous" (so you can at least keep track of different people even if you don't know who they are).
-
-In order to support user authentication, you will need to enable this feature in the Firebase Web Console. Click on the "Authentication" link in the side navigation menu to go to the authentication management page. Under the "Sign-In Method" tab, you can choose what forms of authentication you wish to enable.
-
-- For example, click on the "Email/Password" option, and then flip the switch to "Enable" that method. Be sure and Save your changes!
-
-Note that you will be able to use this page to see and manage users who have signed up with your Firebase project. This is where you can see if uses have successfully been created, look up their **User UID** for debugging, or delete users from the project:
-
-![Firebase users.](img/firebase/firebase-users.png)
-
-<!-- TODO: Add Firebase-UI -->
-
-### Creating Users {-}
-In order to create a user programmatically (e.g., from JavaScript when the user submits a sign-up form), you can use a function provided by the `firebase` module. Specifically, you'll call the wordily-named function [`firebase.auth().createUserWithEmailAndPassword`](https://firebase.google.com/docs/reference/js/firebase.auth.Auth#createUserWithEmailAndPassword) passing it the email and password the user is signing up with. This will create a new user account in Firebase (you can view it in the Firebase Web Console), _as well as_ log in the user.
-
-```js
-firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredentials) => {
-        let user = userCredentials.user; //access the newly created user
-        console.log('User created: '+user.uid);
-        //...
-    })
-    .catch((error) => { //report any errors
-        console.log(error.message);
-    });
-```
-
-- Remember to `import firebase from 'firebase/app'` in any module that you need to access the `firebase` global variable!
-
-- The `createUser...` method is called on [`firebase.auth()`](https://firebase.google.com/docs/reference/js/firebase.auth.Auth). The `auth()` function returns an "authenticator" object that can manage user login which gets an "authenticator" object that is connected to the web service and can manage user login information.
-
-- The `createUser...` method returns a _Promise_, so you can use the `.then()` method to do further work after the user is created (e.g., logging out that they have been created). The Promise callback is passed a ["UserCredential"](https://firebase.google.com/docs/reference/js/firebase.auth#.UserCredential) object, which contains data about the sign up that just occurred. Most usefully, this object contains a `user` property that is a ["Firebase User"](https://firebase.google.com/docs/reference/js/firebase.User) object, which contains data about the user who has just been created and signed in. For example, the Firebase User object contains a `uid` property, which is the _unique id_ of that user generated by Firebase. This is like the "internal codename" for users that you can use to identify them.
-
-<p class="alert alert-info">**Pro-tip:** You don't need to come up with real email addresses for testing. Try using `a@a.com`, `b@a.com`, `c@a.com`, etc. Similarly, `password` works fine for testing passwords (though you should never do that in real life!)</p>
-
-#### User Profiles {-}
-It is also possible to store some additional information for each user in what is called the user's [**profile**](https://firebase.google.com/docs/auth/web/manage-users#get_a_users_profile). Specifically, each user can assigned a `displayName` (a username separate from an email address) and a `photoURL` (a link to a profile picture for that user).
-
-```js
-let name = firebaseUser.displayName; //the user's name
-let pic = firebaseUser.photoURL; //the user's picture
-```
-
-You can [specify these profile properties](https://firebase.google.com/docs/auth/web/manage-users#update_a_users_profile) of a Firebase User by by calling its [`updateProfile()`](https://firebase.google.com/docs/reference/js/firebase.User#updateProfile) method, passing it an object with the new values to assign to those properties:
-
-```js
-firebaseUser.updateProfie({
-    displayName: "Ada",
-    photoURL: "http://domain.com/picture.png"
-})
-```
-
-- This method _also_ returns a Promise, so you can use `.then()` to do something after the profile is updated, or `.catch()` to handle any errors. Note that a good practice is to call this method from inside the `createUserWithEmailAndPassword()` callback (on the Firebase User found in the User Credentials), and then return the resulting promise for handling, thereby "chaining" the user creation and profile specification.
-
-<p class="alert alert-warning">You **cannot** assign values directly to any Firebase variables (including Firebase Users), since that data needs to be uploaded to the web (via an AJAX request). Instead, you will need to call a method to update these objects.</p>
-
-
-### Authentication Events {-}
-The `firebase.auth()` variable will keep track of which Firebase User is currently logged in&mdash;and this information persists [even after the browser is closed](https://firebase.google.com/docs/auth/web/auth-state-persistence). This means that every time you reload the page, the `firebase.auth()` function will perform the authentication and "re-login" the user.
-
-The recommended way to [determine who is currently logged](https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user) in is to register an **event listener** for to listen for events that occur with the "state" of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the "initial state" is set), or when a user logs out. You can register this listener by using the [`onAuthStateChanged`](https://firebase.google.com/docs/reference/js/firebase.auth.Auth#onAuthStateChanged) method:
-
-```js
-let authUnregFunc = firebase.auth().onAuthStateChanged((firebaseUser) => {
-    if(firebaseUser){ //firebaseUser defined: is logged in
-        console.log('logged in');
-        //do something with firebaseUser (e.g. assign to a state variable)
-    }
-    else { //firebaseUser undefined: is not logged in
-        console.log('logged out');
-    }
-});
-```
-
-- Because this authentication involves connecting to the Firebase app, it my perform network access. Thus in a React application, this listener should be registered in an **effect hook** (the `useEffect()` function).
-
-- The `onAuthStateChanged()` method takes a callback as a parameter, which will be handed a value representing the current Firebase User (or undefined if no one is logged in).
-
-    The most common practice is to then take this passed in object and assign it to a more global variable, such as a state variable in a React function (e.g., `setCurrentUser(firebaseUser)`).
-
-- The `onAuthStateChanged()` method returns a _new function_ that can be used to "unregister" the listener when you want to stop responding to authentication changes. You should call this function in the "cleanup" function returned by your effect hook in order to unregister the listener.
-
-
-#### Signing In and Out {-}
-You can sign a user in or out by using addition methods called on `firebase.auth()`, which do exactly what they suggest:
-
-```js
-//sign in a user
-firebase.auth().signInWithEmailAndPassword(email, password)
-   .catch(err => console.log(err)); //log any errors for debugging
-
-//sign out a user
-firebase.auth().signOut()
-    .catch(err => console.log(err)); //log any errors for debugging
-```
-
-- Both of these methods return Promises, so you can `.catch()` and display any errors.
+    Note that you will need to paste this code _before_ the call `ReactDOM.render()`. The `index.js` file will often contain such configuration data that is relevant to the _app_ rather than to a specific component.
 
 
 ## Realtime Database
-One of the main features provided by the Firebase web service is a **realtime database** for storing and accessing data in the cloud. You can think of this database as being a _single giant JSON object in the Cloud_ that can be simultaneously accessed and modified by multiple clients&mdash;and since each client reads the same database, changes made by one user will be seen by others as _real-time updates_.
+The Firebase web service provides a [**realtime database**](https://firebase.google.com/docs/database) for storing and accessing data in the cloud. You can think of this database as being a _single giant JSON object in the Cloud_ that can be simultaneously accessed and modified by multiple clients&mdash;and since each client reads the same database, changes made by one user will be seen by others as _real-time updates_.
 
 For example, you might have a database that is structured like:
 
@@ -192,124 +85,205 @@ This database object has a `people` key that refers to an object, which itself c
 
 In the Firebase Web Console (under the "Database" tab in the navigation menu), this data structure would be presented as:
 
-![A Firebase database.](img/firebase/firebase-people-db.png)
+![A Firebase database with sample people data](img/firebase/firebase-people-db.png)
 
 - Note that in the Firebase Web Console you can edit this database directly: viewing, adding, editing, and deleting elements in the JSON. This is useful for debugging&mdash;both to check that your code is editing the database accurately, and to clean up any mistakes.
 
-<p class="alert alert-warning">Although the JSON database can have many levels of nested objects, best practice is to try and keep the structure as "flat" as possible. This avoids you needing to download the nested "details" for a value if you only need to know e.g., the key names. See [Structure Your Data](https://firebase.google.com/docs/database/web/structure-data) for more details and examples.</p>
+<p class="alert alert-warning">Although the JSON database can have many levels of nested objects, best practice is to try and keep the structure as "flat" as possible and avoid nesting too much data. This avoids you needing to download the nested "details" for a value if you only need to know e.g., the key names. See [Structure Your Data](https://firebase.google.com/docs/database/web/structure-data) for more details and examples.</p>
 
-### Security Rules {-}
+### Setting Up the Database {-}
+In order to enable the realtime database for your project, navigate to the console page for the database and click the "Create Database" button.
+
+<p class="alert alert-warning">Make sure you're creating the _Realtime Database_, not the Firestore Database!</p>
+
+After selecting your local region, you'll be prompted to set up the [**Security Rules**](#security-rules). Choose to start in _test mode_ to get started immediately; see the below section for more about security rules.
+
+#### Security Rules {-}
 Because the Firebase database is just a giant JSON object in the cloud and is usable from a client-side system, technically _anyone_ can access it. Each element of the JSON object is accessible via AJAX requests (which are sent via `firebase` functions).
 
 In order to restrict what clients and access this information (read or write to values in the JSON), Firebase lets you define [security rules](https://firebase.google.com/docs/database/security/) that specify what users can access which elements. For example, you can make it so that only _authenticated users_ can add new entries the database, or that only specific users can update specific entries (e.g., the comments they wrote on a blog).
 
-- By default, the database can only be accessed and modified by _authenticated users_. Thus you almost always need to modify the rules to allow people to utilize your website without being logged in.
+- By default, no one can access or modify the data (in _locked mode_). If you choose to start your project in _test mode_, then anyone will be able to access or modify for a limited amount of time.
 
-In order to set up the security rules, you need to click on the "Database" link in the side navigation of the Firebase Web Console. Under the "Rules" tab, you can see the default defined rules defined for the database. Firebase Security Rules are defined in JSON using a very particular and difficult to understand schema (particularly if you want to customize the access to particular values in the database)
+In order to modify or configure the security rules, navigate to the "Rules" tab of the Realtime Database's page in the Firebase Web Console. You can modify the rules by editing the presented JSON data; remember to hit "Publish" after you're done editing.
 
-- Basically, inside the "rules" object you specify a JSON tree that mirrors the structure of your database. But instead of having a value for the keys in your database, you specify an object with `".read"` and `".write"` properties. The values of these properties are boolean expressions that state whether or not the current user is able to read (access) or write (modify) that value.
-
-Luckily, Firebase provides a handy set of [**sample rules**](https://firebase.google.com/docs/database/security/quickstart#sample-rules) that cover the most common situations. For example:
-
-```json
-{
-  "rules": {
-    ".read": true,
-    ".write": true
-  }
-}
-```
-
-This specifies that everyone can both read and write the entire database. This is a good rule to begin with for testing. For more details on how to write specific security rules, see [Secure Your Data](https://firebase.google.com/docs/database/security/securing-data)
-
-- Be sure and hit "Publish" to save your changes!
+Firebase Security Rules are defined in JSON using a particular (and somewhat awkard) scheme. Basically, inside the `"rules"` property you specify a JSON tree that mirrors the structure of your database. But instead of having a value for the keys in your database, you specify an object with `".read"` and `".write"` properties. The values of these properties are boolean expressions that state whether or not the current user is able to read (access) or write (modify) that value. For more on writing rules, such as how to handle user authorization (only certain users can read/write access) or data validation (making sure all data is written of a certain type), see [the official documentation](https://firebase.google.com/docs/database/security/).
 
 
-### Reading and Writing Data {-}
-Once you've set up access rules for your database, you can begin reading and writing data to it programmatically from your JavaScript. To do this, you will need to first get a _reference to the database_. This is done using the [`firebase.database().ref()`](https://firebase.google.com/docs/reference/js/firebase.database.Reference) method. This method takes as a parameter the key-path of the element in the JSON you wish to access:
+### Data References {-}
+To start working with your database, you will need to get a **reference** to that value in the database.
+
+You begin by getting a reference to the database itself, using the **`getDatabase()`** function provided by Firebase's database module `firebase/database`:
 
 ```js
-//get reference to the "root" of the database: the containing JSON
-const rootRef = firebase.database().ref();
+//import the function from the realtime database module
+import { getDatabase } from 'firebase/database';
 
-//refers to the 'people' value in the database
-const peopleRef = firebase.database().ref('people');
+// Get a reference to the database service
+const db = getDatabase();
+```
 
-//refers to the "sarah" value inside the "people" value in the database
+Importantly, the `db` value in the example is **not** a copy of the data or even the database itself! It's instead just a reference pointer to where that database lives&mdash;you can think of it more like a "URL" for the database.
+
+In order to modify any particular values in the database, you will need to get a [**reference**](https://firebase.google.com/docs/reference/js/database.databasereference) to that value. This is done by using the **`ref()`** function, passing in the database reference and the "path" (a string) to the data value in the database's JSON:
+
+```js
+import { getDatabase, ref } from 'firebase/database';
+
+//get a reference to the database service
+const db = getDatabase();
+
+//get reference to the "people"" property in the database
+const peopleRef = ref(db, "people")
+
+//get reference to the "sarah" property inside the "people" property in the database
 //similar to `database.people.sarah` using dot notation
-const sarahRef = firebase.database().ref('people/sarah');
+const sarahRef = ref(db, "people/sarah");
 ```
 
-Indeed, every single value in the Firebase database can be accessed using a URI-style "path notation", where each nested key is indicated by a slash **`/`** (rather than the `.` in dot notation). Since this parameter is just a string, you can use string concatenation to construct the path to a particular value you wish to reference (e.g., if you only want to b working with the value for a particular person).
+Again, these reference are **not** the data! They are just reference pointers to where the data lives&mdash;like the "URL" for that data value.
 
-- In fact, this "path" can be used to reference that database value as a specific _resource_ (in the RESTFul sense). Each database entry can be accessed at `https://my-project-name.firebaseio.com/path/to/value`. This is how you can modify Firebase by using pure AJAX requests (instead of the `firebase` library).
+The "path" to nested values in the database are written in a URI-style "path notation", where each nested key is indicated by a slash **`/`** (rather than the `.` in dot notation as you'd normally use). Thus `"people/sarah"` refers to the `sarah` key inside of the `people` key inside of the database; `"people/sarah/pet"` refers to the `pet` key inside the `sarah` key inside the `people` key&mdash;the spot in the database with the value `"Rover"` in the above example.
 
-Alternatively, you can use the [`.child()`](https://firebase.google.com/docs/reference/js/firebase.database.Reference#child) method to get a reference to a specific "child" element in the database:
+Since this path is just a string, you can use string concatenation to construct the path to a particular value you wish to reference (e.g., if you only want to work with the value for a particular person):
 
 ```js
-//this is equivalent to the above
-const sarahRef = firebase.database().ref('people').child('sarah');
+//variable name to access
+const personName = "Ada";
+
+//access the "ada" property inside of the "people" property inside the database
+const personOfInterestRef = ref(db, "people/"+personName);
 ```
 
-Once you have a reference to a particular entry in the database, you can modify the value at that entry using the [**`.set()`**](https://firebase.google.com/docs/reference/js/firebase.database.Reference#set) method. This method takes as an argument an _object_ containing the keys and values you wish to assign to the that particular reference:
+Alternatively, you can use the **`child()`** function to get a reference to a specific "child" element in the database:
 
 ```js
-const sarahRef = firebase.database().ref('people').child('sarah');
+import { ref, child } from 'firebase/database';
+
+//equivalent to the above example
+
+//get reference to the "people" property in the database
+const peopleRef = ref(db, "people")
+
+//get reference to the "sarah" property inside of the "people" reference'd value
+const sarahRef = child(peopleRef, "sarah")
+```
+
+In general, you want to work with a small a subset the data as possible. Thus it's better to get a reference to `"person/sarah"` if you're only going to read or write to that value, rather than get a reference to the whole `"people"` and then just read/write the `sarah` key in that.
+
+
+### Writing Data {-}
+You can modify values in the database by using the **`set()`** function. This function takes two arguments: a _database reference_, and then the new value you want to assign to that location in the database:
+
+```js
+//alias the `set` function as `firebaseSet`
+import { ref, set as firebaseSet } from 'firebase/database'
+
+//get a reference to where sarah's age is stored in the database
+const sarahAgeRef = ref(db, "people/sarah/age");
 
 //change Sarah's age to 43 (happy birthday!)
-sarahRef.set( {age: 43} )
+const newValueForSarahAge = 43;
+
+//assign the new value in the database
+firebaseSet(sarahRef, newValueForSarahAge);
+```
+
+This will change the value in the database at `"people/sarah/age"` to `43`.
+
+Note that in this example, I have use the `as` keyword to _alias_ the `set` function when importing it, instead calling it `firebaseSet`. This is for clarity, as "set" is an overly generic name for a function.
+
+Note that as with normal JSON objects, you can also "set" values for database entries that didn't previously exist&mdash;you do not have to "declare" a value in the database ahead of time
+
+```js
+//a reference to the people entry in the database
+const peopleRef = ref(db, "people")
+
+//a reference to a location with no currently defined value
+const adaRef = ref(peopleRef, "ada");
+
+//set an object to that location in the database
+firebaseSet(adaRef, {age: "206", pet: "Charlie"})
+```
+
+Finally, note that the `set()` method returns a _Promise_. This you can use `.then()` (or `await`) to execute statements after the database has updated, and you can thus catch any errors that may occur when attempting to update a value. This is especially useful for debugging, but also is good for providing user feedback.
+
+```js
+const sarahPetRef = ref(db, "people/sarah/pet");
+
+//change Sarah's pet
+firebaseSet(sarahPetRef, "Sparky")
+    .then(() => console.log("data saved successfully!"))
     .catch(err => console.log(err)); //log any errors for debugging
 ```
 
-- Firebase's `set()` method will _overwrite_ the values for any keys specified in its parameter, but leave other values unchanged. Any keys that did not previous exist will be added:
-
-    ```js
-    sarahRef.set( {favFood: "pizza"} ); //add a new key
-
-    firebase.database().ref('people').set({ //add a new entry to `people`
-        ada: {age: 27, petName: "Charles"} //27-year-old Ada has pet named "Charles"
-    });
-    ```
-
 
 ### Listening for Data Changes {-}
-Because Firebase is structured as _realtime_ database (that may change over time), you read data from it by registering an **event listener** to listen for changes to that database. Firebase provides a method [`.on()`](https://firebase.google.com/docs/reference/js/firebase.database.Reference#on) for registering such listeners. Similar to the DOM's `addEventListener()` function, Firebase's `on()` method takes two parameters: an event name (as a string) and a callback function that should be executed when the event occurs:
+Because Firebase's database is intended for _realtime_ access (that may change over time), you read data from it and establish _data binding_ by registering an **event listener** to listen for changes to that database. In effect any modifications to the data causes a "database change event" which triggers your listener, allowing you to acccess the new updated data.
+
+You register a database change listener by using the **`onValue()`** function. This function takes as arguments a database reference (which value you want to listen for changes to) and a callback function that will be executed in response to the event (similar to the DOM's `addEventListener()` function):
 
 ```js
-const amitRef = firebase.database().ref('people/amit');
-amitRef.on('value', (snapshot) => {
+import { ref, onValue } from "firebase/database"
+
+//get a reference to a particular value location in the database
+const amitRef = ref(db, 'people/amit');
+
+//register a listener for changes to that value location
+onValue(amitRef, (snapshot) => {
     const amitValue = snapshot.val();
-    console.log(amitValue); //=> { age: 35, petName: "Spot" }
+    console.log(amitValue); //=> e.g., { age: 35, petName: "Spot" }
     //can do something else with amitValue (e.g., assign to a state variable)
 });
 ```
 
-- While Firebase supports a number of different "database change events", the most common to listen for is the **`'value'`** event, which occurs when the data entry is first created _or_ whenever it changes. Other events include `child_added`, `child_removed`, and `child_changed`, which can be useful if you want to know _how_ the database changed (not just that it did change)!
+The callback function will be passed as a parameter the latest [**snapshot**](https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot) of the data value at the listening location. This is a wrapper around the database's JSON tree (allowing you to navigate it e.g., with `child()`). Most commonly, you will want to convert the snapshot into an actual JavaScript object by calling the **`.val()`** method on it.
 
-- The callback function will be passed a [data snapshot](https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot) as a parameter. This is a wrapper around the database JSON tree (allowing you to navigate it e.g., with `.child()`). More commonly, you will want to convert it into an actual JavaScript object by calling the `.val()` method on it.
+The listener will trigger whenever any child node of the targeted refence location changes. Thus even if just `people/amit/pet` is updated, the above listener will trigger.
 
-- Because this listener involves network access, in a React App you would want to register this listener in an _effect hook_. Your effect hook's "cleanup function" will also need to remove the listener by using the `.off()` method (to cancel the `.on()`):
+Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an _effect hook_. The effect hook's "cleanup function" will also need to remove the listener by calling the **`.off()`** method on the database reference&mdash;otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes):
 
-    ```js
-    amitRef.off();
-    ```
+```jsx
+function MyComponent(props) {
+  //effect hook
+  useEffect(() => {
+    const db = getDatabase();
+    const amitRef = ref(db, "people/amit");
 
-Note that you can also read a single value once (without needing to register and unregister a listener) by using the [`.once()`](https://firebase.google.com/docs/reference/js/firebase.database.Reference#once) method, which will return a promise that will contain the read data (once it is downloaded).
+    onValue(amitRef, (snapshot) => {
+      const amitValue = snapshot.val();
+      //...set state variable, etc...
+    })
+
+    //cleanup function for when component is removed
+    function cleanup() {
+      amitRef.off(); //turn off all listeners
+    }
+    return cleanup; //effect hook callback returns the cleanup function
+  })
+}
+```
+
+Note that it is possble to read a single value once (without needing to register a listener) by using the `get()` method. This method returns a  promise that will contain the read snapshot (once it is download). _However_, the Realtime Database is intended and optimized for data binding and notifications. Thus you should pretty much always be using `onValue()` to read data from the database. If you find yourself wanting to just read a single value once, you're not thinking about Firebase correctly!
 
 
-#### Firebase Arrays {-}
+### Firebase Arrays {-}
 When working with and storing data in the cloud, we often want to organize that data into lists using _arrays_. However, Firebase **does not** directly support support arrays: the JSON object in the sky only contains objects, not arrays! This is because Firebase needs to support **concurrent access**: multiple people need to be able to access the data at the same time. But since arrays are accessed by _index_, this can cause problems if two people try to modify the array at the same time.
 
-The problem is that with an array, an index number doesn't always refer to the same element! For example, if you have an array `['a', 'b' 'c']`, then index `1` may initially refer to the `'b'`. However, if you add an element onto the beginning of the array, then suddenly that `1` index refers to the `'a'`, and so if a user was trying to modify the `'b'` before their machine was aware of the change, they may end up editing the wrong value! This bug is an example of a [race condition](https://en.wikipedia.org/wiki/Race_condition), which can occur when two processes are modifying data _concurrently_ (at the same time).
+- The problem is that with an array, an index number doesn't always refer to the same element! For example, if you have an array `['a', 'b' 'c']`, then index `1` may initially refer to the `'b'`. However, if you add an element onto the beginning of the array, then suddenly that `1` index refers to the `'a'`. And so if a user was trying to modify the `'b'` before their machine was aware of the change, they may end up editing the wrong value! This bug is an example of a [race condition](https://en.wikipedia.org/wiki/Race_condition), which can occur when two processes are modifying data _concurrently_ (at the same time).
 
 <!-- could put code version of example ?? -->
 
-To avoid this problem, Firebase treats all data structures as Objects, so that each value in the JSON tree has a _unique_ key. That way each client will always be modifying the value they expect. However, Firebase does offer a way that you can treat Objects as arrays: databases references support a [**`push()`**](https://firebase.google.com/docs/reference/js/firebase.database.Reference#push) method that will automatically add a value to an object with an **auto-generated key**.
+To avoid this problem, Firebase treats all data structures as Objects, so that each value in the JSON tree has a _unique_ key. That way each client will always be modifying the value they expect. However, Firebase does offer a way that you can treat Objects as arrays, in the form of a **`push()`**(https://firebase.google.com/docs/reference/js/firebase.database.Reference#push) function that will add a value to an object with an **auto-generated key**.
 
 ```js
-const tasksRef = firebase.database().ref('tasks'); //an object of tasks
-tasksRef.push({description:'First things first'}) //add one task
-tasksRef.push({description:'Next things next'}) //add another task
+import { getDatabase, ref, push as firebasePush } from 'firebase/database';
+
+const db = getDatabase;
+const tasksRef = ref(db, "tasks"); //an object of tasks
+
+tasksRef.push( {description:'First things first'} ) //add one task
+tasksRef.push( {description:'Next things next'} ) //add another task
 ```
 
 This will produce a database with a structure:
@@ -327,33 +301,247 @@ This will produce a database with a structure:
 }
 ```
 
-- Notice how the `tasks` is an Object (even though we "pushed" elements into it), and each "task" is assigned an auto-generated key. You would thus still be able to interact with `tasks` as if it were an array, but instead of using a value from `0` to `length` as the index, you'll use a generated "key" as the index.
+Notice how the `tasks` property is an Object (even though we "pushed" elements into it), and each "task" is assigned an auto-generated key (based on the timestamp it was pushed). You would thus still be able to interact with `tasks` as if it were an array, but instead of using a value from `0` to `length` as the index, you'll use a generated "key" as the index.
 
-Firebase _snapshots_ do support a `forEach()` function that you can use to iterate through their elements, allowing you to loop through the elements in an array. However, if you want to do something more complex (like `map()`, `filter()`, or `reduce()`), you need an actual array. The best way to get this is use call `Objects.keys()` on the `snapshot.val()` in order to get an array of the keys, and then you can iterate/map that (accessing each element in the "array" using bracket notation).
+<p class="alert alert-warning">**Always** use the `push()` function to have Firebase automatically manage data arrays for you. **Never** try to manually create an "array" by giving values keys "0", "1", "2" etc.</p>
 
-Note that when looping through an "array", each element is treated handled separately from its key (the same way that a `forEach()` loop lets you work with array elements separately from their index). But since you _need_ that key as an identifier in order to `ref()` and modify the JSON element later, you will need to make sure that you "save" the key in the object as you processing it:
+Firebase _snapshots_ do support a `forEach()` function that you can use to iterate through their elements, allowing you to loop through the elements in an array. However, if you want to do something more complex (like `map()`, `filter()`, or `reduce()`), you need an actual array. The best way to get this is use call `Objects.keys()` on the `snapshot.val()` in order to get an array of the keys, and then you can iterate/map those (accessing each element in the "array" using bracket notation).
 
 ```js
-//assume `tasksSapshot` is a snapshot of the `tasks` "array"
+//`tasksSnapshot` is a snapshot of the `tasks` "array"
 const allTasksObject = tasksSnapshot.val(); //convert snapshot to value
+
+//an array of the keys in the object ["-KyxgJhKOVeAj2ibPxrO", "-KyxgMDJueu17348NxDF"]
 const allTasksKeys = Object.keys(allTasksObject);
-const allTasksArray = allTasksKeys.map((key) => { //map array of keys into array of tasks
+
+//map array of keys into array of tasks
+const allTasksArray = allTasksKeys.map((key) => {
     const singleTaskCopy = {...allTasksObject[key]}; //copy element at that key
-    singleTaskCopy.key = key; //save the key for later referencing!
+    singleTaskCopy.key = key; //save the key string as an "id" for later
     return singleTaskCopy; //the transformed object to store in the array
 });
 
 allTasksArray.map((taskObject) => { ... })
 ```
 
-<p class="alert alert-warning">Don't lose your key!</p>
+Note that when looping through an "array", each element is treated handled separately from its key (the same way that a `forEach()` loop lets you work with array elements separately from their index). But since you _need_ that key as an identifier in order to `ref()` and modify the JSON element later, you will need to make sure that you "save" the key in the object as you processing it. _Don't lose your key!_.
 
-This is a quick overview of some major functions provided by Firebase. The service also offers additional options, including [cloud storage](https://firebase.google.com/docs/storage/) for larger media such as images or video. For details and additional function, see the official documentation.
+
+## User Authentication
+Firebase provides the ability to **authenticate** users: to let people sign up for you application and then to check that they are who they say (e.g., have provided the right password). Firebase supports multiple different forms of authentication: users can sign up with an email and password, log in with a social media service such as Google or Facebook, or even authenticate "anonymously" (so you can at least keep track of different people even if you don't know who they are).
+
+In order to support user authentication, you will need to enable this feature in the Firebase Web Console. Click on the "Authentication" link in the side navigation menu to go to the authentication management page, then choose "Get started". Under the "Sign-In Method" tab, you can choose what forms of authentication you wish to enable.
+
+- For example, click on the "Email/Password" option, and then flip the switch to "Enable" that method. Be sure and Save your changes!
+
+Note that you will be able to use this page to see and manage users who have signed up with your Firebase project. This is where you can see if uses have successfully been created, look up their **User UID** for debugging, or delete users from the project:
+
+![Firebase users as presented in the authentication web console](img/firebase/firebase-users.png)
+
+### Signing In with FirebaseUI {-}
+It is possible to call functions provided by Firebase in order to create and log in users. However, this would require you to implement the "log in form" on your own&mdash;and would only easily support the Email/Password authentication option.
+
+Instead, a nicer approach is to use the [**FireabaseUI**](https://firebase.google.com/docs/auth/web/firebaseui) library, also managed by Firebase. This library provides a set of predefined UI elements like a "login form", including ones which will support different authentication methods.
+
+![Example of FirebaseUI authentication](img/firebase/firebaseui-example.png)
+
+There are different FirebaseUI libraries for different platforms; for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). This is an external library (just like `react-router`), so needs to be installed separately:
+
+```bash
+npm install react-firebaseui
+```
+
+The React FirebaseUI library provides a Component called `<StyledFirebaseAuth>`, which you can render in your page like any other Component. You can think of this Component as the "login form". A complete example of how this Component is used can be found below, following by an explanation.
+
+```jsx
+//import auth functions and variables from Firebase
+import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth'
+
+//import the component
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+
+//an object of configuration values
+const firebaseUIConfig = {
+  signInOptions: [ //array of sign in options supported
+    //array can include just "Provider IDs", or objects with the IDs and options
+    GoogleAuthProvider.PROVIDER_ID,
+    { provider: EmailAuthProvider.PROVIDER_ID, requiredDisplayName: true },
+  ],
+  signInFlow: 'popup', //don't redirect to authenticate
+  credentialHelper: 'none', //don't show the email account chooser
+  callbacks: { //"lifecycle" callbacks
+    signInSuccessWithAuthResult: () => {
+      return false; //don't redirect after authentication
+    }
+  }
+}
+
+//the React compnent to render
+function MySignInScreen() {
+
+  const auth = getAuth(); //access the "authenticator"
+
+  return (
+    <div>
+      <h1>My App</h1>
+      <p>Please sign-in:</p>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+    </div>
+  );
+}
+```
+
+There are a few steps to using this Component:
+
+- The `<StyledFirebaseAuth>` requires a `uiConfig` prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.
+
+    The most important configuration option is the `signInOptions`, listing the different authentication providers supported (what options should show up in the login form). The IDs for these providers are imported from the `'firebase/auth'` library&mdash;though they are numeric values, not functions
+
+    Other common/useful options are shown in the example; for a complete list of options see [the firebaseui-web documentation](https://github.com/firebase/firebaseui-web#configuration).
+
+- The `<StyledFirebaseAuth>` also requires a `firebaseAuth` prop, which is a reference to the "authenticator" service&mdash;what will handle tha process of the user logging in and out. You can get access to this value via the **`getAuth()`** function provided by `'firebase/auth'` (similar to how you get access to the Realtime Database via the `getDatabase()` function).
+
+    Note that the authenticator is a _singleton_ value&mdash;you can call `getAuth()` from multiple modules/files without concern. You do not need to pass it around as a prop.
+
+With this Component, users will be able to "log in", though see the [Managing the User](#managing-the-user) section below. You will be able to see a list of users who have connected to your app in the Firebase Web Console. Note in particular that you can see their _uid_ (unique identifier), which is what is used to distinguish between users. (You can't use emails as identifiers, because someone who logs in with Facebook won't provide their email address!).
+
+<p class="alert alert-info">**Pro-tip:** You don't need to come up with real email addresses for testing. Try using `a@a.com`, `b@a.com`, `c@a.com`, etc. Similarly, `password` works fine for testing passwords (though you should never do that in real life!)</p>
+
+The Firebase Web Console will provide a view of the "user database"&mdash;but importantly, this is _not the same as the Realtime Database_. The user database holds _very_ limited information: the authentication provider, a "display name", and possibly a "photo url" (e.g., where to find an avatar image). But you cannot store any additional information in the "user database"&mdash;not profile images, not preferred names or pronouns used, not favorite fish. Any user-specific information will need to be stored in the Realtime Database instead, usually using a "key" that is the user's `uid`. For example, your Realtime Database might store information like:
+
+```json
+{
+  "userData" : {
+    "c9PGijn9Snh2YfPA30Hq0t7jn" : {
+      "pronouns" : "they/them",
+      "favoriteFish" : "sea bass"
+    },
+    "Tq8t7ETw54XXiWf7XZdnu0J" : {
+      "pronouns" : "he/him",
+      "favoriteFish" : "cuttle fish"
+    }
+  }
+}
+```
+
+You would then access this data using the same process as any other data in the realtime database, listening to the reference `"userData/"+userId`.
+
+In order to sign out a user, you will need to use a built-in Firebase function: **`signOut()`**:
+
+```js
+import { getAuth, signOut } from 'firebase/auth';
+
+const auth = getAuth();
+
+signOut(auth)
+    .catch(err => console.log(err)); //log any errors for debugging
+```
+
+Note that the `signOut()` method returns a Promise, so you can `.catch()` and display any errors.
+
+
+### Managing the User {-}
+Although FirebaseUI will log in a user, you will need to do further work in order for your app to know who that logged in user is.
+
+The _authenticator_ (from `getAuth()`) will keep track of which Firebase User is currently logged in&mdash;and this information persists [even after the browser is closed](https://firebase.google.com/docs/auth/web/auth-state-persistence). This means that every time you reload the page, the authenticator will automatically perform the authentication and "re-login" the user.
+
+The recommended way to [determine who is currently logged](https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user) in is to register an _event listener_ to listen for events that occur with the "state" of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the "initial state" is set), or when a user logs out. You can register this listener by using the **`onAuthStateChanged()`** function:
+
+```js
+//import functions
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+
+const auth = getAuth();
+
+onAuthStateChanged(auth, (firebaseUser) => {
+    if(firebaseUser){ //firebaseUser defined: is logged in
+        console.log('logged in', firebaseUser.displayName);
+        //do something with firebaseUser (e.g. assign to a state variable)
+    }
+    else { //firebaseUser is undefined: is not logged in
+        console.log('logged out');
+    }
+});
+```
+
+The function takes in two arguments: the authenticator, and a callback function that will be executed whenever the "authentication state" changes (e.g., whenever the user logs in or out). The callback function will be passed an object representing the ["Firebase User"](https://firebase.google.com/docs/reference/js/firebase.User). This object contains properties about the user, including:
+
+- `uid`, which is the _unique id_ for the user
+- `displayName`, which is the user's provider-independent displayable name
+
+The most common practice is to take this passed in object and assign it to a more global variable, such as a state variable in a React function (e.g., `setCurrentUser(firebaseUser)`).
+
+If the user "logged out", then the passed in `firebaseUser` value will be `null`.
+
+Because the authen
+
+Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an _effect hook_. The effect hook's "cleanup function" will also need to remove the listener. The `onAuthStateChanged()` function _returns_ a new function that can be used to "unregister" the listener:
+
+```jsx
+function MyComponent(props) {
+  //effect hook
+  useEffect(() => {
+    const auth = getAuth();
+
+    //returns a function that will "unregister" (turn off) the listener
+    const unregisterFunction = onAuthStateChanged(auth, (firebaseUser) => {
+      //handle user state change
+      if(firebaseUser){
+        //...
+      }
+    })
+
+    //cleanup function for when component is removed
+    function cleanup() {
+      unregisterFunction(); //call the unregister function
+    }
+    return cleanup; //effect hook callback returns the cleanup function
+  })
+}
+```
+
+#### Firebase React Hooks {-}
+In React systems it is common to render different content depending on whether the user is logged in. This could be done with conditional rendering, or with a "protected route" as described in [Client-Side Routing](#redirecting).
+
+However, it takes a few seconds for Firebase to authenticate a user when a page first loads. Thus your conditional rendering will often need to handle 3 cases: when a user is logged in, when a user is not logged in, and when the user status is "loading" and the app hasn't finished checking yet.
+
+While there are some cludgy workarounds (e.g., use a special value for your state to indicate that a user is "loading"), this is a common enough situation that you can use solutions implemented by other people. One such option is the [`firebase-react-hooks`](https://github.com/CSFrequency/react-firebase-hooks) library. This library provides a simple hook (like `useState` or `useParams`) that lets you access the user status. In particular, the `useAuthState` hook will implement the authentication state listener for you:
+
+```jsx
+import { getAuth } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
+
+function MyComponent(props) {
+  const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
+
+  if(loading){ //still waiting
+    return <p>Initializing user</p>
+  }
+
+  if(error) { //error logging in
+    return <p>Error: {error}</p>
+  }
+
+  if(user) { //user is defined, so logged in
+    return <p>Welcome {user.displayName}</p>
+  } else { //user is undefined
+    return <p>Please sign in</p>
+  }
+
+  //...
+}
+```
+
+This hook returns an array of 3 values (which are destructured in the above example), indicating the current user (or `null` for no user), whether the auth state is still loading, and whether there was an error.
+
+While using such a library is not necessary, it is a good example of how React's architecture allows for external libraries that can help reduce boilerplate code.
+
 
 
 ## Resources {-}
 <div class="list-condensed">
-- [Firebase Web Guide](https://firebase.google.com/docs/web/setup)
+- [Firebase Web Documentation](https://firebase.google.com/docs/web/setup)
+- [Firebase Realtime Database](https://firebase.google.com/docs/database/web/start)
 - [Firebase Authentication](https://firebase.google.com/docs/auth/web/start)
-- [Firebase Realtime Database Guide](https://firebase.google.com/docs/database/web/start)
 </div>

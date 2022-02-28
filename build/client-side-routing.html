@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-02-20" />
+<meta name="date" content="2022-02-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -398,16 +398,18 @@
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#including-firebase-in-react"><i class="fa fa-check"></i>Including Firebase in React</a></li>
 </ul></li>
-<li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#user-authentication"><i class="fa fa-check"></i><b>19.2</b> User Authentication</a>
+<li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.2</b> Realtime Database</a>
 <ul>
-<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-users"><i class="fa fa-check"></i>Creating Users</a></li>
-<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#authentication-events"><i class="fa fa-check"></i>Authentication Events</a></li>
-</ul></li>
-<li class="chapter" data-level="19.3" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.3</b> Realtime Database</a>
-<ul>
-<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#security-rules"><i class="fa fa-check"></i>Security Rules</a></li>
-<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#reading-and-writing-data"><i class="fa fa-check"></i>Reading and Writing Data</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#setting-up-the-database"><i class="fa fa-check"></i>Setting Up the Database</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#data-references"><i class="fa fa-check"></i>Data References</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#writing-data"><i class="fa fa-check"></i>Writing Data</a></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#listening-for-data-changes"><i class="fa fa-check"></i>Listening for Data Changes</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#firebase-arrays"><i class="fa fa-check"></i>Firebase Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="firebase.html"><a href="firebase.html#user-authentication"><i class="fa fa-check"></i><b>19.3</b> User Authentication</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#signing-in-with-firebaseui"><i class="fa fa-check"></i>Signing In with FirebaseUI</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#managing-the-user"><i class="fa fa-check"></i>Managing the User</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -522,7 +524,7 @@
 <li><a href="https://drive.google.com">Google Drive</a> is a good example of a Single-Page Application. Notice how if you navigate to a new folder, the URL changes (so you can link to individual folders), but only a single “pane” of the page changes.</li>
 </ul>
 <p>Because React applications are component-based, you can perform <em>client-side routing</em> in React by using <a href="https://reactjs.org/docs/conditional-rendering.html">conditional rendering</a> to only render components if the current route is correct. This follows a structure similar to:</p>
-<pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">//pick a component based on the URL</span>
     <span class="token keyword">let</span> componentToRender <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>currentUrl <span class="token operator">===</span> <span class="token string">'/home'</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//pseudocode comparison with URL</span>
@@ -567,7 +569,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">BrowserRouter</span></span><span class="token punctuation">></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>Inside the <code>&lt;BrowserRouter&gt;</code> (usually inside of the <code>&lt;App&gt;</code>), you will define the <strong>routes</strong> for your application—the collection of supported paths and which View to show at each. You can specify route-based views using the <a href="https://reactrouter.com/docs/en/v6/api#routes-and-route"><strong><code>&lt;Route&gt;</code></strong></a> Component. This component will render its <strong><code>element</code></strong> only when the current URL <em>matches</em> a specified <strong><code>path</code></strong>. In effect, the <code>Route</code> Component handles checking <em><code>if</code></em> the current URL matches the specified path, and if so renders its element. If the URL doesn’t match the route, then the element is not rendered. Both the <code>path</code> and the <code>element</code> are passed into the <code>&lt;Route&gt;</code> as props:</p>
-<pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Routes</span></span><span class="token punctuation">></span></span> <span class="token punctuation">{</span><span class="token comment">/* the collection of routes to match */</span><span class="token punctuation">}</span>
             <span class="token punctuation">{</span><span class="token comment">/* if currentUrlPath === "home" */</span><span class="token punctuation">}</span>
@@ -631,7 +633,7 @@ Not all apps require nesting routes! If your entire app has a single layout, you
 Similarly, remember that Routes are <strong>only</strong> for conditionally rendering a Component <em>based on the URI</em>. If you want to conditionally show content (e.g., depending on whether the user is logged in, or based on what item has been selected), you use <a href="https://reactjs.org/docs/conditional-rendering.html">conditional rendering</a> based on the state—don’t use a Route!
 </p>
 </div>
-<p>If you wish to show a “default” child Component when there is no further segment, you can give the child Route the <strong><code>index</code></strong> prop:</p>
+<p>If you wish to show a “default” child Component when there is no further segment, you can give the child Route the <a href="https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes"><strong><code>index</code></strong></a> prop:</p>
 <pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Routes</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Route</span></span> <span class="token attr-name">path</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user<span class="token punctuation">"</span></span> <span class="token attr-name">element</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">UserLayout</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">}</span></span> <span class="token punctuation">></span></span>
         <span class="token punctuation">{</span><span class="token comment">/* show the UserHome at ``/user` */</span><span class="token punctuation">}</span>
@@ -657,7 +659,7 @@ It is often useful to specify the routes as a <code>const</code> variable (e.g.,
 <p>You can access the values assigned to the URL parameters by using the <a href="https://reactrouter.com/docs/en/v6/api#useparams"><strong><code>useParams</code></strong></a> hook provided by <code>react-router</code>. This hook returns an object whose keys are the parameter names and whose values are the param values:</p>
 <pre class="language-jsx"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> useParams <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-router-dom'</span><span class="token punctuation">;</span>
 
-<span class="token keyword">function</span> <span class="token function">BlogPost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">BlogPost</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">//access the URL params as an object</span>
     <span class="token comment">//it's also common to use object destructuring here</span>
     <span class="token keyword">const</span> urlParams <span class="token operator">=</span> <span class="token function">useParams</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -737,7 +739,7 @@ It is often useful to specify the routes as a <code>const</code> variable (e.g.,
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token keyword">protected</span> content<span class="token operator">!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<p>A new strategy is to combine the above logic with a <em>nested route</em>, allowing you to re-use authentication logic across your app:</p>
+<p>A nice strategy is to combine the above logic with a <em>nested route</em>, allowing you to re-use authentication logic across your app:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">RequireAuth</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//...determine if user is logged in (eg., via AJAX)</span>
 

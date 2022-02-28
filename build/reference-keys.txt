@@ -79,8 +79,8 @@ fetching-data
 asynchronous-programming
 firebase
 setting-up-firebase
-user-authentication
 realtime-database
+user-authentication
 jest
 testing
 testing-with-jest

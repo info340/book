@@ -19,7 +19,7 @@ Client-side routing allows you to have unique URLs for each View, but will also 
 Because React applications are component-based, you can perform _client-side routing_ in React by using [conditional rendering](https://reactjs.org/docs/conditional-rendering.html) to only render components if the current route is correct. This follows a structure similar to:
 
 ```jsx
-function App() {
+function App(props) {
     //pick a component based on the URL
     let componentToRender = null;
     if(currentUrl === '/home'){ //pseudocode comparison with URL
@@ -81,7 +81,7 @@ The [**`<BrowserRouter>`**](https://reactrouter.com/docs/en/v6/api#browserrouter
 Inside the `<BrowserRouter>` (usually inside of the `<App>`), you will define the **routes** for your application&mdash;the collection of supported paths and which View to show at each. You can specify route-based views using the [**`<Route>`**](https://reactrouter.com/docs/en/v6/api#routes-and-route) Component. This component will render its **`element`** only when the current URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders its element. If the URL doesn't match the route, then the element is not rendered. Both the `path` and the `element` are passed into the `<Route>` as props:
 
 ```jsx
-function App() {
+function App(props) {
     return (
         <Routes> {/* the collection of routes to match */}
             {/* if currentUrlPath === "home" */}
@@ -165,7 +165,7 @@ Nested routes are primarily used to create shared layouts, as in the example abo
 <div class="alert alert-warning"><p>Not all apps require nesting routes! If your entire app has a single layout, you don't need to create a separate Component for that; you can just render it as part of your `<App>` and use the `<Routes>` to specify the dynamic content.</p>
 <p>Similarly, remember that Routes are **only** for conditionally rendering a Component _based on the URI_. If you want to conditionally show content (e.g., depending on whether the user is logged in, or based on what item has been selected), you use [conditional rendering](https://reactjs.org/docs/conditional-rendering.html) based on the state&mdash;don't use a Route!</p></div>
 
-If you wish to show a "default" child Component when there is no further segment, you can give the child Route the **`index`** prop:
+If you wish to show a "default" child Component when there is no further segment, you can give the child Route the [**`index`**](https://reactrouter.com/docs/en/v6/getting-started/tutorial#index-routes) prop:
 
 ```jsx
 <Routes>
@@ -207,7 +207,7 @@ You can access the values assigned to the URL parameters by using the [**`usePar
 ```jsx
 import { useParams } from 'react-router-dom';
 
-function BlogPost() {
+function BlogPost(props) {
     //access the URL params as an object
     //it's also common to use object destructuring here
     const urlParams = useParams();
@@ -301,7 +301,7 @@ function ProtectedPage(props) {
 }
 ```
 
-A new strategy is to combine the above logic with a _nested route_, allowing you to re-use authentication logic across your app:
+A nice strategy is to combine the above logic with a _nested route_, allowing you to re-use authentication logic across your app:
 
 ```jsx
 function RequireAuth(props) {
