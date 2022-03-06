@@ -5,7 +5,7 @@ This chapter discusses how to integrate and use the [**Firebase**](https://fireb
 
 In particular, this chapter will discuss two features of Firebase:
 
-1. The Firebase service also provide a number of "datbase" systems. This chapter describes how to use the [**realtime database**](https://firebase.google.com/docs/database/), which provides a simple [NoSql](https://en.wikipedia.org/wiki/NoSQL)-style database: you can think of it as a _single giant JSON object in the Cloud_. Firebase provides methods that can be used to refer to this object and its properties, make changes to the object. Most importantly, it provides the ability to "listen" for changes made by others so that the page can automatically update based on actions taken by other users. In effect you can create a **data binding** between clients and the server, so that if you update data on one machine, that change automatically appears on another.
+1. The Firebase service also provide a number of "database" systems. This chapter describes how to use the [**realtime database**](https://firebase.google.com/docs/database/), which provides a simple [NoSql](https://en.wikipedia.org/wiki/NoSQL)-style database: you can think of it as a _single giant JSON object in the Cloud_. Firebase provides methods that can be used to refer to this object and its properties, make changes to the object. Most importantly, it provides the ability to "listen" for changes made by others so that the page can automatically update based on actions taken by other users. In effect you can create a **data binding** between clients and the server, so that if you update data on one machine, that change automatically appears on another.
 
     Firebase also offers additional database structures. [Firestore](https://firebase.google.com/docs/firestore) is another NoSQL (document-based) database, but focused more on one-time data fetch queries rather than the continuous data binding provided by the realtime database. [Firebase Storgae](https://firebase.google.com/docs/storage) is used for storing larger data elements (anything that can't be defined in JSON), such as images or videos. This chapter focuses on the Realtime Database as an easier-to-learn system and to practice data binding.
 
@@ -385,7 +385,7 @@ function MySignInScreen() {
     <div>
       <h1>My App</h1>
       <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+      <StyledFirebaseAuth uiConfig={firebaseUIConfig} firebaseAuth={auth} />
     </div>
   );
 }
@@ -399,7 +399,7 @@ There are a few steps to using this Component:
 
     Other common/useful options are shown in the example; for a complete list of options see [the firebaseui-web documentation](https://github.com/firebase/firebaseui-web#configuration).
 
-- The `<StyledFirebaseAuth>` also requires a `firebaseAuth` prop, which is a reference to the "authenticator" service&mdash;what will handle tha process of the user logging in and out. You can get access to this value via the **`getAuth()`** function provided by `'firebase/auth'` (similar to how you get access to the Realtime Database via the `getDatabase()` function).
+- The `<StyledFirebaseAuth>` also requires a `firebaseAuth` prop, which is a reference to the "authenticator" service&mdash;what will handle the process of the user logging in and out. You can get access to this value via the **`getAuth()`** function provided by `'firebase/auth'` (similar to how you get access to the Realtime Database via the `getDatabase()` function).
 
     Note that the authenticator is a _singleton_ value&mdash;you can call `getAuth()` from multiple modules/files without concern. You do not need to pass it around as a prop.
 
@@ -472,8 +472,6 @@ The function takes in two arguments: the authenticator, and a callback function 
 The most common practice is to take this passed in object and assign it to a more global variable, such as a state variable in a React function (e.g., `setCurrentUser(firebaseUser)`).
 
 If the user "logged out", then the passed in `firebaseUser` value will be `null`.
-
-Because the authen
 
 Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an _effect hook_. The effect hook's "cleanup function" will also need to remove the listener. The `onAuthStateChanged()` function _returns_ a new function that can be used to "unregister" the listener:
 
