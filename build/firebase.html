@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-03-06" />
+<meta name="date" content="2022-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -702,21 +702,22 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The callback function will be passed as a parameter the latest <a href="https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot"><strong>snapshot</strong></a> of the data value at the listening location. This is a wrapper around the database’s JSON tree (allowing you to navigate it e.g., with <code>child()</code>). Most commonly, you will want to convert the snapshot into an actual JavaScript object by calling the <strong><code>.val()</code></strong> method on it.</p>
 <p>The listener will trigger whenever any child node of the targeted refence location changes. Thus even if just <code>people/amit/pet</code> is updated, the above listener will trigger.</p>
-<p>Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an <em>effect hook</em>. The effect hook’s “cleanup function” will also need to remove the listener by calling the <strong><code>.off()</code></strong> method on the database reference—otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes):</p>
+<p>Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an <em>effect hook</em>. The effect hook’s “cleanup function” will also need to remove the listener—otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes). The <code>onValue()</code> function <em>returns</em> a new function that can be used to “unregister” the listener:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//effect hook</span>
   <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> amitRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"people/amit"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token function">onValue</span><span class="token punctuation">(</span>amitRef<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">snapshot</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">//returns a function that will "unregister" (turn off) the listener</span>
+    <span class="token keyword">const</span> unregisterFunction <span class="token operator">=</span> <span class="token function">onValue</span><span class="token punctuation">(</span>amitRef<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">snapshot</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> amitValue <span class="token operator">=</span> snapshot<span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token comment">//...set state variable, etc...</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token comment">//cleanup function for when component is removed</span>
     <span class="token keyword">function</span> <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      amitRef<span class="token punctuation">.</span><span class="token function">off</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//turn off all listeners</span>
+      <span class="token function">unregisterFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//call the unregister function</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> cleanup<span class="token punctuation">;</span> <span class="token comment">//effect hook callback returns the cleanup function</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>

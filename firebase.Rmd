@@ -241,7 +241,7 @@ The callback function will be passed as a parameter the latest [**snapshot**](ht
 
 The listener will trigger whenever any child node of the targeted refence location changes. Thus even if just `people/amit/pet` is updated, the above listener will trigger.
 
-Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an _effect hook_. The effect hook's "cleanup function" will also need to remove the listener by calling the **`.off()`** method on the database reference&mdash;otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes):
+Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an _effect hook_. The effect hook's "cleanup function" will also need to remove the listener&mdash;otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes). The `onValue()` function _returns_ a new function that can be used to "unregister" the listener:
 
 ```jsx
 function MyComponent(props) {
@@ -250,14 +250,15 @@ function MyComponent(props) {
     const db = getDatabase();
     const amitRef = ref(db, "people/amit");
 
-    onValue(amitRef, (snapshot) => {
+    //returns a function that will "unregister" (turn off) the listener
+    const unregisterFunction = onValue(amitRef, (snapshot) => {
       const amitValue = snapshot.val();
       //...set state variable, etc...
     })
 
     //cleanup function for when component is removed
     function cleanup() {
-      amitRef.off(); //turn off all listeners
+      unregisterFunction(); //call the unregister function
     }
     return cleanup; //effect hook callback returns the cleanup function
   })
