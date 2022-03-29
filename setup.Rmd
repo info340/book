@@ -160,6 +160,21 @@ npm install -g jest
 
 Importantly, note the included **`-g`** option. This tells `npm` that the package should be installed **globally**, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like Jest from any folder (e.g., for any project), command line utilities are always installed globally with the `-g` option.
 
+Installing an application globally requires **administrator permissions**. If you try to install something without admin permission, you'll get an error saying _permission denied_:
+
+![A permission denied error when installing with npm](img/setup/permission-error.png)
+
+In order to install programs globally, you will need to use the **`sudo`** (**s**uper**u**ser **do**) command to run the install as an administrator. You do this by putting `sudo` in front of the command you want to run, for example:
+
+```bash
+# as an administrator, globally install the Jest package
+sudo npm install -g jest
+```
+
+You will be prompted for your computer's password, make sure to fill that in (even though you won't see any typing occur).
+
+Note that you should only use sudo when necessary (e.g., when you hit this error); don't run every command as an administrator!
+
 After an application is installed, you can run it from the command line by typing the name of that program followed by any arguments. For example, you can have the Jest program print it's version:
 
 ```bash

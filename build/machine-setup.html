@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-03-13" />
+<meta name="date" content="2022-03-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -642,6 +642,16 @@ If you have an older version of Node and <code>npm</code> (before Node 10.16 or 
 <pre class="language-bash"><code><span class="token comment"># globally install the Jest package</span>
 <span class="token function">npm</span> <span class="token function">install</span> -g jest</code></pre>
 <p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like Jest from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
+<p>Installing an application globally requires <strong>administrator permissions</strong>. If you try to install something without admin permission, you’ll get an error saying <em>permission denied</em>:</p>
+<div class="figure">
+<img src="img/setup/permission-error.png" alt="" />
+<p class="caption">A permission denied error when installing with npm</p>
+</div>
+<p>In order to install programs globally, you will need to use the <strong><code>sudo</code></strong> (<strong>s</strong>uper<strong>u</strong>ser <strong>do</strong>) command to run the install as an administrator. You do this by putting <code>sudo</code> in front of the command you want to run, for example:</p>
+<pre class="language-bash"><code><span class="token comment"># as an administrator, globally install the Jest package</span>
+<span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> -g jest</code></pre>
+<p>You will be prompted for your computer’s password, make sure to fill that in (even though you won’t see any typing occur).</p>
+<p>Note that you should only use sudo when necessary (e.g., when you hit this error); don’t run every command as an administrator!</p>
 <p>After an application is installed, you can run it from the command line by typing the name of that program followed by any arguments. For example, you can have the Jest program print it’s version:</p>
 <pre class="language-bash"><code><span class="token comment"># get the version of the installed Jest application</span>
 jest --version</code></pre>
