@@ -4,7 +4,7 @@
 
 Files of CSS rules (called **stylesheets**) thus act kind of like Styles or Themes in PowerPoint, but are way more powerful. You can control nearly every aspect of an element's appearance, including its overall placement on the page.
 
-- To give you some idea of just how much control you have, check out the examples in the [CSS Zen Garden](http://www.mezzoblue.com/zengarden/alldesigns/). Every one of those examples uses the exact same HTML content, but they all look completely different because each one uses a different CSS stylesheet.
+- To give you some idea of just how much control you have, check out the examples in the [CSS Zen Garden](http://www.csszengarden.com/). Every one of those examples uses the exact same HTML content, but they all look completely different because each one uses a different CSS stylesheet.
 
 This chapter will explain how to include CSS in your web page and the overall syntax for declaring basic CSS rules. Additional details and options can be found in [the following chapters](#css-options)
 
