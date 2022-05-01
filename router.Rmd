@@ -72,10 +72,12 @@ The [**`<BrowserRouter>`**](https://reactrouter.com/docs/en/v6/api#browserrouter
     import App from './components/App.js'
 
     //render the App *inside* of the BrowserRouter
-    ReactDOM.render(
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(
         <BrowserRouter>
             <App />
-        </BrowserRouter>, document.getElementById('root'));
+        </BrowserRouter>
+    );
     ```
 
 Inside the `<BrowserRouter>` (usually inside of the `<App>`), you will define the **routes** for your application&mdash;the collection of supported paths and which View to show at each. You can specify route-based views using the [**`<Route>`**](https://reactrouter.com/docs/en/v6/api#routes-and-route) Component. This component will render its **`element`** only when the current URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders its element. If the URL doesn't match the route, then the element is not rendered. Both the `path` and the `element` are passed into the `<Route>` as props:

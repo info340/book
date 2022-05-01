@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-03-31" />
+<meta name="date" content="2022-05-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -563,10 +563,12 @@ This chapter details how to use <a href="https://reactrouter.com/docs/en/v6"><st
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./components/App.js'</span>
 
 <span class="token comment">//render the App *inside* of the BrowserRouter</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">BrowserRouter</span></span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">BrowserRouter</span></span><span class="token punctuation">></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">BrowserRouter</span></span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
 </ul>
 <p>Inside the <code>&lt;BrowserRouter&gt;</code> (usually inside of the <code>&lt;App&gt;</code>), you will define the <strong>routes</strong> for your application—the collection of supported paths and which View to show at each. You can specify route-based views using the <a href="https://reactrouter.com/docs/en/v6/api#routes-and-route"><strong><code>&lt;Route&gt;</code></strong></a> Component. This component will render its <strong><code>element</code></strong> only when the current URL <em>matches</em> a specified <strong><code>path</code></strong>. In effect, the <code>Route</code> Component handles checking <em><code>if</code></em> the current URL matches the specified path, and if so renders its element. If the URL doesn’t match the route, then the element is not rendered. Both the <code>path</code> and the <code>element</code> are passed into the <code>&lt;Route&gt;</code> as props:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

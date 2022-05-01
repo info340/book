@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-03-31" />
+<meta name="date" content="2022-05-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -596,7 +596,7 @@ document<span class="token punctuation">.</span><span class="token function">get
 <p>The React library provides a set of functions that do similar work:</p>
 <pre class="language-javascript"><code><span class="token comment">//Import required functions from the React libraries</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom/client'</span><span class="token punctuation">;</span>
 
 <span class="token comment">//Create a new `&lt;h1>` element using React methods. This function takes</span>
 <span class="token comment">//arguments indicating what the element should be</span>
@@ -609,18 +609,25 @@ document<span class="token punctuation">.</span><span class="token function">get
    <span class="token string">'Hello World!'</span>   <span class="token comment">//content</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token comment">//Show the element in the web page (inside #root)</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>React’s <code>React.createElement()</code> lets you create an element (a “React element”, not a pure DOM element—they are different!) by specifying the element type/tag, the content, and an object that maps from attribute names to values—all as a single statement. The <strong><code>ReactDOM.render()</code></strong> function will take a particular React element and insert it as the child content of the specified DOM element (usually a <code>div#root</code> on the page). Note that <code>ReactDOM.render()</code> <em>replaces</em> the content of the specified DOM element—it’s a “replace” not an “append” operation.</p>
+<span class="token comment">//Create a "React root" out of the `#root` elemment</span>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//render the React element at that root</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span></code></pre>
+<p>React’s <code>React.createElement()</code> lets you create an element (a “React element”, not a pure DOM element—they are different!) by specifying the element type/tag, the content, and an object that maps from attribute names to values—all as a single statement. The <strong><code>ReactDOM.createRoot()</code></strong> function creates a context in which React element can then be rendered (shown on the screen)—usually a <code>div#root</code> on the page. The root’s <code>render()</code> method will then take a particular React element and insert it as the child content of the React root element . Note that <code>root.render()</code> function <em>replaces</em> the content of the root DOM element—it’s a “replace” not an “append” operation.</p>
 <ul>
 <li>Notice that the <code>class</code> attribute is specified with the <strong><code>className</code></strong> property. This is because <code>class</code> is a reserved keyword in JavaScript (it declares a <a href="es6.html#es6-classes">class</a>).</li>
 </ul>
+<p class="alert alert-warning">
+The <code>createRoot()</code> function was introduced with React v18 (March 2022). Previous versions of React used the <code>ReactDOM.render()</code> function directly instead of explicitly creating a root context. Using <code>ReactDOM.render()</code> will cause your app to function as if using React v17, preventing some advanced features from working.
+</p>
 <p>The <code>React.createElement()</code> function is wordy and awkward to type, particularly if you’ll be defining a lot of DOM elements (and in React, you define the entire application in JavaScript!). Thus React lets you create and define elements using <a href="https://reactjs.org/docs/introducing-jsx.html"><strong>JSX</strong></a>. JSX is a <em>syntax extension</em> to JavaScript: it provide a new way of writing the language—in particular, the ability to write bare HTML tags (finally!):</p>
 <pre class="language-jsx"><code><span class="token comment">//Create a new `&lt;h1>` element using JSX syntax</span>
 <span class="token keyword">let</span> element <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hello<span class="token punctuation">"</span></span> <span class="token attr-name">className</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>myclass<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Hello World<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
 
 <span class="token comment">//Show the element in the web page (inside #root)</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>element<span class="token punctuation">)</span></code></pre>
 <p>The value assigned to the <code>element</code> variable is <em>not</em> a String (it has no quotes around it). Instead it is a <em>syntactical shortcut</em> for calling the <code>React.createElement()</code> function—the HTML-like syntax can be automatically translated into the actual JavaScrip for the method call, allowing you to write the simpler version.</p>
 <ul>
 <li><p>Notice that there is still a semicolon (<code>;</code>) at the end of the first line; you’re not actually writing HTML, but defining a JavaScript value using syntax that mostly <em>looks</em> like HTML!</p></li>
@@ -813,7 +820,18 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <li><p>Notice that you can and do mix standard HTML elements and components together; components are just providing a useful abstraction for organizing content, logic, and data!</p></li>
 </ul>
 <p>In practice, React applications are made up of many different components—dozens or even hundreds depending on the size of the app! The “top-most” component is commonly called <strong><code>App</code></strong> (since it represents the whole “app”), with the <code>App</code>’s returned value instantiating further components, each of which represents a different part of the page.</p>
-<p>See <a href="#props-composition"><em>Props and Composition</em></a> below for more examples of common ways that React components are composed.</p>
+<p>For example, a common pattern is to “wrap” a rendered <code>&lt;App&gt;</code> component in a <code>&lt;React.StrictMode&gt;</code> component:</p>
+<pre class="language-jsx"><code><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom/client'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">React.StrictMode</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">App</span></span> <span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">React.StrictMode</span></span><span class="token punctuation">></span></span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>The <a href="https://reactjs.org/docs/strict-mode.html"><strong><code>StrictMode</code></strong></a> component is provided by React (it’s a property of the <code>React</code> object imported in the first line of the above example). Like the <code>use strict</code> declaration for JavaScript, this component enables a number of additional error checking that React can perform. While most of the issues it identifies are due to using out-of-date practices so you may not see any of its warnings, but it’s still a good idea to include it when developing!</p>
+<p>See <a href="#props-composition"><em>Props and Composition</em></a> below for more even examples of common ways that React components are composed.</p>
 <div id="alternative-class-components" class="section level3 unnumbered">
 <h3>Alternative: Class Components</h3>
 <p>It is alternatively possible to define components as <strong>classes</strong> (using <a href="es6.html#es6-classes">ES6 Class syntax</a>) that acts as a template or blueprint for that content. In particular, you define a class that <em>inherits</em> from the <a href="https://reactjs.org/docs/react-component.html"><strong><code>React.Component</code></strong></a> class—this inheritance means that the class you define <em>IS A</em> React Component!</p>

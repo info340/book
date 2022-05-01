@@ -113,7 +113,7 @@ The React library provides a set of functions that do similar work:
 ```javascript
 //Import required functions from the React libraries
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 
 //Create a new `<h1>` element using React methods. This function takes
 //arguments indicating what the element should be
@@ -126,13 +126,18 @@ let element = React.createElement(
    'Hello World!'   //content
 );
 
-//Show the element in the web page (inside #root)
-ReactDOM.render(element, document.getElementById('root'));
+//Create a "React root" out of the `#root` elemment
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+//render the React element at that root
+root.render(element)
 ```
 
-React's `React.createElement()` lets you create an element (a "React element", not a pure DOM element&mdash;they are different!) by specifying the element type/tag, the content, and an object that maps from attribute names to values&mdash;all as a single statement. The **`ReactDOM.render()`** function will take a particular React element and insert it as the child content of the specified DOM element (usually a `div#root` on the page). Note that `ReactDOM.render()` _replaces_ the content of the specified DOM element&mdash;it's a "replace" not an "append" operation.
+React's `React.createElement()` lets you create an element (a "React element", not a pure DOM element&mdash;they are different!) by specifying the element type/tag, the content, and an object that maps from attribute names to values&mdash;all as a single statement. The **`ReactDOM.createRoot()`** function creates a context in which React element can then be rendered (shown on the screen)&mdash;usually a `div#root` on the page. The root's `render()` method will then take a particular React element and insert it as the child content of the React root element . Note that `root.render()` function _replaces_ the content of the root DOM element&mdash;it's a "replace" not an "append" operation.
 
 - Notice that the `class` attribute is specified with the **`className`** property. This is because `class` is a reserved keyword in JavaScript (it declares a [class](#es6-classes)).
+
+<p class="alert alert-warning">The `createRoot()` function was introduced with React v18 (March 2022). Previous versions of React used the `ReactDOM.render()` function directly instead of explicitly creating a root context. Using `ReactDOM.render()` will cause your app to function as if using React v17, preventing some advanced features from working.</p>
 
 The `React.createElement()` function is wordy and awkward to type, particularly if you'll be defining a lot of DOM elements (and in React, you define the entire application in JavaScript!). Thus React lets you create and define elements using [**JSX**](https://reactjs.org/docs/introducing-jsx.html). JSX is a _syntax extension_ to JavaScript: it provide a new way of writing the language&mdash;in particular, the ability to write bare HTML tags (finally!):
 
@@ -141,7 +146,8 @@ The `React.createElement()` function is wordy and awkward to type, particularly 
 let element = <h1 id="hello" className="myclass">Hello World</h1>;
 
 //Show the element in the web page (inside #root)
-ReactDOM.render(element, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(element)
 ```
 
 The value assigned to the `element` variable is _not_ a String (it has no quotes around it). Instead it is a _syntactical shortcut_ for calling the `React.createElement()` function&mdash;the HTML-like syntax can be automatically translated into the actual JavaScrip for the method call, allowing you to write the simpler version.
@@ -397,7 +403,23 @@ In the above example, the `MessageList` component is composed of (renders) insta
 
 In practice, React applications are made up of many different components&mdash;dozens or even hundreds depending on the size of the app! The "top-most" component is commonly called **`App`** (since it represents the whole "app"), with the `App`'s returned value instantiating further components, each of which represents a different part of the page.
 
-See [_Props and Composition_](#props-composition) below for more examples of common ways that React components are composed.
+For example, a common pattern is to "wrap" a rendered `<App>` component in a `<React.StrictMode>` component:
+
+```jsx
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+```
+
+The [**`StrictMode`**](https://reactjs.org/docs/strict-mode.html) component is provided by React (it's a property of the `React` object imported in the first line of the above example). Like the `use strict` declaration for JavaScript, this component enables a number of additional error checking that React can perform. While most of the issues it identifies are due to using out-of-date practices so you may not see any of its warnings, but it's still a good idea to include it when developing!
+
+See [_Props and Composition_](#props-composition) below for more even examples of common ways that React components are composed.
 
 
 ### Alternative: Class Components {-}
