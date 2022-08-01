@@ -100,7 +100,7 @@ At its core, React is simply a DOM creation and rendering library&mdash;it allow
 
 ```javascript
 //Create and render a new `<h1>` element using DOM methods
-let element = document.createElement('hi'); //create element
+const element = document.createElement('hi'); //create element
 element.id = 'hello'; //specify attributes
 element.classList.add('my-class');
 element.textContent = 'Hello World!'; //specify content
@@ -117,7 +117,7 @@ import ReactDOM from 'react-dom/client';
 
 //Create a new `<h1>` element using React methods. This function takes
 //arguments indicating what the element should be
-let element = React.createElement(
+const element = React.createElement(
    'h1',            //html tag
    {                //object of attributes
       id: 'hello',
@@ -143,7 +143,7 @@ The `React.createElement()` function is wordy and awkward to type, particularly 
 
 ```jsx
 //Create a new `<h1>` element using JSX syntax
-let element = <h1 id="hello" className="myclass">Hello World</h1>;
+const element = <h1 id="hello" className="myclass">Hello World</h1>;
 
 //Show the element in the web page (inside #root)
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -158,7 +158,7 @@ The value assigned to the `element` variable is _not_ a String (it has no quotes
 
     ```jsx
     //JSX can define nested elements
-    let header = (
+    const header = (
         <header className="well">
             <h1>Hello world!</h1>
         </header>
@@ -171,7 +171,7 @@ The value assigned to the `element` variable is _not_ a String (it has no quotes
 
     ```jsx
     //JSX elements must be closed
-    let picture = <img src="my_picture.png" alt="A picture" />
+    const picture = <img src="my_picture.png" alt="A picture" />
     ```
 
 Since JSX is not actually valid JavaScript (you can't normally include bare HTML), you need to "translate" it into real JavaScript so that the browser can understand and execute it. This process is called **transpiling**, and is usually performed using a _compiler_ program called [**Babel**](https://babeljs.io/). Babel is yet _another_ piece of the toolchain used to create React applications; however, all the details about transpiling with Babel are automatically handled by the Create React App scaffolding. "Transpile with Babel" is one of the steps performed by webpack, which is included and run from the scripts provided by Create React App (whew!).
@@ -184,8 +184,8 @@ In short: you write JSX code, and when you run your app with Create React App it
 JSX allows you to include JavaScript expressions (such as variables you want to reference) directly inside of the HTML-like syntax. You do this by putting the expression inside of curly braces (**`{}`**):
 
 ```jsx
-let message = "Hello world!";
-let element = <h1>{message}</h1>;
+const message = "Hello world!";
+const element = <h1>{message}</h1>;
 ```
 
 When the element is rendered, the expression and the surrounding braces will be replaced by the value of the expression. So the above JSX would be rendered as the HTML: `<h1>Hello World</h1>`.
@@ -195,27 +195,27 @@ You can put any arbitrary expression inside of the `{}`&mdash;that is, any JavaS
 ```jsx
 //Including an inline expression in JSX. The expressions can be mixed directly
 //into the HTML
-let element = <p>A leap year has {(365 + 1) * 24 * 60} minutes!</p>;
+const element = <p>A leap year has {(365 + 1) * 24 * 60} minutes!</p>;
 ```
 
 You can use inline expressions most anywhere in JSX, including as the value of an attribute. You can even declare element attributes as an object and then use the _spread operator_ (`...`) to specify them as an inline expression.
 
 ```jsx
 //Define a JavaScript variable
-let imgUrl = 'path/to/my_picture.png';
+const imgUrl = 'path/to/my_picture.png';
 
 //Assign that variable to an element attribute
-let pic = <img src={imgUrl} alt="A picture" />;
+const pic = <img src={imgUrl} alt="A picture" />;
 
 //Define an object of element attributes
-let attributes = {
+const attributes = {
     src: 'path/to/other_picture.png',
     alt: 'Another picture'
 };
 
 //A DOM element that includes those attributes, among others.
 //The spread operator applies the property names as attributes of the element.
-let otherPic = <img {...attributes} className="my-class" />;
+const otherPic = <img {...attributes} className="my-class" />;
 ```
 
 Notice that when specifying a JavaScript expression as the value of an attribute (as with the `src` attribute of an `<img>`), you do not include quotes around the `{}`. The value of the inline expression is already a string, and it's that string that you're assigning to the attribute. Inline expressions aren't "copy-pasted" into the HTML-style of JSX; rather the values of those expressions are assigned to the object properties represented by the HTML-style attributes.
@@ -224,8 +224,8 @@ Importantly, the elements defined with JSX are _also_ valid JavaScript expressio
 
 ```jsx
 //Define variable content to display. One is a string, one is a React element.
-let greetingString = "Good morning!";
-let iconElem = <img src="sun.png" alt="A wide awake sun" />;
+const greetingString = "Good morning!";
+const iconElem = <img src="sun.png" alt="A wide awake sun" />;
 
 //Conditionally change values based on an `isEvening` value (defined elsewhere)
 if(isEvening) {
@@ -235,7 +235,7 @@ if(isEvening) {
 
 //Include the variables inline in another React element
 //Notice how the `icon` element is included as a child of the `<header>`
-let header = (
+const header = (
     <header>
       <h1>{greetingString}</h1>
       {iconElem}
@@ -247,11 +247,11 @@ If you include an _array_ of React elements in an inline expression, those those
 
 ```jsx
 //An array of React elements. Could also produce via a loop or function
-let listItems = [<li>lions</li>, <li>tigers</li>, <li>bears</li>];
+const listItems = [<li>lions</li>, <li>tigers</li>, <li>bears</li>];
 
 //Include the array as an inline expression; each `<li>` element will be
 //included as a child of the `<ul>`
-let list = <ul>{listItems}</ul>;
+const list = <ul>{listItems}</ul>;
 ```
 
 The above sample would produce the HTML (formatted for readability):
@@ -269,7 +269,7 @@ This is particularly useful when using a variable number of elements, or generat
 As a final note: you _cannot_ include HTML comments (`<!-- -->`) inside of JSX, as this isn't actually an element type. You also can't use inline JavaScript comments (`//`), because even multi-line JSX is still a single expression (that's why the `<header>` example above is written in parentheses). Thus in order to include a comment in JSX, you can use a _JavaScript block comment_ (`/* */`) inside of an inline expression:
 
 ```jsx
-let main = (
+const main = (
     <main>
       { /* A comment: the main part of the page goes here... */ }
     </main>
@@ -321,8 +321,8 @@ React components are most commonly defined using **function components**: JavaSc
 //Define a component representing information about a user
 function UserInfo(props) {
     //This is an everyday function; you can include any code you want here
-    let name = "Ethel";
-    let descriptor = "Aardvark";
+    const name = "Ethel";
+    const descriptor = "Aardvark";
 
     //Return a React element (JSX) that is how the component will appear
     return (
@@ -335,7 +335,7 @@ function UserInfo(props) {
 
 //Create a new value (a React element)
 //This syntax in effect "calls" the function
-let infoElement = <UserInfo />;
+const infoElement = <UserInfo />;
 
 //Show the element in the web page (inside #root)
 ReactDOM.render(infoElement, document.getElementById('root'));
@@ -432,8 +432,8 @@ class UserInfo extends React.Component {
     //DOM element
     render() {
         //This is an everyday function; you can include any code you want here
-        let name = "Ethel";
-        let descriptor = "Aardvark";
+        const name = "Ethel";
+        const descriptor = "Aardvark";
 
         //Return a React element (JSX) that is how the component will appear
         return (
@@ -446,10 +446,11 @@ class UserInfo extends React.Component {
 }
 
 //instantiate the class as a new value (a React element)
-let infoElement = <UserInfo />;
+const infoElement = <UserInfo />;
 
 //Show the element in the web page (inside #root)
-ReactDOM.render(infoElement, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(infoElement);
 ```
 
 This "class component" example is identical to the previous function component example&mdash;it takes the "body" of the function component and moves that into a (required) `render()` method.
@@ -511,7 +512,8 @@ export default function App() {
 import App from `./App.js`; //default import!
 
 //Render the imported component
-ReactDOM.render(<App />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 ```
 
 This structure allows you to have each component (or set of related components) in a different file, helping to organize your code.
@@ -548,15 +550,15 @@ You pass a prop to a component when you instantiate it by specifying them as XML
 
 ```jsx
 //Passing a prop called `message` with value "Hello property"
-let messageA = <MessageItem message="Hello property!" />;
+const messageA = <MessageItem message="Hello property!" />;
 
 //Passing a prop using an inline expression
-let secret = "Shave and a haircut";
-let messageB = <MessageItem message={secret} />;
+const secret = "Shave and a haircut";
+const messageB = <MessageItem message={secret} />;
 
 //A component can accept multiple props
 //This component takes in a `userName` prop as well as a `descriptor` prop
-let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
+const userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
 ```
 
 - Prop names must be valid JavaScript identifiers, and so should be written in camelCase (like variable names).
@@ -569,11 +571,11 @@ For function components, the `props` are received as a single argument to the fu
 //Define a component representing information about a user
 function UserInfo(props) {
     //access the individual props from inside the argument object
-    let userName = props.userName;
-    let descriptor = props.descriptor;
+    const userName = props.userName;
+    const descriptor = props.descriptor;
 
     //can use props for logic or processing
-    let userNameUpper = props.userName.toUpperCase();
+    const userNameUpper = props.userName.toUpperCase();
 
     return (
         <div>
@@ -583,7 +585,7 @@ function UserInfo(props) {
     )
 }
 
-let userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
+const userInfo = <UserInfo userName="Ethel" descriptor="Aardvark" />;
 ```
 
 Again, _all_ props are stored in the argument object&mdash;you have to access them through that value.
@@ -616,18 +618,18 @@ Importantly, props can be **any** kind of value! This includes basic types such 
 //Props can be of any data type!
 
 //Pass an array as a prop!
-let array = [1,2,3,4,5];
-let suitcase = <Suitcase luggageCombo={array} />;
+const array = [1,2,3,4,5];
+const suitcase = <Suitcase luggageCombo={array} />;
 
 //Pass a function as a prop (like a callback)!
 function sayHello() {
     console.log('Hello world!');
 }
-let greeting = <Greeting callback={sayHello} />;
+const greeting = <Greeting callback={sayHello} />;
 
 //Pass another Component as a prop (not common)!
-let card = <HolidayCard message="Greetings world!" />
-let gift = <Gift toMsg="Ethel", fromMsg={card} />
+const card = <HolidayCard message="Greetings world!" />
+const gift = <Gift toMsg="Ethel", fromMsg={card} />
 ```
 
 Indeed, passing _callback functions_ as props to other components is a major step in designing interactive React applications. See the next chapter for more details and examples.
@@ -647,6 +649,8 @@ function MessageItem(props) {
 
 //A component that renders a trio of messages
 function MessageListTrio(props) {
+    const messages = props.messages; //assign prop to a local variable for convenience
+
     return (
         <div>
             <h1>Messages for you</h1>
@@ -661,9 +665,9 @@ function MessageListTrio(props) {
 }
 
 //Define and pass a prop to the parent comment when rendering it
-let messagesArray = ["Hello world", "No borders", "Go huskies!"];
-ReactDOM.render(<MessageListTrio messages={messagesArray} />,
-                document.getElementById('root'));
+const messagesArray = ["Hello world", "No borders", "Go huskies!"];
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MessageListTrio messages={messagesArray});
 ```
 
 This creates a **one-directional data flow**&mdash;the data values are passed into the parent, which then passes data down to the children (not vice versa).
@@ -674,8 +678,8 @@ The data set can be passed into the parent (List) component as a prop, and each 
 
 ```jsx
 //Map an array of message strings to an array of components
-let msgItems = props.messages.map((msgString) => {
-    let component = <MessageItem message={msgString} />; //pass prop down!
+const msgItems = props.messages.map((msgString) => {
+    const component = <MessageItem message={msgString} />; //pass prop down!
     return component; //add this new component to resulting array
 })
 ```
@@ -684,8 +688,8 @@ And because including an _array of Components_ as an inline expression in JSX wi
 
 ```jsx
 function MessageList(props) {
-    let msgItems = props.messages.map((msgString) => {
-        let component = <MessageItem message={msgString} />; //pass prop down!
+    const msgItems = props.messages.map((msgString) => {
+        const component = <MessageItem message={msgString} />; //pass prop down!
         return component; //add this new component to resulting array
     })
 
@@ -701,9 +705,9 @@ function MessageList(props) {
 }
 
 //Define and pass a prop to the parent comment when rendering it
-let messagesArray = ["Hello world", "No borders", "Go huskies!"];
-ReactDOM.render(<MessageList messages={messagesArray} />,
-                document.getElementById('root'));
+const messagesArray = ["Hello world", "No borders", "Go huskies!"];
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MessageList messages={messagesArray});
 ```
 
 Note that the above example will issue a warning in the developer console. This is because React requires you to specify an additional prop called [**`key`**](https://reactjs.org/docs/lists-and-keys.html#keys) for each element in an array of components. The `key` should be a _unique string_ for each element in the list, and acts as an identifier for that element (think: what you might give it as an `id` attribute). React will use the `key` to keep track of those elements, so if they change over time (i.e., elements are added or removed from the array) React will be able to more efficiently modify the DOM.
@@ -711,14 +715,14 @@ Note that the above example will issue a warning in the developer console. This 
 If unspecified, the `key` will default to the element's index in the array, but this is considered unstable (since it will change as items are added or removed). Thus a better approach is to determine a unique value based on the data&mdash;which means that data items will need to be uniquely identifiable. The below improved version of the code changes each message from a basic String to an Object that has `content` and `id` properties, allowing each data value to be uniquely identified. Note that the `MessageItem` component need not be changed; it still renders an `<li>` showing the given `message` prop!
 
 ```jsx
-let messageObjArray = [
+const messageObjArray = [
     {content: "Hello world", id: 1}
     {content: "No borders", id: 2}
     {content: "Go huskies!", id: 3}
 ];
 
 function MessageList(props) {
-    let msgItems = props.messages.map((msgObject) => {
+    const msgItems = props.messages.map((msgObject) => {
         //return a new MessageItem for each message object
         //attributes are listed on their own lines for readability
         return <MessageItem
@@ -738,8 +742,8 @@ function MessageList(props) {
 }
 
 //Define and pass a prop to the parent comment when rendering it
-ReactDOM.render(<MessageList messages={messageObjArray} />,
-                document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MessageList messages={messageObjArray});
 ```
 
 This pattern enables you to effectively define your web page's content in terms of individual components that can be composed together, allowing you to quickly render large amounts of data (without needing spend a lot of time thinking about loops!).
