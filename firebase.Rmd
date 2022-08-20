@@ -283,8 +283,8 @@ import { getDatabase, ref, push as firebasePush } from 'firebase/database';
 const db = getDatabase;
 const tasksRef = ref(db, "tasks"); //an object of tasks
 
-tasksRef.push( {description:'First things first'} ) //add one task
-tasksRef.push( {description:'Next things next'} ) //add another task
+firebasePush(taskRef, {description:'First things first'} ) //add one task
+firebasePush(taskRef, {description:'Next things next'} ) //add another task
 ```
 
 This will produce a database with a structure:

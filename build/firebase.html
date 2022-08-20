@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-08-01" />
+<meta name="date" content="2022-08-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -737,8 +737,8 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token keyword">const</span> db <span class="token operator">=</span> getDatabase<span class="token punctuation">;</span>
 <span class="token keyword">const</span> tasksRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"tasks"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//an object of tasks</span>
 
-tasksRef<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>description<span class="token operator">:</span><span class="token string">'First things first'</span><span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token comment">//add one task</span>
-tasksRef<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span> <span class="token punctuation">{</span>description<span class="token operator">:</span><span class="token string">'Next things next'</span><span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token comment">//add another task</span></code></pre>
+<span class="token function">firebasePush</span><span class="token punctuation">(</span>taskRef<span class="token punctuation">,</span> <span class="token punctuation">{</span>description<span class="token operator">:</span><span class="token string">'First things first'</span><span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token comment">//add one task</span>
+<span class="token function">firebasePush</span><span class="token punctuation">(</span>taskRef<span class="token punctuation">,</span> <span class="token punctuation">{</span>description<span class="token operator">:</span><span class="token string">'Next things next'</span><span class="token punctuation">}</span> <span class="token punctuation">)</span> <span class="token comment">//add another task</span></code></pre>
 <p>This will produce a database with a structure:</p>
 <pre class="language-json"><code><span class="token punctuation">{</span>
   <span class="token property">"tasks"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
