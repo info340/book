@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-08-19" />
+<meta name="date" content="2022-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -770,7 +770,8 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token keyword">const</span> infoElement <span class="token operator">=</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">UserInfo</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">;</span>
 
 <span class="token comment">//Show the element in the web page (inside #root)</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>infoElement<span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>infoElement<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This function defines a new component (think: a new HTML element!) called <code>UserInfo</code>. Things to note about defining this component:</p>
 <ol style="list-style-type: decimal">
 <li><p>A component function <strong>must</strong> be named starting with a Capital letter (and usually in CamelCase). This is to distinguish a custom component from a “normal” React element.</p>
@@ -813,7 +814,8 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <span class="token punctuation">}</span>
 
 <span class="token comment">//Render an instance of the "top-level" ("outer") component</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MessageList</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<span class="token keyword">const</span> root <span class="token operator">=</span> ReactDOM<span class="token punctuation">.</span><span class="token function">createRoot</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+root<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">MessageList</span></span> <span class="token punctuation">/></span></span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>In the above example, the <code>MessageList</code> component is composed of (renders) instances of the <code>HelloMessage</code> and <code>GoodbyeMessage</code> components; when the <code>MessageList</code> is displayed, the interpreter will create the two other components, rendering each in turn. In the end, all of the content displays will be standard HTML elements—they’ve just been organized into components.</p>
 <ul>
 <li><p>Components are usually instantiated as empty elements, though it is possible to have them <a href="https://reactjs.org/docs/composition-vs-inheritance.html#containment">include child elements</a>.</p></li>
@@ -925,7 +927,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
     |-- Alerts.js
     |-- Buttons.js
 index.js</code></pre>
-<p>Note that a module such as <code>Alerts.js</code> might define a number of different “Alert” components to use; these could be imported into the <code>NavBar.js</code> or <code>App.js</code> modules as needed. The <code>App.js</code> component would be imported by the <code>index.js</code> file, which would contain the call to <code>ReactDOM.render()</code>.</p>
+<p>Note that a module such as <code>Alerts.js</code> might define a number of different “Alert” components to use; these could be imported into the <code>NavBar.js</code> or <code>App.js</code> modules as needed. The <code>App.js</code> component would be imported by the <code>index.js</code> file, which would contain the call to <code>root.render()</code>.</p>
 <p>Note that it is not necessary to put each different component in a separate module; think about what kind of file organize will make it easy to find your code and help others to understand how your app is structured!</p>
 </div>
 </div>

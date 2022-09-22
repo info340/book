@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-08-19" />
+<meta name="date" content="2022-09-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -577,7 +577,7 @@ functions provided by React that let you “hook into” the framework’s rende
 <li><p>The <code>useState()</code> function returns an <em>array of two values</em>: the first is the current value of the state (e.g., what it was initialized as), and the second is a function used to modify that particular state variable (a “setter” or mutator). By convention, you use <a href="es6.html#destructuring">array destructuring</a> to assign these two values to two separate variables in a single operation. Thus the above line calling <code>useState()</code> can be read as a shorthand for:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> hookArray <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//the function returns an array of 2 values</span>
 <span class="token keyword">const</span> count <span class="token operator">=</span> hookArray<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 1st elem (a value) to `count`</span>
-<span class="token keyword">const</span> setCount <span class="token operator">=</span> hookArray<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 2nd elem (a function) to `setCount` </span></code></pre>
+<span class="token keyword">const</span> setCount <span class="token operator">=</span> hookArray<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//assign the 2nd elem (a function) to `setCount`</span></code></pre>
 <p>Importantly, there is nothing magical about the names of the variables that the <code>useState()</code> result is assigned to. It could just as well have been written:</p>
 <pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">[</span>countVariable<span class="token punctuation">,</span> functionToUpdateCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
 <p>Because the function is a “setter” it’s usually named as such (<code>setVARIABLE</code>), but this is not required. It’s just a function; you can name it whatever you want.</p></li>
@@ -601,7 +601,7 @@ Never call a set state function directly from inside of your component function;
     <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//change `count` to 4</span>
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//will output "3"; state has not changed yet!</span>
-    <span class="token punctuation">}</span>  
+    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>In this example, because <code>setCount()</code> is asynchronous, you can’t immediately access the updated state variable after calling the function. You instead need to wait for the component to “rerender”—when the component’s DOM is regenerated, it will use the updated value. If you want to see that value, log it out right before you return the DOM (not inside of the click event handler).</p>
 <p>It is possible to have multiple state variables, each declared with a different all to <code>useState()</code>:</p>
@@ -692,7 +692,7 @@ One of the most difficult parts of architecting a React application is figuring 
 <p>Sometimes a child component (i.e., a component instantiated as part of the returned DOM) needs some data that is stored in the state—for example, a <code>BlogPost</code> component might need a data value that is stored in the <code>Blog</code>’s <code>comments</code> state variable. Components can make information available to their children by passing that data to them as a <em>prop</em>:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">Blog</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token punctuation">[</span>posts<span class="token punctuation">,</span> setPosts<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//initialize the state</span>
-    
+
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">></span></span>Most Recent Post<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
@@ -735,7 +735,7 @@ One of the most difficult parts of architecting a React application is figuring 
     <span class="token punctuation">}</span>
 
     <span class="token comment">//render based on current state</span>
-    <span class="token keyword">let</span> winner <span class="token operator">=</span> <span class="token string">"tie"</span><span class="token punctuation">;</span> 
+    <span class="token keyword">let</span> winner <span class="token operator">=</span> <span class="token string">"tie"</span><span class="token punctuation">;</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>counts<span class="token punctuation">.</span>red <span class="token operator">></span> counts<span class="token punctuation">.</span>blue<span class="token punctuation">)</span> winner <span class="token operator">=</span> <span class="token string">"red"</span>
     <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>counts<span class="token punctuation">.</span>blue <span class="token operator">></span> counts<span class="token punctuation">.</span>red<span class="token punctuation">)</span> winner <span class="token operator">=</span> <span class="token string">"blue"</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -808,7 +808,7 @@ textInput<span class="token punctuation">.</span><span class="token function">ad
 
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
-            <span class="token punctuation">{</span><span class="token comment">/* The input will be rendered with the React-controlled value */</span><span class="token punctuation">}</span> 
+            <span class="token punctuation">{</span><span class="token comment">/* The input will be rendered with the React-controlled value */</span><span class="token punctuation">}</span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">onChange</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span></span> <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>inputValue<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>You typed<span class="token operator">:</span> <span class="token punctuation">{</span>inputValue<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
@@ -848,7 +848,7 @@ textInput<span class="token punctuation">.</span><span class="token function">ad
             <span class="token keyword">let</span> processedData <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span> <span class="token comment">//do desired processing</span>
             <span class="token function">setData</span><span class="token punctuation">(</span>processedData<span class="token punctuation">)</span> <span class="token comment">//change the state and re-render</span>
           <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//empty array is the second argument to the `useEffect()` function. </span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//empty array is the second argument to the `useEffect()` function.</span>
            <span class="token comment">//It says to only run this effect on first render</span>
 
     <span class="token comment">//Map the data values into DOM elements</span>
@@ -858,7 +858,7 @@ textInput<span class="token punctuation">.</span><span class="token function">ad
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
     <span class="token comment">//render the data items (e.g., as a list)</span>
-    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>dataItems<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">;</span> 
+    <span class="token keyword">return</span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">{</span>dataItems<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Calling the <code>useEffect()</code> function specifies a callback function that will be run <em>after</em> the component renders. Things to notice about how this function is used:</p>

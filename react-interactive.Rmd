@@ -40,19 +40,19 @@ function MyButton() {
 }
 ```
 
-Importantly, you can only register events on React elements (HTML elements like `<button>`, that are named with lowercase letters), not on Components. If you tried to specify a `<MyButton onClick={callback}>`, you would be passing a _prop_ that just happened to be called `onClick`, but otherwise has no special meaning! 
+Importantly, you can only register events on React elements (HTML elements like `<button>`, that are named with lowercase letters), not on Components. If you tried to specify a `<MyButton onClick={callback}>`, you would be passing a _prop_ that just happened to be called `onClick`, but otherwise has no special meaning!
 
 <p class="alert alert-warning">Although functionally similar, React event handling attributes are **NOT** the same as HTML event handles&mdash;React's `onClick` is different from HTML's `onclick`. The React attributes are specialized to work within the React event system. In the end, they're similar to a JSX-based syntactic shortcut for using `addEventListener()`, so we aren't actually mixing concerns more!</p>
 
 
 ## State and Hooks
-The previous section describes how to respond to user-generated events, but in order for the page to be interactive you need to be able to manipulate its rendered content when that event occurs. 
+The previous section describes how to respond to user-generated events, but in order for the page to be interactive you need to be able to manipulate its rendered content when that event occurs.
 For example, you could click on a button and show how many times it was pressed, select a table column to sort the data by that feature, or select a component in order to show an entirely different "page" of content (see [Chapter 19](#client-side-routing)).
 
 To achieve these effects, a component will need to keep track of its state or situation&mdash;the number on the counter, how the table is sorted, or which "page" is being shown. In React, a component's **state** represents internal, dynamic information about how that Component should be rendered. The state contains data that _changes over time_ (and _only_ such information&mdash;if the value won't change for that instance of a component, it shouldn't be part of the state!). Moreover, whenever the state is changed, a React component will automatically "rerender"&mdash;the component will be "rerun" and the new, updated DOM elements returned will be displayed on the screen (replacing the previously rendered version). In short: changing the state will "refresh" the component!
 
 <!-- new stuff: Hooks! -->
-State can be specified for a function component by using a _state hook_. [**Hooks**](https://reactjs.org/docs/hooks-intro.html) are 
+State can be specified for a function component by using a _state hook_. [**Hooks**](https://reactjs.org/docs/hooks-intro.html) are
 functions provided by React that let you "hook into" the framework's rendering and displaying processes. The state hook in particular lets you hook into the state of a component, specifying what values should be "tracked" and should cause the component to rerender.
 
 - Hooks were introduced with React v16.8 (October 2018), and thus are the "new" current way of handling state. For details on older techniques (which require using _class components_), see [_State in Class Components_](#state-in-class-components).
@@ -94,21 +94,21 @@ Calling the `useState()` function creates a "state variable"&mdash;a value that 
     ```js
     const hookArray = useState(0); //the function returns an array of 2 values
     const count = hookArray[0]; //assign the 1st elem (a value) to `count`
-    const setCount = hookArray[1]; //assign the 2nd elem (a function) to `setCount` 
+    const setCount = hookArray[1]; //assign the 2nd elem (a function) to `setCount`
     ```
-    
+
     Importantly, there is nothing magical about the names of the variables that the `useState()` result is assigned to. It could just as well have been written:
-    
+
     ```js
     const [countVariable, functionToUpdateCount] = useState(0)
     ```
 
     Because the function is a "setter" it's usually named as such (`setVARIABLE`), but this is not required. It's just a function; you can name it whatever you want.
-    
+
 Because the current state value is assigned to a regular variable (e.g., `count` in the above example), you can use it anywhere you would use a variable&mdash;such as in an inline expression to display the value. Note that if the value isn't actually used in the rendered DOM in any way (directly or indirectly), it probably shouldn't be part of the state!
 
 ### Updating State {-}
-It's not possible to change the value of a state variable directly (e.g,. you can't do `count = count +1`)&mdash;that's why the variable is declared as `const`! Instead, you need to use the "set state" function that was created (e.g., `setCount()` in the above example). This function will take as an argument the new value to assign to the state variable (overwriting the previous value). 
+It's not possible to change the value of a state variable directly (e.g,. you can't do `count = count +1`)&mdash;that's why the variable is declared as `const`! Instead, you need to use the "set state" function that was created (e.g., `setCount()` in the above example). This function will take as an argument the new value to assign to the state variable (overwriting the previous value).
 
 When the set state function is called, not only will it change the value of the state variable, but it will also "rerender" the component&mdash;it will cause the component function to be called again, returning a new set of DOM elements to be shown on the screen. These DOM elements will replace the previously rendered version of the component; React merges these changes into the page's DOM in a highly efficiency manner, changing only the elements that have actually updated&mdash;this is what makes React so effective for large scale systems.
 
@@ -126,7 +126,7 @@ function CounterWithError(props) {
     const handleClick = (event) => {
         setCount(4); //change `count` to 4
         console.log(count); //will output "3"; state has not changed yet!
-    }  
+    }
 }
 ```
 
@@ -187,16 +187,16 @@ This is because React wants to encourage data to remain **immutable** (you don't
     ```js
     //an original object
     const original = {a: 1, b: 2};
-    
+
     //Create a copy, taking the property of `original` and assigning them into
     //a fresh object
     const copy = { ...original } //using the spread operator
     console.log(copy) //{a: 1, b: 2}
     console.log(copy == original) //false, different objects
     ```
-    
+
     (The [`Object.assign()` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)) is also used to do a similar operation, but the spread operator is easier to read)
-    
+
 
 ### State vs. Props {-}
 Importantly, a Component's _state_ is different from its _props_. Although state and props make look similar, they have very different roles. Many developers get the two confused&mdash;to the point that React has an [FAQ](https://reactjs.org/docs/faq-state.html#what-is-the-difference-between-state-and-props) entry about the difference!
@@ -247,7 +247,7 @@ Sometimes a child component (i.e., a component instantiated as part of the retur
 ```jsx
 function Blog(props) {
     const [posts, setPosts] = useState([...]) //initialize the state
-    
+
     return (
         <div>
             <h2>Most Recent Post</h2>
@@ -301,7 +301,7 @@ function VotingApp(props) {
     }
 
     //render based on current state
-    let winner = "tie"; 
+    let winner = "tie";
     if(counts.red > counts.blue) winner = "red"
     else if(counts.blue > counts.red) winner = "blue"
     return (
@@ -333,7 +333,7 @@ function CandidateButton() {
 }
 ```
 
-As with many React systems, there are a lot of moving parts that fit together. To understand how this example works, try "tracing" the code that occurs when the `CountingApp` is first rendered, and then what happens when a button is clicked. Remember that calling `setCounts()` causes the component to be re-rendered (the function is re-run)! 
+As with many React systems, there are a lot of moving parts that fit together. To understand how this example works, try "tracing" the code that occurs when the `CountingApp` is first rendered, and then what happens when a button is clicked. Remember that calling `setCounts()` causes the component to be re-rendered (the function is re-run)!
 
 Finally, notice in particular that the `CandidateButton` class knows nothing about its parent or indeed any information about how it is used (or even if there are other `CandidateButton` instances). Instead, it simply renders itself based on its props, and executes whatever `callback` function it was given whenever it is clicked (without carrying about what that function does). Having lots of "simple" components like this is the best way to design React apps.
 
@@ -384,7 +384,7 @@ function MyInput(props) {
 
     return (
         <div>
-            {/* The input will be rendered with the React-controlled value */} 
+            {/* The input will be rendered with the React-controlled value */}
             <input type="text" onChange={handleChange} value={inputValue} />
             <p>You typed: {inputValue}</p>
         </div>
@@ -439,7 +439,7 @@ function MyComponent() {
             let processedData = data.filter(...).map(...) //do desired processing
             setData(processedData) //change the state and re-render
           })
-    }, []) //empty array is the second argument to the `useEffect()` function. 
+    }, []) //empty array is the second argument to the `useEffect()` function.
            //It says to only run this effect on first render
 
     //Map the data values into DOM elements
@@ -449,7 +449,7 @@ function MyComponent() {
     })
 
     //render the data items (e.g., as a list)
-    return <ul>{dataItems}</ul>; 
+    return <ul>{dataItems}</ul>;
   }
 }
 ```
@@ -472,7 +472,7 @@ Calling the `useEffect()` function specifies a callback function that will be ru
         //...
     }, [count])
     ```
-    
+
     By passing an empty array as a second argument, you tell the effect that it should only re-run if one of those (non-existent) variables updates&mdash;and since there are no variables listed, it will never run a second time!
 
 - The `useEffect()` function does not need to return any values. In fact, the only value it can return is a "cleanup" callback function, which React will run whenever the component is removed from the DOM:
@@ -485,7 +485,7 @@ Calling the `useEffect()` function specifies a callback function that will be ru
         }
     })
     ```
-    
+
     This is only necessary for side effects that require cleanup, such as subscribing to a data source or handling some user authentication behaviors. It is not needed for basic `fetch()` calls.
 
 <p class="alert alert-info">There are a number of other hooks available in React as well. Check the [documentation](https://reactjs.org/docs/hooks-reference.html) for details. Note that in general, you should only look into a hook if you're hitting an architectural problem (e.g., you have a lot of repeated code)&mdash;otherwise stick with the basic structure of props and state!</p>

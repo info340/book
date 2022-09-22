@@ -338,7 +338,8 @@ function UserInfo(props) {
 const infoElement = <UserInfo />;
 
 //Show the element in the web page (inside #root)
-ReactDOM.render(infoElement, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(infoElement);
 ```
 
 This function defines a new component (think: a new HTML element!) called `UserInfo`. Things to note about defining this component:
@@ -392,7 +393,8 @@ function MessageList() {
 }
 
 //Render an instance of the "top-level" ("outer") component
-ReactDOM.render(<MessageList />, document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<MessageList />);
 ```
 
 In the above example, the `MessageList` component is composed of (renders) instances of the `HelloMessage` and `GoodbyeMessage` components; when the `MessageList` is displayed, the interpreter will create the two other components, rendering each in turn. In the end, all of the content displays will be standard HTML elements&mdash;they've just been organized into components.
@@ -536,7 +538,7 @@ src/
 index.js
 ```
 
-Note that a module such as `Alerts.js` might define a number of different "Alert" components to use; these could be imported into the `NavBar.js` or `App.js` modules as needed. The `App.js` component would be imported by the `index.js` file, which would contain the call to `ReactDOM.render()`.
+Note that a module such as `Alerts.js` might define a number of different "Alert" components to use; these could be imported into the `NavBar.js` or `App.js` modules as needed. The `App.js` component would be imported by the `index.js` file, which would contain the call to `root.render()`.
 
 Note that it is not necessary to put each different component in a separate module; think about what kind of file organize will make it easy to find your code and help others to understand how your app is structured!
 
