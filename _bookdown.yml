@@ -39,6 +39,7 @@ rmd_files:
 
   ## Special Topics
   - appendix.Rmd
+  - code-style-guide.Rmd
   - jest.Rmd
   - webpack.Rmd
   - react-class-components.Rmd

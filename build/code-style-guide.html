@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>G React Native | Client-Side Web Development</title>
+  <title>A Code Style Guide | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="G React Native | Client-Side Web Development" />
+  <meta property="og:title" content="A Code Style Guide | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="G React Native | Client-Side Web Development" />
+  <meta name="twitter:title" content="A Code Style Guide | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
-<link rel="prev" href="redux.html"/>
-
+<link rel="prev" href="firebase.html"/>
+<link rel="next" href="jest.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -527,153 +527,243 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="react-native" class="section level1" number="26">
-<h1><span class="header-section-number">G</span> React Native</h1>
-<p>As a special topic, this chapter provides a brief introduction to <a href="https://facebook.github.io/react-native/"><strong>React Native</strong></a>, a framework for using React to build mobile applications (e.g., apps for Android or iOS). The React Native framework provides a set of build tools that allow you to <em>compile</em> React code (written in JavaScript) into <em>native</em> mobile code (Java for Android; Objective-C for iOS). This allows you to utilize your existing knowledge of client-side web development to also create mobile apps as if you had written them in their normal development language! Moreover, the same React code can be converted into apps for both iOS and Android (as well as for the web), with you only needing to adjust any platform-specific features. Three platforms for the price of one!</p>
+<div id="code-style-guide" class="section level1" number="20">
+<h1><span class="header-section-number">A</span> Code Style Guide</h1>
+<p>Computer code is read by two different audiences: computers, which execute the code statements (or render the web page), and humans who need to interpret and update the code over time. Using good <strong>coding style</strong>—the manner and format in which code is written—is vital for supporting the humans who read it. Poorly written code may be interpretable by the computer and thus work correctly, but it also needs to be understandale by people.</p>
+<p>Code that is well written (has “good style”) fulfills two properties:</p>
 <ul>
-<li>This chapter’s explanation mirrors the <a href="https://facebook.github.io/react-native/docs/getting-started.html">official tutorial</a> for React Native; see that for more details.</li>
+<li>It is easy for people to read</li>
+<li>It is easy for people to modify in the future</li>
 </ul>
-<div id="getting-setup" class="section level2" number="26.1">
-<h2><span class="header-section-number">G.1</span> Getting Setup</h2>
-<p>The easiest way to start a new React Native application is to use the <a href="https://github.com/react-community/create-react-native-app"><strong><code>create-react-native-app</code></strong></a> program. This works almost identically to the <code>create-react-app</code> program you know and love, except it will scaffold you a React Native application and provide build scripts utilizes for testing and developing native apps.</p>
-<p>To use this program install it <strong>globally</strong>, and then execute it to create a new React Native project in the current folder:</p>
-<pre class="language-bash"><code>create-react-native-app MyNativeApp</code></pre>
-<p>This scaffolding will include a number of configuration files (see the <a href="https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md">User Guide</a> for details), but you’ll mostly be interested in <strong><code>App.js</code></strong>, whose <em>default</em> export will be the “root” component of your application (mobile apps are usually designed around a View component that is shown, rather than an <code>index.js</code> style script to execute).</p>
+<p>All coding style guidelines should follow from these two goals. If you ever wonder whether one styling approach is better than another, consider it in terms of those goals.</p>
+<p>Everyone has a differnet opinions on what is considered “good style”; indeed there are numerous existing “style guides” written for web programming languages: for example, Google has their own
+<a href="https://google.github.io/styleguide/htmlcssguide.html" aria-label="Google's HTML/CSS Style Guide">HTML/CSS</a> and <a href="https://google.github.io/styleguide/jsguide.html" aria-label="Google's JavaScript Style Guide">JavaScript</a> style guides, as does <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide" aria-label="Mozilla's Code Style Guide">Mozilla</a>. There are also tools that enforce styling guidelines. <a href="https://en.wikipedia.org/wiki/Lint_(software)">“linters”</a> such as <a href="https://eslint.org/">ESLint</a> will both identify syntactic errors, but also may have strong opinions on style, marking “poor style” as an error.</p>
 <p class="alert alert-warning">
-<code>create-react-native-app</code> doesn’t currently work with <code>npm</code> version <code>5.0</code> or greater. Until this is fixed, the best solution is to use <a href="https://yarnpkg.com/en/"><strong>yarn</strong></a> to install and manage react native applications. Note that installing <code>yarn</code> may cause <a href="https://stackoverflow.com/questions/33870520/npm-install-cannot-find-module-semver">issues</a> with <code>npm</code> that you’d need to resolve: proceed with caution if under a deadline! Alternatively, you can downgrade to an older version of <code>npm</code> using <code>npm install -g npm@4</code>
+I recommend being cautious with automatic code styling (“beautifier”) tools or plugins. While these can be useful, it’s also possible that they will “clean” your code in a way that doesn’t actually improve it. Be very careful with anything that writes or changes code for you to ensure that it’s doing the right thing!
 </p>
-<div id="running-react-native-apps" class="section level3 unnumbered">
-<h3>Running React Native Apps</h3>
-<p>There are a few different ways to “run” and test your application as you’re developing it, depending on the platform (Android or iOS) you’re targeting:</p>
+<p>This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify—that has good style.</p>
+<p class="alert alert-info">
+This chapter is a work in progress, with more guidelines being added as they come up.
+</p>
+<div id="html-guidelines" class="section level2" number="20.1">
+<h2><span class="header-section-number">A.1</span> HTML Guidelines</h2>
 <ul>
-<li><p>For either platform, you can test your React Native code on a <strong>physical device</strong> by using the <a href="https://expo.io/"><strong>Expo</strong></a> app. This is a separate mobile application that “connects” to a server run by the <code>create-react-native-app</code> build scripts, displaying updates to your app in real time. In order to use <em>Expo</em>, install the app on your phone, and then use <code>npm start</code> to begin the development server. The server will show a <a href="https://en.wikipedia.org/wiki/QR_code">QR code</a> in the command line that you can scan to have your phone connect to the server (assuming they are on the same wireless network); this will run your developed app on the phone, and even automatically refresh it when you save changes to the file!</p></li>
-<li><p>It is also possible to run your React Native app on <a href="https://en.wikipedia.org/wiki/Virtual_machine"><strong>virtual devices</strong></a> (e.g., <strong>emulators</strong>) for either platform. These are “virtual” phones that run on your own computer, allowing you to develop and test mobile apps without needing a specific device.</p>
-<p>Note that you will need to have the appropriate development environment installed and set up for each platform: <a href="https://developer.android.com/studio/index.html">Android Studio</a> for Android, and <a href="https://developer.apple.com/xcode/">Xcode</a> for iOS. Xcode only runs on MacOS.</p>
-<ul>
-<li><p>For Android, you will need to create and start up an emulator with Android Studio: go to <code>Tools &gt; Android &gt; AVD Manager</code> to open up the Android Virtual Device Manager. You can then choose “Create Virtual Device…” in order to launch the wizard to specify a new emulator.</p>
-<p>You can then install and run an app on the emulator (using Expo) via the <strong><code>npm run android</code></strong> command. You can access the development menu on the device from the notification, or by hitting <code>cmd-m</code>.</p></li>
-<li><p>For iOS, you can start up the Simulator program (it is found inside <code>Xcode.app/Contents/Developer/Applications</code>. If you right-click on the <code>Xcode.app</code> program and select “Show Package Contents”, you will be able to navigate to it). You will then be able to install and run an app on Simulator (using Expo) via the <strong><code>npm run ios</code></strong> command. You can access the development menu on the device by hitting <code>cmd-d</code>.</p></li>
-</ul></li>
-<li><p>Finally, <a href="https://snack.expo.io/">Expo Snack</a> allows you to develop, test, and run simple React Native apps entirely online! This can be a good way to test out the design or to share code snippets with others.</p></li>
-</ul>
-</div>
-</div>
-<div id="react-native-apps" class="section level2" number="26.2">
-<h2><span class="header-section-number">G.2</span> React Native Apps</h2>
-<p>Writing React Native code uses the same process and techniques as writing normal React code: you define <strong>Components</strong> that <code>render</code> Views, which themselves are made up of more Components! These components can be passed in <strong>props</strong> and track <strong>state</strong> just like in React. In fact, if you look at the default <strong><code>App.js</code></strong> file created by <code>create-react-native-app</code>, you’ll see that it’s just basic React code.</p>
-<p>However, instead of eventually rendering HTML elements (such as <code>&lt;div&gt;</code> or <code>&lt;button&gt;</code>), React Native apps render one of the framework’s <a href="https://facebook.github.io/react-native/docs/components-and-apis.html">built-in components</a>. Each of these components is able to be “compiled” into a an appropriate “native” version. For example, a <a href="https://facebook.github.io/react-native/docs/view.html"><code>&lt;View&gt;</code></a> is compiled into a <code>&lt;div&gt;</code> element on the web, an <code>android.View</code> element on Android, and a <code>UIView</code> element on iOS.</p>
-<ul>
-<li>Just as React components almost always return a <code>&lt;div&gt;</code> with some content nested inside of it, React Native components almost always return a <code>&lt;View&gt;</code> with some content nested inside of it. <code>&lt;View&gt;</code> elements are particularly important when <em>styling</em> your app; see below.</li>
-</ul>
-<p>Other basic components include:</p>
-<ul>
-<li><p><a href="https://facebook.github.io/react-native/docs/text.html"><code>&lt;Text&gt;</code></a> components represent displayed text (similar in purpose to a <code>&lt;p&gt;</code>, though they get compiled into inline <code>&lt;span&gt;</code> elements on the web). All displayed text must be inside one of these elements; you can’t have a “text node” directly under a <code>&lt;View&gt;</code> like you can in HTML. <code>&lt;Text&gt;</code> elements also support cascading styling.</p></li>
-<li><p><a href="https://facebook.github.io/react-native/docs/image.html"><code>&lt;Image</code>&gt;</a> components are used to display images (similar to a <code>&lt;img&gt;</code>). You specify which image to display by passing in a <code>source</code> prop. This can be a remote reference (e.g., <code>https://domain.com/picture.png</code>), or a local image. In order to refer to a local image file, you should import it using Node’s <code>require()</code> method, specifying the path to the image file <em>relative to the Component</em>. This will the build tools to load the file as a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs">data URI</a> when rendering the image, and ensuring that the asset is packaged with the native app correctly.</p>
-<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Image</span></span> <span class="token attr-name">source</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./path/to/picture.png'</span><span class="token punctuation">)</span> <span class="token punctuation">}</span></span><span class="token punctuation">/></span></span></code></pre>
-<p>Additionally, you should always specify an <code>accessibilityLabel</code> prop specifying how the image should be read to <em>screen readers</em> (yes, they exist for mobile devices! Blind people also use phones).</p></li>
-</ul>
-<div id="styling-react-native" class="section level3 unnumbered">
-<h3>Styling React Native</h3>
-<p>You customize the appearance of React Native components by specifying styling properties in their <strong><code>style</code></strong> prop, similar to <a href="css-in-js.html#react-inline-styles">React inline styling</a>. Note that Android and iOS don’t support CSS, so you don’t utilize <code>className</code> in React Native.</p>
-<p>However, because it’s often useful to organize styles into groups and give them labels, React Native provides a <a href="https://facebook.github.io/react-native/docs/stylesheet.html"><code>Stylesheet.create()</code></a> similar to that used by Aphrodite. Defining a stylesheet helps with code organization, as well as providing a more efficient native implementation (since you don’t need to duplicate style objects)—and efficient matters a lot more on resource-constrained mobile devices!</p>
-<p>Although you specify style properties similar to CSS properties (e.g., with the same property names), React Native stylesheets do <strong>not</strong> use CSS! In particular, styles do not normally <strong><em>cascade</em></strong>: specifying the <code>fontSize</code> for a <code>&lt;View&gt;</code> will not cause that property to be applied to multiple nested <code>&lt;Text&gt;</code> elements. This feature is missing because styling does not normally cascade in Android and iOS, and React Native can run more effectively by not needing to traverse the element tree to check if each and every property is defined by a parent. Moreover, this means that each component can be better <em>isolated</em> (developed as a stand-alone, drop-in piece of an application), because there is no chance of accidentally inheriting some styling.</p>
-<ul>
-<li>However, <a href="https://facebook.github.io/react-native/docs/text.html#nested-text">nested</a> <code>&lt;Text&gt;</code> components will inherit from their parents as a convenience, allowing you to easily style parts of a text block (e.g., to make some text highlighted).</li>
-</ul>
-<p>You can specify an element’s size by setting it’s <code>width</code> and <code>height</code> style properties. These properties should be assigned <strong>unitless</strong> numbers (you don’t include <code>px</code> or <code>rem</code>). The value measures the number of <a href="https://en.wikipedia.org/wiki/Device-independent_pixel"><em>density-independent pixels</em></a>, which is a pixel-value that scales based on the resolution (dots-per-inch, or <code>dpi</code>) of the device. This allows the sizing to be consistent on “retina” displays.</p>
-<p>Any elements that are not given a fixed size—as well as any element positioning—is primarily performed with <a href="https://facebook.github.io/react-native/docs/flexbox.html">Flexbox</a> properties! The Flexbox framework allows you to provide a layout that will be consistent across different screen sizes. The “root” element (usually a <code>&lt;View&gt;</code>) of a component is rendered as a “flex item”, but each <code>&lt;View&gt;</code> can also be made into its own “flex container” in order to specify the direction (which defaults to a vertical “column”), size, or spacing of its content:</p>
-<pre class="language-jsx"><code><span class="token comment">//declare a stylesheet</span>
-<span class="token keyword">const</span> styles <span class="token operator">=</span> StyleSheet<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    outer<span class="token operator">:</span> <span class="token punctuation">{</span>
-        flex<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//this View should fill vertical space</span>
-        flexDirection<span class="token operator">:</span> <span class="token string">'row'</span><span class="token punctuation">;</span> <span class="token comment">//children should be layed out horizontally</span>
-    <span class="token punctuation">}</span>
-    inner<span class="token operator">:</span> <span class="token punctuation">{</span>
-        flex<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//take up equal extra space</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<li><p>Always use <strong>lowercase letters</strong> for HTML tags. This helps with readability and consistency.</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 
-<span class="token comment">//an example app</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token punctuation">{</span>
-    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>outer<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>inner<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>Item <span class="token number">1</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>inner<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>Item <span class="token number">2</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span> <span class="token attr-name">style</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>styles<span class="token punctuation">.</span>inner<span class="token punctuation">}</span></span><span class="token punctuation">></span></span>Item <span class="token number">2</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-        <span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-</div>
-<div id="interaction" class="section level3 unnumbered">
-<h3>Interaction</h3>
-<p>React Native apps can be made interactive using a similar process to regular React apps: you specify an event handler which can be used to modify the <strong>state</strong> and re-render the component. However, The events that you listen for are slightly different with React Native. For example, a <a href="https://facebook.github.io/react-native/docs/button.html"><code>&lt;Button&gt;</code></a> element accepts an <strong><code>onPress</code></strong> property (instead of <code>onClick</code>):</p>
-<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Button</span></span> <span class="token attr-name">onPress</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handlePress</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span></span><span class="token punctuation">></span></span>Press me<span class="token operator">!</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Button</span></span><span class="token punctuation">></span></span></code></pre>
-<ul>
-<li>Note that the callback is not passed any parameters, so you don’t have an <code>event</code> to work with.</li>
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>P</span><span class="token punctuation">></span></span>lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>P</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>P</span><span class="token punctuation">></span></span>lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></li>
 </ul>
-<p>In order to get <a href="https://facebook.github.io/react-native/docs/handling-text-input.html">text input</a>, you use a <a href="https://facebook.github.io/react-native/docs/textinput.html"><code>&lt;TextInput&gt;</code></a> component (which is a lot like an <code>&lt;input type="text"&gt;</code> element in HTML). This element can be made to be a <em>controlled input</em> just like with normal React, though you would use the <code>onChangeText</code> prop to listen for text changes (the callback function will be passed in the updated text):</p>
-<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">TextInput</span></span>
-    <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Type something!<span class="token punctuation">"</span></span>
-    <span class="token attr-name">value</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>inputValue<span class="token punctuation">}</span></span>
-    <span class="token attr-name">onChangeText</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span> <span class="token punctuation">(</span><span class="token parameter">newText</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>inputValue<span class="token operator">:</span>newText<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">}</span></span>
-    <span class="token punctuation">/></span></span></code></pre>
-</div>
-<div id="lists-and-data" class="section level3 unnumbered">
-<h3>Lists and Data</h3>
-<p>Information applications often need to display <em>lists</em> of data values (e.g., a list of tasks to complete). While it is possible to <code>map()</code> an array variable to an array of <code>&lt;View&gt;</code> elements to render, Android and iOS support more specific techniques that allow for better responsiveness and efficiency when displayed on mobile devices. For example, these components will automatically render only a “portion” of the list that is currently visible on the small screen, loading new Views into memory only when the user scrolls down to see them. This allows the user to smoothly “flick” through a list of items.</p>
-<p>You can create such an optimized list in React Native by rendering a <a href="https://facebook.github.io/react-native/docs/flatlist.html"><code>&lt;FlatList&gt;</code></a> component. This component takes two main properties: <strong><code>data</code></strong>, which is an array of data values to “map” into Views; and <strong><code>renderItem</code></strong>, which is a function that does the “mapping” (similar to the <code>render</code> function for <code>react-router</code>):</p>
-<pre class="language-jsx"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FlatList</span></span>
-    <span class="token attr-name">data</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>myDataArray<span class="token punctuation">}</span></span>
-    <span class="token attr-name">renderItem</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span> <span class="token punctuation">(</span><span class="token parameter">args</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>args<span class="token punctuation">.</span>item<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span> <span class="token punctuation">}</span></span>
-    <span class="token punctuation">/></span></span></code></pre>
+<div id="spacing" class="section level3 unnumbered">
+<h3>Spacing</h3>
 <ul>
-<li><p>Each element in the <code>data</code> array <em>must</em> contain a <code>key</code> property that React uses to keep track of each item in the list (though you can pass a function that extracts a value as the key to the <code>keyExtractor</code> prop).</p></li>
-<li><p>The actual “data item” will be found in the <code>item</code> property of the callback function’s arguments (the <code>index</code> property will contain the index of that item). However, it’s common to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">object destructuring</a> to instead only pass the the specific property of the parameter object:</p>
-<pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">renderListItem</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>item<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//param is `item = args.item`</span>
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Text<span class="token operator">></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>Text<span class="token operator">></span><span class="token punctuation">;</span> <span class="token comment">//can access item directly</span>
+<li><p>In general, put tags for <strong>block elements</strong> on their own lines, with the content of block elements as a separate (indented) line—unless the content of that block element is very short. Subsequent block eleents are indented an additional step. This makes it easier to read the code by seeing the blocks, as well as to modify the code by adding more content inside of blocks.</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  lorem ipsum
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+   lorem ipsum
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello world<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- short content so can be on same line as tags --></span>
+
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></li>
+<li><p>For many <strong>inline elements</strong>—particularly text formatting ones (e.g., <code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;a&gt;</code>)—it’s best to keep them inline with the rest of the content. Think about like writing a paragraph, but some words in the middle are formatted. Don’t try to separate out the inline elements. This makes it easier to see them as “inline”, and means that you can integrate it into your code without needing to worry about spacing. (This will also often fix trailing space issues). Note that this guideline is one that automated beautifying tools mess up.</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  There was a farmer who had a dog, and <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span>Bingo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span> was his name-o...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  There was a farmer who had a dog, and
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span>Bingo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span>
+  was his name-o...
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>For “structural” inline elements (e.g., <code>&lt;img&gt;</code> , <code>&lt;button&gt;</code>), it’s better to put them on their own line similar to block elements. Indeed, these elements may often want to be styled as block elements anyway!</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  This is a picture of a dog:
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>puppy.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a puppy<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  This is a picture of a dog: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>puppy.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a puppy<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></li>
+<li><p>Write all text content of a single element as a single line of code; do not manually put line breaks inside of plain text. This will allow you to modify that text content later without needing to reformat things. <em>Do not worry about the length of the line of code</em>. You can use the <strong>“word wrap”</strong> functionality of your editor to avoid horizontal scrolling.</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token comment">&lt;!-- This *single line of code* can be made to wrap in your editor --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit. Dolore repellendus itaque soluta est ad modi corrupti quibusdam tenetur architecto nesciunt harum ipsa consectetur ullam unde, quos sit asperiores corporis vitae pariatur expedita non?
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+  Consectetur est necessitatibus, rerum atque officiis doloremque
+  porro similique molestias fugit, a repellendus fuga natus,
+  tempora impedit. Dolore repellendus itaque soluta est ad modi
+  corrupti quibusdam tenetur architecto nesciunt harum ipsa
+  consectetur ullam unde, quos sit asperiores corporis vitae
+  pariatur expedita non?
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></li>
+</ul>
+</div>
+<div id="specific-elements" class="section level3 unnumbered">
+<h3>Specific Elements</h3>
+<ul>
+<li><p>Avoid non-semantic formatting elements (e.g., <code>&lt;i&gt;</code>, <code>&lt;b&gt;</code>), as they are not accessible to screen readers.</p></li>
+<li><p>Avoid using the <code>&lt;br&gt;</code> element for line breaks. If you’re breaking a line of text, it’s most often because you’re defining a new <em>paragraph</em>, and so should use an additional <code>&lt;p&gt;</code> element. If there isn’t a semantic meaning for the line break, don’t include one! If you need to adjust the amount of spacing between paragraphs (e.g., you want it to be a single spacing not double spacing), use CSS to adjust the margin or padding.</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span> <span class="token punctuation">/></span></span>
+  Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>The only reason I can think of for semanticaly using a <code>&lt;br&gt;</code> element would be in poetry:</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+  Roses are red, <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+  Violets are blue. <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+  Unexpected '}' <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+  on line 32.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></li>
+</ul>
+</div>
+<div id="comments-1" class="section level3 unnumbered">
+<h3>Comments</h3>
+<ul>
+<li>Most HTML content doesn’t need comments; it should be understandable just from the indentation and content. If your code needs more organization, use semantic elements (e.g., <code>&lt;section&gt;</code>) or class names to help structure it (e.g., <code>&lt;div class="first-post"&gt;</code>).</li>
+</ul>
+</div>
+</div>
+<div id="css-guidelines" class="section level2" number="20.2">
+<h2><span class="header-section-number">A.2</span> CSS Guidelines</h2>
+<p>One piece of adviace for writing good CSS is to focus on the “minimal” amount of CSS needed to achieve your effect. Work with the browser and its defaults, rather than trying to overpower it. Perhaps surprisingly, <em>removing</em> rules or properties is usually a better fix to a problem then adding additional styling.</p>
+<div id="selectors" class="section level3" number="20.2.1">
+<h3><span class="header-section-number">A.2.1</span> Selectors</h3>
+<ul>
+<li><p>Use selectors that are <em>only as specific as they need to be</em>.</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token selector">li.selected</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* selected list items, not selected paragraphs */</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">div p</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* paragraphs inside of divs (are there other paragraphs? */</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">body p</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* no paragraphs outside of the body, so redundant */</span></code></pre>
+<p>(It’s hard to show examples, because the required specificity depends on the situation!)</p>
+<p>Most selectors will involve 1-3 “pieces” (connected by descendant or compound selection). If you find yourself using more than that, ask if there’s a simpler way to write the selector—or just give the element a <code>class</code> to select it directly!</p></li>
+<li><p>Use class or element selectors instead of id selectors.</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token selector">.side-nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">#side-nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+<li><p>If you must use an <code>id</code> selector, don’t add extra specificity before id selectors. An <code>id</code> has to be unique, so you don’t need to distinguish between multiple elements with the same <code>id</code>.</p>
+<pre class="language-css"><code><span class="token comment">/* Don't do this */</span>
+<span class="token selector">nav#side-nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+<li><p><strong>Do not</strong> use the <code>!important</code> keyword. Write a sufficiently specific rule instead!</p>
+<pre class="language-css"><code><span class="token comment">/* Don't do this */</span>
+<span class="token selector">.error</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red <span class="token important">!important</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">renderWithIndex</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>item<span class="token punctuation">,</span> index<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">//gets two params: args.item and args.index</span>
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Text<span class="token operator">></span><span class="token punctuation">{</span>index<span class="token punctuation">}</span> <span class="token operator">-</span> <span class="token punctuation">{</span>item<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span><span class="token constant">TEXT</span><span class="token operator">></span><span class="token punctuation">;</span>
+<span class="token comment">/* Do this */</span>
+<span class="token selector">p.alert.error</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></li>
 </ul>
-<p>If you would like to download data from the internet to display using React Native, you use the <a href="https://facebook.github.io/react-native/docs/network.html"><code>fetch()</code></a> API just like you’ve used in the web!</p>
-<pre class="language-jsx"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">Component</span> <span class="token punctuation">{</span>
-    <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-        <span class="token keyword">super</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>state <span class="token operator">=</span> <span class="token punctuation">{</span>data<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token function">fetch</span><span class="token punctuation">(</span>dataURI<span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=></span> res<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-                <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>data<span class="token operator">:</span> data<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span><span class="token punctuation">)</span>
-            <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span>error<span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">FlatList</span></span> <span class="token attr-name">data</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>data<span class="token punctuation">}</span></span>
-                    <span class="token attr-name">renderItem</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>item<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token punctuation">{</span>item<span class="token punctuation">.</span>text<span class="token punctuation">}</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">Text</span></span><span class="token punctuation">></span></span><span class="token punctuation">}</span></span>
-                    <span class="token punctuation">/></span></span>
-            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token class-name">View</span></span><span class="token punctuation">></span></span>
-        <span class="token punctuation">)</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
-<p>Overall, React Native is simply another way of <em>building</em> (but not implementing!) React applications, and makes heavy use of many of the modern frameworks and techniques (e.g., Flexbox, fetch) discussed throughout this course</p>
-<!--
-## Resources {-}
-<div class="list-condensed">
--
 </div>
- -->
+<div id="class-names" class="section level3" number="20.2.2">
+<h3><span class="header-section-number">A.2.2</span> Class Names</h3>
+<ul>
+<li><p><strong>Use descriptive class names</strong>. Classes should describe what or why that styling is being applied.</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token selector">.side-nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
+<span class="token comment">/* Do this */</span>
+<span class="token selector">.alert-warning</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">.thingy</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">.s1</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Don't do this */</span>
+<span class="token selector">.p</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> <span class="token comment">/* use an element selector instead! */</span></code></pre>
+<p>Note that classes could either be defined <strong>semantically</strong> (e.g., <code>.avatar-icon</code>, <code>.comment-form</code>), or <strong>modularly</strong> (e.g., <code>.font-large</code>, <code>.bg-secondary</code>). Either approach is acceptable per this guide, but try to be <em>consistent</em>.</p>
+<p>Using naming schema such as <a href="http://getbem.com/naming/">BEM</a> is also acceptable.</p></li>
+<li><p>Use hyphens as delimiters for class names.</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token selector">.side-nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Do this */</span>
+<span class="token selector">.alert-warning</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre>
+<p>Certain frameworks may make it sensible to use camelCasing for class naming (so class names are also valid JavaScript identifiers). In that case, <strong>be consistent</strong> with delimiters. This will make it easier to write and modify the code.</p>
+<pre class="language-css"><code><span class="token comment">/* Don't do this */</span>
+<span class="token selector">.sideNav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">.alert-warning</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+</ul>
 </div>
+<div id="specific-properties" class="section level3" number="20.2.3">
+<h3><span class="header-section-number">A.2.3</span> Specific Properties</h3>
+<ul>
+<li><p>Avoid using <code>float</code>; use flexboxes or grids for positioning. It is rare to actually have “floating” content (though it can happen with image inserts inside of large text-based articles).</p></li>
+<li><p>Do not use <code>position: absolute</code>. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser’s layout instead by using relative layouts.</p></li>
+</ul>
+</div>
+<div id="commenting" class="section level3" number="20.2.4">
+<h3><span class="header-section-number">A.2.4</span> Commenting</h3>
+<ul>
+<li><p>You do not need a lot of comments for CSS code; your rules should be self-explanatory because you’ve used descriptive class names.</p></li>
+<li><p>Use comments to help organize or “sign-post” your code, to group rules together in your <code>.css</code> file.</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+
+<span class="token comment">/* navbar */</span>
+<span class="token selector">nav</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">nav li</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">.tab-selected</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* main content */</span>
+<span class="token selector">section</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token selector">img.small</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+</ul>
+</div>
+</div>
+<div id="javascript-guidelines" class="section level2" number="20.3">
+<h2><span class="header-section-number">A.3</span> JavaScript Guidelines</h2>
+<p>Coming soon…</p>
+</div>
+<div id="react-guidelines" class="section level2" number="20.4">
+<h2><span class="header-section-number">A.4</span> React Guidelines</h2>
+<p>Coming soon…</p>
+</div>
+<div id="miscellaneous" class="section level2" number="20.5">
+<h2><span class="header-section-number">A.5</span> Miscellaneous</h2>
+<!-- //file naming: lowercase, avoid spacing -->
+
 </div>
 </div>
             </section>
@@ -681,8 +771,8 @@
           </div>
         </div>
       </div>
-<a href="redux.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="firebase.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="jest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -714,7 +804,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/info340/book/edit/master/react-native.Rmd",
+"link": "https://github.com/info340/book/edit/master/code-style-guide.Rmd",
 "text": "Edit"
 },
 "history": {

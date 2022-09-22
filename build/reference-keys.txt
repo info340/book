@@ -81,6 +81,16 @@ firebase
 setting-up-firebase
 realtime-database
 user-authentication
+code-style-guide
+html-guidelines
+css-guidelines
+selectors
+class-names
+specific-properties
+commenting
+javascript-guidelines
+react-guidelines
+miscellaneous
 jest
 testing
 testing-with-jest

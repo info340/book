@@ -1,13 +1,293 @@
 # Code Style Guide
 
-//purpose of coding style
+
+Computer code is read by two different audiences: computers, which execute the code statements (or render the web page), and humans who need to interpret and update the code over time. Using good **coding style**&mdash;the manner and format in which code is written&mdash;is vital for supporting the humans who read it. Poorly written code may be interpretable by the computer and thus work correctly, but it also needs to be understandale by people.
+
+Code that is well written (has "good style") fulfills two properties:
+
+- It is easy for people to read
+- It is easy for people to modify in the future
+
+All coding style guidelines should follow from these two goals. If you ever wonder whether one styling approach is better than another, consider it in terms of those goals.
+
+Everyone has a differnet opinions on what is considered "good style"; indeed there are numerous existing "style guides" written for web programming languages: for example, Google has their own
+<a href="https://google.github.io/styleguide/htmlcssguide.html" aria-label="Google's HTML/CSS Style Guide">HTML/CSS</a> and <a href="https://google.github.io/styleguide/jsguide.html" aria-label="Google's JavaScript Style Guide">JavaScript</a> style guides, as does <a href="https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide" aria-label="Mozilla's Code Style Guide">Mozilla</a>. There are also tools that enforce styling guidelines. ["linters"](https://en.wikipedia.org/wiki/Lint_(software)) such as [ESLint](https://eslint.org/) will both identify syntactic errors, but also may have strong opinions on style, marking "poor style" as an error.
+
+<p class="alert alert-warning">I recommend being cautious with automatic code styling ("beautifier") tools or plugins. While these can be useful, it's also possible that they will "clean" your code in a way that doesn't actually improve it. Be very careful with anything that writes or changes code for you to ensure that it's doing the right thing!</p>
+
+This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify&mdash;that has good style.
+
+<p class="alert alert-info">This chapter is a work in progress, with more guidelines being added as they come up.</p>
+
 
 ## HTML Guidelines
+
+- Always use **lowercase letters** for HTML tags. This helps with readability and consistency.
+
+    ```html
+    <!-- Do this -->
+    <p>lorem ipsum</p>
+
+    <!-- Don't do this -->
+    <P>lorem ipsum</P>
+    <P>lorem ipsum</p>
+    ```
+
+### Spacing {-}
+
+- In general, put tags for **block elements** on their own lines, with the content of block elements as a separate (indented) line&mdash;unless the content of that block element is very short. Subsequent block eleents are indented an additional step. This makes it easier to read the code by seeing the blocks, as well as to modify the code by adding more content inside of blocks.
+
+    ```html
+    <!-- Do this -->
+    <div>
+      lorem ipsum
+    </div>
+
+    <!-- Do this -->
+    <div>
+      <p>
+       lorem ipsum
+      </p>
+    </div>
+
+    <!-- Do this -->
+    <p>Hello world</p> <!-- short content so can be on same line as tags -->
+
+    <!-- Don't do this -->
+    <div><p>lorem ipsum</p></div>
+    ```
+
+- For many **inline elements**&mdash;particularly text formatting ones (e.g., `<em>`, `<strong>`, `<a>`)&mdash;it's best to keep them inline with the rest of the content. Think about like writing a paragraph, but some words in the middle are formatted. Don't try to separate out the inline elements. This makes it easier to see them as "inline", and means that you can integrate it into your code without needing to worry about spacing. (This will also often fix trailing space issues). Note that this guideline is one that automated beautifying tools mess up.
+
+    ```html
+    <!-- Do this -->
+    <p>
+      There was a farmer who had a dog, and <em>Bingo</em> was his name-o...
+    </p>
+
+    <!-- Don't do this -->
+    <p>
+      There was a farmer who had a dog, and
+      <em>Bingo</em>
+      was his name-o...
+    </p>
+    ```
+
+    For "structural" inline elements (e.g., `<img>` , `<button>`), it's better to put them on their own line similar to block elements. Indeed, these elements may often want to be styled as block elements anyway!
+
+    ```html
+    <!-- Do this -->
+    <p>
+      This is a picture of a dog:
+      <img src="puppy.png" alt="a puppy">
+    </p>
+
+    <!-- Don't do this -->
+    <p>
+      This is a picture of a dog: <img src="puppy.png" alt="a puppy">
+    </p>
+    ```
+
+- Write all text content of a single element as a single line of code; do not manually put line breaks inside of plain text. This will allow you to modify that text content later without needing to reformat things. _Do not worry about the length of the line of code_. You can use the **"word wrap"** functionality of your editor to avoid horizontal scrolling.
+
+    ```html
+    <!-- Do this -->
+    <!-- This *single line of code* can be made to wrap in your editor -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit. Dolore repellendus itaque soluta est ad modi corrupti quibusdam tenetur architecto nesciunt harum ipsa consectetur ullam unde, quos sit asperiores corporis vitae pariatur expedita non?
+    </p>
+
+    <!-- Don't do this -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      Consectetur est necessitatibus, rerum atque officiis doloremque
+      porro similique molestias fugit, a repellendus fuga natus,
+      tempora impedit. Dolore repellendus itaque soluta est ad modi
+      corrupti quibusdam tenetur architecto nesciunt harum ipsa
+      consectetur ullam unde, quos sit asperiores corporis vitae
+      pariatur expedita non?
+    </p>
+    ```
+
+### Specific Elements {-}
+
+- Avoid non-semantic formatting elements (e.g., `<i>`, `<b>`), as they are not accessible to screen readers.
+
+- Avoid using the `<br>` element for line breaks. If you're breaking a line of text, it's most often because you're defining a new _paragraph_, and so should use an additional `<p>` element. If there isn't a semantic meaning for the line break, don't include one! If you need to adjust the amount of spacing between paragraphs (e.g., you want it to be a single spacing not double spacing), use CSS to adjust the margin or padding.
+
+    ```html
+    <!-- Do this -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+    <p>
+      Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit.
+    </p>
+
+    <!-- Don't do this -->
+    <p>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+      <br />
+      Consectetur est necessitatibus, rerum atque officiis doloremque porro similique molestias fugit, a repellendus fuga natus, tempora impedit.
+    <p>
+    ```
+
+    The only reason I can think of for semanticaly using a `<br>` element would be in poetry:
+
+    ```html
+    <!-- Do this -->
+    <div>
+      Roses are red, <br>
+      Violets are blue. <br>
+      Unexpected '}' <br>
+      on line 32.
+    </div>
+    ```
+
+### Comments {-}
+
+- Most HTML content doesn't need comments; it should be understandable just from the indentation and content. If your code needs more organization, use semantic elements (e.g., `<section>`) or class names to help structure it (e.g., `<div class="first-post">`).
 
 
 
 ## CSS Guidelines
 
+One piece of adviace for writing good CSS is to focus on the "minimal" amount of CSS needed to achieve your effect. Work with the browser and its defaults, rather than trying to overpower it. Perhaps surprisingly, _removing_ rules or properties is usually a better fix to a problem then adding additional styling.
+
+### Selectors
+
+- Use selectors that are _only as specific as they need to be_.
+
+    ```css
+    /* Do this */
+    li.selected {} /* selected list items, not selected paragraphs */
+
+    /* Don't do this */
+    div p {} /* paragraphs inside of divs (are there other paragraphs? */
+
+    /* Don't do this */
+    body p {} /* no paragraphs outside of the body, so redundant */
+    ```
+
+    (It's hard to show examples, because the required specificity depends on the situation!)
+
+    Most selectors will involve 1-3 "pieces" (connected by descendant or compound selection). If you find yourself using more than that, ask if there's a simpler way to write the selector&mdash;or just give the element a `class` to select it directly!
+
+- Use class or element selectors instead of id selectors.
+
+    ```css
+    /* Do this */
+    .side-nav {}
+
+    /* Don't do this */
+    #side-nav {}
+    ```
+
+- If you must use an `id` selector, don't add extra specificity before id selectors. An `id` has to be unique, so you don't need to distinguish between multiple elements with the same `id`.
+
+    ```css
+    /* Don't do this */
+    nav#side-nav {}
+    ```
+
+- **Do not** use the `!important` keyword. Write a sufficiently specific rule instead!
+
+    ```css
+    /* Don't do this */
+    .error {
+      color: red !important;
+    }
+
+    /* Do this */
+    p.alert.error {
+      color: red;
+    }
+    ```
+
+
+### Class Names
+
+- **Use descriptive class names**. Classes should describe what or why that styling is being applied.
+
+    ```css
+    /* Do this */
+    .side-nav {}
+
+    /* Do this */
+    .alert-warning {}
+
+    /* Don't do this */
+    .thingy {}
+
+    /* Don't do this */
+    .s1 {}
+
+    /* Don't do this */
+    .p {} /* use an element selector instead! */
+    ```
+
+    Note that classes could either be defined **semantically** (e.g., `.avatar-icon`, `.comment-form`), or **modularly** (e.g., `.font-large`, `.bg-secondary`). Either approach is acceptable per this guide, but try to be _consistent_.
+
+    Using naming schema such as [BEM](http://getbem.com/naming/) is also acceptable.
+
+
+- Use hyphens as delimiters for class names.
+
+    ```css
+    /* Do this */
+    .side-nav {}
+
+    /* Do this */
+    .alert-warning {}
+    ```
+
+    Certain frameworks may make it sensible to use camelCasing for class naming (so class names are also valid JavaScript identifiers). In that case, **be consistent** with delimiters. This will make it easier to write and modify the code.
+
+    ```css
+    /* Don't do this */
+    .sideNav {}
+    .alert-warning {}
+    ```
+
+### Specific Properties
+
+- Avoid using `float`; use flexboxes or grids for positioning. It is rare to actually have "floating" content (though it can happen with image inserts inside of large text-based articles).
+
+- Do not use `position: absolute`. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser's layout instead by using relative layouts.
+
+
+### Commenting
+
+- You do not need a lot of comments for CSS code; your rules should be self-explanatory because you've used descriptive class names.
+
+- Use comments to help organize or "sign-post" your code, to group rules together in your `.css` file.
+
+    ```css
+    /* Do this */
+
+    /* navbar */
+    nav {}
+    nav li {}
+    .tab-selected {}
+
+    /* main content */
+    section {}
+    p {}
+    img.small {}
+    ```
+
 ## JavaScript Guidelines
 
+Coming soon...
+
+
+
 ## React Guidelines
+
+Coming soon...
+
+
+## Miscellaneous
+
+
+<!-- //file naming: lowercase, avoid spacing -->
