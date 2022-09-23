@@ -1,6 +1,5 @@
 # Code Style Guide
 
-
 Computer code is read by two different audiences: computers, which execute the code statements (or render the web page), and humans who need to interpret and update the code over time. Using good **coding style**&mdash;the manner and format in which code is written&mdash;is vital for supporting the humans who read it. Poorly written code may be interpretable by the computer and thus work correctly, but it also needs to be understandale by people.
 
 Code that is well written (has "good style") fulfills two properties:
@@ -15,7 +14,7 @@ Everyone has a differnet opinions on what is considered "good style"; indeed the
 
 <p class="alert alert-warning">I recommend being cautious with automatic code styling ("beautifier") tools or plugins. While these can be useful, it's also possible that they will "clean" your code in a way that doesn't actually improve it. Be very careful with anything that writes or changes code for you to ensure that it's doing the right thing!</p>
 
-This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify&mdash;that has good style.
+This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify&mdash;that has good style. It is _not_ intended to be comprehensive; rather it is a collection of guidelines that students often question or have troubles following intuitively. See the above linked style guides for more comprehensive suggestions.
 
 <p class="alert alert-info">This chapter is a work in progress, with more guidelines being added as they come up.</p>
 
@@ -88,6 +87,32 @@ This chapter provides a number of specific guidelines following the opinions of 
     </p>
     ```
 
+- Element attributes should be written on the same line as the element tag they apply to&mdash;even if the attribute value seems "long" (like a URL).
+
+    ```html
+    <!-- Do this -->
+    <a href="https://info340.github.io/really/long/path/to/content">Link</a>
+
+    <!-- Don't do this -->
+    <a
+      href="https://info340.github.io/really/long/path/to/content">Link</a>
+    ```
+
+    Note that it is not valid HTML to put whitespace, including line breaks, around the `=` when defining an attribute.
+
+    The one exception to this style guideline is when you have _lots of_ attributes for a single element. In that situation, it's acceptible to put each attribute on its own line, indented 1 step. While that rarely happens in straight HTML, it can be very common when specifying props for a React component (and makes it easier to modify those props as well).
+
+    ```html
+    <!-- Do this -->
+    <input
+      type="text"
+      id="user-input-field"
+      name="user-input-field"
+      value=""
+      placeholder="Write something here!"
+      class="long-form-input">
+    ```
+
 - Write all text content of a single element as a single line of code; do not manually put line breaks inside of plain text. This will allow you to modify that text content later without needing to reformat things. _Do not worry about the length of the line of code_. You can use the **"word wrap"** functionality of your editor to avoid horizontal scrolling.
 
     ```html
@@ -144,7 +169,7 @@ This chapter provides a number of specific guidelines following the opinions of 
     </div>
     ```
 
-### Comments {-}
+### Comments in HTML {-}
 
 - Most HTML content doesn't need comments; it should be understandable just from the indentation and content. If your code needs more organization, use semantic elements (e.g., `<section>`) or class names to help structure it (e.g., `<div class="first-post">`).
 
@@ -253,10 +278,40 @@ One piece of adviace for writing good CSS is to focus on the "minimal" amount of
 
 - Avoid using `float`; use flexboxes or grids for positioning. It is rare to actually have "floating" content (though it can happen with image inserts inside of large text-based articles).
 
-- Do not use `position: absolute`. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser's layout instead by using relative layouts.
+- Avoid using `position: absolute`. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser's layout instead by using relative layouts.
 
 
-### Commenting
+### Responsive CSS
+
+- Use a **mobile-first** approach to styling. This means that general rules go at the top and apply to mobile devices, and then use media queries to specify style alterations for larger displays.
+
+
+- Media queries check against minimize size only:
+
+    ```css
+    /* Do this */
+    @media (min-width: 768px) {}
+
+    /* Do not do this */
+    @media (min-width: 768px) and (max-width: 1092px) {}
+
+    /* Do not do this */
+    @media (max-width: 768px) {}
+    ```
+
+- Limiting styling rules to `screen` is not required (unless you distinctly want those to be different from printed rules)
+
+    ```css
+    /* Do this */
+    @media (min-width: 768px) {}
+
+    /* Do not need to do this */
+    @media screen and (min-width: 768px) {}
+    ```
+
+- Media queries should be used to _modify_ the mobile device styling, not to replace it completely. Don't "reset" all of the rules from the mobile styling, just override and add-to the few rules needed to make the page effectively responsive. Your page should have a similar style/theme no matter what device is being used to view the content!
+
+### Comments in CSS
 
 - You do not need a lot of comments for CSS code; your rules should be self-explanatory because you've used descriptive class names.
 
@@ -276,9 +331,99 @@ One piece of adviace for writing good CSS is to focus on the "minimal" amount of
     img.small {}
     ```
 
+
 ## JavaScript Guidelines
 
-Coming soon...
+### Variables
+
+- Declare variables using `const` or `let`. In general, use `const` for all variables, and then `let` only if you find you need to reassign the variable later (which is a lot less common then you may think)!
+
+    Do not use `var` to declare variables (this avoid polluting the global scope).
+
+- Variable names are written in `camelCaseFormat` (capitalizing the first letter of each "word" in the name after the first). Do not begin variable names with a capital letter.
+
+    ```js
+    /* Do this */
+    const myName = "Joel Ross"
+
+    /* Do not do this */
+    const my_name = "Joel Ross"
+
+    /* Do not do this */
+    const MyName = "Joel Ross"
+    ```
+
+    You can use all capital letters for global constants. Note that just because a variable is declared `const` doesn't mean it is a "global constant". Use all capital letters to name values that are specified external to the functioning of your program; `PI`, `WA_TAX_RATE`, `SCREEN_WIDTH` are all global constants.
+
+- **Use descriptive variable names**. Variable names should what the value references. Do not use names like `stuff`, `thing`, or `x` as they won't help anyone understand your code.
+
+- Name arrays and collections using **plural nouns**. Alternatively, you may find it useful to name _strings_, _arrays_, _objects_, and _functions_ after their data type to help you remember (particularly if understanding plurals in English is difficult).
+
+    ```js
+    /* Do this */
+    const names = ["john", "paul", "george", "ringo"];
+
+    /* Do this */
+    const dogArray = ["fido", "spot", "rover"]; //array of dog names
+    const dogObj  = {name: 'Fido', breed: 'mutt'}; //single dog object
+
+    /* Do not do this */
+    const dog = ["fido", "spot", "rover"]; //an array named by a singular noun
+    ```
+
+
+### Functions
+
+- Use function declarations rather than function expressions when defining functions&mdash;particularly "top-level" functions. This helps distinguish between functions and variables, making it easier to read and follow the code (even if it takes more typing).
+
+    ```js
+    /* Do this */
+    function sum(a, b) {
+      return a + b;
+    }
+
+    /* Do not do this */
+    const sum = function(a, b) {
+      return a + b;
+    }
+
+    /* Do not do this */
+    const sum = (a, b) => a + b;
+    ```
+
+- For inline functions (such as anonymous callback functions), use **arrow notation**. This can keep things more concise and also avoid some scoping problems.
+
+    ```js
+    /* Do this */
+    const transformed = array.map((item) => {
+      //...
+    })
+
+    /* Do not do this */
+    const transformed = array.map(function(item) {
+      //...
+    })
+    ```
+
+- Functions should be defined to be _short_ and _reusable_. Using [**pure functions**](https://en.wikipedia.org/wiki/Pure_function) whenever possible. This means that they avoid [side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science))&mdash;they do not assign to or modify non-local variables.
+
+
+### Comments in JavaScript
+
+> "Comments are always failures." - Robert Martin
+
+In general well-written code documents itself without the need for additional comments. Functions that are well named with small scopes will clearly indicate what they do without the need for further notation. If you find that you need a comment to explain what your code does, then you probably should rewrite that code so that it's more readable. Comments should be used to provide further information about the _intent_ of code (why it has been included), not the _behavior_ of code (what it does).
+
+This means that in general you shouldn't need to include a lot of comments in your code. Use comments as a last resort to clarify code behavior or otherwise communicate with other people.
+
+Do not retain large blocks of commented code in _production_ (final) versions&mdash;be clear about the code you're using without requiring the user to scroll past or ignore a lot of code that you're not.
+
+
+### Miscellaneous JavaScript Guidelines
+
+- Use strict equality comparisons (`===` and `!==`) instead of regular equality comparisons (`==` and `!=`).
+
+- Minimize the use of `console.log()` statements in _production_ (final) versions. These will slow your program down, polluet the logging space, and can be a source of information and security leaks. Use _lots_ of `console.log()` statements when debugging, but remove them when you've fixed the bugs.
 
 
 
@@ -287,7 +432,8 @@ Coming soon...
 Coming soon...
 
 
-## Miscellaneous
+## Miscellaneous Guidelines
 
+- Name all files and folder (source code or otherwise) with **all lowercase letters**. This will keep things consistent and avoid bugs across operating systems.
 
-<!-- //file naming: lowercase, avoid spacing -->
+- Do not include spaces (` `) in file names, particular for media assets&mdash;do not have a file named `my puppy.png`. Instead replace the space with an alternate character, such as an `_`, a `-`, or a `+`. Whitespace characters need to be specially encoded for URIs, which can cause problems and readability issues.

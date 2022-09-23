@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-09-22" />
+<meta name="date" content="2022-09-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -413,25 +413,32 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="appendix"><span><b>Special Topics</b></span></li>
+<li class="appendix"><span><b>Appendices &amp; Special Topics</b></span></li>
 <li class="chapter" data-level="A" data-path="code-style-guide.html"><a href="code-style-guide.html"><i class="fa fa-check"></i><b>A</b> Code Style Guide</a>
 <ul>
 <li class="chapter" data-level="A.1" data-path="code-style-guide.html"><a href="code-style-guide.html#html-guidelines"><i class="fa fa-check"></i><b>A.1</b> HTML Guidelines</a>
 <ul>
 <li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing"><i class="fa fa-check"></i>Spacing</a></li>
 <li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-elements"><i class="fa fa-check"></i>Specific Elements</a></li>
-<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-1"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-html"><i class="fa fa-check"></i>Comments in HTML</a></li>
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="code-style-guide.html"><a href="code-style-guide.html#css-guidelines"><i class="fa fa-check"></i><b>A.2</b> CSS Guidelines</a>
 <ul>
 <li class="chapter" data-level="A.2.1" data-path="code-style-guide.html"><a href="code-style-guide.html#selectors"><i class="fa fa-check"></i><b>A.2.1</b> Selectors</a></li>
 <li class="chapter" data-level="A.2.2" data-path="code-style-guide.html"><a href="code-style-guide.html#class-names"><i class="fa fa-check"></i><b>A.2.2</b> Class Names</a></li>
 <li class="chapter" data-level="A.2.3" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-properties"><i class="fa fa-check"></i><b>A.2.3</b> Specific Properties</a></li>
-<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#commenting"><i class="fa fa-check"></i><b>A.2.4</b> Commenting</a></li>
+<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#responsive-css-1"><i class="fa fa-check"></i><b>A.2.4</b> Responsive CSS</a></li>
+<li class="chapter" data-level="A.2.5" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-css"><i class="fa fa-check"></i><b>A.2.5</b> Comments in CSS</a></li>
 </ul></li>
-<li class="chapter" data-level="A.3" data-path="code-style-guide.html"><a href="code-style-guide.html#javascript-guidelines"><i class="fa fa-check"></i><b>A.3</b> JavaScript Guidelines</a></li>
+<li class="chapter" data-level="A.3" data-path="code-style-guide.html"><a href="code-style-guide.html#javascript-guidelines"><i class="fa fa-check"></i><b>A.3</b> JavaScript Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="code-style-guide.html"><a href="code-style-guide.html#variables-1"><i class="fa fa-check"></i><b>A.3.1</b> Variables</a></li>
+<li class="chapter" data-level="A.3.2" data-path="code-style-guide.html"><a href="code-style-guide.html#functions-1"><i class="fa fa-check"></i><b>A.3.2</b> Functions</a></li>
+<li class="chapter" data-level="A.3.3" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-javascript"><i class="fa fa-check"></i><b>A.3.3</b> Comments in JavaScript</a></li>
+<li class="chapter" data-level="A.3.4" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-javascript-guidelines"><i class="fa fa-check"></i><b>A.3.4</b> Miscellaneous JavaScript Guidelines</a></li>
+</ul></li>
 <li class="chapter" data-level="A.4" data-path="code-style-guide.html"><a href="code-style-guide.html#react-guidelines"><i class="fa fa-check"></i><b>A.4</b> React Guidelines</a></li>
-<li class="chapter" data-level="A.5" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous"><i class="fa fa-check"></i><b>A.5</b> Miscellaneous</a></li>
+<li class="chapter" data-level="A.5" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-guidelines"><i class="fa fa-check"></i><b>A.5</b> Miscellaneous Guidelines</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>B</b> Testing with Jest</a>
 <ul>
@@ -541,7 +548,7 @@
 <p class="alert alert-warning">
 I recommend being cautious with automatic code styling (“beautifier”) tools or plugins. While these can be useful, it’s also possible that they will “clean” your code in a way that doesn’t actually improve it. Be very careful with anything that writes or changes code for you to ensure that it’s doing the right thing!
 </p>
-<p>This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify—that has good style.</p>
+<p>This chapter provides a number of specific guidelines following the opinions of the authors (and instructors of the INFO 340: Client Side Development course) in order to help you learn to write code that is generally easier to read and modify—that has good style. It is <em>not</em> intended to be comprehensive; rather it is a collection of guidelines that students often question or have troubles following intuitively. See the above linked style guides for more comprehensive suggestions.</p>
 <p class="alert alert-info">
 This chapter is a work in progress, with more guidelines being added as they come up.
 </p>
@@ -575,7 +582,6 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token comment">&lt;!-- Do this --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello world<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- short content so can be on same line as tags --></span>
 
-
 <span class="token comment">&lt;!-- Don't do this --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>lorem ipsum<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></li>
 <li><p>For many <strong>inline elements</strong>—particularly text formatting ones (e.g., <code>&lt;em&gt;</code>, <code>&lt;strong&gt;</code>, <code>&lt;a&gt;</code>)—it’s best to keep them inline with the rest of the content. Think about like writing a paragraph, but some words in the middle are formatted. Don’t try to separate out the inline elements. This makes it easier to see them as “inline”, and means that you can integrate it into your code without needing to worry about spacing. (This will also often fix trailing space issues). Note that this guideline is one that automated beautifying tools mess up.</p>
@@ -601,6 +607,23 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
   This is a picture of a dog: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>puppy.png<span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>a puppy<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre></li>
+<li><p>Element attributes should be written on the same line as the element tag they apply to—even if the attribute value seems “long” (like a URL).</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://info340.github.io/really/long/path/to/content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span>
+
+<span class="token comment">&lt;!-- Don't do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>
+  <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://info340.github.io/really/long/path/to/content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Link<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span></code></pre>
+<p>Note that it is not valid HTML to put whitespace, including line breaks, around the <code>=</code> when defining an attribute.</p>
+<p>The one exception to this style guideline is when you have <em>lots of</em> attributes for a single element. In that situation, it’s acceptible to put each attribute on its own line, indented 1 step. While that rarely happens in straight HTML, it can be very common when specifying props for a React component (and makes it easier to modify those props as well).</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span>
+  <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span>
+  <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-input-field<span class="token punctuation">"</span></span>
+  <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>user-input-field<span class="token punctuation">"</span></span>
+  <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span>
+  <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Write something here!<span class="token punctuation">"</span></span>
+  <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>long-form-input<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre></li>
 <li><p>Write all text content of a single element as a single line of code; do not manually put line breaks inside of plain text. This will allow you to modify that text content later without needing to reformat things. <em>Do not worry about the length of the line of code</em>. You can use the <strong>“word wrap”</strong> functionality of your editor to avoid horizontal scrolling.</p>
 <pre class="language-html"><code><span class="token comment">&lt;!-- Do this --></span>
 <span class="token comment">&lt;!-- This *single line of code* can be made to wrap in your editor --></span>
@@ -649,8 +672,8 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></li>
 </ul>
 </div>
-<div id="comments-1" class="section level3 unnumbered">
-<h3>Comments</h3>
+<div id="comments-in-html" class="section level3 unnumbered">
+<h3>Comments in HTML</h3>
 <ul>
 <li>Most HTML content doesn’t need comments; it should be understandable just from the indentation and content. If your code needs more organization, use semantic elements (e.g., <code>&lt;section&gt;</code>) or class names to help structure it (e.g., <code>&lt;div class="first-post"&gt;</code>).</li>
 </ul>
@@ -730,11 +753,33 @@ This chapter is a work in progress, with more guidelines being added as they com
 <h3><span class="header-section-number">A.2.3</span> Specific Properties</h3>
 <ul>
 <li><p>Avoid using <code>float</code>; use flexboxes or grids for positioning. It is rare to actually have “floating” content (though it can happen with image inserts inside of large text-based articles).</p></li>
-<li><p>Do not use <code>position: absolute</code>. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser’s layout instead by using relative layouts.</p></li>
+<li><p>Avoid using <code>position: absolute</code>. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser’s layout instead by using relative layouts.</p></li>
 </ul>
 </div>
-<div id="commenting" class="section level3" number="20.2.4">
-<h3><span class="header-section-number">A.2.4</span> Commenting</h3>
+<div id="responsive-css-1" class="section level3" number="20.2.4">
+<h3><span class="header-section-number">A.2.4</span> Responsive CSS</h3>
+<ul>
+<li><p>Use a <strong>mobile-first</strong> approach to styling. This means that general rules go at the top and apply to mobile devices, and then use media queries to specify style alterations for larger displays.</p></li>
+<li><p>Media queries check against minimize size only:</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 1092px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+<li><p>Limiting styling rules to <code>screen</code> is not required (unless you distinctly want those to be different from printed rules)</p>
+<pre class="language-css"><code><span class="token comment">/* Do this */</span>
+<span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not need to do this */</span>
+<span class="token atrule"><span class="token rule">@media</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 768px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
+<li><p>Media queries should be used to <em>modify</em> the mobile device styling, not to replace it completely. Don’t “reset” all of the rules from the mobile styling, just override and add-to the few rules needed to make the page effectively responsive. Your page should have a similar style/theme no matter what device is being used to view the content!</p></li>
+</ul>
+</div>
+<div id="comments-in-css" class="section level3" number="20.2.5">
+<h3><span class="header-section-number">A.2.5</span> Comments in CSS</h3>
 <ul>
 <li><p>You do not need a lot of comments for CSS code; your rules should be self-explanatory because you’ve used descriptive class names.</p></li>
 <li><p>Use comments to help organize or “sign-post” your code, to group rules together in your <code>.css</code> file.</p>
@@ -754,15 +799,90 @@ This chapter is a work in progress, with more guidelines being added as they com
 </div>
 <div id="javascript-guidelines" class="section level2" number="20.3">
 <h2><span class="header-section-number">A.3</span> JavaScript Guidelines</h2>
-<p>Coming soon…</p>
+<div id="variables-1" class="section level3" number="20.3.1">
+<h3><span class="header-section-number">A.3.1</span> Variables</h3>
+<ul>
+<li><p>Declare variables using <code>const</code> or <code>let</code>. In general, use <code>const</code> for all variables, and then <code>let</code> only if you find you need to reassign the variable later (which is a lot less common then you may think)!</p>
+<p>Do not use <code>var</code> to declare variables (this avoid polluting the global scope).</p></li>
+<li><p>Variable names are written in <code>camelCaseFormat</code> (capitalizing the first letter of each “word” in the name after the first). Do not begin variable names with a capital letter.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> myName <span class="token operator">=</span> <span class="token string">"Joel Ross"</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> my_name <span class="token operator">=</span> <span class="token string">"Joel Ross"</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> MyName <span class="token operator">=</span> <span class="token string">"Joel Ross"</span></code></pre>
+<p>You can use all capital letters for global constants. Note that just because a variable is declared <code>const</code> doesn’t mean it is a “global constant”. Use all capital letters to name values that are specified external to the functioning of your program; <code>PI</code>, <code>WA_TAX_RATE</code>, <code>SCREEN_WIDTH</code> are all global constants.</p></li>
+<li><p><strong>Use descriptive variable names</strong>. Variable names should what the value references. Do not use names like <code>stuff</code>, <code>thing</code>, or <code>x</code> as they won’t help anyone understand your code.</p></li>
+<li><p>Name arrays and collections using <strong>plural nouns</strong>. Alternatively, you may find it useful to name <em>strings</em>, <em>arrays</em>, <em>objects</em>, and <em>functions</em> after their data type to help you remember (particularly if understanding plurals in English is difficult).</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"john"</span><span class="token punctuation">,</span> <span class="token string">"paul"</span><span class="token punctuation">,</span> <span class="token string">"george"</span><span class="token punctuation">,</span> <span class="token string">"ringo"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> dogArray <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"fido"</span><span class="token punctuation">,</span> <span class="token string">"spot"</span><span class="token punctuation">,</span> <span class="token string">"rover"</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//array of dog names</span>
+<span class="token keyword">const</span> dogObj  <span class="token operator">=</span> <span class="token punctuation">{</span>name<span class="token operator">:</span> <span class="token string">'Fido'</span><span class="token punctuation">,</span> breed<span class="token operator">:</span> <span class="token string">'mutt'</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//single dog object</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> dog <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"fido"</span><span class="token punctuation">,</span> <span class="token string">"spot"</span><span class="token punctuation">,</span> <span class="token string">"rover"</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//an array named by a singular noun</span></code></pre></li>
+</ul>
+</div>
+<div id="functions-1" class="section level3" number="20.3.2">
+<h3><span class="header-section-number">A.3.2</span> Functions</h3>
+<ul>
+<li><p>Use function declarations rather than function expressions when defining functions—particularly “top-level” functions. This helps distinguish between functions and variables, making it easier to read and follow the code (even if it takes more typing).</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">sum</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span></code></pre></li>
+<li><p>For inline functions (such as anonymous callback functions), use <strong>arrow notation</strong>. This can keep things more concise and also avoid some scoping problems.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></li>
+<li><p>Functions should be defined to be <em>short</em> and <em>reusable</em>. Using <a href="https://en.wikipedia.org/wiki/Pure_function"><strong>pure functions</strong></a> whenever possible. This means that they avoid <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>—they do not assign to or modify non-local variables.</p></li>
+</ul>
+</div>
+<div id="comments-in-javascript" class="section level3" number="20.3.3">
+<h3><span class="header-section-number">A.3.3</span> Comments in JavaScript</h3>
+<blockquote>
+<p>“Comments are always failures.” - Robert Martin</p>
+</blockquote>
+<p>In general well-written code documents itself without the need for additional comments. Functions that are well named with small scopes will clearly indicate what they do without the need for further notation. If you find that you need a comment to explain what your code does, then you probably should rewrite that code so that it’s more readable. Comments should be used to provide further information about the <em>intent</em> of code (why it has been included), not the <em>behavior</em> of code (what it does).</p>
+<p>This means that in general you shouldn’t need to include a lot of comments in your code. Use comments as a last resort to clarify code behavior or otherwise communicate with other people.</p>
+<p>Do not retain large blocks of commented code in <em>production</em> (final) versions—be clear about the code you’re using without requiring the user to scroll past or ignore a lot of code that you’re not.</p>
+</div>
+<div id="miscellaneous-javascript-guidelines" class="section level3" number="20.3.4">
+<h3><span class="header-section-number">A.3.4</span> Miscellaneous JavaScript Guidelines</h3>
+<ul>
+<li><p>Use strict equality comparisons (<code>===</code> and <code>!==</code>) instead of regular equality comparisons (<code>==</code> and <code>!=</code>).</p></li>
+<li><p>Minimize the use of <code>console.log()</code> statements in <em>production</em> (final) versions. These will slow your program down, polluet the logging space, and can be a source of information and security leaks. Use <em>lots</em> of <code>console.log()</code> statements when debugging, but remove them when you’ve fixed the bugs.</p></li>
+</ul>
+</div>
 </div>
 <div id="react-guidelines" class="section level2" number="20.4">
 <h2><span class="header-section-number">A.4</span> React Guidelines</h2>
 <p>Coming soon…</p>
 </div>
-<div id="miscellaneous" class="section level2" number="20.5">
-<h2><span class="header-section-number">A.5</span> Miscellaneous</h2>
-<!-- //file naming: lowercase, avoid spacing -->
+<div id="miscellaneous-guidelines" class="section level2" number="20.5">
+<h2><span class="header-section-number">A.5</span> Miscellaneous Guidelines</h2>
+<ul>
+<li><p>Name all files and folder (source code or otherwise) with <strong>all lowercase letters</strong>. This will keep things consistent and avoid bugs across operating systems.</p></li>
+<li><p>Do not include spaces (<code></code>) in file names, particular for media assets—do not have a file named <code>my puppy.png</code>. Instead replace the space with an alternate character, such as an <code>_</code>, a <code>-</code>, or a <code>+</code>. Whitespace characters need to be specially encoded for URIs, which can cause problems and readability issues.</p></li>
+</ul>
 
 </div>
 </div>

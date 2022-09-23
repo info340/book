@@ -87,10 +87,15 @@ css-guidelines
 selectors
 class-names
 specific-properties
-commenting
+responsive-css-1
+comments-in-css
 javascript-guidelines
+variables-1
+functions-1
+comments-in-javascript
+miscellaneous-javascript-guidelines
 react-guidelines
-miscellaneous
+miscellaneous-guidelines
 jest
 testing
 testing-with-jest
