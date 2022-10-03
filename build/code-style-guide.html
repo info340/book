@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-09-23" />
+<meta name="date" content="2022-10-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -843,7 +843,7 @@ This chapter is a work in progress, with more guidelines being added as they com
 
 <span class="token comment">/* Do not do this */</span>
 <span class="token keyword">const</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> a <span class="token operator">+</span> b<span class="token punctuation">;</span></code></pre></li>
-<li><p>For inline functions (such as anonymous callback functions), use <strong>arrow notation</strong>. This can keep things more concise and also avoid some scoping problems.</p>
+<li><p>For <em>inline functions</em> (such as anonymous callback functions), use <strong>arrow notation</strong>. This can keep things more concise and also avoid some scoping problems.</p>
 <pre class="language-js"><code><span class="token comment">/* Do this */</span>
 <span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token comment">//...</span>
@@ -852,7 +852,25 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token comment">/* Do not do this */</span>
 <span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//...</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></li>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>When using arrow functions, always put the <code>()</code> around the argument list. This clarifies that it is a function and will make things easier if/when you want to add additional arguments.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> transformed <span class="token operator">=</span> array<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">item</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>In general, avoid using <em>concise body arrow functions</em>. Including the explicit block (the <code>{}</code>) makes it easier to read as a function, as well as to modify and debug since you can add additional statements easily. It may seem like more code to type, but it’s better style.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> exclaimed <span class="token operator">=</span> stringArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">aString</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> aString <span class="token operator">+</span> <span class="token string">"!!"</span> <span class="token comment">//add exclamation points</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> exclaimed <span class="token operator">=</span> stringArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">aString</span><span class="token punctuation">)</span> <span class="token operator">=></span> aString <span class="token operator">+</span> <span class="token string">"!!"</span><span class="token punctuation">)</span></code></pre></li>
 <li><p>Functions should be defined to be <em>short</em> and <em>reusable</em>. Using <a href="https://en.wikipedia.org/wiki/Pure_function"><strong>pure functions</strong></a> whenever possible. This means that they avoid <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">side effects</a>—they do not assign to or modify non-local variables.</p></li>
 </ul>
 </div>

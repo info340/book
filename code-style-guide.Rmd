@@ -391,7 +391,7 @@ One piece of adviace for writing good CSS is to focus on the "minimal" amount of
     const sum = (a, b) => a + b;
     ```
 
-- For inline functions (such as anonymous callback functions), use **arrow notation**. This can keep things more concise and also avoid some scoping problems.
+- For _inline functions_ (such as anonymous callback functions), use **arrow notation**. This can keep things more concise and also avoid some scoping problems.
 
     ```js
     /* Do this */
@@ -403,6 +403,32 @@ One piece of adviace for writing good CSS is to focus on the "minimal" amount of
     const transformed = array.map(function(item) {
       //...
     })
+    ```
+
+    When using arrow functions, always put the `()` around the argument list. This clarifies that it is a function and will make things easier if/when you want to add additional arguments.
+
+    ```js
+    /* Do this */
+    const transformed = array.map((item) => {
+      //...
+    })
+
+    /* Do not do this */
+    const transformed = array.map(item => {
+      //...
+    })
+    ```
+
+    In general, avoid using _concise body arrow functions_. Including the explicit block (the `{}`) makes it easier to read as a function, as well as to modify and debug since you can add additional statements easily. It may seem like more code to type, but it's better style.
+
+    ```js
+    /* Do this */
+    const exclaimed = stringArray.map((aString) => {
+      return aString + "!!" //add exclamation points
+    })
+
+    /* Do not do this */
+    const exclaimed = stringArray.map((aString) => aString + "!!")
     ```
 
 - Functions should be defined to be _short_ and _reusable_. Using [**pure functions**](https://en.wikipedia.org/wiki/Pure_function) whenever possible. This means that they avoid [side effects](https://en.wikipedia.org/wiki/Side_effect_(computer_science))&mdash;they do not assign to or modify non-local variables.
