@@ -1,10 +1,10 @@
 # CSS Frameworks
-The previous chapters have covered how to use CSS to make your page both stylish and responsive. While it is certain possible to implement an entire site by creating your own CSS rules, that can quickly get tedious: often you'd like a page to have a "standard" set of rules (because the browser's style-less appearance) and then customize those rules to your liking.
+The previous chapters have covered how to use CSS to make your page both stylish and responsive. While it is certainly possible to implement an entire site by creating your own CSS rules, that can quickly get tedious: often you'd like a page to have a "standard" set of rules (due to the browser's style-less appearance) and then customize those rules to your liking.
 
 For this reason, most professional web developers utilize an existing **CSS Framework** instead. A CSS Framework is a stylesheet (a `.css` file!) that contains a large list of pre-defined rules that you can apply to your page. CSS frameworks provide a number of benefits:
 
 - _Applies attractive default styling to all HTML elements_: CSS frameworks make your pages instantly look better through a bunch of element selector rules. Frameworks provide pleasant default fonts, line spacing, spacing, and link styling without any extra effort on your part.
-- _Provides style classes for common UI components_: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, in-page tabs, drop-down buttons, multi-column layouts, and more. Frameworks enable you to add style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.
+- _Provides style classes for common UI components_: framework stylesheets will also include CSS classes you can add to your markup to easily include badges, in-page tabs, drop-down buttons, multi-column layouts, and more. Frameworks enable you to style your page by specifying CSS classes, rather than needing to define multiple CSS rules for a single effect.
 
 CSS frameworks are thus designed to make your life easier and your development more efficient&mdash;while still enabling you to provide your own customizations and styling with all of the power of CSS.
 
