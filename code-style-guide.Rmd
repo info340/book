@@ -449,13 +449,199 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
 
 - Use strict equality comparisons (`===` and `!==`) instead of regular equality comparisons (`==` and `!=`).
 
-- Minimize the use of `console.log()` statements in _production_ (final) versions. These will slow your program down, polluet the logging space, and can be a source of information and security leaks. Use _lots_ of `console.log()` statements when debugging, but remove them when you've fixed the bugs.
+- Minimize the use of `console.log()` statements in _production_ (final) versions. These will slow your program down, pollute the logging space, and can be a source of information and security leaks. Use _lots_ of `console.log()` statements when debugging, but remove them when you've fixed the bugs.
 
 
 
 ## React Guidelines
 
-Coming soon...
+### Components
+
+- Use Component functions (and hooks). Do not define components as classes.
+
+- Use function declarations rather than function expressions when defining Component functions. This helps with readability.
+
+    ```js
+    /* Do this */
+    function Card(props) {
+      //...
+    }
+
+    /* Do not do this */
+    const Card = (props) => {
+      //...
+    }
+    ```
+
+- Component functions are named using **nouns** (what they are), not verbs (what they do). You name then like you would name _classes_ in Java or other OOP languages.
+
+    ```js
+    /* Do this - what the content is */
+    function EntryForm(props)
+      //...
+    }
+
+    /* Do not do this - what it does */
+    function UpdateData(props) {
+      //...
+    }
+    ```
+
+    Give Components descripive names that indicate what "kind" of element they are, so there is no confusion about whether they are nouns or verbs.
+
+    ```js
+    /* Do this - the component is a form */
+    function FilterForm(props)
+      //...
+    }
+
+    /* Do not do this - unclear what the component is */
+    function Filter(props) {
+      //...
+    }
+    ```
+
+- The argument to a Component is _always_ called **`props`** (with an `s` at the end!).
+
+    It is acceptable to use object destructuring in the argument to a Component function. Remember to include the `{}`&mdash;a Component only accepts a single argument!
+
+    ```js
+    /* Acceptable */
+    function SongCard(props)
+      //...
+    }
+
+    /* Also acceptable */
+    function SongCard({artist, title, album}) {
+      //...
+    }
+    ```
+
+- Organize Components into separate modules (`.js` files). You can include multiple related components (e.g,. a `Card` and a `CardList`) in the same module. It's a good idea to keep these files together inside of a distinct `components` folder in your source code.
+
+
+### Mapping Data
+
+- Do not _declare_ functions such as the `.map()` callback inline inside the `return` statement of a Component (or any other function). Use multiple statements when writing code!
+
+    Instead, declare the mapped values as a _separate variable_ that can be included inside of the returned DOM. This will make your code easier to read, modify, and debug since you can add additional processing or inspections after the `.map()` call.
+
+    ```js
+    /* Do this */
+    function App(props) {
+      //map the data into <Card> elements
+      const cardElemArray = data.map((dataItem) => {
+        return <Card value={dataItem} />
+      })
+
+      return (
+        <div>
+          {cardElemArray}
+        </div>
+      )
+    }
+
+    /* Do not do this */
+    function App(props) {
+      //This is all one statement (line) of code! Don't do that.
+      return (
+        <div>
+          {
+            data.map((dataItem) => {
+              return <Card value={dataItem} />
+            })
+          }
+        </div>
+      )
+    }
+    ```
+
+### State
+
+- Always use `const` when declaring state variables (since you don't reassign them anyway)!
+
+    ```js
+    /* Do this */
+    const [data, setData] = useState([]);
+
+    /* Do not do this */
+    let [data, setData] = useState([]);
+    ```
+
+- _Always_ name the "state setter" function after the name of the state variable (`set______`):
+
+    ```js
+    /* Do this */
+    const [data, setData] = useState([]);
+    const [currentsong, setCurrentSong] = useState({});
+
+    /* Do not do this */
+    const [nowPlaying, changeSong] = useState({});
+    const [lastTrack, setLast] = useState({}); //use the full variable name instead!
+    ```
+
+- Do not duplicate data in state. It's both bad style and will cause bugs. Keep state minimal.
+
+  Do not define state variables for values that can be computed from other variables.
+
+  ```js
+  /* Do this */
+  const [myArray, setMyArray] = useState([]);
+  const arrayLength = myArray.length; //computed from state, but not a state variable
+
+  /* Do not do this */
+  const [myArray, setMyArray] = useState([]);
+  const [arrayLength, setArrayLength] = useState(0); //duplicated data
+  ```
+
+  Do not have multiple components save the same data in their state. Instead, lift the state up to the appropriate level and pass the data down as a prop.
+
+  ```js
+  /* Do this */
+  function App(props) {
+    const [data, setData] = useState([]);
+
+    return (
+        {/* pass down the data as a prop */}
+        <CardList data={data} />
+    )
+  }
+
+
+  /* Do not do this */
+  function App(props) {
+    const [data, setData] = useState([]);
+
+    return (
+      <CardList data={data} />
+    )
+  }
+
+  function CardList(props) {
+    const [data, setData] = useState(props.data);
+    //...
+  }
+  ```
+
+### Events and Forms
+
+- All forms should be [controlled](https://reactjs.org/docs/forms.html#controlled-components), managing the inputted value through the Component's state (instead of the HTML element's state). This helps avoid data duplication, following the [Don't Repeat Yourself (DRY) Principle](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
+    ```js
+    /* Do this */
+    function ExampleForm(props) {
+      const [inputValue, setInputValue] = useState('')
+
+      const handleChange = (event) => {
+        let newValue = event.target.value
+        setInputValue(newValue);
+      }
+
+      return (
+        <input type="text" onChange={handleChange} value={inputValue} />
+      )
+    }
+    ```
 
 
 ## Miscellaneous Guidelines

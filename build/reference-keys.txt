@@ -95,6 +95,10 @@ functions-1
 comments-in-javascript
 miscellaneous-javascript-guidelines
 react-guidelines
+components-1
+mapping-data
+state
+events-and-forms
 miscellaneous-guidelines
 jest
 testing

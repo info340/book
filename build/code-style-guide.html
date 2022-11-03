@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-10-03" />
+<meta name="date" content="2022-11-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -437,7 +437,13 @@
 <li class="chapter" data-level="A.3.3" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-javascript"><i class="fa fa-check"></i><b>A.3.3</b> Comments in JavaScript</a></li>
 <li class="chapter" data-level="A.3.4" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-javascript-guidelines"><i class="fa fa-check"></i><b>A.3.4</b> Miscellaneous JavaScript Guidelines</a></li>
 </ul></li>
-<li class="chapter" data-level="A.4" data-path="code-style-guide.html"><a href="code-style-guide.html#react-guidelines"><i class="fa fa-check"></i><b>A.4</b> React Guidelines</a></li>
+<li class="chapter" data-level="A.4" data-path="code-style-guide.html"><a href="code-style-guide.html#react-guidelines"><i class="fa fa-check"></i><b>A.4</b> React Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="code-style-guide.html"><a href="code-style-guide.html#components-1"><i class="fa fa-check"></i><b>A.4.1</b> Components</a></li>
+<li class="chapter" data-level="A.4.2" data-path="code-style-guide.html"><a href="code-style-guide.html#mapping-data"><i class="fa fa-check"></i><b>A.4.2</b> Mapping Data</a></li>
+<li class="chapter" data-level="A.4.3" data-path="code-style-guide.html"><a href="code-style-guide.html#state"><i class="fa fa-check"></i><b>A.4.3</b> State</a></li>
+<li class="chapter" data-level="A.4.4" data-path="code-style-guide.html"><a href="code-style-guide.html#events-and-forms"><i class="fa fa-check"></i><b>A.4.4</b> Events and Forms</a></li>
+</ul></li>
 <li class="chapter" data-level="A.5" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-guidelines"><i class="fa fa-check"></i><b>A.5</b> Miscellaneous Guidelines</a></li>
 </ul></li>
 <li class="chapter" data-level="B" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>B</b> Testing with Jest</a>
@@ -887,13 +893,166 @@ This chapter is a work in progress, with more guidelines being added as they com
 <h3><span class="header-section-number">A.3.4</span> Miscellaneous JavaScript Guidelines</h3>
 <ul>
 <li><p>Use strict equality comparisons (<code>===</code> and <code>!==</code>) instead of regular equality comparisons (<code>==</code> and <code>!=</code>).</p></li>
-<li><p>Minimize the use of <code>console.log()</code> statements in <em>production</em> (final) versions. These will slow your program down, polluet the logging space, and can be a source of information and security leaks. Use <em>lots</em> of <code>console.log()</code> statements when debugging, but remove them when you’ve fixed the bugs.</p></li>
+<li><p>Minimize the use of <code>console.log()</code> statements in <em>production</em> (final) versions. These will slow your program down, pollute the logging space, and can be a source of information and security leaks. Use <em>lots</em> of <code>console.log()</code> statements when debugging, but remove them when you’ve fixed the bugs.</p></li>
 </ul>
 </div>
 </div>
 <div id="react-guidelines" class="section level2" number="20.4">
 <h2><span class="header-section-number">A.4</span> React Guidelines</h2>
-<p>Coming soon…</p>
+<div id="components-1" class="section level3" number="20.4.1">
+<h3><span class="header-section-number">A.4.1</span> Components</h3>
+<ul>
+<li><p>Use Component functions (and hooks). Do not define components as classes.</p></li>
+<li><p>Use function declarations rather than function expressions when defining Component functions. This helps with readability.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">Card</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> <span class="token function-variable function">Card</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
+<li><p>Component functions are named using <strong>nouns</strong> (what they are), not verbs (what they do). You name then like you would name <em>classes</em> in Java or other OOP languages.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this - what the content is */</span>
+<span class="token keyword">function</span> <span class="token function">EntryForm</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this - what it does */</span>
+<span class="token keyword">function</span> <span class="token function">UpdateData</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Give Components descripive names that indicate what “kind” of element they are, so there is no confusion about whether they are nouns or verbs.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this - the component is a form */</span>
+<span class="token keyword">function</span> <span class="token function">FilterForm</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this - unclear what the component is */</span>
+<span class="token keyword">function</span> <span class="token function">Filter</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
+<li><p>The argument to a Component is <em>always</em> called <strong><code>props</code></strong> (with an <code>s</code> at the end!).</p>
+<p>It is acceptable to use object destructuring in the argument to a Component function. Remember to include the <code>{}</code>—a Component only accepts a single argument!</p>
+<pre class="language-js"><code><span class="token comment">/* Acceptable */</span>
+<span class="token keyword">function</span> <span class="token function">SongCard</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Also acceptable */</span>
+<span class="token keyword">function</span> <span class="token function">SongCard</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>artist<span class="token punctuation">,</span> title<span class="token punctuation">,</span> album<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
+<li><p>Organize Components into separate modules (<code>.js</code> files). You can include multiple related components (e.g,. a <code>Card</code> and a <code>CardList</code>) in the same module. It’s a good idea to keep these files together inside of a distinct <code>components</code> folder in your source code.</p></li>
+</ul>
+</div>
+<div id="mapping-data" class="section level3" number="20.4.2">
+<h3><span class="header-section-number">A.4.2</span> Mapping Data</h3>
+<ul>
+<li><p>Do not <em>declare</em> functions such as the <code>.map()</code> callback inline inside the <code>return</code> statement of a Component (or any other function). Use multiple statements when writing code!</p>
+<p>Instead, declare the mapped values as a <em>separate variable</em> that can be included inside of the returned DOM. This will make your code easier to read, modify, and debug since you can add additional processing or inspections after the <code>.map()</code> call.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//map the data into &lt;Card> elements</span>
+  <span class="token keyword">const</span> cardElemArray <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">dataItem</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+      <span class="token punctuation">{</span>cardElemArray<span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">//This is all one statement (line) of code! Don't do that.</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>div<span class="token operator">></span>
+      <span class="token punctuation">{</span>
+        data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">dataItem</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></li>
+</ul>
+</div>
+<div id="state" class="section level3" number="20.4.3">
+<h3><span class="header-section-number">A.4.3</span> State</h3>
+<ul>
+<li><p>Always use <code>const</code> when declaring state variables (since you don’t reassign them anyway)!</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">let</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></li>
+<li><p><em>Always</em> name the “state setter” function after the name of the state variable (<code>set______</code>):</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>currentsong<span class="token punctuation">,</span> setCurrentSong<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>nowPlaying<span class="token punctuation">,</span> changeSong<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>lastTrack<span class="token punctuation">,</span> setLast<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//use the full variable name instead!</span></code></pre></li>
+<li><p>Do not duplicate data in state. It’s both bad style and will cause bugs. Keep state minimal.</p>
+<p>Do not define state variables for values that can be computed from other variables.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>myArray<span class="token punctuation">,</span> setMyArray<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> arrayLength <span class="token operator">=</span> myArray<span class="token punctuation">.</span>length<span class="token punctuation">;</span> <span class="token comment">//computed from state, but not a state variable</span>
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>myArray<span class="token punctuation">,</span> setMyArray<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token punctuation">[</span>arrayLength<span class="token punctuation">,</span> setArrayLength<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//duplicated data</span></code></pre>
+<p>Do not have multiple components save the same data in their state. Instead, lift the state up to the appropriate level and pass the data down as a prop.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token punctuation">{</span><span class="token comment">/* pass down the data as a prop */</span><span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>CardList data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>CardList data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">CardList</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
+</ul>
+</div>
+<div id="events-and-forms" class="section level3" number="20.4.4">
+<h3><span class="header-section-number">A.4.4</span> Events and Forms</h3>
+<ul>
+<li><p>All forms should be <a href="https://reactjs.org/docs/forms.html#controlled-components">controlled</a>, managing the inputted value through the Component’s state (instead of the HTML element’s state). This helps avoid data duplication, following the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself">Don’t Repeat Yourself (DRY) Principle</a>.</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">ExampleForm</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>inputValue<span class="token punctuation">,</span> setInputValue<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> newValue <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+    <span class="token function">setInputValue</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>input type<span class="token operator">=</span><span class="token string">"text"</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>handleChange<span class="token punctuation">}</span> value<span class="token operator">=</span><span class="token punctuation">{</span>inputValue<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre></li>
+</ul>
+</div>
 </div>
 <div id="miscellaneous-guidelines" class="section level2" number="20.5">
 <h2><span class="header-section-number">A.5</span> Miscellaneous Guidelines</h2>
