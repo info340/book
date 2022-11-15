@@ -531,7 +531,7 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
     function App(props) {
       //map the data into <Card> elements
       const cardElemArray = data.map((dataItem) => {
-        return <Card value={dataItem} />
+        return <Card value={dataItem} key={dataItem.id} />
       })
 
       return (
@@ -548,7 +548,7 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
         <div>
           {
             data.map((dataItem) => {
-              return <Card value={dataItem} />
+              return <Card value={dataItem} key={dataItem.id} />
             })
           }
         </div>
@@ -582,46 +582,78 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
 
 - Do not duplicate data in state. It's both bad style and will cause bugs. Keep state minimal.
 
-  Do not define state variables for values that can be computed from other variables.
+    Do not define state variables for values that can be computed from other variables.
 
-  ```js
-  /* Do this */
-  const [myArray, setMyArray] = useState([]);
-  const arrayLength = myArray.length; //computed from state, but not a state variable
+    ```js
+    /* Do this */
+    const [myArray, setMyArray] = useState([]);
+    const arrayLength = myArray.length; //computed from state, but not a state variable
 
-  /* Do not do this */
-  const [myArray, setMyArray] = useState([]);
-  const [arrayLength, setArrayLength] = useState(0); //duplicated data
-  ```
+    /* Do not do this */
+    const [myArray, setMyArray] = useState([]);
+    const [arrayLength, setArrayLength] = useState(0); //duplicated data
+    ```
 
-  Do not have multiple components save the same data in their state. Instead, lift the state up to the appropriate level and pass the data down as a prop.
+    Do not have multiple components save the same data in their state. Instead, lift the state up to the appropriate level and pass the data down as a prop.
 
-  ```js
-  /* Do this */
-  function App(props) {
-    const [data, setData] = useState([]);
+    ```js
+    /* Do this */
+    function App(props) {
+      const [data, setData] = useState([]);
 
-    return (
+      return (
         {/* pass down the data as a prop */}
         <CardList data={data} />
-    )
-  }
+      )
+    }
 
 
-  /* Do not do this */
-  function App(props) {
-    const [data, setData] = useState([]);
+    /* Do not do this */
+    function App(props) {
+      const [data, setData] = useState([]);
 
-    return (
-      <CardList data={data} />
-    )
-  }
+      return (
+        <CardList data={data} />
+      )
+    }
 
-  function CardList(props) {
-    const [data, setData] = useState(props.data);
-    //...
-  }
-  ```
+    function CardList(props) {
+      const [data, setData] = useState(props.data);
+      //...
+    }
+    ```
+
+- Do not pass state setter functions as callbacks to child components. Instead, create a separate callback function which can call the state setter. This makes it easier to add additional processing and control logic when updating state, as well as following the [Principle of Least Knowledge](https://en.wikipedia.org/wiki/Law_of_Demeter)
+
+    ```js
+    /* Do this */
+    function App(props) {
+      const [data, setData] = useState([]);
+
+      //a function to update the data
+      const updateData = (newData) => {
+        //can do additional processing here
+        setData(newData); //update the state
+      }
+
+      return (
+        {/* pass down the callback function as a prop */}
+        <UpdateForm data={data} updateCallback={updateData} />
+      )
+    }
+
+
+    /* Do not do this */
+    function App(props) {
+      const [data, setData] = useState([]);
+
+      return (
+        {/* Do not pass the state setter directly! */}
+        <UpdateForm data={data} updateCallback={setData} />
+      )
+    }
+    ```
+
 
 ### Events and Forms
 

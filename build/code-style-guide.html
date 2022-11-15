@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-11-03" />
+<meta name="date" content="2022-11-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -956,7 +956,7 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//map the data into &lt;Card> elements</span>
   <span class="token keyword">const</span> cardElemArray <span class="token operator">=</span> data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">dataItem</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">.</span>id<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -973,7 +973,7 @@ This chapter is a work in progress, with more guidelines being added as they com
     <span class="token operator">&lt;</span>div<span class="token operator">></span>
       <span class="token punctuation">{</span>
         data<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">dataItem</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-          <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+          <span class="token keyword">return</span> <span class="token operator">&lt;</span>Card value<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">}</span> key<span class="token operator">=</span><span class="token punctuation">{</span>dataItem<span class="token punctuation">.</span>id<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
@@ -1013,8 +1013,8 @@ This chapter is a work in progress, with more guidelines being added as they com
   <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-      <span class="token punctuation">{</span><span class="token comment">/* pass down the data as a prop */</span><span class="token punctuation">}</span>
-      <span class="token operator">&lt;</span>CardList data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+    <span class="token punctuation">{</span><span class="token comment">/* pass down the data as a prop */</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>CardList data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -1031,6 +1031,33 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token keyword">function</span> <span class="token function">CardList</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
+<li><p>Do not pass state setter functions as callbacks to child components. Instead, create a separate callback function which can call the state setter. This makes it easier to add additional processing and control logic when updating state, as well as following the <a href="https://en.wikipedia.org/wiki/Law_of_Demeter">Principle of Least Knowledge</a></p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">//a function to update the data</span>
+  <span class="token keyword">const</span> <span class="token function-variable function">updateData</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">newData</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">//can do additional processing here</span>
+    <span class="token function">setData</span><span class="token punctuation">(</span>newData<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//update the state</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token comment">/* pass down the callback function as a prop */</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>UpdateForm data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> updateCallback<span class="token operator">=</span><span class="token punctuation">{</span>updateData<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>data<span class="token punctuation">,</span> setData<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token punctuation">{</span><span class="token comment">/* Do not pass the state setter directly! */</span><span class="token punctuation">}</span>
+    <span class="token operator">&lt;</span>UpdateForm data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> updateCallback<span class="token operator">=</span><span class="token punctuation">{</span>setData<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">></span>
+  <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></li>
 </ul>
 </div>
