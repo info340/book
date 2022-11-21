@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-11-15" />
+<meta name="date" content="2022-11-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -933,6 +933,26 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token keyword">function</span> <span class="token function">Filter</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//...</span>
 <span class="token punctuation">}</span></code></pre></li>
+<li><p>Components are always written as <em>top level functions</em>. Never define one component inside of another!</p>
+<pre class="language-js"><code><span class="token comment">/* Do this */</span>
+<span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">Child</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span>
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">/* Do not do this */</span>
+<span class="token keyword">function</span> <span class="token function">Parent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">function</span> <span class="token function">Child</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">//...</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//...</span>
+<span class="token punctuation">}</span></code></pre></li>
 <li><p>The argument to a Component is <em>always</em> called <strong><code>props</code></strong> (with an <code>s</code> at the end!).</p>
 <p>It is acceptable to use object destructuring in the argument to a Component function. Remember to include the <code>{}</code>—a Component only accepts a single argument!</p>
 <pre class="language-js"><code><span class="token comment">/* Acceptable */</span>
@@ -944,6 +964,12 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token keyword">function</span> <span class="token function">SongCard</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>artist<span class="token punctuation">,</span> title<span class="token punctuation">,</span> album<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//...</span>
 <span class="token punctuation">}</span></code></pre></li>
+<li><p>When specifying props to a Component (or attributes for an HTML element), do <em>not</em> put spaces around the <code>=</code> — write it like HTML!</p>
+<pre><code>/* Do this */
+&lt;Card value={dataItem} /&gt;
+
+/* Do not do this */
+&lt;Card value = {dataItem} /&gt;</code></pre></li>
 <li><p>Organize Components into separate modules (<code>.js</code> files). You can include multiple related components (e.g,. a <code>Card</code> and a <code>CardList</code>) in the same module. It’s a good idea to keep these files together inside of a distinct <code>components</code> folder in your source code.</p></li>
 </ul>
 </div>

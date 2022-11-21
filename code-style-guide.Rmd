@@ -501,6 +501,30 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
     }
     ```
 
+- Components are always written as _top level functions_. Never define one component inside of another!
+
+    ```js
+    /* Do this */
+    function Parent(props)
+      //...
+    }
+
+    function Child(props)
+      //...
+    }
+
+
+    /* Do not do this */
+    function Parent(props) {
+
+      function Child(props) {
+        //...
+      }
+
+      //...
+    }
+    ```
+
 - The argument to a Component is _always_ called **`props`** (with an `s` at the end!).
 
     It is acceptable to use object destructuring in the argument to a Component function. Remember to include the `{}`&mdash;a Component only accepts a single argument!
@@ -516,6 +540,17 @@ Do not retain large blocks of commented code in _production_ (final) versions&md
       //...
     }
     ```
+
+- When specifying props to a Component (or attributes for an HTML element), do _not_ put spaces around the `=` &mdash; write it like HTML!
+
+    ```
+    /* Do this */
+    <Card value={dataItem} />
+
+    /* Do not do this */
+    <Card value = {dataItem} />
+    ```
+
 
 - Organize Components into separate modules (`.js` files). You can include multiple related components (e.g,. a `Card` and a `CardList`) in the same module. It's a good idea to keep these files together inside of a distinct `components` folder in your source code.
 
