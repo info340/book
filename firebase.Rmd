@@ -346,11 +346,28 @@ Instead, a nicer approach is to use the [**FireabaseUI**](https://firebase.googl
 
 ![Example of FirebaseUI authentication](img/firebase/firebaseui-example.png)
 
-There are different FirebaseUI libraries for different platforms; for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). This is an external library (just like `react-router`), so needs to be installed separately:
+There are different FirebaseUI libraries for different platforms; previously for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears that it may have been abandoned rather than [applying the needed fix](https://github.com/firebase/firebaseui-web-react/pull/173). There are two possible workarounds to this:
 
-```bash
-npm install react-firebaseui
-```
+1. You can install a user-contributed version of the library (which hasn't been accepted as a pull request yet):
+
+    ```bash
+    # install library on the command line
+    npm install https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist
+    ```
+
+    Confirm that your `package.json` file has the correct dependency listed:
+
+    ```
+    "react-firebaseui": "https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist"
+    ```
+
+2. You can install the non-React version of the library (`firebaseui`), and then define the needed Component (`StyledFirebaseUI`) manually:
+
+    ```bash
+    npm install firebaseui
+    ```
+
+    Create the `StyledFirebaseAuth.txs` file defined [in this comment post](https://github.com/firebase/firebaseui-web-react/pull/173#issuecomment-1224404146).
 
 The React FirebaseUI library provides a Component called `<StyledFirebaseAuth>`, which you can render in your page like any other Component. You can think of this Component as the "login form". A complete example of how this Component is used can be found below, following by an explanation.
 
@@ -358,8 +375,9 @@ The React FirebaseUI library provides a Component called `<StyledFirebaseAuth>`,
 //import auth functions and variables from Firebase
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth'
 
-//import the component
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+//import the component -- pick one!
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'; //install option 1
+import StyledFirebaseAuth from './StyledFirebaseAuth'; //install option 2
 
 //an object of configuration values
 const firebaseUIConfig = {

@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2022-11-21" />
+<meta name="date" content="2022-11-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -824,14 +824,24 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <img src="img/firebase/firebaseui-example.png" alt="" />
 <p class="caption">Example of FirebaseUI authentication</p>
 </div>
-<p>There are different FirebaseUI libraries for different platforms; for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. This is an external library (just like <code>react-router</code>), so needs to be installed separately:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> react-firebaseui</code></pre>
+<p>There are different FirebaseUI libraries for different platforms; previously for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears that it may have been abandoned rather than <a href="https://github.com/firebase/firebaseui-web-react/pull/173">applying the needed fix</a>. There are two possible workarounds to this:</p>
+<ol style="list-style-type: decimal">
+<li><p>You can install a user-contributed version of the library (which hasn’t been accepted as a pull request yet):</p>
+<pre class="language-bash"><code><span class="token comment"># install library on the command line</span>
+<span class="token function">npm</span> <span class="token function">install</span> https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist</code></pre>
+<p>Confirm that your <code>package.json</code> file has the correct dependency listed:</p>
+<pre><code>&quot;react-firebaseui&quot;: &quot;https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist&quot;</code></pre></li>
+<li><p>You can install the non-React version of the library (<code>firebaseui</code>), and then define the needed Component (<code>StyledFirebaseUI</code>) manually:</p>
+<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> firebaseui</code></pre>
+<p>Create the <code>StyledFirebaseAuth.txs</code> file defined <a href="https://github.com/firebase/firebaseui-web-react/pull/173#issuecomment-1224404146">in this comment post</a>.</p></li>
+</ol>
 <p>The React FirebaseUI library provides a Component called <code>&lt;StyledFirebaseAuth&gt;</code>, which you can render in your page like any other Component. You can think of this Component as the “login form”. A complete example of how this Component is used can be found below, following by an explanation.</p>
 <pre class="language-jsx"><code><span class="token comment">//import auth functions and variables from Firebase</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> getAuth<span class="token punctuation">,</span> EmailAuthProvider<span class="token punctuation">,</span> GoogleAuthProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/auth'</span>
 
-<span class="token comment">//import the component</span>
-<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'react-firebaseui/StyledFirebaseAuth'</span><span class="token punctuation">;</span>
+<span class="token comment">//import the component -- pick one!</span>
+<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'react-firebaseui/StyledFirebaseAuth'</span><span class="token punctuation">;</span> <span class="token comment">//install option 1</span>
+<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'./StyledFirebaseAuth'</span><span class="token punctuation">;</span> <span class="token comment">//install option 2</span>
 
 <span class="token comment">//an object of configuration values</span>
 <span class="token keyword">const</span> firebaseUIConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
