@@ -348,7 +348,7 @@ Instead, a nicer approach is to use the [**FireabaseUI**](https://firebase.googl
 
 There are different FirebaseUI libraries for different platforms; previously for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears that it may have been abandoned rather than [applying the needed fix](https://github.com/firebase/firebaseui-web-react/pull/173). There are two possible workarounds to this:
 
-1. You can install a user-contributed version of the library (which hasn't been accepted as a pull request yet):
+1. You can install a version of the library updated by [Gabriel Villenave](https://github.com/gvillenave) (which hasn't been accepted as a pull request yet):
 
     ```bash
     # install library on the command line
