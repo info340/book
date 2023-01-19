@@ -71,11 +71,11 @@ While we suggest using VSCode for this course, other editors are also acceptable
 
 ### Atom {-}
 
-[Atom](https://atom.io/) is a text editor built by the folks at GitHub and has been gaining in popularity. It is very similar to VS Code in terms of features, but has a somewhat different interface and community. It has a similar _command-palette_ to VS Code. The document you are reading was authored in Atom.
+[Atom](https://atom.io/) was a text editor built by the folks at GitHub, though it has since been [retired](https://github.blog/2022-06-08-sunsetting-atom/). It was very similar to VS Code in terms of features, but has a somewhat different interface and community. It had a similar _command-palette_ to VS Code. The document you are reading was authored in Atom.
 
-### Brackets {-}
+<!-- ### Brackets {-}
 
-[Brackets](http://brackets.io/) is a coding editor created by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list.
+[Brackets](http://brackets.io/) is a coding editor created by Adobe specialized for client-side web developers. It has some intriguing features that are not yet in Visual Studio Code, as well as possibly the nicest interface of this list. -->
 
 ### Sublime Text {-}
 
@@ -268,10 +268,10 @@ Links to the recommended software are collected here for easy access:
 
 <div class="list-condensed">
 - [Chrome](https://www.google.com/chrome/browser/desktop/index.html)
+- [Visual Studio Code](https://code.visualstudio.com/)
 - [git (and Git Bash)](https://git-scm.com/downloads)
 	- [GitHub](https://github.com/join) (sign up)
     - optional: [Bash on Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)
-- [Visual Studio Code](https://code.visualstudio.com/)
 - [Node.js (and npm)](https://nodejs.org/)
     - [npm documentation](https://docs.npmjs.com/getting-started/what-is-npm)
 </div>

@@ -33,7 +33,7 @@ While there is no magic formula for designing websites to support mobile devices
 
 - **Media**: Small screens don't have enough space to necessitate very large, high-resolution images and video. Moreover, large images have large file sizes, and so will take a long time to download on slow mobile connections (not to mention eating away at limited data plans). Use [compressed](https://tinypng.com/) or lower-resolution images on mobile, and consider using background colors or [linear gradient fills](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient) instead of background images. You can use higher-resolution media (and more of it!) on desktops, which usually have higher bandwidth available for downloading.
 
-    <p class="alert alert-info">[Page bloat](http://idlewords.com/talks/website_obesity.htm) is a real problem. You don't need huge images... or possibly any images at all!</p>
+    <div class="alert alert-info">[Page bloat](http://idlewords.com/talks/website_obesity.htm) is a real problem. You don't need huge images... or possibly any images at all!</div>
 
 - **Fonts**: Make sure to use a large enough font that it is readable on small screens... but don't make headings or callout text _too_ large so that you lose that precious real estate! You can make them more styled and prominent on desktop, where there is room for such flourishes. Be sure to use [relative units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units) to accommodate mobile user preferences and screen size variation. Also remember that special web fonts you may be downloading will also take up extra bandwidth!
 
