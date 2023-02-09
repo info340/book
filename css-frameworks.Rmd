@@ -76,7 +76,7 @@ In addition to being simple, CDNs also provide a distinct speed benefit: CDNs re
 
 Additionally, CDNs allow a site to take advantage of **browser caching**: browsers will save previously downloaded versions of a file to avoid downloading it again. If multiple sites all use the CDN version of Bootstrap, then the browser only has to download that file the first time you visit one of those sites. With popular frameworks like Bootstrap, it's highly likely that your user has already visited a site that links to Bootstrap's CDN version, and thus the Bootstrap files are already in the user's browser cache.
 
-Finally, CDNs allow the frameworks to be accessed [as a service](https://en.wikipedia.org/wiki/Software_as_a_service), meaning that developers may be able to quickly patch bugs (if the fix doesn't break existing code) without the developer having to do anything. (This feature can also be seen as a drawback, as you need to trust the library developer not to break anything or accidentally include malicious code).
+Finally, CDNs allow the frameworks to be accessed [as a service](https://en.wikipedia.org/wiki/Software_as_a_service), meaning that framework developers may be able to quickly patch bugs (if the fix doesn't break existing code) without the web developer (*i.e.*, the user of the framework) having to do anything. (This feature can also be seen as a drawback, as you need to trust the library developer not to break anything or accidentally include malicious code).
 
 The only real disadvantage to linking to a CDN is that it won't work when you are offline. If you commonly do your development offline, or if you are building a web application that is meant to run offline, you'll need to utilize a different method.
 
@@ -221,7 +221,7 @@ Many (but not all!) Bootstrap classes support responsive breakpoints. The most c
 
 - `.container` elements are often direct children of the `<body>` (e.g., `<header>`, `<main>`). However, if you want a background color or image to "full bleed" to the edges of the viewport, you can put the `.container` inside the another element that is styled with the background, as in the CodePen example.
 
-- Do not put one `.container` instead of another! This will also multiple layers of padding that are almost certainly not what you expect. Similarly, because the class name `.container` is fairly generic, be careful when naming your own classes so they don't overlap&mdash;for example, a flexbox container should probably be called something like `.flexbox-container`.
+- Do not put one `.container` inside of another! This will add multiple layers of padding that are almost certainly not what you expect. Similarly, because the class name `.container` is fairly generic, be careful when naming your own classes so they don't overlap&mdash;for example, a flexbox container should probably be called something like `.flexbox-container`.
 
 - Bootstrap also provides an alternate `container-fluid` class that always has the same amount of padding around the content, with the content "reflowing" based on the browser size.
 
@@ -260,7 +260,7 @@ Thus the above HTML will produce elements with the following layout:
 
 You can also make this grid layout responsive by using responsive utility versions of the `col-#` classes. For example, a `.col-md-4` would take up 4 columns _only on medium or larger_ screens, while a `.col-lg-6` would take up 6 columns _only on large or larger_ screens. Note that a child of the `.row` that doesn't have a column size will effectively act as its own row (on its own line).
 
-Finally, note that you can specify _multiple responsive utilities_ on each grid item! For example, you can specify that items should take up 6 columns on small or larger screens (`col-6-sm`), only but 3 columns on medium or larger screens (`col-3-sm`):
+Finally, note that you can specify _multiple responsive utilities_ on each grid item! For example, you can specify that items should take up 6 columns on small or larger screens (`col-sm-6`), only but 3 columns on medium or larger screens (`col-md-3`):
 
 ```html
 <div class="row">
