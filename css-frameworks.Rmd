@@ -221,7 +221,7 @@ Many (but not all!) Bootstrap classes support responsive breakpoints. The most c
 
 - `.container` elements are often direct children of the `<body>` (e.g., `<header>`, `<main>`). However, if you want a background color or image to "full bleed" to the edges of the viewport, you can put the `.container` inside the another element that is styled with the background, as in the CodePen example.
 
-- Do not put one `.container` instead of another! This will also multiple layers of padding that are almost certainly not what you expect. Similarly, because the class name `.container` is fairly generic, be careful when naming your own classes so they don't overlap&mdash;for example, a flexbox container should probably be called something like `.flexbox-container`.
+- Do not put one `.container` inside of another! This will add multiple layers of padding that are almost certainly not what you expect. Similarly, because the class name `.container` is fairly generic, be careful when naming your own classes so they don't overlap&mdash;for example, a flexbox container should probably be called something like `.flexbox-container`.
 
 - Bootstrap also provides an alternate `container-fluid` class that always has the same amount of padding around the content, with the content "reflowing" based on the browser size.
 
