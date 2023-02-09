@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2023-01-19" />
+<meta name="date" content="2023-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -814,7 +814,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token punctuation">}</span></code></pre>
 <p>This provides some benefits in terms of scoping (because of the arrow function), but otherwise makes components even harder to read—its not as readily obviously that this is a function and a component. You should stick to defining component functions using the <code>function</code> keyword (and not arrow functions) for readability, but be aware of the alternate approach which is used in some libraries and examples.</p></li>
 </ul></li>
-<li><p>Component functions take in a single argument representing the <a href="react.html#props">props</a> (discussed below), which is conventionally named as such. As with all JavaScript functions, if you don’t want to use the argument value you can omit giving it a name (e.g., <code>function UserInfo() { ... }</code>).</p></li>
+<li><p>Component functions take in a single argument representing the <a href="react.html#props">props</a> (discussed below), which is conventionally named as such. While it’s possible to omit this argument if it isn’t used (as you can with all JavaScript functions), best practice is to always include it.</p></li>
 <li><p>A component function is a regular function like any other that you’ve written. That means that it can and often does do more than just return a single value! You can include additional code statements (variable declarations, if statements, loops, etc) in order to calculate the values you’d like to include in inline expressions in the returned JSX.</p>
 <div class="alert alert-warning">
 <strong>Style requirement</strong>: perform any complex logic—including functional looping such as with <code>map()</code> or <code>filter()</code>—outside of the <code>return</code> statement. Keep the <code>return</code> statement as simple as possible so it remains readable—and more importantly <em>debuggable</em> (so you can use things like <code>console.log</code> statements to check intermediate values before they are returned). <strong>NEVER</strong> include an inline callback function so that you have a <code>return</code> statement inside of a <code>return</code> statement!
