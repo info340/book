@@ -76,7 +76,7 @@ In addition to being simple, CDNs also provide a distinct speed benefit: CDNs re
 
 Additionally, CDNs allow a site to take advantage of **browser caching**: browsers will save previously downloaded versions of a file to avoid downloading it again. If multiple sites all use the CDN version of Bootstrap, then the browser only has to download that file the first time you visit one of those sites. With popular frameworks like Bootstrap, it's highly likely that your user has already visited a site that links to Bootstrap's CDN version, and thus the Bootstrap files are already in the user's browser cache.
 
-Finally, CDNs allow the frameworks to be accessed [as a service](https://en.wikipedia.org/wiki/Software_as_a_service), meaning that developers may be able to quickly patch bugs (if the fix doesn't break existing code) without the developer having to do anything. (This feature can also be seen as a drawback, as you need to trust the library developer not to break anything or accidentally include malicious code).
+Finally, CDNs allow the frameworks to be accessed [as a service](https://en.wikipedia.org/wiki/Software_as_a_service), meaning that framework developers may be able to quickly patch bugs (if the fix doesn't break existing code) without the web developer (*i.e.*, the user of the framework) having to do anything. (This feature can also be seen as a drawback, as you need to trust the library developer not to break anything or accidentally include malicious code).
 
 The only real disadvantage to linking to a CDN is that it won't work when you are offline. If you commonly do your development offline, or if you are building a web application that is meant to run offline, you'll need to utilize a different method.
 
