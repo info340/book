@@ -142,7 +142,7 @@ let isThick = document.querySelector('svg rect')
 These methods will let you interact with attributes that are _not_ defined by the HTML spec, such as `data-` attribute. However, they _don't_ work with certain element attributes (such as the `value` attribute of an `<input>` element). Other elements may have their own special DOM properties: see the [DOM Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) for a list of [HTML interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces).
 
 #### Changing Element CSS {-}
-It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with other attributes, you instead access the **`className`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
+It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with other attributes, you instead access the **`classList`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
 
 ```js
 //access list of classes
