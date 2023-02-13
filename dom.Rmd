@@ -218,7 +218,7 @@ console.log(secondSection); //<section id="second-section"></section>
 
     SVG content doesn't support `parentElement`, but does support `parentNode`.
 
-You can also call methods to create and add new HTML DOM elements to the tree. The `document.createElement()` function is used to create a new HTML element. However this element is _not_ created a part of the tree (after all, you haven't specified where it would put into the page)! Thus you need to also use a method such as `appendChild` to add that new element as a child of another element:
+You can also call methods to create and add new HTML DOM elements to the tree. The `document.createElement()` function is used to create a new HTML element. However this element is _not_ created as a part of the tree (after all, you haven't specified where it would put into the page)! Thus you need to also use a method such as `appendChild` to add that new element as a child of another element:
 
 ```js
 //create a new <p> (not yet in the tree)
