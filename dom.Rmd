@@ -141,8 +141,8 @@ let isThick = document.querySelector('svg rect')
 
 These methods will let you interact with attributes that are _not_ defined by the HTML spec, such as `data-` attribute. However, they _don't_ work with certain element attributes (such as the `value` attribute of an `<input>` element). Other elements may have their own special DOM properties: see the [DOM Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) for a list of [HTML interfaces](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces).
 
-#### Changing Element CSS
-It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with other attributes, you instead access the **`className`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
+#### Changing Element CSS {-}
+It is possible to modify the **CSS classes** (and even inline styling) of an element. But rather than using the `class` property like with other attributes, you instead access the **`classList`** property. On modern browsers (IE 10 or later), this property supports methods `.add()` and `.remove()` for adding and removing classes from the list:
 
 ```js
 //access list of classes
@@ -218,7 +218,7 @@ console.log(secondSection); //<section id="second-section"></section>
 
     SVG content doesn't support `parentElement`, but does support `parentNode`.
 
-You can also call methods to create and add new HTML DOM elements to the tree. The `document.createElement()` function is used to create a new HTML element. However this element is _not_ created a part of the tree (after all, you haven't specified where it would put into the page)! Thus you need to also use a method such as `appendChild` to add that new element as a child of another element:
+You can also call methods to create and add new HTML DOM elements to the tree. The `document.createElement()` function is used to create a new HTML element. However this element is _not_ created as a part of the tree (after all, you haven't specified where it would put into the page)! Thus you need to also use a method such as `appendChild` to add that new element as a child of another element:
 
 ```js
 //create a new <p> (not yet in the tree)
