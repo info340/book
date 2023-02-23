@@ -541,7 +541,7 @@
             <section class="normal" id="section-">
 <div id="interactive-react" class="section level1" number="16">
 <h1><span class="header-section-number">Chapter 16</span> Interactive React</h1>
-<p>This chapter discussed how websites built using the React library can be made interactive, with Components that render different content in response to user actions. Specifically, it details how to idiomatically handle <em>events</em>, store dynamic information in a Component’s <em>state</em> using <em>hooks</em>, as well as perform some specific common interactions (such as using forms and downloading data).</p>
+<p>This chapter discussed how websites built using the React library can be made interactive, with Components that render different content in response to user actions. Specifically, it details how to idiomatically handle <em>events</em>, store dynamic information in a Component’s <em>state</em> using <em>hooks</em>, as well as perform some specific common interactions (such as using forms and downloading data)</p>
 <div id="handling-events-in-react" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> Handling Events in React</h2>
 <p>You can handle user interaction in React in the same way you would <a href="dom.html#listening-for-events">using the DOM or jQuery</a>: you register an <em>event listener</em> and specify a <em>callback function</em> to execute when that event occurs.</p>
@@ -779,7 +779,7 @@ One of the most difficult parts of architecting a React application is figuring 
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">CandidateButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">CandidateButton</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> <span class="token function-variable function">handleClick</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
         <span class="token comment">//On click, execute the given callback function (passing in own name)</span>
         props<span class="token punctuation">.</span><span class="token function">callback</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>color<span class="token punctuation">)</span>

@@ -50,7 +50,6 @@ pure-functions
 dom
 the-dom-api
 dom-manipulation
-changing-element-css
 listening-for-events
 javascript-libraries
 including-a-library

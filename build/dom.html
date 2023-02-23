@@ -666,9 +666,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
                       <span class="token punctuation">.</span><span class="token function">hasAttribute</span><span class="token punctuation">(</span><span class="token string">'stroke-width'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//chained anonymous variables</span></code></pre>
 <p>These methods will let you interact with attributes that are <em>not</em> defined by the HTML spec, such as <code>data-</code> attribute. However, they <em>don’t</em> work with certain element attributes (such as the <code>value</code> attribute of an <code>&lt;input&gt;</code> element). Other elements may have their own special DOM properties: see the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model">DOM Documentation</a> for a list of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#HTML_interfaces">HTML interfaces</a>.</p>
 </div>
-<div id="changing-element-css" class="section level4" number="12.2.0.1">
-<h4><span class="header-section-number">12.2.0.1</span> Changing Element CSS</h4>
-<p>It is possible to modify the <strong>CSS classes</strong> (and even inline styling) of an element. But rather than using the <code>class</code> property like with other attributes, you instead access the <strong><code>className</code></strong> property. On modern browsers (IE 10 or later), this property supports methods <code>.add()</code> and <code>.remove()</code> for adding and removing classes from the list:</p>
+<div id="changing-element-css" class="section level4 unnumbered">
+<h4>Changing Element CSS</h4>
+<p>It is possible to modify the <strong>CSS classes</strong> (and even inline styling) of an element. But rather than using the <code>class</code> property like with other attributes, you instead access the <strong><code>classList</code></strong> property. On modern browsers (IE 10 or later), this property supports methods <code>.add()</code> and <code>.remove()</code> for adding and removing classes from the list:</p>
 <pre class="language-js"><code><span class="token comment">//access list of classes</span>
 <span class="token keyword">let</span> classList <span class="token operator">=</span> elem<span class="token punctuation">.</span>classList<span class="token punctuation">;</span>
 
@@ -728,7 +728,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li><p>Note that these properties only deal with <em>HTML elements</em>—text content nodes are ignored. You can instead use equivalent properties <code>parentNode</code> and <code>childNodes</code> to also consider text content nodes.</p>
 <p>SVG content doesn’t support <code>parentElement</code>, but does support <code>parentNode</code>.</p></li>
 </ul>
-<p>You can also call methods to create and add new HTML DOM elements to the tree. The <code>document.createElement()</code> function is used to create a new HTML element. However this element is <em>not</em> created a part of the tree (after all, you haven’t specified where it would put into the page)! Thus you need to also use a method such as <code>appendChild</code> to add that new element as a child of another element:</p>
+<p>You can also call methods to create and add new HTML DOM elements to the tree. The <code>document.createElement()</code> function is used to create a new HTML element. However this element is <em>not</em> created as a part of the tree (after all, you haven’t specified where it would put into the page)! Thus you need to also use a method such as <code>appendChild</code> to add that new element as a child of another element:</p>
 <pre class="language-js"><code><span class="token comment">//create a new &lt;p> (not yet in the tree)</span>
 <span class="token keyword">let</span> newP <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 newP<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">"I'm new!"</span><span class="token punctuation">;</span>
