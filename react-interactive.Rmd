@@ -1,5 +1,5 @@
 # Interactive React
-This chapter discussed how websites built using the React library can be made interactive, with Components that render different content in response to user actions. Specifically, it details how to idiomatically handle _events_, store dynamic information in a Component's _state_ using _hooks_, as well as perform some specific common interactions (such as using forms and downloading data).
+This chapter discussed how websites built using the React library can be made interactive, with Components that render different content in response to user actions. Specifically, it details how to idiomatically handle _events_, store dynamic information in a Component's _state_ using _hooks_, as well as perform some specific common interactions (such as using forms and downloading data)
 
 
 ## Handling Events in React
@@ -314,7 +314,7 @@ function VotingApp(props) {
     );
 }
 
-function CandidateButton() {
+function CandidateButton(props) {
     const handleClick = () => {
         //On click, execute the given callback function (passing in own name)
         props.callback(props.color)
