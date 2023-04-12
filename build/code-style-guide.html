@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2023-02-23" />
+<meta name="date" content="2023-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -423,11 +423,12 @@
 </ul></li>
 <li class="chapter" data-level="A.2" data-path="code-style-guide.html"><a href="code-style-guide.html#css-guidelines"><i class="fa fa-check"></i><b>A.2</b> CSS Guidelines</a>
 <ul>
-<li class="chapter" data-level="A.2.1" data-path="code-style-guide.html"><a href="code-style-guide.html#selectors"><i class="fa fa-check"></i><b>A.2.1</b> Selectors</a></li>
-<li class="chapter" data-level="A.2.2" data-path="code-style-guide.html"><a href="code-style-guide.html#class-names"><i class="fa fa-check"></i><b>A.2.2</b> Class Names</a></li>
-<li class="chapter" data-level="A.2.3" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-properties"><i class="fa fa-check"></i><b>A.2.3</b> Specific Properties</a></li>
-<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#responsive-css-1"><i class="fa fa-check"></i><b>A.2.4</b> Responsive CSS</a></li>
-<li class="chapter" data-level="A.2.5" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-css"><i class="fa fa-check"></i><b>A.2.5</b> Comments in CSS</a></li>
+<li class="chapter" data-level="A.2.1" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing-1"><i class="fa fa-check"></i><b>A.2.1</b> Spacing</a></li>
+<li class="chapter" data-level="A.2.2" data-path="code-style-guide.html"><a href="code-style-guide.html#selectors"><i class="fa fa-check"></i><b>A.2.2</b> Selectors</a></li>
+<li class="chapter" data-level="A.2.3" data-path="code-style-guide.html"><a href="code-style-guide.html#class-names"><i class="fa fa-check"></i><b>A.2.3</b> Class Names</a></li>
+<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-properties"><i class="fa fa-check"></i><b>A.2.4</b> Specific Properties</a></li>
+<li class="chapter" data-level="A.2.5" data-path="code-style-guide.html"><a href="code-style-guide.html#responsive-css-1"><i class="fa fa-check"></i><b>A.2.5</b> Responsive CSS</a></li>
+<li class="chapter" data-level="A.2.6" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-css"><i class="fa fa-check"></i><b>A.2.6</b> Comments in CSS</a></li>
 </ul></li>
 <li class="chapter" data-level="A.3" data-path="code-style-guide.html"><a href="code-style-guide.html#javascript-guidelines"><i class="fa fa-check"></i><b>A.3</b> JavaScript Guidelines</a>
 <ul>
@@ -687,8 +688,19 @@ This chapter is a work in progress, with more guidelines being added as they com
 <div id="css-guidelines" class="section level2" number="20.2">
 <h2><span class="header-section-number">A.2</span> CSS Guidelines</h2>
 <p>One piece of adviace for writing good CSS is to focus on the “minimal” amount of CSS needed to achieve your effect. Work with the browser and its defaults, rather than trying to overpower it. Perhaps surprisingly, <em>removing</em> rules or properties is usually a better fix to a problem then adding additional styling.</p>
-<div id="selectors" class="section level3" number="20.2.1">
-<h3><span class="header-section-number">A.2.1</span> Selectors</h3>
+<div id="spacing-1" class="section level3" number="20.2.1">
+<h3><span class="header-section-number">A.2.1</span> Spacing</h3>
+<ul>
+<li><p>When writing CSS rules, put the <code>{</code> of a rule on the same line as the selector, and indent the properties of the rule a consistent amount. Put a space after the <code>:</code> in a rule, but not before. Rules should thus look like:</p>
+<pre class="language-css"><code><span class="token selector">selector</span> <span class="token punctuation">{</span>
+    <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
+    <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that you can use VS Code to automatically “indent” your code using the <code>format document</code> command.</p></li>
+</ul>
+</div>
+<div id="selectors" class="section level3" number="20.2.2">
+<h3><span class="header-section-number">A.2.2</span> Selectors</h3>
 <ul>
 <li><p>Use selectors that are <em>only as specific as they need to be</em>.</p>
 <pre class="language-css"><code><span class="token comment">/* Do this */</span>
@@ -722,8 +734,8 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token punctuation">}</span></code></pre></li>
 </ul>
 </div>
-<div id="class-names" class="section level3" number="20.2.2">
-<h3><span class="header-section-number">A.2.2</span> Class Names</h3>
+<div id="class-names" class="section level3" number="20.2.3">
+<h3><span class="header-section-number">A.2.3</span> Class Names</h3>
 <ul>
 <li><p><strong>Use descriptive class names</strong>. Classes should describe what or why that styling is being applied.</p>
 <pre class="language-css"><code><span class="token comment">/* Do this */</span>
@@ -754,15 +766,15 @@ This chapter is a work in progress, with more guidelines being added as they com
 <span class="token selector">.alert-warning</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre></li>
 </ul>
 </div>
-<div id="specific-properties" class="section level3" number="20.2.3">
-<h3><span class="header-section-number">A.2.3</span> Specific Properties</h3>
+<div id="specific-properties" class="section level3" number="20.2.4">
+<h3><span class="header-section-number">A.2.4</span> Specific Properties</h3>
 <ul>
 <li><p>Avoid using <code>float</code>; use flexboxes or grids for positioning. It is rare to actually have “floating” content (though it can happen with image inserts inside of large text-based articles).</p></li>
 <li><p>Avoid using <code>position: absolute</code>. This will produce layouts that are not responsive or accessible to multiple devices. Work with the browser’s layout instead by using relative layouts.</p></li>
 </ul>
 </div>
-<div id="responsive-css-1" class="section level3" number="20.2.4">
-<h3><span class="header-section-number">A.2.4</span> Responsive CSS</h3>
+<div id="responsive-css-1" class="section level3" number="20.2.5">
+<h3><span class="header-section-number">A.2.5</span> Responsive CSS</h3>
 <ul>
 <li><p>Use a <strong>mobile-first</strong> approach to styling. This means that general rules go at the top and apply to mobile devices, and then use media queries to specify style alterations for larger displays.</p></li>
 <li><p>Media queries check against minimize size only:</p>
@@ -783,8 +795,8 @@ This chapter is a work in progress, with more guidelines being added as they com
 <li><p>Media queries should be used to <em>modify</em> the mobile device styling, not to replace it completely. Don’t “reset” all of the rules from the mobile styling, just override and add-to the few rules needed to make the page effectively responsive. Your page should have a similar style/theme no matter what device is being used to view the content!</p></li>
 </ul>
 </div>
-<div id="comments-in-css" class="section level3" number="20.2.5">
-<h3><span class="header-section-number">A.2.5</span> Comments in CSS</h3>
+<div id="comments-in-css" class="section level3" number="20.2.6">
+<h3><span class="header-section-number">A.2.6</span> Comments in CSS</h3>
 <ul>
 <li><p>You do not need a lot of comments for CSS code; your rules should be self-explanatory because you’ve used descriptive class names.</p></li>
 <li><p>Use comments to help organize or “sign-post” your code, to group rules together in your <code>.css</code> file.</p>

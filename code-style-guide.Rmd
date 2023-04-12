@@ -179,6 +179,19 @@ This chapter provides a number of specific guidelines following the opinions of 
 
 One piece of adviace for writing good CSS is to focus on the "minimal" amount of CSS needed to achieve your effect. Work with the browser and its defaults, rather than trying to overpower it. Perhaps surprisingly, _removing_ rules or properties is usually a better fix to a problem then adding additional styling.
 
+### Spacing
+
+- When writing CSS rules, put the `{` of a rule on the same line as the selector, and indent the properties of the rule a consistent amount. Put a space after the `:` in a rule, but not before. Rules should thus look like:
+
+    ```css
+    selector {
+        property: value;
+        property: value;
+    }
+    ```
+
+    Note that you can use VS Code to automatically "indent" your code using the `format document` command.
+
 ### Selectors
 
 - Use selectors that are _only as specific as they need to be_.

@@ -83,6 +83,7 @@ user-authentication
 code-style-guide
 html-guidelines
 css-guidelines
+spacing-1
 selectors
 class-names
 specific-properties
