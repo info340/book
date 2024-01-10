@@ -55,11 +55,9 @@ javascript-libraries
 including-a-library
 example-jquery
 es6
-es6-classes
-arrow-functions
-destructuring
+es6-syntax-features
 modules
-other-features
+es6-classes
 react
 getting-set-up-create-react-app
 jsx

@@ -1,11 +1,496 @@
 # ES6+ Features {#es6}
-As discussed in [Chapter 10](#history-and-versions), the ECMAScript specification for the JavaScript language has gone through several different versions, each of which adds new syntax and features to try and make the language more powerful or easier to work with. In 2015, a new version of the language was released&mdash;officially called "ECMAScript 2015", most developers refer to it by the working name **"ES6"** (e.g., version 6 of the language).
+As discussed in [Chapter 10](#history-and-versions), the ECMAScript specification for the JavaScript language has gone through several different versions, each of which added new syntax and features to try and make the language more powerful, expressive, or easier to work with.
 
-This chapter introduces some of the most notable and useful features introduced in ES6 and later versions of JavaScript&mdash;particularly those that will be utilized by the React framework (discussed in the following chapters).
+After the JavaScript language was initially written in 1995 and then iterated on through the late 90s, it mostly stayed consistent (with some small changes) for about a decade&mdash;until 2009 with the release of JavaScript v5. The next major version wasn't released until 2015&mdash;although officially called "ECMAScript 2015", most developers refer to it by the working name **"ES6"** (e.g., version 6 of the language). ES6 introduced a host of notable and useful syntactic features&mdash;including `let` and `const`! Since then the language has been updated annually, with each version named after its release year (_ES 2016_ was released in 2016, _ES 2017_ released in 2017, etc).
 
-<p class="alert alert-warning">ES6 is [mostly supported by modern browsers](http://kangax.github.io/compat-table/es6/), with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won't be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the [Babel](https://babeljs.io/) compiler, which will "_transpile_" JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it's automatically performed by provided build tools), but it is also possible to [install](https://babeljs.io/docs/setup/#installation) and utilize the Babel compiler yourself.</p>
+This chapter introduces some of the most notable and useful features introduced in ES6 and later versions of JavaScript&mdash;particularly those that will be needed when using the React framework (discussed in the following chapters).
+
+<p class="alert alert-warning">At this point ES6 is mature enough that it is [almost entirely supported by modern browsers](http://kangax.github.io/compat-table/es6/), with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won't be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the [Babel](https://babeljs.io/) compiler, which will "_transpile_" JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it is automatically performed by provided build tools), but it is also possible to [install](https://babeljs.io/docs/setup/#installation) and use the Babel compiler yourself.</p>
+
+
+## ES6+ Syntax Features
+
+> Syntactic Sugar causes cancer of the semicolon - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
+
+Many of the ES6 features are _syntactic shortcuts_&mdash;they provide syntax for writing functions and operations in a more concise way. These features aren't necessary for writing JavaScript, but they can make your code easier to write and to read (once you know the syntax), and are considered the "normal" way of writing modern JavaScript. This section discusses a few of the most common syntactic features.
+
+
+### Arrow Functions {-}
+As described in [Chapter 11](#functional-programming), JavaScript lets you define functions as _anonymous values_:
+
+```js
+const sayHello = function(name) {
+  return 'Hello '+name;
+}
+```
+
+As you have seen, the use of anonymous functions is incredibly common in JavaScript, particularly when used as anonymous callbacks. Because this is so common, ES6 introduced a simpler, more concise shortcut syntax for quickly specifying anonymous functions. Though officially called [lambda functions](https://en.wikipedia.org/wiki/Anonymous_function), they are more commonly known as [**arrow functions**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), because of how they utilize an "arrow" symbol **`=>`**:
+
+```js
+const sayHello = (name) => {
+    return 'Hello '+name;
+}
+```
+
+To turn an anonymous function into an _arrow function_, you just remove the `function` keyword from the definition, and place an arrow `=>` between the parameter list and the block (indicating that the parameter list "goes to" the following block). This saves you a couple of characters when typing!
+
+It's also possible to omit the `()` around the argument list in an arrow function:
+
+```js
+//may omit the parentheses around the argument -- but don't do this!
+const sayHello = name => {
+    return 'Hello '+name;
+}
+
+//requried to include the parentheses if there are no arguments
+const printHello = () => {
+    console.log('Hello world');
+}
+```
+
+However, I find this makes the syntax harder to read (when reading the the text, it looks like a variable declaration until you get to the `=>`). So you should always include the parentheses `()` on the parameter list as it helps with readability, as well as making it easier to adjust the parameters later&mdash;thus meeting the requirements of [good code style](#code-style-guide).
+
+Arrow functions can be particularly nice when doing anonyous callback functions (literals):
+
+```js
+const array = [1,2,3]; //an array to work with
+
+//function declaration syntax
+array.map(function(num) {
+  return num * 2; //multiply each item by 2
+});
+
+//arrow function syntax
+array.map((num) => {
+  return num * 2; //multiply each item by 2
+});
+```
+
+Using an arrow function makes it slightly more obvious that the function is taking an input and then producing (`=>`) an output&mdash;letting you focus on the method of interest (such as `.map()`) rather than the callback. However, it does make it less obvious that the argument to `.map()` is a _function_ until you are used to identifying the `=>` arrow.
+
+<p class="alert alert-info">Arrow functions are _lexically scoped_, meaning that the value of the `this` keyword is retained even inside of the function. This can be important in some contexts (such as [classes](#es6-classes)), and is one of the reasons to prefer arrow functions when defining callback functions).</p>
+
+For very simple functions, arrow functions can be written to be even _more_ compact: if the function body has only a single statement, you can leave the `{}` off the block, as well omit the `return`. This is called using a **concise body** format. The function will return the result of the of the single statement, which will either be an expression or `undefined`. For example:
+
+```js
+//function declaration syntax
+function makeFullName(first, last) {
+  return first + " " + last;
+}
+
+//block body arrow function syntax
+const makeFullName = (first, last) => {
+  return first + " " + last;
+}
+
+//concise body arrow function syntax
+const makeFullName = (first, last) => first + " " + last;
+```
+
+Note that if the expression of a concise-body arrow function returns `undefined` (such as from a `console.log`) statement, then the arrow function will also return `undefined`.
+
+```js
+//concise body arrow function syntax
+const sayHello = (name) => console.log("Hello" + name);
+
+//that is identical to use block body syntax. Yes, returning the result of
+//console.log() is odd
+const sayHello = (name) => {
+  return console.log("Hello" + name);
+}
+```
+
+Using a concise body synatx could save you a few more characters (and even line breaks!). However, it can also make the function much _more difficult to read_&mdash;particularly when it has more than 1 argument&mdash;and harder to identify as a function because the block isn't obvious. Concise body functions are also _harder to modify_&mdash;they can only have a single statement, so if you want to have the function to more than 1 thing&mdash;including using a loop or `if` statment&mdash;you would need to convert it into a block body anyway. (Trying to make that one expression really complex is also poor style). And because you can't add additional lines, it makes it _harder to debug_ since you can't add `console.log` statements or otherwise take debugging steps. For this reason, you should almost never use concise-body arrow function syntax except on the very simplest of callbacks&mdash;it is always better to use block body syntax.
+
+
+Overall, arrow functions (specifically block body arrow functions) are clean syntactic shortcut that are the "normal" way of writing anonyous callback functions&mdash;you will see them all over examples and professionally written code. "Top-level" functions should be written using the regular function declaration syntax, but callback functions should _always_ be written using block-body arrow functions.
+
+
+### Destructuring {-}
+ES6 also introduced [**destructing assignments**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. This is called "destructuring" because you are "unpacking" the values of an array into a bunch of different variables.
+
+To destructure an array in JavaScript, you write the variables you wish to assign values to inside of square brackets **`[]`** on the _left-hand side_ of the assignment&mdash;almost like you are assigning to an array!
+
+```js
+const myArray = [1, 2, 3];
+const [x, y, z] = myArray; //assign myArray elements to `x`, `y`, `z` respectively
+console.log(x); //=> 1;
+console.log(y); //=> 2;
+console.log(z); //=> 3;
+```
+
+When destructuring an array, values are assigned _in order_&mdash;the value at index 0 goes to the first variable, the value at index 1 goes to the second variable, etc.
+
+It's possible for the "list of variables" and the size of the destructured array to not match. If there are more values in the array than there are variables, then the extra values will not be assigned to variables (they will be ignored). there are more variables than values in the array, then the excess variables will be `undefined` (because the value from that position in the array is `undefined`).
+
+```js
+const bigArray = [1, 2, 3, 4, 5];
+const [a, b] = bigArray; //only the first 2 elements will be assigned
+console.log(a); //=> 1;
+console.log(b); //=> 2;
+//other elements are not assigned
+
+const smallArray = [1, 2]
+const [x, y, z] = smallArray;
+console.log(x); //=> 1;
+console.log(y); //=> 2;
+console.log(z); //=> undefined; (because smallArray[2] is undefined!)
+```
+
+It is also possible to destructure _objects_ using a similar syntax, except that you put the variables you wish to assign to inside of **`{}`** on the _left-hand side_ of the assignment&mdash;as if you were assigning to an object!
+
+```js
+const myObject = {a: 1, b: 2, c: 3};
+const {a, b, c} = myObject;
+console.log(a); //=> 1; myObject.a
+console.log(b); //=> 2; myObject.b
+console.log(c); //=> 3; myObject.c
+```
+
+Note that when destructuring an object, the variables specified on the left side of the assignment are assigned the value from the matching _property_ in the object. Thus in `const {a, b, c} = myObject`, the `a` is assigned `myObject.a`, the `b` is assigned `myObject.b`, etc. The order of the elements on either side of the equation doesn't matter, because object properties are unordered!
+
+```js
+const myObject = {a: 1, b: 2, c: 3};
+const {c, b, a} = myObject; //"order" of variables doesn't matter
+console.log(a); //=> 1
+console.log(b); //=> 2;
+console.log(c); //=> 3;
+```
+
+There is also syntax to assign object properties to different variable names as well, (see [the destructuring documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) for details).
+
+As with array destructuring, the list of variables and the number of object properties do not need to match. Any unmatched object properties will not be assign to variables, and any variables without matching object properties will not be assigned a value (will remain `undefined`).
+
+Destructuring is a useful syntactic shortcut for doing multiple assignments. In React it is often used to create local variables for easier coding than having to constantly write `object.property`:
+
+```js
+//a function that expects an object as an argument
+function getBMI(personObject) {
+  const {height, weight} = personObject; //destructure to local variables
+  //this avoids needing to refer to `personObject.height`
+
+  return 703*weight/(height*height); //calculate and return value
+}
+
+const person = {name: 'Ada', height: 64, weight: 135} //an example person
+const adaBMI = getBMI(person); //pass in the object
+```
+
+In fact, this behavior is so common that it also possible to _destructure function parameters_ in the function declaration itself! To do this, you replace the object name in the parameter list with the set of destructured variables (what would go on the left-hand side of the destructuring assignment):
+
+```js
+//a function with the object argument destructured
+//notice the `{} in the argument list`
+function getBMI( {height, weight} ) { //implicitly calls `{height, weight} = personObject`
+
+  return 703*weight/(height*height); //calculate and return value
+}
+
+const person = {name: 'Ada', height: 64, weight: 135} //an example person
+const adaBMI = getBMI(person); //pass in the object
+```
+
+To be clear: in the second example, the `getBMI()` function still expects _only 1 argument_&mdash;that single argument is just destructured into two variables when the function is called.
+
+This syntax can save a line of code, but it also makes it easier to misread the function and think it takes more arguments than it does (if you miss the `{}` in the argument list). On the other hand, this syntax does make it clear exactly what properties the expected object will need to have&mdash;this function clearly defines its API that the "person object" will need to have a `height` and a `weight` (and not just e.g., a `name` or an `age`). As with any alternate syntax, there are trade-offs in terms of code style and readability. Nevertheless, this last syntax form is often used in React (where there are many functions that expect a single object, but you need to access their individual properties).
+
+
+### Spreading {-}
+Introduced in ES6 but expanded in ES 2018, the [**spread operator**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) (an ellipsis **`...`**) lets you reference "the elements of" an existing array or object when declaring a new value. It "expands" the contents of the array or object into the new value. You write it as a unary operator, putting the three dots in front of the value you wish to expand:
+
+```js
+const originalArray = ['a', 'b', 'c', 'd'];
+
+//new array contains "the elements of" `originalArray`
+const newArray = [...originalArray, 'e', 'f'];
+
+console.log(newArray) //['a', 'b', 'c', 'd', 'e', 'f']
+```
+
+In this example the `newArray` contains all the elements of the `originalArray`, as well as additional elements. Indeed it is particularly useful when you want to make a "copy" of an arrary or object, with or without additional values.
+
+```js
+//assigning an array to a different variable doesn't create a new array!
+const myArray = ['a', 'b', 'c', 'd'];
+const secondArray = myArray; //just a new label for the same value
+myArray[0] = 'Z'; //changing the original variable changes second variable as well
+console.log(secondArray[0]) //'Z'
+
+//use spread to create an actual copy that is a different array
+const clonedArray = [...myArray];
+myArray[1] = 'Q'; //modify the original variable
+console.log(clonedArray[1]); //'b'; the clonedArray is different
+```
+
+The spread operator can also be used in the creation of new objects; spreading the elements of an object spreads both the property keys and the values:
+
+```js
+const person = {name: 'Ada', height: 64, weight: 135}
+
+const copyOfPerson = {...person}; //clone the object
+console.log(copyOfPerson); // {name: 'Ada', height: 64, weight: 135}
+
+//all off the properties are "spread" into the new object
+const personWithHat = {hat: 'bowler', ...person}
+console.log(person); //has properties 'name', 'height', 'weight'
+console.log(personWithHat); //has properties 'hat', 'name', 'height', 'weight'
+```
+
+When combined with _destructuring_, the spread operator can also refer to the "rest of" the elements in an array or objec that have not been assigned to specific variables. In this situation it is often referred to as a **rest operator**.
+
+```js
+const dimensions = [10, 20, 30, 40];
+//extra values are "spread" into destructuring slots
+const [width, height, ...others] = dimensions
+console.log(width);  //=> 10
+console.log(height); //=> 20
+console.log(others);   //=> [30, 40]; the rest of the values!
+```
+
+Finally, the spread operator can also be used to specify that a function can take an inconsistent number of arguments, and to gather all of these values into a single array. You do this by including the spreading operator in the function declaration. The arguments will then be gathered into that single variable&mdash;almost the opposite of destructuring! (And yes the fact that the "spread" operator is "gathering" values is confusing).
+
+```js
+//a function that logs out all of the arguments
+function printArgs(...argArray){
+    //all the arguments will be grouped into a single array `args`
+    for(const arg of argArray) {
+      console.log(arg); //can log out all of them, no matter how many!
+    }
+}
+
+printArgs('a', 'b', 'c'); //=> "a" "b" "c"
+printArgs(1, 2, 3, 4, 5, 6); //=> "1" "2" "3" "4" "5" "6"
+
+
+//a function that adds up all the arguments (no matter how many!)
+function sum(...numbers) {
+    //numbers is an array, so we can `reduce()` it!
+    const total = numbers.reduce((runningTotal, num) => {
+        return runningTotal + num; //new total
+    }, 0); //start at 0
+
+    return total;
+
+    //or as one line with a concise arrow function (not pretty!)
+    return numbers.reduce((total, n) => total+n);
+}
+
+sum(3 ,4, 3); // => 10
+sum(10, 20, 30, 40); // => 100
+```
+
+The spread operator is not frequently used this way with React, but it's handy to know about!
+
+
+### Template Strings {-}
+In ES6, you can declare Strings that contain embedded expressions, allowing you to "inject" an expression directly into a string (rather than needing to concatenate the String with that expression). These are known as [**template strings**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (or _template literals_). Template strings are written in back ticks (**``` `` ```**) rather than quotes, with the injected expressions written inside of a **`${}`** token:
+
+```js
+const name = 'world';
+const greeting = `Hello, ${name}!`; //template string
+console.log(greeting); //=> "Hello, world!"
+```
+
+Template strings can also include line breaks, allowing you to make multi-line strings!
+
+Note that you can put _any_ expression inside the `${}` token; however, it's best practice to keep the expression as simple as possible (such as by using a local variable) to support readability:
+
+```js
+const name = 'world';
+
+//greeting with capitalization. Don't do this!
+const greeting = `Hello, ${name.substr(0,1).toUpperCase() + name.substr(1)}!`
+console.log(greeting); //=> "Hello, World!";
+
+//do this instead!
+const capitalizedName = name.substr(0,1).toUpperCase() + name.substr(1);
+const greeting = `Hello, ${capitalizedName}`
+console.log(greeting); //=> "Hello, World!";
+```
+
+One more example:
+
+```js
+//function expects a name, an animal, and a verb
+function makeExcuse(name, animal, verb) {
+  const email = `Hello Professor ${name},
+
+Please excuse my missing assignment, as my ${animal} ate it.
+
+${verb} you later,
+A Student`;
+
+  return email;
+}
+
+const excuse = makeExcuse('Ross', 'Lemur', 'Smell');
+```
+
+
+## Modules
+So far, you've mostly been writing all of your JavaScript code in a single script file (e.g., `index.js`), even if you have included some other libraries like Bootstrap or JQuery via additional `<script>` tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug ("where _was_ that function defined?"), can introduce problems with the shared global namespace ("did I already declare a `user` variable?"), and overall mixes code in a way that violates the _Separation of Concerns_ principle.
+
+The solution to this problem is to split up your application's code into separate **modules** (scripts), each of which is responsible for a separate piece of functionality. And rather than loading each module through a separate `<script>` tag (potentially leading to ordering and dependency issues while continuing to pollute the global namespace), you can define each module as a self-contained script that explicitly "imports" (loads) the functions and variables it needs from other modules. This allows you to better organize your program as it gets large.
+
+While separating code into modules is a common in the Node.js environment, ES6 adds syntax that allows you to treat individual `.js` files as modules that can communicate with one another. These are known as [**ES6 Modules**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules).
+
+
+A browser loads modules differently than "regular" scripts; to load some code as a module, you specify a `type="module"` attribute in the `<script>` tag for that module:
+
+```html
+<!-- load scripts that can import from other modules -->
+<script type="module" src="path/to/firstModule.js"></script>
+<script type="module" src="path/to/secondModule.js"></script>
+```
+
+<p class="alert alert-warning">For security reasons, modules are not able to communicate when a web page is accessed via the `file://` protocol. In order to use modules, you will need to access the page through a a web server, such as by using a [development server](#development-server) like `live-server`.</p>
+
+However, most commonly you will _not_ use modules directly inside of the browser. Instead, modules will be loaded and compiled through an external build tool such as [webpack](https://webpack.js.org/). In these situations, you'll be using the _module loader_ provided by the Node JavaScript runtime. This loader does introduce a few quirks in syntax, which are noted in the syntax explanation.
+
+<div class="alert alert-info">This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js by default uses an alternate module loading system called [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules). This uses the built-in method `require()` to load a module (which returns a single "exported" variable as a result). Values are exported from a module by assigning them to the `module.exports` global. This course will exclusively utilize ES6 Modules&mdash;you should not use `require()`&mdash;but it's good to be aware of the alternate CommonJS approach when searching for help.</div>
+
+
+### Module Syntax {-}
+As in Java or Python, a JavaScript module is able to "load" external modules or libraries by using the **`import`** keyword:
+
+```java
+//Java example: import the `Random` variable from `java.util` module
+import java.util.Random;
+```
+
+```python
+# Python example: import the `randint` variable from `random` module
+from random import randint
+```
+
+```js
+//JavaScript:
+//import the `Random` variable from a `util.js` module
+import { Random } from './util.js';
+
+//import the `randint` and `randrange` variables from a `random.js` module
+import { randint, randrange } from './random.js'
+```
+
+This is most common version of the ES6 `import` syntax (called a **named import**): you write the keyword `import`, following by a set of braces `{ }` containing a comma-separated sequence of variables you wish to "import" from a particular module. This is followed by the `from` keyword, followed by a string containing the **relative path** to the module script to import. Note that in Node-based systems (such as the React build environment) including the extension of the module script is optional (by default, the module loader will look for files ending in `.js`).
+
+- Be sure to include the `./` to indicate that you're loading a file from a particular directory. If you leave that off, the Node module loader will look for a module installed on the _load path_ (e.g., in `node_modules/`). You do omit the `./` when you load third-party libraries such as jQuery or React:
+
+    ```js
+    //with jquery installed in `node_modules/`
+    //import the `$` and `jQuery` variables
+    import { $, jQuery } from 'jquery'; //no `./` in front of library name
+    ```
+
+Note that the variables imported from a modules can be of any type&mdash;strings, objects, and most commonly functions.
+
+
+Any variable that a module `import`s need to be declared as available in the module it is coming from&mdash;simlar to using the `public` keyword in Java. To do this, you **export** the variable (so that it can be "imported" elsewhere) by using the **`export`** keyword, placed in front of the variable declaration:
+
+```js
+/*** my-module.js ***/
+
+//define and export variables for use elsewhere
+export const question = "Why'd the chicken cross the road?";
+export const answer = "To get to the other side";
+
+export function laugh() { //an exported function
+    console.log("hahaha");
+}
+```
+
+This is called a **named export** (in contrast to a _default export_ described below). Once variables have been exported, they can be imported by another script file:
+
+```js
+/*** index.js ***/
+
+//import all 3 variables from `my-modules.js`
+//now all 3 variables exist in this module and can be used
+import { question, answer, laugh } from './my-module.js';
+
+console.log(question); //=> "Why'd the chicken cross the road?"
+console.log(answer); //=> "To get to the other side"
+laugh(); //"hahaha"
+```
+
+Importantly, _only_ the variables you `export` are made available to other modules! Anything that does not have that keyword will not be available&mdash;it will remain "private" to its own module. The best practice is to only `export` values that you are sure need to be imported and used by other modules.
+
+Above is the basic syntax for using _named_ imports and exports. But there are other syntactical options that can be included when using `import` and `export`.
+
+For example, you can use the **`as`** keyword to "alias" a value either when it is exported (so it is shared with a different name) or when it is imported (so it is loaded and assigned a different name). This is particularly useful when trying to produce a clean API for a module (so you `export` values with consistent names, even if you don't use those internally), or when you want to `import` a variable with a very long name.
+
+```js
+/*** my-module.js ***/
+export function foo() { return 'foo'; } //standard named export
+
+//provide an "alias" (consumer name) for value when exporting
+export { bar as yourBar };
+
+//will not be available (a "private" function)
+function baz() { return 'baz'; }
+```
+
+```js
+/*** index.js ***/
+
+//provide "alias" for value when importing!
+import {foo as myFoo} from './my-module.js';
+myFoo(); //=> 'foo'
+foo(); //error, does not exist (aliased the variable as `myFoo`)
+
+import { yourBar } from './my-module.js'; //import value by exported name
+yourBar() //=> 'bar'
+
+import { bar } from './my-module.js'; //error, no value `bar` exported
+```
+
+It is possible to `import` _everything_ that was exported by a module using **`import * as`** syntax. You specify an object name that will represent the values exported module (e.g., `theModule` in the below example), and each exported variable will be a _property_ of that object. This can be useful when you may be adding extra `exports` to a module during development, but don't want to keep adjusting the `import` statement, but it does mean that the rest of the code may be harder to read since you need to unpack the properties from the object.
+
+```js
+/*** index.js ***/
+import * as theModule from './my-module'; //import everything that was exported
+                                          //loads as a single object with values
+                                          //as properties
+theModule.foo(); //=> 'foo'
+theModule.yourBar(); //=> 'bar'
+theModule.baz(); //Error (private function so wasn't exported)
+```
+
+Finally, each module can also `export` a _single_ (just one!) **default** variable, which provides a slight shortcut when importing the variable from that module. You specify the _default export_ by including the **`default`** keyword immediately after `export`:
+
+```js
+/*** my-module.js ***/
+//this function is the "default" export
+export default function sayHello() {
+    return 'Hello world!';
+}
+```
+
+```js
+/*** index.js ***/
+import greet from './my-module'; //import the default value
+                                 //`greet` is alias defined in this module
+
+greet(); //=> "Hello world!"
+```
+
+When importing a `default` export, you don't include the `{}` with the name of the variable, but instead provide a variable name ("alias") you wish to refer to that exported value by.
+
+- Note that it is also possible to make anonymous values into `default` exports:
+
+    ```js
+    /*** animals.js ***/
+    export default ['lion', 'tiger', 'bear']; //export anonymous array
+    ```
+
+The `default` export technique is particularly common in object-oriented frameworks like React, or in large frameworks like Bootstrap with lots of different inddependent modules. Using default exports allows you to make each JavaScript module contain the code for a single function or `class`; that single function then is made the `default` export, allowing other modules to import it quickly and easily as e.g., `import MyComponent from './MyComponent.js'`.
+
+That said, in general, I recommend you use _named imports_ in most situations&mdash;it's less syntax to remember and reduces the number of decisions made around whether something is default or not. You need to be aware of `default` exports because many third-party libraries use them, but for your own work its often best to stick with named imports.
+
 
 ## Classes {#es6-classes}
+<p class="alert alert-warning">Classes are no longer commonly used in React and are somewhat discouraged in JavaScript. This section is retained for historical and informational purposes, but can be considered "deprecated" for this course.</p>
+
 While JavaScript is primarily a _scripting_ and functional language, it does support a form of **Object Oriented Programming** like that used in the Java language. That is, we are able to define **classes** of data and methods that act on that data, and then **instantiate** those classes into **objects** that can be manipulated. ES6 introduces a new `class` syntax so that creating classes in JavaScript even _looks_ like how you make classes in Java!
 
 ### Why Classes? {-}
@@ -20,7 +505,7 @@ In particular, classes _encapsulate_ two things:
 In JavaScript, an Object's properties can be seen as the _attributes_ of that object. For example:
 
 ```javascript
-let person = {
+const person = {
    name: 'Ada',
    age: 21,
    costume: 'Cheshire Cat'
@@ -151,8 +636,8 @@ And here is how you would use this class:
 
 ```javascript
 //instantiate two new People objects
-let aliceObj = new Person("Alice", 21);
-let bobObj = new Person("Bob", 42);
+const aliceObj = new Person("Alice", 21);
+const bobObj = new Person("Bob", 42);
 
 //call method on Alice (changing her attributes)
 aliceObj.haveBirthday();
@@ -206,7 +691,7 @@ class Cat {
 function petAnimal(animal) { /*...*/ }
 
 //at the "main" level, instantiate the classes and call the functions
-let fido = new Dog();
+const fido = new Dog();
 petAnimal(fido); //pass this Dog object to the function
 ```
 
@@ -253,7 +738,7 @@ class Husky extends Dog {
 }
 
 //usage
-let dog = new Husky("Harry", 60); //make a Husky
+const dog = new Husky("Harry", 60); //make a Husky
 dog.sit(); //call inherited method
 dog.throwFootball(); //call own method
 dog.bark(); //call own (overridden) method
@@ -268,88 +753,12 @@ The `Husky` class is also able to **override** its parents methods, defining it'
 <p class="alert alert-info">Note that despite this discussion, _JavaScript is not actually an object-oriented language_. JavaScript instead uses a [prototype system](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes) for defining types of Objects, which allows what is called [prototypical inheritance](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance). The ES6 `class` keyword doesn't change that: instead, it is simply a "shortcut syntax" for specifying Object prototypes in the same way that has been supported since the first version of JavaScript. The `class` keyword makes it easy to define something that looks and acts like an OOP class, but JavaScript isn't object-oriented! See [this (detailed) explanation](http://aaditmshah.github.io/why-prototypal-inheritance-matters/) for further discussion.</p>
 
 
-## Arrow Functions
-As described in [Chapter 11](#functional-programming), JavaScript lets you define functions as _anonymous values_:
-
-```js
-let sayHello = function(name) {
-  return 'Hello '+name;
-}
-```
-
-As you have seen, the use of anonymous functions is incredibly common in JavaScript, particularly when used as anonymous callbacks. Because this is so common, ES6 introduced a simpler, more concise _shortcut syntax_ for quickly specifying anonymous functions. Though officially called [lambda functions](https://en.wikipedia.org/wiki/Anonymous_function), they are more commonly known as [**arrow functions**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), because of how they utilize an "arrow" symbol **`=>`**:
-
-```js
-let sayHello = (name) => {
-    return 'Hello '+name;
-}
-```
-
-To turn an anonymous function into an _arrow function_, you just remove the `function` keyword from the definition, and place an arrow `=>` between the parameter list and the block (indicating that the parameter list "goes to" the following block). This saves you a couple of characters when typing.
-
-And for simple callback functions, you can make this even _more_ compact:
-
-<div class="list-condensed">
-1. If the function takes only a single parameter, you can leave off the `()` around the parameter list.
-2. If the function body has only a single statement, you can leave the `{}` off the block.
-3. If the function body has only a single statement _AND_ that statement returns a value, you can leave off the `return` keyword (the "single statement" arrow function returns the result of the last statement, which will either be an expression or `undefined`).
-</div>
-
-Thus the above `sayHello` method could be written using **concise body** format as:
-
-```js
-let sayHello = name => 'Hello '+name;
-```
-
-- I recommend you always leave the parentheses `()` on the parameter list, as it helps with readability (and makes it easier to adjust the parameters later)!
-
-Note that if a function takes no parameters, you **must** include the `()` to indicate it is an arrow function:
-
-```js
-//normal function syntax
-let printHello = function() {
-    console.log('Hello world');
-}
-
-//arrow syntax
-let printHello = () => {
-    console.log('Hello world');
-}
-
-//concise body
-let printHello = () => console.log('Hello world');
-```
-
-- Despite the above example, it's better style to include the `{}` around a function body that doesn't return a value.
-
-Arrow functions are particularly useful for specifying _anonymous callback functions_:
-
-```js
-let array = [1,2,3]; //an array to work with
-
-//normal function
-array.map(function(num) {
-  return num*2; //multiply each item by 2
-});
-
-//arrow syntax
-array.map(num => {
-  return num*2; //multiply each item by 2
-});
-
-//concise body
-array.map(num => num*2);
-```
-
-<p class="alert alert-info">Arrow functions are great and you should always use them for anonymous callback functions (if your target platform suppo
- them). They have quickly become the standard way of writing JavaScript, and thus you will see them all over examples and professionally written code.</p>
-
 ### Working with <code>this</code> {-}
 
 In JavaScript, functions are called on **Objects** by using _dot notation_ (e.g., `myObject.myFunction()`). Inside a function, you can refer to the Object that the function was called on by using the **`this`** keyword. `this` is a local variable that is _implicitly assigned_ the Object as a value.
 
 ```js
-let doggy = {
+const doggy = {
   name: "Fido",
   bark: function() {
       console.log(this.name, "woofs"); //`this` is object the function was called on
@@ -365,13 +774,13 @@ But because functions are values and so can be assigned to multiple variables (g
 
 ```js
 //An object representing a Dog
-let doggy = {
+const doggy = {
   name: "Fido",
   bark: function() { console.log(this.name + " woofs"); }
 }
 
 // An object representing another Dog
-let doggo = {
+const doggo = {
   name: "Spot",
   bark: function() { console.log(this.name + " yips")}
 }
@@ -432,286 +841,14 @@ myFunction = myFunction.bind(thisValue);
 
 This is a common pattern in React (and has some minuscule performance benefits), but for this class you should stick with arrow functions for cleanliness and readability.</div>
 
-<p class="alert">Arrow functions are not optional. **Always use arrow functions for anonymous callbacks!**</p>
 
-## Destructuring and Spreading {#destructuring}
-ES6 also introduced [**destructing assignments**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment), which allow you to assign each element of an array (or each property of an object) into separate variables all in a single operation. This is called "destructuring" because you are "unpacking" the values of an array into a bunch of different variables.
+This chapter has described a few of the more common and potentially useful ES6 features. However, remember that most of these are just "syntactic shortcuts" for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don't need to use these features in your code&mdash;though they can be helpful, and they will often show up in how we use libraries such as React.
 
-To destructure an array in JavaScript, you write the variables you wish to assign values to inside of square brackets **`[]`** on the _left-hand side_ of the assignment&mdash;almost like you are assigning to an array!
 
-```js
-let myArray = [1, 2, 3];
-let [x, y, z] = myArray; //assign myArray elements to `x`, `y`, `z` respectively
-console.log(x); //=> 1;
-console.log(y); //=> 2;
-console.log(z); //=> 3;
-```
-
-It is also possible to destructure _objects_ using a similar syntax:
-
-```js
-let myObject = {a: 1, b: 2, c: 3};
-let {a, b, c} = myObject;
-console.log(a); //=> 1
-console.log(b); //=> 2;
-console.log(c); //=> 3;
-```
-
-Note that when destructuring an object, the variables specified on the left side of the assignment are assigned the value from the matching _property_ in the object. Thus in `let {a, b, c} = myObject`, the `a` is assigned `myObject.a`, the `b` is assigned `myObject.b`, etc. The order of the elements on eitehr side of the equation doesn't matter. Any values on the left-hand side that don't have a corresponding property in the object being destructured will not be assigned a value (will remain `undefined`). There is syntax to assign values to different variable names as well, see [the documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Object_destructuring) for details.
-
-When destructuring, if the array or object contains more than the target number of elements, the extra elements will be ignored. However, you can capture them by using the [**spread operator**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator) (**`...`**), which is used to either gather or spread a sequence of values (e.g., a list of parameters) into or across an array:
-
-```js
-let dimensions = [10, 20, 30, 40];
-let [width, height, ...rest] = dimensions
-console.log(width);  //=> 10
-console.log(height); //=> 20
-console.log(rest);   //=> [30, 40]; the rest of the values!
-```
-
-The _spread operator_ is also commonly used to specify that a function can take an undefined number of arguments, and to gather all of these values into a single array:
-
-```js
-//a function that logs out all of the parameters
-function printArgs(...args){
-    //all the parameters will be grouped into a single array `args`
-    args.forEach((arg) => {
-        console.log(arg) //can log out all of them, no matter how many!
-    });
-}
-
-printArgs('a', 'b', 'c'); //=> "a" "b" "c"
-printArgs(1,2,3,4,5,6); //=> "1" "2" "3" "4" "5" "6"
-
-//a function that adds up all the arguments (no matter how many!)
-function sum(...numbers) {
-    //numbers is an array, so we can `reduce()` it!
-    let total = numbers.reduce((runningTotal, num) => {
-        return runningTotal + num; //new total
-    }, 0); //start at 0
-
-    return total;
-
-    //or as one line with a concise arrow function:
-    return numbers.reduce((total, n) => total+n);
-}
-
-sum(3 ,4, 3); // => 10
-sum(10, 20, 30, 40); // => 100
-```
-
-## Modules
-So far, you've mostly be writing all of your JavaScript code in a single script (e.g., `index.js`), even if you'd included some other libraries via additional `<script>` tags. But as applications get larger and more complex, this single script file can quickly become unwieldy with hundreds or thousands of lines of code implementing dozens of features. Such large files become difficult to read and debug ("where _was_ that function defied?"), can introduce problems with the shared global namespace ("did I already declare a `user` variable?"), and overall mixes code in a way that violates the _Separation of Concerns_ principle.
-
-The solution to this problem is to split up your application's code into separate **modules** (scripts), each of which is responsible for a separate piece of functionality. And rather than loading each module through a separate `<script>` tag (potentially leading to ordering and dependency issues while continuing to pollute the global namespace), you can define each module as a self-contained script that explicitly "imports" (loads) the functions and variables it needs from other modules. This allows you to better organize your program as it gets large.
-
-While separating code into modules is a common in the Node.js environment, ES6 adds syntax that allows you to treat individual `.js` files as modules that can communicate with one another. These are known as [**ES6 Modules**](http://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules).
-
-In order to use modules inside of the browser, you'll need to specify the `type="module"` attribute for your `<script>` tag (and loading the page via a web server):
-
-```html
-<!-- load a script that can include other modules -->
-<script type="module" src="path/to/script.js"></script>
-```
-
-However, most commonly you will _not_ use modules directly inside of the browser. Instead you will load them through an external build tool like [webpack](https://webpack.js.org/). In these situations, you'll be using the _module loader_ provided by the Node JavaScript runtime. This loader does introduce some quirks in syntax, which are noted in the syntax explanation.
-
-### Module Syntax {-}
-As in Java, ES6 Modules are able to "load" external modules or libraries by using the **`import`** keyword:
-
-```java
-//Java example: import `Random` variable from `java.util` to use globally
-import java.util.Random
-```
-
-```js
-//JavaScript: import the `Random` variable from a `util.js` module
-import { Random } from './util';
-```
-
-This is most common version of the ES6 `import` syntax: you write the keyword `import`, following by a set of braces `{ }` containing a comma-separated sequence of variables you wish to "import" from a particular module. This is followed by the `from` keyword, followed by a string containing the **relative path** to the module script to import. Note that in Node-based systems (such as the React build environment) including the extension of the module script is optional (by default, the module loader will look for files ending in `.js`).
-
-- Be sure to include the `./` to indicate that you're loading a file from a particular directory. If you leave that off, the Node module loader will look for a module installed on the _load path_ (e.g., in `node_modules/`). That is how you load external files such as jQuery though:
-
-    ```js
-    //with jquery installed in `node_modules/`
-    //import the `$` and `jQuery` variables
-    import {$, jQuery} from 'jquery';
-    ```
-
-If you want to make a variable available from one module to use in another, you will need to **export** it (so that it can be "imported" elsewhere). You do this by using the **`export`** keyword, placed in front of the variable declaration:
-
-```js
-/*** my-module.js ***/
-export let question = "Why'd the chicken cross the road?";
-export let answer = "To get to the other side";
-export function laugh() {
-    console.log("hahaha");
-}
-```
-
-This is called a **named export** (in contrast to a _default export_ described below).
-
-```js
-/*** index.js ***/
-import { question, answer, laugh } from './my-module';
-
-console.log(question); //=> "Why'd the chicken cross the road?"
-console.log(answer); //=> "To get to the other side"
-laugh(); //"hahaha"
-```
-
-- Note that you can export functions as well as variables, since functions _are_ values!
-- Once a value has been imported, it is available globally (just as if it were defined in a previous `<script>` tag)
-
-There are a number of ways to export and import variables, giving you significant customization on which values you wish to share and load:
-
-```js
-/*** my-module.js ***/
-export function foo() { return 'foo'; } //make available (as above)
-
-function bar() { return 'bar'; }
-export bar; //export previously defined variable
-
-export { bar as barFunction }; //provide an "alias" (consumer name) for value
-
-//will not be available (a "private" function)
-function baz() { return 'baz'; }
-```
-
-```js
-/*** index.js ***/
-import {foo, barFunction} from './my-module'; //import multiple values
-foo() //=> 'foo'
-barFunction() //=> 'bar'
-
-import {foo as myFoo} from './my-module'; //provide an "alias" for value
-myFoo(); //=> 'foo'
-
-import * as theModule from './my-module'; //import everything that was exported
-                                          //loads as a single object with values
-                                          //as properties
-theModule.foo(); //=> 'foo'
-theModule.barFunction(); //=> 'bar'
-theModule.baz(); //Error [private function]
-```
-
-Note the additional syntax options in this example:
-
-- You can use the **`as`** keyword to "alias" a variable either when it is exported (so it is shared with a different name) or when it is imported (so it is loaded and assigned a different name). This is particularly useful when trying to produce a clean API for a module (so you `export` values with consistent names, even if you don't use those internally), or when you want to `import` a variable with a very long name.
-
-- It is possible to just `import` _everything_ that was exported by a module using the **`import * as`** syntax. You specify an object name that will represent the values exported module (e.g., `theModule` in the example), and each exported variable will be a _property_ of that object. This is particularly useful when you may be adding extra `exports` to a module during development, but don't want to keep adjusting the `import` statement.
-
-- Note also that _only_ the variables you `export` are made available to other modules! This allows you to make variables and functions that are "private" to a module!
-
-    <!-- ```js
-    /*** my-module.js ***/
-    let secretPassword = 12345;
-
-    export function checkPassword(password) {
-        return password == secretPassword; //check if they are the same
-    }
-    ```
-
-    ```js
-    /*** index.js ***/
-    import * as module from './my-module';
-
-    console.log(module.secretPassword); //undefined, variable was not exported
-
-    module.checkPassword('password'); //false, passwords don't match
-    ``` -->
-
-Finally, each module can also `export` a _single_ (just one!) **default** variable, which provides a slight shortcut when importing the variable from that module. You specify the _default export_ by including the **`default`** keyword immediately after `export`:
-
-```js
-/*** my-module.js ***/
-//this function is the "default" export
-export default function sayHello() {
-    return 'Hello world!';
-}
-```
-
-```js
-/*** index.js ***/
-import greet from './my-module'; //import the default value
-
-greet(); //=> "Hello world!"
-```
-
-- When importing a `default` export, you just provide the variable name ("alias") you wish to refer to that exported value by.
-- Note that it is also possible to make anonymous values into `default` exports:
-
-    ```js
-    /*** animals.js ***/
-    export default ['lion', 'tiger', 'bear']; //export anonymous array
-    ```
-
-The `default` export technique is particularly common in object-oriented frameworks like React, where you can make each JavaScript module contain the code for a single function or `class`. That single `class` can be made the `default` export, allowing other modules to import it quickly and easily as `import MyComponent from './MyComponent.js'`.
-
-
-<div class="alert alert-info">This section describes ES6 modules, which are used with web applications (being part of the ECMAScript specification). However, Node.js by default uses an alternate module loading system called [CommonJS](https://nodejs.org/docs/latest/api/modules.html#modules_modules). This uses the built-in method `require()` to load a module (which returns a single "exported" variable as a result). Values are exported from a module by assigning them to the `module.exports` global. This course will exclusively utilize ES6 Modules, but it's good to be aware of the alternate CommonJS approach when searching for help.</p>
-
-
-## Other Features
-
-> Syntactic Sugar causes cancer of the semicolon - [Alan Perlis](http://www.cs.yale.edu/homes/perlis-alan/quotes.html)
-
-There are a few other notable syntax options provided by ES6 that you will likely come across.
-
-### Template Strings {-}
-In ES6, you can declare Strings that contain embedded expressions, allowing you to "inject" an expression directly into a string (rather than needing to concatenate the String with that expression). These are known as [**template strings**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) (or _template literals_). Template strings are written in back ticks (**``` `` ```**) rather than quotes, with the injected expressions written inside of a **`${}`** token:
-
-```js
-let name = 'world';
-let greeting = `Hello, ${name}!`; //template string
-console.log(greeting); //=> "Hello, world!"
-```
-
-- Template strings can also include line breaks, allowing you to make multi-line strings!
-
-Note that you can put _any_ expression inside the `${}` token; however, it's best practice to keep the expression as simple as possible (such as by using a local variable) to support readability:
-
-```js
-let name = 'world';
-
-//greeting with capitalization. Don't do this!
-let greeting = `Hello, ${name.substr(0,1).toUpperCase() + name.substr(1)}!`
-console.log(greeting); //=> "Hello, world!";
-
-//do this instead!
-let capitalizedName = name.substr(0,1).toUpperCase() + name.substr(1);
-let greeting = `Hello, ${capitalizedName}`
-console.log(greeting); //=> "Hello, world!";
-```
-
-<!-- One more example:
-
-```js
-//provide a name, an animal, and a verb
-function excuse(name, animal, verb) {
-  let email = `Hello Professor ${name},
-
-Please excuse my missing assignment,
-as my ${animal} ate it.
-
-${verb} you later,
-A Student`;
-
-  console.log(email);
-}
-
-excuse('Joel', 'Lemur', 'Smell');
-``` -->
-
-
-These are a few of the more common and potentially useful ES6 features. However, remember that most of these are just "syntactic shortcuts" for behaviors and functionality you can already achieve using ES5-style JavaScript. Thus you don't need to utilize these features in your code (though they can be helpful), and they will often show up in how we utilize libraries such as React.
-
-
-## Resources {-}
+<!-- ## Resources {-}
 <div class="list-condensed">
 - [ES6 For Humans](https://github.com/metagrover/ES6-for-humans) an good online text on ES6
 - [ECMAScript 6](https://github.com/lukehoban/es6features#readme) A good unofficial summary with examples
 - [ES6 Features](http://es6-features.org/) (also shows equivalent ES5 syntax where possible)
 - [ECMAScript 2015 Language Specification](http://www.ecma-international.org/ecma-262/6.0/) official standard
-</div>
+</div> -->
