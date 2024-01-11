@@ -78,6 +78,7 @@ firebase
 setting-up-firebase
 realtime-database
 user-authentication
+firebase-storage
 code-style-guide
 html-guidelines
 css-guidelines

@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross and Mike Freeman" />
 
 
-<meta name="date" content="2024-01-10" />
+<meta name="date" content="2024-01-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -394,6 +394,7 @@
 <ul>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#including-firebase-in-react"><i class="fa fa-check"></i>Including Firebase in React</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#adding-collaborators-to-a-project"><i class="fa fa-check"></i>Adding Collaborators to a Project</a></li>
 </ul></li>
 <li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.2</b> Realtime Database</a>
 <ul>
@@ -407,6 +408,11 @@
 <ul>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#signing-in-with-firebaseui"><i class="fa fa-check"></i>Signing In with FirebaseUI</a></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#managing-the-user"><i class="fa fa-check"></i>Managing the User</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="firebase.html"><a href="firebase.html#firebase-storage"><i class="fa fa-check"></i><b>19.4</b> Firebase Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#file-inputs"><i class="fa fa-check"></i>File Inputs</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#uploading-files"><i class="fa fa-check"></i>Uploading Files</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
@@ -544,20 +550,20 @@
 <ul>
 <li>Firebase is owned and maintained by Google, but will still work perfectly fine with Facebook’s React framework.</li>
 </ul>
-<p>In particular, this chapter will discuss two features of Firebase:</p>
+<p>In particular, this chapter will discuss the following features of Firebase:</p>
 <ol style="list-style-type: decimal">
 <li><p>The Firebase service also provide a number of “database” systems. This chapter describes how to use the <a href="https://firebase.google.com/docs/database/"><strong>realtime database</strong></a>, which provides a simple <a href="https://en.wikipedia.org/wiki/NoSQL">NoSql</a>-style database: you can think of it as a <em>single giant JSON object in the Cloud</em>. Firebase provides methods that can be used to refer to this object and its properties, make changes to the object. Most importantly, it provides the ability to “listen” for changes made by others so that the page can automatically update based on actions taken by other users. In effect you can create a <strong>data binding</strong> between clients and the server, so that if you update data on one machine, that change automatically appears on another.</p>
-<p>Firebase also offers additional database structures. <a href="https://firebase.google.com/docs/firestore">Firestore</a> is another NoSQL (document-based) database, but focused more on one-time data fetch queries rather than the continuous data binding provided by the realtime database. <a href="https://firebase.google.com/docs/storage">Firebase Storgae</a> is used for storing larger data elements (anything that can’t be defined in JSON), such as images or videos. This chapter focuses on the Realtime Database as an easier-to-learn system and to practice data binding.</p></li>
+<p>Firebase also offers additional database structures. <a href="https://firebase.google.com/docs/firestore">Firestore</a> is another NoSQL (document-based) database, but focused more on one-time data fetch queries rather than the continuous data binding provided by the realtime database. This chapter focuses on the Realtime Database as an easier-to-learn system and to practice data binding. <a href="https://firebase.google.com/docs/storage">Firebase Storage</a> is used for storing larger data elements (anything that can’t be defined in JSON), such as images or videos, and is described at the end of the chapter.</p></li>
 <li><p>The Firebase service also offers a client-side based system for performing <a href="https://firebase.google.com/docs/auth/"><strong>user authentication</strong></a>, or allowing users to “sign in” to your application and have particular information associated with them. It’s possible to have users sign up with an email and password, or even using an external service (e.g., “sign in with Google”). Firebase also provides a way to manage all those extra interactions associated with accounts, like being able to reset passwords or confirm email addresses. And this is all performed securely from the client-side, without the need to set up an additional server to perform OAuth work.</p></li>
 </ol>
-<p>These features mean that Firebase can be a go-to back-end for producing a client-side app that involves persisted data (like user accounts). And its <a href="https://firebase.google.com/pricing/">free service tier</a> is perfectly suited for any development app.</p>
+<p>These features mean that Firebase can be a go-to back-end for producing a client-side app that involves persisted data (like user accounts). And its <a href="https://firebase.google.com/pricing/">free service tier</a> is well-suited for any development app.</p>
 <p class="alert alert-warning">
-This chapter details how to use <strong>version 9+</strong> of the Firebase library, released in <em>August 2021</em>—and in particular it’s <a href="https://firebase.google.com/docs/web/modular-upgrade"><em>modular API</em></a> (which allows for smaller and more efficient bundles when using webpack and React). Note that while this version is conceptually the same as previous versions, the module syntax for calling and importing functions is different. See the upgrade guide for details. Be careful when looking up examples and resources that they’re use the same version as you!
+This chapter details how to use <strong>version 9+</strong> of the Firebase library, released in <em>August 2021</em>—and in particular its <a href="https://firebase.google.com/docs/web/modular-upgrade"><em>modular API</em></a> (which allows for smaller and more efficient bundles when using webpack and React). Note that while this version is conceptually the same as previous versions, the module syntax for calling and importing functions is different. See the upgrade guide for details. Be careful when looking up examples and resources that they’re use the same version as you!
 </p>
 <p>Note that Firebase also provides <a href="https://firebase.google.com/docs/hosting"><strong>Firebase Hosting</strong></a> for hosting and serving web applications. This is particularly useful for hosting single-page-applications, such as those <a href="client-side-routing.html#react-router-and-hosting">built with React Router</a>. Hosting does not require any modifications to your source code, so is not discussed here.</p>
 <div id="setting-up-firebase" class="section level2" number="19.1">
 <h2><span class="header-section-number">19.1</span> Setting up Firebase</h2>
-<p>Because Firebase is a cloud service, you will need to set it up externally in order to use it in your web application. Firebase setup and configuration is handled on Firebase’s website at <a href="https://firebase.google.com/" class="uri">https://firebase.google.com/</a>, and in particular in the <a href="https://console.firebase.google.com">Firebase Web Console</a> where you can manage individual projects.</p>
+<p>Because Firebase is a cloud service, you will need to set it up externally in order to use it in your web application. Firebase setup and configuration is handled on Firebase’s website at <a href="https://firebase.google.com/" class="uri">https://firebase.google.com/</a>, and in particular in the <a href="https://console.firebase.google.com"><strong>Firebase Web Console</strong></a> where you can manage individual projects.</p>
 <p class="alert alert-success">
 When developing a Firebase app, keep the Web Console open all the time so you can check on database, user list, etc!
 </p>
@@ -569,9 +575,9 @@ When developing a Firebase app, keep the Web Console open all the time so you ca
 <ul>
 <li><em>Recommendation</em>: <strong>do not</strong> enable Google Analytics for your projects!</li>
 </ul>
-<p>Once you’ve created the project, you will be taken to the <strong>Web Console</strong> for that project. This is a web page where you will be able to manage the configuration of the project, the users who have signed up, and any data in the database. In particular, note the navigation menu on the left-hand side: you will use this to access different parts of your project (<em>Realtime Database</em> to manage the database, and <em>Authentication</em> to manage users).</p>
+<p>Once you’ve created the project, you will be taken to the <strong>Web Console</strong> for that project. This is a web page where you will be able to manage the configuration of the project, the users who have signed up, and any data in the database. In particular, note the navigation menu on the left-hand side: you will use this to access different parts of your project (<em>Realtime Database</em> to manage the database, and <em>Authentication</em> to manage users)—expand the <em>“Build”</em> dropdown to navigate.</p>
 <div class="figure">
-<img src="img/firebase/firebase-nav2.png" alt="" />
+<img src="img/firebase/firebase-nav3.png" alt="" />
 <p class="caption">Firebase navigation menu</p>
 </div>
 </div>
@@ -588,6 +594,16 @@ When developing a Firebase app, keep the Web Console open all the time so you ca
 <li><p>Then, copy the provided <code>import</code> statement, <code>firebaseConfig</code> variable, and <code>initializeApp()</code> function call into your <strong><code>index.js</code></strong> file. This will specify <em>which</em> Firebase project your web app should connect to whenver you call functions to access Firebase.</p>
 <p>Note that you will need to paste this code <em>before</em> the call <code>ReactDOM.render()</code>. The <code>index.js</code> file will often contain such configuration data that is relevant to the <em>app</em> rather than to a specific component.</p></li>
 </ol>
+</div>
+<div id="adding-collaborators-to-a-project" class="section level3 unnumbered">
+<h3>Adding Collaborators to a Project</h3>
+<p>Referencing the Firebase Web Console is vital for everyone who is working with the Firebase backend on a project. If you’re working with a group of developers, you will want to make sure that all team members have access to this console.</p>
+<p>You can add additional team members to a Firebase project by selecting “Users and permissions” from the “Project Overview” gear icon:</p>
+<div class="figure">
+<img src="img/firebase/firebase-nav-users.png" alt="" />
+<p class="caption">Users and permissions navigation</p>
+</div>
+<p>From there you can click on “Add Member” to add new members to the project.</p>
 </div>
 </div>
 <div id="realtime-database" class="section level2" number="19.2">
@@ -632,9 +648,9 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <div id="security-rules" class="section level4 unnumbered">
 <h4>Security Rules</h4>
 <p>Because the Firebase database is just a giant JSON object in the cloud and is usable from a client-side system, technically <em>anyone</em> can access it. Each element of the JSON object is accessible via AJAX requests (which are sent via <code>firebase</code> functions).</p>
-<p>In order to restrict what clients and access this information (read or write to values in the JSON), Firebase lets you define <a href="https://firebase.google.com/docs/database/security/">security rules</a> that specify what users can access which elements. For example, you can make it so that only <em>authenticated users</em> can add new entries the database, or that only specific users can update specific entries (e.g., the comments they wrote on a blog).</p>
+<p>In order to restrict what clients can access this information (read or write to values in the JSON), Firebase lets you define <a href="https://firebase.google.com/docs/database/security/">security rules</a> that specify what users can access which elements. For example, you can make it so that only <em>authenticated users</em> can add new entries the database, or that only specific users can update specific entries (e.g., the comments they wrote on a blog).</p>
 <ul>
-<li>By default, no one can access or modify the data (in <em>locked mode</em>). If you choose to start your project in <em>test mode</em>, then anyone will be able to access or modify for a limited amount of time.</li>
+<li>By default, no one can access or modify the data (in <em>locked mode</em>). If you choose to start your project in <em>test mode</em>, then anyone will be able to access or modify the entire database for a limited amount of time.</li>
 </ul>
 <p>In order to modify or configure the security rules, navigate to the “Rules” tab of the Realtime Database’s page in the Firebase Web Console. You can modify the rules by editing the presented JSON data; remember to hit “Publish” after you’re done editing.</p>
 <p>Firebase Security Rules are defined in JSON using a particular (and somewhat awkard) scheme. Basically, inside the <code>"rules"</code> property you specify a JSON tree that mirrors the structure of your database. But instead of having a value for the keys in your database, you specify an object with <code>".read"</code> and <code>".write"</code> properties. The values of these properties are boolean expressions that state whether or not the current user is able to read (access) or write (modify) that value. For more on writing rules, such as how to handle user authorization (only certain users can read/write access) or data validation (making sure all data is written of a certain type), see <a href="https://firebase.google.com/docs/database/security/">the official documentation</a>.</p>
@@ -647,9 +663,12 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <pre class="language-js"><code><span class="token comment">//import the function from the realtime database module</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> getDatabase <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/database'</span><span class="token punctuation">;</span>
 
-<span class="token comment">// Get a reference to the database service</span>
+<span class="token comment">//get a reference to the database service</span>
 <span class="token keyword">const</span> db <span class="token operator">=</span> <span class="token function">getDatabase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Importantly, the <code>db</code> value in the example is <strong>not</strong> a copy of the data or even the database itself! It’s instead just a reference pointer to where that database lives—you can think of it more like a “URL” for the database.</p>
+<ul>
+<li>The <code>getDatabase()</code> function is a simple <em>singleton</em> accessor that runs in constant time; it’s best practice to call it scoped in whatever functional scope you need to refer to the database. You do not need topass it around as a prop, nor should you try to make a “top level” or global <code>db</code> variable. Just call the function again if you need to access the database from a separate scope.</li>
+</ul>
 <p>In order to modify any particular values in the database, you will need to get a <a href="https://firebase.google.com/docs/reference/js/database.databasereference"><strong>reference</strong></a> to that value. This is done by using the <strong><code>ref()</code></strong> function, passing in the database reference and the “path” (a string) to the data value in the database’s JSON:</p>
 <pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> getDatabase<span class="token punctuation">,</span> ref <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/database'</span><span class="token punctuation">;</span>
 
@@ -663,12 +682,12 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token comment">//similar to `database.people.sarah` using dot notation</span>
 <span class="token keyword">const</span> sarahRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"people/sarah"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Again, these reference are <strong>not</strong> the data! They are just reference pointers to where the data lives—like the “URL” for that data value.</p>
-<p>The “path” to nested values in the database are written in a URI-style “path notation”, where each nested key is indicated by a slash <strong><code>/</code></strong> (rather than the <code>.</code> in dot notation as you’d normally use). Thus <code>"people/sarah"</code> refers to the <code>sarah</code> key inside of the <code>people</code> key inside of the database; <code>"people/sarah/pet"</code> refers to the <code>pet</code> key inside the <code>sarah</code> key inside the <code>people</code> key—the spot in the database with the value <code>"Rover"</code> in the above example.</p>
+<p>The “path” to nested values in the database are written in a URI-style “path notation”, where each nested key is indicated by a slash <strong><code>/</code></strong> (rather than the <code>.</code> in dot notation as you’d normally use with JSON format). Thus <code>"people/sarah"</code> refers to the <code>sarah</code> key inside of the <code>people</code> key inside of the database; <code>"people/sarah/pet"</code> refers to the <code>pet</code> key inside the <code>sarah</code> key inside the <code>people</code> key—the spot in the database with the value <code>"Rover"</code> in the above example.</p>
 <p>Since this path is just a string, you can use string concatenation to construct the path to a particular value you wish to reference (e.g., if you only want to work with the value for a particular person):</p>
 <pre class="language-js"><code><span class="token comment">//variable name to access</span>
 <span class="token keyword">const</span> personName <span class="token operator">=</span> <span class="token string">"Ada"</span><span class="token punctuation">;</span>
 
-<span class="token comment">//access the "ada" property inside of the "people" property inside the database</span>
+<span class="token comment">//access the "Ada" property inside of the "people" property inside the database</span>
 <span class="token keyword">const</span> personOfInterestRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"people/"</span><span class="token operator">+</span>personName<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>Alternatively, you can use the <strong><code>child()</code></strong> function to get a reference to a specific “child” element in the database:</p>
 <pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> child <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/database'</span><span class="token punctuation">;</span>
@@ -697,7 +716,7 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token comment">//assign the new value in the database</span>
 <span class="token function">firebaseSet</span><span class="token punctuation">(</span>sarahRef<span class="token punctuation">,</span> newValueForSarahAge<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>This will change the value in the database at <code>"people/sarah/age"</code> to <code>43</code>.</p>
-<p>Note that in this example, I have use the <code>as</code> keyword to <em>alias</em> the <code>set</code> function when importing it, instead calling it <code>firebaseSet</code>. This is for clarity, as “set” is an overly generic name for a function.</p>
+<p>Note that in this example, I use the <code>as</code> keyword to <em>alias</em> the <code>set</code> function when importing it, instead calling it <code>firebaseSet</code>. This is for clarity, as “set” is an overly generic name for a function.</p>
 <p>Note that as with normal JSON objects, you can also “set” values for database entries that didn’t previously exist—you do not have to “declare” a value in the database ahead of time</p>
 <pre class="language-js"><code><span class="token comment">//a reference to the people entry in the database</span>
 <span class="token keyword">const</span> peopleRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"people"</span><span class="token punctuation">)</span>
@@ -707,7 +726,8 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 
 <span class="token comment">//set an object to that location in the database</span>
 <span class="token function">firebaseSet</span><span class="token punctuation">(</span>adaRef<span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token literal-property property">age</span><span class="token operator">:</span> <span class="token string">"206"</span><span class="token punctuation">,</span> <span class="token literal-property property">pet</span><span class="token operator">:</span> <span class="token string">"Charlie"</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Finally, note that the <code>set()</code> method returns a <em>Promise</em>. This you can use <code>.then()</code> (or <code>await</code>) to execute statements after the database has updated, and you can thus catch any errors that may occur when attempting to update a value. This is especially useful for debugging, but also is good for providing user feedback.</p>
+<p>Firebase also provides an equivalent method <code>update()</code>, which will “merge” in changes to the existing value at a reference. This allows you to <code>update()</code> the a reference pass in an object with some properties to be modified, while existing properties are be retained (rather than having the entire value at that reference be replaced).</p>
+<p>Finally, note that the <code>set()</code> method returns a <em>Promise</em>. Thus you can use <code>.then()</code> (or <code>await</code>) to execute statements after the database has updated, and you can thus catch any errors that may occur when attempting to update a value. This is especially useful for debugging, but also is good for providing user feedback.</p>
 <pre class="language-js"><code><span class="token keyword">const</span> sarahPetRef <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span>db<span class="token punctuation">,</span> <span class="token string">"people/sarah/pet"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token comment">//change Sarah's pet</span>
@@ -717,7 +737,7 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 </div>
 <div id="listening-for-data-changes" class="section level3 unnumbered">
 <h3>Listening for Data Changes</h3>
-<p>Because Firebase’s database is intended for <em>realtime</em> access (that may change over time), you read data from it and establish <em>data binding</em> by registering an <strong>event listener</strong> to listen for changes to that database. In effect any modifications to the data causes a “database change event” which triggers your listener, allowing you to acccess the new updated data.</p>
+<p>Because Firebase’s database is intended for <em>realtime</em> access (that may change over time), you read data from it and establish <em>data binding</em> by registering an <strong>event listener</strong> to listen for changes to that database. In effect, any modifications to the data causes a “database change event” which triggers your listener, allowing you to acccess the new updated data.</p>
 <p>You register a database change listener by using the <strong><code>onValue()</code></strong> function. This function takes as arguments a database reference (which value you want to listen for changes to) and a callback function that will be executed in response to the event (similar to the DOM’s <code>addEventListener()</code> function):</p>
 <pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> onValue <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"firebase/database"</span>
 
@@ -732,7 +752,7 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>The callback function will be passed as a parameter the latest <a href="https://firebase.google.com/docs/reference/js/firebase.database.DataSnapshot"><strong>snapshot</strong></a> of the data value at the listening location. This is a wrapper around the database’s JSON tree (allowing you to navigate it e.g., with <code>child()</code>). Most commonly, you will want to convert the snapshot into an actual JavaScript object by calling the <strong><code>.val()</code></strong> method on it.</p>
 <p>The listener will trigger whenever any child node of the targeted refence location changes. Thus even if just <code>people/amit/pet</code> is updated, the above listener will trigger.</p>
-<p>Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an <em>effect hook</em>. The effect hook’s “cleanup function” will also need to remove the listener—otherwise you will have a memory leak and errors if your component gets removed (e.g., by changing routes). The <code>onValue()</code> function <em>returns</em> a new function that can be used to “unregister” the listener:</p>
+<p>Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an <em>effect hook</em>. The effect hook’s “cleanup function” will also need to remove the listener—otherwise you will have a memory leak and can get errors if your component gets removed (e.g., by changing routes). The <code>onValue()</code> function <em>returns</em> a new function that can be used to “unregister” the listener:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//effect hook</span>
   <span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -752,13 +772,13 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
     <span class="token keyword">return</span> cleanup<span class="token punctuation">;</span> <span class="token comment">//effect hook callback returns the cleanup function</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Note that it is possble to read a single value once (without needing to register a listener) by using the <code>get()</code> method. This method returns a promise that will contain the read snapshot (once it is download). <em>However</em>, the Realtime Database is intended and optimized for data binding and notifications. Thus you should pretty much always be using <code>onValue()</code> to read data from the database. If you find yourself wanting to just read a single value once, you’re not thinking about Firebase correctly!</p>
+<p>Note that it is possble to read a single value once (without needing to register a listener) by using the <code>get()</code> method. This method returns a promise that will contain the read snapshot (once it is downloaded). <em>However</em>, the Realtime Database is intended and optimized for data binding and notifications. Thus you should pretty much always be using <code>onValue()</code> to read data from the database. If you find yourself wanting to just read a single value once, you’re not thinking about the realtime database correctly!</p>
 </div>
 <div id="firebase-arrays" class="section level3 unnumbered">
 <h3>Firebase Arrays</h3>
 <p>When working with and storing data in the cloud, we often want to organize that data into lists using <em>arrays</em>. However, Firebase <strong>does not</strong> directly support support arrays: the JSON object in the sky only contains objects, not arrays! This is because Firebase needs to support <strong>concurrent access</strong>: multiple people need to be able to access the data at the same time. But since arrays are accessed by <em>index</em>, this can cause problems if two people try to modify the array at the same time.</p>
 <ul>
-<li>The problem is that with an array, an index number doesn’t always refer to the same element! For example, if you have an array <code>['a', 'b' 'c']</code>, then index <code>1</code> may initially refer to the <code>'b'</code>. However, if you add an element onto the beginning of the array, then suddenly that <code>1</code> index refers to the <code>'a'</code>. And so if a user was trying to modify the <code>'b'</code> before their machine was aware of the change, they may end up editing the wrong value! This bug is an example of a <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, which can occur when two processes are modifying data <em>concurrently</em> (at the same time).</li>
+<li>The problem is that with an array, an index number doesn’t always refer to the same element! For example, if you have an array <code>['a', 'b' 'c']</code>, then index <code>1</code> may initially refer to the <code>'b'</code>. However, if you add an element onto the beginning of the array, then suddenly that <code>1</code> index refers to the <code>'a'</code>. And so if a user was trying to modify the <code>'b'</code> before their machine was aware of the change, they may end up editing the wrong value when they ask to change the value at index <code>1</code>! This bug is an example of a <a href="https://en.wikipedia.org/wiki/Race_condition">race condition</a>, which can occur when two processes are modifying data <em>concurrently</em> (at the same time).</li>
 </ul>
 <!-- could put code version of example ?? -->
 <p>To avoid this problem, Firebase treats all data structures as Objects, so that each value in the JSON tree has a <em>unique</em> key. That way each client will always be modifying the value they expect. However, Firebase does offer a way that you can treat Objects as arrays, in the form of a <strong><code>push()</code></strong>(<a href="https://firebase.google.com/docs/reference/js/firebase.database.Reference#push" class="uri">https://firebase.google.com/docs/reference/js/firebase.database.Reference#push</a>) function that will add a value to an object with an <strong>auto-generated key</strong>.</p>
@@ -780,11 +800,11 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Notice how the <code>tasks</code> property is an Object (even though we “pushed” elements into it), and each “task” is assigned an auto-generated key (based on the timestamp it was pushed). You would thus still be able to interact with <code>tasks</code> as if it were an array, but instead of using a value from <code>0</code> to <code>length</code> as the index, you’ll use a generated “key” as the index.</p>
+<p>Notice how the <code>tasks</code> property is an Object (even though we “pushed” elements into it), and each “task” is assigned an auto-generated key (based on the timestamp it was pushed). You can still interact with <code>tasks</code> as if it were an array-like list, but instead of using a value from <code>0</code> to <code>length</code> as the index, you’ll use a generated “key” as the index.</p>
 <p class="alert alert-warning">
 <strong>Always</strong> use the <code>push()</code> function to have Firebase automatically manage data arrays for you. <strong>Never</strong> try to manually create an “array” by giving values keys “0”, “1”, “2” etc.
 </p>
-<p>Firebase <em>snapshots</em> do support a <code>forEach()</code> function that you can use to iterate through their elements, allowing you to loop through the elements in an array. However, if you want to do something more complex (like <code>map()</code>, <code>filter()</code>, or <code>reduce()</code>), you need an actual array. The best way to get this is use call <code>Objects.keys()</code> on the <code>snapshot.val()</code> in order to get an array of the keys, and then you can iterate/map those (accessing each element in the “array” using bracket notation).</p>
+<p>Firebase <em>snapshots</em> do support a <code>forEach()</code> function that you can use to iterate through their elements, allowing you to loop through the elements in an array. However, if you want to do something more complex (like <code>map()</code>, <code>filter()</code>, or <code>reduce()</code>), you need an actual array. The best way to get this is use call <code>Objects.keys()</code> on the <code>snapshot.val()</code> in order to get an array of the keys, and then you can iterate/map those keys into an array of values (accessing each element in the “array” using bracket notation).</p>
 <pre class="language-js"><code><span class="token comment">//`tasksSnapshot` is a snapshot of the `tasks` "array"</span>
 <span class="token keyword">const</span> allTasksObject <span class="token operator">=</span> tasksSnapshot<span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//convert snapshot to value</span>
 
@@ -794,20 +814,21 @@ Make sure you’re creating the <em>Realtime Database</em>, not the Firestore Da
 <span class="token comment">//map array of keys into array of tasks</span>
 <span class="token keyword">const</span> allTasksArray <span class="token operator">=</span> allTasksKeys<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> singleTaskCopy <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>allTasksObject<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//copy element at that key</span>
-    singleTaskCopy<span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span> <span class="token comment">//save the key string as an "id" for later</span>
+    singleTaskCopy<span class="token punctuation">.</span>key <span class="token operator">=</span> key<span class="token punctuation">;</span> <span class="token comment">//locally save the key string as an "id" for later</span>
     <span class="token keyword">return</span> singleTaskCopy<span class="token punctuation">;</span> <span class="token comment">//the transformed object to store in the array</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 allTasksArray<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">taskObject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
-<p>Note that when looping through an “array”, each element is treated handled separately from its key (the same way that a <code>forEach()</code> loop lets you work with array elements separately from their index). But since you <em>need</em> that key as an identifier in order to <code>ref()</code> and modify the JSON element later, you will need to make sure that you “save” the key in the object as you processing it. <em>Don’t lose your key!</em>.</p>
+<p>Note that when looping through an “array”, each element is handled separately from its key (the same way that a <code>forEach()</code> loop lets you work with array elements separately from their index). But since you may need that key as an identifier in order to <code>ref()</code> and modify the JSON element later, you should make sure that you “save” the key in the object as you processing it as an additional local property. This won’t modify the value in the database, just the local variable that your code is working with. <em>Don’t lose your key!</em>.</p>
 </div>
 </div>
 <div id="user-authentication" class="section level2" number="19.3">
 <h2><span class="header-section-number">19.3</span> User Authentication</h2>
 <p>Firebase provides the ability to <strong>authenticate</strong> users: to let people sign up for you application and then to check that they are who they say (e.g., have provided the right password). Firebase supports multiple different forms of authentication: users can sign up with an email and password, log in with a social media service such as Google or Facebook, or even authenticate “anonymously” (so you can at least keep track of different people even if you don’t know who they are).</p>
-<p>In order to support user authentication, you will need to enable this feature in the Firebase Web Console. Click on the “Authentication” link in the side navigation menu to go to the authentication management page, then choose “Get started”. Under the “Sign-In Method” tab, you can choose what forms of authentication you wish to enable.</p>
+<p>In order to support user authentication, you will need to enable this feature in the Firebase Web Console. Click on the “Authentication” link in the side navigation menu’s Build capetgory to go to the authentication management page, then choose “Get started”. Under the “Sign-In Method” tab, you can choose what forms of authentication you wish to enable.</p>
 <ul>
-<li>For example, click on the “Email/Password” option, and then flip the switch to “Enable” that method. Be sure and Save your changes!</li>
+<li><p>For example, click on the “Email/Password” option, and then flip the switch to “Enable” that method. Be sure and Save your changes!</p></li>
+<li><p>Each different sign-in method uses what is called a “Provider”—a service that provides the information about whether the user is who they say. Firebase’s email/password check is a possible Provider; Google is a possible Provider; etc. You can enable multiple different Providers, each of which will be able to authenticate users (i.e., letting them sign in with the relevat credentials).</p></li>
 </ul>
 <p>Note that you will be able to use this page to see and manage users who have signed up with your Firebase project. This is where you can see if uses have successfully been created, look up their <strong>User UID</strong> for debugging, or delete users from the project:</p>
 <div class="figure">
@@ -822,7 +843,7 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <img src="img/firebase/firebaseui-example.png" alt="" />
 <p class="caption">Example of FirebaseUI authentication</p>
 </div>
-<p>There are different FirebaseUI libraries for different platforms; previously for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears that it may have been abandoned rather than <a href="https://github.com/firebase/firebaseui-web-react/pull/173">applying the needed fix</a>. There are two possible workarounds to this:</p>
+<p>There are different FirebaseUI libraries for different platforms; previously for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears to have been been abandoned rather than <a href="https://github.com/firebase/firebaseui-web-react/pull/173">applying the needed fix</a>. There are two possible workarounds to this:</p>
 <ol style="list-style-type: decimal">
 <li><p>You can install a version of the library updated by <a href="https://github.com/gvillenave">Gabriel Villenave</a> (which hasn’t been accepted as a pull request yet):</p>
 <pre class="language-bash"><code><span class="token comment"># install library on the command line</span>
@@ -873,30 +894,30 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <p>There are a few steps to using this Component:</p>
 <ul>
 <li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> requires a <code>uiConfig</code> prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.</p>
-<p>The most important configuration option is the <code>signInOptions</code>, listing the different authentication providers supported (what options should show up in the login form). The IDs for these providers are imported from the <code>'firebase/auth'</code> library—though they are numeric values, not functions</p>
+<p>The most important configuration option is the <code>signInOptions</code>, listing the different authentication providers supported (what options should show up in the login form). The IDs for these providers are imported from the <code>'firebase/auth'</code> library—though they are numeric values, not functions.</p>
 <p>Other common/useful options are shown in the example; for a complete list of options see <a href="https://github.com/firebase/firebaseui-web#configuration">the firebaseui-web documentation</a>.</p></li>
 <li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> also requires a <code>firebaseAuth</code> prop, which is a reference to the “authenticator” service—what will handle the process of the user logging in and out. You can get access to this value via the <strong><code>getAuth()</code></strong> function provided by <code>'firebase/auth'</code> (similar to how you get access to the Realtime Database via the <code>getDatabase()</code> function).</p>
-<p>Note that the authenticator is a <em>singleton</em> value—you can call <code>getAuth()</code> from multiple modules/files without concern. You do not need to pass it around as a prop.</p></li>
+<p>Note that as with <code>getDatabase()</code> the authenticator is a <em>singleton</em> value—you can call <code>getAuth()</code> from multiple modules/files/scopes without concern. You do not need to pass it around as a prop or declare it as a “top-level” constant.</p></li>
 </ul>
 <p>With this Component, users will be able to “log in”, though see the <a href="firebase.html#managing-the-user">Managing the User</a> section below. You will be able to see a list of users who have connected to your app in the Firebase Web Console. Note in particular that you can see their <em>uid</em> (unique identifier), which is what is used to distinguish between users. (You can’t use emails as identifiers, because someone who logs in with Facebook won’t provide their email address!).</p>
 <p class="alert alert-info">
 <strong>Pro-tip:</strong> You don’t need to come up with real email addresses for testing. Try using <code>a@a.com</code>, <code>b@a.com</code>, <code>c@a.com</code>, etc. Similarly, <code>password</code> works fine for testing passwords (though you should never do that in real life!)
 </p>
-<p>The Firebase Web Console will provide a view of the “user database”—but importantly, this is <em>not the same as the Realtime Database</em>. The user database holds <em>very</em> limited information: the authentication provider, a “display name”, and possibly a “photo url” (e.g., where to find an avatar image). But you cannot store any additional information in the “user database”—not profile images, not preferred names or pronouns used, not favorite fish. Any user-specific information will need to be stored in the Realtime Database instead, usually using a “key” that is the user’s <code>uid</code>. For example, your Realtime Database might store information like:</p>
+<p>The Firebase Web Console will provide a view of the “user list”—but importantly, this is <em>not the same as the Realtime Database</em>. The user list holds <em>very</em> limited information: the authentication provider, a “display name”, and possibly a “photo url” (e.g., where to find an avatar image). But you cannot store any additional information in the “user database”—not profile images, not preferred names or pronouns used, not favorite fish. Any user-specific information will need to be stored in the Realtime Database instead, usually using a “key” that is the user’s <code>uid</code>. For example, your Realtime Database might store information like:</p>
 <pre class="language-json"><code><span class="token punctuation">{</span>
   <span class="token property">"userData"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"c9PGijn9Snh2YfPA30Hq0t7jn"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"userId1"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"pronouns"</span> <span class="token operator">:</span> <span class="token string">"they/them"</span><span class="token punctuation">,</span>
       <span class="token property">"favoriteFish"</span> <span class="token operator">:</span> <span class="token string">"sea bass"</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">"Tq8t7ETw54XXiWf7XZdnu0J"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"userId2"</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
       <span class="token property">"pronouns"</span> <span class="token operator">:</span> <span class="token string">"he/him"</span><span class="token punctuation">,</span>
       <span class="token property">"favoriteFish"</span> <span class="token operator">:</span> <span class="token string">"cuttle fish"</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>You would then access this data using the same process as any other data in the realtime database, listening to the reference <code>"userData/"+userId</code>.</p>
-<p>In order to sign out a user, you will need to use a built-in Firebase function: <strong><code>signOut()</code></strong>:</p>
+<p>You can then access the user’s data using the same process as any other data in the realtime database, listening to the reference <code>"userData/"+userId</code>.</p>
+<p>In order to sign out a user, you can use another built-in Firebase function: <strong><code>signOut()</code></strong>:</p>
 <pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> getAuth<span class="token punctuation">,</span> signOut <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/auth'</span><span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> auth <span class="token operator">=</span> <span class="token function">getAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -909,7 +930,7 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <h3>Managing the User</h3>
 <p>Although FirebaseUI will log in a user, you will need to do further work in order for your app to know who that logged in user is.</p>
 <p>The <em>authenticator</em> (from <code>getAuth()</code>) will keep track of which Firebase User is currently logged in—and this information persists <a href="https://firebase.google.com/docs/auth/web/auth-state-persistence">even after the browser is closed</a>. This means that every time you reload the page, the authenticator will automatically perform the authentication and “re-login” the user.</p>
-<p>The recommended way to <a href="https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user">determine who is currently logged</a> in is to register an <em>event listener</em> to listen for events that occur with the “state” of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the “initial state” is set), or when a user logs out. You can register this listener by using the <strong><code>onAuthStateChanged()</code></strong> function:</p>
+<p>The recommended way to <a href="https://firebase.google.com/docs/auth/web/manage-users#get_the_currently_signed-in_user">determine who is currently logged</a> in is to register an <em>event listener</em> to listen for events that occur when the “state” of the authentication changes (e.g., a user logs in or logs out). This event will occur when the page first loads and Firebase determines that a user has previously signed up (the “initial state” is set), or when a user logs in or out. You can register this listener by using Firebase’s <strong><code>onAuthStateChanged()</code></strong> function:</p>
 <pre class="language-js"><code><span class="token comment">//import functions</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> getAuth<span class="token punctuation">,</span> onAuthStateChanged <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/auth'</span>
 
@@ -924,13 +945,13 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
         console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'logged out'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>The function takes in two arguments: the authenticator, and a callback function that will be executed whenever the “authentication state” changes (e.g., whenever the user logs in or out). The callback function will be passed an object representing the <a href="https://firebase.google.com/docs/reference/js/firebase.User">“Firebase User”</a>. This object contains properties about the user, including:</p>
+<p>The <code>onAuthStateChanged()</code> function takes in two arguments: the authenticator, and a callback function that will be executed whenever the “authentication state” changes (e.g., whenever the user logs in or out). The callback function will be passed an object representing the <a href="https://firebase.google.com/docs/reference/js/firebase.User">“Firebase User”</a>. This object contains properties about the user, including:</p>
 <ul>
 <li><code>uid</code>, which is the <em>unique id</em> for the user</li>
 <li><code>displayName</code>, which is the user’s provider-independent displayable name</li>
 </ul>
-<p>The most common practice is to take this passed in object and assign it to a more global variable, such as a state variable in a React function (e.g., <code>setCurrentUser(firebaseUser)</code>).</p>
-<p>If the user “logged out”, then the passed in <code>firebaseUser</code> value will be <code>null</code>.</p>
+<p>The most common practice is to take this passed in object and assign it to a more global variable, such as a state variable in a React component (e.g., <code>setCurrentUser(firebaseUser)</code>).</p>
+<p>If the user “logged out”, then the passed in <code>firebaseUser</code> value will be <code>null</code>; this information can also be saved to the React state variable.</p>
 <p>Importantly, because this listener involves network access and can trigger throughout the life of your application, in a React app you will need to register the listener inside an <em>effect hook</em>. The effect hook’s “cleanup function” will also need to remove the listener. The <code>onAuthStateChanged()</code> function <em>returns</em> a new function that can be used to “unregister” the listener:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">//effect hook</span>
@@ -983,6 +1004,78 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <p>This hook returns an array of 3 values (which are destructured in the above example), indicating the current user (or <code>null</code> for no user), whether the auth state is still loading, and whether there was an error.</p>
 <p>While using such a library is not necessary, it is a good example of how React’s architecture allows for external libraries that can help reduce boilerplate code.</p>
 </div>
+</div>
+</div>
+<div id="firebase-storage" class="section level2" number="19.4">
+<h2><span class="header-section-number">19.4</span> Firebase Storage</h2>
+<p>Firebase’s Realtime Database persists JSON data: so in the end just strings, numbers, and booleans (even if those values are organized into objects). If you wish to persist data <em>files</em>—such as music, video, pdfs, etc—you need to use a different service called <a href="https://firebase.google.com/docs/storage"><strong>Firebase Storage</strong></a>. Storage is designed for storing larger files rather than primitive data types. In the end it works fairly similarly to the realtime database, though without data binding.</p>
+<p class="alert alert-info">
+Firebase <a href="https://firebase.google.com/pricing/">free tier</a> provides up to 5 GB of storage for free (with 1 GB/day of downloading allowed). That’s about 5000 hi-res images, 1000 music files, or maybe 20 hr of compressed video. This means that the free storage service will work great for most development versions of media applications–though you may run out of space quickly if working with video, especially when testing. Always consider the amount of data you will need to store before choosing a cloud storage service.
+</p>
+<p>In order to use Firebase Storage, you will need to enable this feature in the Firebase Web Console. Click on the “Storage” link in the side navigation menu’s Build capetgory to go to the authentication management page, then choose “Get started”. Similar to the realtime database, you’ll need to choose security rules (probably being in <em>test mode</em> for development). When prompted for a Cloud Storage bucket location, pick something nearby to speed up access a little, but for most student projects it doesn’t matter much.</p>
+<p>Once you have set up Storage, you can use the Firebase Web Console to view and manage files that have been uploaded (including deleting them if desired).</p>
+<div id="file-inputs" class="section level3 unnumbered">
+<h3>File Inputs</h3>
+<p>In order for a user to upload a file to Storage, the user will need to first choose which file they want to store. The correct way to do this is to use a <code>"file"</code> type <code>&lt;input&gt;</code> element:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>This element works the same as other <code>&lt;input&gt;</code> elements you’ve used (usually with the default <code>type</code> of <code>"text"</code>). But rather than providing an interface for the user to provide a string as a value, the input will provide an interface for the user to choose a file from their operating system.</p>
+<p class="alert alert-success">
+This is an <code>&lt;input&gt;</code> like any other, which means that in React you should use a state variable to control it!
+</p>
+<p>Once the user choses a file, you can access that the files chosen through the <code>.files</code> property of the <code>&lt;input&gt;</code> element—similar to the <code>.value</code> property used with default <code>&lt;input&gt;</code> elements. Note that the operating system’s file picking dialog may allow the user to choose multiple files (or none at all!); you will will want to check this when responding to any changes to the input:</p>
+<pre class="language-js"><code><span class="token comment">//an event handler function that responds to changing in an `&lt;input type="file">`</span>
+<span class="token keyword">const</span> <span class="token function-variable function">handleChange</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">//the event.target is the &lt;input> element</span>
+  <span class="token comment">//check e.g., that the user picked at least 1 file, and that the file they picked actually exists</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> chosenFile <span class="token operator">=</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>files<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//the first file chosen</span>
+    <span class="token comment">//... do something with that value, such as store it in React's state</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that the <code>chosenFile</code> will be a <a href="https://developer.mozilla.org/en-US/docs/Web/API/File"><code>File</code></a>-type value, which has its own set of methods and properties. Critically, the <code>File</code> value is really just a reference to a location in your computer’s operating system; if the file gets moved or renamed then the <code>File</code> will be pointing at something with no size, so you won’t be able to upload it.</p>
+</div>
+<div id="uploading-files" class="section level3 unnumbered">
+<h3>Uploading Files</h3>
+<p>Once you have the <code>File</code> the user wants to upload, you can upload that data to Firebase using a method similar to how you <code>set</code> data in the realtime database.</p>
+<p>First, you need to get a <em>reference</em> to the location in Storage where you want to upload the file. You do this by using the <strong><code>ref()</code></strong> function from the <code>firebase/storage</code> library:</p>
+<pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>getStorage<span class="token punctuation">,</span> ref <span class="token keyword">as</span> storageRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/storage'</span><span class="token punctuation">;</span>
+
+<span class="token comment">//get a reference to the storage service</span>
+<span class="token keyword">const</span> storage <span class="token operator">=</span> <span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//get a reference to where the file will go in storage</span>
+<span class="token keyword">const</span> fileRef <span class="token operator">=</span> <span class="token function">storageRef</span><span class="token punctuation">(</span>storage<span class="token punctuation">,</span> <span class="token string">"path/to/myfile.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<p>Importantly, this is a <em>different</em> <code>ref()</code> function than the one used with the realtime database! They are not interchangeable. For that reason, you can alias the storage’s <code>ref</code> as e.g., <code>storageRef</code> in order to use both in the same module.</p>
+<p>The <code>ref()</code> function takes as arguments the reference to the storage service and a string representing the “file path” for the new file—where it will go in the Storage bucket. You write this string like any other relative file path; it includes both any intermediate directories as well as the name of the resulting file. Any directories you include in the path will be created when the file is uploaded (they do not have to exist previously), and if a file already exists at that location, it will be overwritten. Be sure to include the file extension when naming the file (and you’ll want that file extension to match the actual file type!)</p>
+<p>Once you have a reference to the file’s location in storage, you can use the <strong><code>uploadBytes()</code></strong> function to upload the file:</p>
+<pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>getStorage<span class="token punctuation">,</span> ref <span class="token keyword">as</span> storageRef<span class="token punctuation">,</span> uploadBytes <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/storage'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> storage <span class="token operator">=</span> <span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> fileRef <span class="token operator">=</span> <span class="token function">storageRef</span><span class="token punctuation">(</span>storage<span class="token punctuation">,</span> <span class="token string">"path/to/myfile.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">uploadBytes</span><span class="token punctuation">(</span>fileRef<span class="token punctuation">,</span> myFile<span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"file successfully uploaded!"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//log any errors for debugging</span></code></pre>
+<p>The <code>uploadBytes()</code> function is asynchronous (it can take a while to upload large files!) and returns a Promise that you can use to respond when the file has finished uploading or to catch and process errors.</p>
+<p>Once a file has been uploaded, Firebase will give it a public URL (with the usual <code>https://</code> protocol) where websites and users can access it. This public URL is different and constructed from the <code>ref</code> path that was specified, and will vary based on the storage parameters used by Firebase. So in order to figure out the resulting URL for this file (e.g., so you can show the file to the user again, you will need to request that URL from Firebase. You do this by using yet another function called <strong><code>getDownloadURL()</code></strong>. The function takes the file’s <code>ref</code> as an argument, and will query Firebase for the public URL of the file.</p>
+<p>But querying Firebase is a network operation, which means that it takes time… Thus <code>getDownloadURL()</code> is <em>asynchronous</em> doesn’t return the actual URL, but a <em>Promise</em> for that URL; you will need to wait for that promise to resolve to access the URL string. Since uploading the file and getting the public URL are both asynchronous functions that return Promises, this operation is a good place to use <code>async/await</code> syntax to help keep the code readable rather than having a sequence of Promises.</p>
+<pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span>getStorage<span class="token punctuation">,</span> ref <span class="token keyword">as</span> storageRef<span class="token punctuation">,</span> uploadBytes<span class="token punctuation">,</span> getDownloadURL <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/storage'</span><span class="token punctuation">;</span>
+
+<span class="token comment">//await calls need to go in an async function</span>
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">uploadFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> storage <span class="token operator">=</span> <span class="token function">getStorage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">const</span> fileRef <span class="token operator">=</span> <span class="token function">storageRef</span><span class="token punctuation">(</span>storage<span class="token punctuation">,</span> <span class="token string">"path/to/myfile.png"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">try</span> <span class="token punctuation">{</span> <span class="token comment">//try/catch to handle errors</span>
+    <span class="token keyword">await</span> <span class="token function">uploadBytes</span><span class="token punctuation">(</span>fileRef<span class="token punctuation">,</span> myFile<span class="token punctuation">)</span> <span class="token comment">//asynchronous upload</span>
+    <span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getDownloadURL</span><span class="token punctuation">(</span>fileRef<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//asynch query for public URL</span>
+    <span class="token comment">//...do something with the url, such as set it to state for rendering</span>
+    <span class="token comment">//...or save that url in the realtime database</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>err<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//log any errors for debugging</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that it is normal to take the public URL and to also <code>set</code> it to a location in the realtime database; this allows an uploaded image to be associated with some other data values. The realtime database stores the <em>url</em> to the file (a string, stored in JSON), but the file itself is kept in Firebase Storage.</p>
 </div>
 </div>
 <div id="resources-16" class="section level2 unnumbered">
