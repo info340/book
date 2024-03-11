@@ -12,11 +12,12 @@ rmd_files:
   - client-side.Rmd
 
   ## HTML & CSS
-  - html.Rmd
-  - accessibility.Rmd
+  - html-fundamentals.Rmd
   - css-fundamentals.Rmd
-  - css-options.Rmd
-  - css-layout.Rmd
+  - html-semantics.Rmd
+  - css-selectors.Rmd
+  - css-properties.Rmd
+  # - css-layout.Rmd
   - responsive-css.Rmd
   - css-frameworks.Rmd
 

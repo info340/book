@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 CSS Properties | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 CSS Properties | Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info340.github.io/" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
+  <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="github-repo" content="info340/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 CSS Properties | Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
+
+<meta name="author" content="Joel Ross" />
+
+
+<meta name="date" content="2024-03-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="css-selectors.html"/>
+<link rel="next" href="responsive-css.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the Book</a></li>
+<li class="chapter" data-level="1" data-path="software-setup.html"><a href="software-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="software-setup.html"><a href="software-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a>
+<ul>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="1.2.1" data-path="software-setup.html"><a href="software-setup.html#other-editors"><i class="fa fa-check"></i><b>1.2.1</b> Other Editors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="software-setup.html"><a href="software-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.4</b> Node and <code>npm</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-software-with-npm"><i class="fa fa-check"></i>Installing software with npm</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#managing-local-packages"><i class="fa fa-check"></i>Managing local packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="software-setup.html"><a href="software-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.5</b> Git and GitHub</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#clients-and-servers"><i class="fa fa-check"></i><b>2.1</b> Clients and Servers</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#urls-and-web-files"><i class="fa fa-check"></i><b>2.2</b> URLs and Web Files</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i>Client-Side File Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="client-side-development.html"><a href="client-side-development.html#servers-and-hosting"><i class="fa fa-check"></i><b>2.3</b> Servers and Hosting</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#hosting-with-github-pages"><i class="fa fa-check"></i>Hosting with GitHub Pages</a></li>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="client-side-development.html"><a href="client-side-development.html#web-standards"><i class="fa fa-check"></i><b>2.4</b> Web Standards</a></li>
+<li class="chapter" data-level="2.5" data-path="client-side-development.html"><a href="client-side-development.html#web-accessibility"><i class="fa fa-check"></i><b>2.5</b> Web Accessibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#supporting-accessibility"><i class="fa fa-check"></i>Supporting Accessibility</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-elements"><i class="fa fa-check"></i>Some Example Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="css-fundamentals.html"><a href="css-fundamentals.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css-fundamentals.html"><a href="css-fundamentals.html#including-css"><i class="fa fa-check"></i><b>4.2</b> Including CSS</a></li>
+<li class="chapter" data-level="4.3" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-rules"><i class="fa fa-check"></i><b>4.3</b> CSS Rules</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-selector-basics"><i class="fa fa-check"></i>CSS Selector Basics</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-property-basics"><i class="fa fa-check"></i>CSS Property Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="css-fundamentals.html"><a href="css-fundamentals.html#the-cascade"><i class="fa fa-check"></i><b>4.4</b> The Cascade</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="semantic-html.html"><a href="semantic-html.html"><i class="fa fa-check"></i><b>5</b> Semantic HTML</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="semantic-html.html"><a href="semantic-html.html#specific-html-elements"><i class="fa fa-check"></i><b>5.1</b> Specific HTML Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#inline-textual-elements"><i class="fa fa-check"></i>Inline Textual Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#images-and-media"><i class="fa fa-check"></i>Images and Media</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#headings"><i class="fa fa-check"></i>Headings</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#non-semantic-elements"><i class="fa fa-check"></i>Non-Semantic Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#sectioning-elements"><i class="fa fa-check"></i>Sectioning Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#forms"><i class="fa fa-check"></i>Forms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="semantic-html.html"><a href="semantic-html.html#aria-for-accessibility"><i class="fa fa-check"></i><b>5.2</b> ARIA for Accessibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-labeling"><i class="fa fa-check"></i>ARIA Labeling</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-roles-and-landmarks"><i class="fa fa-check"></i>ARIA Roles and Landmarks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-and-interactivity"><i class="fa fa-check"></i>ARIA and Interactivity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="css-selectors.html"><a href="css-selectors.html"><i class="fa fa-check"></i><b>6</b> CSS Selectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="css-selectors.html"><a href="css-selectors.html#basic-selectors"><i class="fa fa-check"></i><b>6.1</b> Basic Selectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#type-selector"><i class="fa fa-check"></i>Type Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#class-selector"><i class="fa fa-check"></i>Class Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#id-selector"><i class="fa fa-check"></i>Id Selector</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="css-selectors.html"><a href="css-selectors.html#complex-selectors"><i class="fa fa-check"></i><b>6.2</b> Complex Selectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#grouping-selector"><i class="fa fa-check"></i>Grouping Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#compound-selector"><i class="fa fa-check"></i>Compound Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#additional-selectors"><i class="fa fa-check"></i>Additional Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="css-selectors.html"><a href="css-selectors.html#selector-specificity"><i class="fa fa-check"></i><b>6.3</b> Selector Specificity</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="css-properties.html"><a href="css-properties.html"><i class="fa fa-check"></i><b>7</b> CSS Properties</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="css-properties.html"><a href="css-properties.html#specifying-property-values"><i class="fa fa-check"></i><b>7.1</b> Specifying Property Values</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#inherited-property-values"><i class="fa fa-check"></i>Inherited Property Values</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#css-units"><i class="fa fa-check"></i>Length Units &amp; Sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="css-properties.html"><a href="css-properties.html#fonts-and-text"><i class="fa fa-check"></i><b>7.2</b> Fonts and Text</a></li>
+<li class="chapter" data-level="7.3" data-path="css-properties.html"><a href="css-properties.html#css-colors"><i class="fa fa-check"></i><b>7.3</b> Colors and Backgrounds</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="css-properties.html"><a href="css-properties.html#box-model"><i class="fa fa-check"></i><b>7.4</b> Spacing with the Box Model</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding-vs.-margin"><i class="fa fa-check"></i>Padding vs. Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="css-properties.html"><a href="css-properties.html#flow-layout"><i class="fa fa-check"></i><b>7.5</b> Flow Layout</a></li>
+<li class="chapter" data-level="7.6" data-path="css-properties.html"><a href="css-properties.html#alternate-positioning"><i class="fa fa-check"></i><b>7.6</b> Alternate Positioning</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="css-properties.html"><a href="css-properties.html#flexbox"><i class="fa fa-check"></i><b>7.7</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a>
+<ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a>
+<ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="javascript-libraries.html"><a href="javascript-libraries.html"><i class="fa fa-check"></i><b>13</b> JavaScript Libraries</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="javascript-libraries.html"><a href="javascript-libraries.html#including-a-library"><i class="fa fa-check"></i><b>13.1</b> Including a Library</a></li>
+<li class="chapter" data-level="13.2" data-path="javascript-libraries.html"><a href="javascript-libraries.html#example-jquery"><i class="fa fa-check"></i><b>13.2</b> Example: jQuery</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#maniputing-the-dom"><i class="fa fa-check"></i>Maniputing the DOM</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#handling-events"><i class="fa fa-check"></i>Handling Events</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#and-more"><i class="fa fa-check"></i>And more!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>14</b> ES6+ Syntax</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="es6.html"><a href="es6.html#es6-syntax-features"><i class="fa fa-check"></i><b>14.1</b> ES6+ Syntax Features</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i>Arrow Functions</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#destructuring"><i class="fa fa-check"></i>Destructuring</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#spreading"><i class="fa fa-check"></i>Spreading</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>14.2</b> Modules</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#module-syntax"><i class="fa fa-check"></i>Module Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="es6.html"><a href="es6.html#es6-classes"><i class="fa fa-check"></i><b>14.3</b> Classes</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#es6-class-syntax"><i class="fa fa-check"></i>ES6 Class Syntax</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#inheritance"><i class="fa fa-check"></i>Inheritance</a></li>
+<li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#inline-expressions"><i class="fa fa-check"></i>Inline Expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="react.html"><a href="react.html#react-components"><i class="fa fa-check"></i><b>15.3</b> React Components</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#component-organization"><i class="fa fa-check"></i>Component Organization</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#deprecated-alternative-class-components"><i class="fa fa-check"></i>Deprecated Alternative: Class Components</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="react.html"><a href="react.html#props"><i class="fa fa-check"></i><b>15.4</b> Properties (<code>props</code>)</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#props-and-composition"><i class="fa fa-check"></i>Props and Composition</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interactive-react.html"><a href="interactive-react.html"><i class="fa fa-check"></i><b>16</b> Interactive React</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interactive-react.html"><a href="interactive-react.html#handling-events-in-react"><i class="fa fa-check"></i><b>16.1</b> Handling Events in React</a></li>
+<li class="chapter" data-level="16.2" data-path="interactive-react.html"><a href="interactive-react.html#state-and-hooks"><i class="fa fa-check"></i><b>16.2</b> State and Hooks</a>
+<ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#updating-state"><i class="fa fa-check"></i>Updating State</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i>State vs. Props</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="interactive-react.html"><a href="interactive-react.html#specific-interactions"><i class="fa fa-check"></i><b>16.3</b> Specific Interactions</a>
+<ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i>Working with Forms</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#fetching-data-via-ajax"><i class="fa fa-check"></i>Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="client-side-routing.html"><a href="client-side-routing.html"><i class="fa fa-check"></i><b>17</b> Client-Side Routing</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="client-side-routing.html"><a href="client-side-routing.html#single-page-applications"><i class="fa fa-check"></i><b>17.1</b> Single-Page Applications</a></li>
+<li class="chapter" data-level="17.2" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router"><i class="fa fa-check"></i><b>17.2</b> React-Router</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#routing"><i class="fa fa-check"></i>Routing</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#linking"><i class="fa fa-check"></i>Linking</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router-and-hosting"><i class="fa fa-check"></i>React Router and Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#resources-14"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>18</b> AJAX Requests</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>18.1</b> AJAX</a>
+<ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>18.2</b> Fetching Data</a></li>
+<li class="chapter" data-level="18.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>18.3</b> Asynchronous Programming</a>
+<ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-15"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="firebase.html"><a href="firebase.html"><i class="fa fa-check"></i><b>19</b> Firebase</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="firebase.html"><a href="firebase.html#setting-up-firebase"><i class="fa fa-check"></i><b>19.1</b> Setting up Firebase</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#including-firebase-in-react"><i class="fa fa-check"></i>Including Firebase in React</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#adding-collaborators-to-a-project"><i class="fa fa-check"></i>Adding Collaborators to a Project</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.2</b> Realtime Database</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#setting-up-the-database"><i class="fa fa-check"></i>Setting Up the Database</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#data-references"><i class="fa fa-check"></i>Data References</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#writing-data"><i class="fa fa-check"></i>Writing Data</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#listening-for-data-changes"><i class="fa fa-check"></i>Listening for Data Changes</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#firebase-arrays"><i class="fa fa-check"></i>Firebase Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="firebase.html"><a href="firebase.html#user-authentication"><i class="fa fa-check"></i><b>19.3</b> User Authentication</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#signing-in-with-firebaseui"><i class="fa fa-check"></i>Signing In with FirebaseUI</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#managing-the-user"><i class="fa fa-check"></i>Managing the User</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="firebase.html"><a href="firebase.html#firebase-storage"><i class="fa fa-check"></i><b>19.4</b> Firebase Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#file-inputs"><i class="fa fa-check"></i>File Inputs</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#uploading-files"><i class="fa fa-check"></i>Uploading Files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices &amp; Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="code-style-guide.html"><a href="code-style-guide.html"><i class="fa fa-check"></i><b>A</b> Code Style Guide</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="code-style-guide.html"><a href="code-style-guide.html#html-guidelines"><i class="fa fa-check"></i><b>A.1</b> HTML Guidelines</a>
+<ul>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing"><i class="fa fa-check"></i>Spacing</a></li>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-elements"><i class="fa fa-check"></i>Specific Elements</a></li>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-html"><i class="fa fa-check"></i>Comments in HTML</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="code-style-guide.html"><a href="code-style-guide.html#css-guidelines"><i class="fa fa-check"></i><b>A.2</b> CSS Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing-1"><i class="fa fa-check"></i><b>A.2.1</b> Spacing</a></li>
+<li class="chapter" data-level="A.2.2" data-path="code-style-guide.html"><a href="code-style-guide.html#selectors"><i class="fa fa-check"></i><b>A.2.2</b> Selectors</a></li>
+<li class="chapter" data-level="A.2.3" data-path="code-style-guide.html"><a href="code-style-guide.html#class-names"><i class="fa fa-check"></i><b>A.2.3</b> Class Names</a></li>
+<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-properties"><i class="fa fa-check"></i><b>A.2.4</b> Specific Properties</a></li>
+<li class="chapter" data-level="A.2.5" data-path="code-style-guide.html"><a href="code-style-guide.html#responsive-css-1"><i class="fa fa-check"></i><b>A.2.5</b> Responsive CSS</a></li>
+<li class="chapter" data-level="A.2.6" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-css"><i class="fa fa-check"></i><b>A.2.6</b> Comments in CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="code-style-guide.html"><a href="code-style-guide.html#javascript-guidelines"><i class="fa fa-check"></i><b>A.3</b> JavaScript Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="code-style-guide.html"><a href="code-style-guide.html#variables-1"><i class="fa fa-check"></i><b>A.3.1</b> Variables</a></li>
+<li class="chapter" data-level="A.3.2" data-path="code-style-guide.html"><a href="code-style-guide.html#functions-1"><i class="fa fa-check"></i><b>A.3.2</b> Functions</a></li>
+<li class="chapter" data-level="A.3.3" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-javascript"><i class="fa fa-check"></i><b>A.3.3</b> Comments in JavaScript</a></li>
+<li class="chapter" data-level="A.3.4" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-javascript-guidelines"><i class="fa fa-check"></i><b>A.3.4</b> Miscellaneous JavaScript Guidelines</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="code-style-guide.html"><a href="code-style-guide.html#react-guidelines"><i class="fa fa-check"></i><b>A.4</b> React Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="code-style-guide.html"><a href="code-style-guide.html#components-1"><i class="fa fa-check"></i><b>A.4.1</b> Components</a></li>
+<li class="chapter" data-level="A.4.2" data-path="code-style-guide.html"><a href="code-style-guide.html#mapping-data"><i class="fa fa-check"></i><b>A.4.2</b> Mapping Data</a></li>
+<li class="chapter" data-level="A.4.3" data-path="code-style-guide.html"><a href="code-style-guide.html#state"><i class="fa fa-check"></i><b>A.4.3</b> State</a></li>
+<li class="chapter" data-level="A.4.4" data-path="code-style-guide.html"><a href="code-style-guide.html#events-and-forms"><i class="fa fa-check"></i><b>A.4.4</b> Events and Forms</a></li>
+</ul></li>
+<li class="chapter" data-level="A.5" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-guidelines"><i class="fa fa-check"></i><b>A.5</b> Miscellaneous Guidelines</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>B</b> Testing with Jest</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>B.1</b> Testing</a></li>
+<li class="chapter" data-level="B.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>B.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="B.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>B.3</b> Writing a Test</a>
+<ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>B.4</b> Testing Web Apps with Jest</a>
+<ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>C</b> Lab: Webpack</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>C.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="C.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>C.2</b> Getting Started</a></li>
+<li class="chapter" data-level="C.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>C.3</b> <code>webpack.config.js</code></a>
+<ul>
+<li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
+</ul></li>
+<li class="chapter" data-level="C.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>C.4</b> Loaders</a>
+<ul>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>D</b> React Class Components</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>D.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="D.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>D.2</b> Handling Events in Class Components</a>
+<ul>
+<li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>D.3</b> State in Class Components</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>D.4</b> The Component Lifecycle</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>E</b> CSS in JS</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>E.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="E.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>E.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="E.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>E.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="E.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>E.4</b> CSS Modules</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>F</b> Redux</a></li>
+<li class="chapter" data-level="G" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>G</b> React Native</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>G.1</b> Getting Setup</a>
+<ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>G.2</b> React Native Apps</a>
+<ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#lists-and-data"><i class="fa fa-check"></i>Lists and Data</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="css-properties" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> CSS Properties</h1>
+<p><a href="css-fundamentals.html#css-fundamentals">CSS Fundamentals</a> introduced ths basic syntax and usage of CSS. This chapter provides additional details about some common appearance <strong>properties</strong> that can be modified with CSS.</p>
+<p>This chapter is not intended to be a complete reference (use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">the MDN reference</a> for that!), but rather to provide specific explanations and examples for styling pages with CSS.</p>
+<div id="specifying-property-values" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Specifying Property Values</h2>
+<p>As described in <a href="css-fundamentals.html#css-fundamentals">CSS Fundamentals</a>, properties are specified by the name of the property, followed by a colon (<code>:</code>), and ending with a semicolon (<code>;</code>):</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* A basic property */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Values may be keywords specific to that property (including color names like <code>purple</code>), strings (in quotes), or numeric values (see <a href="css-properties.html#css-units">Units &amp; Sizes</a> below). What values are valid options depends on the property; use the reference and examples like this chapter as a guide.</p>
+<p>Some properties are written with <em>multiple values</em>, usually separated by a <em>space</em> (not a comma). For example, the <code>border</code> property described can be specified with 3 values: the first value is the width of the border, the second is the style, and the third is the color:</p>
+<pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* A property that has 3 values. They are separated by spaces */</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 3px dotted red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Most (but not all) properties that have multiple values are actually <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties"><strong>shorthand properties</strong></a>—properties that allow you to specify multiple component properties at once. The above <code>border</code> property example is actually a shorthand for 3 different properties: the <code>border-width</code>, the <code>border-style</code>, and the <code>border-color</code>:</p>
+<pre class="language-css"><code><span class="token selector">div</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Border set as individual properties; equivalent to the previous example */</span>
+  <span class="token property">border-width</span><span class="token punctuation">:</span> 3px<span class="token punctuation">;</span>
+  <span class="token property">border-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Shorthand properties often can be specified with a variable number of values, the number and order of which determines which component properties are indicated:</p>
+<pre class="language-css"><code><span class="token selector">.all-sides-padding</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Specify padding (spacing) on all 4 sides at once--top, right, bottom, left */</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1px 2px 3px 4px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.x-and-y-sides-padding</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* Specify padding on top &amp; bottom, then on left &amp; right */</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px 20px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>What options are available for a shorthand property depends on that property—use the documentation to check.</p>
+<p>Including a shorthand property is interpreted as writing out all of the properties it replaces; so will <em>replace</em> any previous properties within the same rule (if the same property is declared multiple times, the “last” declaration is applied). Thus it is best to eitehr use just the shorthand property, or to specify each of the component properties explicitly.</p>
+<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">border</span><span class="token punctuation">:</span> 3px solid blue<span class="token punctuation">;</span> <span class="token comment">/* later property override previous ones */</span>
+                            <span class="token comment">/* border will be blue instead of red */</span>
+<span class="token punctuation">}</span></code></pre>
+<div id="inherited-property-values" class="section level3 unnumbered">
+<h3>Inherited Property Values</h3>
+<p>If you don’t explicitly set a property for an element, then the element will still be styled (it will still have a size, font, color, etc)—the value will be <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Inheritance"><strong>inherited</strong></a> from the parent element.</p>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">ul</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;ul> elements */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">li</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;li> elements */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
+    This element's content will be in a larger font size (inherited from the
+    parent), as well as red (specified directly).
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>(So will this element's content because the same rules apply)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
+<p>In the above example, the <code>&lt;li&gt;</code> elements will be in a larger font size even though a rule doesn’t specifically apply that property to them—the parent <code>&lt;ul&gt;</code> element gets that property value, and then the child <code>&lt;li&gt;</code> elements inherit it.</p>
+<p>If the parent styling hasn’t been specified by you, then the element might still be inheriting a style! It will get these styles from the <em>browser’s built-in stylesheet</em>, often called the <strong>user-agent stylesheet</strong>. This is often the “default” styling that applies to elements, such as making headings big and bold. While most browsers have similar stylesheets, these can be adjusted and customized by the user (such as by making the “default font” size larger to help with accessibility). Thus sometimes you may need to explicitly style an element in order to override the browser’s built-in styling.</p>
+<p>If you want to explicitly note that an element should be styled the same as its parent, you can give that property an <strong><code>inherit</code></strong> value. If you want to explicitly have an element be styled to the browser-default value, you can give that property an <strong><code>initial</code></strong> value. These are particularly useful when you want to “override” a more general rule to remove a specified styling.</p>
+<pre class="language-css"><code><span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* color should be the same (inherited) from the parent element */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> inherit<span class="token punctuation">;</span>
+
+  <span class="token comment">/* font-size should use the browser-initial value */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> initial<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>It’s important to note, however, that not all properties are inherited! For example, the <code>border</code> property is a <strong>non-inherited</strong> property; a child element will not gain its own border just because a border was specified for the parent. Most properties that style text or colors are inherited, while those properties that deal with size and layout are often non-inherited (it usually works the way you’d expect). You can check for any particular property by referring to its documentation.</p>
+</div>
+<div id="css-units" class="section level3 unnumbered">
+<h3>Length Units &amp; Sizes</h3>
+<p>Many CSS properties affect the <em>size</em> of things on the screen, whether this is the height of the text (the <code>font-size</code>) or the width of a box (the <code>width</code>). In CSS, you can use a variety of different <strong>units</strong> to specify sizes.</p>
+<p>In general, CSS sizes are fundamentally measured in <strong>pixels</strong> (<strong><code>px</code></strong>). A pixel represents a single rasterable point of a display (it is <a href="http://alvyray.com/Memos/CG/Microsoft/6_pixel.pdf">not a tiny square</a>), and is the usual unit used to measure display size. In the web a pixel is defined to be <span class="math inline">\(\frac{1}{96}\)</span> of an inch; that may vary depending on the display size and resolution, but thinking of 100px as about an inch of screen space is a good starting heuristic. A pixel is an <strong>absolute length unit</strong>; a size specified in pixels is considered to always be the same size.</p>
+<p>CSS does support a number of alternate absolute length units, including inches (<code>1in = 96px</code>), centimeters (<code>1cm = 37.8px</code>), millimeters, and points (<span class="math inline">\(\frac{1}{72}\)</span> of an inch. <code>1pt = 1.33px</code>; do not use this for font sizes). These however are generally inappropriate for computer displays and more useful e.g., in printing, so should not be used in styling web pages.</p>
+<p>CSS also uses a variety of <strong>relative length units</strong>, which will produce sizes based on (relative to) the size of other elements. The most common relative units are described below.</p>
+<ul>
+<li><p><strong><code>em</code></strong>: An <code>em</code> is measured relative to the <em>parent</em> element’s font-size:</p>
+<pre class="language-css"><code><span class="token comment">/* A parent element has a font-size of 16px */</span>
+<span class="token selector">.parent</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* The child element would have a font-size of 32px */</span>
+<span class="token selector">.child</span> <span class="token punctuation">{</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<p>If the parent’s font-size was <code>20px</code>, then a font-size of <code>2em</code> for the child would be valued at <code>40px</code>. This can be useful for indicating e.g., that you want an element’s font to be “twice as big”. Careful use of <code>em</code>-based font-sizes also allow for effective scaling: you can change the font-size of a parent and then all of the children will resize accordingly.</p>
+<p>Note that although an <code>em</code> was originally a <a href="http://en.wikipedia.org/wiki/Em_(typography)">typographic measurement</a>, this unit does <em>not</em> change based on the <code>font-family</code>.</p>
+<p>An <code>em</code> can also be used for non-typographic properties such as <code>width</code>; in those situations the pixel value is calculated relative to the <em>current</em> element’s font-size.</p></li>
+<li><p><strong><code>rem</code></strong>: An <code>rem</code> is measured relative to the <em>root</em> element’s (<code>&lt;html&gt;</code> element’s) font-size. Since most browsers have a default root font-size of <code>16px</code>, this generally means that <code>2rem = 32px</code>.</p>
+<p>Using <code>rem</code> units can allow for relative scaling, but at a document-level rather than at an element-level. This can help keep things consistent; elememts won’t accidentally “balloon” in size because of increasing <code>em</code> multipliers. But using relative <code>rem</code> units rather than absolute <code>px</code> units allows your page to be more accessible (users can change the default font-size to be larger and more readable) and betters supports different browsers.</p></li>
+<li><p><strong><code>%</code></strong>: A <code>%</code> value is measured relative to the <em>parent</em> element’s value for that property (font-size, width, etc). For example, if the parent element’s <code>width</code> is <code>300px</code>, then an element with a width of <code>50%</code> would be <code>150px</code> wide.</p>
+<p>For font-sizes, percentages act equivalent to <code>em</code> units. For example, <code>.75em</code> is the same as <code>75%</code>; <code>2em</code> is the same as <code>200%</code>. In general, its best practice to use <code>em</code> when sizing fonts to be consistent. Percentages can appropriate for dimensions such as <code>width</code> or <code>height</code>.</p></li>
+<li><p><strong><code>vw</code></strong>, <strong><code>vh</code></strong>: These units are relative to the <em>viewport</em> dimensions—the size of the browser window. <code>1vw</code> is 1% of the viewport’s width, and <code>1vh</code> is 1% of the viewport height ()<code>25vw</code> would be 25% of the viewport width, etc). If the browser is resized, then these values will change. This can be a desired effect, but can also make it difficult to style a page that looks good across a wide range of browser sizes. Indeed, a regular <code>%</code> can achieve the a similar effect to a <code>vw</code>.</p></li>
+</ul>
+<p>Most browsers have a default font size of <code>16px</code>, so <code>1em</code> and <code>1rem</code> will both be initially equivalent to <code>16px</code>.</p>
+<p>For length values of <code>0</code> (used e.g., for padding or margin), you omit the units as irredundant—you don’t need to say 0 of what. So you just use <code>0</code>, not e.g., <code>0px</code>.</p>
+<p>In general, you should specify font sizes using <em>relative units</em> (e.g., <code>em</code>)—this will support accessibility, as vision-impaired users will be able to increase the default font-size of the browser and all your text will adjust appropriately. Absolute units are best for things that do not scale across devices (e.g., image sizes, or the maximum width of content). However, using relative sizes will allow those components to scale with the rest of the page.</p>
+<p class="alert alert-success">
+Font-sizes should always be relative (<code>em</code> or <code>rem</code>); layout dimensions may be absolute (but relative units are best).
+</p>
+</div>
+</div>
+<div id="fonts-and-text" class="section level2" number="7.2">
+<h2><span class="header-section-number">7.2</span> Fonts and Text</h2>
+<p>You specify the typographical “font” (the <strong>typefac</strong>) for text using the <strong><code>font-family</code></strong> property. This property takes a <em>comma-separated list</em> of font names (strings). The browser will attempt to render the text using the first font in the list; if that font isn’t available on the client computer, then it will use the next in the list and so on (you can then of these secondary fonts as “fall-backs”). Font family names are <em>required</em> to be put in quotes (single or double) if there is a whitespace in the name, such as with <code>"Helvetica Nue"</code>. But it is good practice to put all font family names in quotes anyway—this makes it easier to modify if you change them to a font name with multiple words, and helps distinguish them from generic font names (see below).</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span> <span class="token string">'Arial'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this example, the computer will attempt to render the text in <code>'Helvetica Nue'</code>. If that font isn’t installed on the user’s computer, then it instead tries to use <code>'Helvetica'</code>, then <code>'Arial'</code>, and finally if none of those work will use a generic <code>sans-serif</code> font.</p>
+<p>Indeed, the last font in the list should always be a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family"><strong>generic family name</strong></a>. These are a list of “categories” that the browser can draw upon even if the computer doesn’t have any common fonts available. In pracice, the most common generic families used are <code>serif</code> (fonts with <a href="https://en.wikipedia.org/wiki/Serif">serifs</a>, e.g., “Times”), <code>sans-serif</code> (fonts <em>without</em> serifs, e.g., “Arial”), and <code>monospace</code> (fonts with <a href="https://en.wikipedia.org/wiki/Monospaced_font">equal width characters</a>, e.g., “Courier”).</p>
+<p>Note that generic font families are <em>not</em> quoted: it’s <code>sans-serif</code>, not <code>"sans-serif"</code>. If you put them in quotes, the the browser will intepret them as a family name and not as generic.</p>
+<div class="figure">
+<img src="img/css/serifs.jpg" alt="" />
+<p class="caption">Serif vs. Sans-Serif fonts. From <a href="https://99designs.ca/blog/tips/crash-course-in-typography-know-your-terms/">99designs.ca</a>.</p>
+</div>
+<p class="alert alert-info">
+Research (roughly) suggests that sans-serif fonts are easier to read on screens, as well as more accessible for users with e.g., dyslexia. Thus it is recommended to use <code>sans-serif</code> fonts for most text on your page.
+</p>
+<p>It is also possible to include specific typefaces in your web page, which will be delivered to the browser by the web server in case the client doesn’t have the previously available. You do this manually by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face"><code>@font-face</code></a> rule, and specifying the url for the font file (usually in <a href="https://en.wikipedia.org/wiki/Web_Open_Font_Format"><code>.woff2</code></a> format).</p>
+<p>However, it is usually easier to instead include a stylesheet that <em>already has this rule in place</em>. For example, the <a href="https://fonts.google.com/">Google Fonts</a> collection provides more than 800 different freely available fonts that you can include directly in your web page:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token comment">&lt;!-- ... --></span>
+
+  <span class="token comment">&lt;!-- load stylesheet with font first so it is available --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css?family=Encode+Sans<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+  <span class="token comment">&lt;!-- load stylesheet next --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>css/style.css<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Encode Sans'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span> <span class="token comment">/* can now use Encode Sans */</span>
+<span class="token punctuation">}</span></code></pre>
+<p class="alert alert-info">
+Notice that the <code>&lt;link&gt;</code> reference can be to an external file on a different domain! This is common practice when using fonts and CSS frameworks.
+</p>
+<p><strong>Important</strong> When using Google Fonts, you’ll need to specify if you also want variations such as <strong>bold</strong> or <em>italic</em> typesets. For example, the <a href="https://fonts.google.com/specimen/Encode+Sans">Encode Sans</a> font is available in font weights (what you would set with <code>font-weight</code>) from <code>100</code> to <code>900</code>, but you need to specify these in the linked resource:</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- includes normal (400) and bold (700) weights --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://fonts.googleapis.com/css?family=Encode+Sans:400,700<span class="token punctuation">"</span></span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span><span class="token punctuation">></span></span></code></pre>
+<p>If you don’t include the different set of glyphs for the bolded font, then setting the text in that font to bold won’t have any effect (because the browser doesn’t now how to show text in “Bold Encode Sans”)!</p>
+<p>Other font libraries can be used to add icons or symbols to a web page. For example, the <a href="https://developers.google.com/fonts/docs/material_icons#icon_font_for_the_web">Material Design icon font for the web</a> lets you specify different icons by giving elements a particular <code>class</code>. Other icon-based fonts include <a href="https://octicons.github.com/">Octicons</a> and <a href="https://fontawesome.com/">Font Awesome</a>.</p>
+<p class="alert alert-info">
+<a href="https://en.wikipedia.org/wiki/Emoji">Emoji</a> are defined using a different set of <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> values, and are browser and operating-system dependent instead of being available through a font.
+</p>
+<p>You can make a font <em>italic</em> using the <strong><code>font-style</code></strong> property, or <strong>bold</strong> using the <strong><code>font-weight</code></strong> property. Font weights are measured in different ordinal values ranging from 100 to 900. For most fonts these are specific values: there is no such thing as a font weight of <code>340</code> (only <code>300</code> and <code>400</code>). Often using keywords for font weights (e.g., <code>normal</code>, <code>bold</code>, <code>black</code>) is easier to read and understand.</p>
+</div>
+<div id="css-colors" class="section level2" number="7.3">
+<h2><span class="header-section-number">7.3</span> Colors and Backgrounds</h2>
+<p>Colors of CSS properties (foreground or background) can be specified in a few different ways.</p>
+<p>You can use one of a list of 140 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/named-color">predefined color names</a>:</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> mediumpurple<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>While this list does not offer a lot of flexibility, they can act as useful placeholders and starting points for design. The list of CSS color names also has a <a href="http://arstechnica.com/information-technology/2015/10/tomato-versus-ff6347-the-tragicomic-history-of-css-color-names/">fascinating history</a>.</p>
+<p>Alternatively, you can specify a color as a <a href="https://en.wikipedia.org/wiki/RGB_color_model">“red-green-blue”</a> (RGB) value. This is a way of representing <em>additive color</em>, or the color that results when the specified amount of red, green, and blue light are aimed at a white background. RGB values are the most common way of specifying color in computer programs.</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> <span class="token function">rgb</span><span class="token punctuation">(</span>147<span class="token punctuation">,</span> 112<span class="token punctuation">,</span> 219<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">/* medium purple */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This value option is actually a <em>function</em> that takes a couple of parameters representing the amount of red, green, and blue respectively. Each parameter ranges from <code>0</code> (none of that color) to <code>255</code> (that color at full). Thus <code>rgb(255,0,0)</code> is pure bright red, <code>rgb(255,0,255)</code> is full red and blue but no green (creating magenta), <code>rgb(0,0,0)</code> is black and <code>rgb(255,255,255)</code> is white.</p>
+<p>Note that if you want to make the color somewhat transparent, you can also specify an <a href="https://en.wikipedia.org/wiki/Alpha_compositing">alpha</a> value using the <code>rgba()</code> function. This function takes a 4th parameter, which is a decimal value from <code>0</code> (fully transparent) to <code>1.0</code> (fully opaque). Elements with transparent colors will “blend” with any other elements behind them (which requires some non-standard positioning).</p>
+<p>CSS also <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">supports</a> <code>hsl()</code> and <code>hsla()</code> functions for specifying color in terms of a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">hue, saturation, lightness</a> color model.</p>
+<p>Finally, and most commonly, you can specify the RGB value as a <a href="https://en.wikipedia.org/wiki/Hexadecimal">hexadecimal</a> (base-16) number.</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #9370db<span class="token punctuation">;</span> <span class="token comment">/* medium purple */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>In this format, the color starts with a <code>#</code>, the first two characters represent the red (ranging from <code>00</code> to <code>FF</code>, which is hex for <code>255</code>), the second two characters represent the green, and the third two the blue:</p>
+<div class="figure">
+<img src="img/css/hex-reading.png" alt="" />
+<p class="caption">How to reading a hex value, from <a href="https://www.smashingmagazine.com/2012/10/the-code-side-of-color/">Smashing Magazine</a>.</p>
+</div>
+<p>This is a more compact and efficient way to describe the RGB of a color, and is how most digital artists convey color. See <a href="https://www.smashingmagazine.com/2012/10/the-code-side-of-color/">this article</a> for more details about encoding colors.</p>
+<div id="backgrounds-and-images" class="section level3 unnumbered">
+<h3>Backgrounds and Images</h3>
+<p>You have previously seen how to use the the <code>background-color</code> property to color the background of a particular element. CSS also supports a much wider list of <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds">background-related</a> properties. For example, the <code>background-image</code> property will allow you to set an image as the background of an element:</p>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../img/page-banner.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This property takes as a value a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/url"><code>url()</code></a> data type, which is written like a function whose parameter is a string with the URI of the resource to load. These URIs can be absolute (e.g., <code>http://...</code>), or relative <em>to the location of the stylesheet</em> (not to the web page!—you may need to use <code>..</code> if your <code>.css</code> file is inside a <code>css/</code> directory).</p>
+<p>There are additional properties used to customize background images, including where it should positioned in the element (e.g., centered), how large the image should be, whether it should repeat, whether it should scroll with the page, etc.</p>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../img/page-banner.png'</span><span class="token punctuation">)</span></span><span class="token punctuation">;</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> center top<span class="token punctuation">;</span> <span class="token comment">/* align to center top */</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span> <span class="token comment">/* stretch so element is filled; preserves ratio (img may be cropped) */</span>
+    <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span> <span class="token comment">/* don't repeat */</span>
+    <span class="token property">background-attachment</span><span class="token punctuation">:</span> fixed<span class="token punctuation">;</span> <span class="token comment">/* stay still when window scrolls */</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> beige<span class="token punctuation">;</span> <span class="token comment">/* can still have this for anything the image doesn't cover
+                                (or for transparent images) */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This is a lot of properties! To understand all the options for their values, read through the <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_boxes/Backgrounds">documentation and examples for backgrounds</a>.</p>
+<p>To try and make things easer, CSS also includes a <em>shorthand property</em> called just <strong><code>background</code></strong>. Using this property, the above is equivalent to:</p>
+<pre class="language-css"><code><span class="token selector">header</span> <span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url"><span class="token function">url</span><span class="token punctuation">(</span><span class="token string url">'../img/page-banner.png'</span><span class="token punctuation">)</span></span> top center / cover no-repeat fixed beige<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that the <code>background-position</code> and <code>background-size</code> are separated by a <code>/</code> since they both can have more than one value. You can include some or all of the available background properties in the shorthand. Unlike most shorthand properties, the <code>background</code> properties can go in any order (though the above order is recommended).</p>
+<p>Additionally, all of the <code>background</code> properties support <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Using_CSS_multiple_backgrounds">multiple backgrounds</a> by using a <em>comma-separated</em> list of values. This can enable you to easily overlay partially-transparent images on top of each other, similar to using layers in a photo-editing application such as Photoshop.</p>
+</div>
+</div>
+<div id="box-model" class="section level2" number="7.4">
+<h2><span class="header-section-number">7.4</span> Spacing with the Box Model</h2>
+<p>The <a href="https://www.w3.org/TR/CSS2/box.html"><strong>CSS Box Model</strong></a> is one of the core concepts in CSS, and is one of the central frameworks by which elements are visually presented on the page.</p>
+<p>All HTML elements (<em>including text!</em>) include an imaginary “box” around their content. Elements are laid out with their boxes next to each other (side by side for <code>inline</code> elements, stacked on top for <code>block</code> elements—see <a href="css-properties.html#flow-layout">Flow Layout</a>). These boxes are normally just large enough to contain the content inside the element, but you can use CSS to alter the size of and spacing between these boxes in order to influence the layout.</p>
+<p>First off, you can set the <strong><code>width</code></strong> and <strong><code>height</code></strong> of elements explicitly. Note that if the <code>width</code> or <code>height</code> are too small for the element’s content, then the content will be clipped by default (a behavior controlled by the <code>overflow</code> property). It’s generally best to set only the width <em>or</em> the height, but not both. You can also specify a <code>min-width</code> or <code>min-height</code> to ensure that the width or height is at least a particular size. Conversely, you can use <code>max-width</code> and <code>max-height</code> to constrain the size of the element. The <code>width</code> and <code>height</code> can only be adjusted for block elements (such as <code>&lt;p&gt;</code> or <code>&lt;div&gt;</code>); inline elements (such as <code>&lt;em&gt;</code> or <code>&lt;a&gt;</code>) are always sized to fit their content.</p>
+<p>In order to adjust the spacing between boxes, you can manipulate one of 3 properties: the padding, the border, and the margin.</p>
+<div class="figure">
+<img src="img/css/box-model.png" alt="" />
+<p class="caption">A diagram of the box model properties</p>
+</div>
+<p>These three properties can be seen in the Chrome Developer Tools when you select an element: the content is shaded in blue, the padding is shaded in green, the border is shown in its own color (or yellow), and the margin is shaded in orange.</p>
+<div id="padding" class="section level3 unnumbered">
+<h3>Padding</h3>
+<p>The <strong>padding</strong> is the space between the content and the border (e.g., the edge of the box). If you think of the element’s content as being in a shipping box, then this is the “packing peanut” space around that content that is used to keep it from touching the boundaries of the box.</p>
+<div class="figure">
+<img src="img/css/box-padding.png" alt="" />
+<p class="caption">An element’s padding.</p>
+</div>
+<p>Padding can be specified for an individual side of the box individually using e.g., <code>padding-top</code>, or by using the <strong><code>padding</code></strong> shortcut property to specify multiple sides at once:</p>
+<pre class="language-css"><code><span class="token comment">/* specify each side individually */</span>
+<span class="token selector">.individual-sides-padding</span> <span class="token punctuation">{</span>
+  <span class="token property">padding-top</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">padding-left</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">padding-right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* no units needed on 0 */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* specify one value for all sides at once */</span>
+<span class="token selector">.all-sides-padding</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* specify one value for top/bottom (first) and one for left/right (second) */</span>
+<span class="token selector">.x-and-y-sides-padding</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1em 2em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The padding is considered be “inside” of the element. Thus background styling (colors or images) will also apply to the padding area. Adding padding is a good way to increase the “size” of an element without needing to specify the width and height explicity.</p>
+</div>
+<div id="border" class="section level3 unnumbered">
+<h3>Border</h3>
+<p>As noted above, the <strong>border</strong> (edge of the box) can be made visible and styled in terms of its width, color, and “style”. While thse can be set individually, it is most common to use the shorthand property to specify all three aspects at once.</p>
+<pre class="language-css"><code><span class="token selector">.boxed</span> <span class="token punctuation">{</span>
+   <span class="token property">border</span><span class="token punctuation">:</span> 2px dashed black<span class="token punctuation">;</span> <span class="token comment">/* border on all sides */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Similar to with padding, you can specify the border on a specific side with properties such as <code>border-top</code>. In fact, you can specify each aspect of the border (width, color, style) individually for each side— the <code>border</code> property is actually a shorthand for 12 different properties!</p>
+<pre class="language-css"><code><span class="token selector">.underlined</span> <span class="token punctuation">{</span>
+   <span class="token property">border-bottom</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span> <span class="token comment">/* border one side */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.individual-op-border</span> <span class="token punctuation">{</span> <span class="token comment">/* control border properties separately */</span>
+   <span class="token property">border-top-width</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+   <span class="token property">border-top-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+   <span class="token property">border-top-style</span><span class="token punctuation">:</span> dotted<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Relatedly, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius"><strong><code>border-radius</code></strong></a> property can be used to “round” the corners of the box. The value specified is the radius of the rounded arc.</p>
+<pre class="language-css"><code><span class="token selector">.rounded-rect</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span> <span class="token comment">/* rounded corners! */</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.circle</span> <span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span> <span class="token comment">/* radius is half the width, so produces a circle */</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+<div id="margin" class="section level3 unnumbered">
+<h3>Margin</h3>
+<p>Finally, the <strong>margin</strong> specifies the space <em>between</em> this box and other nearby boxes.</p>
+<div class="figure">
+<img src="img/css/box-margin.png" alt="" />
+<p class="caption">An element’s margins.</p>
+</div>
+<p>The <code>margin</code> is declared in an equivalent manner to <code>padding</code>, with similar individual and shorthand properties:</p>
+<pre class="language-css"><code><span class="token selector">.individual-sides-margin</span> <span class="token punctuation">{</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* no units needed on 0 */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* specify one value for all sides at once */</span>
+<span class="token selector">.all-sides-margin</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1.5em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that browsers typically <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">collapse</a> (overlap) the margins of adjacent elements. For example, if you have two paragraphs on top of one another, and you set <code>margin-bottom</code> on the first and <code>margin-top</code> on the second, most browsers will overlap those margins and just use the larger of the two values to determine the spacing.</p>
+</div>
+<div id="padding-vs.-margin" class="section level3 unnumbered">
+<h3>Padding vs. Margin</h3>
+<p>Padding and margin are both used to add space around content on the page—indeed, without a visible border or background color, adding either will achieve close to the same appearance! It can sometimes be challenging to decide which property to use when adding spacing between elements.</p>
+<p>To help determine which to use, first remember that padding adds space <em>inside</em> the element, while margin adds space outside of it. If you want to mae the element’s size larger—to have the border be further away or to have a larger background area, use <em>padding</em>. And if you want to put space between visible borders or visible background areas, use <em>margin</em>.</p>
+<p>More challenging is when the boundaries between elements are not visible. In those situations I consider the semantics: am I adding spacing because I want this element to take up more space (<em>padding</em>), or because I want it to be kept further away from other elements (<em>margin</em>)? I often default to using <em>padding</em> when styling smaller or inline elements, and <em>margin</em> when styling block or section elements. But either can be appropriate; just be aware of choices if you end up needing to adjust the spacing later!</p>
+</div>
+<div id="box-sizing" class="section level3 unnumbered">
+<h3>Box-Sizing</h3>
+<p>An element’s <code>padding</code>, <code>border</code>, and <code>margin</code> can be used to put space between element content on the page. However, when you assign an explicit <code>width</code> or <code>height</code> to an element, the dimension you specify <em>does not include</em> the padding or border when calculating the size of the element on the page! That is, if you have an element with the properties</p>
+<pre class="language-css"><code><span class="token selector">.my-box</span> <span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+    <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token comment">/* includes both left and right */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The above element will take up <code>120px</code> on the screen: the width plus the left and right padding.</p>
+<p>This may seem intuitive, but can make sizing complex when including small adjustments such as borders. Indeed, when specifying more complex or responsive layouts, it’s often useful to have the <code>width</code> represent the entire width of the box, and not need to account for the border and padding separately in calculations. You can do this using the <a href="https://css-tricks.com/box-sizing/"><code>box-sizing</code></a> property—a value of <code>border-box</code> will indicate that specified <em>size</em> of the box (e.g., the <code>width</code>) should include the size of the padding and border when determining the content area.</p>
+<pre class="language-css"><code><span class="token selector">.my-better-box</span> <span class="token punctuation">{</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px
+  <span class="token property">padding</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The above element will take up <code>100px</code> on the screen. This means that the content may be given a smaller space than anticipated, but it allows you to adjust the padding or border without worrying about changes to the overall element width.</p>
+<p>It’s common to want to apply this property to <strong>all</strong> of the elements on the page, which you can do with the universal selector.</p>
+<pre class="language-css"><code><span class="token selector">*</span> <span class="token punctuation">{</span>
+    <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> <span class="token comment">/* all elements include border and padding in size */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This is a good rule to include at the top of any <code>.css</code> file, and is often found in reset stylesheets.</p>
+</div>
+</div>
+<div id="flow-layout" class="section level2" number="7.5">
+<h2><span class="header-section-number">7.5</span> Flow Layout</h2>
+<p>By default, HTML elements are are displayed on the page in a default layout called <strong>normal flow</strong>. This layout is determined by the order that HTML elements appear in the source code, and whether each element is a <em>block element</em> or an <em>inline element</em>.</p>
+<p>As described in <a href="html-fundamentals.html#block-vs.-inline-elements">HTML Fundamentals</a>, <strong>inline</strong> elements (e.g., <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>) are positioned next to each other on a single line (left to right, unless you specify a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir">right-to-left language</a>). <strong>Block</strong> elements (e.g., <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, <code>&lt;div&gt;</code>) are placed on subsequent “lines”, from top to bottom.</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>Block element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<div class="figure">
+<img src="img/css/block-element.png" alt="" />
+<p class="caption">Example of block elements, placed on top of each other.</p>
+</div>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span></code></pre>
+<div class="figure">
+<img src="img/css/inline-element.png" alt="" />
+<p class="caption">Example of inline elements, next to each other (even if the code is on separate lines).</p>
+</div>
+<p class="alert alert-successful">
+It’s good practice to allow the browser to display elements using normal flow whenver you can. If the normal flow positioning based on element’s type and source code location gets that element into the correct position on the page, then don’t try to change it. It’s better to let the browser do what it can, and then use CSS to provide small adjustments (e.g., by adding a little padding or margin). This will help keep your CSS simplier and help ensure that the content continues to render reasonably on different browsers and devices.
+</p>
+<p>All HTML elements are classified as either block or inline elements. However, it is possible to change the element type by declaring the the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display"><strong><code>display</code></strong></a> CSS property:</p>
+<pre class="language-css"><code><span class="token selector">.inlined</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- this will produce the same result as using &lt;span> elements --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inlined<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Other inline element<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<p>Changing the <code>display</code> can be useful if the semantics of an HTML element are appropriate, but you want that element to be rendered in a different way. For example, you can have <code>&lt;li&gt;</code> elements display as inline elements instead of blocks, allowing you to have inline lists.</p>
+<p>In addition to specifying elements as either <code>block</code> or <code>inline</code>, elements can also be given a <code>display</code> value of <code>inline-block</code>. An <code>inline-block</code> element will be layed out as if it were <code>inline</code> (so other elements will be positioned next to it), but can still have its <code>width</code>, <code>height</code>, and other block-specific properties specified</p>
+<div class="figure">
+<img src="img/css/inline-block-example.png" alt="" />
+<p class="caption">An example of an element with <code>display: inline-block</code>.</p>
+</div>
+<p>The <code>display</code> property also allows you to remove elements from the page flow entirely by specifying a value of <code>none</code>. This will remove the element entirely from the normal flow, as well as from the content that is read by assistitive technologies such as screen readers.</p>
+<pre class="language-css"><code><span class="token selector">.hidden</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* do not show element at all */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>display: none</code> property is most commonly used when JavaScript and dynamic styling (e.g., to allow a user to remove or “hide” an element interactvity); for static pages, if content shouldn’t be shown then often you just don’t include it in the HTML.</p>
+</div>
+<div id="alternate-positioning" class="section level2" number="7.6">
+<h2><span class="header-section-number">7.6</span> Alternate Positioning</h2>
+<p>By default elements are positioned on the page based on the <em>normal flow</em> described above. In general this is the best and easiest way to position elements. Nevertheless, it is possible to position elements outside of the normal flow (to “break” the regular flow).</p>
+<p>One way to position elements outside of normal flow is to use the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position"><strong><code>position</code></strong></a> property. This property lets you specify the relative or exact position of an element in the document. The <code>position</code> property indicates by approach other than normal flow should be used to position the element, and then the <code>top</code>, <code>bottom</code>, <code>left</code> and <code>right</code> properties are used to indicate where or by how much that positioning should be changed.</p>
+<p>For example, an element with <code>position: relative</code> will adjust the element’s position <em>relative</em> to its normal flow position on the page, moving it some distance in the specified direction:</p>
+<pre class="language-css"><code><span class="token selector">.relative-element</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span> <span class="token comment">/* position will be relatively changed */</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span> <span class="token comment">/* adjust position 10px down from the top */</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 20px <span class="token comment">/* adjust position 10px over from the left */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>top</code>, <code>left</code>, etc properties take an <em>offset</em> as a value. Thus a property of <code>top: 10px</code> says to move an element <em>down</em> (away from the top) by <code>10px</code>, and a propery of <code>down: 20px</code> says to move an element <em>to the right</em> (away from the left) by <code>20px</code>. These values can also be negative: a property of <code>top: -15px</code> would move the element <em>up</em> by <code>15px</code>. Because <code>top</code> and <code>bottom</code> both specify vertical position (and <code>right</code> and <code>left</code> both specify horizontal position), you only ever set one for a particular element—an element should not have both a <code>top</code> and a <code>bottom</code> property as they would be redundant or in conflict.</p>
+<p>Because these values are offsets applied to an inverted-y coordinate system, it can sometimes be hard to intuit where elements are positioned. Thus you should always visually inspect the outcome of your CSS rules, as well as minimize how many elements are take out of normal flow.</p>
+<p>It is also possible to give an element a <code>position: absolute</code>. An absoslutely positioned element will be displayed at the specified coordinates from its (first non-static) parent element. This allows you to specify where <em>within a parent element</em> you want an element to be positioned.</p>
+<pre class="language-css"><code><span class="token selector">.absolute-element</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span> <span class="token comment">/* position will be absolutely determined */</span>
+  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span> <span class="token comment">/* position 0px from the top of the page */</span>
+  <span class="token property">left</span><span class="token punctuation">:</span> 30% <span class="token comment">/* position 30% of the page width from the left */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Importantly, <code>absolute</code> positioned elements are positioned according to the first <em>non-static</em> parent (<code>static</code> is the default <code>position</code> value, indicating normal flow). With no other changes, this would be the <code>&lt;body&gt;</code> element, thus having the absolutely positioned element be specified relative to the entire page (and moving as the browser changes size). However, common practice is to place any absolutely positioned elements as children of a <code>position: relative</code> parent (that may have no further adjustment), so that the <code>absolute</code> elements are still placed relative to that element. See <a href="https://css-tricks.com/absolute-positioning-inside-relative-positioning/">this post on absolute positioning inside of relative positioning</a> for additional examples.</p>
+<p>It is also important to note that an element that has an <code>absolute</code> position is not given any space in the normal flow: other elements won’t move to accommodate date; the <code>absolute</code> element will overlap them. Thus using an <code>absolute</code> positioned element often requires you to create additional whitespace through other positioning or padding.</p>
+<p class="alert alert-warning">
+In general, you should <em>not</em> use <code>position: absolute</code>. Such positioning is often inflexible—you’re hard-coding a position!—and thus is not likely to adjust well to different browsers, devices, or user needs. It makes it harder to adjust to changes in the code or content. Using normal flow whenever possible tends to work better.
+</p>
+<p>Finally, the <code>position</code> property can also take a value of <code>fixed</code> to specify the element’s position relative to the <em>viewport</em> (browser window), similar to using <code>position: absolute</code> without a relative parent. An element with <code>position: sticky</code> will be offset relative to its nearest <em>scrolling</em> parent (also usually the browser window) and then stay there even as the page scrolls. This is how you can create a “sticky navbar” that is always at the top of the page—though such effects consume valuable screen real estate with content the user may be need at the moment.</p>
+<div id="floating" class="section level3 unnumbered">
+<h3>Floating</h3>
+<p><img src="img/css/bunny.jpg" alt="cute bunny" style="float:right;margin-left:1em;"></p>
+<p>You can also position an element outside of normal flow by making it <strong>float</strong>. This is commonly done with pictures, but can be done with any element. A floated element is shoved over to one side of the screen, with the rest of the content wrapping around it:</p>
+<p style="clear:both;">
+<pre class="language-css"><code><span class="token selector">.floating-image</span> <span class="token punctuation">{</span>
+  <span class="token property">float</span><span class="token punctuation">:</span> right<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span> <span class="token comment">/* for spacing */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Content will continue to sit along side a floated element until it “clears” it (gets past it to the next line). You can alternatively force content to “clear” a float by using the <code>clear</code> property. An element with this property <em>cannot</em> have other elements floating to the indicated side:</p>
+<pre class="language-css"><code><span class="token selector">.clear-float</span> <span class="token punctuation">{</span>
+    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span> <span class="token comment">/* do not allow floating elements on either side */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The <code>float</code> property is good for when you simply want some content to sit off to the side. But you should <em>not</em> try to use this property for more complex layouts (e.g., multi-column structures); there are better solutions for that, such as a <a href="css-properties.html#flexbox">Flexbox</a>.</p>
+<p class="alert alert-warning">
+Never use the <code>&lt;table&gt;</code> tag to structure documents and position content. The <code>&lt;table&gt;</code> tag should <em>only</em> be used for content that is semantically a table (e.g., a data table). If you want to lay out content in a grid, use a CSS system such as Flexbox.
+</p>
+</div>
+</div>
+<div id="flexbox" class="section level2" number="7.7">
+<h2><span class="header-section-number">7.7</span> Flexbox</h2>
+<p>A <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"><strong>Flexbox</strong></a> is a technique for easily arranging items in flexible rows or columns. A flexbox is an alternate to relying on normal flow, and is particularly useful for creating complex effects such as multi-column layouts. A Flexbox layout allows you to efficiently lay out elements inside a container (e.g., columns inside a page) so that the space is <em>flexibly</em> distributed. This provides additional advantages such as ensuring that columns have matching heights.</p>
+<p class="alert alert-warning">
+Flexbox is a new standard that is now supported by <a href="http://caniuse.com/#feat=flexbox">most modern browsers</a>; it has a buggy implementation in Microsoft IE, but is supported in the standards-compliant Edge. For older browsers, you can instead rely on a grid system from one of the popular CSS Frameworks such as Bootstrap.
+</p>
+<p class="alert alert-info">
+Despite it’s capabilities, Flexbox still is designed primarily for one-directional flows (e.g., having one row of columns). To handle true grid-like layouts, browsers are adopting <em>another</em> emerging standard called <a href="https://css-tricks.com/snippets/css/complete-guide-grid/"><strong>Grid</strong></a>. The Grid framework shares some conceptual similarities to Flexbox (configuring child elements inside of a parent container), but uses a different set of properties. Learning Flexbox will help if you wish to learn Grid later.
+</p>
+<p>At its most basic, a flexbox is an element with the <strong><code>display: flex</code></strong> property. An element with this property will be a <em>block</em> element, but its <em>children</em> will be positioned following a “flexbox flow” rather than than the normal flow. Making an element into a flexbox (giving it <code>display: flex</code>) doesn’t change how that element is positioned, but changes how its children are positioned. When discussing flexboxes, the flexbox itself (the element with <code>display: flex</code>) is referred to as the <strong>flex container</strong> (or just the <em>parent</em>), while the child elements inside that flexbox are referred to as <strong>flex items</strong> or (or just the <em>children</em>)</p>
+<pre class="language-css"><code><span class="token comment">/* A flex container, or "the flexbox". The class name is not important */</span>
+<span class="token selector">.my-flex-container</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>By default, a flexbox will position its children <em>horizontally</em> (even if they are block elements), though you can adjust this by also specifying the flexbox’s <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction"><code>flex-direction</code></a> property. The cihld elements will be sized so that their width fits their content area, and their heights are all equal to the height of the flexbox. Thus with no other work, the elements inside of the flexbox will be layed out in “columns”!</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- Parent --></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<div class="figure">
+<img src="img/css/flex-nesting.png" alt="" />
+<p class="caption">An example of a simple Flexbox layout. Additional margin included for illustration.</p>
+</div>
+<p>Further properties can then be used to modify the flow of the child elements within the flexbox, as well as the size and position of the individual child elements. For example, the following additional properties can be specified on the <em>flex container</em> (the flexbox itself—the parent):</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content"><strong><code>justify-content</code></strong></a> specifies how the items should be spread out across the container if there is extra space. This can be easily used to <code>center</code> the child elements—and if there is only a single child element, then that element will be centered in its parent. If the child elements’ width takes up the full span of the flexbox (so there is no extra space), then this property will have no visible effect.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-wrap"><strong><code>flex-wrap</code></strong></a> specifies if items should “wrap around” to the next line when they overflow the container <em>instead of</em> shrinking to fit. This is similar behavior to what you see with text wrapping to the next line when it gets too long. Items that have wrapped will continue to have the same height as others on their “row”, and will be justified as specified</li>
+</ul>
+<pre class="language-css"><code><span class="token selector">.my-flex-container</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span> <span class="token comment">/* make this element a flexbox */</span>
+  flex-wrap<span class="token punctuation">;</span> <span class="token comment">/* wrap children to next line if larger than the container */</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-around<span class="token punctuation">;</span> <span class="token comment">/* justify with equal space around the children */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>For more information on other properties that can be used to customize a flexbox, see the MDN documentation or the <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox Guide</a>.</p>
+<p>You also can specify additional properties on the <em>flex items</em> (the immediate children of the flexbox) in order to adjust e.g., how much space of the flexbox they take up. These properties include:</p>
+<ul>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><strong><code>flex-grow</code></strong></a> specifies what “share” or ratio of any extra space in the container the item should take up. That is, if the container is <code>500px</code> wide, but the items only take up <code>400px</code> of space, this property determines how much of the remaining <code>100px</code> is given to the specific item.</p>
+<p>The value is a unitless number (e.g., <code>1</code> or <code>2</code>, defaulting to <code>0</code>), and the amount of remaining space is divided up <em>proportionally</em> among the items with a <code>flex-grow</code>. So an item with <code>flex-grow:2</code> will get twice as much of the remaining space as an item with <code>flex-grow:1</code>. If there are 4 items and <code>100px</code> of space remaining, giving each item <code>flex-grow:1</code> will cause each item to get <code>25px</code> (100/4) of the extra space. If one of the items has <code>flex-grow:2</code>, then it will get <code>40px</code> (<span class="math inline">\(\frac{2}{1+1+1+2}=\frac{2}{5}=40\%\)</span>) of the extra space, while the other three will only get <code>20px</code>.</p>
+<p>In practice, you can give each item a property <code>flex-grow:1</code> to have them take up an equal amount of the remaining space in the container.</p>
+<p>There is an equivalent <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"><code>flex-shrink</code></a> property that specifies the ratio an item should shrink to accommodate overflow space. This property doesn’t do anything when the items are in wrapping container (<code>flex-wrap:wrap</code>); and in practice, it is rarely used. It’s generally better practice to focus on elements at their smallest allowed size and give them space to grow, rather than worry about how they may shrink. The most common usage is to specify that an item should <em>not</em> shrink by giving it a <code>flex-shrink:0</code>.</p>
+<div class="figure">
+<img src="img/css/flex-grow-shrink-vert.png" alt="" />
+<p class="caption">Top: visual example of <code>flex-grow</code>. Bottom: visual example of <code>flex-shrink</code>. Notice how much extra “space” each item has after the text content.</p>
+</div></li>
+<li><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/#article-header-id-12"><strong><code>flex-basis</code></strong></a> allows you to specify the “initial” dimensions of a particular item. This has a similar effect to specifying the <code>width</code> property, except that <code>flex-basis</code> has a higher priority and may be slightly more <a href="https://stackoverflow.com/questions/34352140/what-are-the-differences-between-flex-basis-and-width">flexible</a>. Note that like <code>width</code>, this value can be an dimensional measurement (absolute units like <code>100px</code>, or a relative unit like <code>25%</code>).</p>
+<p>In practice, using percentages for the <code>flex-basis</code> will let you easily size the columns of your layout.</p></li>
+</ul>
+<p>There is also a <em>shorthand property</em> <code>flex</code> that allows you to specify three values at once: give the <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> values separated by spaces (the second two being optional if you want to use the default values). Note that if unspecified in the shorthand property, the <code>flex-basis</code> property will be set to <code>0</code>, rather than the <code>auto</code> value it has if unspecified.</p>
+<p>For more information on other properties that can be used to customize a flex item, see the MDN documentation or the <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">Flexbox Guide</a>.</p>
+<p>While it may seem like a lot of options, it’s often enough to just use a basic flexbox (e.g., a <code>&lt;div&gt;</code> with <code>display:flex</code>). Adding such a container to “wrap” around content can help size the items and line them up horizontally. When using a flexbox, start by adding in the container, and then making small adjustments to achieve the effect you desire.</p>
+<p class="alert alert-warning">
+You don’t always need to use a flexbox for layout! If the normal flow sufficiees, then use that.
+</p>
+</div>
+<div id="resources-5" class="section level2 unnumbered">
+<h2>Resources</h2>
+<p>Many resources are linked in the text to describe particular properties. Some additional (or important!) general resources can be found below.</p>
+<div class="list-condensed">
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS Reference (MDN)</a> a complete alphabetical reference for all CSS concepts.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS">Learn to style HTML using CSS (MDN)</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Values_and_units">CSS Units and Values (MDN)</a></li>
+<li><a href="https://www.smashingmagazine.com/2012/10/the-code-side-of-color/">The Code Side of Color</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">CSS Tricks Flexbox Guide</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="css-selectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="responsive-css.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info340/book/edit/master/css-properties.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

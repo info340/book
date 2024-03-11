@@ -1,4 +1,4 @@
-# ES6+ Features {#es6}
+# ES6+ Syntax {#es6}
 As discussed in [Chapter 10](#history-and-versions), the ECMAScript specification for the JavaScript language has gone through several different versions, each of which added new syntax and features to try and make the language more powerful, expressive, or easier to work with.
 
 After the JavaScript language was initially written in 1995 and then iterated on through the late 90s, it mostly stayed consistent (with some small changes) for about a decade&mdash;until 2009 with the release of JavaScript v5. The next major version wasn't released until 2015&mdash;although officially called "ECMAScript 2015", most developers refer to it by the working name **"ES6"** (e.g., version 6 of the language). ES6 introduced a host of notable and useful syntactic features&mdash;including `let` and `const`! Since then the language has been updated annually, with each version named after its release year (_ES 2016_ was released in 2016, _ES 2017_ released in 2017, etc).

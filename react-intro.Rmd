@@ -15,7 +15,7 @@ and in general
 [choosing profits over safety](https://www.nytimes.com/2021/10/03/technology/whistle-blower-facebook-frances-haugen.html). You may be understandably concerned about whether learning and using React implicitly supports and thus condones this company and its behavior. Whenever you adopt any software tool or library, it is worth investigating _who_ created it (and _why_) and how that may impact your own willingness to use it as a dependency.</p>
 
 
-## Getting Set Up: Create React App
+## Getting Set Up: Create React App {#create-react-app}
 React is a JavaScript library similar to those discussed in previous chapters&mdash;you load the library and then can call upon its methods. However, React makes use of a significant amount of advanced and custom JavaScript syntax (described below), including extensive use of [ES6 Modules](#modules). Thus in practice, developing React apps requires using a large number of different development tools&mdash;just getting setup and started is one of the major hurdles in learning React!
 
 Luckily, Facebook does provide an amazing application which combines many of these these different development tools together. [**Create React App (CRA)**](https://create-react-app.dev/) is a _command line_ application that generates scaffolding ("starter code") for a React application, as well as provides built-in scripts to run, test, and deploy your code.

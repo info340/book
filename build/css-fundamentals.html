@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 CSS Fundamentals | Client-Side Web Development</title>
+  <title>Chapter 4 CSS Fundamentals | Client-Side Web Development</title>
   <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 CSS Fundamentals | Client-Side Web Development" />
+  <meta property="og:title" content="Chapter 4 CSS Fundamentals | Client-Side Web Development" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://info340.github.io/" />
   <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
@@ -16,23 +16,23 @@
   <meta name="github-repo" content="info340/book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 CSS Fundamentals | Client-Side Web Development" />
+  <meta name="twitter:title" content="Chapter 4 CSS Fundamentals | Client-Side Web Development" />
   
   <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
   <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
 
-<meta name="author" content="Joel Ross and Mike Freeman" />
+<meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-01-11" />
+<meta name="date" content="2024-03-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
-<link rel="prev" href="standards-and-accessibility.html"/>
-<link rel="next" href="css-options.html"/>
+<link rel="prev" href="html-fundamentals.html"/>
+<link rel="next" href="semantic-html.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -85,30 +85,39 @@
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the Book</a></li>
-<li class="chapter" data-level="1" data-path="machine-setup.html"><a href="machine-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
+<li class="chapter" data-level="1" data-path="software-setup.html"><a href="software-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="machine-setup.html"><a href="machine-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
-<li class="chapter" data-level="1.2" data-path="machine-setup.html"><a href="machine-setup.html#code-editors"><i class="fa fa-check"></i><b>1.2</b> Code Editors</a>
+<li class="chapter" data-level="1.1" data-path="software-setup.html"><a href="software-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a>
 <ul>
-<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
-<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#atom"><i class="fa fa-check"></i>Atom</a></li>
-<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#sublime-text"><i class="fa fa-check"></i>Sublime Text</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="1.2.1" data-path="software-setup.html"><a href="software-setup.html#other-editors"><i class="fa fa-check"></i><b>1.2.1</b> Other Editors</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="machine-setup.html"><a href="machine-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
-<li class="chapter" data-level="1.4" data-path="machine-setup.html"><a href="machine-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.4</b> Git and GitHub</a></li>
-<li class="chapter" data-level="1.5" data-path="machine-setup.html"><a href="machine-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.5</b> Node and <code>npm</code></a>
+<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="software-setup.html"><a href="software-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.4</b> Node and <code>npm</code></a>
 <ul>
-<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#managing-packages-with-npm"><i class="fa fa-check"></i>Managing packages with npm</a></li>
-<li><a href="machine-setup.html#package.json"><code>package.json</code></a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-software-with-npm"><i class="fa fa-check"></i>Installing software with npm</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#managing-local-packages"><i class="fa fa-check"></i>Managing local packages</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="machine-setup.html"><a href="machine-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="1.5" data-path="software-setup.html"><a href="software-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.5</b> Git and GitHub</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i><b>2.1</b> Client-Side File Types</a></li>
-<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#http-requests-and-servers"><i class="fa fa-check"></i><b>2.2</b> HTTP Requests and Servers</a>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#clients-and-servers"><i class="fa fa-check"></i><b>2.1</b> Clients and Servers</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#urls-and-web-files"><i class="fa fa-check"></i><b>2.2</b> URLs and Web Files</a>
 <ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i>Client-Side File Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="client-side-development.html"><a href="client-side-development.html#servers-and-hosting"><i class="fa fa-check"></i><b>2.3</b> Servers and Hosting</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#hosting-with-github-pages"><i class="fa fa-check"></i>Hosting with GitHub Pages</a></li>
 <li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="client-side-development.html"><a href="client-side-development.html#web-standards"><i class="fa fa-check"></i><b>2.4</b> Web Standards</a></li>
+<li class="chapter" data-level="2.5" data-path="client-side-development.html"><a href="client-side-development.html#web-accessibility"><i class="fa fa-check"></i><b>2.5</b> Web Accessibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#supporting-accessibility"><i class="fa fa-check"></i>Supporting Accessibility</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a>
@@ -124,77 +133,88 @@
 <ul>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a>
-<ul>
-<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#doctype-declaration"><i class="fa fa-check"></i>Doctype Declaration</a></li>
-<li><a href="html-fundamentals.html#the-head-section">The <code>&lt;head&gt;</code> Section</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-template"><i class="fa fa-check"></i><b>3.4</b> Web Page Template</a></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a></li>
 <li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html"><i class="fa fa-check"></i><b>4</b> Standards and Accessibility</a>
+<li class="chapter" data-level="4" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#web-standards"><i class="fa fa-check"></i><b>4.1</b> Web Standards</a></li>
-<li class="chapter" data-level="4.2" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#why-accessibility"><i class="fa fa-check"></i><b>4.2</b> Why Accessibility</a></li>
-<li class="chapter" data-level="4.3" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#supporting-accessibility"><i class="fa fa-check"></i><b>4.3</b> Supporting Accessibility</a>
+<li class="chapter" data-level="4.1" data-path="css-fundamentals.html"><a href="css-fundamentals.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css-fundamentals.html"><a href="css-fundamentals.html#including-css"><i class="fa fa-check"></i><b>4.2</b> Including CSS</a></li>
+<li class="chapter" data-level="4.3" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-rules"><i class="fa fa-check"></i><b>4.3</b> CSS Rules</a>
 <ul>
-<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#semantic-html"><i class="fa fa-check"></i>Semantic HTML</a></li>
-<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#aria"><i class="fa fa-check"></i>ARIA</a></li>
-<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#page-structure-navigable"><i class="fa fa-check"></i>Page Structure (Navigable)</a></li>
-<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#visual-information-perceivable"><i class="fa fa-check"></i>Visual Information (Perceivable)</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-selector-basics"><i class="fa fa-check"></i>CSS Selector Basics</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-property-basics"><i class="fa fa-check"></i>CSS Property Basics</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="standards-and-accessibility.html"><a href="standards-and-accessibility.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="4.4" data-path="css-fundamentals.html"><a href="css-fundamentals.html#the-cascade"><i class="fa fa-check"></i><b>4.4</b> The Cascade</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>5</b> CSS Fundamentals</a>
+<li class="chapter" data-level="5" data-path="semantic-html.html"><a href="semantic-html.html"><i class="fa fa-check"></i><b>5</b> Semantic HTML</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="css.html"><a href="css.html#why-two-different-languages"><i class="fa fa-check"></i><b>5.1</b> Why Two Different Languages?</a></li>
-<li class="chapter" data-level="5.2" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>5.2</b> CSS Rules</a>
+<li class="chapter" data-level="5.1" data-path="semantic-html.html"><a href="semantic-html.html#specific-html-elements"><i class="fa fa-check"></i><b>5.1</b> Specific HTML Elements</a>
 <ul>
-<li class="chapter" data-level="" data-path="css.html"><a href="css.html#overall-syntax"><i class="fa fa-check"></i>Overall Syntax</a></li>
-<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i>CSS Properties</a></li>
-<li class="chapter" data-level="" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i>CSS Selectors</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#inline-textual-elements"><i class="fa fa-check"></i>Inline Textual Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#images-and-media"><i class="fa fa-check"></i>Images and Media</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#headings"><i class="fa fa-check"></i>Headings</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#non-semantic-elements"><i class="fa fa-check"></i>Non-Semantic Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#sectioning-elements"><i class="fa fa-check"></i>Sectioning Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#forms"><i class="fa fa-check"></i>Forms</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="css.html"><a href="css.html#the-cascade"><i class="fa fa-check"></i><b>5.3</b> The Cascade</a>
+<li class="chapter" data-level="5.2" data-path="semantic-html.html"><a href="semantic-html.html#aria-for-accessibility"><i class="fa fa-check"></i><b>5.2</b> ARIA for Accessibility</a>
 <ul>
-<li class="chapter" data-level="" data-path="css.html"><a href="css.html#rule-specificity"><i class="fa fa-check"></i>Rule Specificity</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-labeling"><i class="fa fa-check"></i>ARIA Labeling</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-roles-and-landmarks"><i class="fa fa-check"></i>ARIA Roles and Landmarks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-and-interactivity"><i class="fa fa-check"></i>ARIA and Interactivity</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="css.html"><a href="css.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="css-options.html"><a href="css-options.html"><i class="fa fa-check"></i><b>6</b> CSS Options</a>
+<li class="chapter" data-level="6" data-path="css-selectors.html"><a href="css-selectors.html"><i class="fa fa-check"></i><b>6</b> CSS Selectors</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="css-options.html"><a href="css-options.html#compound-selectors"><i class="fa fa-check"></i><b>6.1</b> Compound Selectors</a>
+<li class="chapter" data-level="6.1" data-path="css-selectors.html"><a href="css-selectors.html#basic-selectors"><i class="fa fa-check"></i><b>6.1</b> Basic Selectors</a>
 <ul>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#group-selector"><i class="fa fa-check"></i>Group Selector</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#combined-selectors"><i class="fa fa-check"></i>Combined Selectors</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#attribute-selectors"><i class="fa fa-check"></i>Attribute Selectors</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#type-selector"><i class="fa fa-check"></i>Type Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#class-selector"><i class="fa fa-check"></i>Class Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#id-selector"><i class="fa fa-check"></i>Id Selector</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="css-options.html"><a href="css-options.html#property-values"><i class="fa fa-check"></i><b>6.2</b> Property Values</a>
+<li class="chapter" data-level="6.2" data-path="css-selectors.html"><a href="css-selectors.html#complex-selectors"><i class="fa fa-check"></i><b>6.2</b> Complex Selectors</a>
 <ul>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#css-units"><i class="fa fa-check"></i>Units &amp; Sizes</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#css-colors"><i class="fa fa-check"></i>Colors</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#fonts-and-icons"><i class="fa fa-check"></i>Fonts and Icons</a></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#grouping-selector"><i class="fa fa-check"></i>Grouping Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#compound-selector"><i class="fa fa-check"></i>Compound Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#additional-selectors"><i class="fa fa-check"></i>Additional Selectors</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="css-options.html"><a href="css-options.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="6.3" data-path="css-selectors.html"><a href="css-selectors.html#selector-specificity"><i class="fa fa-check"></i><b>6.3</b> Selector Specificity</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="css-layouts.html"><a href="css-layouts.html"><i class="fa fa-check"></i><b>7</b> CSS Layouts</a>
+<li class="chapter" data-level="7" data-path="css-properties.html"><a href="css-properties.html"><i class="fa fa-check"></i><b>7</b> CSS Properties</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="css-layouts.html"><a href="css-layouts.html#display"><i class="fa fa-check"></i><b>7.1</b> Display</a></li>
-<li class="chapter" data-level="7.2" data-path="css-layouts.html"><a href="css-layouts.html#box-model"><i class="fa fa-check"></i><b>7.2</b> The Box Model</a>
+<li class="chapter" data-level="7.1" data-path="css-properties.html"><a href="css-properties.html#specifying-property-values"><i class="fa fa-check"></i><b>7.1</b> Specifying Property Values</a>
 <ul>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#padding"><i class="fa fa-check"></i>Padding</a></li>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#border"><i class="fa fa-check"></i>Border</a></li>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#margin"><i class="fa fa-check"></i>Margin</a></li>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#inherited-property-values"><i class="fa fa-check"></i>Inherited Property Values</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#css-units"><i class="fa fa-check"></i>Length Units &amp; Sizes</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="css-layouts.html"><a href="css-layouts.html#position"><i class="fa fa-check"></i><b>7.3</b> Position</a>
+<li class="chapter" data-level="7.2" data-path="css-properties.html"><a href="css-properties.html#fonts-and-text"><i class="fa fa-check"></i><b>7.2</b> Fonts and Text</a></li>
+<li class="chapter" data-level="7.3" data-path="css-properties.html"><a href="css-properties.html#css-colors"><i class="fa fa-check"></i><b>7.3</b> Colors and Backgrounds</a>
 <ul>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="css-layouts.html"><a href="css-layouts.html#flexbox"><i class="fa fa-check"></i><b>7.4</b> Flexbox</a></li>
-<li class="chapter" data-level="" data-path="css-layouts.html"><a href="css-layouts.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+<li class="chapter" data-level="7.4" data-path="css-properties.html"><a href="css-properties.html#box-model"><i class="fa fa-check"></i><b>7.4</b> Spacing with the Box Model</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding-vs.-margin"><i class="fa fa-check"></i>Padding vs. Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="css-properties.html"><a href="css-properties.html#flow-layout"><i class="fa fa-check"></i><b>7.5</b> Flow Layout</a></li>
+<li class="chapter" data-level="7.6" data-path="css-properties.html"><a href="css-properties.html#alternate-positioning"><i class="fa fa-check"></i><b>7.6</b> Alternate Positioning</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="css-properties.html"><a href="css-properties.html#flexbox"><i class="fa fa-check"></i><b>7.7</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a>
 <ul>
@@ -301,7 +321,7 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>14</b> ES6+ Features</a>
+<li class="chapter" data-level="14" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>14</b> ES6+ Syntax</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="es6.html"><a href="es6.html#es6-syntax-features"><i class="fa fa-check"></i><b>14.1</b> ES6+ Syntax Features</a>
 <ul>
@@ -325,7 +345,7 @@
 </ul></li>
 <li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#getting-set-up-create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
 <ul>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
@@ -544,18 +564,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="css" class="section level1" number="5">
-<h1><span class="header-section-number">Chapter 5</span> CSS Fundamentals</h1>
-<p><strong>CSS</strong> (<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets) is a declarative language used to alter the appearance or <em>styling</em> of a web page. CSS is used to define a set of formatting <strong>rules</strong>, which the browser applies when it renders your page. Thus CSS can tell the browser to use a particular <em>font</em> for the page text, a certain <em>color</em> for the first paragraph in an article, or a picture for the page’s <em>background</em>.</p>
-<p>Files of CSS rules (called <strong>stylesheets</strong>) thus act kind of like Styles or Themes in PowerPoint, but are way more powerful. You can control nearly every aspect of an element’s appearance, including its overall placement on the page.</p>
-<ul>
-<li>To give you some idea of just how much control you have, check out the examples in the <a href="http://www.csszengarden.com/">CSS Zen Garden</a>. Every one of those examples uses the exact same HTML content, but they all look completely different because each one uses a different CSS stylesheet.</li>
-</ul>
-<p>This chapter will explain how to include CSS in your web page and the overall syntax for declaring basic CSS rules. Additional details and options can be found in <a href="css-options.html#css-options">the following chapters</a></p>
-<div id="why-two-different-languages" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Why Two Different Languages?</h2>
+<div id="css-fundamentals" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> CSS Fundamentals</h1>
+<p><strong>CSS</strong> (<strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets) is a declarative language used to alter the appearance or <em>styling</em> of a web page. CSS is used to define a set of formatting <strong>rules</strong>, which the browser applies when it renders your page. Thus CSS can tell the browser to use a particular <em>font</em> for the page text, a certain <em>color</em> for the first paragraph in an article, or a picture for the page’s <em>background</em>. Files of CSS rules (called <strong>stylesheets</strong>) act kind of like Styles or Themes in PowerPoint, but are way more customizable. You can control nearly every aspect of an element’s appearance, including its overall placement on the page.</p>
+<p class="alert alert-info">
+To give you some idea of just how much can be done with CSS, check out the examples in the <a href="http://www.csszengarden.com/">CSS Zen Garden</a>. Every one of those examples uses the exact same HTML content, but they all look completely different because each one uses a different CSS stylesheet.
+</p>
+<p>This chapter will introduce how to include CSS in your web page and the syntax for declaring basic CSS rules. Further CSS syntax, details, and options will be discussed in later chapters.</p>
+<div id="why-two-different-languages" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Why Two Different Languages?</h2>
 <p>If you are new to web programming, you might be wondering why there are two different languages: HTML for your page content; and CSS for formatting rules. Why not just include the formatting right in with the content?</p>
-<p>There is an old, tried-and-true principle in programming referred to as <a href="https://en.wikipedia.org/wiki/Separation_of_concerns"><strong>“separation of concerns”</strong></a>. Well-designed software keeps separate things separate, so that it’s easy to change one without dealing with the other. And one of the most common forms of separation is to keep the <strong>data</strong> (content) in a program separate from the <strong>presentation</strong> (appearance) of that data.</p>
+<p>There is an old, tried-and-true principle in programming referred to as <a href="https://en.wikipedia.org/wiki/Separation_of_concerns"><strong>“separation of concerns”</strong></a>. Well-designed software keeps separate things separate, so that it’s easy to change one without worrying about the other. And one of the most common forms of separation is to keep the <strong>data</strong> (content) in a program separate from the <strong>presentation</strong> (appearance) of that data.</p>
 <p>By separating content (the HTML) from its appearance (the CSS), you get a number of benefits:</p>
 <ul>
 <li><p>The same content can easily be presented in different ways (like in the CSS Zen Garden). In web development, you could allow the user to choose different “themes” for a site, or you could change the formatting for different audiences (e.g., larger text for vision-impaired users, more compact text for mobile users, or different styles for cultures with different aesthetic sensibilities).</p></li>
@@ -563,30 +582,44 @@
 <li><p>You can also dynamically adjust the look of your page by applying new style rules to elements in response to user interaction (clicking, hovering, scrolling, etc.), without changing the content.</p></li>
 <li><p>Users who don’t care about about the visual appearance (e.g., blind users with screen readers, automated web indexers) can more quickly and effectively engage with the content without needing to determine what information is “content” and what is just “aesthetics”.</p></li>
 </ul>
-<p>Good programming style in web development thus keeps the <strong>semantics</strong> (HTML) separate from the <strong>appearance</strong> (CSS). Your HTML should simply describe the meaning of the content, not what it looks like!</p>
+<p>Good programming style in web development thus keeps the <strong>semantics</strong> (HTML) separate from the <strong>appearance</strong> (CSS). Your HTML should only describe the meaning of the content, not what it looks like!</p>
 <p>For example, while browsers might normally show <code>&lt;em&gt;</code> text as italic, you can use CSS to instead make emphasized text underlined, highlighted, larger, flashing, or with some other appearance. The <code>&lt;em&gt;</code> says nothing about the visual appearance, just that the text is emphatic, and it’s up to the styling to determine how that emphasis should be conveyed <em>visually</em>.</p>
 </div>
-<div id="css-rules" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> CSS Rules</h2>
-<p>While it’s possible to write CSS rules directly into HTML, the best practice is to create a separate CSS <strong>stylesheet</strong> file and connect that to your HTML content. These files are named with the <code>.css</code> extension, and are typically put in a <code>css/</code> folder in a web page’s project directory, as with the following folder structure:</p>
+<div id="including-css" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Including CSS</h2>
+<p>The best practice for adding CSS styling in your HTML page to create a separate CSS <strong>stylesheet</strong> file to contain the CSS code, and reference that file from your HTML content. These files are named with the <strong><code>.css</code></strong> extension, and are often put in a <code>css/</code> folder in a web page’s project directory, as with the following folder structure:</p>
 <pre><code>my-project/
 |-- css/
    |-- style.css
 |-- index.html</code></pre>
-<p>(<code>style.css</code>, <code>main.css</code>, and <code>index.css</code> are all common names for the “main” stylesheet).</p>
-<p>You connect the stylesheet to your HTML by adding a <strong><code>&lt;link&gt;</code></strong> element to your page’s <code>&lt;head&gt;</code> element:</p>
+<p><code>style.css</code>, <code>index.css</code> (the CSS for the <code>index.html</code> file), and <code>main.css</code> are all common names for the “primary” stylesheet.</p>
+<p>You include the stylesheet in your HTML by adding a <strong><code>&lt;link&gt;</code></strong> element to the page’s <code>&lt;head&gt;</code> element:</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
   <span class="token comment">&lt;!--... other elements here...--></span>
 
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>link</span> <span class="token attr-name">rel</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>stylesheet<span class="token punctuation">"</span></span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>css/style.css<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
-<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><code>&lt;link&gt;</code></a> element represents a connection to another resource. The tag includes an attribute indicating the <strong>rel</strong>ation between the resources (e.g., that the linked file is a stylesheet). The <code>href</code> attribute should be a <em>relative path</em> from the <code>.html</code> file to the <code>.css</code> resource. Note also that a <code>&lt;link&gt;</code> is an empty element so has no closing tag.</p>
-<ul>
-<li>It is also possible to include CSS code directly in your HTML by embedded it in a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code>, but this is considered bad practice (keep concerns separated!) and should only be used for quick tests.</li>
-</ul>
-<div id="overall-syntax" class="section level3 unnumbered">
-<h3>Overall Syntax</h3>
-<p>A CSS stylesheet lists <strong>rules</strong> for formatting particular elements in an HTML page. The basic syntax looks like:</p>
+<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link"><strong><code>&lt;link&gt;</code></strong></a> element represents a connection to another resource. The element includes a <strong><code>rel</code></strong> attribute indicating the <strong>rel</strong>ation between the resources (e.g., that the linked file is a stylesheet). The <code>href</code> attribute should be a <em>relative path</em> from the <code>.html</code> file to the <code>.css</code> resource. Note also that a <code>&lt;link&gt;</code> is an empty element so has no closing tag.</p>
+<p>It is both possible and common for a webpage to include <em>multiple</em> stylesheets, each specified with its own <code>&lt;link&gt;</code> element in the <code>&lt;head&gt;</code>. The stylesheet code will be applied in order: the first linked stylesheet is applied, then the second linked stylesheet, etc..</p>
+<p>Note that the <code>&lt;link&gt;</code> element is <em>not</em> a hyperlink—it is different from the <code>&lt;a&gt;</code> element used to create navigational links! When someone says “add a link to a page”, you’ll need to determine from context if they mean a hyperlink (<code>&lt;a&gt;</code>) or a stylesheet link (<code>&lt;link&gt;</code>).</p>
+<p class="alert alert-success">
+If your styling isn’t showing up in your page, double-check that the CSS file is linked correctly—especially that you have the correct path to the file!
+</p>
+<p>While using a separate stylesheet is the best practice for keeping your code separated and organized, it is also possible to include CSS code directly in your HTML. You can do this by putting that code inside of a <strong><code>&lt;style&gt;</code></strong> element (usually inside of the <code>&lt;head&gt;</code>):</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
+    <span class="token comment">/* CSS code goes here */</span>
+  </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre>
+<p>However this means that the CSS styling you write will <em>only</em> apply to that page (it can’t be shared across multiple files), and violates the separation of concerns principle. Embedded CSS should only be used for quick experiments.</p>
+<p>It is also possible to specify CSS styling for a particular element by giving that element a <strong><code>style</code></strong> attribute whose value is the list of CSS properties to apply to that element. However, this is less flexible (and more repetitive!) than using separate CSS rules, so is also considered bad practice and should be avoided.</p>
+<p class="alert alert-success">
+Always define CSS code in separate stylesheet files!
+</p>
+</div>
+<div id="css-rules" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> CSS Rules</h2>
+<p>A CSS stylesheet lists <strong>rules</strong> for formatting particular elements in an HTML page. The basic syntax a CSS rule looks like:</p>
 <pre class="language-css"><code><span class="token comment">/* This is pseudocode for a CSS rule */</span>
 <span class="token selector">selector</span> <span class="token punctuation">{</span>
    <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
@@ -597,66 +630,45 @@
 <span class="token selector">selector</span> <span class="token punctuation">{</span>
    <span class="token property">property</span><span class="token punctuation">:</span> value<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>A CSS <strong>rule</strong> rule starts with a <strong>selector</strong>, which specifies which elements the rule applies to. The selector is followed by a pair of braces <strong><code>{}</code></strong>, inside of which is a set of formatting <strong>properties</strong>. Properties are made up of the property <em>name</em> (e.g., <code>color</code>), followed by a colon (<strong><code>:</code></strong>), followed by a <em>value</em> to be assigned to that property (e.g., <code>purple</code>). Each name-value pair must end with a semi-colon (<strong><code>;</code></strong>).</p>
-<ul>
-<li>If you forget the semi-colon, the browser will likely ignore the property and any subsequent properties—and it does so silently without showing an error in the developer tools!</li>
-</ul>
-<p>Like most programming languages, CSS ignores new lines and whitespace. However, most developers will use the styling shown above, with the brace on the same line as the selector and indented properties.</p>
-<p>As a concrete example, the below rule applies to any <code>h1</code> elements, and makes them appear in the ‘Helvetica’ font as white text on a dark gray background:</p>
+<p>A CSS <strong>rule</strong> rule starts with a <strong>selector</strong>, which specifies which elements the rule applies to. The selector is followed by a pair of braces <strong><code>{}</code></strong>, inside of which is a list of formatting <strong>properties</strong>. Properties are made up of the property <em>name</em> (e.g., <code>color</code>), followed by a colon (<strong><code>:</code></strong>), followed by a <em>value</em> to be assigned to that property (e.g., <code>purple</code>). Each name-value pair must end with a semi-colon (<strong><code>;</code></strong>). If you forget the semi-colon, the browser will likely ignore the property and any subsequent properties—and it does so silently without showing an error in the developer tools!</p>
+<p>Like most programming languages, CSS ignores new lines and whitespace. However, most developers will use the formatting shown above, with the brace on the same line as the selector and indented properties.</p>
+<p>As a concrete example, the below rule applies to any <code>h1</code> elements, and makes them appear in the ‘Helvetica’ font in white text on a dark gray background:</p>
 <pre class="language-css"><code><span class="token selector">h1</span> <span class="token punctuation">{</span>
   <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica'</span><span class="token punctuation">;</span>
   <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
   <span class="token property">background-color</span><span class="token punctuation">:</span> #333<span class="token punctuation">;</span> <span class="token comment">/* dark gray */</span>
 <span class="token punctuation">}</span></code></pre>
 <p>Note that CSS <strong>comments</strong> are written using the same block-comment syntax used in Java (<code>/* a comment */</code>), but <em>cannot</em> be written using inline-comment syntax (<code>//a comment</code>).</p>
+<p>CSS stylesheet files will often contain dozens, or even hundreds or thousands of rules. Do not attempt to keep the number of rules small; define any rules that you need to in order to achieve your desired appearance!</p>
 <p class="alert alert-warning">
-When you modify a CSS file, you will need to <em>reload the page in your browser</em> to see the changed appearance. If you are using a program such as <code>live-server</code>, this reloading should happen automatically!
+When you modify a CSS file, you will need to <em>reload the page in your browser</em> to see the changed appearance. Some development servers such as <code>live-server</code> may perform this reloading automatically.
 </p>
-</div>
-<div id="css-properties" class="section level3 unnumbered">
-<h3>CSS Properties</h3>
-<p>There are <a href="http://www.w3schools.com/cssref/default.asp">many, many different CSS formatting properties</a> you can use to style HTML elements. All properties are specified using the <code>name:value</code> syntax described above—the key is to determine the name of the property that produces the appearance you want, and then provide a valid value for that property.</p>
-<p class="alert alert-info">
-<strong>Pro Tip</strong>: modern editors such as VS Code will provide auto-complete suggestions for valid property names and values. Look carefully at those options to discover more!
-</p>
-<p>Below is a short list of common styling properties you may change with CSS; more complex properties and their usage is described in the following chapters.</p>
-<ul>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family"><code>font-family</code></a>: the “font” of the text (e.g., <code>'Comic Sans'</code>). Font names containing white space <em>must</em> be put in quotes (single or double), and it’s common practice to quote any specific font name as well (e.g., <code>'Arial'</code>).</p>
-<p>Note that the value for the <code>font-family</code> property can also be a <em>comma-separated list</em> of fonts, with the browser picking the first item that is available on that computer:</p>
-<pre class="language-css"><code><span class="token comment">/* pick Helvetic Nue if exists, else Helvetica, else Arial, else the default
-   sans-serif font */</span>
-<span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span> <span class="token string">'Arial'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span></code></pre></li>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size"><code>font-size</code></a>: the size of the text (e.g., <code>12px</code> to be 12 pixels tall). The value must include units (so <code>12px</code>, not <code>12</code>). See the next chapter for <a href="css-options.html#css-units">details on units &amp; sizes</a>.</p></li>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight"><code>font-weight</code></a>: boldness (e.g., <code>bold</code>, or a numerical value such as <code>700</code>).</p></li>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color"><code>color</code></a>: text color (e.g., either a <a href="http://www.w3schools.com/colors/colors_names.asp">named color</a> like <code>red</code> or a hex value like <code>#4b2e83</code>. See the next chapter for <a href="css-options.html#css-colors">details on colors</a>. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color"><code>background-color</code></a> property specifies the background color for the element.</p></li>
-<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border"><code>border</code></a>: a border for the element (see <a href="box-model">“Box Model”</a> in Chapter 7). Note that this is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">short-hand property</a> which actually sets multiple related properties at once. The value is thus an <em>ordered</em> list of values separated by <strong>spaces</strong>:</p>
-<pre class="language-css"><code><span class="token comment">/* border-width should be 3px, border-style should be dashed, and border-color
-   should be red */</span>
-<span class="token property">border</span><span class="token punctuation">:</span> 3px dashed red<span class="token punctuation">;</span></code></pre></li>
-</ul>
-<p>Read the documentation for an individual property to determine what options are available!</p>
-<p class="alert alert-warning">
-Note that not all properties or values will be effectively or correctly supported by all browsers. Be sure and check the browser compatibility listings!
-</p>
-</div>
-<div id="css-selectors" class="section level3 unnumbered">
-<h3>CSS Selectors</h3>
-<p>Selectors are used to “select” which HTML elements the css rule should apply to. As with properties, there are <a href="http://www.w3schools.com/cssref/css_selectors.asp">many different kinds of selectors</a> (and see the following chapter), but there are three that are most common:</p>
-<div id="element-selector" class="section level4 unnumbered">
-<h4>Element Selector</h4>
-<p>The most basic selector, the <strong>element selector</strong> selects elements by their element (tag) name. For example, the below rule will apply to the all <code>&lt;p&gt;</code> elements, regardless of where they appear on the page:</p>
+<div id="css-selector-basics" class="section level3 unnumbered">
+<h3>CSS Selector Basics</h3>
+<p>The first part of the rule is the <strong>selector</strong>. Selectors are used to “select” which HTML elements the CSS rule should apply to. Any element on the page that “matches” what the selector indicates will have the properties of the rule applied to it. This means that each rule can and will style multiple elements on the page!</p>
+<p>CSS supports <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">multiple different types of selectors</a> (with different syntax for selecting which specific elements to style). This chapter will introduce the two most basic selectors; more options and syntax are discussed in <a href="css-selectors.html#css-selectors">CSS Selectors</a>.</p>
+<p>The most basic selector, called the <strong>type selector</strong>, selects elements by their type (tag name). For example, the below rule will apply to the all <code>&lt;p&gt;</code> elements, regardless of where they appear on the page:</p>
 <pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
    <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>You can also use this to apply formatting rules to the entire page by selecting the <code>&lt;body&gt;</code> element. Note that for clarity/speed purposes, we generally do <em>not</em> apply formatting to the <code>&lt;html&gt;</code> element.</p>
-<pre class="language-css"><code><span class="token selector">body</span> <span class="token punctuation">{</span>
-   <span class="token property">background-color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
-   <span class="token property">color</span><span class="token punctuation">:</span> white<span class="token punctuation">;</span>
+<p>CSS rules can use the type selector to style any type of element:</p>
+<pre class="language-css"><code><span class="token comment">/* style all h1 elements to be purple */</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* style all h2 elements to be gold and italic */</span>
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* style all images to fit within a maximum width */</span>
+<span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-</div>
-<div id="class-selector" class="section level4 unnumbered">
-<h4>Class Selector</h4>
-<p>Sometimes you want a rule to apply to only <em>some</em> elements of a particular type. You will most often do this by using a <strong>class selector</strong>. This rule will select elements with a <code>class</code> attribute that contains the specified name. For example, if you had HTML:</p>
+<p>It’s important to note that that CSS rules will apply to <em>all</em> elements on the page that match the selector. So the above rules will style <em>all</em> <code>&lt;h1&gt;</code>, all <code>&lt;h2&gt;</code>, and all <code>&lt;img&gt;</code> elements regardless of where they are. This means that you can write one rule to style lots of parts of the page—one rule will change all of the <code>&lt;h1&gt;</code> headings.</p>
+<p>But sometimes you want a rule to apply to only <em>some</em> elements of a particular type—to only some <code>&lt;p&gt;</code> or only some <code>&lt;img&gt;</code> for example. You will most often make these more limited selections by using a <strong>class selector</strong>. A class selector will select elements with a <strong><code>class</code></strong> attribute that contains the specified name. For example, if you had HTML:</p>
 <pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>highlighted<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This text is highlighted!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text is not highlighted<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
@@ -665,53 +677,65 @@ Note that not all properties or values will be effectively or correctly supporte
 <span class="token selector">.highlighted</span> <span class="token punctuation">{</span>
    <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>Class selectors are written with a single dot (<strong><code>.</code></strong>) preceding the <em>name of the class</em> (not the name of the tag!) The <code>.</code> is only used in the CSS rule, not in the HTML <code>class</code> attribute.</p>
-<p>Class selectors also let you apply a single, consistent styling to multiple different types of elements:</p>
-<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I am a flashing alert!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>So am I!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></code></pre>
-<p>CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased or snake_cased.</p>
-<p>Note that HTML elements can contain <strong>multiple classes</strong>; each class name is separate by a <strong>space</strong>:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have TWO classes: "alert" and "flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have ONE class: "alert-flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<p>The class selector will select any element that <em>contains</em> that class in its list. So the first paragraph in the above example would be selected by either <code>.alert</code> <strong>OR</strong> <code>.flashing</code>.</p>
-<p class="alert alert-warning">
-You should always strive to give CSS classes <a href="https://css-tricks.com/semantic-class-names/"><strong>semantic names</strong></a> that describe the purpose of element, rather than just what it looks like. <code>highlighted</code> is a better class name than just <code>yellow</code>, because it tells you what you’re styling (and will remain sensible even if you change the styling later). Overall, seek to make your class names <em>informative</em>, so that your code is easy to understand and modify later.
-</p>
-<p class="alert alert-info">
-There are also more formal methodologies for naming classes that you may wish to utilize, the most popular of which is <a href="https://en.bem.info/methodology/quick-start/">BEM (Block, Element, Modifier)</a>.
-</p>
-<p>Class selectors are often commonly used with <code>&lt;div&gt;</code> (block) and <code>&lt;span&gt;</code> (inline) elements. These HTML elements have <em>no</em> semantic meaning on their own, but can be given appearance meaning through their <code>class</code> attribute. This allows them to “group” content together for styling:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cow<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Moo moo moo.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Moooooooooooooooooooo.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sheep<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Baa baa <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dark<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>black<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> sheep, have you any wool?<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-</div>
-<div id="id-selector" class="section level4 unnumbered">
-<h4>Id Selector</h4>
-<p>It is also possible to select HTML elements by their <code>id</code> attribute by using an <strong>id selector</strong>. Every HTML element can have an <code>id</code> attribute, but unlike the <code>class</code> attribute the value of the <code>id</code> must be unique within the page. That is, no two elements can have the same value for their <code>id</code> attributes.</p>
-<p><strong>Id selectors</strong> start with a <code>#</code> sign, followed by the value of the <code>id</code>:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sidebar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-   This div contains the sidebar for the page
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<pre class="language-css"><code><span class="token comment">/* Style the one element with id="sidebar" */</span>
-<span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
-    <span class="token property">background-color</span><span class="token punctuation">:</span> lightgray<span class="token punctuation">;</span>
+<p>Class selectors are written with a single dot (<strong><code>.</code></strong>) preceding the <em>name of the class</em> (not the name of the tag!) The <code>.</code> is only used in the CSS rule, not in the HTML <code>class</code> attribute. In the above example, the HTML element has the class <code>highlighted</code> (no dot), and the CSS selector uses <code>.highlighted</code> to mean “elements with class <code>highlighted</code>”.</p>
+<div class="alert alert-warning">
+<p>If you try to use a class selector and forget the dot, then the browser will think that you’re using an type selector instead—likely selecting an element type that doesn’t exist in HTML!</p>
+<pre class="language-css"><code><span class="token comment">/* Bug: forgot the dot . in the class selector
+Instead selects elements of type &lt;highlighted> (do not exist in HTML) */</span>
+<span class="token selector">highlighted</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>The <code>id</code> attribute is more specific (it’s always just one element!) but less flexible than the <code>class</code> attribute, and makes it harder to “reuse” your styling across multiple elements or multiple pages. Thus you should <em>almost always use a class selector instead of an id selector</em>, unless you are referring to a single, specific element.</p>
+</div>
+<p>CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased or snake_cased. Classes should be given <em>informative</em> names—like you would name a variable! See <a href="#naming-css-classes">Naming CSS Classes</a> for more details.</p>
+<p>Class selectors will apply to any element that contains that class, regardless of the element’s type. This can let you apply a single consistent styling to multiple different types of elements:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I am a flashing alert!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>So am I!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>HTML elements can have <strong>multiple classes</strong>; each class name is separate by a <strong>space</strong> (not a comma):</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have TWO classes: "alert" and "flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have ONE class: "alert-flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert flashing fast<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have THREE classes: "alert", "flashing", and "fast"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>The class selector will select any element that <em>contains</em> that class in its list. So the first paragraph in the above example would be styled by either the selector <code>.alert</code> <em>or</em> the selector <code>.flashing</code>. The second paragraph would not be styled by either selector, because <code>"alert-flashing"</code> is not the <code>"alert"</code> or the <code>"flashing"</code> class.</p>
+<p>It is common for HTML elements to be given lots of classes, particularly under a <em>modular class naming</em> scheme.</p>
+<p>Class selectors are the best way to style a single particular element (just give it a <code>class</code> and then write a rule to refer to that), as well as one of the most clearest and effective ways of styling large <em>portions</em> of the page.</p>
+</div>
+<div id="css-property-basics" class="section level3 unnumbered">
+<h3>CSS Property Basics</h3>
+<p>There are <a href="http://www.w3schools.com/cssref/default.asp">many, many different CSS formatting properties</a> you can use to style HTML elements. All properties are specified using the <code>name: value;</code> syntax described above. The task is then to determine which property produces the appearance you want, and provide a valid value for that property. Making beautiful webpages involves combining lots of different properties to style lots of different HTML elements.</p>
+<p class="alert alert-success">
+Pro Tip: modern editors such as VS Code will provide auto-complete suggestions for valid property names and values. Look carefully at those options to discover more!
+</p>
+<p>Discussing every single CSS property is beyond the scope of this book (especially as more are introduced every year!) Later chapters will discuss some common or important properties in more detail. For now, below is a short list of common styling properties you might specify in CSS to get you started:</p>
+<ul>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family"><code>font-family</code></a>: the “font” of the text (e.g., <code>'Comic Sans'</code>). Font names containing white space <em>must</em> be put in quotes (single or double), and it’s common practice to quote any specific font name as well (e.g., <code>'Arial'</code>).</p>
+<p>Note that the value for the <code>font-family</code> property can also be a <em>comma-separated list</em> of fonts, with the browser picking the first item that is available on that computer:</p>
+<pre class="language-css"><code><span class="token comment">/* pick Helvetic Nue if exists, else Helvetica, else Arial, else the generic
+   sans-serif font */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span> <span class="token string">'Arial'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>See <a href="#fonts">Fonts</a> for more about working with fonts.</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-size"><code>font-size</code></a>: the size of the text (e.g., <code>12px</code> to be 12 pixels tall). The value must include units (so <code>12px</code>, not <code>12</code>). See <a href="css-properties.html#css-units">CSS Units</a> for more details on units and sizes.</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color"><code>color</code></a>: text color (e.g., either a <a href="http://www.w3schools.com/colors/colors_names.asp">named color</a> like <code>red</code> or a hex value like <code>#4b2e83</code>. See <a href="css-properties.html#css-colors">CSS Colors</a> for more details on colors in CSS. The <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-color"><code>background-color</code></a> property specifies the background color for the element.</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/width"><code>width</code></a>: the width of a block element. The value is usually defined in <code>px</code> units (e.g., <code>300px</code>). This proeprty can be useful especially for sizing image elements. There is also a similar <code>height</code> property.</p></li>
+<li><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/border"><code>border</code></a>: a border for the element (see <a href="box-model">“Box Model”</a>). Note that <code>border</code> is a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties">short-hand property</a> which actually sets multiple related properties at once. The value is thus an <em>ordered</em> list of values separated by <strong>spaces</strong>:</p>
+<pre class="language-css"><code><span class="token comment">/* border-width should be 3px, border-style should be dashed, and border-color
+   should be red */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 3px dashed red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></li>
+</ul>
+<p>Read the documentation for any individual property to determine what values it can take!</p>
+<p class="alert alert-warning">
+Note that not all properties or values will be effectively or correctly supported by all browsers. Be sure and check the browser compatibility listings when using the latest CSS features!
+</p>
 </div>
 </div>
-</div>
-<div id="the-cascade" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> The Cascade</h2>
+<div id="the-cascade" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> The Cascade</h2>
 <p>CSS is called <strong>Cascading</strong> Style Sheets because multiple rules can apply to the same element (in a “cascade” of style!)</p>
-<p>CSS rules are <em>additive</em>—if multiple rules apply to the same element, the browser will combine all of the style properties when rendering the content:</p>
+<p>CSS rules are <em>additive</em>—if multiple rules select the same element, the browser will combine all of the style properties of those rules when rendering the content:</p>
 <pre class="language-css"><code><span class="token comment">/* CSS */</span>
-<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all paragraphs */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;p> elements */</span>
   <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica'</span>
 <span class="token punctuation">}</span>
 
@@ -727,50 +751,70 @@ There are also more formal methodologies for naming classes that you may wish to
   This paragraph will be in Helvetica font, a larger font-size, and green color,
   because all 3 of the above rules apply to it.
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<p>CSS styling applies to <em>all</em> of the content in an element. And since that content can contain other elements that may have their own style rules, rules may also in effect be <em>inherited</em>:</p>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>content<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- has own styling --></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sub-sec<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- has own styling + .content styling --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ol</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>demo-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- own styling (ol AND .demo-list rules) + .sub-sec + .content --></span>
+<p>This means you can write one rule that applies to a type of element in general (e.g., “all paragraphs have Helvetica font”), and then write another rule that adjusts or customizes specific elements (e.g., “this one paragraph is (also) green”). Combining rules in this way allows you to make very complex styling out of simple and understandable parts. It also allows you to easily <em>reuse</em> such styling across multiple pages or contexts.</p>
+<p>In addition to multiple rules specifying property values for an element, an element can also <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance"><strong>inherit</strong></a> property values from its parent.</p>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">ul</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;ul> elements */</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
-      <span class="token comment">&lt;!-- li styling + .demo-list + .sub-sec + .content --></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>Item 3<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ol</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
-<p>We call these <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance">inherited properties</a>, because the child elements inherit the setting from their ancestor elements. This is a powerful mechanism that allows you to specify properties only once for a given branch of the DOM element tree. <em>In general, try to set these properties on the highest-level element you can, and let the child elements inherit the setting from their ancestor.</em></p>
-<div id="rule-specificity" class="section level3 unnumbered">
-<h3>Rule Specificity</h3>
-<p><strong>Important!</strong> Rules are applied in the order they are defined in the CSS file. If you link multiple CSS files from the same HTML page, the files are processed <em>in order</em> as they are linked in the HTML. In processing a CSS file, the browser selects elements that match the rule and applies the rule’s property. If a later rule selects the same element and applies a different value to that property, the previous value is <em>overridden</em>. So in general, all things being equal, <strong>the last rule on the page wins</strong>.</p>
-<pre class="language-css"><code><span class="token comment">/* Two rules, both alike in specificity */</span>
-<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
-<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text will be blue, because that rule comes last!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
-<p>However, there are some exceptions when CSS treats rules as <em>not</em> equal and favors earlier rules over later ones. This is called <a href="https://css-tricks.com/specifics-on-css-specificity/">Selector Specificity</a>. In general, more specific selectors (<code>#id</code>) take precedence over less specific ones (<code>.class</code>, which is more specific than <code>tag</code>). If you notice that one of your style rules is not being applied, despite your syntax being correct, check your browser’s <a href="https://developer.chrome.com/devtools">developer tools</a> to see if your rule is being overridden by a more specific rule in an earlier stylesheet. Then adjust your selector so that it has the same or greater specificity:</p>
-<!-- add example image of overriden rules -->
-<pre class="language-css"><code><span class="token comment">/* css */</span>
-<span class="token selector">.alert</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-<span class="token selector">div</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
-<pre class="language-html"><code><span class="token comment">&lt;!-- html --></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This text will be red, even though the `div` selector is last,
-because the `.alert` selector has higher specificity so is not overridden.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<span class="token selector">li</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;li> elements */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>
+    This element's content will be in a larger font size (inherited from the
+    parent), as well as red (specified directly).
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span>(So will this element's content because the same rules apply)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></code></pre>
+<p>In the above example, the <code>&lt;li&gt;</code> elements will be in a larger font size even though a rule doesn’t specifically apply that property to them—the parent <code>&lt;ul&gt;</code> element gets that property value, and then the child <code>&lt;li&gt;</code> elements inherit it.</p>
+<p>Property inheritance means that rules can apply to entire “sections” of the page, and all the content within that section will be styled in the same way. Indeed, you can even use inheritance to apply formatting rules to the <em>entire page</em> by selecting the <code>&lt;body&gt;</code> element. (Note that for clarity/speed purposes, you generally do <em>not</em> apply formatting to the <code>&lt;html&gt;</code> element).</p>
+<p>Note that if a rule explicitly specifies a property’s value, that value will be used instead of any inherited value:</p>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;ul> elements */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">em</span> <span class="token punctuation">{</span> <span class="token comment">/* applies to all &lt;em> elements */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> gold
+<span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>
+  This text will be purple <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>em</span><span class="token punctuation">></span></span>(but this text will be gold; it does not
+  inherit the purple)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>em</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
 <p class="alert alert-warning">
-Precedence rules are <strong>not</strong> a reason to prefer <code>#id</code> selectors over <code>.class</code> selectors! Instead, you can utilize the <a href="css-options.html#compound-selectors">compound selectors</a> described in Chapter 6 to be able to create reusable rules and avoid duplicating property declarations.
+Property values can be inherited, but styling <em>classes</em> are not. An element is not considered to have a particular class just because its parent does (though it may inherit the properties that are applied to the parent by having that class).
+</p>
+<p>Because multiple rules may apply to a single element, it’s possible that multiple values for the same property will be specified for that element:</p>
+<pre class="language-css"><code><span class="token comment">/* css */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.alert</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- html --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  This element is styled by both rules, both of change its `color`. The text
+  will be red, because the `.alert` selector has higher specificity. The `p`
+  rule's property will be overridden.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>If multiple rules try to specify the same property, then the <em>value from the more <strong>specific</strong> rule is applied</em>. Class selectors are considered more specific than type selectors, so the rule with the class selector “wins”. If two rules are equally specific (e.g., two class selector rules), then the <em>last declared rule is applied</em>. See <a href="css-selectors.html#selector-specificity">Selector Specificity</a> for more details. The property value from the less specific rule is said to be <strong>overridden</strong>. Note that property values that don’t conflict will still be applied even if one value is overrriden.</p>
+<p>The cascade of rules enabled by CSS makes it powerful and expressive, allowing you to write flexible, reuseable rules that can be combined to produce amazing visual appearances. It’s like making your own Lego bricks!</p>
+<p>That said, the cascade of rules does create a trade-off: you can have lots of reusable rules that apply to multiple elements, but these rules may combine in a scattered way that makes it difficult to intuit about what the page may look like just from considering the code. Having reusable components increases complexity—sometimes too much. Managing this complexity—determining when rules should apply to which elements and when to combine them—is part of the “skill” in working with CSS. Heuristics for designing rules are discussed more in a later chapter; you will also develop a sense for working with CSS as you practice over time.</p>
+<p class="alert alert-success">
+My best advice for managing the large number of CSS rules used in web pages is to follow the <a href="https://en.wikipedia.org/wiki/KISS_principle">KISS principle</a>: <em>“Keep it simple, silly!”</em>. CSS rules don’t need to be complex; think about rules that apply to general elements or to “sections” of a page. Many elements may only have one or two rules applying to them—and that’s okay!
 </p>
 </div>
-</div>
-<div id="resources-3" class="section level2 unnumbered">
+<div id="resources-2" class="section level2 unnumbered">
 <h2>Resources</h2>
+<p>Some useful references and documentation for CSS (in general); more specific resources will be included in later chapters.</p>
 <div class="list-condensed">
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started">Getting started with CSS (MDN)</a></li>
-<li><a href="http://www.w3schools.com/css/default.asp">CSS Tutorial (w3schools)</a></li>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">CSS Reference (MDN)</a> a complete alphabetical reference for all CSS concepts.</li>
 <li><a href="http://www.w3schools.com/cssref/css_selectors.asp">CSS Selectors Reference</a> a handy table of CSS selectors.</li>
 <li><a href="http://www.w3schools.com/cssref/default.asp">CSS Properties Reference</a> a table of CSS properties, organized by category.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started">Getting started with CSS (MDN)</a> - an MDN guide for learning CSS</li>
 <li><a href="https://css-tricks.com/">CSS-Tricks</a> a blog about tips for using CSS in all kinds of ways. Contains many different useful guides and explanations.</li>
-<li><a href="http://jigsaw.w3.org/css-validator/">W3C CSS Validation Service</a></li>
 </ul>
 </div>
 
@@ -781,8 +825,8 @@ Precedence rules are <strong>not</strong> a reason to prefer <code>#id</code> se
           </div>
         </div>
       </div>
-<a href="standards-and-accessibility.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="css-options.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="html-fundamentals.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="semantic-html.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

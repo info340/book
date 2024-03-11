@@ -136,7 +136,7 @@ This chapter provides a number of specific guidelines following the opinions of 
 
 ### Specific Elements {-}
 
-- Avoid non-semantic formatting elements (e.g., `<i>`, `<b>`), as they are not accessible to screen readers.
+- Avoid un-semantic formatting elements (e.g., `<i>`, `<b>`), as they are not accessible to screen readers.
 
 - Avoid using the `<br>` element for line breaks. If you're breaking a line of text, it's most often because you're defining a new _paragraph_, and so should use an additional `<p>` element. If there isn't a semantic meaning for the line break, don't include one! If you need to adjust the amount of spacing between paragraphs (e.g., you want it to be a single spacing not double spacing), use CSS to adjust the margin or padding.
 

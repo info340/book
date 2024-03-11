@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 CSS Selectors | Client-Side Web Development</title>
+  <meta name="description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 CSS Selectors | Client-Side Web Development" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://info340.github.io/" />
+  <meta property="og:image" content="https://info340.github.io//img/cover-img.png" />
+  <meta property="og:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="github-repo" content="info340/book" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 CSS Selectors | Client-Side Web Development" />
+  
+  <meta name="twitter:description" content="The course reader for INFO 340: Client-Side Web Development." />
+  <meta name="twitter:image" content="https://info340.github.io//img/cover-img.png" />
+
+<meta name="author" content="Joel Ross" />
+
+
+<meta name="date" content="2024-03-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="img/busy-spider-icon.png" type="image/x-icon" />
+<link rel="prev" href="semantic-html.html"/>
+<link rel="next" href="css-properties.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-98444716-3', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/prism.min.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./" class="title">Client-Side Web Development</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About the Book</a></li>
+<li class="chapter" data-level="1" data-path="software-setup.html"><a href="software-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="software-setup.html"><a href="software-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
+<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a>
+<ul>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
+<li class="chapter" data-level="1.2.1" data-path="software-setup.html"><a href="software-setup.html#other-editors"><i class="fa fa-check"></i><b>1.2.1</b> Other Editors</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.4" data-path="software-setup.html"><a href="software-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.4</b> Node and <code>npm</code></a>
+<ul>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-software-with-npm"><i class="fa fa-check"></i>Installing software with npm</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#managing-local-packages"><i class="fa fa-check"></i>Managing local packages</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="software-setup.html"><a href="software-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.5</b> Git and GitHub</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="client-side-development.html"><a href="client-side-development.html"><i class="fa fa-check"></i><b>2</b> Client-Side Development</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="client-side-development.html"><a href="client-side-development.html#clients-and-servers"><i class="fa fa-check"></i><b>2.1</b> Clients and Servers</a></li>
+<li class="chapter" data-level="2.2" data-path="client-side-development.html"><a href="client-side-development.html#urls-and-web-files"><i class="fa fa-check"></i><b>2.2</b> URLs and Web Files</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#client-side-file-types"><i class="fa fa-check"></i>Client-Side File Types</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="client-side-development.html"><a href="client-side-development.html#servers-and-hosting"><i class="fa fa-check"></i><b>2.3</b> Servers and Hosting</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#hosting-with-github-pages"><i class="fa fa-check"></i>Hosting with GitHub Pages</a></li>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#development-servers"><i class="fa fa-check"></i>Development Servers</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="client-side-development.html"><a href="client-side-development.html#web-standards"><i class="fa fa-check"></i><b>2.4</b> Web Standards</a></li>
+<li class="chapter" data-level="2.5" data-path="client-side-development.html"><a href="client-side-development.html#web-accessibility"><i class="fa fa-check"></i><b>2.5</b> Web Accessibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-development.html"><a href="client-side-development.html#supporting-accessibility"><i class="fa fa-check"></i>Supporting Accessibility</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="html-fundamentals.html"><a href="html-fundamentals.html"><i class="fa fa-check"></i><b>3</b> HTML Fundamentals</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="html-fundamentals.html"><a href="html-fundamentals.html#html-elements"><i class="fa fa-check"></i><b>3.1</b> HTML Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#some-example-elements"><i class="fa fa-check"></i>Some Example Elements</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#comments"><i class="fa fa-check"></i>Comments</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#attributes"><i class="fa fa-check"></i>Attributes</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#empty-elements"><i class="fa fa-check"></i>Empty Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="html-fundamentals.html"><a href="html-fundamentals.html#nesting-elements"><i class="fa fa-check"></i><b>3.2</b> Nesting Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#block-vs.-inline-elements"><i class="fa fa-check"></i>Block vs. Inline Elements</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="html-fundamentals.html"><a href="html-fundamentals.html#web-page-structure"><i class="fa fa-check"></i><b>3.3</b> Web Page Structure</a></li>
+<li class="chapter" data-level="" data-path="html-fundamentals.html"><a href="html-fundamentals.html#resources-1"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="css-fundamentals.html"><a href="css-fundamentals.html"><i class="fa fa-check"></i><b>4</b> CSS Fundamentals</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="css-fundamentals.html"><a href="css-fundamentals.html#why-two-different-languages"><i class="fa fa-check"></i><b>4.1</b> Why Two Different Languages?</a></li>
+<li class="chapter" data-level="4.2" data-path="css-fundamentals.html"><a href="css-fundamentals.html#including-css"><i class="fa fa-check"></i><b>4.2</b> Including CSS</a></li>
+<li class="chapter" data-level="4.3" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-rules"><i class="fa fa-check"></i><b>4.3</b> CSS Rules</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-selector-basics"><i class="fa fa-check"></i>CSS Selector Basics</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#css-property-basics"><i class="fa fa-check"></i>CSS Property Basics</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="css-fundamentals.html"><a href="css-fundamentals.html#the-cascade"><i class="fa fa-check"></i><b>4.4</b> The Cascade</a></li>
+<li class="chapter" data-level="" data-path="css-fundamentals.html"><a href="css-fundamentals.html#resources-2"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="semantic-html.html"><a href="semantic-html.html"><i class="fa fa-check"></i><b>5</b> Semantic HTML</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="semantic-html.html"><a href="semantic-html.html#specific-html-elements"><i class="fa fa-check"></i><b>5.1</b> Specific HTML Elements</a>
+<ul>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#hyperlinks"><i class="fa fa-check"></i>Hyperlinks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#inline-textual-elements"><i class="fa fa-check"></i>Inline Textual Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#images-and-media"><i class="fa fa-check"></i>Images and Media</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#headings"><i class="fa fa-check"></i>Headings</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#non-semantic-elements"><i class="fa fa-check"></i>Non-Semantic Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#sectioning-elements"><i class="fa fa-check"></i>Sectioning Elements</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#tables"><i class="fa fa-check"></i>Tables</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#forms"><i class="fa fa-check"></i>Forms</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="semantic-html.html"><a href="semantic-html.html#aria-for-accessibility"><i class="fa fa-check"></i><b>5.2</b> ARIA for Accessibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-labeling"><i class="fa fa-check"></i>ARIA Labeling</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-roles-and-landmarks"><i class="fa fa-check"></i>ARIA Roles and Landmarks</a></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#aria-and-interactivity"><i class="fa fa-check"></i>ARIA and Interactivity</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="semantic-html.html"><a href="semantic-html.html#resources-3"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="css-selectors.html"><a href="css-selectors.html"><i class="fa fa-check"></i><b>6</b> CSS Selectors</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="css-selectors.html"><a href="css-selectors.html#basic-selectors"><i class="fa fa-check"></i><b>6.1</b> Basic Selectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#type-selector"><i class="fa fa-check"></i>Type Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#class-selector"><i class="fa fa-check"></i>Class Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#id-selector"><i class="fa fa-check"></i>Id Selector</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="css-selectors.html"><a href="css-selectors.html#complex-selectors"><i class="fa fa-check"></i><b>6.2</b> Complex Selectors</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#grouping-selector"><i class="fa fa-check"></i>Grouping Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#compound-selector"><i class="fa fa-check"></i>Compound Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#descendant-selector"><i class="fa fa-check"></i>Descendant Selector</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#pseudo-classes"><i class="fa fa-check"></i>Pseudo-classes</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#additional-selectors"><i class="fa fa-check"></i>Additional Selectors</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="css-selectors.html"><a href="css-selectors.html#selector-specificity"><i class="fa fa-check"></i><b>6.3</b> Selector Specificity</a></li>
+<li class="chapter" data-level="" data-path="css-selectors.html"><a href="css-selectors.html#resources-4"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="css-properties.html"><a href="css-properties.html"><i class="fa fa-check"></i><b>7</b> CSS Properties</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="css-properties.html"><a href="css-properties.html#specifying-property-values"><i class="fa fa-check"></i><b>7.1</b> Specifying Property Values</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#inherited-property-values"><i class="fa fa-check"></i>Inherited Property Values</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#css-units"><i class="fa fa-check"></i>Length Units &amp; Sizes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="css-properties.html"><a href="css-properties.html#fonts-and-text"><i class="fa fa-check"></i><b>7.2</b> Fonts and Text</a></li>
+<li class="chapter" data-level="7.3" data-path="css-properties.html"><a href="css-properties.html#css-colors"><i class="fa fa-check"></i><b>7.3</b> Colors and Backgrounds</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#backgrounds-and-images"><i class="fa fa-check"></i>Backgrounds and Images</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="css-properties.html"><a href="css-properties.html#box-model"><i class="fa fa-check"></i><b>7.4</b> Spacing with the Box Model</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding"><i class="fa fa-check"></i>Padding</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#border"><i class="fa fa-check"></i>Border</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#margin"><i class="fa fa-check"></i>Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#padding-vs.-margin"><i class="fa fa-check"></i>Padding vs. Margin</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#box-sizing"><i class="fa fa-check"></i>Box-Sizing</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="css-properties.html"><a href="css-properties.html#flow-layout"><i class="fa fa-check"></i><b>7.5</b> Flow Layout</a></li>
+<li class="chapter" data-level="7.6" data-path="css-properties.html"><a href="css-properties.html#alternate-positioning"><i class="fa fa-check"></i><b>7.6</b> Alternate Positioning</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#floating"><i class="fa fa-check"></i>Floating</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="css-properties.html"><a href="css-properties.html#flexbox"><i class="fa fa-check"></i><b>7.7</b> Flexbox</a></li>
+<li class="chapter" data-level="" data-path="css-properties.html"><a href="css-properties.html#resources-5"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="responsive-css.html"><a href="responsive-css.html"><i class="fa fa-check"></i><b>8</b> Responsive CSS</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design"><i class="fa fa-check"></i><b>8.1</b> Mobile-First Design</a>
+<ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#mobile-first-design-principles"><i class="fa fa-check"></i>Mobile-First Design Principles</a></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#specifying-viewport"><i class="fa fa-check"></i>Specifying Viewport</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="responsive-css.html"><a href="responsive-css.html#media-queries"><i class="fa fa-check"></i><b>8.2</b> Media Queries</a>
+<ul>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#example-responsive-flexbox"><i class="fa fa-check"></i>Example: Responsive Flexbox</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="responsive-css.html"><a href="responsive-css.html#resources-6"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="css-frameworks.html"><a href="css-frameworks.html"><i class="fa fa-check"></i><b>9</b> CSS Frameworks</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="css-frameworks.html"><a href="css-frameworks.html#using-a-framework"><i class="fa fa-check"></i><b>9.1</b> Using a Framework</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#including-a-framework"><i class="fa fa-check"></i>Including a Framework</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="css-frameworks.html"><a href="css-frameworks.html#bootstrap"><i class="fa fa-check"></i><b>9.2</b> Bootstrap</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#utility-classes"><i class="fa fa-check"></i>Utility Classes</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#responsive-design"><i class="fa fa-check"></i>Responsive Design</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#the-grid"><i class="fa fa-check"></i>The Grid</a></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#components"><i class="fa fa-check"></i>Components</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-frameworks.html"><a href="css-frameworks.html#resources-7"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="javascript.html"><a href="javascript.html"><i class="fa fa-check"></i><b>10</b> JavaScript Fundamentals</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="javascript.html"><a href="javascript.html#programming-with-javascript"><i class="fa fa-check"></i><b>10.1</b> Programming with JavaScript</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#history-and-versions"><i class="fa fa-check"></i>History and Versions</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="javascript.html"><a href="javascript.html#running-javascript"><i class="fa fa-check"></i><b>10.2</b> Running JavaScript</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#in-the-browser"><i class="fa fa-check"></i>In the Browser</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#on-the-command-line-with-node.js"><i class="fa fa-check"></i>On the Command-line with Node.js</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="javascript.html"><a href="javascript.html#writing-scripts"><i class="fa fa-check"></i><b>10.3</b> Writing Scripts</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#strict-mode"><i class="fa fa-check"></i>Strict Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="javascript.html"><a href="javascript.html#variables"><i class="fa fa-check"></i><b>10.4</b> Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#basic-data-types"><i class="fa fa-check"></i>Basic Data Types</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#arrays"><i class="fa fa-check"></i>Arrays</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#objects"><i class="fa fa-check"></i>Objects</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#type-coercion"><i class="fa fa-check"></i>Type Coercion</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="javascript.html"><a href="javascript.html#control-structures"><i class="fa fa-check"></i><b>10.5</b> Control Structures</a></li>
+<li class="chapter" data-level="10.6" data-path="javascript.html"><a href="javascript.html#functions"><i class="fa fa-check"></i><b>10.6</b> Functions</a></li>
+<li class="chapter" data-level="" data-path="javascript.html"><a href="javascript.html#resources-8"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="functional-programming.html"><a href="functional-programming.html"><i class="fa fa-check"></i><b>11</b> Functional Programming in JS</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="functional-programming.html"><a href="functional-programming.html#functions-are-variables"><i class="fa fa-check"></i><b>11.1</b> Functions ARE Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#anonymous-functions"><i class="fa fa-check"></i>Anonymous Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="functional-programming.html"><a href="functional-programming.html#object-functions"><i class="fa fa-check"></i><b>11.2</b> Object Functions</a></li>
+<li class="chapter" data-level="11.3" data-path="functional-programming.html"><a href="functional-programming.html#callback-functions"><i class="fa fa-check"></i><b>11.3</b> Callback Functions</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#closures"><i class="fa fa-check"></i>Closures</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="functional-programming.html"><a href="functional-programming.html#functional-looping"><i class="fa fa-check"></i><b>11.4</b> Functional Looping</a>
+<ul>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#map"><i class="fa fa-check"></i>Map</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#filter"><i class="fa fa-check"></i>Filter</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#reduce"><i class="fa fa-check"></i>Reduce</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="functional-programming.html"><a href="functional-programming.html#pure-functions"><i class="fa fa-check"></i><b>11.5</b> Pure Functions</a></li>
+<li class="chapter" data-level="" data-path="functional-programming.html"><a href="functional-programming.html#resources-9"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="dom.html"><a href="dom.html"><i class="fa fa-check"></i><b>12</b> Document Object Model (DOM)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="dom.html"><a href="dom.html#the-dom-api"><i class="fa fa-check"></i><b>12.1</b> The DOM API</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#global-variables"><i class="fa fa-check"></i>Global Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="dom.html"><a href="dom.html#dom-manipulation"><i class="fa fa-check"></i><b>12.2</b> DOM Manipulation</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#referencing-html-elements"><i class="fa fa-check"></i>Referencing HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-html-elements"><i class="fa fa-check"></i>Modifying HTML Elements</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#modifying-the-dom-tree"><i class="fa fa-check"></i>Modifying the DOM Tree</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#accessibility"><i class="fa fa-check"></i>Accessibility</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="dom.html"><a href="dom.html#listening-for-events"><i class="fa fa-check"></i><b>12.3</b> Listening for Events</a>
+<ul>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#types-of-events"><i class="fa fa-check"></i>Types of Events</a></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#event-driven-programming"><i class="fa fa-check"></i>Event-Driven Programming</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="dom.html"><a href="dom.html#resources-10"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="javascript-libraries.html"><a href="javascript-libraries.html"><i class="fa fa-check"></i><b>13</b> JavaScript Libraries</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="javascript-libraries.html"><a href="javascript-libraries.html#including-a-library"><i class="fa fa-check"></i><b>13.1</b> Including a Library</a></li>
+<li class="chapter" data-level="13.2" data-path="javascript-libraries.html"><a href="javascript-libraries.html#example-jquery"><i class="fa fa-check"></i><b>13.2</b> Example: jQuery</a>
+<ul>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#maniputing-the-dom"><i class="fa fa-check"></i>Maniputing the DOM</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#handling-events"><i class="fa fa-check"></i>Handling Events</a></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#and-more"><i class="fa fa-check"></i>And more!</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="javascript-libraries.html"><a href="javascript-libraries.html#resources-11"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="es6.html"><a href="es6.html"><i class="fa fa-check"></i><b>14</b> ES6+ Syntax</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="es6.html"><a href="es6.html#es6-syntax-features"><i class="fa fa-check"></i><b>14.1</b> ES6+ Syntax Features</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#arrow-functions"><i class="fa fa-check"></i>Arrow Functions</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#destructuring"><i class="fa fa-check"></i>Destructuring</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#spreading"><i class="fa fa-check"></i>Spreading</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#template-strings"><i class="fa fa-check"></i>Template Strings</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="es6.html"><a href="es6.html#modules"><i class="fa fa-check"></i><b>14.2</b> Modules</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#module-syntax"><i class="fa fa-check"></i>Module Syntax</a></li>
+</ul></li>
+<li class="chapter" data-level="14.3" data-path="es6.html"><a href="es6.html#es6-classes"><i class="fa fa-check"></i><b>14.3</b> Classes</a>
+<ul>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#why-classes"><i class="fa fa-check"></i>Why Classes?</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#review-classes-in-java"><i class="fa fa-check"></i>Review: Classes in Java</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#es6-class-syntax"><i class="fa fa-check"></i>ES6 Class Syntax</a></li>
+<li class="chapter" data-level="" data-path="es6.html"><a href="es6.html#inheritance"><i class="fa fa-check"></i>Inheritance</a></li>
+<li><a href="es6.html#working-with-this">Working with <code>this</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
+</ul></li>
+<li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#inline-expressions"><i class="fa fa-check"></i>Inline Expressions</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="react.html"><a href="react.html#react-components"><i class="fa fa-check"></i><b>15.3</b> React Components</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#component-organization"><i class="fa fa-check"></i>Component Organization</a></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#deprecated-alternative-class-components"><i class="fa fa-check"></i>Deprecated Alternative: Class Components</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="react.html"><a href="react.html#props"><i class="fa fa-check"></i><b>15.4</b> Properties (<code>props</code>)</a>
+<ul>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#props-and-composition"><i class="fa fa-check"></i>Props and Composition</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="react.html"><a href="react.html#resources-12"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="interactive-react.html"><a href="interactive-react.html"><i class="fa fa-check"></i><b>16</b> Interactive React</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="interactive-react.html"><a href="interactive-react.html#handling-events-in-react"><i class="fa fa-check"></i><b>16.1</b> Handling Events in React</a></li>
+<li class="chapter" data-level="16.2" data-path="interactive-react.html"><a href="interactive-react.html#state-and-hooks"><i class="fa fa-check"></i><b>16.2</b> State and Hooks</a>
+<ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#updating-state"><i class="fa fa-check"></i>Updating State</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#state-vs.-props"><i class="fa fa-check"></i>State vs. Props</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#lifting-up-state"><i class="fa fa-check"></i>Lifting Up State</a></li>
+</ul></li>
+<li class="chapter" data-level="16.3" data-path="interactive-react.html"><a href="interactive-react.html#specific-interactions"><i class="fa fa-check"></i><b>16.3</b> Specific Interactions</a>
+<ul>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#working-with-forms"><i class="fa fa-check"></i>Working with Forms</a></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#fetching-data-via-ajax"><i class="fa fa-check"></i>Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="interactive-react.html"><a href="interactive-react.html#resources-13"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="client-side-routing.html"><a href="client-side-routing.html"><i class="fa fa-check"></i><b>17</b> Client-Side Routing</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="client-side-routing.html"><a href="client-side-routing.html#single-page-applications"><i class="fa fa-check"></i><b>17.1</b> Single-Page Applications</a></li>
+<li class="chapter" data-level="17.2" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router"><i class="fa fa-check"></i><b>17.2</b> React-Router</a>
+<ul>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#routing"><i class="fa fa-check"></i>Routing</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#linking"><i class="fa fa-check"></i>Linking</a></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#react-router-and-hosting"><i class="fa fa-check"></i>React Router and Hosting</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="client-side-routing.html"><a href="client-side-routing.html#resources-14"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="ajax.html"><a href="ajax.html"><i class="fa fa-check"></i><b>18</b> AJAX Requests</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="ajax.html"><a href="ajax.html#ajax-1"><i class="fa fa-check"></i><b>18.1</b> AJAX</a>
+<ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#xml-and-json"><i class="fa fa-check"></i>XML and JSON</a></li>
+</ul></li>
+<li class="chapter" data-level="18.2" data-path="ajax.html"><a href="ajax.html#fetching-data"><i class="fa fa-check"></i><b>18.2</b> Fetching Data</a></li>
+<li class="chapter" data-level="18.3" data-path="ajax.html"><a href="ajax.html#asynchronous-programming"><i class="fa fa-check"></i><b>18.3</b> Asynchronous Programming</a>
+<ul>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#chaining-promises"><i class="fa fa-check"></i>Chaining Promises</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#handling-errors"><i class="fa fa-check"></i>Handling Errors</a></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#other-data-formats"><i class="fa fa-check"></i>Other Data Formats</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="ajax.html"><a href="ajax.html#resources-15"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="firebase.html"><a href="firebase.html"><i class="fa fa-check"></i><b>19</b> Firebase</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="firebase.html"><a href="firebase.html#setting-up-firebase"><i class="fa fa-check"></i><b>19.1</b> Setting up Firebase</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#creating-a-project"><i class="fa fa-check"></i>Creating a Project</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#including-firebase-in-react"><i class="fa fa-check"></i>Including Firebase in React</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#adding-collaborators-to-a-project"><i class="fa fa-check"></i>Adding Collaborators to a Project</a></li>
+</ul></li>
+<li class="chapter" data-level="19.2" data-path="firebase.html"><a href="firebase.html#realtime-database"><i class="fa fa-check"></i><b>19.2</b> Realtime Database</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#setting-up-the-database"><i class="fa fa-check"></i>Setting Up the Database</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#data-references"><i class="fa fa-check"></i>Data References</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#writing-data"><i class="fa fa-check"></i>Writing Data</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#listening-for-data-changes"><i class="fa fa-check"></i>Listening for Data Changes</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#firebase-arrays"><i class="fa fa-check"></i>Firebase Arrays</a></li>
+</ul></li>
+<li class="chapter" data-level="19.3" data-path="firebase.html"><a href="firebase.html#user-authentication"><i class="fa fa-check"></i><b>19.3</b> User Authentication</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#signing-in-with-firebaseui"><i class="fa fa-check"></i>Signing In with FirebaseUI</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#managing-the-user"><i class="fa fa-check"></i>Managing the User</a></li>
+</ul></li>
+<li class="chapter" data-level="19.4" data-path="firebase.html"><a href="firebase.html#firebase-storage"><i class="fa fa-check"></i><b>19.4</b> Firebase Storage</a>
+<ul>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#file-inputs"><i class="fa fa-check"></i>File Inputs</a></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#uploading-files"><i class="fa fa-check"></i>Uploading Files</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="firebase.html"><a href="firebase.html#resources-16"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="appendix"><span><b>Appendices &amp; Special Topics</b></span></li>
+<li class="chapter" data-level="A" data-path="code-style-guide.html"><a href="code-style-guide.html"><i class="fa fa-check"></i><b>A</b> Code Style Guide</a>
+<ul>
+<li class="chapter" data-level="A.1" data-path="code-style-guide.html"><a href="code-style-guide.html#html-guidelines"><i class="fa fa-check"></i><b>A.1</b> HTML Guidelines</a>
+<ul>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing"><i class="fa fa-check"></i>Spacing</a></li>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-elements"><i class="fa fa-check"></i>Specific Elements</a></li>
+<li class="chapter" data-level="" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-html"><i class="fa fa-check"></i>Comments in HTML</a></li>
+</ul></li>
+<li class="chapter" data-level="A.2" data-path="code-style-guide.html"><a href="code-style-guide.html#css-guidelines"><i class="fa fa-check"></i><b>A.2</b> CSS Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.2.1" data-path="code-style-guide.html"><a href="code-style-guide.html#spacing-1"><i class="fa fa-check"></i><b>A.2.1</b> Spacing</a></li>
+<li class="chapter" data-level="A.2.2" data-path="code-style-guide.html"><a href="code-style-guide.html#selectors"><i class="fa fa-check"></i><b>A.2.2</b> Selectors</a></li>
+<li class="chapter" data-level="A.2.3" data-path="code-style-guide.html"><a href="code-style-guide.html#class-names"><i class="fa fa-check"></i><b>A.2.3</b> Class Names</a></li>
+<li class="chapter" data-level="A.2.4" data-path="code-style-guide.html"><a href="code-style-guide.html#specific-properties"><i class="fa fa-check"></i><b>A.2.4</b> Specific Properties</a></li>
+<li class="chapter" data-level="A.2.5" data-path="code-style-guide.html"><a href="code-style-guide.html#responsive-css-1"><i class="fa fa-check"></i><b>A.2.5</b> Responsive CSS</a></li>
+<li class="chapter" data-level="A.2.6" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-css"><i class="fa fa-check"></i><b>A.2.6</b> Comments in CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="A.3" data-path="code-style-guide.html"><a href="code-style-guide.html#javascript-guidelines"><i class="fa fa-check"></i><b>A.3</b> JavaScript Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.3.1" data-path="code-style-guide.html"><a href="code-style-guide.html#variables-1"><i class="fa fa-check"></i><b>A.3.1</b> Variables</a></li>
+<li class="chapter" data-level="A.3.2" data-path="code-style-guide.html"><a href="code-style-guide.html#functions-1"><i class="fa fa-check"></i><b>A.3.2</b> Functions</a></li>
+<li class="chapter" data-level="A.3.3" data-path="code-style-guide.html"><a href="code-style-guide.html#comments-in-javascript"><i class="fa fa-check"></i><b>A.3.3</b> Comments in JavaScript</a></li>
+<li class="chapter" data-level="A.3.4" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-javascript-guidelines"><i class="fa fa-check"></i><b>A.3.4</b> Miscellaneous JavaScript Guidelines</a></li>
+</ul></li>
+<li class="chapter" data-level="A.4" data-path="code-style-guide.html"><a href="code-style-guide.html#react-guidelines"><i class="fa fa-check"></i><b>A.4</b> React Guidelines</a>
+<ul>
+<li class="chapter" data-level="A.4.1" data-path="code-style-guide.html"><a href="code-style-guide.html#components-1"><i class="fa fa-check"></i><b>A.4.1</b> Components</a></li>
+<li class="chapter" data-level="A.4.2" data-path="code-style-guide.html"><a href="code-style-guide.html#mapping-data"><i class="fa fa-check"></i><b>A.4.2</b> Mapping Data</a></li>
+<li class="chapter" data-level="A.4.3" data-path="code-style-guide.html"><a href="code-style-guide.html#state"><i class="fa fa-check"></i><b>A.4.3</b> State</a></li>
+<li class="chapter" data-level="A.4.4" data-path="code-style-guide.html"><a href="code-style-guide.html#events-and-forms"><i class="fa fa-check"></i><b>A.4.4</b> Events and Forms</a></li>
+</ul></li>
+<li class="chapter" data-level="A.5" data-path="code-style-guide.html"><a href="code-style-guide.html#miscellaneous-guidelines"><i class="fa fa-check"></i><b>A.5</b> Miscellaneous Guidelines</a></li>
+</ul></li>
+<li class="chapter" data-level="B" data-path="jest.html"><a href="jest.html"><i class="fa fa-check"></i><b>B</b> Testing with Jest</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="jest.html"><a href="jest.html#testing"><i class="fa fa-check"></i><b>B.1</b> Testing</a></li>
+<li class="chapter" data-level="B.2" data-path="jest.html"><a href="jest.html#testing-with-jest"><i class="fa fa-check"></i><b>B.2</b> Testing with Jest</a></li>
+<li class="chapter" data-level="B.3" data-path="jest.html"><a href="jest.html#writing-a-test"><i class="fa fa-check"></i><b>B.3</b> Writing a Test</a>
+<ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#assertions-and-matchers"><i class="fa fa-check"></i>Assertions and Matchers</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#organizing-tests"><i class="fa fa-check"></i>Organizing Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#running-the-tests"><i class="fa fa-check"></i>Running the Tests</a></li>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+<li class="chapter" data-level="B.4" data-path="jest.html"><a href="jest.html#testing-web-apps-with-jest"><i class="fa fa-check"></i><b>B.4</b> Testing Web Apps with Jest</a>
+<ul>
+<li class="chapter" data-level="" data-path="jest.html"><a href="jest.html#practice-1"><i class="fa fa-check"></i>Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="webpack.html"><a href="webpack.html"><i class="fa fa-check"></i><b>C</b> Lab: Webpack</a>
+<ul>
+<li class="chapter" data-level="C.1" data-path="webpack.html"><a href="webpack.html#what-is-webpack"><i class="fa fa-check"></i><b>C.1</b> What is Webpack?</a></li>
+<li class="chapter" data-level="C.2" data-path="webpack.html"><a href="webpack.html#getting-started"><i class="fa fa-check"></i><b>C.2</b> Getting Started</a></li>
+<li class="chapter" data-level="C.3" data-path="webpack.html"><a href="webpack.html#webpack.config.js"><i class="fa fa-check"></i><b>C.3</b> <code>webpack.config.js</code></a>
+<ul>
+<li><a href="webpack.html#entry-and-output"><code>entry</code> and <code>output</code></a></li>
+</ul></li>
+<li class="chapter" data-level="C.4" data-path="webpack.html"><a href="webpack.html#loaders"><i class="fa fa-check"></i><b>C.4</b> Loaders</a>
+<ul>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#babel-loader"><i class="fa fa-check"></i>Babel Loader</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#clean-up-bath"><i class="fa fa-check"></i>Clean up :bath:</a></li>
+<li class="chapter" data-level="" data-path="webpack.html"><a href="webpack.html#further-loader-practice"><i class="fa fa-check"></i>Further Loader Practice</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="D" data-path="class-components.html"><a href="class-components.html"><i class="fa fa-check"></i><b>D</b> React Class Components</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="class-components.html"><a href="class-components.html#props-in-class-components"><i class="fa fa-check"></i><b>D.1</b> Props in Class Components</a></li>
+<li class="chapter" data-level="D.2" data-path="class-components.html"><a href="class-components.html#handling-events-in-class-components"><i class="fa fa-check"></i><b>D.2</b> Handling Events in Class Components</a>
+<ul>
+<li><a href="class-components.html#accessing-this-component-from-events">Accessing <code>this</code> Component from Events</a></li>
+</ul></li>
+<li class="chapter" data-level="D.3" data-path="class-components.html"><a href="class-components.html#state-in-class-components"><i class="fa fa-check"></i><b>D.3</b> State in Class Components</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#changing-the-state"><i class="fa fa-check"></i>Changing the State</a></li>
+</ul></li>
+<li class="chapter" data-level="D.4" data-path="class-components.html"><a href="class-components.html#the-component-lifecycle"><i class="fa fa-check"></i><b>D.4</b> The Component Lifecycle</a>
+<ul>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#lifecycle-example-fetching-data-via-ajax"><i class="fa fa-check"></i>Lifecycle Example: Fetching Data via AJAX</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="class-components.html"><a href="class-components.html#resources-17"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="css-in-js.html"><a href="css-in-js.html"><i class="fa fa-check"></i><b>E</b> CSS in JS</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="css-in-js.html"><a href="css-in-js.html#why-css-in-js"><i class="fa fa-check"></i><b>E.1</b> Why CSS in JS?</a></li>
+<li class="chapter" data-level="E.2" data-path="css-in-js.html"><a href="css-in-js.html#react-inline-styles"><i class="fa fa-check"></i><b>E.2</b> React Inline Styles</a></li>
+<li class="chapter" data-level="E.3" data-path="css-in-js.html"><a href="css-in-js.html#aphrodite"><i class="fa fa-check"></i><b>E.3</b> Aphrodite</a></li>
+<li class="chapter" data-level="E.4" data-path="css-in-js.html"><a href="css-in-js.html#css-modules"><i class="fa fa-check"></i><b>E.4</b> CSS Modules</a>
+<ul>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#ejecting-from-create-react-app"><i class="fa fa-check"></i>Ejecting from Create React App</a></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#composing-classes"><i class="fa fa-check"></i>Composing Classes</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="css-in-js.html"><a href="css-in-js.html#resources-18"><i class="fa fa-check"></i>Resources</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="redux.html"><a href="redux.html"><i class="fa fa-check"></i><b>F</b> Redux</a></li>
+<li class="chapter" data-level="G" data-path="react-native.html"><a href="react-native.html"><i class="fa fa-check"></i><b>G</b> React Native</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="react-native.html"><a href="react-native.html#getting-setup"><i class="fa fa-check"></i><b>G.1</b> Getting Setup</a>
+<ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#running-react-native-apps"><i class="fa fa-check"></i>Running React Native Apps</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="react-native.html"><a href="react-native.html#react-native-apps"><i class="fa fa-check"></i><b>G.2</b> React Native Apps</a>
+<ul>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#styling-react-native"><i class="fa fa-check"></i>Styling React Native</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#interaction"><i class="fa fa-check"></i>Interaction</a></li>
+<li class="chapter" data-level="" data-path="react-native.html"><a href="react-native.html#lists-and-data"><i class="fa fa-check"></i>Lists and Data</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Client-Side Web Development</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="css-selectors" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> CSS Selectors</h1>
+<p><a href="css-fundamentals.html#css-fundamentals">CSS Fundamentals</a> introduced ths basic syntax and usage of CSS. This chapter details additional syntax and options for <strong>selectors</strong> that specify to which elements on a web page a CSS rule should apply.</p>
+<p class="alert alert-success">
+Development environments such as VS Code can help show which elements will be selected by a different rule depending on the selector. In VS Code, you can hover the mouse over the selector part of a written CSS rule, and a small pop-up will give a generic example of what element that rule applies to! This can be useful for checking your understanding of the selector syntax, as well as for confirming that the rule applies to the elements you intend.
+</p>
+<div id="basic-selectors" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Basic Selectors</h2>
+<p>Almost all CSS selectors are made up of the most basic selector types: <strong>type selectors</strong>, <strong>class selectors</strong>, or <strong>id selectors</strong>. Type and class selectors were introduced in <a href="css-fundamentals.html#css-fundamentals">CSS Fundamentals</a>; those explanations are repeated here for ease of reference.</p>
+<div id="type-selector" class="section level3 unnumbered">
+<h3>Type Selector</h3>
+<p>The most basic selector is the <strong>type selector</strong>, which selects elements by their type (tag name). For example, the below rule will apply to the all <code>&lt;p&gt;</code> elements, regardless of where they appear on the page:</p>
+<pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
+   <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>CSS rules can use the type selector to style any type of element:</p>
+<pre class="language-css"><code><span class="token comment">/* style all h1 elements to be purple */</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* style all h2 elements to be gold and italic */</span>
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> gold<span class="token punctuation">;</span>
+  <span class="token property">font-style</span><span class="token punctuation">:</span> italic<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* style all images to fit within a maximum width */</span>
+<span class="token selector">img</span> <span class="token punctuation">{</span>
+  <span class="token property">max-width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+<div id="class-selector" class="section level3 unnumbered">
+<h3>Class Selector</h3>
+<p>A <strong>class selector</strong> will select all elements with a <strong><code>class</code></strong> attribute that contains the specified name. For example, if you had HTML:</p>
+<pre class="language-html"><code><span class="token comment">&lt;!-- HTML --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>highlighted<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>This text is highlighted!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text is not highlighted<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>You could color just the correct paragraph by using the class selector:</p>
+<pre class="language-css"><code><span class="token comment">/* CSS */</span>
+<span class="token selector">.highlighted</span> <span class="token punctuation">{</span>
+   <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Class selectors are written with a single dot (<strong><code>.</code></strong>) preceding the <em>name of the class</em> (not the name of the element!) The <code>.</code> is only used in the CSS rule, not in the HTML <code>class</code> attribute. In the above example, the HTML element has the class <code>highlighted</code> (no dot), and the CSS selector uses <code>.highlighted</code> to mean “elements with class <code>highlighted</code>”.</p>
+<p>CSS class names should start with a letter, and can contain hyphens, underscores, and numbers. Words are usually written in lowercase and separated by hyphens rather than camelCased or snake_cased. Classes should be given <em>informative</em> names—like you would name a variable! See <a href="#naming-css-classes">Naming CSS Classes</a> below for further discussion.</p>
+<p>Class selectors will apply to any element that contains that class, regardless of the element’s type. This can let you apply a single consistent styling to multiple different types of elements:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I am a flashing alert!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>So am I!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>HTML elements can have <em>multiple classes</em>; each class name is separate by a <strong>space</strong> (not a comma):</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have TWO classes: "alert" and "flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert-flashing<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have ONE class: "alert-flashing"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert flashing fast<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>I have THREE classes: "alert", "flashing", and "fast"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>The class selector will select any element that <em>contains</em> that class in its list. So the first paragraph in the above example would be styled by either the selector <code>.alert</code> <em>or</em> the selector <code>.flashing</code>. The second paragraph would not be styled by either selector, because <code>"alert-flashing"</code> is not the <code>"alert"</code> or the <code>"flashing"</code> class.</p>
+<p>It is common for HTML elements to be given lots of classes, particularly under a <em>modular class naming</em> scheme.</p>
+<p>Class selectors are the best way to style a single particular element (just give it a <code>class</code> and then write a rule to refer to that), as well as one of the most clearest and effective ways of styling large <em>portions</em> of the page.</p>
+</div>
+<div id="id-selector" class="section level3 unnumbered">
+<h3>Id Selector</h3>
+<p>It is also possible to select HTML elements by their <code>id</code> attribute by using an <strong>id selector</strong>. Every HTML element can have an <code>id</code> attribute, but unlike the <code>class</code> attribute the value of the <code>id</code> must be <em>unique within the page</em>. That is, no two elements can have the same value for their <code>id</code> attributes. (While technically an id selector will apply to <em>all</em> elements with that id, it’s invalid HTML for two elements to share the same <code>id</code>).</p>
+<p>The <strong>id selectors</strong> is written with a <strong><code>#</code></strong> character, followed by the value of the <code>id</code>:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>sidebar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  This div contains the sidebar for the page
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/* Style the one element with id="sidebar" */</span>
+<span class="token selector">#sidebar</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> lightgray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Similar to with class selectors, the <code>#</code> is only used in the CSS rule, not in the HTML <code>id</code> attribute. The CSS selector uses <code>#sidebar</code> to mean “the element with id <code>sidebar</code>”.</p>
+<p>The <code>id</code> attribute is more specific (it’s always just one element!) but less flexible than the <code>class</code> attribute, and makes it harder to “reuse” your styling across multiple elements or multiple pages. Thus best practice to use class or type selectors instead of id selectors when styling content (see <a href="code-style-guide.html#code-style-guide">the code style guidelines</a>). However, id selectors are often used in JavaScript when referring to elements on the page (since such identifiers will be unique).</p>
+</div>
+</div>
+<div id="complex-selectors" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Complex Selectors</h2>
+<p>The <em>type selector</em>, <em>class selector</em>, and <em>id selector</em> are the core types of selectors used in CSS. However, it is also possible to <em>combined</em> these basic types into more complex selectors in order to specify rules that apply only to particular elements or groups of elements. This section describes different syntax used to combine basic selectors.</p>
+<div id="grouping-selector" class="section level3 unnumbered">
+<h3>Grouping Selector</h3>
+<p>The <strong>grouping selector</strong> allows you to have a single rule apply to elements matched by lots of different selectors. Technically this isn’t a distinct complex selector: rather it is just a <em>“short-cut syntax”</em> for writing multiple multiples rules with different selectors (but the same properties) at once.</p>
+<p>The grouping selector combines each component selector with a comma (<strong><code>,</code></strong>) separating them:</p>
+<pre class="language-css"><code><span class="token comment">/* grouping selector: applies to h1, h2, AND h3 elements */</span>
+<span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Helvetica<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span> <span class="token comment">/* UW purple */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>The above example applies to all elements that would be selected by an <code>h1</code> selector, that would be selected by an <code>h2</code> rule, <em>and</em> that would be selected by an <code>h3</code> selector. It is precisely equivalent to writing out the three rules separately; the grouping selector just lets you avoid having to repeat the same set of property specifications.</p>
+<pre class="language-css"><code><span class="token comment">/* Two rules written as one with the grouping selector */</span>
+<span class="token selector">h1, h2</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* This is exactly the same as writing the two rules separately */</span>
+<span class="token selector">h1</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p class="alert alert-info">
+It is totally acceptable to have the same property and value defined multiples times in multiple different rules. Do not go out of your way to “minimize” duplicated properties by using the grouping selector. It’s best to only grouping selectors if they <em>semantically</em> are applying “the same style”.
+</p>
+<p>The component selectors in the grouping selector can be <em>any</em> kind of selector, including <code>.class</code> selectors, <code>#id</code> selectors, or any of the other complex selectors described in this chapter:</p>
+<pre class="language-css"><code><span class="token comment">/* grouping selector can also combine class or id selectors */</span>
+<span class="token comment">/* this rule applies to h2 elements, "menu" classed elements, and the
+   id="sidebar" element */</span>
+<span class="token selector">h2, .menu, #sidebar</span> <span class="token punctuation">{</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> gray<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Note that since later rules take precedence earlier ones, you can use a group select to apply a property to multiple different elements, then include additional rules to add variations to those elements. For example, you can have one rule that applies “general” styling to a large class of elements, with further rules then customizing particular elements.</p>
+<pre class="language-css"><code><span class="token comment">/* all headings are Helvetica, bold, and purple */</span>
+<span class="token selector">h1, h2, h3</span> <span class="token punctuation">{</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> Helvetica<span class="token punctuation">;</span>
+    <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #4b2e83<span class="token punctuation">;</span> <span class="token comment">/* UW purple */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* h2 elements are also underlined */</span>
+<span class="token selector">h2</span> <span class="token punctuation">{</span>
+    <span class="token property">text-decoration</span><span class="token punctuation">:</span> underline<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+</div>
+<div id="compound-selector" class="section level3 unnumbered">
+<h3>Compound Selector</h3>
+<p>A <strong>compound selector</strong> combines element, class, and id selectors together to be more specific about where a rule applies. You do this by simply putting a class or id selector <em>immediately after</em> the previous selector, without a space or comma or anything between them. The selector will apply to elements that match <em>all</em> of the component parts.</p>
+<pre class="language-css"><code><span class="token comment">/* Selects only p elements that have class="alert"
+   Other p elements and "alert" classed elements not affected */</span>
+<span class="token selector">p.alert</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects only h1 elements that have id="title" */</span>
+<span class="token comment">/* Note that this is redundant, since only one element can have the id! */</span>
+<span class="token selector">h1#title</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> purple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects elements that have class "alert" AND class "success" */</span>
+<span class="token selector">.alert.success</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> larger<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Can combine as many compnent parts as desired */</span>
+<span class="token comment">/* Selects elements that are `&lt;img>` and have class "avatar" AND class "small" */</span>
+<span class="token selector">img.avatar.small</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 80px<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Can combine with grouping selector */</span>
+<span class="token comment">/* Selects &lt;p class="highlighted"> and &lt;li class="selected"> */</span>
+<span class="token selector">p.highlighted, li.marked</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p class="alert alert-warning">
+Note that putting a space between the selectors components (e.g., <code>p .alert</code> instead of <code>p.alert</code>) instead specifies a <a href="css-selectors.html#descendant-selector">descendant selector</a> (described below), which has a totally separate meaning. Every character matters in CSS! Use tools such as VS Code’s selector pop-up to confirm that you’ve written selectors as intended.
+</p>
+<p>A compound selector adds additional specificity to a selector, allowing you to reuse class names (e.g., for shared semantics and readability purposes) but have those classes apply different styles to different elements. For example, a compound selector would allow a “highlighted” paragraph <code>p.highlighted</code> to look different from a “highlighted” heading <code>h1.highlighted</code>. It also allows you to combine modular classes to produce customizations: a successful alert (<code>.alert.success</code>) can look different from a warning alert (<code>.alert.warning</code>), which can have specialized changes that wouldn’t apply to general <code>.warning</code> elements.</p>
+</div>
+<div id="descendant-selector" class="section level3 unnumbered">
+<h3>Descendant Selector</h3>
+<p>The selectors mentioned so far will apply to matching elements regardless of where they are in the HTML element tree. But sometimes you want to be more specific and style only a set of elements that exist within a particular parent or ancestor element, and not all the other matching elements elsewhere in the page. You can do this form of targeted selecting using a <strong>descendant selector</strong>. This is written by putting a blank space (<strong><code> </code></strong>) between selector components. The rule will apply to elements that match the final component only if they have parents that match the preceding selector components:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>Welcome to the page<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>I am a special paragraph<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>some other paragraph<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/*
+  Selects &lt;p> elements that exist within &lt;header> elements
+  Other &lt;p> elements will not be affected
+ */</span>
+<span class="token selector">header p</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>This selector can be read as “select all <code>&lt;header&gt;</code> elements, then style each <code>&lt;p&gt;</code> inside of those elements”. Alternatively, I often find it easier to read a descendant selector “backwards”: style the <code>&lt;p&gt;</code> elements that are inside of a <code>&lt;header&gt;</code>.</p>
+<p>A descendant selector can have as many “levels” as desired, and each level can be made up of any kind other selector (including e.g., compound selectors). However, it is good style to only have 2 or 3 levels in a descendant selector. If you find you need to be more specific than that, then perhaps defining a new <code>.class</code> is in order.</p>
+<pre class="language-css"><code><span class="token comment">/* selects elements with class="logo"
+   contained within &lt;p> elements that themselves are
+   contained within &lt;header> elements */</span>
+<span class="token selector">header p .logo</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* ... */</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Mind the space! <code>header p .logo</code> is different than <code>header p.logo</code>—the first refers to <code>.logo</code> elements that are <em>inside</em> of a <code>&lt;p&gt;</code> (and inside of a <code>&lt;header&gt;</code>), while the second refers to <code>&lt;p&gt;</code> elements that <em>have</em> the class <code>"logo"</code> (and are inside of a <code>&lt;header&gt;</code>).</p>
+<p>To be clear: the component parts of <em>any</em> selector can be made up of any other selector:</p>
+<pre class="language-css"><code><span class="token comment">/* Using multiple different selectors in combination!
+   Styles &lt;p> with class "subtitle" inside a `&lt;header>`, as well as &lt;legend>
+   inside of &lt;fieldset> inside of an element with both the "sidebar" and
+   "form" classes
+   */</span>
+<span class="token selector">header p.subtitle, .sidebar.form fieldset legend</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre>
+<p>Note that descendant selectors will select matching descendant elements <em>anywhere</em> lower in the tree branch, not just direct children, so the <code>.logo</code> elements here could be nested several layers below the <code>&lt;p&gt;</code> element (perhaps inside a <code>&lt;span&gt;</code>). This is usually a good idea because you may introduce new nesting layers to your page as you go along, and don’t want to need to then modify the CSS. But if you really want to select only <em>direct</em> children, you can use a variant known as a <strong>child selector</strong>, which uses a <strong><code>&gt;</code></strong> symbol to indicate direct descendants only:</p>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Body content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Section content<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span></code></pre>
+<pre class="language-css"><code><span class="token comment">/* Selects paragraph "Body content" (immediate child of &lt;body>),
+   not paragraph "Section content" (immediate child of &lt;section>) */</span>
+<span class="token selector">body > p</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Similarly, the <strong>sibling selector</strong> (<strong><code>~</code></strong>) will select elements that are <em>siblings</em> of the preceding component selector, while the <strong>adjacent-sibling selector</strong> (<strong><code>+</code></strong>) will select elements that are the <em>immediately following</em> sibling of the preceding component. These selectors are more rarely used, as they more heavily rely on the specific layout of elements on a page and are more likely to require updating if new content is added.</p>
+<pre class="language-css"><code><span class="token comment">/* Sibling Selector: selectors elements that are siblings
+   Selects *all* &lt;p> that share the same parent as an `&lt;img>` and come after it
+   */</span>
+<span class="token selector">img ~ p</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* Adjacent Sibling Selector: selects elements that are the *next* sibling
+   Applies to the single &lt;p> that shares the same parant as an `&lt;img>` and comes
+   immediately after it (with no other elements inbetween)
+   */</span>
+<span class="token selector">img + p</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span></code></pre>
+</div>
+<div id="pseudo-classes" class="section level3 unnumbered">
+<h3>Pseudo-classes</h3>
+<p>A <strong>pseudo-class</strong> is a selector component that is used to select elements depending on their current <em>state</em> of use, rather than their explicit identity such as element type or class. You can almost think of these as pre-defined classes built into the browser, that are added and removed as you interact with the page. This allows you to define styles based on user interactions (among other things). Pseudo-classes are written with a colon (<strong><code>:</code></strong>) and the name of the pseudo-class immediately after a selector component (whether basic or complex):</p>
+<pre class="language-css"><code><span class="token comment">/* Selects &lt;li> elements that the user hovers over with a mouse
+   (while being hovered only */</span>
+<span class="token selector">li:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 200%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>For example, this rule will apply to any <code>&lt;li&gt;</code> element the user hovers over with a mouse, so that while that element is in the “hovered” state it will have a larger font size. When the element is no longer hovered, this rule no longer applies and the element will not have that size. Note that the styling applies to the <em>element</em>—the pseudo-class just describes which element the rule applies to.</p>
+<p>Pseudo-classes can be combined with complex selector components:</p>
+<pre class="language-css"><code><span class="token comment">/* Style hovered &lt;li> only that are descendants of &lt;ul> elements */</span>
+<span class="token selector">ul li:hover</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* Style the &lt;img> element that is inside a paragraph that is hovered */</span>
+<span class="token selector">p:hover img</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre>
+<p class="alert alert-warning">
+While neat looking, in general modifying page appearance based on the <code>:hover</code> property is not a great idea and should be used sparingly if at all. The <code>:hover</code> property isn’t accessible (a screen reader can’t hover over text). The <code>:hover</code> property doesn’t work with mobile devices (you can’t hover with your finger). And changing element styling on hover—particularly any styling that affects the rendered size of an element—can cause cascading effects on the rest of the page (making an image or text larger will move everything else around) that will make the page harder to read and interact with.
+</p>
+<p>There are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">many different supported pseudo-classes</a>, which range from user interactions to form state:</p>
+<pre class="language-css"><code><span class="token comment">/* Selects &lt;input> elements that are disabled */</span>
+<span class="token selector">input:disabled</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> grey<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects &lt;input> elements (checkboxes and radio buttons) that are checked */</span>
+<span class="token selector">input:checked</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Some additional common types of pseudoclasses are described in the following sections.</p>
+<div id="styling-hyperlinks" class="section level4 unnumbered">
+<h4>Styling Hyperlinks</h4>
+<p>Hyperlink (<code>&lt;a&gt;</code>) elements come with their own browser-dependent default styling behavior—such as making links blue and underlined, and then purple if they’ve been visited previously. CSS can be used to override these styles, and additional psuedo-classes can be used to specify the style based on the state of the link:</p>
+<pre class="language-css"><code><span class="token comment">/* Applies to &lt;a> elements that have NOT been visited before */</span>
+<span class="token selector">a:link</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>
+
+<span class="token comment">/* Applies to &lt;a> elements that HAVE been visited before */</span>
+<span class="token selector">a:visited</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>
+
+<span class="token comment">/* Applies to &lt;a> elemeents that have focus. You can see focus when you use
+   the `tab` key to navigate a page.
+   Especially relevant to screenreaders */</span>
+<span class="token selector">a:focus</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span>
+
+<span class="token comment">/* Applies to &lt;a> elements while being "activated" (e.g., clicked by a user) */</span>
+<span class="token selector">a:active</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span></code></pre>
+<p>These selectors may often apply to an element at the same time: a link may be unvisited (<code>:link</code>), and have <code>:focus</code> at the moment it is being clicked (<code>:active</code>). To ensure that rules are not overridden, they need to be applied in <strong>LVHFA</strong> order: <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:focus</code>, <code>:active</code>. Indeed, rules are often written to apply to all states in this order:</p>
+<pre class="language-css"><code><span class="token comment">/* Applies to &lt;a> elements no matter the state */</span>
+<span class="token selector">a:link, a:visited, a:hover, a:focus, a:active</span> <span class="token punctuation">{</span>
+  ...
+<span class="token punctuation">}</span></code></pre>
+<p class="alert alert-warning">
+Remember to always set both <code>hover</code> <em>and</em> <code>focus</code>, to support accessibility for people who cannot use a mouse!
+</p>
+</div>
+<div id="tree-structure-pseudo-classes" class="section level4 unnumbered">
+<h4>Tree Structure Pseudo-classes</h4>
+<p>Another helpful type of pseudo-class are those that <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes#tree-structural_pseudo-classes">select elements based on their location within the document’s tree of elements</a>. These can serve a similar purpose to the descendant, child, or sibling selectors, but with more capabilities.</p>
+<p>For example, pseudo-classes can be used to select a single element of a particular type based on which child it is:</p>
+<pre class="language-css"><code><span class="token comment">/* Selects the first `&lt;li>` element in its parent */</span>
+<span class="token selector">li:first-of-type</span> <span class="token punctuation">{</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> bold<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects any `&lt;p>` element if it is the first child element of its parent */</span>
+<span class="token comment">/* If the first child isn't a `&lt;p>`, it won't be selected */</span>
+<span class="token selector">p:first-child</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 120%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>These pseudo-classes are similar to the descendant selector or the child selector, but rather than styling an element if it is a child, they style an element if is a <em>particular</em> child. There are equivalent <code>:last-of-type</code> and <code>:last-child</code> pseudo-classes as well).</p>
+<p>A more complex variation of these selectors are the <strong><code>:nth-of-type</code></strong> and <strong><code>:nth-child</code></strong> pseudo-classes. These are similar the “first” and “last” version, but select elements based on an arbitrary number or position: the “second child”, “fifth child”, or “every third child”.</p>
+<pre class="language-css"><code><span class="token comment">/* Selects the 2nd &lt;li> element  */</span>
+<span class="token selector">li:nth-of-type(2)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects every "even-numbered" &lt;li> element (counting starts at 1) */</span>
+<span class="token selector">li:nth-of-type(even)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects every third &lt;li> element */</span>
+<span class="token selector">li:nth-of-type(3n)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects every third element starting at #2 (so 2, 5, 8, etc) */</span>
+<span class="token selector">li:nth-of-type(3n+2)</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span></code></pre>
+<p>These are an example of a pseudo-class that are written like a function, expecting an <strong>argument</strong> indicating which elements to select. The argument can be a single number (to select that number element), the keywords <code>even</code> or <code>odd</code> to select every other element (count starting at 1), or an expression of the form <code>An+B</code>, where the <code>A</code> is how many elements to count and the <code>B</code> is where to start counting from.</p>
+<p>Sturctural pseudo-classes like this are particularly useful for repeated elements, such as lists or tables. For example, you can use these to style “every other row” or a table, or to give the last row a particular appearance:</p>
+<pre class="language-css"><code><span class="token comment">/* Select every other row (for a "striped" table appearance) */</span>
+<span class="token selector">tr:nth-of-type(even)</span> <span class="token punctuation">{</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span>#eee<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Selects the last row (to put a thicker border on the bottom) */</span>
+<span class="token selector">tr:last-of-type</span> <span class="token punctuation">{</span>
+  <span class="token property">border-bottom</span><span class="token punctuation">:</span> 5px solid black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Pseudo-classes and other complex selectors are <em>not required</em> when writing CSS. You can often achieve the same effect by using CSS classes or clever applications of e.g., the descendant selector. However, pseudo-classes can make your code more <em>expressive</em> and easier to write and modify: rather that needing to add a <code>class</code> to every other row (and then changing that if a row gets inserted into the midddle!), you can use <code>:nth-of-type(even)</code> to achieve the same effect.</p>
+<p>There are <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">many other pseudo-classes</a>, some of which expect arguments, that can be useful when needing to style a particular element. Refer to the documentation for more details.</p>
+</div>
+</div>
+<div id="additional-selectors" class="section level3 unnumbered">
+<h3>Additional Selectors</h3>
+<p>While this is not a comprehensive list of all CSS selectors and options (see e.g., <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN’s documentation</a> for that!), there are a few additional selector types that are worth mentioning. These are not as commonly used, but it is helpful to be aware of them in case them come up in examples or existing sites you are modifying.</p>
+<p class="alert alert-success">
+If you ever find a symbol or a selector in CSS that you don’t understand, look it up!
+</p>
+<div id="attribute-selectors" class="section level4 unnumbered">
+<h4>Attribute Selectors</h4>
+<p>The <strong>attribute selector</strong> selects elements that have a particular attribute. Attribute selectors are written by placing brackets <strong><code>[]</code></strong> after a basic selector; inside the brackets you list the attribute and value you want to select for using <code>attribute=value</code> syntax:</p>
+<pre class="language-css"><code><span class="token comment">/* select all p elements whose "lang=sp" */</span>
+<span class="token selector">p[lang="sp"]</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> orange<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>It is also possible to select attributes that only “partially” match a particular value; see <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors">the attribute selector documentation</a> for details.</p>
+<p>Note that it is most common to use this selector when styling form inputs; for example, to make checked boxes appear different than unchecked boxes:</p>
+<pre class="language-css"><code><span class="token comment">/* select &lt;input type="checkbox"> that have the "checked" state */</span>
+<span class="token selector">input[type=checkbox]:checked</span> <span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>Do not use attribute selectors to style based on the <code>class</code> or <code>id</code> attributes—that’s what class and id selectors are for! Attribute selectors should only be used when the <em>presence of the attribute</em> is the characteristic that prompts a particular styling, such as the <code>type</code> for an <code>&lt;input&gt;</code>. Do not use attribute selectors for specific values of general attributes, such as to style an <code>&lt;img&gt;</code> with a particular <code>src</code> or an <code>&lt;a&gt;</code> with a particular <code>&lt;href&gt;</code> Those values are highly “fragile” in that they may change often, and thus would require you to change the selector. Write CSS rules based on information about the semantic meaning of elements (including those semantics defined by attributes), not based on the contents of a particular element. If you want to style a very particular element, give it a class!</p>
+</div>
+<div id="universal-selector" class="section level4 unnumbered">
+<h4>Universal Selector</h4>
+<p>Although very rarely used, it is possible to select <strong>all</strong> elements on the page using the <strong>universal selector</strong>. Written as a <strong><code>*</code></strong> (like a wildcard from the command line), this selector refers to “any” element:</p>
+<pre class="language-css"><code><span class="token comment">/* Selects all elements on the page */</span>
+<span class="token selector">*</span> <span class="token punctuation">{</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span> <span class="token comment">/* all elements include border and padding in size */</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/* Combined with the Adjacent-Sibling Selector; clear the next sibling
+  (whatever it is) after a floating element. Example from MDN. */</span>
+<span class="token selector">.floating + *</span> <span class="token punctuation">{</span>
+  <span class="token property">clear</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>There are few legitimate reasons to use this selector—you very rarely want to apply a styling rule to every single element (the <code>box-sizing</code> example above is an exception). In general it’s better practice to apply a styling rule to a single high-level element such as the <code>&lt;body&gt;</code> and then rely on property inheritance to apply that styling through the page as appropriate.</p>
+</div>
+</div>
+</div>
+<div id="selector-specificity" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Selector Specificity</h2>
+<p>As noted in <a href="css-fundamentals.html#css-fundamentals">CSS Fundamental</a>, because multiple rules may apply to a single element, it’s possible that multiple values for the same property will be specified for that element:</p>
+<pre class="language-css"><code><span class="token comment">/* css */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">.alert</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token comment">&lt;!-- html --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>alert<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  This element is styled by both rules, both of change its `color`. The text
+  will be red, because the `.alert` selector has higher specificity. The `p`
+  rule's property will be overridden.
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>If multiple rules try to specify the same property, then the <em>value from the more <strong>specific</strong> rule is applied</em>. The property value from the less specific rule is said to be <strong>overridden</strong>. You can see which properties have been overridden in the Chrome Developer Tools—overridden properties are crossed out. Note that property values that don’t conflict will still be applied even if one value is overrriden.</p>
+<p>The <em>specificity</em> of a rule is determined by counting the number of element, class, and id selector components within a rule’s selector:</p>
+<pre class="language-css"><code><span class="token comment">/* Counting selector components for specificty */</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 1x type selector */</span>
+
+<span class="token selector">nav a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 2x type selector */</span>
+
+<span class="token selector">ul li a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 3x type selector */</span>
+
+<span class="token selector">.highlighted</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 1x class selector  */</span>
+
+<span class="token selector">p.alert</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 1x class, 1x type selector */</span>
+
+<span class="token selector">div.alert.success strong</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 2x class, 2x type selector */</span>
+
+<span class="token selector">#side-nav a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 1x id, 1x type selector */</span>
+
+<span class="token comment">/* Items in a grouping selector are counted separately! Each selector in the
+   grouping has different specificity and is applied separately */</span>
+<span class="token selector">.green, p.alert.success</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* 1x class selector; 2x class, 1x type selector */</span></code></pre>
+<p>Thus the number and category of selector components in a complex selector contribute to how specific that selector is. Attribute selectors and pseudo-classes are counted like class selectors.</p>
+<p>Each selector category is counted separately, producing a “score” with 3 numbers: id, class, and type. These are often written as a triple in that order; you can see such specificity noted in VS Code if you hover over a selector. Which rule is <em>more specific</em> is determined by which rule has the highest id count, and in the case of a tie which has the highest class count, and in the case that ties which has the highest type count.</p>
+<pre class="language-css"><code><span class="token comment">/* CSS Selectors with specificity counts, ordered from most specific to least */</span>
+
+<span class="token selector">#side-nav a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (1,0,1) */</span>
+
+<span class="token selector">div.alert.success strong</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,2,2) */</span>
+
+<span class="token selector">p.alert</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,1,1) */</span>
+
+<span class="token selector">.highlighted</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,1,0) */</span>
+
+<span class="token selector">ul li a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,0,3) */</span>
+
+<span class="token selector">nav a</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,0,2) */</span>
+
+<span class="token selector">p</span> <span class="token punctuation">{</span>  <span class="token punctuation">}</span> <span class="token comment">/* (0,0,1) */</span></code></pre>
+<p>Importantly, each selector category (id, class, or type) is considered in order. A rule with a single class selector (e.g., <code>.highlighted</code>, score of <code>(0,1,0)</code>) is more specific than a rule with only type selectors, no matter how many there may be (e.g., <code>nav ul li a em</code>, score of <code>(0,0,5)</code>). Scores are not place values: a rule with 11 class selectors (it can happen!) would have a score of <code>(0,11,0)</code>.</p>
+<p class="alert alert-warning">
+Precedence rules are <strong>not</strong> a reason to use <code>#id</code> selectors instead of <code>.class</code> selectors or other combinators. Write selectors that are appropriately specific.
+</p>
+<p>If two rules are equally specific—they have the exact same specificity score—then the <em>last declared rule is applied</em>, overriding the previously declared rule. CSS rules are applied “in order”, with later rules overridding those of equal or lesser specificty.</p>
+<pre class="language-css"><code><span class="token comment">/* Two rules, both alike in specificity */</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span> <span class="token punctuation">}</span>
+<span class="token selector">p</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span></code></pre>
+<pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>This text will be blue, because that rule comes last!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span></code></pre>
+<p>It is technically possible to override any rule specificty by using the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#the_!important_exception"><code>!important</code></a> declaration. However this is considered <em>bad practice</em> and should be avoided. You can <em>always</em> write a correctly specific rule to achieve your desired styling.</p>
+<p>While selector specificity is an important aspect of CSS, in generall you’ll find that you don’t need to worry about it too often. Most “semantic” CSS is written to be appropriately specific; you think about rules at a sufficient level specificty in the first place. Moreover, people tend to talk about rules in increasingly specific order naturally, so code will be written to follow that. You won’t often have rules that override each other unintentionally.</p>
+<p>If you notice that one of your style rules is not being applied, despite your syntax being correct, be sure to check your browser’s <a href="https://developer.chrome.com/devtools">developer tools</a> to see if your rule is being overridden by a more specific rule earlier in the spreadsheet (or in a different sheet even)! Then adjust your selector so that it has the same or greater specificity, such as by clarifying the parent class or element type using the descendant selector.</p>
+<!-- fix link in fundametals if this name changes -->
+<!-- ## Naming CSS Classes
+
+//do I want to write this out?
+//add this when time... -->
+</div>
+<div id="resources-4" class="section level2 unnumbered">
+<h2>Resources</h2>
+<p>More details about CSS selectors can be found in the documention (e.g., <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors">MDN’s CSS Selector reference</a>). Some additional learning resources are noted below.</p>
+<div class="list-condensed">
+<ul>
+<li><a href="https://flukeout.github.io/">CSS Diner</a> a fun game for practicing with different CSS selectors</li>
+</ul>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="semantic-html.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="css-properties.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["github", "facebook", "twitter", "google"],
+"google": false
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/info340/book/edit/master/css-selectors.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
