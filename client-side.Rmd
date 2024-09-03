@@ -126,7 +126,7 @@ There are a number of simple development servers that you can use:
 
 - [**`live-server`**](https://github.com/tapio/live-server) is a Node package that runs a simple web server on the command line. You can run the program and "serve" files from the current folder using the command `npx live-server .` (the `.` referring to the current folder). This will open up your `index.html` file in a browser (if not, you can view the page at <http://localhost:8080> by default). It will also _automatically_ refresh the page whenever you change a file in the folder!
 
-- The [**Create React App**](https://create-react-app.dev/) application for scaffolding React apps provides a webserver that is able to transpile React code. This is used when developing React apps (and only then). See [Getting Set Up: Create React App](#create-react-app) for details.
+- The [**Vite**](https://vitejs.dev/) application for scaffolding React apps provides a webserver that is able to transpile React code. This is used when developing React apps (and only then). See [Getting Set Up: React and Vite](#react-vite-setup) for details.
 
 - The Python [**`http.server`**] module is able to run a simple web server. You will need to have Python 3 installed and available on your machine. You can then use the command `python -m http.server` to serve the contents of the current folder, by default at <http://localhost:8080>.
 

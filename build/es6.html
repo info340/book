@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,11 +345,10 @@
 </ul></li>
 <li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#react-vite-setup"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: React and Vite</a>
 <ul>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
-<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
 <ul>
@@ -570,7 +569,7 @@
 <p>After the JavaScript language was initially written in 1995 and then iterated on through the late 90s, it mostly stayed consistent (with some small changes) for about a decade—until 2009 with the release of JavaScript v5. The next major version wasn’t released until 2015—although officially called “ECMAScript 2015”, most developers refer to it by the working name <strong>“ES6”</strong> (e.g., version 6 of the language). ES6 introduced a host of notable and useful syntactic features—including <code>let</code> and <code>const</code>! Since then the language has been updated annually, with each version named after its release year (<em>ES 2016</em> was released in 2016, <em>ES 2017</em> released in 2017, etc).</p>
 <p>This chapter introduces some of the most notable and useful features introduced in ES6 and later versions of JavaScript—particularly those that will be needed when using the React framework (discussed in the following chapters).</p>
 <p class="alert alert-warning">
-At this point ES6 is mature enough that it is <a href="http://kangax.github.io/compat-table/es6/">almost entirely supported by modern browsers</a>, with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won’t be ale to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the <a href="https://babeljs.io/">Babel</a> compiler, which will “<em>transpile</em>” JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it is automatically performed by provided build tools), but it is also possible to <a href="https://babeljs.io/docs/setup/#installation">install</a> and use the Babel compiler yourself.
+At this point ES6 is mature enough that it is <a href="http://kangax.github.io/compat-table/es6/">almost entirely supported by modern browsers</a>, with the notable exception of Internet Explorer. However, the JavaScript interpreter in older browsers (and IE) won’t be able to recognize the new syntax introduced in this version. Instead, you would need to covert that code into equivalent ES5 (or earlier) code, which can be understood. The easiest way to do this is with the <a href="https://babeljs.io/">Babel</a> compiler, which will “<em>transpile</em>” JavaScript code from one version to another. The next chapter discusses how to perform this transpiling with React (spoiler: it is automatically performed by provided build tools), but it is also possible to <a href="https://babeljs.io/docs/setup/#installation">install</a> and use the Babel compiler yourself.
 </p>
 <div id="es6-syntax-features" class="section level2" number="14.1">
 <h2><span class="header-section-number">14.1</span> ES6+ Syntax Features</h2>
@@ -901,11 +900,9 @@ theModule<span class="token punctuation">.</span><span class="token function">ba
 
 <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//=> "Hello world!"</span></code></pre>
 <p>When importing a <code>default</code> export, you don’t include the <code>{}</code> with the name of the variable, but instead provide a variable name (“alias”) you wish to refer to that exported value by.</p>
-<ul>
-<li><p>Note that it is also possible to make anonymous values into <code>default</code> exports:</p>
+<p>Note that it is also possible to make anonymous values into <code>default</code> exports:</p>
 <pre class="language-js"><code><span class="token comment">/*** animals.js ***/</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token string">'lion'</span><span class="token punctuation">,</span> <span class="token string">'tiger'</span><span class="token punctuation">,</span> <span class="token string">'bear'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//export anonymous array</span></code></pre></li>
-</ul>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token string">'lion'</span><span class="token punctuation">,</span> <span class="token string">'tiger'</span><span class="token punctuation">,</span> <span class="token string">'bear'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//export anonymous array</span></code></pre>
 <p>The <code>default</code> export technique is particularly common in object-oriented frameworks like React, or in large frameworks like Bootstrap with lots of different inddependent modules. Using default exports allows you to make each JavaScript module contain the code for a single function or <code>class</code>; that single function then is made the <code>default</code> export, allowing other modules to import it quickly and easily as e.g., <code>import MyComponent from './MyComponent.js'</code>.</p>
 <p>That said, in general, I recommend you use <em>named imports</em> in most situations—it’s less syntax to remember and reduces the number of decisions made around whether something is default or not. You need to be aware of <code>default</code> exports because many third-party libraries use them, but for your own work its often best to stick with named imports.</p>
 </div>

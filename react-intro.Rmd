@@ -15,92 +15,87 @@ and in general
 [choosing profits over safety](https://www.nytimes.com/2021/10/03/technology/whistle-blower-facebook-frances-haugen.html). You may be understandably concerned about whether learning and using React implicitly supports and thus condones this company and its behavior. Whenever you adopt any software tool or library, it is worth investigating _who_ created it (and _why_) and how that may impact your own willingness to use it as a dependency.</p>
 
 
-## Getting Set Up: Create React App {#create-react-app}
-React is a JavaScript library similar to those discussed in previous chapters&mdash;you load the library and then can call upon its methods. However, React makes use of a significant amount of advanced and custom JavaScript syntax (described below), including extensive use of [ES6 Modules](#modules). Thus in practice, developing React apps requires using a large number of different development tools&mdash;just getting setup and started is one of the major hurdles in learning React!
+## Getting Set Up: React and Vite {#react-vite-setup}
+React is a JavaScript library similar to those discussed in previous chapters&mdash;you load the library and then can call upon its methods. However, React makes use of a significant amount of advanced and custom JavaScript syntax called _JSX_ (described below), as well as extensive use of [ES6 Modules](#modules). Thus in practice, developing React apps requires using a number of different development tools&mdash;just getting setup and started is one of the major hurdles in learning React!
 
-Luckily, Facebook does provide an amazing application which combines many of these these different development tools together. [**Create React App (CRA)**](https://create-react-app.dev/) is a _command line_ application that generates scaffolding ("starter code") for a React application, as well as provides built-in scripts to run, test, and deploy your code.
+Most React apps are structured using a [production framework](https://react.dev/learn/start-a-new-react-project). Such frameworks collect and scaffold the different dependency libraries and build tools needed to start a React project. There are numerous such frameworks, each of which has its own opinions and restrictions on how React apps should be structured. For this course you'll use [**Vite**](https://vitejs.dev/) as a build tool framework. Vite (pronounced "veet") provides a quick a simple build environment that allows you to easily write "pure" React without needing to also learn additional framwork quirks. Once you have a foundational understanding of React, you can easily explore and learn additional frameworks and tools.
 
-You can use Create React App to create a new React app by running the program and specifying a name for the folder you want the app to be created inside of. For example, the below command will create a new folder called `my-app` that contains all of the code and tools necessary to create a React app:
+<p class="alert alert-warning">Facebook previously provided an official scaffolding tool called [Create React App](https://create-react-app.dev/), though that system has been abandoned (see e.g., [this developer comment](https://github.com/reactjs/react.dev/pull/5487#issuecomment-1409720741) for some context). Older versions of this textbook and course used Create React App, so you may still see some old references to it!</p>
+
+Vite is a command line application that generates scaffolding ("starter code") for a React application, as well as provides built-in scripts to run, test, and deploy your code. You can use Vite to create a new React app by running the program, specifying name of the folder where you want the app to be created, and that Vite should scaffold a React application (Vite supports multiple different web frameworks). For example, the below command will create a new folder called `my-app` that contains all of the code and tools necessary to create and run a React app:
 
 ```bash
 # Create a new React app project in a new `my-app` directory
-# This may take a minute...
-npx create-react-app my-app --use-npm
+# Hit 'y' when prompted!!
+npm create vite@latest my-app -- --template react
 
 # Change into new project directory to run further commands
 cd my-app
+
+# Install the build dependencies Vite has scaffolded
+npm install
 ```
 
-- The [`npx`](https://www.npmjs.com/package/npx) command is installed alongside `npm 5.2.0` and later, and can be used to (temporarily) install and run a global command in a single step. So rather than needing to use `npm install -g create-react-app`, you can just use `npx`.
+- The `npm create <package>` command is actually a shortcut for running `npx create-<package>`&mdash;you could equivalently write `npx create-vite@latest`, though the `create` command is more conventional. You do not need to install the `vite` (or `create-vite`) packages globally.
 
-- If you specify the current directory (`.`) as the target folder name, Create React App will create a new react app in the current folder! This is useful when you want to create a React app inside an existing cloned GitHub repository.
+- If you specify the current directory (`.`) as the target folder name (where "my-app" is in the above example), Vite will create a new react app in the current folder! This is useful when you want to create a React app inside an existing cloned GitHub repository.
 
-- The `--use-npm` argument is optional, but will make sure that your app uses `npm` to manage packages and not an alternate manager (such as [yarn](https://classic.yarnpkg.com/en/)).
+- The `--template react` argument specifies to use the React "starter" template. Vite supports multiple [community-defined templates](https://github.com/vitejs/awesome-vite#templates). The extra `--` before that argument helps `npm` know which named argument is being passed in.
 
 
 ### Running the Development Server {-}
-After you create a React app, you can use one of CRA's provided scripts (the `start` script) to automatically start up a _development webserver_:
+After you create a React app, you can use Vite to start up a _development webserver_ by running the `dev` script:
 
 ```bash
 # Make sure you are in the project directory
 cd path/to/project
 
 # Run the development server script
-npm start
+npm run dev
 ```
 
-This will launch the webserver, and open up a new browser window showing the rendered web page! This development webserver will automatically perform the following whenever you change the source code:
+This will start up the webserver. You'll need to open up a browser to view the served content, by default at [http://localhost:5173/](http://localhost:5173/). This development webserver will automatically perform the following whenever you change the source code:
 
 1. It will **transpile** React code into pure JavaScript that can be run in the web browser (see [_JSX_](#jsx) below).
 
-2. It will combine (**bundle**) all of the different code modules into a single file, and automatically inject that single file into the HTML (adding the `<script>` tag for you).
+2. It will manage and reference different JavaScript modules and dependencies, including external node modules.
 
-3. It will display _errors and warnings_ in your browser window&mdash;most errors will show up in the developer console, while fatal errors (e.g., syntax errors that crash the whole app) will be shown as an error web page. Note that the [Chrome React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) will provide further error and debugging options.
+2. It will display _errors and warnings_ in your browser window&mdash;most errors will show up in the developer console, while fatal errors (e.g., syntax errors that crash the whole app) will be shown as an error web page. Note that the [Chrome React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) will provide further error and debugging options.
 
-4. It will automatically reload the page whenever you change the source code! (Though it is often good to manually refresh things when testing, just to make sure).
+3. It will automatically reload the page whenever you change the source code! (Though it is often good to manually refresh things when testing, just to make sure).
 
-All these capabilities are provided by a tool called [**webpack**](https://webpack.js.org/). Webpack is at its core a _module bundler_: it takes your complicated source code structure (lots of files) and transforms it into a brand new, "simplified" version (a single file). In the process, can automatically process and change that code&mdash;from automatic formatting and styling, to compiling or transpiling from one language to another. Webpack is a fairly complex build tool in its own right; however, Create React App provides its own configuration to this program so that you don't have to do anything with it directly!
-
-<div class="alert warning">In order to stop the server, hit `ctrl-c` on the command line.
-
-**Important**: As of 2018, there is an [issue](https://github.com/facebook/create-react-app/issues/932#issuecomment-433596579) with Create React App on Windows using Git Bash where hitting `ctrl-c` won't actually stop the server&mdash;if you try to run it again, you'll get an error about the port still being occupied. Current work-arounds are to use the Task Manager to end the `node` process, or to instead use the [Linux subsystem for Windows](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide).
-</div>
+<p class="alert warning">In order to stop the server, hit `ctrl-c` on the command line.</p>
 
 
 ### Project Structure {-}
-A newly created React app will contain a number of different files, including the following:
+A newly created React app using the Vite `react` template will contain a number of different files, including the following:
 
-- The `public/index.html` file is the home page for your application when webpack builds the app. If you look at this file, you'll notice that it doesn't include any CSS `<link>` or JavaScript `<script>` elements&mdash;the CSS and JavaScript for your React app will be _automatically injected_ into the HTML file when the app is built and run through the development server. The CSS and JavaScript files will be found in the `src/` folder. Similarly, all of the _content_ of the page will be defined as JavaScript components&mdash;you'll be creating the entire page in JavaScript files. Thus in practice, you rarely modify the `index.html` file (beyond changing the metadata such as the `<title>` and favicon).
+- The `index.html` file is the home page for your application. If you look at this file, you can see that it contains almost no HTML content&mdash;just the `<head>`, the `<body>` and a single `<div id="root">`. That is because your entire app will be defined using React JavaScrip code; this content will then be injected into that `#root` element. _All of the _content_ of the page will be defined as JavaScript components&mdash;you'll be creating the entire page in JavaScript files. Thus in practice, you rarely modify the `index.html` file (beyond changing the metadata such as the `<title>` and favicon).
 
-    Notice that the `index.html` file contains almost no HTML content&mdash; just the `<head>`, the `<body>` and a single `<div id="root">`. That is because your entire app will be defined using React JavaScrip code; this content will then be injected into the `#root` element.
+    The `index.html` file also loads a script `/src/main.jsx`. The `.jsx` extension represents _JSX_ code (see below); Vite projects conventionally call this file `main.jsx` instead of `index.js`. All JavaScript files are found in the `src/` folder
 
-    Overall the `public/` folder is where you put assets that you want to be available to your page but aren't loaded and compiled through the JavaScript (i.e., they're not "source code"). For example, this is where you would put an `img/` folder to hold pictures to show. The `public/` folder will be the "root" of the webpage; a file found at `public/img/picture.jpg` would be referenced in your DOM as `img/picture.jpg`&mdash;using a path relative to the `public/` folder. See [Using the public folder](https://create-react-app.dev/docs/using-the-public-folder/) for details.
+    The `index.html` file can also include `<link>` elements in the `<head>` in order to laod CSS. However, it is much preferred to instead import load any CSS content through _JavaScript_ code (though Vite will work with either approach). All CSS files are placed in the `src/` folder.
 
-- The `src/` folder contains the source code for your React app. The app is started by the `index.js` script, but this script imports and uses other JavaScript modules (such as the provided `App.js` script, which defines the "App" module). In general, you'll code React apps by implementing components in one or more modules (e.g., `App.js`, `AboutPage.js`), which will then be imported and used by the `index.js` file. See the [_Components_]{#components} section below for details.
+- The `src/` folder contains the source code for your React app. The app is started by the `main.jsx` script, but this script imports and uses other JavaScript modules (such as the provided `App.jsx` script, which defines the "App" module). In general, you'll code React apps by implementing components in one or more modules (e.g., `App.jsx`, `AboutPage.jsx`), which will then be imported and used by the `main.jsx` file. See the [_Components_]{#components} section below for details.
 
-    - The `reportWebVitals.js` and `setupTests.js` are provided by default to better support testing and performance measurements. This text doesn't cover these features; you can ignore or delete them for now.
+    When starting a new React app, I recommend deleting _all_ of the content of `main.jsx` and `App.jsx` in order to start fresh.
 
-- The `src/index.css` and `src/App.css` are both CSS files used to style the entire page and the individual "App" component respectively. Notice that the CSS files are imported from _inside the JavaScript files_ (with e.g., `import './index.css'` in the `src/index.js` file). This is because the webpack build system that Create React App uses to run apps knows how to load CSS files, so you can "include" them through the JavaScript rather than needing to link them in the HTML.
+- The `src/index.css` and `src/App.css` are both CSS files used to style the entire page and the individual "App" component respectively. You do not necessarily need both files; I recommend keeping just a single `index.css` file as you get staretd. Notice that the CSS files are imported from _inside the JavaScript files_ (with e.g., `import './index.css'` in the `src/main.jsx` file). This is because the Vite build system knows how to load CSS files, so you can "include" them through the JavaScript rather than needing to link them in the HTML.
 
     If you want to load an external stylesheet, such as Bootstrap or Font-Awesome, you can still do that by modifying the `public/index.html` file&mdash;but it's better to install them as modules and import them through the JavaScript. See the documentation for [_Adding Bootstrap_](https://facebook.github.io/create-react-app/docs/adding-bootstrap) for an example.
 
     - Remember that all CSS is global&mdash;rules specified in any `.css` file will apply to the entire app (i.e., the `App.css` rules will also apply to components other than those in `App.js`). The CSS is broken into multiple files to try and keep rules organized. You can instead put all your CSS rules into a single file, using naming schema or other techniques to keep them organized. If you are interested in ways to keep the CSS from being applied globally, look into using [CSS in JS](#css-in-js).
 
-- The `README.md` contains a copy of the [User Guide](https://facebook.github.io/create-react-app/docs/documentation-intro) (which can also be found online), focused on "how to perform common tasks". the user guide is _very_ thorough&mdash;if you want to do something within the CRA framework, try searching this first, as there is probably a guide and example code for you to use!
-
-Overall, you'll primarily be working with the `.js` and `.css` files found in the `src/` folder as you develop a React app.
+- The `src/assets` folder can be used to store media assets that are imported directly; I recommend deleting this and storing assets in the `public` folder instead. See [the Vite assets guide](https://vitejs.dev/guide/assets) for details.
 
 
-### Alternatives to Create React App {-}
-While Create React App is the easiest and recommended way to get started with a React application, it's also possible to try out React just by including external JavaScript libraries in the same way you would do with jQuery. Note that this approach is _not recommended_, especially for production systems&mdash;it will run much slower, and be harder to develop (you don't get the useful debugging features of Create React App's development server).
+- The `public/` folder is where you put assets that you want to be available to your page but aren't loaded and compiled through the JavaScript (i.e., they're not "source code"). For example, this is where you would put an `img/` folder to hold pictures to show. The `public/` folder be treated as the "root" of the webpage; a file found at `public/img/picture.jpg` would be referenced in your DOM as `img/picture.jpg`&mdash;using a path relative to the `public/` folder. See [the Vite assets guide](https://vitejs.dev/guide/assets) for details.
 
-```html
-<!-- Load the React library scripts (there are two) -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-```
+    You can alternatively put assets into the `src/assets` folder, and then `import` them into the JavaScript (treating those images as "source code"). I don't recommend this when starting out; it's simpler to put images into the `public` folder and delete the `src/assets` folder.
 
-The React library actually consists of two libraries that are loaded in the previous code snippet. The `react.development.js` script is the library used to create React components, while the `react-dom.development.js` script is the library that handles DOM manipulation. These are both "development" versions of the scripts; you would want to use "production" versions for a production environment.
+- The two config files `eslint.config.json` and `vite.config.js` includes configuration information for eslint (for styling checks) and Vite respectively. You don't need to modify either of these, but do not delete them!
+
+Overall, you'll mostly be working with the `.jsx` and `.css` files in the `src/` folder as you develop a React app.
 
 
 ## JSX
@@ -436,7 +431,7 @@ See [_Props and Composition_](#props-composition) below for examples of common w
 
 
 #### Strict Mode {-}
-If you look at the starter code generated by Create React App, you will see a common pattern of "wrapping" a rendered `<App>` component in a `<React.StrictMode>` component:
+If you look at the starter code generated by Vite, you will see a common pattern of "wrapping" a rendered `<App>` component in a `<React.StrictMode>` component:
 
 ```jsx
 import React from 'react';
@@ -450,7 +445,7 @@ root.render(
 );
 ```
 
-The [**`StrictMode`**](https://reactjs.org/docs/strict-mode.html) component is provided by React (it's a property of the `React` object imported in the first line of the above example). Like the `use strict` declaration for JavaScript, this component enables a number of additional error checking that React can perform&mdash; though most of the issues it identifies are due to using out-of-date practices. It can be useful to use, though it will cause duplicated output of some `console.log()` statements and is not strictly necessary.
+The [**`StrictMode`**](https://reactjs.org/docs/strict-mode.html) component is provided by React (it's a property of the `React` object imported in the first line of the above example). Kind of like the `use strict` declaration for JavaScript, this component enables a number of additional error checking that React can perform&mdash; though most of the issues it identifies are due to using out-of-date practices or errors with features not covered in this course. It can be useful, though it will cause duplicated output of some `console.log()` statements and is not strictly necessary.
 
 
 ### Component Organization {-}
@@ -799,5 +794,4 @@ As mentioned above, there are a large number of different resources for learning
 - [JSX Documentation](https://facebook.github.io/react/docs/introducing-jsx.html)
 - [Components and Props](https://reactjs.org/docs/components-and-props.html)
 - [React API References](https://reactjs.org/docs/react-api.html)
-- [Create React App Docs](https://facebook.github.io/create-react-app/docs/getting-started)
 </div>

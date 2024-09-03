@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,11 +345,10 @@
 </ul></li>
 <li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#react-vite-setup"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: React and Vite</a>
 <ul>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
-<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
 <ul>
@@ -658,7 +657,7 @@ As in any computer program, you should always use <strong>relative</strong> path
 <p>There are a number of simple development servers that you can use:</p>
 <ul>
 <li><p><a href="https://github.com/tapio/live-server"><strong><code>live-server</code></strong></a> is a Node package that runs a simple web server on the command line. You can run the program and “serve” files from the current folder using the command <code>npx live-server .</code> (the <code>.</code> referring to the current folder). This will open up your <code>index.html</code> file in a browser (if not, you can view the page at <a href="http://localhost:8080" class="uri">http://localhost:8080</a> by default). It will also <em>automatically</em> refresh the page whenever you change a file in the folder!</p></li>
-<li><p>The <a href="https://create-react-app.dev/"><strong>Create React App</strong></a> application for scaffolding React apps provides a webserver that is able to transpile React code. This is used when developing React apps (and only then). See <a href="react.html#create-react-app">Getting Set Up: Create React App</a> for details.</p></li>
+<li><p>The <a href="https://vitejs.dev/"><strong>Vite</strong></a> application for scaffolding React apps provides a webserver that is able to transpile React code. This is used when developing React apps (and only then). See <a href="react.html#react-vite-setup">Getting Set Up: React and Vite</a> for details.</p></li>
 <li><p>The Python [<strong><code>http.server</code></strong>] module is able to run a simple web server. You will need to have Python 3 installed and available on your machine. You can then use the command <code>python -m http.server</code> to serve the contents of the current folder, by default at <a href="http://localhost:8080" class="uri">http://localhost:8080</a>.</p></li>
 <li><p>There are multiple extensions for VS Code that provide this functionality, including <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer"><code>LiveServer</code></a> and <a href="https://marketplace.visualstudio.com/items?itemName=yuichinukiyama.vscode-preview-server"><code>vscode-previw-server</code></a>.</p></li>
 </ul>

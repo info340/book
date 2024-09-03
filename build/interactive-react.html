@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,11 +345,10 @@
 </ul></li>
 <li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#react-vite-setup"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: React and Vite</a>
 <ul>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
-<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
 <ul>
@@ -660,7 +659,7 @@ Never call a set state function directly from inside of your component function;
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
 <p>In this example, because <code>setCount()</code> is asynchronous, you can’t immediately access the updated state variable after calling the function. You instead need to wait for the component to “rerender”—when the component’s DOM is regenerated, it will use the updated value. If you want to see that value, log it out right before you return the DOM (not inside of the click event handler).</p>
-<p>It is possible to have multiple state variables, each declared with a different all to <code>useState()</code>:</p>
+<p>It is possible to have multiple state variables, each declared with a different call to <code>useState()</code>:</p>
 <pre class="language-jsx"><code><span class="token comment">//Example from React documentation</span>
 <span class="token keyword">function</span> <span class="token function">ExampleWithManyStates</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment">//Declare multiple state variables!</span>

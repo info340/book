@@ -132,7 +132,7 @@ function CounterWithError(props) {
 
 In this example, because `setCount()` is asynchronous, you can't immediately access the updated state variable after calling the function. You instead need to wait for the component to "rerender"&mdash;when the component's DOM is regenerated, it will use the updated value. If you want to see that value, log it out right before you return the DOM (not inside of the click event handler).
 
-It is possible to have multiple state variables, each declared with a different all to `useState()`:
+It is possible to have multiple state variables, each declared with a different call to `useState()`:
 
 ```jsx
 //Example from React documentation

@@ -396,7 +396,7 @@ Note that browsers typically [collapse](https://developer.mozilla.org/en-US/docs
 ### Padding vs. Margin {-}
 Padding and margin are both used to add space around content on the page&mdash;indeed, without a visible border or background color, adding either will achieve close to the same appearance! It can sometimes be challenging to decide which property to use when adding spacing between elements.
 
-To help determine which to use, first remember that padding adds space _inside_ the element, while margin adds space outside of it. If you want to mae the element's size larger&mdash;to have the border be further away or to have a larger background area, use _padding_. And if you want to put space between visible borders or visible background areas, use _margin_.
+To help determine which to use, first remember that padding adds space _inside_ the element, while margin adds space outside of it. If you want to make the element's size larger&mdash;to have the border be further away or to have a larger background area, use _padding_. And if you want to put space between visible borders or visible background areas, use _margin_.
 
 More challenging is when the boundaries between elements are not visible. In those situations I consider the semantics: am I adding spacing because I want this element to take up more space (_padding_), or because I want it to be kept further away from other elements (_margin_)? I often default to using _padding_ when styling smaller or inline elements, and _margin_ when styling block or section elements. But either can be appropriate; just be aware of choices if you end up needing to adjust the spacing later!
 
@@ -572,7 +572,7 @@ At its most basic, a flexbox is an element with the **`display: flex`** property
 ```
 
 
-By default, a flexbox will position its children _horizontally_ (even if they are block elements), though you can adjust this by also specifying the flexbox's [`flex-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) property. The cihld elements will be sized so that their width fits their content area, and their heights are all equal to the height of the flexbox. Thus with no other work, the elements inside of the flexbox will be layed out in "columns"!
+By default, a flexbox will position its children _horizontally_ (even if they are block elements), though you can adjust this by also specifying the flexbox's [`flex-direction`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction) property. The child elements will be sized so that their width fits their content area, and their heights are all equal to the height of the flexbox. Thus with no other work, the elements inside of the flexbox will be layed out in "columns"!
 
 ```html
 <div class="flex-container"> <!-- Parent -->

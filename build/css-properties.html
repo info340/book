@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-03-11" />
+<meta name="date" content="2024-09-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -345,11 +345,10 @@
 </ul></li>
 <li class="chapter" data-level="15" data-path="react.html"><a href="react.html"><i class="fa fa-check"></i><b>15</b> Introduction to React</a>
 <ul>
-<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#create-react-app"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: Create React App</a>
+<li class="chapter" data-level="15.1" data-path="react.html"><a href="react.html#react-vite-setup"><i class="fa fa-check"></i><b>15.1</b> Getting Set Up: React and Vite</a>
 <ul>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#running-the-development-server"><i class="fa fa-check"></i>Running the Development Server</a></li>
 <li class="chapter" data-level="" data-path="react.html"><a href="react.html#project-structure"><i class="fa fa-check"></i>Project Structure</a></li>
-<li class="chapter" data-level="" data-path="react.html"><a href="react.html#alternatives-to-create-react-app"><i class="fa fa-check"></i>Alternatives to Create React App</a></li>
 </ul></li>
 <li class="chapter" data-level="15.2" data-path="react.html"><a href="react.html#jsx"><i class="fa fa-check"></i><b>15.2</b> JSX</a>
 <ul>
@@ -848,7 +847,7 @@ Notice that the <code>&lt;link&gt;</code> reference can be to an external file o
 <div id="padding-vs.-margin" class="section level3 unnumbered">
 <h3>Padding vs. Margin</h3>
 <p>Padding and margin are both used to add space around content on the page—indeed, without a visible border or background color, adding either will achieve close to the same appearance! It can sometimes be challenging to decide which property to use when adding spacing between elements.</p>
-<p>To help determine which to use, first remember that padding adds space <em>inside</em> the element, while margin adds space outside of it. If you want to mae the element’s size larger—to have the border be further away or to have a larger background area, use <em>padding</em>. And if you want to put space between visible borders or visible background areas, use <em>margin</em>.</p>
+<p>To help determine which to use, first remember that padding adds space <em>inside</em> the element, while margin adds space outside of it. If you want to make the element’s size larger—to have the border be further away or to have a larger background area, use <em>padding</em>. And if you want to put space between visible borders or visible background areas, use <em>margin</em>.</p>
 <p>More challenging is when the boundaries between elements are not visible. In those situations I consider the semantics: am I adding spacing because I want this element to take up more space (<em>padding</em>), or because I want it to be kept further away from other elements (<em>margin</em>)? I often default to using <em>padding</em> when styling smaller or inline elements, and <em>margin</em> when styling block or section elements. But either can be appropriate; just be aware of choices if you end up needing to adjust the spacing later!</p>
 </div>
 <div id="box-sizing" class="section level3 unnumbered">
@@ -970,7 +969,7 @@ Despite it’s capabilities, Flexbox still is designed primarily for one-directi
 <span class="token selector">.my-flex-container</span> <span class="token punctuation">{</span>
   <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>By default, a flexbox will position its children <em>horizontally</em> (even if they are block elements), though you can adjust this by also specifying the flexbox’s <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction"><code>flex-direction</code></a> property. The cihld elements will be sized so that their width fits their content area, and their heights are all equal to the height of the flexbox. Thus with no other work, the elements inside of the flexbox will be layed out in “columns”!</p>
+<p>By default, a flexbox will position its children <em>horizontally</em> (even if they are block elements), though you can adjust this by also specifying the flexbox’s <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-direction"><code>flex-direction</code></a> property. The child elements will be sized so that their width fits their content area, and their heights are all equal to the height of the flexbox. Thus with no other work, the elements inside of the flexbox will be layed out in “columns”!</p>
 <pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-container<span class="token punctuation">"</span></span><span class="token punctuation">></span></span> <span class="token comment">&lt;!-- Parent --></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>flex-item<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>Child 2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
