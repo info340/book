@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-09-03" />
+<meta name="date" content="2024-09-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -738,15 +738,35 @@ in the <em>INFO 201</em> course reader. Note that students in the INFO 340 cours
 <p>While <code>git</code> is the software used to manage versions of code, <a href="https://github.com/"><strong>GitHub</strong></a> is a website that is used to store copies online copies of computer code that are being managed with <code>git</code>.</p>
 <p>In order to use GitHub, you’ll need to have a <a href="https://github.com/join">free GitHub account</a>. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to gudess who ‘LeetDesigner2099’ is. This can be the start of a professional account you may use for the rest of your career!</p>
 <div class="alert alert-info">
-<p>In order to push and pull to GitHub from the command line, you’ll need to set up a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token (PAT)</a> for GitHub. This is like a specialized password whose access you can control, rather than using your “full account” password.</p>
-<p>If you don’t have a working token (or it’s been a long time since you used one), you’ll need to create it. To create the PAT, go to your account settings on GitHub, click on Developer Settings option, and then choose to modify Personal access tokens (you’ll end up at <a href="https://github.com/settings/apps" class="uri">https://github.com/settings/apps</a>). To make a new token“:
-- Click the <strong>Generate new token</strong> button; choose <strong>Generate new token (classic)</strong>.
-- On the next page, give your token a name (e.g.,”INFO 340 command line“, or just”command line access").
-- Specify any expiration date that is after the end of the course; I set it to expire a year from when I create it to make sure that I refresh it periodically.
-- Under <em>Select Scopes</em>, make sure you click the checkbox next to <strong>repo</strong> in order to give the token access to repositories; you do not need to provide any additional access for this course.
-- Then click the <em>Generate Token</em> button at the bottom.</p>
-<p>Your token will look like a random string of characters starting with <code>ghp</code>. This string is the “password” you can use when cloning or pushing from GitHub on the command line. Store it in a safe place (a password manager is good), though after you use it once <code>git</code> should cache it so you won’t need to remember it every time. In order to cache your token, clone a code repo (using <code>git clone</code>). When prompted, put in your GitHub user name, and when when prompted for a password, <em>put in the token string</em>!</p>
-<p>If you’ve used a token before, you may need to remove your old “saved” password from your computer and replace it with the new token—see <a href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">these instructions</a> for how to do that for your operating system (on a Mac in particular you may need to <a href="https://docs.github.com/en/github/getting-started-with-github/updating-credentials-from-the-macos-keychain">update your credentials in Keychain</a>)</p>
+<p>
+In order to push and pull to GitHub from the command line, you’ll need to set up a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token (PAT)</a> for GitHub. This is like a specialized password whose access you can control, rather than using your “full account” password.
+</p>
+<p>
+If you don’t have a working token (or it’s been a long time since you used one), you’ll need to create it. To create the PAT, go to your account settings on GitHub, click on Developer Settings option, and then choose to modify Personal access tokens (you’ll end up at <a href="https://github.com/settings/apps" class="uri">https://github.com/settings/apps</a>). To make a new token":
+</p>
+<ol>
+<li>
+Click the <strong>Generate new token</strong> button; choose <strong>Generate new token (classic)</strong>.
+</li>
+<li>
+On the next page, give your token a name (e.g., “INFO 340 command line”, or just “command line access”).
+</li>
+<li>
+Specify any expiration date that is after the end of the course; I set it to expire a year from when I create it to make sure that I refresh it periodically.
+</li>
+<li>
+Under <em>Select Scopes</em>, make sure you click the checkbox next to <strong>repo</strong> in order to give the token access to repositories; you do not need to provide any additional access for this course.
+</li>
+<li>
+Then click the <em>Generate Token</em> button at the bottom.
+</li>
+</ol>
+<p>
+Your token will look like a random string of characters starting with <code>ghp</code>. This string is the “password” you can use when cloning or pushing from GitHub on the command line. Store it in a safe place (a password manager is good), though after you use it once <code>git</code> should cache it so you won’t need to remember it every time. In order to cache your token, clone a code repo (using <code>git clone</code>). When prompted, put in your GitHub user name, and when when prompted for a password, <em>put in the token string</em>!
+</p>
+<p>
+If you’ve used a token before, you may need to remove your old “saved” password from your computer and replace it with the new token—see <a href="https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git">these instructions</a> for how to do that for your operating system (on a Mac in particular you may need to <a href="https://docs.github.com/en/github/getting-started-with-github/updating-credentials-from-the-macos-keychain">update your credentials in Keychain</a>)
+</p>
 </div>
 <!-- Could add more on using git/github here, including branching and publishing? -->
 </div>

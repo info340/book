@@ -245,18 +245,20 @@ While `git` is the software used to manage versions of code, [**GitHub**](https:
 In order to use GitHub, you'll need to have a [free GitHub account](https://github.com/join). You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to gudess who 'LeetDesigner2099' is. This can be the start of a professional account you may use for the rest of your career!
 
 <div class="alert alert-info">
-In order to push and pull to GitHub from the command line, you'll need to set up a [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. This is like a specialized password whose access you can control, rather than using your "full account" password.
+<p>In order to push and pull to GitHub from the command line, you'll need to set up a [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. This is like a specialized password whose access you can control, rather than using your "full account" password.</p>
 
-If you don't have a working token (or it's been a long time since you used one), you'll need to create it. To create the PAT, go to your account settings on GitHub, click on Developer Settings option, and then choose to modify Personal access tokens (you'll end up at <https://github.com/settings/apps>). To make a new token":
-- Click the **Generate new token** button; choose **Generate new token (classic)**.
-- On the next page, give your token a name (e.g., "INFO 340 command line", or just "command line access").
-- Specify any expiration date that is after the end of the course; I set it to expire a year from when I create it to make sure that I refresh it periodically.
-- Under _Select Scopes_, make sure you click the checkbox next to **repo** in order to give the token access to repositories; you do not need to provide any additional access for this course.
-- Then click the _Generate Token_ button at the bottom.
+<p>If you don't have a working token (or it's been a long time since you used one), you'll need to create it. To create the PAT, go to your account settings on GitHub, click on Developer Settings option, and then choose to modify Personal access tokens (you'll end up at <https://github.com/settings/apps>). To make a new token":</p>
+<ol>
+<li>Click the **Generate new token** button; choose **Generate new token (classic)**.</li>
+<li>On the next page, give your token a name (e.g., "INFO 340 command line", or just "command line access").</li>
+<li>Specify any expiration date that is after the end of the course; I set it to expire a year from when I create it to make sure that I refresh it periodically.</li>
+<li>Under _Select Scopes_, make sure you click the checkbox next to **repo** in order to give the token access to repositories; you do not need to provide any additional access for this course.</li>
+<li>Then click the _Generate Token_ button at the bottom.</li>
+</ol>
 
-Your token will look like a random string of characters starting with `ghp`. This string is the "password" you can use when cloning or pushing from GitHub on the command line. Store it in a safe place (a password manager is good), though after you use it once `git` should cache it so you won't need to remember it every time. In order to cache your token, clone a code repo (using `git clone`). When prompted, put in your GitHub user name, and when when prompted for a password, _put in the token string_!
+<p>Your token will look like a random string of characters starting with `ghp`. This string is the "password" you can use when cloning or pushing from GitHub on the command line. Store it in a safe place (a password manager is good), though after you use it once `git` should cache it so you won't need to remember it every time. In order to cache your token, clone a code repo (using `git clone`). When prompted, put in your GitHub user name, and when when prompted for a password, _put in the token string_!</p>
 
-If you've used a token before, you may need to remove your old "saved" password from your computer and replace it with the new token&mdash;see [these instructions](https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git) for how to do that for your operating system (on a Mac in particular you may need to [update your credentials in Keychain](https://docs.github.com/en/github/getting-started-with-github/updating-credentials-from-the-macos-keychain))
+<p>If you've used a token before, you may need to remove your old "saved" password from your computer and replace it with the new token&mdash;see [these instructions](https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git) for how to do that for your operating system (on a Mac in particular you may need to [update your credentials in Keychain](https://docs.github.com/en/github/getting-started-with-github/updating-credentials-from-the-macos-keychain))</p>
 </div>
 
 <!-- Could add more on using git/github here, including branching and publishing? -->
