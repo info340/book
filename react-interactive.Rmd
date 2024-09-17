@@ -400,7 +400,7 @@ The above is an example of a basic controlled Component. When the user enters a 
 
 
 ### Fetching Data via AJAX {-}
-One of the most common use of lifecycle callback functions is when accessing data asynchronously, such as when fetching data via an AJAX request (such a described in [Chapter 14](#ajax)). This section provides details about how to asynchronously load data within the React framework.
+One of the most common use of lifecycle callback functions is when accessing data asynchronously, such as when fetching data via an AJAX request (such as described in later [Chapter](#ajax)). This section provides details about how to asynchronously load data within the React framework.
 
 First, remember that React code is _transpiled_ using Webpack. As such, some APIs&mdash;including `fetch()` are not "built-in" to React like they are with a modern browser. As discussed in [Chapter 14](#fetching-data), in order to support these "other" browsers, you will need to load a _polyfill_. You can do that with React by installing the `whatwg-fetch` library, and then `import`ing that polyfill in your React code:
 
