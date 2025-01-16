@@ -11,7 +11,7 @@ How do clients and servers interact? Well consider the process of viewing a basi
 
 ![A diagram of client/server communication.](img/client-side/client-server-comm.png)
 
-The web server will receive this request, and based on the request's content (including the detils of the web address) will decide what information to send as a **response** to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.
+The web server will receive this request, and based on the request's content (including the details of the web address) will decide what information to send as a **response** to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.
 
 The client's web browser will then take all of these different files in the response and use them to **render** (create/present) the web page for the user to see: it will determine what text to show, what font and color to make that text, where to put the images, and is ready to do something else when the user clicks on one of those images. Indeed, at its most basic a web browser is just a computer program that does two things: (1) sends HTTP requests on behalf of the user, and (2) renders the resulting response from the server.
 

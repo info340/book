@@ -370,7 +370,7 @@ This function defines a new Component (think: a new HTML element!) called `UserI
 
 4. A Component function can only return a _single_ React element (you can't return more than one value at a time from a JavaScript function). However, that single React element can have as many children as you wish. It's very common to "wrap" all of the content you want a component to include in a single `<div>` to return, as in the above example.
 
-    If you don't like want to add an extra div for some reason, it's also possible to "wrap" content in a [Fragment](https://reactjs.org/docs/fragments.html), which can be declared using a shortcut syntax that looks like an element with no name:
+    If you don't want to add an extra div for some reason, it's also possible to "wrap" content in a [Fragment](https://reactjs.org/docs/fragments.html), which can be declared using a shortcut syntax that looks like an element with no name:
 
     ```jsx
     function FragmentExample(props) {

@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-09-10" />
+<meta name="date" content="2025-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -667,11 +667,11 @@ Font-sizes should always be relative (<code>em</code> or <code>rem</code>); layo
 </div>
 <div id="fonts-and-text" class="section level2" number="7.2">
 <h2><span class="header-section-number">7.2</span> Fonts and Text</h2>
-<p>You specify the typographical “font” (the <strong>typefac</strong>) for text using the <strong><code>font-family</code></strong> property. This property takes a <em>comma-separated list</em> of font names (strings). The browser will attempt to render the text using the first font in the list; if that font isn’t available on the client computer, then it will use the next in the list and so on (you can then of these secondary fonts as “fall-backs”). Font family names are <em>required</em> to be put in quotes (single or double) if there is a whitespace in the name, such as with <code>"Helvetica Nue"</code>. But it is good practice to put all font family names in quotes anyway—this makes it easier to modify if you change them to a font name with multiple words, and helps distinguish them from generic font names (see below).</p>
+<p>You specify the typographical “font” (the <strong>typefac</strong>) for text using the <strong><code>font-family</code></strong> property. This property takes a <em>comma-separated list</em> of font names (strings). The browser will attempt to render the text using the first font in the list; if that font isn’t available on the client computer, then it will use the next in the list and so on (you can then of these secondary fonts as “fall-backs”). Font family names are <em>required</em> to be put in quotes (single or double) if there is a whitespace in the name, such as with <code>"Helvetica Neue"</code>. But it is good practice to put all font family names in quotes anyway—this makes it easier to modify if you change them to a font name with multiple words, and helps distinguish them from generic font names (see below).</p>
 <pre class="language-css"><code><span class="token selector">p</span> <span class="token punctuation">{</span>
-    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Nue'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span> <span class="token string">'Arial'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
+    <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Helvetica Neue'</span><span class="token punctuation">,</span> <span class="token string">'Helvetica'</span><span class="token punctuation">,</span> <span class="token string">'Arial'</span><span class="token punctuation">,</span> sans-serif<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
-<p>In this example, the computer will attempt to render the text in <code>'Helvetica Nue'</code>. If that font isn’t installed on the user’s computer, then it instead tries to use <code>'Helvetica'</code>, then <code>'Arial'</code>, and finally if none of those work will use a generic <code>sans-serif</code> font.</p>
+<p>In this example, the computer will attempt to render the text in <code>'Helvetica Neue'</code>. If that font isn’t installed on the user’s computer, then it instead tries to use <code>'Helvetica'</code>, then <code>'Arial'</code>, and finally if none of those work will use a generic <code>sans-serif</code> font.</p>
 <p>Indeed, the last font in the list should always be a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/font-family"><strong>generic family name</strong></a>. These are a list of “categories” that the browser can draw upon even if the computer doesn’t have any common fonts available. In pracice, the most common generic families used are <code>serif</code> (fonts with <a href="https://en.wikipedia.org/wiki/Serif">serifs</a>, e.g., “Times”), <code>sans-serif</code> (fonts <em>without</em> serifs, e.g., “Arial”), and <code>monospace</code> (fonts with <a href="https://en.wikipedia.org/wiki/Monospaced_font">equal width characters</a>, e.g., “Courier”).</p>
 <p>Note that generic font families are <em>not</em> quoted: it’s <code>sans-serif</code>, not <code>"sans-serif"</code>. If you put them in quotes, the the browser will intepret them as a family name and not as generic.</p>
 <div class="figure">

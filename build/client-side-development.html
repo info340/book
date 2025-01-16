@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-09-10" />
+<meta name="date" content="2025-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -575,7 +575,7 @@
 <img src="img/client-side/client-server-comm.png" alt="" />
 <p class="caption">A diagram of client/server communication.</p>
 </div>
-<p>The web server will receive this request, and based on the request’s content (including the detils of the web address) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.</p>
+<p>The web server will receive this request, and based on the request’s content (including the details of the web address) will decide what information to send as a <strong>response</strong> to the client. In general, this response will be made up of lots of different files: the text content of the web page, styling information (font, color) for how it should look, instructions for responding to user interaction (button clicks), images or other assets to show, and so forth.</p>
 <p>The client’s web browser will then take all of these different files in the response and use them to <strong>render</strong> (create/present) the web page for the user to see: it will determine what text to show, what font and color to make that text, where to put the images, and is ready to do something else when the user clicks on one of those images. Indeed, at its most basic a web browser is just a computer program that does two things: (1) sends HTTP requests on behalf of the user, and (2) renders the resulting response from the server.</p>
 <p>Given this interaction, <strong>client-side web development</strong> involves implementing programs (writing code) that are interpreted by the <em>browser</em>, and are executed by the <em>client</em>. It is the process of authoring the code that is sent in the server’s response. This code specifies how websites should appear and how the user should interact with them. On the other hand, <strong>server-side web development</strong> involves implementing programs that the <em>server</em> uses to determine which client-side code is delivered. As an example, a server-side program contains the logic to determine which cat picture should be sent along with the request, while a client-side program contains the logic about where and how that picture should appear on the page.</p>
 <p>This course focuses on <em>client-side web development</em>, or developing programs that are executed by the browser (generally as a response to a web server request). While it will cover how client-side programs can interact with a server, many of the concepts discussed here can also be run inside a browser without relying on an external server (called “running locally”, since the code is run on the “local” machine without going outside to a server).</p>

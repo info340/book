@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2024-09-10" />
+<meta name="date" content="2025-01-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -852,7 +852,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <strong>Style requirement</strong>: perform any complex logic—including functional looping such as with <code>map()</code> or <code>filter()</code>—outside of the <code>return</code> statement. Keep the <code>return</code> statement as simple as possible so it remains readable—and more importantly <em>debuggable</em> (so you can use things like <code>console.log</code> statements to check intermediate values before they are returned). <strong>NEVER</strong> include an inline callback function so that you have a <code>return</code> statement inside of a <code>return</code> statement!
 </div></li>
 <li><p>A Component function can only return a <em>single</em> React element (you can’t return more than one value at a time from a JavaScript function). However, that single React element can have as many children as you wish. It’s very common to “wrap” all of the content you want a component to include in a single <code>&lt;div&gt;</code> to return, as in the above example.</p>
-<p>If you don’t like want to add an extra div for some reason, it’s also possible to “wrap” content in a <a href="https://reactjs.org/docs/fragments.html">Fragment</a>, which can be declared using a shortcut syntax that looks like an element with no name:</p>
+<p>If you don’t want to add an extra div for some reason, it’s also possible to “wrap” content in a <a href="https://reactjs.org/docs/fragments.html">Fragment</a>, which can be declared using a shortcut syntax that looks like an element with no name:</p>
 <pre class="language-jsx"><code><span class="token keyword">function</span> <span class="token function">FragmentExample</span><span class="token punctuation">(</span><span class="token parameter">props</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span></span><span class="token punctuation">></span></span>

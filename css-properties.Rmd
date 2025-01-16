@@ -152,15 +152,15 @@ In general, you should specify font sizes using _relative units_ (e.g., `em`)&md
 
 
 ## Fonts and Text
-You specify the typographical "font" (the **typefac**) for text using the **`font-family`** property. This property takes a _comma-separated list_ of font names (strings). The browser will attempt to render the text using the first font in the list; if that font isn't available on the client computer, then it will use the next in the list and so on (you can then of these secondary fonts as "fall-backs"). Font family names are _required_ to be put in quotes (single or double) if there is a whitespace in the name, such as with `"Helvetica Nue"`. But it is good practice to put all font family names in quotes anyway&mdash;this makes it easier to modify if you change them to a font name with multiple words, and helps distinguish them from generic font names (see below).
+You specify the typographical "font" (the **typefac**) for text using the **`font-family`** property. This property takes a _comma-separated list_ of font names (strings). The browser will attempt to render the text using the first font in the list; if that font isn't available on the client computer, then it will use the next in the list and so on (you can then of these secondary fonts as "fall-backs"). Font family names are _required_ to be put in quotes (single or double) if there is a whitespace in the name, such as with `"Helvetica Neue"`. But it is good practice to put all font family names in quotes anyway&mdash;this makes it easier to modify if you change them to a font name with multiple words, and helps distinguish them from generic font names (see below).
 
 ```css
 p {
-    font-family: 'Helvetica Nue', 'Helvetica', 'Arial', sans-serif;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 }
 ```
 
-In this example, the computer will attempt to render the text in `'Helvetica Nue'`. If that font isn't installed on the user's computer, then it instead tries to use `'Helvetica'`, then `'Arial'`, and finally if none of those work will use a generic `sans-serif` font.
+In this example, the computer will attempt to render the text in `'Helvetica Neue'`. If that font isn't installed on the user's computer, then it instead tries to use `'Helvetica'`, then `'Arial'`, and finally if none of those work will use a generic `sans-serif` font.
 
 Indeed, the last font in the list should always be a [**generic family name**](https://developer.mozilla.org/en-US/docs/Web/CSS/font-family). These are a list of "categories" that the browser can draw upon even if the computer doesn't have any common fonts available. In pracice, the most common generic families used are `serif` (fonts with [serifs](https://en.wikipedia.org/wiki/Serif), e.g., "Times"), `sans-serif` (fonts _without_ serifs, e.g., "Arial"), and `monospace` (fonts with [equal width characters](https://en.wikipedia.org/wiki/Monospaced_font), e.g., "Courier").
 
