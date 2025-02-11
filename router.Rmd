@@ -68,7 +68,7 @@ The **`<BrowserRouter>`** Component (which is often imported with an alias of `<
     ```jsx
     //index.js
 
-    import { BrowserRouter } from 'react-router-dom'
+    import { BrowserRouter } from 'react-router'
     import App from './components/App.js'
 
     //render the App *inside* of the BrowserRouter
@@ -207,7 +207,7 @@ will match a path that starts with `posts/` and is followed by any other path se
 You can access the values assigned to the URL parameters by using the **`useParams`** hook provided by `react-router`. This hook returns an object whose keys are the parameter names and whose values are the param values:
 
 ```jsx
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 
 function BlogPost(props) {
     //access the URL params as an object
@@ -254,7 +254,7 @@ In addition to `<Link>` elements that allow the user to navigate by clicking an 
 The primary tool for this is the [**`useNavigate()`**](https://reactrouter.com/en/6.4.4/hooks/use-navigate) hook. This hook, when called, will provide a function (conventionally named `navigate`) that can be called to redirect the App&mdash;to change the URL without reloading the page (and thus cause the Routes to re-render):
 
 ```jsx
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 //A simple form component
 function Form(props){
