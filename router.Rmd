@@ -39,25 +39,25 @@ That is, _if_ the current URL **matches** a particular route, then the Component
 ## React-Router
 Third-party libraries such as [**React Router**](https://reactrouter.com/en/6.4.4) provide Components that include this "matching" functionality, allowing you to easily develop single-page applications.
 
-<p class="alert alert-warning">This chapter details how to use [**version 6**](https://reactrouter.com/en/6.4.4) of React Router, released in _November 2021_. This version is significantly different from the previous versions (including v5). Be careful when looking up examples and resources that they're utilizing the same version as you! For details about earlier versions of the React Router, see [the documentation for those versions](https://v5.reactrouter.com/)</p>
+<p class="alert alert-warning">This chapter details how to use [**version 7**](https://reactrouter.com/7.1.5/home) of React Router, released in _November 2021_. This version is significantly different from the previous versions (particularly v5). Be careful when looking up examples and resources that they're utilizing the same version as you! For details about earlier versions of the React Router, see [the documentation for those versions](https://v5.reactrouter.com/). Importantly, this chapter teaches how to use React Router as a **library**, not as a Framework.</p>
 
-As with other libraries, you [begin using React Router](https://reactrouter.com/en/6.4.4/start/tutorial) by installing the `react-router-dom` library (the browser-specific version of React Router):
+As with other libraries, you [begin using React Router](https://reactrouter.com/7.1.5/start/library/installation) by installing the `react-router` library:
 
 ```bash
-npm install react-router-dom
+npm install react-router
 ```
 
 You will then need to `import` any Components you wish to use into the `.js` files containing your React code. For example:
 
 ```js
 //import BrowserRouter, Routes, Route, and Link from react-router
-import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Link} from 'react-router'
 ```
 
 These Components are described in the following sections.
 
 ### Routing {-}
-The [**`<BrowserRouter>`**](https://reactrouter.com/en/6.4.4/router-components/browser-router) Component (which is often imported with an alias of `<Router>`&mdash;though there is also a `<Router>` component!) is the "base" Component used by React Router. This Component does all the work of keeping the React app's UI (e.g., which Components are rendered) in sync with the browser's URL. The `BrowserRouter` "listens" for changes to the URL, and then passes information about the current route (called the **`path`**) to its child components. This allows each child to always know what route is currently shown in the URL, without needing to access the URL directly.
+The **`<BrowserRouter>`** Component (which is often imported with an alias of `<Router>`&mdash;though there is also a `<Router>` component!) is the "base" Component used by React Router. This Component does all the work of keeping the React app's UI (e.g., which Components are rendered) in sync with the browser's URL. The `BrowserRouter` "listens" for changes to the URL, and then passes information about the current route (called the **`path`**) to its child components. This allows each child to always know what route is currently shown in the URL, without needing to access the URL directly.
 
 - With React Router, a "route" is defined by the _path_ portion of a URI (see [Chapter 2](#http-requests-and-servers)). This is the part that comes _after_ the protocol and domain (e.g., after the `https://mydomain.com/`). Thus the `/home` route would refer to the URI `https://mydomain.com/home`, while the `/about` route would refer to the URI `https://mydomain.com/about`.
 
@@ -80,7 +80,7 @@ The [**`<BrowserRouter>`**](https://reactrouter.com/en/6.4.4/router-components/b
     );
     ```
 
-Inside the `<BrowserRouter>` (usually inside of the `<App>`), you will define the **routes** for your application&mdash;the collection of supported paths and which View to show at each. You can specify route-based views using the [**`<Route>`**](hhttps://reactrouter.com/en/6.4.4/route/route) Component. This component will render its **`element`** only when the current URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders its element. If the URL doesn't match the route, then the element is not rendered. Both the `path` and the `element` are passed into the `<Route>` as props:
+Inside the `<BrowserRouter>` (usually inside of the `<App>`), you will define the **routes** for your application&mdash;the collection of supported paths and which View to show at each. You can specify route-based views using the **`<Route>`** Component. This component will render its **`element`** only when the current URL _matches_ a specified **`path`**. In effect, the `Route` Component handles checking _`if`_ the current URL matches the specified path, and if so renders its element. If the URL doesn't match the route, then the element is not rendered. Both the `path` and the `element` are passed into the `<Route>` as props:
 
 ```jsx
 function App(props) {
@@ -146,7 +146,7 @@ When the `<Routes>` element goes to match a URL and determine which element to r
 
 (You can think of each "nested child" step as a `/` in the path)
 
-You specify _where_ in the parent element the child element will render using an [**`<Outlet>`**](https://reactrouter.com/en/6.4.4/components/outlet) Component. This component will be replaced by the element of whichever child route matches the URL segment:
+You specify _where_ in the parent element the child element will render using an **`<Outlet>`** Component. This component will be replaced by the element of whichever child route matches the URL segment:
 
 ```jsx
 function UserLayout(props) {
@@ -165,9 +165,9 @@ Thus you can think of the `<Outlet />` as the "place the child component will go
 Nested routes are primarily used to create shared layouts, as in the example above. The `<UserLayout>` component can contain structure elements (like divs) that will be shared across routes that begin with the same segment, but not other routes.
 
 <div class="alert alert-warning"><p>Not all apps require nesting routes! If your entire app has a single layout, you don't need to create a separate Component for that; you can just render it as part of your `<App>` and use the `<Routes>` to specify the dynamic content.</p>
-<p>Similarly, remember that Routes are **only** for conditionally rendering a Component _based on the URI_. If you want to conditionally show content (e.g., depending on whether the user is logged in, or based on what item has been selected), you use [conditional rendering](https://reactjs.org/docs/conditional-rendering.html) based on the state&mdash;don't use a Route!</p></div>
+<p>Similarly, remember that Routes are **only** for conditionally rendering a Component _based on the URI_. If you want to conditionally show content (e.g., depending on whether the user is logged in, or based on what item has been selected), you use [conditional rendering](https://react.dev/learn/conditional-rendering) based on the state&mdash;don't use a Route!</p></div>
 
-If you wish to show a "default" child Component when there is no further segment, you can give the child Route the [**`index`**](https://reactrouter.com/en/6.4.4/start/tutorial#index-routes) prop:
+If you wish to show a "default" child Component when there is no further segment, you can give the child Route the **`index`** prop:
 
 ```jsx
 <Routes>
@@ -182,9 +182,9 @@ If you wish to show a "default" child Component when there is no further segment
 
 Notice that the `index` prop (which takes no other values!) in effect "replaces" the `path` segment for that child.
 
-<div class="alert alert-info">It is often useful to specify the routes as a `const` variable (e.g., `routes`) that is an object containing paths and which component to render for that path. You can use the [`useRoutes()`](https://reactrouter.com/en/6.4.4/hooks/use-routes) hook to then render this object _instead_ of specifying a `<Routes>` element. This is only recommended for particularly large applications.</div>
+<div class="alert alert-info">It is often useful to specify the routes as a `const` variable (e.g., `routes`) that is an object containing paths and which component to render for that path. You can use the `useRoutes()` hook to then render this object _instead_ of specifying a `<Routes>` element. This is only recommended for particularly large applications.</div>
 
-You can use the [`useMatch()`](https://reactrouter.com/en/6.4.4/hooks/use-match) hook to get access to the current `path`; this can be useful for specifying e.g., relative image paths.
+You can use the `useMatch()` hook to get access to the current `path`; this can be useful for specifying e.g., relative image paths.
 
 
 #### URL Parameters {-}
@@ -204,7 +204,7 @@ React Router supports a similar syntax when specifying Route paths. For example:
 
 will match a path that starts with `posts/` and is followed by any other path segment (e.g., `post/hello`, `post/2022-10-31`, etc). The `:postId` (because it starts with the leading `:`) will be treated as a parameter which will be assigned whatever value is part of the URI in that spot&mdash;so `post/hello` would have `'hello'` as the `postId`, and `post/2017-10-31` would have `'2017-10-31'` as the `postId`.
 
-You can access the values assigned to the URL parameters by using the [**`useParams`**](https://reactrouter.com/en/6.4.4/hooks/use-params) hook provided by `react-router`. This hook returns an object whose keys are the parameter names and whose values are the param values:
+You can access the values assigned to the URL parameters by using the **`useParams`** hook provided by `react-router`. This hook returns an object whose keys are the parameter names and whose values are the param values:
 
 ```jsx
 import { useParams } from 'react-router-dom';
@@ -229,13 +229,13 @@ In the above `BlogPost` component, the `urlParams` value will be an object conta
 - If the element is rendered by `<Route path="posts/:date/:title" element={<BlogPost />} />`, then
     - visiting `posts/2022-10-31/Hello` will cause `urlParams` to be the object `{date: "2022-10-31", title: "Hello"}` (note the multiple values for the multiple parameters!)
 
-If you want to work with **query parameters** (e.g., the `?key1=value1&key2=value2` part of the URL), you can use the [`useSearchParams()`](https://reactrouter.com/en/6.4.4/hooks/use-params) hook. This works similar to the `useState()` hook, except that the value will be stored in the URL query parameter rather than in the Component's state. Note that query parameters should only be used for values such as search queries that _don't correspond to a consistent resource_.
+If you want to work with **query parameters** (e.g., the `?key1=value1&key2=value2` part of the URL), you can use the `useSearchParams()` hook. This works similar to the `useState()` hook, except that the value will be stored in the URL query parameter rather than in the Component's state. Note that query parameters should only be used for values such as search queries that _don't correspond to a consistent resource_.
 
 
 ### Linking {-}
 While specifying `<Route>` elements will allow you to show different "pages" at different URLs, in order for a Single Page Application to function you need to be able to _navigate between routes_ without causing the page to reload. Thus you can't just use normal `<a>` elements to link between "pages"&mdash;browsers interpret clicking on `<a>` elements as a command to send a new HTTP request, and you instead just want to change the URL and re-render the App.
 
-Instead, React Router provides a [**`<Link>`**](https://reactrouter.com/en/6.4.4/components/link) element that you can use to create a hyperlink to another route within the application. This component takes a **`to`** prop that you use to specify the route that it links to:
+Instead, React Router provides a **`<Link>`** element that you can use to create a hyperlink to another route within the application. This component takes a **`to`** prop that you use to specify the route that it links to:
 
 ```jsx
 <Link to="about">Click to visit the About Page</Link>
@@ -245,7 +245,7 @@ Instead, React Router provides a [**`<Link>`**](https://reactrouter.com/en/6.4.4
 
 - A `to` property that is _relative_ path (so doesn't have a starting `/`) will resolve relative to its parent route. Thus you can use `..` to refer to the parent route as you would with any other relative path.
 
-React Router also provides a [`<NavLink>`](https://reactrouter.com/en/6.4.4/components/nav-link) Component. This works exactly like the `<Link>` component, except if the `to` route matches the _current route_, then the element will have the `active` CSS class added to it. This is used for example to have a navigation section "highlight" the link to the page you're currently on, helping the user understand where they are on the page. It's also possible to specify a callback function if you wish to use a custom name for the "active" class; see the documentation for an example (watch out of the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)).
+React Router also provides a `<NavLink>` Component. This works exactly like the `<Link>` component, except if the `to` route matches the _current route_, then the element will have the `active` CSS class added to it. This is used for example to have a navigation section "highlight" the link to the page you're currently on, helping the user understand where they are on the page. It's also possible to specify a callback function if you wish to use a custom name for the "active" class; see the documentation for an example (watch out of the [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator)).
 
 
 #### Redirecting {-}
@@ -336,7 +336,7 @@ The Route rendering the `<RequireAuth>` has no defined `path`, defaulting to `""
 
 
 ### React Router and Hosting {-}
-React Router's client-side routing introduce a few additional considerations when the you wish to deploy your app on a non-development server, such as Github Pages (e.g., what happens when you [deploy](https://create-react-app.dev/docs/deployment/) a `create-react-app` project).
+React Router's client-side routing introduce a few additional considerations when the you wish to deploy your app on a non-development server, such as Github Pages (e.g., what happens when you deploy a Vite project).
 
 _First_, consider what happens when you type a route (e.g., `https://domain.com/about` to access the `/about` route) into the browser's URL bar in order to navigate to it. This creates an HTTP Request for the resource at the URI with an `/about` path. When that request is received by the web server, that server will perform _server-side routing_ and attempt to access the resource at that location (e.g., it will look for an `/about/index.html` page). But this isn't what you want to happen&mdash;because there is no content at that resource (no `/about/index.html`), the server will return a [404](https://http.cat/404) error.
 
@@ -344,7 +344,7 @@ Instead, you want the server to take the request for the `/about` resource and _
 
 It is perfectly possible to have a web server do this (to _not_ perform server-side routing and instead always return `/index.html` no matter what resource is requested); indeed, this is what the Create React App development server does. However GitHub Pages doesn't have this functionality: if you send an HTTP request for a resource that doesn't exist (e.g., `/about`), you will receive a 404 error. There are a few ways to work around this:
 
-1. You can use a [`<HashRouter>`](https://reactrouter.com/en/6.4.4/router-components/hash-router) instead of a `<BrowserRouter>` The `<HashRouter>` uses the [fragment identifier](https://en.wikipedia.org/wiki/Fragment_identifier) portion of the URI to record and track which route the user is viewing: the HTTP request is thus sent to `https://domain.com/index.html#/about` to get the `/about` route&mdash;and since `index.html` is the default resource, this can be abbreviated to `https://domain.com/#/about`, which is _almost_ as good. In this way you are always requesting the appropriate resource (`/index.html`), but can still perform client-side routing. The trade-off is that your URLs will have extraneous `#` symbols in them (which also makes utilizing inner-page navigation with the fragment more difficult), and going to `domain.com/about` will _still_ cause a 404 error. It's recommend that you **avoid** this element if possible.
+1. You can use a `<HashRouter>` instead of a `<BrowserRouter>` The `<HashRouter>` uses the [fragment identifier](https://en.wikipedia.org/wiki/Fragment_identifier) portion of the URI to record and track which route the user is viewing: the HTTP request is thus sent to `https://domain.com/index.html#/about` to get the `/about` route&mdash;and since `index.html` is the default resource, this can be abbreviated to `https://domain.com/#/about`, which is _almost_ as good. In this way you are always requesting the appropriate resource (`/index.html`), but can still perform client-side routing. The trade-off is that your URLs will have extraneous `#` symbols in them (which also makes utilizing inner-page navigation with the fragment more difficult), and going to `domain.com/about` will _still_ cause a 404 error. It's recommend that you **avoid** this element if possible.
 
 2. Another approach is to replace your server's 404 page with something that goes to your `index.html` (using _server-side routing_)&mdash;so instead of the user being shown the 404, they are shown your `index.html` which is about to do the client-side routing! [`spa-github-pages`](https://github.com/rafrex/spa-github-pages) provides some boilerplate for doing this with GitHub Pages, but it is a "hacky" approach and so is also not recommended.
 
@@ -363,6 +363,6 @@ Luckily, it is easy to support this behavior and tell React Router that all path
 
 ## Resources {-}
 <div class="list-condensed">
-- [React Router Documentation](https://reactrouter.com/docs/en/v6) - includes tutorials and examples
-- [React Router API](https://reactrouter.com/docs/en/v6/api) - complete list of Components and hooks
+- [React Router Documentation](https://reactrouter.com/start/library/installation) - includes tutorials and examples
+- [React Router API](https://api.reactrouter.com/v7/) - complete list of Components and hooks
 </div>
