@@ -4,7 +4,7 @@
   "description": "This repository contains the source code for the **INFO 340: Client-Side Web Development** course book. The published book can be viewed at **https://info340.github.io/**.",
   "devDependencies": {
     "pandoc-filter": "^0.1.8",
-    "prismjs": "^1.29.0"
+    "prismjs": "^1.30.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
