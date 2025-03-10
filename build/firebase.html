@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2025-02-11" />
+<meta name="date" content="2025-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -866,7 +866,8 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <ol style="list-style-type: decimal">
 <li><p>You can install a version of the library updated by <a href="https://github.com/gvillenave">Gabriel Villenave</a> (which hasn’t been accepted as a pull request yet):</p>
 <pre class="language-bash"><code><span class="token comment"># install library on the command line</span>
-<span class="token function">npm</span> <span class="token function">install</span> https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist</code></pre>
+<span class="token function">npm</span> <span class="token function">install</span> https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist --legacy-peer-deps</code></pre>
+<p>(The <code>legacy-peer-deps</code> flag allows the package to install with React 19, even though it is only listed as compatible up to version 18).</p>
 <p>Confirm that your <code>package.json</code> file has the correct dependency listed:</p>
 <pre><code>&quot;react-firebaseui&quot;: &quot;https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist&quot;</code></pre></li>
 <li><p>You can install the non-React version of the library (<code>firebaseui</code>), and then define the needed Component (<code>StyledFirebaseUI</code>) manually:</p>
@@ -1028,9 +1029,14 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <div id="firebase-storage" class="section level2" number="19.4">
 <h2><span class="header-section-number">19.4</span> Firebase Storage</h2>
 <p>Firebase’s Realtime Database persists JSON data: so in the end just strings, numbers, and booleans (even if those values are organized into objects). If you wish to persist data <em>files</em>—such as music, video, pdfs, etc—you need to use a different service called <a href="https://firebase.google.com/docs/storage"><strong>Firebase Storage</strong></a>. Storage is designed for storing larger files rather than primitive data types. In the end it works fairly similarly to the realtime database, though without data binding.</p>
-<p class="alert alert-info">
-Firebase <a href="https://firebase.google.com/pricing/">free tier</a> provides up to 5 GB of storage for free (with 1 GB/day of downloading allowed). That’s about 5000 hi-res images, 1000 music files, or maybe 20 hr of compressed video. This means that the free storage service will work great for most development versions of media applications–though you may run out of space quickly if working with video, especially when testing. Always consider the amount of data you will need to store before choosing a cloud storage service.
+<div class="alert alert-warning">
+<p>
+As of October 2024, Firebase requires you to sign for a “pay-as-you-go” plan to provision a storage bucket. This requires providing credit card information. Students in the INFO 340 course do not need to sign up for this plan; talk to the instructor for details.
 </p>
+<p>
+Under this plan you get up to 5 GB of storage for free (with 1 GB/day of downloading allowed). That’s about 5000 hi-res images, 1000 music files, or maybe 20 hr of compressed video. This means that the free storage service will work great for most development versions of media applications–though you may run out of space quickly if working with video, especially when testing. Always consider the amount of data you will need to store before choosing a cloud storage service.
+</p>
+</div>
 <p>In order to use Firebase Storage, you will need to enable this feature in the Firebase Web Console. Click on the “Storage” link in the side navigation menu’s Build capetgory to go to the authentication management page, then choose “Get started”. Similar to the realtime database, you’ll need to choose security rules (probably being in <em>test mode</em> for development). When prompted for a Cloud Storage bucket location, pick something nearby to speed up access a little, but for most student projects it doesn’t matter much.</p>
 <p>Once you have set up Storage, you can use the Firebase Web Console to view and manage files that have been uploaded (including deleting them if desired).</p>
 <div id="file-inputs" class="section level3 unnumbered">

@@ -368,8 +368,11 @@ There are different FirebaseUI libraries for different platforms; previously for
 
     ```bash
     # install library on the command line
-    npm install https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist
+    npm install https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist --legacy-peer-deps
     ```
+
+    (The `legacy-peer-deps` flag allows the package to install with React 19, even though it is only listed as compatible up to version 18).
+
 
     Confirm that your `package.json` file has the correct dependency listed:
 
@@ -574,7 +577,8 @@ While using such a library is not necessary, it is a good example of how React's
 ## Firebase Storage
 Firebase's Realtime Database persists JSON data: so in the end just strings, numbers, and booleans (even if those values are organized into objects). If you wish to persist data _files_&mdash;such as music, video, pdfs, etc&mdash;you need to use a different service called [**Firebase Storage**](https://firebase.google.com/docs/storage). Storage is designed for storing larger files rather than primitive data types. In the end it works fairly similarly to the realtime database, though without data binding.
 
-<p class="alert alert-info">Firebase [free tier](https://firebase.google.com/pricing/) provides up to 5 GB of storage for free (with 1 GB/day of downloading allowed). That's about 5000 hi-res images, 1000 music files, or maybe 20 hr of compressed video. This means that the free storage service will work great for most development versions of media applications--though you may run out of space quickly if working with video, especially when testing. Always consider the amount of data you will need to store before choosing a cloud storage service.</p>
+<div class="alert alert-warning"><p>As of October 2024, Firebase requires you to sign for a "pay-as-you-go" plan to provision a storage bucket. This requires providing credit card information. Students in the INFO 340 course do not need to sign up for this plan; talk to the instructor for details.</p>
+<p>Under this plan you get up to 5 GB of storage for free (with 1 GB/day of downloading allowed). That's about 5000 hi-res images, 1000 music files, or maybe 20 hr of compressed video. This means that the free storage service will work great for most development versions of media applications--though you may run out of space quickly if working with video, especially when testing. Always consider the amount of data you will need to store before choosing a cloud storage service.</p></div>
 
 In order to use Firebase Storage, you will need to enable this feature in the Firebase Web Console. Click on the "Storage" link in the side navigation menu's Build capetgory to go to the authentication management page, then choose "Get started". Similar to the realtime database, you'll need to choose security rules (probably being in _test mode_ for development). When prompted for a Cloud Storage bucket location, pick something nearby to speed up access a little, but for most student projects it doesn't matter much.
 

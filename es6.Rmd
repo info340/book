@@ -50,7 +50,7 @@ const printHello = () => {
 
 However, I find this makes the syntax harder to read (when reading the the text, it looks like a variable declaration until you get to the `=>`). So you should always include the parentheses `()` on the parameter list as it helps with readability, as well as making it easier to adjust the parameters later&mdash;thus meeting the requirements of [good code style](#code-style-guide).
 
-Arrow functions can be particularly nice when doing anonyous callback functions (literals):
+Arrow functions can be particularly nice when doing anonymous callback functions (function literals):
 
 ```js
 const array = [1,2,3]; //an array to work with
