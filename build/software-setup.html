@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2025-03-10" />
+<meta name="date" content="2026-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -737,6 +737,22 @@ in the <em>INFO 201</em> course reader. Note that students in the INFO 340 cours
 <p>Some coding editors such as VS Code have also integrated <code>git</code> commands and information, so that you can see e.g., what files have been modified since the last commit (new files are colored green in the file list sidebar; new files are colored yellow). Note however that this course focuses on the command line use of <code>git</code> in order to best understand what commands are being run to manage code versions.</p>
 <p>While <code>git</code> is the software used to manage versions of code, <a href="https://github.com/"><strong>GitHub</strong></a> is a website that is used to store copies online copies of computer code that are being managed with <code>git</code>.</p>
 <p>In order to use GitHub, you’ll need to have a <a href="https://github.com/join">free GitHub account</a>. You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to gudess who ‘LeetDesigner2099’ is. This can be the start of a professional account you may use for the rest of your career!</p>
+<p>After you install <code>git</code>, you will need to do a few small configuration commands. You only need to execute these commands once per machine:</p>
+<pre class="language-bash"><code><span class="token comment"># Configure `git` on your machine (only needs to be done once)</span>
+
+<span class="token comment"># Set your name to appear alongside your commits</span>
+<span class="token comment"># This *does not* need to be your GitHub username</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.name <span class="token string">"YOUR FULLNAME"</span>
+
+
+<span class="token comment"># Set your email address</span>
+<span class="token comment"># This *does* need to be the email associated with your GitHub account</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> user.email <span class="token string">"YOUR_EMAIL_ADDRESS"</span>
+
+
+<span class="token comment"># Set git to always merge commits and not rebase</span>
+<span class="token comment"># This will prevent history from being changed and your work being lost</span>
+<span class="token function">git</span> config <span class="token parameter variable">--global</span> pull.rebase <span class="token boolean">false</span></code></pre>
 <div class="alert alert-info">
 <p>
 In order to push and pull to GitHub from the command line, you’ll need to set up a <a href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">Personal Access Token (PAT)</a> for GitHub. This is like a specialized password whose access you can control, rather than using your “full account” password.

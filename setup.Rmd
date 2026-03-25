@@ -244,6 +244,27 @@ While `git` is the software used to manage versions of code, [**GitHub**](https:
 
 In order to use GitHub, you'll need to have a [free GitHub account](https://github.com/join). You should register a username that is identifiable as you (e.g., based on your name or your UW NetID). This will make it easier for others to determine out who contributed what code, rather than needing to gudess who 'LeetDesigner2099' is. This can be the start of a professional account you may use for the rest of your career!
 
+After you install `git`, you will need to do a few small configuration commands. You only need to execute these commands once per machine:
+
+```bash
+# Configure `git` on your machine (only needs to be done once)
+
+# Set your name to appear alongside your commits
+# This *does not* need to be your GitHub username
+git config --global user.name "YOUR FULLNAME"
+
+
+# Set your email address
+# This *does* need to be the email associated with your GitHub account
+git config --global user.email "YOUR_EMAIL_ADDRESS"
+
+
+# Set git to always merge commits and not rebase
+# This will prevent history from being changed and your work being lost
+git config --global pull.rebase false
+```
+
+
 <div class="alert alert-info">
 <p>In order to push and pull to GitHub from the command line, you'll need to set up a [Personal Access Token (PAT)](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token) for GitHub. This is like a specialized password whose access you can control, rather than using your "full account" password.</p>
 
@@ -260,6 +281,7 @@ In order to use GitHub, you'll need to have a [free GitHub account](https://gith
 
 <p>If you've used a token before, you may need to remove your old "saved" password from your computer and replace it with the new token&mdash;see [these instructions](https://docs.github.com/en/get-started/getting-started-with-git/caching-your-github-credentials-in-git) for how to do that for your operating system (on a Mac in particular you may need to [update your credentials in Keychain](https://docs.github.com/en/github/getting-started-with-github/updating-credentials-from-the-macos-keychain))</p>
 </div>
+
 
 <!-- Could add more on using git/github here, including branching and publishing? -->
 

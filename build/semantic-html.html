@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2025-03-10" />
+<meta name="date" content="2026-03-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -898,7 +898,7 @@ Be careful not to confuse a <code>&lt;header&gt;</code> with a head<strong>ing</
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tr</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>tbody</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">></span></span></code></pre>
-<p>Cell elenents (<code>&lt;td&gt;</code> or <code>&lt;tr&gt;</code>) can be made to stretch across multiple rows or columns by specifying the <code>colspan</code> and <code>rowspan</code> attributes. If one cell stretches across multiple columns or rows, then you omit the <code>&lt;td&gt;</code> cells that it is replacing. Note that spanning rows or columns is not common in tabular data (since a datum won’t span multiple features or multiple observations), and can make it difficult for people using screenreaders to understand the structure of the data. Better practice is to organize the data so that it doesn’t need to do such spanning.</p>
+<p>Cell elements (<code>&lt;td&gt;</code> or <code>&lt;tr&gt;</code>) can be made to stretch across multiple rows or columns by specifying the <code>colspan</code> and <code>rowspan</code> attributes. If one cell stretches across multiple columns or rows, then you omit the <code>&lt;td&gt;</code> cells that it is replacing. Note that spanning rows or columns is not common in tabular data (since a datum won’t span multiple features or multiple observations), and can make it difficult for people using screenreaders to understand the structure of the data. Better practice is to organize the data so that it doesn’t need to do such spanning.</p>
 <!-- could add example here... -->
 <p>As with any other elements, tables are primarily styled using CSS; HTML attribute should only be used for the <em>structure</em> of the table. Note that CSS rules will usually apply to the <em>cells</em> (<code>&lt;td&gt;</code>, <code>&lt;th&gt;</code>) in a table, and not to the rows or sections—many properties are unintutively <em>not</em> inherited from rows, and so need to be applied directly to the cells. There are also some specific CSS properties that apply only to table elements, such as <code>border-collapse</code> and <code>border-spacing</code> (which are used to style the spacing between cells).</p>
 <p class="alert alert-warning">

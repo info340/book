@@ -464,7 +464,7 @@ Tables can also be made more accessible by including _table sectioning_ elements
 </table>
 ```
 
-Cell elenents (`<td>` or `<tr>`) can be made to stretch across multiple rows or columns by specifying the `colspan` and `rowspan` attributes. If one cell stretches across multiple columns or rows, then you omit the `<td>` cells that it is replacing. Note that spanning rows or columns is not common in tabular data (since a datum won't span multiple features or multiple observations), and can make it difficult for people using screenreaders to understand the structure of the data. Better practice is to organize the data so that it doesn't need to do such spanning.
+Cell elements (`<td>` or `<tr>`) can be made to stretch across multiple rows or columns by specifying the `colspan` and `rowspan` attributes. If one cell stretches across multiple columns or rows, then you omit the `<td>` cells that it is replacing. Note that spanning rows or columns is not common in tabular data (since a datum won't span multiple features or multiple observations), and can make it difficult for people using screenreaders to understand the structure of the data. Better practice is to organize the data so that it doesn't need to do such spanning.
 
 <!-- could add example here... -->
 
