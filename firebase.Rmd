@@ -362,31 +362,21 @@ Instead, a nicer approach is to use the [**FireabaseUI**](https://firebase.googl
 
 ![Example of FirebaseUI authentication](img/firebase/firebaseui-example.png)
 
-There are different FirebaseUI libraries for different platforms; previously for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears to have been been abandoned rather than [applying the needed fix](https://github.com/firebase/firebaseui-web-react/pull/173). There are two possible workarounds to this:
+There are different FirebaseUI libraries for different platforms; previously for React you would use [`firebaseui-web-react`](https://github.com/firebase/firebaseui-web-react). However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears to have been been abandoned rather than [applying the needed fix](https://github.com/firebase/firebaseui-web-react/pull/173).
 
-1. You can install a version of the library updated by [Gabriel Villenave](https://github.com/gvillenave) (which hasn't been accepted as a pull request yet):
+In order to work around this, I've created a fork with updated dependency listings, allowing it to be installed and function with the current version of React:
 
-    ```bash
-    # install library on the command line
-    npm install https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist --legacy-peer-deps
-    ```
+```bash
+# install library on the command line
+npm install https://github.com/joelwross/firebaseui-web-react
+```
 
-    (The `legacy-peer-deps` flag allows the package to install with React 19, even though it is only listed as compatible up to version 18).
+Confirm that your `package.json` file has the correct dependency listed:
 
+```
+"react-firebaseui": "github:joelwross/firebaseui-web-react"
+```
 
-    Confirm that your `package.json` file has the correct dependency listed:
-
-    ```
-    "react-firebaseui": "https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist"
-    ```
-
-2. You can install the non-React version of the library (`firebaseui`), and then define the needed Component (`StyledFirebaseUI`) manually:
-
-    ```bash
-    npm install firebaseui
-    ```
-
-    Create the `StyledFirebaseAuth.txs` file defined [in this comment post](https://github.com/firebase/firebaseui-web-react/pull/173#issuecomment-1224404146).
 
 The React FirebaseUI library provides a Component called `<StyledFirebaseAuth>`, which you can render in your page like any other Component. You can think of this Component as the "login form". A complete example of how this Component is used can be found below, following by an explanation.
 
@@ -394,36 +384,37 @@ The React FirebaseUI library provides a Component called `<StyledFirebaseAuth>`,
 //import auth functions and variables from Firebase
 import { getAuth, EmailAuthProvider, GoogleAuthProvider } from 'firebase/auth'
 
-//import the component -- pick one!
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth'; //install option 1
-import StyledFirebaseAuth from './StyledFirebaseAuth'; //install option 2
-
-//an object of configuration values
-const firebaseUIConfig = {
-  signInOptions: [ //array of sign in options supported
-    //array can include just "Provider IDs", or objects with the IDs and options
-    GoogleAuthProvider.PROVIDER_ID,
-    { provider: EmailAuthProvider.PROVIDER_ID, requiredDisplayName: true },
-  ],
-  signInFlow: 'popup', //don't redirect to authenticate
-  credentialHelper: 'none', //don't show the email account chooser
-  callbacks: { //"lifecycle" callbacks
-    signInSuccessWithAuthResult: () => {
-      return false; //don't redirect after authentication
-    }
-  }
-}
+//import the component -- note the need to import from a folder because it was
+//installed directly from a GitHub repo
+import StyledFirebaseAuth from 'react-firebaseui/dist/StyledFirebaseAuth';
 
 //the React compnent to render
 function MySignInScreen() {
 
   const auth = getAuth(); //access the "authenticator"
 
+  //an object of configuration values
+  const firebaseUIConfig = {
+    signInOptions: [ //array of sign in options supported
+      //array can include just "Provider IDs", or objects with the IDs and options
+      GoogleAuthProvider.PROVIDER_ID,
+      { provider: EmailAuthProvider.PROVIDER_ID, requiredDisplayName: true },
+    ],
+    signInFlow: 'popup', //don't redirect to authenticate
+    credentialHelper: 'none', //don't show the email account chooser
+    callbacks: { //"lifecycle" callbacks
+      signInSuccessWithAuthResult: () => {
+        return false; //don't redirect after authentication
+      }
+    }
+  }
+
+  //At time of writing, need to access the `.default` value of the imported modules...
   return (
     <div>
       <h1>My App</h1>
       <p>Please sign-in:</p>
-      <StyledFirebaseAuth uiConfig={firebaseUIConfig} firebaseAuth={auth} />
+      <StyledFirebaseAuth.default uiConfig={firebaseUIConfig} firebaseAuth={auth} />
     </div>
   );
 }
@@ -431,15 +422,15 @@ function MySignInScreen() {
 
 There are a few steps to using this Component:
 
-- The `<StyledFirebaseAuth>` requires a `uiConfig` prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.
+- The `<StyledFirebaseAuth>` requires a `firebaseAuth` prop, which is a reference to the "authenticator" service&mdash;what will handle the process of the user logging in and out. You can get access to this value via the **`getAuth()`** function provided by `'firebase/auth'` (similar to how you get access to the Realtime Database via the `getDatabase()` function).
+
+    Note that as with `getDatabase()` the authenticator is a _singleton_ value&mdash;you can call `getAuth()` from multiple modules/files/scopes without concern. You do not need to pass it around as a prop or declare it as a "top-level" constant.
+
+- The `<StyledFirebaseAuth>` also requires a `uiConfig` prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.
 
     The most important configuration option is the `signInOptions`, listing the different authentication providers supported (what options should show up in the login form). The IDs for these providers are imported from the `'firebase/auth'` library&mdash;though they are numeric values, not functions.
 
     Other common/useful options are shown in the example; for a complete list of options see [the firebaseui-web documentation](https://github.com/firebase/firebaseui-web#configuration).
-
-- The `<StyledFirebaseAuth>` also requires a `firebaseAuth` prop, which is a reference to the "authenticator" service&mdash;what will handle the process of the user logging in and out. You can get access to this value via the **`getAuth()`** function provided by `'firebase/auth'` (similar to how you get access to the Realtime Database via the `getDatabase()` function).
-
-    Note that as with `getDatabase()` the authenticator is a _singleton_ value&mdash;you can call `getAuth()` from multiple modules/files/scopes without concern. You do not need to pass it around as a prop or declare it as a "top-level" constant.
 
 With this Component, users will be able to "log in", though see the [Managing the User](#managing-the-user) section below. You will be able to see a list of users who have connected to your app in the Firebase Web Console. Note in particular that you can see their _uid_ (unique identifier), which is what is used to distinguish between users. (You can't use emails as identifiers, because someone who logs in with Facebook won't provide their email address!).
 

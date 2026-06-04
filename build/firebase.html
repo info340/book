@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2026-03-25" />
+<meta name="date" content="2026-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -862,62 +862,57 @@ allTasksArray<span class="token punctuation">.</span><span class="token function
 <img src="img/firebase/firebaseui-example.png" alt="" />
 <p class="caption">Example of FirebaseUI authentication</p>
 </div>
-<p>There are different FirebaseUI libraries for different platforms; previously for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears to have been been abandoned rather than <a href="https://github.com/firebase/firebaseui-web-react/pull/173">applying the needed fix</a>. There are two possible workarounds to this:</p>
-<ol style="list-style-type: decimal">
-<li><p>You can install a version of the library updated by <a href="https://github.com/gvillenave">Gabriel Villenave</a> (which hasn’t been accepted as a pull request yet):</p>
+<p>There are different FirebaseUI libraries for different platforms; previously for React you would use <a href="https://github.com/firebase/firebaseui-web-react"><code>firebaseui-web-react</code></a>. However, as of November 2022 this library has not been updated to work with the latest version of React (React 18), and appears to have been been abandoned rather than <a href="https://github.com/firebase/firebaseui-web-react/pull/173">applying the needed fix</a>.</p>
+<p>In order to work around this, I’ve created a fork with updated dependency listings, allowing it to be installed and function with the current version of React:</p>
 <pre class="language-bash"><code><span class="token comment"># install library on the command line</span>
-<span class="token function">npm</span> <span class="token function">install</span> https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist --legacy-peer-deps</code></pre>
-<p>(The <code>legacy-peer-deps</code> flag allows the package to install with React 19, even though it is only listed as compatible up to version 18).</p>
+<span class="token function">npm</span> <span class="token function">install</span> https://github.com/joelwross/firebaseui-web-react</code></pre>
 <p>Confirm that your <code>package.json</code> file has the correct dependency listed:</p>
-<pre><code>&quot;react-firebaseui&quot;: &quot;https://gitpkg.now.sh/gvillenave/firebaseui-web-react/dist&quot;</code></pre></li>
-<li><p>You can install the non-React version of the library (<code>firebaseui</code>), and then define the needed Component (<code>StyledFirebaseUI</code>) manually:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> firebaseui</code></pre>
-<p>Create the <code>StyledFirebaseAuth.txs</code> file defined <a href="https://github.com/firebase/firebaseui-web-react/pull/173#issuecomment-1224404146">in this comment post</a>.</p></li>
-</ol>
+<pre><code>&quot;react-firebaseui&quot;: &quot;github:joelwross/firebaseui-web-react&quot;</code></pre>
 <p>The React FirebaseUI library provides a Component called <code>&lt;StyledFirebaseAuth&gt;</code>, which you can render in your page like any other Component. You can think of this Component as the “login form”. A complete example of how this Component is used can be found below, following by an explanation.</p>
 <pre class="language-jsx"><code><span class="token comment">//import auth functions and variables from Firebase</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> getAuth<span class="token punctuation">,</span> EmailAuthProvider<span class="token punctuation">,</span> GoogleAuthProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'firebase/auth'</span>
 
-<span class="token comment">//import the component -- pick one!</span>
-<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'react-firebaseui/StyledFirebaseAuth'</span><span class="token punctuation">;</span> <span class="token comment">//install option 1</span>
-<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'./StyledFirebaseAuth'</span><span class="token punctuation">;</span> <span class="token comment">//install option 2</span>
-
-<span class="token comment">//an object of configuration values</span>
-<span class="token keyword">const</span> firebaseUIConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
-  <span class="token literal-property property">signInOptions</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">//array of sign in options supported</span>
-    <span class="token comment">//array can include just "Provider IDs", or objects with the IDs and options</span>
-    GoogleAuthProvider<span class="token punctuation">.</span><span class="token constant">PROVIDER_ID</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span> <span class="token literal-property property">provider</span><span class="token operator">:</span> EmailAuthProvider<span class="token punctuation">.</span><span class="token constant">PROVIDER_ID</span><span class="token punctuation">,</span> <span class="token literal-property property">requiredDisplayName</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token literal-property property">signInFlow</span><span class="token operator">:</span> <span class="token string">'popup'</span><span class="token punctuation">,</span> <span class="token comment">//don't redirect to authenticate</span>
-  <span class="token literal-property property">credentialHelper</span><span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span> <span class="token comment">//don't show the email account chooser</span>
-  <span class="token literal-property property">callbacks</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">//"lifecycle" callbacks</span>
-    <span class="token function-variable function">signInSuccessWithAuthResult</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">//don't redirect after authentication</span>
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+<span class="token comment">//import the component -- note the need to import from a folder because it was</span>
+<span class="token comment">//installed directly from a GitHub repo</span>
+<span class="token keyword">import</span> StyledFirebaseAuth <span class="token keyword">from</span> <span class="token string">'react-firebaseui/dist/StyledFirebaseAuth'</span><span class="token punctuation">;</span>
 
 <span class="token comment">//the React compnent to render</span>
 <span class="token keyword">function</span> <span class="token function">MySignInScreen</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
   <span class="token keyword">const</span> auth <span class="token operator">=</span> <span class="token function">getAuth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//access the "authenticator"</span>
 
+  <span class="token comment">//an object of configuration values</span>
+  <span class="token keyword">const</span> firebaseUIConfig <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">signInOptions</span><span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token comment">//array of sign in options supported</span>
+      <span class="token comment">//array can include just "Provider IDs", or objects with the IDs and options</span>
+      GoogleAuthProvider<span class="token punctuation">.</span><span class="token constant">PROVIDER_ID</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span> <span class="token literal-property property">provider</span><span class="token operator">:</span> EmailAuthProvider<span class="token punctuation">.</span><span class="token constant">PROVIDER_ID</span><span class="token punctuation">,</span> <span class="token literal-property property">requiredDisplayName</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">signInFlow</span><span class="token operator">:</span> <span class="token string">'popup'</span><span class="token punctuation">,</span> <span class="token comment">//don't redirect to authenticate</span>
+    <span class="token literal-property property">credentialHelper</span><span class="token operator">:</span> <span class="token string">'none'</span><span class="token punctuation">,</span> <span class="token comment">//don't show the email account chooser</span>
+    <span class="token literal-property property">callbacks</span><span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">//"lifecycle" callbacks</span>
+      <span class="token function-variable function">signInSuccessWithAuthResult</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">//don't redirect after authentication</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//At time of writing, need to access the `.default` value of the imported modules...</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>My App<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Please sign<span class="token operator">-</span><span class="token keyword">in</span><span class="token operator">:</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token class-name">StyledFirebaseAuth</span></span> <span class="token attr-name">uiConfig</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>firebaseUIConfig<span class="token punctuation">}</span></span> <span class="token attr-name">firebaseAuth</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>auth<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>StyledFirebaseAuth.default</span> <span class="token attr-name">uiConfig</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>firebaseUIConfig<span class="token punctuation">}</span></span> <span class="token attr-name">firebaseAuth</span><span class="token script language-javascript"><span class="token script-punctuation punctuation">=</span><span class="token punctuation">{</span>auth<span class="token punctuation">}</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre>
 <p>There are a few steps to using this Component:</p>
 <ul>
-<li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> requires a <code>uiConfig</code> prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.</p>
+<li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> requires a <code>firebaseAuth</code> prop, which is a reference to the “authenticator” service—what will handle the process of the user logging in and out. You can get access to this value via the <strong><code>getAuth()</code></strong> function provided by <code>'firebase/auth'</code> (similar to how you get access to the Realtime Database via the <code>getDatabase()</code> function).</p>
+<p>Note that as with <code>getDatabase()</code> the authenticator is a <em>singleton</em> value—you can call <code>getAuth()</code> from multiple modules/files/scopes without concern. You do not need to pass it around as a prop or declare it as a “top-level” constant.</p></li>
+<li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> also requires a <code>uiConfig</code> prop, which is an object containing configuration values for that login form (the object has specific properties which correspond to configuratoin options). The config object is usually defined as a global constant.</p>
 <p>The most important configuration option is the <code>signInOptions</code>, listing the different authentication providers supported (what options should show up in the login form). The IDs for these providers are imported from the <code>'firebase/auth'</code> library—though they are numeric values, not functions.</p>
 <p>Other common/useful options are shown in the example; for a complete list of options see <a href="https://github.com/firebase/firebaseui-web#configuration">the firebaseui-web documentation</a>.</p></li>
-<li><p>The <code>&lt;StyledFirebaseAuth&gt;</code> also requires a <code>firebaseAuth</code> prop, which is a reference to the “authenticator” service—what will handle the process of the user logging in and out. You can get access to this value via the <strong><code>getAuth()</code></strong> function provided by <code>'firebase/auth'</code> (similar to how you get access to the Realtime Database via the <code>getDatabase()</code> function).</p>
-<p>Note that as with <code>getDatabase()</code> the authenticator is a <em>singleton</em> value—you can call <code>getAuth()</code> from multiple modules/files/scopes without concern. You do not need to pass it around as a prop or declare it as a “top-level” constant.</p></li>
 </ul>
 <p>With this Component, users will be able to “log in”, though see the <a href="firebase.html#managing-the-user">Managing the User</a> section below. You will be able to see a list of users who have connected to your app in the Firebase Web Console. Note in particular that you can see their <em>uid</em> (unique identifier), which is what is used to distinguish between users. (You can’t use emails as identifiers, because someone who logs in with Facebook won’t provide their email address!).</p>
 <p class="alert alert-info">
