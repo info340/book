@@ -15,7 +15,7 @@ In summary, you'll need to install and set up the following software on your mac
 
 ## Web Browser
 
-The first thing you'll need is a web browser for viewing the web pages you make! I recommend you install and use [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class. I recommend Chrome primarily for historical reasons (and because it is the browser used by the author&mdash;and I had to pick one!).
+The first thing you'll need is a web browser for viewing the web pages you make! I recommend you install and use [**Chrome**](https://www.google.com/chrome/browser/desktop/index.html), which comes with an effective set of built-in [developer tools](https://developers.google.com/web/tools/chrome-devtools/) that will be especially useful in this class. I recommend Chrome primarily for historical reasons and because I had to pick one!
 
 You can access the Chrome Developer tools by selecting **View > Developer > Developer Tools** from Chrome's main menu (`cmd + option + i` on a Mac, `ctrl + shift + i` on Windows). You will pretty much always want to have these tools open when doing web development, especially when including interactivity via JavaScript.
 
@@ -26,11 +26,9 @@ I strongly suggest that you don't use Safari, as it has a number of user interfa
 
 ## Code Editor
 
-In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features; you only need to download and use one of the following programs. I strongly recommend **Visual Studio Code** as a default, but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)
+In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features; you only need to download and use one of the following programs. **Visual Studio Code** is the most popular and generally best code editor so I recommend that as a default. That said, other editors may work so free to try out different ones to find something you like (and then evangelize about it to your friends!).
 
-### Visual Studio Code {-}
-
-[Visual Studio Code](https://code.visualstudio.com/) (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft&mdash;yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of [community-built extensions](https://code.visualstudio.com/docs/editor/extension-gallery) for adding even more features. It is one of the most common editors for programming and web development in particular. VS Code is actually a stand-alone web application, so it's written in the same HTML, CSS, and JavaScript you'll learn in this course!
+[**Visual Studio Code**](https://code.visualstudio.com/) (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft&mdash;yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of [community-built extensions](https://code.visualstudio.com/docs/editor/extension-gallery) for adding even more features. It is one of the most common editors for programming and web development in particular. VS Code is actually a stand-alone web application, so it's written in the same HTML, CSS, and JavaScript you'll learn in this course!
 
 To install VS Code, follow the above link and Click the "Download" button to download the installer (e.g, `.dmg` or `.exe`) file, then double-click on that to install the application.
 
@@ -44,17 +42,8 @@ One more trick to using VS Code effectively is to get comfortable with the [Comm
 
 <p class="alert alert-warning">While VS Code is relatively unobtrusive when compared to otehr IDEs, be very careful about using its auto-complete or AI-based features. Often the editor will try and help or "fix" your code by adding in wrong solutions, which then cause further unexpected problems later. Make sure that any code that is written into your files are lines that you understand and can debug!</p>
 
-### Other Editors
-While we suggest using VSCode for this course, other editors are also acceptable and may be of interest to you. Note that these
 
-- [Sublime Text](https://www.sublimetext.com/3) is an older but popular text editor with excellent defaults and a variety of available extensions (though you'll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is a great option to write a plain text file.
-
-- [WebStorm](https://www.jetbrains.com/webstorm/) is a full-featured IDE from JetBrains (the makers of IntelliJ for Java). While it can offer some useful features, it is also likely to produce a lot of "cruft" or guide your coding in particular ways. I recommend you only use it after you have mastered the basics (such as by finishing this course!) so that you understand the choices it is making.
-
-- [Atom](https://atom.io/) was a text editor built by the folks at GitHub, though it has since been [retired](https://github.blog/2022-06-08-sunsetting-atom/). It was very similar to VS Code in terms of features, but has a somewhat different interface and community. It had a similar _command-palette_ to VS Code. The document you are reading was authored in Atom, which is why it remains on this list. The [Pulsar](https://pulsar-edit.dev/) project is a fork of the Atom editor.
-
-
-## Bash (Command Line)
+## Command Line (Bash)
 
 Many of the software tools used in professional web development are used on the **command line**: a text-based interface for controlling your computer. While the command line is harder to learn and figure out, it is particularly effective for doing web development. Command line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command line in order to utilize the software for this course.
 
@@ -62,7 +51,7 @@ While there are multiple different **command shells** (command line interfaces),
 
 - On a Mac you'll want to use the built-in app called **Terminal**. You can open it by searching via Spotlight (hit Cmd (`⌘`) and Spacebar together, type in "terminal", then select the app to open it), or by finding it in the Applications/Utilities folder.
 
-    As of macOS Catalina, Macs use **zsh** as the default command shell with Terminal. This works mostly the same as Bash (supporting generally the same command). It is also possible to [switch between the two shells](https://www.howtogeek.com/444596/how-to-change-the-default-shell-to-bash-in-macos-catalina/) if needed.
+    As of macOS Catalina, Macs use **zsh** as the default command shell with Terminal. This works mostly the same as Bash (supporting generally the same commands). It is also possible to [switch between the two shells](https://www.howtogeek.com/444596/how-to-change-the-default-shell-to-bash-in-macos-catalina/) if needed.
 
 - On Windows, you can use the [**Git Bash**](https://git-scm.com/downloads) shell, which you should install along with `git` (see below). Open this program to open the command shell.
 
@@ -88,70 +77,31 @@ node --version
 
 Be sure and check that you have a recent enough version! At time of this writing, you should have Node v18 or later.
 
-Installing Node also installs an additional command line program called [**`npm`**](https://www.npmjs.com/). `npm` is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command line "app store" for developer tools and libraries. `npm` is the most common way of installing and running a large number of tools used in professional web development. As of September 2022, the `npm` "registry" included more than 2.1 million different packages.
+Installing Node also installs an additional command line program called [**`npm`**](https://www.npmjs.com/). `npm` is a **package manager**, or a program used to "manage" other programs&mdash;think of it as a command line "app store" for developer tools and libraries. `npm` is the most common way of installing and running a large number of tools used in professional web development. As of September 2026, the `npm` "registry" included more than 4 million different packages.
 
-You will need to have at least `v5.6` of `npm` installed. Installing the latest Node should give you the latest `npm` as well, but you can also upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.
+You will need to have at least `v11` of `npm` installed. Installing the latest Node should give you the latest `npm` as well, but you can also upgrade `npm` using the command **`npm install npm@latest -g`**. See below for an explanation of this command.
 
-
-### Installing software with npm {-}
+### Managing local packages {-}
 
 You can use the `npm` program to download and install command line programs by name:
 
 ```bash
-# syntax to globally install package with npm
-npm install -g PACKAGE-NAME
+# syntax to locally install package with npm
+npm install PACKAGE-NAME
 ```
-
-For example, you could install the [_Jest_](https://jestjs.io/) testing application (a program for running automated tests) used in this course using:
-
-```bash
-# globally install the Jest package
-npm install -g jest
-```
-
-Importantly, note the included **`-g`** option. This tells `npm` that the package should be installed **globally**, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like Jest from any folder (e.g., for any project), command line utilities are always installed globally with the `-g` option.
-
-Installing an application globally often requires **administrator permissions**. If you try to install something without admin permission, you'll get an error saying _permission denied_:
-
-<p class="alert alert-danger">![A permission denied error when installing with npm](img/setup/permission-error.png)</p>
-
-In order to install programs globally, you will need to use the **`sudo`** (**s**uper**u**ser **do**) command to run the install as an administrator. You do this by putting `sudo` in front of the command you want to run, for example:
-
-```bash
-# as an administrator, globally install the Jest package
-sudo npm install -g jest
-```
-
-You will be prompted for your computer's password, make sure to fill that in (even though you won't see any typing occur).
-
-Note that you should only use sudo when absolutely necessary (e.g., when you hit this error); don't run every command as an administrator!
-
-After an application is installed through `npm`, you can run that program from the command line by typing its name followed by any arguments. For example, you can have the Jest program print its version:
-
-```bash
-# get the version of the installed Jest application
-jest --version
-```
-
-The latest version of `npm` also comes with an additional program called [**`npx`**](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b). This application lets you "download and run" an application without installing it separately. For example, you could download and run Jest to see it's version; note that you don't ever need to call `npm install` for jest when using `npx`:
-
-```bash
-# download and run the Jest application without installing it separately
-npx jest --version
-```
-
-### Managing local packages {-}
-It is also possible to install packages _locally_ by omitting the `-g` argument. For example:
+For example, you could install the `lodash` library using:
 
 ```bash
 npm install lodash
 ```
 
-This command will download the [`lodash`](https://lodash.com/) code library (a set of useful JavaScript functions). This package will be placed into a new folder _in the current project directory_ called **`node_modules/`**, and can be imported and used in the current directory's code. (It's called a _local install_ because the package is only available to the "local" project). You will need to install local packages once per project.
+This command will download the [`lodash`](https://lodash.com/) code library (a set of useful JavaScript functions). This package will be placed into a new folder _in the current project directory_ called **`node_modules/`**, and can be imported and used in the current directory's code. This is called a **local install** because the package is only available to the "local" project). You will need to install local packages once per project.
+
+<p class="alert alert-info">Unlike with R or Python packages, Node packages are most commonly installed locally "per project" locally. This means that every projecton your computer might have its own separate copy of `lodash`. While this may seem redundant, it allows projects to be more isolated and transferable, and to enable different projects to use different versions of libraries easily.</p>
 
 <p class="alert alert-warning">Because node packages can be very large, and projects can have lots of them, you want to be sure to **not** commit the `node_modules/` folder to version control. Make sure that the folder is listed in your `.gitignore` file!</p>
 
-As projects become large, it is common for them to build up many _dependencies_: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project's `node_modules/` folder. `npm` is able to keep track of these dependencies by recording them in a specialized file called `package.json` that can be placed inside the project directory. A **`package.json`** file is a text file containing a [JSON](https://en.wikipedia.org/wiki/JSON) list of information about your project. For example:
+As projects become large, it is common for them to build up many _dependencies_: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project's `node_modules/` folder. `npm` is able to keep track of these dependencies by recording them in a specialized file called **`package.json`** that is located inside the project directory. A `package.json` file is a text file containing a [JSON](https://en.wikipedia.org/wiki/JSON) list of information about your project. For example:
 
 ```json
 {
@@ -161,7 +111,7 @@ As projects become large, it is common for them to build up many _dependencies_:
   "description": "A project with an example package.json",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "vitest run"
   },
   "author": "Joel Ross",
   "license": "ISC",
@@ -175,21 +125,22 @@ As projects become large, it is common for them to build up many _dependencies_:
 }
 ```
 
-(You can create one of these files by using the command `npm init` in the current project directory, and then following the instructions to fill in the fields).
+(Most project you work with will already have a `package.json` file, but if needed you can create one of these files by using the command `npm init` in the current project directory, and then following the instructions to fill in the fields).
 
-Notice that there are two packages listed under `"dependencies"`: `lodash` and `moment` (the `^4.17.4` indicates which version of `lodash`&mdash;one that is at least `4.17.4`).  You can use `npm` to automatically install all of the packages listed under `"dependencies"` (as well as under `"devDependencies"`) in the `package.json` file using the command:
+Notice that there are two packages listed under `"dependencies"`: `lodash` and `moment` (the `^4.17.4` indicates which version of `lodash`&mdash;one that is at least `4.17.4`). You can use `npm` to automatically install all of the packages listed under `"dependencies"` (as well as under `"devDependencies"`) in the `package.json` file using the command:
 
 ```bash
+# install all dependencies listed in the package.json file
 npm install
 ```
 
 Using **`npm install`** without any arguments means "install all of the requirements that have been recorded for this project". This is a good first step _any time_ you download a project or checkout a repository from GitHub!
 
-You can run the `npm install` command as many times as you wish: if the package has already been installed (into the `node_modules/` folder), it won't be downloaded again. Only "missing" packages&mdash;such as those recently added to the `package.json` file&mdash;will be installed.
+You can run the `npm install` command as many times as you wish: if the package has already been installed (into the `node_modules/` folder), it won't be downloaded again. Only "missing" packages&mdash;such as those recently added to the `package.json` file&mdash;will be installed. Don't worry about running the install multiple times!
 
 Because all local packages are saved in the `node_modules/` folder, that folder is a common target when troubleshooting package installation issues. For example, if package does not seem to be importing correctly, a common step is to delete the `node_modules` folder and then try again!
 
-Note that while the `package.json` file lists the desired dependencies for a project, the **`package-lock.json`** file lists the specific versions of dependencies (and the dependencies of the dependencies!) that have actually been installed. This is to make sure that if a package received a minor update (e.g., from 4.17.18 to 4.17.19) that has a bug, you won't accidentally install that version and break your project. The `package-lock.json` file is automatically generated every time you install or re-install a local package. Changes to this file are a good way to check if you've accidentally installed a different version of a dependency.
+While the `package.json` file lists the desired dependencies for a project, the **`package-lock.json`** file lists the specific versions of dependencies (and the dependencies of the dependencies!) that have actually been installed. This is to make sure that if a package receives a minor update (e.g., from 4.17.18 to 4.17.19) that has a bug, you won't accidentally install that version and break your project. The `package-lock.json` file is automatically generated every time you install or re-install a local package. Changes to this file are a good way to check if you've accidentally installed a different version of a dependency.
 
 
 When installing specific packages (e.g., with `npm install package-name`), `npm` automatically adds them to the dependencies list in the `package.json`. You can also make this recording explicit with the `--save` option:
@@ -214,13 +165,62 @@ Be sure to `link` any global packages _before_ you run `npm install` so you don'
 You can uninstall packages using `npm uninstall`, or can remove packages from the dependencies lists simply by editing the `package.json` file (e.g., with VS Code).
 
 
+### Installing global software with npm {-}
+
+You can also use the `npm` program to download and install command line programs that can be accessed from anywhere on your computer. You install these by name using the `-g` argument to indicate that they are **globally** installed:
+
+```bash
+# syntax to globally install package with npm
+npm install -g PACKAGE-NAME
+```
+
+For example, you could install the [`live-server`](https://www.npmjs.com/package/live-server) package to run a local development server:
+
+```bash
+# globally install the live-server package
+npm install -g live-server
+```
+
+Importantly, note the included **`-g`** option. This tells `npm` that the package should be installed globally, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like `live-server` from any folder (e.g., for any project), command line utilities are always installed globally with the `-g` option.
+
+<p class="alert alert-success">In general: _libraries_ (code packages that will be used by your program) are installed locally; _applications_ (programs that are executed on their own) are installed globally.</p>
+
+Installing an application globally often requires **administrator permissions**. If you try to install something without admin permission, you'll get an error saying _permission denied_:
+
+<p class="alert alert-danger">![A permission denied error when installing with npm](img/setup/permission-error.png)</p>
+
+If your computer requires administrator permissions to install a global package, you will need to use the **`sudo`** (**s**uper**u**ser **do**) command to run the install as an administrator. You do this by putting `sudo` in front of the command you want to run, for example:
+
+```bash
+# as an administrator, globally install the live-server package
+sudo npm install -g live-server
+```
+
+You will be prompted for your computer's password, make sure to fill that in (even though you won't see any typing occur).
+
+Note that you should only use sudo when absolutely necessary (e.g., when you hit this error); don't run every command as an administrator! You should _never_ install local dependencies as an administrator; only use `sudo` when installing applications globally (with `-g`).
+
+After an application is installed through `npm`, you can run that program from the command line by typing its name followed by any arguments. For example, you can have the live-server program print its version:
+
+```bash
+# get the version of the installed live-server application
+live-server --version
+```
+
+`npm` also comes with an additional program called [**`npx`**](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b). This application lets you "download and run" an application without needing to install it separately. For example, you could download and run the `Vitest` testing program to see it's version:
+
+```bash
+# download and run the Vitest application without installing it separately
+npx vitest --version
+```
+
 To sum up, you will use three commands with `npm` to install packages:
 
-1. `npm install -g PACKAGE-NAME` to _globally_ install command line programs.
-2. `npm install` to _locally_ install all of the dependencies for a project you check out.
-3. `npm install PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
+1. `npm install` to _locally_ install all of the dependencies for a project you check out.
+2. `npm install PACKAGE-NAME` to _locally_ install a new code package and record it in the `package.json` file.
+3. `npm install -g PACKAGE-NAME` to _globally_ install command line applications.
 
-<p class="alert alert-info">While `npm` is the most popular package manager (and the one used in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with `npm` and is quickly growing in popularity. Note that you will generally need to use one package manager or other; don't try to mix them in a single project!</p>
+<p class="alert alert-info">While `npm` is the most popular package manager (and the one used in this course), there are others as well. For example, [**Yarn**](https://yarnpkg.com/en/) is a package manager created by Facebook that is [compatible](https://yarnpkg.com/en/docs/migrating-from-npm) with `npm`. Note that you will generally need to use one package manager or other; don't try to mix them in a single project!</p>
 
 
 ## Git and GitHub

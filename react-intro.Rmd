@@ -103,7 +103,7 @@ At its core, React is simply a DOM creation and rendering library&mdash;it allow
 
 ```javascript
 //Create and render a new `<h1>` element using DOM methods
-const element = document.createElement('hi'); //create element
+const element = document.createElement('h1'); //create element
 element.id = 'hello'; //specify attributes
 element.classList.add('my-class');
 element.textContent = 'Hello World!'; //specify content

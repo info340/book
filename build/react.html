@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2026-06-04" />
+<meta name="date" content="2026-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -88,16 +88,12 @@
 <li class="chapter" data-level="1" data-path="software-setup.html"><a href="software-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="software-setup.html"><a href="software-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
-<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a>
-<ul>
-<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
-<li class="chapter" data-level="1.2.1" data-path="software-setup.html"><a href="software-setup.html#other-editors"><i class="fa fa-check"></i><b>1.2.1</b> Other Editors</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a></li>
+<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#command-line-bash"><i class="fa fa-check"></i><b>1.3</b> Command Line (Bash)</a></li>
 <li class="chapter" data-level="1.4" data-path="software-setup.html"><a href="software-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.4</b> Node and <code>npm</code></a>
 <ul>
-<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-software-with-npm"><i class="fa fa-check"></i>Installing software with npm</a></li>
 <li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#managing-local-packages"><i class="fa fa-check"></i>Managing local packages</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-global-software-with-npm"><i class="fa fa-check"></i>Installing global software with npm</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="software-setup.html"><a href="software-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.5</b> Git and GitHub</a></li>
 <li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
@@ -646,7 +642,7 @@ In order to stop the server, hit <code>ctrl-c</code> on the command line.
 <h2><span class="header-section-number">15.2</span> JSX</h2>
 <p>At its core, React is simply a DOM creation and rendering library—it allows you to declare new DOM elements (e.g., make a new <code>&lt;h1&gt;</code>) and then add that element to the webpage. This is similar to the process you might do with the DOM or the jQuery library:</p>
 <pre class="language-javascript"><code><span class="token comment">//Create and render a new `&lt;h1>` element using DOM methods</span>
-<span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'hi'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//create element</span>
+<span class="token keyword">const</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'h1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//create element</span>
 element<span class="token punctuation">.</span>id <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token punctuation">;</span> <span class="token comment">//specify attributes</span>
 element<span class="token punctuation">.</span>classList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'my-class'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 element<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'Hello World!'</span><span class="token punctuation">;</span> <span class="token comment">//specify content</span>

@@ -1,8 +1,7 @@
 software-setup
 web-browser
 code-editor
-other-editors
-bash-command-line
+command-line-bash
 node-and-npm
 git-and-github
 client-side-development

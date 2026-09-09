@@ -24,7 +24,7 @@
 <meta name="author" content="Joel Ross" />
 
 
-<meta name="date" content="2026-06-04" />
+<meta name="date" content="2026-09-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -88,16 +88,12 @@
 <li class="chapter" data-level="1" data-path="software-setup.html"><a href="software-setup.html"><i class="fa fa-check"></i><b>1</b> Getting Setup</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="software-setup.html"><a href="software-setup.html#web-browser"><i class="fa fa-check"></i><b>1.1</b> Web Browser</a></li>
-<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a>
-<ul>
-<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#visual-studio-code"><i class="fa fa-check"></i>Visual Studio Code</a></li>
-<li class="chapter" data-level="1.2.1" data-path="software-setup.html"><a href="software-setup.html#other-editors"><i class="fa fa-check"></i><b>1.2.1</b> Other Editors</a></li>
-</ul></li>
-<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#bash-command-line"><i class="fa fa-check"></i><b>1.3</b> Bash (Command Line)</a></li>
+<li class="chapter" data-level="1.2" data-path="software-setup.html"><a href="software-setup.html#code-editor"><i class="fa fa-check"></i><b>1.2</b> Code Editor</a></li>
+<li class="chapter" data-level="1.3" data-path="software-setup.html"><a href="software-setup.html#command-line-bash"><i class="fa fa-check"></i><b>1.3</b> Command Line (Bash)</a></li>
 <li class="chapter" data-level="1.4" data-path="software-setup.html"><a href="software-setup.html#node-and-npm"><i class="fa fa-check"></i><b>1.4</b> Node and <code>npm</code></a>
 <ul>
-<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-software-with-npm"><i class="fa fa-check"></i>Installing software with npm</a></li>
 <li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#managing-local-packages"><i class="fa fa-check"></i>Managing local packages</a></li>
+<li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#installing-global-software-with-npm"><i class="fa fa-check"></i>Installing global software with npm</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="software-setup.html"><a href="software-setup.html#git-and-github"><i class="fa fa-check"></i><b>1.5</b> Git and GitHub</a></li>
 <li class="chapter" data-level="" data-path="software-setup.html"><a href="software-setup.html#resources"><i class="fa fa-check"></i>Resources</a></li>
@@ -582,17 +578,15 @@ Note that iSchool lab machines should have all appropriate software already inst
 </ul>
 <div id="web-browser" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Web Browser</h2>
-<p>The first thing you’ll need is a web browser for viewing the web pages you make! I recommend you install and use <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class. I recommend Chrome primarily for historical reasons (and because it is the browser used by the author—and I had to pick one!).</p>
+<p>The first thing you’ll need is a web browser for viewing the web pages you make! I recommend you install and use <a href="https://www.google.com/chrome/browser/desktop/index.html"><strong>Chrome</strong></a>, which comes with an effective set of built-in <a href="https://developers.google.com/web/tools/chrome-devtools/">developer tools</a> that will be especially useful in this class. I recommend Chrome primarily for historical reasons and because I had to pick one!</p>
 <p>You can access the Chrome Developer tools by selecting <strong>View &gt; Developer &gt; Developer Tools</strong> from Chrome’s main menu (<code>cmd + option + i</code> on a Mac, <code>ctrl + shift + i</code> on Windows). You will pretty much always want to have these tools open when doing web development, especially when including interactivity via JavaScript.</p>
 <p>Other modern browsers such as <a href="https://www.mozilla.org/en-US/firefox/new/"><strong>Firefox</strong></a> or <a href="https://www.microsoft.com/en-us/windows/microsoft-edge"><strong>Microsoft Edge</strong></a> will also function perfectly well in this course and include their own versions of the required development tools. Note that different browsers may and will render code in different ways, which will be discussed extensively throughout the course.</p>
 <p>I strongly suggest that you don’t use Safari, as it has a number of user interface and rendering issues that make it difficult to develop with for this course.</p>
 </div>
 <div id="code-editor" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Code Editor</h2>
-<p>In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features; you only need to download and use one of the following programs. I strongly recommend <strong>Visual Studio Code</strong> as a default, but feel free to try out different ones to find something you like (and then evangelize about it to your friends!)</p>
-<div id="visual-studio-code" class="section level3 unnumbered">
-<h3>Visual Studio Code</h3>
-<p><a href="https://code.visualstudio.com/">Visual Studio Code</a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. It is one of the most common editors for programming and web development in particular. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
+<p>In order to write web code, you need somewhere to write it. There are a variety of code editors and IDEs (Integrated Development Environments) that are specialized for web development, providing syntax highlighting, code completion, and other useful functionality. There are lots of different code editors out there, all of which have slightly different appearances and features; you only need to download and use one of the following programs. <strong>Visual Studio Code</strong> is the most popular and generally best code editor so I recommend that as a default. That said, other editors may work so free to try out different ones to find something you like (and then evangelize about it to your friends!).</p>
+<p><a href="https://code.visualstudio.com/"><strong>Visual Studio Code</strong></a> (or VS Code; not to be confused with Visual Studio) is a free, open-source editor developed by Microsoft—yes, really. It focuses on web programming and JavaScript, though also supports many other languages and provides a number of <a href="https://code.visualstudio.com/docs/editor/extension-gallery">community-built extensions</a> for adding even more features. It is one of the most common editors for programming and web development in particular. VS Code is actually a stand-alone web application, so it’s written in the same HTML, CSS, and JavaScript you’ll learn in this course!</p>
 <p>To install VS Code, follow the above link and Click the “Download” button to download the installer (e.g, <code>.dmg</code> or <code>.exe</code>) file, then double-click on that to install the application.</p>
 <p>VS Code is highly customizable with very many features. For more information about using VS Code, see <a href="https://code.visualstudio.com/docs">the documentation</a>, which includes <a href="https://code.visualstudio.com/docs/getstarted/introvideos">videos</a> if you find them useful. The documentation for programming in <a href="https://code.visualstudio.com/docs/languages/html">HTML</a>, <a href="https://code.visualstudio.com/docs/languages/css">CSS</a>, and especially <a href="https://code.visualstudio.com/docs/languages/javascript">JavaScript</a> also contain lots of tips and tricks.</p>
 <p>You can open a file in VS Code by using the <code>File &gt; Open...</code> command. Because web development often involves working with lots of different files at once, it’s often more effective to open an entire <em>folder</em> at once using <code>File &gt; Open Folder...</code>. This will list all of the files in that folder in a sidebar, and you can double-click on each file to open it up in its own tab. You can also manage files from the sidebar: moving them, making folders, or renaming them through the context (right-click) menu.</p>
@@ -602,23 +596,13 @@ Note that iSchool lab machines should have all appropriate software already inst
 While VS Code is relatively unobtrusive when compared to otehr IDEs, be very careful about using its auto-complete or AI-based features. Often the editor will try and help or “fix” your code by adding in wrong solutions, which then cause further unexpected problems later. Make sure that any code that is written into your files are lines that you understand and can debug!
 </p>
 </div>
-<div id="other-editors" class="section level3" number="1.2.1">
-<h3><span class="header-section-number">1.2.1</span> Other Editors</h3>
-<p>While we suggest using VSCode for this course, other editors are also acceptable and may be of interest to you. Note that these</p>
-<ul>
-<li><p><a href="https://www.sublimetext.com/3">Sublime Text</a> is an older but popular text editor with excellent defaults and a variety of available extensions (though you’ll need to manage and install extensions to achieve the functionality offered by other editors out of the box). While the software can be used for free, every 20 or so saves it will prompt you to purchase the full version. This is a great option to write a plain text file.</p></li>
-<li><p><a href="https://www.jetbrains.com/webstorm/">WebStorm</a> is a full-featured IDE from JetBrains (the makers of IntelliJ for Java). While it can offer some useful features, it is also likely to produce a lot of “cruft” or guide your coding in particular ways. I recommend you only use it after you have mastered the basics (such as by finishing this course!) so that you understand the choices it is making.</p></li>
-<li><p><a href="https://atom.io/">Atom</a> was a text editor built by the folks at GitHub, though it has since been <a href="https://github.blog/2022-06-08-sunsetting-atom/">retired</a>. It was very similar to VS Code in terms of features, but has a somewhat different interface and community. It had a similar <em>command-palette</em> to VS Code. The document you are reading was authored in Atom, which is why it remains on this list. The <a href="https://pulsar-edit.dev/">Pulsar</a> project is a fork of the Atom editor.</p></li>
-</ul>
-</div>
-</div>
-<div id="bash-command-line" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Bash (Command Line)</h2>
+<div id="command-line-bash" class="section level2" number="1.3">
+<h2><span class="header-section-number">1.3</span> Command Line (Bash)</h2>
 <p>Many of the software tools used in professional web development are used on the <strong>command line</strong>: a text-based interface for controlling your computer. While the command line is harder to learn and figure out, it is particularly effective for doing web development. Command line automation is powerful and efficient enough to handle the dozens of repeated tasks across hundreds of different source files (split across multiple computers) commonly found in web programming. You will need to be comfortable using the command line in order to utilize the software for this course.</p>
 <p>While there are multiple different <strong>command shells</strong> (command line interfaces), this course uses the <a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)">Bash</a> shell, which provides a particular common set of commands common to Mac and Linux machines. What you install depends on your operating system:</p>
 <ul>
 <li><p>On a Mac you’ll want to use the built-in app called <strong>Terminal</strong>. You can open it by searching via Spotlight (hit Cmd (<code>⌘</code>) and Spacebar together, type in “terminal”, then select the app to open it), or by finding it in the Applications/Utilities folder.</p>
-<p>As of macOS Catalina, Macs use <strong>zsh</strong> as the default command shell with Terminal. This works mostly the same as Bash (supporting generally the same command). It is also possible to <a href="https://www.howtogeek.com/444596/how-to-change-the-default-shell-to-bash-in-macos-catalina/">switch between the two shells</a> if needed.</p></li>
+<p>As of macOS Catalina, Macs use <strong>zsh</strong> as the default command shell with Terminal. This works mostly the same as Bash (supporting generally the same commands). It is also possible to <a href="https://www.howtogeek.com/444596/how-to-change-the-default-shell-to-bash-in-macos-catalina/">switch between the two shells</a> if needed.</p></li>
 <li><p>On Windows, you can use the <a href="https://git-scm.com/downloads"><strong>Git Bash</strong></a> shell, which you should install along with <code>git</code> (see below). Open this program to open the command shell.</p>
 <p>Note that Windows does come with its own command shell, called the <em>Command Prompt</em> (previously the <em>DOS Prompt</em>), but it has a different set of commands and features. <em>Powershell</em> is a more powerful version of the Command Prompt if you really want to get into the Windows Management Framework. But Bash is more common in open-source programming like we’ll be doing, and so we will be focusing on that set of commands.</p>
 <div class="alert alert-warning">
@@ -637,42 +621,23 @@ This course expects you to already be familiar with basic command line usage. Fo
 <p>You can test that Node is installed and working by opening your command shell and running</p>
 <pre class="language-bash"><code><span class="token function">node</span> <span class="token parameter variable">--version</span></code></pre>
 <p>Be sure and check that you have a recent enough version! At time of this writing, you should have Node v18 or later.</p>
-<p>Installing Node also installs an additional command line program called <a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a>. <code>npm</code> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command line “app store” for developer tools and libraries. <code>npm</code> is the most common way of installing and running a large number of tools used in professional web development. As of September 2022, the <code>npm</code> “registry” included more than 2.1 million different packages.</p>
-<p>You will need to have at least <code>v5.6</code> of <code>npm</code> installed. Installing the latest Node should give you the latest <code>npm</code> as well, but you can also upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.</p>
-<div id="installing-software-with-npm" class="section level3 unnumbered">
-<h3>Installing software with npm</h3>
-<p>You can use the <code>npm</code> program to download and install command line programs by name:</p>
-<pre class="language-bash"><code><span class="token comment"># syntax to globally install package with npm</span>
-<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> PACKAGE-NAME</code></pre>
-<p>For example, you could install the <a href="https://jestjs.io/"><em>Jest</em></a> testing application (a program for running automated tests) used in this course using:</p>
-<pre class="language-bash"><code><span class="token comment"># globally install the Jest package</span>
-<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> jest</code></pre>
-<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed <strong>globally</strong>, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like Jest from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
-<p>Installing an application globally often requires <strong>administrator permissions</strong>. If you try to install something without admin permission, you’ll get an error saying <em>permission denied</em>:</p>
-<p class="alert alert-danger">
-<img src="img/setup/permission-error.png" title="fig:" alt="A permission denied error when installing with npm" />
-</p>
-<p>In order to install programs globally, you will need to use the <strong><code>sudo</code></strong> (<strong>s</strong>uper<strong>u</strong>ser <strong>do</strong>) command to run the install as an administrator. You do this by putting <code>sudo</code> in front of the command you want to run, for example:</p>
-<pre class="language-bash"><code><span class="token comment"># as an administrator, globally install the Jest package</span>
-<span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> jest</code></pre>
-<p>You will be prompted for your computer’s password, make sure to fill that in (even though you won’t see any typing occur).</p>
-<p>Note that you should only use sudo when absolutely necessary (e.g., when you hit this error); don’t run every command as an administrator!</p>
-<p>After an application is installed through <code>npm</code>, you can run that program from the command line by typing its name followed by any arguments. For example, you can have the Jest program print its version:</p>
-<pre class="language-bash"><code><span class="token comment"># get the version of the installed Jest application</span>
-jest <span class="token parameter variable">--version</span></code></pre>
-<p>The latest version of <code>npm</code> also comes with an additional program called <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b"><strong><code>npx</code></strong></a>. This application lets you “download and run” an application without installing it separately. For example, you could download and run Jest to see it’s version; note that you don’t ever need to call <code>npm install</code> for jest when using <code>npx</code>:</p>
-<pre class="language-bash"><code><span class="token comment"># download and run the Jest application without installing it separately</span>
-npx jest <span class="token parameter variable">--version</span></code></pre>
-</div>
+<p>Installing Node also installs an additional command line program called <a href="https://www.npmjs.com/"><strong><code>npm</code></strong></a>. <code>npm</code> is a <strong>package manager</strong>, or a program used to “manage” other programs—think of it as a command line “app store” for developer tools and libraries. <code>npm</code> is the most common way of installing and running a large number of tools used in professional web development. As of September 2026, the <code>npm</code> “registry” included more than 4 million different packages.</p>
+<p>You will need to have at least <code>v11</code> of <code>npm</code> installed. Installing the latest Node should give you the latest <code>npm</code> as well, but you can also upgrade <code>npm</code> using the command <strong><code>npm install npm@latest -g</code></strong>. See below for an explanation of this command.</p>
 <div id="managing-local-packages" class="section level3 unnumbered">
 <h3>Managing local packages</h3>
-<p>It is also possible to install packages <em>locally</em> by omitting the <code>-g</code> argument. For example:</p>
+<p>You can use the <code>npm</code> program to download and install command line programs by name:</p>
+<pre class="language-bash"><code><span class="token comment"># syntax to locally install package with npm</span>
+<span class="token function">npm</span> <span class="token function">install</span> PACKAGE-NAME</code></pre>
+<p>For example, you could install the <code>lodash</code> library using:</p>
 <pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span> lodash</code></pre>
-<p>This command will download the <a href="https://lodash.com/"><code>lodash</code></a> code library (a set of useful JavaScript functions). This package will be placed into a new folder <em>in the current project directory</em> called <strong><code>node_modules/</code></strong>, and can be imported and used in the current directory’s code. (It’s called a <em>local install</em> because the package is only available to the “local” project). You will need to install local packages once per project.</p>
+<p>This command will download the <a href="https://lodash.com/"><code>lodash</code></a> code library (a set of useful JavaScript functions). This package will be placed into a new folder <em>in the current project directory</em> called <strong><code>node_modules/</code></strong>, and can be imported and used in the current directory’s code. This is called a <strong>local install</strong> because the package is only available to the “local” project). You will need to install local packages once per project.</p>
+<p class="alert alert-info">
+Unlike with R or Python packages, Node packages are most commonly installed locally “per project” locally. This means that every projecton your computer might have its own separate copy of <code>lodash</code>. While this may seem redundant, it allows projects to be more isolated and transferable, and to enable different projects to use different versions of libraries easily.
+</p>
 <p class="alert alert-warning">
 Because node packages can be very large, and projects can have lots of them, you want to be sure to <strong>not</strong> commit the <code>node_modules/</code> folder to version control. Make sure that the folder is listed in your <code>.gitignore</code> file!
 </p>
-<p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <code>npm</code> is able to keep track of these dependencies by recording them in a specialized file called <code>package.json</code> that can be placed inside the project directory. A <strong><code>package.json</code></strong> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
+<p>As projects become large, it is common for them to build up many <em>dependencies</em>: packages that must be installed in order for the program to work. In other words, there needs to be a certain set of packages in the project’s <code>node_modules/</code> folder. <code>npm</code> is able to keep track of these dependencies by recording them in a specialized file called <strong><code>package.json</code></strong> that is located inside the project directory. A <code>package.json</code> file is a text file containing a <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> list of information about your project. For example:</p>
 <pre class="language-json"><code><span class="token punctuation">{</span>
   <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"example"</span><span class="token punctuation">,</span>
   <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
@@ -680,7 +645,7 @@ Because node packages can be very large, and projects can have lots of them, you
   <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"A project with an example package.json"</span><span class="token punctuation">,</span>
   <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"jest"</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"vitest run"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Joel Ross"</span><span class="token punctuation">,</span>
   <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span><span class="token punctuation">,</span>
@@ -692,13 +657,14 @@ Because node packages can be very large, and projects can have lots of them, you
     <span class="token property">"html-validator"</span><span class="token operator">:</span> <span class="token string">"^2.2.2"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<p>(You can create one of these files by using the command <code>npm init</code> in the current project directory, and then following the instructions to fill in the fields).</p>
+<p>(Most project you work with will already have a <code>package.json</code> file, but if needed you can create one of these files by using the command <code>npm init</code> in the current project directory, and then following the instructions to fill in the fields).</p>
 <p>Notice that there are two packages listed under <code>"dependencies"</code>: <code>lodash</code> and <code>moment</code> (the <code>^4.17.4</code> indicates which version of <code>lodash</code>—one that is at least <code>4.17.4</code>). You can use <code>npm</code> to automatically install all of the packages listed under <code>"dependencies"</code> (as well as under <code>"devDependencies"</code>) in the <code>package.json</code> file using the command:</p>
-<pre class="language-bash"><code><span class="token function">npm</span> <span class="token function">install</span></code></pre>
+<pre class="language-bash"><code><span class="token comment"># install all dependencies listed in the package.json file</span>
+<span class="token function">npm</span> <span class="token function">install</span></code></pre>
 <p>Using <strong><code>npm install</code></strong> without any arguments means “install all of the requirements that have been recorded for this project”. This is a good first step <em>any time</em> you download a project or checkout a repository from GitHub!</p>
-<p>You can run the <code>npm install</code> command as many times as you wish: if the package has already been installed (into the <code>node_modules/</code> folder), it won’t be downloaded again. Only “missing” packages—such as those recently added to the <code>package.json</code> file—will be installed.</p>
+<p>You can run the <code>npm install</code> command as many times as you wish: if the package has already been installed (into the <code>node_modules/</code> folder), it won’t be downloaded again. Only “missing” packages—such as those recently added to the <code>package.json</code> file—will be installed. Don’t worry about running the install multiple times!</p>
 <p>Because all local packages are saved in the <code>node_modules/</code> folder, that folder is a common target when troubleshooting package installation issues. For example, if package does not seem to be importing correctly, a common step is to delete the <code>node_modules</code> folder and then try again!</p>
-<p>Note that while the <code>package.json</code> file lists the desired dependencies for a project, the <strong><code>package-lock.json</code></strong> file lists the specific versions of dependencies (and the dependencies of the dependencies!) that have actually been installed. This is to make sure that if a package received a minor update (e.g., from 4.17.18 to 4.17.19) that has a bug, you won’t accidentally install that version and break your project. The <code>package-lock.json</code> file is automatically generated every time you install or re-install a local package. Changes to this file are a good way to check if you’ve accidentally installed a different version of a dependency.</p>
+<p>While the <code>package.json</code> file lists the desired dependencies for a project, the <strong><code>package-lock.json</code></strong> file lists the specific versions of dependencies (and the dependencies of the dependencies!) that have actually been installed. This is to make sure that if a package receives a minor update (e.g., from 4.17.18 to 4.17.19) that has a bug, you won’t accidentally install that version and break your project. The <code>package-lock.json</code> file is automatically generated every time you install or re-install a local package. Changes to this file are a good way to check if you’ve accidentally installed a different version of a dependency.</p>
 <p>When installing specific packages (e.g., with <code>npm install package-name</code>), <code>npm</code> automatically adds them to the dependencies list in the <code>package.json</code>. You can also make this recording explicit with the <code>--save</code> option:</p>
 <pre class="language-bash"><code><span class="token comment"># explicitly save dependency in package.json</span>
 <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">--save</span> lodash</code></pre>
@@ -712,14 +678,42 @@ npm link lodash
 
 Be sure to `link` any global packages _before_ you run `npm install` so you don't download any packages from `package.json` that you already have! -->
 <p>You can uninstall packages using <code>npm uninstall</code>, or can remove packages from the dependencies lists simply by editing the <code>package.json</code> file (e.g., with VS Code).</p>
+</div>
+<div id="installing-global-software-with-npm" class="section level3 unnumbered">
+<h3>Installing global software with npm</h3>
+<p>You can also use the <code>npm</code> program to download and install command line programs that can be accessed from anywhere on your computer. You install these by name using the <code>-g</code> argument to indicate that they are <strong>globally</strong> installed:</p>
+<pre class="language-bash"><code><span class="token comment"># syntax to globally install package with npm</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> PACKAGE-NAME</code></pre>
+<p>For example, you could install the <a href="https://www.npmjs.com/package/live-server"><code>live-server</code></a> package to run a local development server:</p>
+<pre class="language-bash"><code><span class="token comment"># globally install the live-server package</span>
+<span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> live-server</code></pre>
+<p>Importantly, note the included <strong><code>-g</code></strong> option. This tells <code>npm</code> that the package should be installed globally, making it available across the entire computer, rather than just from a particular folder. Because you want to be able to use a command line program like <code>live-server</code> from any folder (e.g., for any project), command line utilities are always installed globally with the <code>-g</code> option.</p>
+<p class="alert alert-success">
+In general: <em>libraries</em> (code packages that will be used by your program) are installed locally; <em>applications</em> (programs that are executed on their own) are installed globally.
+</p>
+<p>Installing an application globally often requires <strong>administrator permissions</strong>. If you try to install something without admin permission, you’ll get an error saying <em>permission denied</em>:</p>
+<p class="alert alert-danger">
+<img src="img/setup/permission-error.png" title="fig:" alt="A permission denied error when installing with npm" />
+</p>
+<p>If your computer requires administrator permissions to install a global package, you will need to use the <strong><code>sudo</code></strong> (<strong>s</strong>uper<strong>u</strong>ser <strong>do</strong>) command to run the install as an administrator. You do this by putting <code>sudo</code> in front of the command you want to run, for example:</p>
+<pre class="language-bash"><code><span class="token comment"># as an administrator, globally install the live-server package</span>
+<span class="token function">sudo</span> <span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> live-server</code></pre>
+<p>You will be prompted for your computer’s password, make sure to fill that in (even though you won’t see any typing occur).</p>
+<p>Note that you should only use sudo when absolutely necessary (e.g., when you hit this error); don’t run every command as an administrator! You should <em>never</em> install local dependencies as an administrator; only use <code>sudo</code> when installing applications globally (with <code>-g</code>).</p>
+<p>After an application is installed through <code>npm</code>, you can run that program from the command line by typing its name followed by any arguments. For example, you can have the live-server program print its version:</p>
+<pre class="language-bash"><code><span class="token comment"># get the version of the installed live-server application</span>
+live-server <span class="token parameter variable">--version</span></code></pre>
+<p><code>npm</code> also comes with an additional program called <a href="https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b"><strong><code>npx</code></strong></a>. This application lets you “download and run” an application without needing to install it separately. For example, you could download and run the <code>Vitest</code> testing program to see it’s version:</p>
+<pre class="language-bash"><code><span class="token comment"># download and run the Vitest application without installing it separately</span>
+npx vitest <span class="token parameter variable">--version</span></code></pre>
 <p>To sum up, you will use three commands with <code>npm</code> to install packages:</p>
 <ol style="list-style-type: decimal">
-<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command line programs.</li>
 <li><code>npm install</code> to <em>locally</em> install all of the dependencies for a project you check out.</li>
 <li><code>npm install PACKAGE-NAME</code> to <em>locally</em> install a new code package and record it in the <code>package.json</code> file.</li>
+<li><code>npm install -g PACKAGE-NAME</code> to <em>globally</em> install command line applications.</li>
 </ol>
 <p class="alert alert-info">
-While <code>npm</code> is the most popular package manager (and the one used in this course), there are others as well. For example, <a href="https://yarnpkg.com/en/"><strong>Yarn</strong></a> is a package manager created by Facebook that is <a href="https://yarnpkg.com/en/docs/migrating-from-npm">compatible</a> with <code>npm</code> and is quickly growing in popularity. Note that you will generally need to use one package manager or other; don’t try to mix them in a single project!
+While <code>npm</code> is the most popular package manager (and the one used in this course), there are others as well. For example, <a href="https://yarnpkg.com/en/"><strong>Yarn</strong></a> is a package manager created by Facebook that is <a href="https://yarnpkg.com/en/docs/migrating-from-npm">compatible</a> with <code>npm</code>. Note that you will generally need to use one package manager or other; don’t try to mix them in a single project!
 </p>
 </div>
 </div>
